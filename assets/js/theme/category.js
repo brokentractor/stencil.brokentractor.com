@@ -9,8 +9,8 @@ function coreprices() {
     $('.productrow').each( function() {
 
         var coreprice = 0;
-        var startprice = $(this).find('.price.price--withoutTax').text();         
-        
+        var startprice = $(this).find('.price.price--withoutTax').text();
+
         if ($(this).find('.CorePrice').length > 0) {
             coreprice = $(this).find('.CorePrice').text();
         }
@@ -26,19 +26,24 @@ function coreprices() {
         if (startprice == '$0.00') {
             $(this).find('.price.price--withoutTax').html('Call for Pricing');
             $(this).find('.listatc').hide();
-        } else if (coreprice != '0') {                
+        } else if (coreprice != '0') {
             startprice = startprice.replace('$', '');
             startprice = startprice.replace(',', '');
-            startprice = parseFloat(startprice).toFixed(2);            
-            coreprice = parseFloat(coreprice).toFixed(2);                        
+            startprice = parseFloat(startprice).toFixed(2);
+            coreprice = parseFloat(coreprice).toFixed(2);
             var newcprice = +startprice - +coreprice;
             newcprice = parseFloat(newcprice).toFixed(2);
             newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            
+            var totalcprice = +newcprice - +coreprice;
+            totalcprice = parseFloat(totalcprice).toFixed(2);
+            totalcprice = totalcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
             $(this).find('.price.price--withoutTax').html('$'+ newcprice);
             $(this).find('.price-section--withoutTax').append('<div class="corecharge">Core Charge: $'+ coreprice+'</div>');
+            $(this).find('.price.price--withoutTax').html('$'+ totalcprice);
+            
         }
-        
+
     });
 }
 
@@ -95,7 +100,7 @@ export default class Category extends CatalogPage {
 
     loaded(next) {
 
-        $('#backtotop').click( function() {           
+        $('#backtotop').click( function() {
              $('html,body').animate({ scrollTop: 0 }, 'slow');
         });
 
@@ -126,9 +131,9 @@ export default class Category extends CatalogPage {
             });
         }
 
-         
 
-        $(window).scroll(function() { 
+
+        $(window).scroll(function() {
             var scrollPos = $(window).scrollTop();
 
             if (scrollPos <= 200) {
@@ -138,8 +143,8 @@ export default class Category extends CatalogPage {
             }
 
         });
-        
-        
+
+
 
         next();
     }
