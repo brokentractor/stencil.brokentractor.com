@@ -1,0 +1,26 @@
+{{#if product_results.products.length}}
+{{> components/products/filter sort=pagination.product_results.sort}}    
+
+<form action="{{urls.compare}}" method='POST' data-product-compare>
+   		<div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>                        
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                         <td class="thcell pn ListDetails" style="display: none;">Details</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+        			{{> components/products/list products=product_results.products show_compare=product_results.show_compare theme_settings=theme_settings}}
+                </table>
+            </div>
+    
+        
+    
+</form>
+
+{{> components/common/paginator pagination.product_results}}
+{{/if}}

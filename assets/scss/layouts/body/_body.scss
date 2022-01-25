@@ -1,0 +1,206 @@
+// =============================================================================
+// BODY (CSS)
+//
+// 1. Header is fixed on small screens, use the content body to create the whitespace
+//    between it and the header on all situations. If you change the spacing here,
+//    please update .heroCarousel too.
+//
+// =============================================================================
+
+#maintenance-notice {
+  display: none !important;
+}
+
+.body {
+    padding-bottom: 0px ;
+    padding-top: spacing("single"); // 1
+    min-height: 600px;
+
+    @include breakpoint("medium") {
+        padding-top: spacing("single") + spacing("base"); // 1
+    }
+}
+
+
+.page {
+    @include grid-row(
+        $behavior: nest
+    );
+}
+
+.page-content,
+.page-content--full {
+    @include grid-column(12);
+}
+
+.page-content--centered {
+
+    @include breakpoint("medium") {
+        @include grid-column(
+            $columns: 8,
+            $center: true
+        );
+    }
+}
+
+.page-content--textCenter {
+    text-align: center;
+}
+
+.page-sidebar {
+    @include grid-column(12);
+    position: relative;
+
+    @include breakpoint("medium") {
+        @include grid-column(3);
+
+        + .page-content {
+            @include grid-column(9);
+        }
+    }
+}
+
+body {
+	font-family: "proxima-nova", arial, sans-serif;
+    max-width: 1920px;
+    background: #eee;
+    margin: auto;
+    box-shadow: 0px 0px 120px #bbb;
+    padding-top: 134px;
+    @include breakpoint("medium") {
+    padding-top: 0px;
+    }
+}
+a {
+	text-decoration: none;
+}
+a:hover, a:focus {
+    color: initial;
+}
+// Begin Resources CSS
+
+#manuals {
+  li{
+    list-style: decimal;
+  }
+  a {
+    padding: 10px 0px;
+    display: block;
+
+  &:hover, &:focus, &:active {
+    text-decoration: underline;
+  }
+}
+}
+iframe {
+    width: 100%;
+}
+#errorpage form {
+    border: 1px #ccc solid;
+    padding: 10px 10px;
+    font-size: 16px;
+    position: relative;
+}
+
+#errorpage .svg-inline--fa.fa-w-16 {
+    width: 20px;
+    height: 20px;
+}
+
+#errorpage label {
+    position: absolute;
+    right: 18px;
+    top: 22px;
+    z-index: 9999;
+}
+#errorpage .form-field {
+    display: block;
+    margin: 0px;
+    max-width: none;
+}
+#errorpage .form-input {
+    border: 0px;
+}
+#errorpage .page-heading {
+    margin-bottom: 0px;
+}
+.productView-image:before {
+    content: "";
+    background: url('../img/watermark.png')
+}
+
+.productView-image:before {
+    content: "";
+    background: url(../img/watermark.png);
+    width: 340px;
+    height: 88px;
+    position: absolute;
+}
+#ymalwrap .card-figure:before {
+    content: "";
+    background: url(../img/watermark.png);
+    width: 175px;
+    height: 45px;
+    position: absolute;
+    z-index: 10;
+    background-size: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    background-repeat: no-repeat;
+}
+.pvcol.image a {
+    position: relative;
+}
+.pvcol.image a:before {
+    content: "";
+    background: url(../img/watermark.png);
+    width: 90px;
+    height: 23px;
+    position: absolute;
+    z-index: 10;
+    background-size: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button--primary {
+  font-weight: bold;
+}
+#usedwrap img {
+	max-width: 200px;
+}
+#usedwrap {
+	margin: 0 auto;
+	text-align: center;
+}
+#usedintro h4 {
+	margin-top: -20px;
+	font-weight: normal;
+	font-size: 16px;
+	margin-bottom: 40px;
+  text-align: center;
+}
+.usedinner span {
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+.usedinner {
+	display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  @media screen and (min-width: 480px) {
+  	width: calc(50% - 2px);
+    min-height: 200px;
+    }
+  @media screen and (min-width: 1024px) {
+	width: calc(33% - 40px);
+	min-height: 200px;
+  }
+}
+.page-content--centered {
+  width: 100%;
+}

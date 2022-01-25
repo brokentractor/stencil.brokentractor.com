@@ -1,0 +1,395 @@
+// =============================================================================
+// FACET SEARCH (CSS)
+// =============================================================================
+
+
+// Faceted search toggle
+// -----------------------------------------------------------------------------
+//
+// 1. Do not show if viewport is over "medium" breakpoint
+//
+// -----------------------------------------------------------------------------
+.facetedSearch-toggle, #nxt-toggle  {
+    color: #000;
+    font-family: Industry;
+    font-size: 20px;
+    border: 2px #666 solid;
+    display: inline-block;
+    width: 100%;
+    max-width: 270px;
+    text-align: center;
+    cursor: pointer;
+
+    @include breakpoint("medium") {
+        width: 270px;
+    }
+
+    &.is-open {
+        background: #000;
+        color: #fff;
+    }
+    .toggleLink-text {
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+
+div#nxt-fwrap {
+    display: none;
+}
+
+.facetedSearch-toggle-text,
+.facetedSearch-toggle-indicator {
+    display: inline-block;
+    font-weight: normal;
+    font-size: 30px;
+    color: #efb200;
+}
+
+.facetedSearch-toggle-text {
+    @include grid-column(7);
+    padding: 0;
+    text-align: left;
+}
+
+#sort-toggle {
+    color: #000;
+    font-family: Industry;
+    font-size: 20px;
+    border: 2px #666 solid;
+    display: inline-block;
+    width: 100%;
+    max-width: 270px;
+    text-align: center;
+    height: 49px;
+    line-height: 49px;
+    position: relative;
+    cursor: pointer;
+
+    @include breakpoint("medium") {
+        width: 270px;
+    }
+
+    .fa-times {
+        display: none;
+    }
+
+    &.active {
+        background: #000;
+        color: #fff;
+
+        .fa-sort {
+            display: none;
+        }
+        .fa-times {
+            display: inline-block;
+            color: #efb200;
+        }        
+    }
+}
+span.sorticons {
+    color: #efb200;
+    font-size: 18px;
+    position: relative;
+    top: -3px;
+}
+#faceted-search, #sortby {
+    display: inline-block;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: calc(50% - 7px);
+    
+    z-index: 200;
+
+    @include breakpoint("medium") {
+        width: auto;
+        margin-right: 10px;
+        margin-left: 10px;
+        position: relative;
+    }
+}
+
+#faceted-search {
+    margin-right: 10px;
+}
+
+#sortitems {
+    margin: 0px;
+    position: absolute;    
+    background: #fff;
+    border: 2px #666 solid;
+    margin-top: -2px;
+    text-align: left;
+    padding: 15px 0px 20px 0px;
+    z-index: 200;
+    width: calc(100% - 22px);
+    right: 11px;
+
+    display: none;
+    @include breakpoint("medium") {
+        width: 270px;
+        border-top: 0px;
+        right: 0px;
+        margin-top: 0px;                
+    }
+}
+
+.actionBar {
+    margin: 0px;
+    position: absolute;
+    width: 270px;
+    right: 0px;
+
+    fieldset.form-fieldset.actionBar-section {
+        width: 100%;
+        text-align: left;
+    }
+    .actionBar-section .form-field {
+        background-color: white;
+        border: 2px solid #666;
+        border-radius: 2px;
+        overflow: hidden;
+        padding: 10px 0px;
+        margin-top: -2px;
+    }
+    .actionBar-section .form-select {
+        border: 0;
+        padding-left: 0.21429rem;
+        width: calc(100% - 70px);
+    }
+}
+div#searchactions {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+// Faceted search nav list
+// -----------------------------------------------------------------------------
+//
+// 1. Do not show if viewport is over "medium" breakpoint
+//
+// -----------------------------------------------------------------------------
+.facetedSearch-navList {
+    display: none;
+    text-align: left;
+
+    &.is-open {
+        display: block;
+
+        // scss-lint:disable SelectorDepth, NestingDepth
+        .accordion--navList,
+        .accordion-block:first-child .accordion-navigation {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    .facetedSearch-toggle + &,
+    .sidebarBlock + & {
+        margin-top: $facetedSearch-toggle-verticalSpacing;
+    }
+
+
+    .facetedSearch-toggle + &.is-open,
+    .sidebarBlock + &.is-open {
+        margin-top: -1px;
+    }
+
+    .navList--inner {
+        margin-left: spacing("single");
+    }
+}
+
+.facet-quick-heading {
+    text-transform: capitalize;
+}
+
+.facetedSearch-optionColumns {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+
+// Faceted search refine filters
+// -----------------------------------------------------------------------------
+//
+// 1. Only show if viewport is over "medium" breakpoint
+//
+// -----------------------------------------------------------------------------
+.facetedSearch-refineFilters {
+        display: block; // 1
+}
+
+// Facted search ratings
+.facetedSearch-content--rating {
+    .is-selected {
+        font-weight: bold;
+    }
+}
+.searchpage {
+    td.thcell.pn.static.ref {
+        display: none;
+    }
+    td.pvcol.REFID {
+        display: none;
+    }
+}
+div#facetedSearch-navList {
+    position: absolute;
+    width: calc(100% - 22px);    
+    z-index: 99;
+    background: #fff;
+    left: 11px;
+
+    @include breakpoint("medium") {
+        width: calc(100% - 52px);
+        width: 270px;
+        left: 0px;
+    }
+}
+.sortitem {
+    padding-left: 14px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+span.checkicon {
+    border: 2px #ccc solid;
+    border-radius: 2px;
+    height: 15px;
+    width: 15px;
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 6px;
+
+    svg.svg-inline--fa.fa-check-square.fa-w-14 {
+        font-size: 18px;
+        position: absolute;
+        left: -3px;
+        top: -4px;
+        z-index: 99;
+    }
+}
+.is-selected span.checkicon { 
+    border-color: #fff;
+}
+#facetedSearch-navList--category .navList-action--checkbox.is-selected::after {
+    display: none !important;
+}
+.pv-description.pv-btmbox p {
+    text-align: left !important;
+    margin-bottom: 2px;
+}
+a.facetedSearch-clearLink {
+    display: none;
+}
+.facetedSearch-refineFilters.sidebarBlock {
+    margin-top: 20px;
+    text-align: center;
+}
+.facetedSearch-refineFilters.sidebarBlock .inlineList > li {
+    display: inline-block;
+    float: none;
+    margin: 0px 10px 10px 10px;
+}
+#nxt-fwrap {
+    display: block;
+    width: 100%;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    border: 1px #ccc solid;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+
+    .accordion-navigation-actions {
+        color: #ffbe00;
+        top: 10px;
+    }
+    .nxt-refines-head {
+        display: none;
+    }
+}
+
+ul.nxt-refine-list {
+    list-style: none;
+    line-height: 27px;
+}
+
+.nxt-refine-title {
+    font-weight: bold;
+    padding: 10px 14px;
+    border-bottom: 1px #ccc solid;
+    font-size: 17px;
+    position: relative;
+}
+.nxt-refine-wrap  {
+    display: none;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.nxt-refine-collapsed {
+    .toggleLink-text--off {
+        display: none;
+    }
+    .toggleLink-text--on {
+        display: block;
+        margin-top: 4px;
+    }
+}
+#searchpage #facetedSearch {
+    display: inline-block;
+    width: auto;
+    position: relative;
+}
+
+.nxt-address.nxt-results-info, .nxt-change-view {
+    display: none;
+}
+
+#nxt-fwrap {
+    display: block;
+}
+.nxt-toolbar{
+    display:none;
+}
+.is-open .toggleLink-text.toggleLink-text--on {
+    display: inline-block;
+}
+.is-open .toggleLink-text.toggleLink-text--off {
+    display: none;
+}
+div#nxt-content {
+    padding-bottom: 80px;
+}
+.nxt-refines-surround.nxt-refine-selection {
+    text-align: center;
+    margin-bottom: 30px;
+}
+ul.nxt-refine-list.nxt-remove-item-wrap {
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-bottom: 5px;
+}
+li.nxt-refine-item.nxt-remove-item {
+    display: inline-block;
+    background: #eee;
+    padding: 0px 14px;
+    border-radius: 3px;
+    height: 30px;
+    line-height: 31px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+}
+.nxt-refines-head {
+    font-weight: bold;
+    font-size: 16px;
+}
+h1#searchnumber {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}

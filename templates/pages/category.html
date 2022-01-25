@@ -1,0 +1,81 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+     <div id="dsubcat">
+                {{#each category.subcategories}}
+                    <div class="subcat">
+                        <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">                                           
+                            <span>{{name}} </span>
+                            <i class="fa fa-angle-right"></i>                     
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+
+{{{snippet 'categories'}}}
+<div class="page">
+
+
+    <main class="page-content" id="product-listing-container">
+
+           
+        {{#if category.products}}
+            <div id="slidetableouter" class="noref">
+                <table id="slidetable">
+                    <tr id="tableheaders">                                               
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn ListDetails" style="display: none;">Details</td>
+                        <td class="thcell pn static sku">Part #</th>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <style>#product-listing-container, #swipemsg {display: none;}</style>
+        {{/if}}
+
+        <div id="backtotop" style="display: none;">
+            <i class="fas fa-chevron-up"></i>
+            <div>TOP</div>
+        </div>
+    </main>
+
+
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+<style>
+table#slidetable td.REFID {display: none;}
+</style>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,88 @@
+<div class="footer" role="contentinfo">
+	<div id="footer-inner">
+    	<div class="footercol">
+        	<strong>Company</strong>
+            <ul>
+            	<li><a href="/pages/about-us/">About Us</a></li>
+            	<li><a href="/pages/contact-us/">Contact Us</a></li>
+            	<li><a href="/pages/helpful-links/">Helpful Links</a></li>
+            	<li><a href="/pages/shipping-returns/">Shipping & Returns</a></li>
+            	<li><a href="/pages/parts-request/">Parts Request</a></li>
+				<li><a href="/pages/used-parts/">Used Parts</a></li>
+				<li><a href="/blog">Our Blog</a></li>
+            </ul>
+        </div>
+    	<div class="footercol">
+        	<strong>Account</strong>
+						{{#if customer}}
+							<ul class="acc-list">
+								 <li><a href="{{urls.account.orders.all}}">Order Status</a></li>
+								 <li><a href="{{urls.account.orders.completed}}">Order History</a></li>
+								 <li><a href="{{urls.account.details}}">Edit Account Info</a></li>
+								 <li><a href="{{urls.account.wishlists.all}}">Wishlist</a></li>
+								 <li><a href="{{urls.auth.logout}}">Sign Out</a></li>
+						 </ul>
+					 {{else}}
+						 <ul class="acc-list">
+								<li><a href="{{urls.auth.login}}">Sign In</a></li>
+								 <li><a href="{{urls.auth.create_account}}">Create an Account</a></li>
+								 <li><a href="{{urls.account.orders.all}}">Order Status</a></li>
+								 <li><a href="{{urls.account.orders.completed}}">Order History</a></li>
+						 </ul>
+					 {{/if}}
+        </div>
+    	<div class="footercol">
+        	<strong>Info</strong>
+            <p>9172 Castille Rd <br>
+				Baton Rouge, LA 70809<br>
+				Call us at <a href="tel:8009097060">(800) 909-7060</a>
+             </p>
+             <img style="width:100%;max-width:60px;" src="https://cdn7.bigcommerce.com/s-knh0cnq2u8/product_images/uploaded_images/accred-bus-black.jpg?t=1539356230&_ga=2.12262516.139338107.1539355965-954976853.1528147508">
+        </div>
+    	<div class="footercol" id="nlbox">
+        	<strong>Connect</strong>
+            <p>Get the latest updates on new products and upcoming sales</p>
+            <div id="nlwrapper">
+                <form class="form" action="{{urls.subscribe.action}}" method="post">
+                    <input type="hidden" name="action" value="subscribe">
+                    <input type="hidden" name="nl_first_name" value="bc">
+                    <input type="hidden" name="check" value="1">
+                    <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
+                    <input id="nl_email" name="nl_email" type="email" placeholder="Email Address">
+                    <input type="submit" value="SIGN UP">
+                </form>
+            </div>
+			<ul class="shareicons">
+			    <li>
+			        <a class="" href="https://www.facebook.com/BrokenTractor/" target="_blank">
+			          <svg>
+			              <use xlink:href="#icon-facebook"/>
+			          </svg>
+			        </a>
+			    </li>
+			    <!-- <li>
+			        <a class="" href="">
+			          <svg>
+			              <use xlink:href="#icon-twitter"/>
+			          </svg>
+			        </a>
+			    </li> -->
+				<li>
+						<a class="" href="https://www.instagram.com/brokentractor/" target="_blank">
+							<svg>
+									<use xlink:href="#icon-instagram"/>
+							</svg>
+						</a>
+				</li>
+			</ul>
+        </div>
+    </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<div style="clear:both;"></div>
+<div id="subfooter">
+	<a href="/pages/privacy-policy/">Privacy Policy</a> | <a href="/pages/terms-conditions/">Terms & Conditions</a> <br /><br /> <span class="footerspace"></span>
+    Copyright © 2018 Broken Tractor LLC - All Rights Reserved <br /> <span class="footerspace"></span>
+    <a href="https://www.diztinct.com/bigcommerce-design.html">BigCommerce design</a> by Diztinct.com <br /> <br />
+</div>

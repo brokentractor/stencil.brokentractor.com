@@ -1,0 +1,19 @@
+<ul class="navList navList--inner">
+    {{#each this}}
+        <li class="navList-item">
+            <a
+            href="{{url}}"
+            class="navList-action navList-action--checkbox {{#if selected }} is-selected {{/if}} {{#if has_sub_categories }} has-children {{/if}}"
+            rel="nofollow"
+            data-id="{{ id }}"
+            data-faceted-search-facet>
+                <span class="sqicon"><i class="far fa-square"></i></span>
+                <span class="checkicon"><i class="fas fa-check-square"></i></span>
+                {{title}}                
+            </a>
+            {{#if children}}
+                {{> components/faceted-search/facets/hierarchy-children children}}
+            {{/if}}
+        </li>
+    {{/each}}
+</ul>

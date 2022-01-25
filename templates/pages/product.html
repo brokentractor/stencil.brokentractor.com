@@ -1,0 +1,31 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{#partial "pagename"}}pvwrap{{/partial}}
+
+{{#partial "page"}}
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div id="pv-back" onclick="window.history.go(-1); return false;">
+    <span id="backarrow"></span> Back
+    </div>
+    {{#each product.shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+
+    <div itemscope itemtype="http://schema.org/Product">
+        {{> components/products/product-view schema=true}}
+        {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' true)}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/all}}
+    </div>
+{{/partial}}
+{{> layout/base}}

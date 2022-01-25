@@ -1,0 +1,678 @@
+// =============================================================================
+// PRODUCT GRID (CSS)
+// =============================================================================
+
+
+// Product grid view
+// -----------------------------------------------------------------------------
+//
+// 1. Re-set the font-size, as we're reducing it to 0 in the .products class.
+//
+// -----------------------------------------------------------------------------
+
+.page-heading {
+  margin: 0 0 10px;
+  text-align: center;
+  font-family: "proxima-nova", sans-serif;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  padding: 20px 10px 5px 10px;
+  line-height: 30px;
+
+  @include breakpoint("medium") {
+    font-size: 40px;
+    margin-bottom: 40px;
+    line-height: 40px;
+
+  }
+}
+
+.listpage .container {
+  margin: auto;
+  padding: 0px;
+  width: 100%;
+  max-width: 1200px;
+}
+fieldset.form-fieldset.actionBar-section {
+  display: none;
+}
+.listpage .page {
+  margin: 0px;
+  background: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+#categoryDescription {
+  padding: 5px 20px 10px 20px;
+
+  &.hidedesc {
+    overflow: hidden;
+    max-height: 400px;
+    margin-bottom: 25px;
+    transition: all 1s ease 0s;
+    width: 100%;
+    @include breakpoint("medium") {
+      max-height: 9999px;
+    }
+  }
+}
+
+#cat-showmore {
+  background-color: #ffbe00;
+  color: #121212;
+  width: 120px;
+  font-family: "industry";
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 40px;
+  margin: 20px;
+  cursor: pointer;
+  @include breakpoint("medium") {
+    display: none;
+  }
+}
+
+img#catimg {
+  display: none;
+
+  @include breakpoint("medium") {
+    display: block;
+    margin: auto;
+    padding: 25px 20px;
+  }
+}
+
+.listpage main#product-listing-container {
+  padding: 0px;
+}
+
+.listpage .container {
+  padding-bottom: 50px;
+}
+
+img.listItem-image {
+  max-width: 100px;
+}
+
+ul.productList {
+  display: none;
+}
+
+#tableheaders th, #tableheaders td {
+  background: #666;
+  color: #fff;
+  border-right: 1px #999 solid;
+}
+
+td.pvcol.image img { 
+  padding: 5px;
+  background-color: #fff;
+}
+
+td.pvcol.image a {  
+  background-color: #fff; 
+  position: relative;
+
+  @include breakpoint("medium") {        
+    border: 1px #ccc solid;  
+    height: 100px;
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;  
+  }
+}
+
+table#slidetable td, table#slidetable th {
+  text-align: center;
+  height: 60px;
+  padding: 0px 10px;
+  font-size: 16px;
+
+}
+
+.listatc {
+  background: #ffbe00;
+  display: inline-block;
+  width: 120px;
+  font-family: "industry";
+  height: 30px;
+  line-height: 33px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+tr.productrow:nth-child(odd) {
+  background: #eee;
+}
+
+#categoryDescription h2 {
+  line-height: 21px;
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-top: 40px;
+
+  @include breakpoint("medium") {
+    line-height: 24px;
+    font-size: 21px;
+  }
+}
+div#slidetableouter {
+  width: 100%;
+  overflow-x: scroll;
+  padding-bottom: 25px;
+  @include breakpoint("medium") {
+    overflow-x: auto;
+  }
+}
+/*.thcell.pn.image, .pvcol.image {
+    display: none;
+    @include breakpoint("medium") {
+        display:  table-cell;
+    }
+    }*/
+
+    img.listItem-image {
+      max-height: 50px;
+      max-width: 50px;
+      width: auto;
+      border: 1px #ccc solid;  
+
+      @include breakpoint("medium") {        
+        border: 0px;
+        max-height: 98px;
+        max-width: 98px;
+        width: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+      }
+    }
+
+    table#slidetable {
+      width: 100%;
+      min-width: 768px;
+    }
+
+    .cat-subcats ul {
+      margin: 0px;
+      padding:  0px;
+      list-style: none;
+    }
+    .cat-subcats li {
+      padding: 0px;
+      margin:  0px;
+    }
+
+    .cat-subcats  {
+      font-size: 0;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        @include breakpoint("medium") {
+          padding: 0 10px;
+        }
+      }
+
+      &.lev-1, &.lev-2 {
+        li {
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+          text-align: center;
+          margin: 0 20px 10px;
+          width: 100%;
+
+          @include breakpoint("medium") {
+            display: flex;
+            margin: 0 10px 20px;
+            width: calc(50% - 20px);
+          }
+          @include breakpoint("large") {
+            width: calc(25% - 20px);
+          }
+
+          a {
+            display: block;
+            padding: 15px;
+            font-size: 18px;
+            line-height: 20px;
+            width: 100%;
+            font-weight: 600;
+            text-decoration: none;
+            background: #fff;
+            text-align: center;
+
+           div.subimgwrap {
+              text-align: center;
+              padding: 20px;
+            }
+
+            @include breakpoint("medium") {
+              padding: 0;
+            }
+
+            img {
+                text-align: center;              
+                max-height: 210px;
+                max-width: 210px;
+                display: block;
+                margin: 0 auto;
+                padding: 30px 15px 20px
+              
+            }
+
+            div {
+              text-align: left;
+              position: relative;
+
+              @include breakpoint("medium") {
+                border-top: 1px solid #ddd;
+                padding: 15px;
+              }
+
+              
+              span {
+                text-align: left;
+                display: inline-block;
+                max-width: 90%;
+                min-height: 42px;
+
+                @include breakpoint("medium") {
+                  max-width: 195px;
+                }
+              }
+
+              svg {
+                float: none;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+
+                @include breakpoint("medium") {
+                  right: 15px;
+                }
+              }
+
+            }
+          }
+        }
+      }
+
+      &.lev-2 {
+
+        .subcat {
+          text-align: left;
+          position: relative;
+
+          > a {
+            padding: 15px;
+
+            span {
+              display: inline-block;
+              max-width: 85%;
+            }
+          }
+        }
+        svg {
+          float: none;
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+/* Slide Table CSS
+
+@media only screen and (max-width: 767px) {
+td.pvcol.sku {
+    position: fixed;
+    background: #fff;
+    box-shadow: 2px 4px 5px #ccc;
+    line-height: 47px;
+    width: 100px;
+    left: 0px;
+}
+
+  tr.productrow:nth-child(odd) td.pvcol.sku {
+      background: #eee;
+  }
+  th.thcell.pn.static {
+    width: 100px;
+    position: fixed;
+    line-height: 47px;
+    left: 0px;
+}
+  .productrow {
+    position: relative;
+    padding-left: 100px;
+    display: block;
+    width: 768px;
+}
+tr#tableheaders {
+    display: block;
+    padding-left: 100px;
+}
+.price {
+    width: 68px;
+}
+th.thcell.pn.atc {
+    width: 140px;
+}
+.ProductDim {
+    width: 148px;
+}
+.ListDescription {
+    width: 169px;
+}
+th.thcell.pn.FitsModel {
+    width: 143px;
+}
+}
+*/
+
+/* Slide Table Try #2 */
+
+p#swipemsg {
+  text-align: center;
+  margin-top: -18px;
+  font-size: 16px;
+  @include breakpoint("medium") {
+    display: none;
+  }
+}
+
+.slidearrow {
+  position: absolute;
+  height: 30px;
+  width: 20px;
+  background: rgba(255, 255, 255, .4);
+  right: 0px;
+  margin-top: -45px;
+  height: 60px;
+  @include breakpoint("medium") {
+    display: none;
+  }
+
+}
+
+span.slideabox {
+  border-top: 3px #000 solid;
+  border-right: 3px #000 solid;
+  transform: rotate(45deg);
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin-top: 24px;
+  -webkit-transform: rotate(-135deg);
+  @include breakpoint("medium") {
+    display: none;
+  }
+}
+
+div#dsubcat {
+  padding: 0px 20px 20px 20px;
+  @include breakpoint("medium") {
+         display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: left;
+    flex-flow: wrap;
+
+  }
+}
+
+.subcat {
+    background: #fff;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 8px #ccc;
+    font-weight: bold;
+    
+    @include breakpoint("medium") {
+      background: #fff;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      box-shadow: 0px 0px 8px #ccc;
+      font-weight: bold;
+      width: calc(25% - 10px);
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+}
+
+div#dsubcat .subcat svg {
+    top: 0px;
+    right: 0px;
+}
+
+.subimgwrap {
+  text-align: center;
+  min-height: 252px;
+
+  @include breakpoint("medium") {
+    
+    position: relative;
+  }
+}
+.noref th.pvcol.REFID, td.pvcol.CorePrice {
+    display: none;
+}
+div#refImg .schematic-image {
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+}
+.pvcol.sku a {
+    text-decoration: underline;
+    font-weight: 600;
+}
+.pvcol .corecharge {
+    font-size: 12px;
+}
+.modal-btn-wrap {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+.modal-btn-wrap .modal-btn {
+    background: #ffbe00;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    width: auto;
+    padding: 15px 13px 10px 13px;
+    margin: 5px 5px;
+    line-height: 16px;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: auto;
+    font-family: industry;
+    color: #000;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.modal-btn-wrap span.modal-btn {
+    background: #ccc;
+}
+#pv-detbtm .corecharge {
+	font-size: 18px;
+  margin-top: -5px;
+  @include breakpoint("medium") {
+  font-size: 21px;
+  }
+
+  &:before {
+    content: "+";
+    display: inline-block;
+    padding-right: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+tr.productrow {
+    display: block;
+    position: relative;
+}
+
+table#slidetable {
+    width: 100%;
+    min-width: 0px;
+    display: block;    
+}
+
+tr#tableheaders {
+    display: none;
+}
+
+
+td.pvcol.image {
+    position: absolute;
+    left: 20px;
+    top: 27px;
+}
+tr.productrow {
+    display: block;
+    position: relative;
+    padding-left: calc(30px + 25%);
+    padding-right: 20px;
+    padding-bottom: 75px;
+    padding-top: 25px;
+    float: left;
+    width: 100%;
+}
+table#slidetable td, table#slidetable th {
+    text-align: left;
+    height: auto;
+    padding: 0px;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 7px;
+    line-height: 17px;
+}
+.noref th.pvcol.REFID, td.pvcol.CorePrice {
+    display: none !important;
+}
+td.pvcol.FitsModel:before {
+    display: block;
+    content: "Fits Model";
+    font-weight: bold;
+}
+td.pvcol.ListDescription:before {
+    display: block;
+    content: "Description";
+    font-weight: bold;
+}
+td.pvcol.sku:before {
+    display: block;
+    content: "Part #";
+    font-weight: bold;
+}
+td.pvcol.price:before {
+    display: block;
+    content: "Price";
+    font-weight: bold;
+}
+.slidearrow {
+  display:none;
+}
+.listatc {
+    background: #ffbe00;
+    display: inline-block;
+    width: calc(100% - 40px);
+    font-family: "industry";
+    height: 36px;
+    line-height: 37px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 12px;
+    position: absolute;
+    left: 20px;
+}
+.pvcol.sku a {
+    text-decoration: none;
+    font-weight: normal;
+}
+td.pvcol.REFID:before {
+    content: "REF #";
+    font-weight: bold;
+}
+tbody {
+    display: block;
+}
+div#slidetableouter {
+    width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 0px;
+}
+img.listItem-image {
+    max-height: 25%;
+    max-width: 25%;
+    width: auto;
+}
+
+}
+span.img-seedet {
+    display: block;
+    width: 25%;  
+    text-align: center;
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    @include breakpoint("medium") {
+      display: none;
+    }
+}
+
+#categoryDescription img {
+    display: none;
+}
+.Additional.Information, .pn.details {
+  display: none;
+}
+
+.facetedSearch-refineFilters.sidebarBlock {
+  display: none;
+}
+
+div#backtotop {
+    background: rgba(255, 255, 255, .6);
+    color: #000;
+    text-align: center;
+    font-family: Industry;
+    font-size: 20px;
+    padding: 10px 24px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    display: none;   
+
+    @include breakpoint("medium") {
+      display: block;
+    }
+    @media only screen and (min-width: 1440px) {
+      right: calc(50% - 710px);
+    }
+}
+.pvcol.sku a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+a.listatc:hover {
+    color: #000;
+}

@@ -1,0 +1,75 @@
+// =============================================================================
+// FORMS (CSS)
+// =============================================================================
+
+
+// Select boxes
+// -----------------------------------------------------------------------------
+
+.form-select {
+    appearance: none;
+    background-image: $select-backgroundImage;
+    background-position: $select-backgroundPosition;
+    border-radius: 0px;
+    padding: $select-padding;
+    height: 42px;
+    line-height: 42px;
+    padding-top: 10px;
+
+    &:hover {
+        border-color: $select-hover-borderColor;
+    }
+}
+
+
+// Form labels
+// -----------------------------------------------------------------------------
+
+.form-label {
+
+    small {
+        float: $opposite-direction;
+        margin-top: $form-label-small-marginTop;
+    }
+}
+
+
+// Form labels (inline small text)
+// -----------------------------------------------------------------------------
+
+.form-label--inlineSmall {
+
+    small {
+        color: stencilColor("color-textSecondary");
+        float: none;
+        font-size: inherit;
+        font-weight: fontWeight("normal");
+        margin-left: spacing("quarter");
+        text-transform: none;
+    }
+}
+
+.form-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    border-color: #cccccc;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0px;
+    color: #666666;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    height: 40px;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    transition: border-color 100ms ease-out;
+    width: 100%;
+    position: relative;
+    z-index: 11;
+}

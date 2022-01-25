@@ -1,0 +1,8 @@
+<div class="body {{#if template_file '===' 'pages/cart'}}cart-page{{/if}}  {{#if template_file '===' 'pages/auth/login'}}login-page{{/if}} {{#if template_file '===' 'pages/auth/create-account'}}register-page{{/if}} {{#if template_file '===' 'pages/account/orders/all'}}orders-page{{/if}} {{#if template_file '===' 'pages/account/inbox'}}messages-page{{/if}} {{#if template_file '===' 'pages/account/addresses'}}address-page{{/if}} {{#if template_file '===' 'pages/account/wishlists'}}wishlist-page{{/if}} {{#if template_file '===' 'pages/account/recent-items'}}recently-viewed-page{{/if}} {{#if template_file '===' 'pages/account/edit'}}account-settings-page{{/if}} {{#if template_file '===' 'pages/auth/account-created'}}account-created-page{{/if}} {{#if template_file '===' 'pages/errors/404'}}error-page{{/if}} {{#if template_file '===' 'pages/search'}}search-page{{/if}}">
+    {{#block "hero"}} {{/block}}
+    <div class="container">
+        {{#block "page"}} {{/block}}
+        <div style="clear:both;"></div>
+    </div>
+    {{> components/common/modal}}
+</div>

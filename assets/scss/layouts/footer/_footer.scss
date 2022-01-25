@@ -1,0 +1,156 @@
+// =============================================================================
+// FOOTER (CSS)
+// =============================================================================
+
+
+// Layout and columns
+// -----------------------------------------------------------------------------
+//
+// 1. To enable the grid's display: inline-block; to work properly, we need to
+//    remove the white-space that it creates between columns with font-size: 0;
+// 2. Re-set the font-size that was reduced to 0 in point 1 for children.
+//
+// -----------------------------------------------------------------------------
+
+.footer {
+    background-color: #121212;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    padding-bottom: 1px;
+}
+.footercol strong {
+    color: #ffbe00;
+    font-family: $industry;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+}
+.footercol {
+    margin-bottom: 20px;
+    @include breakpoint("medium") {
+		float: left;
+		width: 50%;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+    @include breakpoint("large") {
+		width: 22%;
+	}
+}
+.footercol:nth-child(4) {
+    @include breakpoint("large") {
+		width: 34%;
+	}
+}
+.footercol ul {
+    list-style: none;
+    padding: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    line-height: 30px;
+}
+.footercol a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 0px;
+    display: inline-block;
+
+    @include breakpoint("medium") {
+    padding: 0px;
+    }
+
+    &:hover, &:active, &:focus {
+      text-decoration: underline;
+      color: #ddd;
+    }
+}
+div#subfooter {
+    padding: 20px 15px 0px;
+	@include breakpoint("medium") {
+		text-align: center;
+		background: #333333;
+		color: #ccc;
+		padding: 20px 15px;
+	}
+	@include breakpoint("large") {
+	    height: auto;
+	}
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+div#subfooter br {
+	@include breakpoint("large") {
+		width: 1px;
+		display: none;
+	}
+}
+#subfooter {
+    font-size: 12px;
+}
+
+.shareicons {
+
+  li {
+  display: inline-block;
+}
+ svg {
+    margin-right: 12px;
+    margin-top: 15px;
+    display: inline-block !important;
+    height: 30px;
+    width: 30px;
+    fill: #999;
+
+    &:hover, &:focus, &:active {
+    fill: #ffbe00;
+    }
+  }
+}
+div#nlwrapper {
+    background: #fff;
+    height: 40px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#nlwrapper input[type="submit"] {
+    background: #ffbe00;
+    border: 0px;
+    color: #000;
+    font-family: $industry;
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    line-height: 42px;
+    width: 90px;
+    font-size: 16px;
+    -webkit-appearance: none;
+}
+
+#nlwrapper input[type="email"] {
+    width: calc(100% - 100px);
+    margin-left: 10px;
+    border: 0px;
+    position: relative;
+    top: 8px;
+    color: #000;
+    -webkit-appearance: none;
+}
+div#footer-inner {
+    max-width: 1240px;
+    width: 100%;
+    margin: auto;
+}
+span.footerspace {
+	@include breakpoint("large") {
+		display: inline-block;
+		width: 20px;
+	}
+}

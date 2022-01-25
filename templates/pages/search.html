@@ -1,0 +1,76 @@
+---
+product_results:
+    limit: 100
+---
+{{inject 'categoryTree' forms.search.category_options}}
+{{inject 'searchProductsPerPage' theme_settings.searchpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.product_results.previous}}
+        <link rel="prev" href="{{pagination.product_results.previous}}">
+    {{/if}}
+    {{#if pagination.product_results.next}}
+        <link rel="next" href="{{pagination.product_results.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "pagename"}}searchpage{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{{snippet 'search'}}}
+<section class="nav">
+    {{#if forms.search.query}}
+        <div id="search-results-heading">
+            {{>components/search/heading}}
+        </div>
+    {{/if}}
+
+    {{#unless product_results.faceted_search_enabled}}
+        {{>components/search/advanced-search}}
+    {{/unless}}
+</section>
+
+<section class="page" id="searchpage">
+    {{#if product_results.products}}
+        <div id="searchactions">
+            <div id="faceted-search">
+                <div id="filterby">
+                    <div id="faceted-search-container">
+                        {{> components/faceted-search/index product_results}}
+                    </div>
+                </div>
+            </div>
+            
+
+
+            <div id="sortby">
+                <div id="sort-toggle">
+                    SORT BY <span class="sorticons"><i class="fas fa-times"></i><i class="fas fa-sort"></i></span>
+                </div>
+                <div id="sortitems">
+                    <div class="sortitem" data-select="featured">Featured</div>
+                    <div class="sortitem" data-select="newest">Newest</div>
+                    <div class="sortitem" data-select="alphaasc">A to Z</div>
+                    <div class="sortitem" data-select="alphadesc">Z to A</div>
+                    <div class="sortitem" data-select="priceasc">Price: Ascending</div>
+                    <div class="sortitem" data-select="priceasc">Price: Descending</div>
+                </div>
+               
+            </div>
+        </div>
+
+
+        <main class="page-content">
+    {{else}}
+        <main class="page-content page-content--centered">
+    {{/if}}
+
+    <div id="product-listing-container">
+        {{> components/search/product-listing}}
+    </div>
+
+    </main>
+</section>
+
+{{/partial}}
+{{> layout/base}}

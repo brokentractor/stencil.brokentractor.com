@@ -1,0 +1,33 @@
+<nav class="navPages">
+    <ul class="navPages-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-list-depth-max{{/if}}">
+        {{#each categories}}
+            <li class="navPages-item">
+            {{#if ../theme_settings.navigation_design '===' 'simple'}}
+                {{> components/common/navigation-list}}
+            {{/if}}
+            {{#if ../theme_settings.navigation_design '===' 'alternate'}}
+                {{> components/common/navigation-list-alternate}}
+            {{/if}}
+            </li>
+        {{/each}}
+        <li class="navPages-item infolink ylink">
+        	<a href="/account.php" class="navPages-action has-subMenu" data-collapsible="navPages-acc" aria-controls="navPages-acc" aria-expanded="false">Account<i class="fa fa-angle-down"></i></a>
+            <div class="navPage-subMenu" id="navPages-acc" aria-hidden="true" tabindex="-1">
+                <ul class="navPage-subMenu-list">
+                    {{#if customer}}
+                        <li><a href="/account.php" id="accToplink">My Account</a></li>
+                        <li><a href="/account.php?action=order_status">Order Status</a></li>
+                        <li><a href="{{urls.auth.logout}}">Sign Out</a></li>
+                     {{else}}
+                        <li><a href="/login.php" id="accToplink">SIGN IN</a></li>
+                        <li><a href="/account.php?action=order_status">Order Status</a></li>
+                        <li><a href="/login.php?action=create_account">Create Account</a></li>
+                    {{/if}}
+             </div>
+        </li>
+        <li class="navPages-item infolink ylink"><a href="/pages/parts-request/" class="navPages-action">Parts Request</a></li>
+        <li class="navPages-item infolink ylink"><a href="/pages/contact-us/" class="navPages-action">Contact Us</a></li>
+        <li class="navPages-item ylink infolink"><a href="tel:8009097060" class="navPages-action">CALL (800) 909-7060</a></li>
+    </ul>
+
+</nav>

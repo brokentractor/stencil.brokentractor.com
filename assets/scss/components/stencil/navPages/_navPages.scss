@@ -1,0 +1,375 @@
+// Page Navigation
+// -----------------------------------------------------------------------------
+//
+// Purpose: Contains the styles for the page navigation, deals with 2 viewsdue to
+// responsive layout of that navigation
+//
+// 1. It's not exactly a grid row, as it's a little further down the DOM tree, but
+// I use it here to grab the max width centering.
+// 2. Prevent document scrolling by clipping its body
+// 3. Prevent inertia scrolling of document
+//
+// -----------------------------------------------------------------------------
+
+
+//
+// Shared styles for sub page navigation
+// -----------------------------------------------------------------------------
+
+%navPage-childList {
+    border-left: 1px solid $navPage-childList-borderColor;
+    margin: spacing("quarter") spacing("half");
+    padding-left: spacing("half");
+}
+
+//
+// When navPages is open
+// -----------------------------------------------------------------------------
+
+.has-activeNavPages {
+    // scss-lint:disable VendorPrefix
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+    height: 100%;
+    display: fixed;
+}
+//
+// Top level Pages navigation container
+// -----------------------------------------------------------------------------
+
+.navPages-container {
+    // scss-lint:disable VendorPrefix
+    bottom: 0;
+    display: none;
+    height: 100%;
+    left: 0;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    right: 0;
+    z-index: zIndex("lower");
+
+    &.is-open {
+		display: block;
+		padding-top: 72px;
+		z-index: 9999;
+    }
+	
+}
+
+//
+// Top level Pages navigation list styles
+// -----------------------------------------------------------------------------
+
+.navPages {
+    background-color: #333;
+    height: 100%;
+    overflow-y: auto;
+
+    ul {
+        list-style: none;
+    }
+
+    .navPages .navPage-subMenu-list, .navPage-childList {
+		margin: 0px;
+		background: #434343;
+	}
+}
+
+.navPages-list {
+    margin: 0;
+
+    + .navPages-list {
+        border-top: 1px solid $navPages-list--user-borderColor;
+        margin-top: spacing("half");
+        padding-top: spacing("half");
+    }
+}
+
+.navPages-list-depth-max.subMenu-is-open {
+    .is-hidden {
+        display: none;
+
+        @include breakpoint("medium") {
+            display: inline-block;
+        }
+    }
+
+    .navPages-item-page {
+
+    }
+}
+
+.navPages-action-depth-max.has-subMenu.is-root.is-open {
+    .navPages-action-moreIcon {
+        @include breakpoint("medium") {
+            transform: rotate(0);
+        }
+    }
+}
+
+.navPages-action-depth-max.has-subMenu.is-open {
+    border-bottom: 1px solid $navPages-list--user-borderColor;
+
+    .navPages-action-moreIcon {
+        border: solid 1px $navPages-action-moreIcon-borderColor;
+        border-radius: 4px;
+        float: left;
+        height: 35px;
+        margin-top: -10px;
+        padding: 11.7px; // (33 - 9.6) / 2
+        transform: rotate(90deg);
+        width: 35px;
+
+
+    }
+
+    svg {
+        height: 9.6px;
+        width: 9.6px;
+
+
+    }
+}
+.navPages-action {
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0px 0px 0px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-top: 1px #676767 solid;
+    font-family: $fontFamily-hero;
+    height: 50px;
+    line-height: 52px;
+    overflow-y: hidden;
+
+    svg {
+        fill: stencilColor("navPages-color");
+        stroke: stencilColor("navPages-color");
+        transition: all 0.15s ease;
+    }
+}
+
+.navPages-action {
+    &:hover, &:active, &:focus, &.is-open{
+    color: #fff;
+    }
+}
+.navPages-action.has-subMenu svg {
+    font-size: 22px;
+    float: right;
+    position: relative;
+    top: 15px;
+    right: 13px;
+
+    @include breakpoint("medium") {
+        float: none;
+        display: inline-block;
+        top: -3px;
+        right: -3px;
+    }
+}
+
+.navPages-action.has-subMenu.is-open {
+        color: #ffbe00;
+    background: #001212;
+
+    &:hover, &:active, &:focus {
+        color: #ffbe00;    
+    }
+
+    @include breakpoint("medium") {
+    color: #000;
+    background:transparent;
+
+    &:hover, &:active, &:focus {
+        color: #000;    
+    }
+}
+}
+
+.navPages-action.has-subMenu.is-open svg {
+    color: #ffbe00;
+    transform: rotate(-180deg);
+}
+.navPages-item > .navPages-action {
+    @include breakpoint("medium") {
+        border: 1px solid #676767;
+
+         &.is-open {
+            color: #fff;
+            background-color: #333;
+            border: 1px #676767 solid;
+        }
+    }
+}
+.navPages-action--storeCredit {
+    color: stencilColor("color-textSecondary");
+}
+
+.navPages-action--compare {
+    display: none;
+
+    &.show {
+        display: block;
+    }
+}
+
+.navPages-action-moreIcon {
+    @include square(8px);
+    margin-left: spacing("quarter");
+    transform: rotate(-90deg);
+
+    .has-subMenu.is-open & {
+        transform: rotate(0);
+    }
+}
+.navPage-subMenu-action.navPages-action.has-subMenu svg {
+    display: none;
+}
+
+
+// Sub page navigation and children of sub pages
+// -----------------------------------------------------------------------------
+
+.navPage-childList {
+    display: none;
+}
+
+
+// Sub menu, first level down from top level categories
+// -----------------------------------------------------------------------------
+//
+// 1. navBar mixin has lots of decendant child selectors to deal with
+//
+// -----------------------------------------------------------------------------
+
+.navPage-subMenu {
+    display: none;
+    outline: 0;
+
+    &.is-open {
+        display: block;
+    }
+}
+
+.navPage-subMenu-item-child,
+.navPage-subMenu-item-parent {
+    width: 100%;
+
+}
+
+.navPage-subMenu-action {
+    padding: spacing("half") 0;
+
+}
+
+
+//
+// Child pages of sub pages navigation lists
+// -----------------------------------------------------------------------------
+
+.navPage-childList-action {
+    font-weight: fontWeight("normal");
+    padding: 0 0 spacing("quarter");
+}
+
+
+//
+// Quick search inside the mobile nav
+// -----------------------------------------------------------------------------
+
+.navPages-quickSearch {
+    border-bottom: container("border");
+    margin-bottom: spacing("half");
+
+    @include breakpoint("medium") {
+        display: none;
+    }
+
+    > .container {
+        padding: 0;
+    }
+
+    .form {
+        margin: 0;
+    }
+
+    .form-field {
+        margin-bottom: 0;
+    }
+}
+
+
+//
+// NavPages user section for mobile nav panel
+// -----------------------------------------------------------------------------
+
+.navPages-list--user {
+    @include breakpoint("medium") {
+        display: none;
+    }
+
+    // scss-lint:disable SelectorDepth, NestingDepth, IdSelector
+    #currencySelection2 {
+        background-color: color("whites", "bright");
+        border: container("border");
+
+        .dropdown-menu-item {
+            padding: 0;
+
+            // scss-lint:disable NestingDepth
+            &:not(:last-child) {
+                border-bottom: container("border");
+            }
+        }
+
+        a {
+            padding: spacing("half") spacing("single");
+        }
+    }
+}
+
+a.navPage-subMenu-action.navPages-action, a.navPage-childList-action.navPages-action {
+    text-transform: capitalize;
+    font-size: 15px;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: bold;
+    padding: 0px 15px;
+    color: #fff;
+    line-height: 48px;
+}
+
+ul.navPage-subMenu-list {
+    margin-left: 0px;
+    background: #001212;
+}
+#toplevel-cat {
+	margin-left: 0px;	
+}
+.navPages-action.has-subMenu.is-open span.darrow {
+    transform: rotate(180deg);
+    border-color: #fff transparent transparent transparent;
+}
+
+li.navPage-subMenu-item:hover {
+    background: transparent;
+
+    a.navPage-subMenu-action.navPages-action:before {
+        border-top: 3px #ffbe00 solid;
+        border-right: 3px #ffbe00 solid;
+    }
+}
+
+#menu .navPage-subMenu-item a:hover, #menu .navPage-subMenu-item a:focus {
+    color: #fff;
+
+}
+#menu #navPages-acc > ul > li > a {
+    color: #fff;
+    padding: 10px 20px;
+    border-top: 1px #676767 solid;
+    display: block;
+    width: 100%;
+}

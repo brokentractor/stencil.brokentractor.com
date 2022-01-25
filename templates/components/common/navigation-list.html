@@ -1,0 +1,19 @@
+{{#if children}}
+<a class="navPages-action has-subMenu" href="{{url}}" data-collapsible="navPages-{{id}}">
+    {{name}} <i class="fa fa-angle-down"></i>
+</a>
+<div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+    <ul class="navPage-subMenu-list">
+        <li class="navPage-subMenu-item">
+            <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
+        </li>
+        {{#each children}}
+            <li class="navPage-subMenu-item">
+              <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{name}}</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>
+{{else}}
+<a class="navPages-action" href="{{url}}">{{name}}</a>
+{{/if}}
