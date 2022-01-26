@@ -1,0 +1,14 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {
+        "product-view.html": "/p/ford-backhoe-cylinder-head-hf256-hf256/",
+        "product-view.html": "p/kobelco-new-holland-hydraulic-pump-new-oem-yb10v00005f1-yb10v00005f1/"
+    }
+  },
+  "apiHost": "https://api.bigcommerce.com",
+  "normalStoreUrl": "https://www.brokentractor.com",
+  "port": 3000
+}

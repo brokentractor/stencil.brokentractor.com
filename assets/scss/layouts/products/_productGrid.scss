@@ -107,22 +107,22 @@ ul.productList {
   border-right: 1px #999 solid;
 }
 
-td.pvcol.image img { 
+td.pvcol.image img {
   padding: 5px;
   background-color: #fff;
 }
 
-td.pvcol.image a {  
-  background-color: #fff; 
+td.pvcol.image a {
+  background-color: #fff;
   position: relative;
 
-  @include breakpoint("medium") {        
-    border: 1px #ccc solid;  
+  @include breakpoint("medium") {
+    border: 1px #ccc solid;
     height: 100px;
     width: 100px;
     margin-top: 10px;
     margin-bottom: 10px;
-    display: block;  
+    display: block;
   }
 }
 
@@ -179,9 +179,9 @@ div#slidetableouter {
       max-height: 50px;
       max-width: 50px;
       width: auto;
-      border: 1px #ccc solid;  
+      border: 1px #ccc solid;
 
-      @include breakpoint("medium") {        
+      @include breakpoint("medium") {
         border: 0px;
         max-height: 98px;
         max-width: 98px;
@@ -259,13 +259,13 @@ div#slidetableouter {
             }
 
             img {
-                text-align: center;              
+                text-align: center;
                 max-height: 210px;
                 max-width: 210px;
                 display: block;
                 margin: 0 auto;
                 padding: 30px 15px 20px
-              
+
             }
 
             div {
@@ -277,7 +277,7 @@ div#slidetableouter {
                 padding: 15px;
               }
 
-              
+
               span {
                 text-align: left;
                 display: inline-block;
@@ -439,7 +439,7 @@ div#dsubcat {
     margin-bottom: 10px;
     box-shadow: 0px 0px 8px #ccc;
     font-weight: bold;
-    
+
     @include breakpoint("medium") {
       background: #fff;
       padding: 10px 15px;
@@ -462,7 +462,7 @@ div#dsubcat .subcat svg {
   min-height: 252px;
 
   @include breakpoint("medium") {
-    
+
     position: relative;
   }
 }
@@ -522,6 +522,10 @@ div#refImg .schematic-image {
   }
 }
 
+.totalLine {
+    margin: 3px 0;
+    border-color: #212121;
+}
 
 @media only screen and (max-width: 767px) {
 tr.productrow {
@@ -532,7 +536,7 @@ tr.productrow {
 table#slidetable {
     width: 100%;
     min-width: 0px;
-    display: block;    
+    display: block;
 }
 
 tr#tableheaders {
@@ -629,7 +633,7 @@ img.listItem-image {
 }
 span.img-seedet {
     display: block;
-    width: 25%;  
+    width: 25%;
     text-align: center;
     margin-top: 5px;
     font-size: 13px;
@@ -660,7 +664,7 @@ div#backtotop {
     position: fixed;
     right: 10px;
     bottom: 10px;
-    display: none;   
+    display: none;
 
     @include breakpoint("medium") {
       display: block;
