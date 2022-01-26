@@ -1,0 +1,12 @@
+node_modules/
+.stencil
+.DS_Store
+assets/dist
+*.zip
+.sass-cache/
+.vscode
+reports/
+ngrok.exe
+.idea/
+yarn.lock
+package-lock.json
