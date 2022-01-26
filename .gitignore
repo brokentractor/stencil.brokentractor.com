@@ -1,7 +1,6 @@
 node_modules/
 .stencil
 .DS_Store
-assets/dist
 *.zip
 .sass-cache/
 .vscode
@@ -10,3 +9,4 @@ ngrok.exe
 .idea/
 yarn.lock
 package-lock.json
+assets/dist/*

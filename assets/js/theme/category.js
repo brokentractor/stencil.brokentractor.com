@@ -34,14 +34,14 @@ function coreprices() {
             var newcprice = +startprice - +coreprice;
             newcprice = parseFloat(newcprice).toFixed(2);
             newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            var totalcprice = +newcprice - +coreprice;
-            totalcprice = parseFloat(totalcprice).toFixed(2);
-            totalcprice = totalcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            // var totalcprice = +newcprice - +coreprice;
+            // totalcprice = parseFloat(totalcprice).toFixed(2);
+            // totalcprice = totalcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
             $(this).find('.price.price--withoutTax').html('$'+ newcprice);
-            $(this).find('.price-section--withoutTax').append('<div class="corecharge">Core Charge: $'+ coreprice+'</div>');
-            $(this).find('.price.price--withoutTax').html('$'+ totalcprice);
-            
+            $(this).find('.price-section--withoutTax').append('<div class="corecharge">Refundable Core Charge: $'+ coreprice+'</div>');
+            // $(this).find('.price.price--withoutTax').html('$'+ totalcprice);
+
         }
 
     });
