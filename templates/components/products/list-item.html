@@ -1,31 +1,32 @@
 <tr class="productrow">
-  <td class="pvcol REFID">
-  {{#each custom_fields}}
+    <td class="pvcol REFID">
+        {{#each custom_fields}}
         {{#if name '===' 'REFID'}}
-            {{{value}}}
+        {{{value}}}
         {{/if}}
-    {{/each}}
+        {{/each}}
     </td>
     
-    <td class="pvcol image">  
+    <td class="pvcol image">
         <a href="{{url}}">
             <img class="listItem-image" src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
             <span class="img-seedet">See Details</span>
         </a>
-    </td>    
+    </td>
     {{#each custom_fields}}
-        {{#if name '!=' 'REFID'}}
-            <td class="pvcol {{{name}}}">{{{value}}}</td>
-        {{/if}}
+    {{#if name '!=' 'REFID'}}
+    <td class="pvcol {{{name}}}">{{{value}}}</td>
+    {{/if}}
     {{/each}}
     <td class="pvcol sku"><a href="{{url}}">{{{sku}}}</a></td>
-     
+
     <td class="pvcol price">{{> components/products/price price=price}}</td>
+    <td class="pvcol view-details"> <a href="{{url}}" class="listvd">View Info</a></td>
     <td class="pvcol atc"> <a href="{{add_to_cart_url}}" class="listatc" data-id="{{id}}" data-name="{{name}}" data-thumb="{{getImage image 'product' (cdn theme_settings.default_image_product)}}">Add To Cart</a>  <div class="slidearrow"><span class="slideabox"></span></div></td>
-   
+
+
     {{#if summary}}
-        <p style="display:none;">{{{summary}}}</p>
-   {{/if}}
+    <p style="display:none;">{{{summary}}}</p>
+    {{/if}}
 
 </tr>
-
