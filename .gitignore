@@ -10,6 +10,7 @@ ngrok.exe
 yarn.lock
 package-lock.json
 assets/dist/*
+secrets.stencil.json
 assets/dist/theme-bundle.chunk.0.js
 assets/dist/theme-bundle.chunk.1.js
 assets/dist/theme-bundle.chunk.10.js
