@@ -37,18 +37,18 @@
         </ul>
         <div class="previewCartAction">
             {{#if cart.show_primary_checkout_button}}
-                <div class="previewCartAction-checkout pvcartbtn">
+                <div class="previewCartAction-checkout pvcartbtn" style="width: 100%; padding: 0px; margin-bottom: 10px;">
                     <a href="{{urls.checkout.single_address}}" class="button button--small button--primary">
                         CHECK OUT
                     </a>
                 </div>
             {{/if}}
-            
+
             <div style="width: 96.2%;padding-left: 0.3rem;">
-                
+
             </div>
 
-            <div class="previewCartAction-viewCart{{#unless cart.show_primary_checkout_button}} previewCartAction-viewCart--sole{{/unless}} pvcartbtn" style="width: 100%;">
+            <div class="previewCartAction-viewCart{{#unless cart.show_primary_checkout_button}} previewCartAction-viewCart--sole{{/unless}} pvcartbtn" style="width: 100%; padding: 0px;">
                 <a href="{{urls.cart}}" class="button button--small button--action">
                     VIEW CART
                 </a>
