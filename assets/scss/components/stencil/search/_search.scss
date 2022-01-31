@@ -1,7 +1,9 @@
 // =============================================================================
 // SEARCH
 // =============================================================================
-
+.ui-autocomplete.isp-wide-layout .ui-menu-item[isp_turbolink], ul.ui-autocomplete.isp-wide-layout .ui-menu-item[isp_category=true] {
+    white-space: nowrap;
+}
 .search-suggestion {
     margin-bottom: spacing("single") + spacing("third");
 
