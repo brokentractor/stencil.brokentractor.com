@@ -2,7 +2,9 @@
   "customLayouts": {
     "brand": {},
     "category": {},
-    "page": {},
+    "page": {
+        "backhoe-infomation.html": "/pages/case-backhoe-infomation/"
+    },
     "product": {
         "product-view.html": "/p/ford-backhoe-cylinder-head-hf256-hf256/",
         "product-view.html": "p/kobelco-new-holland-hydraulic-pump-new-oem-yb10v00005f1-yb10v00005f1/"
