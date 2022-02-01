@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-<header class="header" role="banner">
+<header class="header" id="nav-banner" role="banner">
     <div class="header-inner">
         <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
             <span class="mobileMenu-toggleIcon">Toggle menu</span>
@@ -75,3 +75,17 @@
         </div>
     </div>
 </header>
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("nav-banner");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
