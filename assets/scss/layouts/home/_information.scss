@@ -1,1 +1,12 @@
+.backhoe-paragraph {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 15px;
+        text-align: left;
+        margin-bottom: 20px;
+        max-width: 768px;
 
+    }
+}
