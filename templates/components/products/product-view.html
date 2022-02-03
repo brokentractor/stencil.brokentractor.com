@@ -177,9 +177,7 @@
         <section id="pv-details">
             <div class="productView-options">
 
-                {{#if product.release_date }}
-                    <p>{{product.release_date}}</p>
-                {{/if}}
+
                 <div id="fitsmodels">
                     <strong>Fits Models:</strong>
                     <div id="fittext">Placeholder</div>
@@ -215,7 +213,7 @@
                         {{> components/products/modals/writeReview}}
                     {{/if}}
                 </div>
-                
+
                 <div id="partnum" class="pv-infobox"><strong>Part #</strong> <span id="partnum-text">{{product.sku}}</span>     <div class="pv-description pv-btmbox"{{#if schema}} itemprop="description"{{/if}}>
                          <h2>Description:</h2>
                          {{> components/products/description}}
@@ -225,6 +223,9 @@
                     <p class="productView-price">
                         <span>{{product.call_for_price}}</span>
                     </p>
+                    {{#if product.release_date }}
+                        <p class="preorder-banner">{{product.release_date}}</p>
+                    {{/if}}
                 {{/if}}
                 <div id="pv-detbtm">
                     <div class="productView-price">
@@ -233,6 +234,9 @@
                         {{else}}
                             {{> components/common/login-for-pricing}}
                         {{/or}}
+                        {{#if product.release_date }}
+                            <p class="preorder-banner">{{product.release_date}}</p>
+                        {{/if}}
                     </div>
                     <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
                           data-cart-item-add>

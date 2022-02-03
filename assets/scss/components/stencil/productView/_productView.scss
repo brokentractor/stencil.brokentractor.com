@@ -47,7 +47,12 @@
         margin-top: spacing("half");
     }
 }
-
+.preorder-banner {
+    font-size: 16px;
+    padding: 10px 5px;
+    background-color: #D6E1E4;
+    text-align: center;
+}
 .productView-thumbnails {
     @include u-listBullets("none");
     @include grid-row($behavior: "nest");
@@ -395,7 +400,7 @@
 
 label.form-option {
     padding: 7px;
-    
+
     span {
         font-size: 16px;
         font-weight: bold;
