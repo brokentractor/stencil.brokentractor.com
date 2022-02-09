@@ -256,6 +256,7 @@
                             {{/if}}
                             {{#if product.can_purchase}}
                                 {{> components/products/add-to-cart}}
+
                             {{/if}}
                             {{#if product.out_of_stock}}
                                 {{#if product.out_of_stock_message}}
@@ -266,9 +267,12 @@
                             {{/if}}
                         </div>
                     </form>
+
                     <div style="clear: both;"></div>
+                    <h2 class="preorder-banner" style="margin-top:0;">Note: Shipping Price NOT Included. Shipping is Calculated at Checkout.</h2>
                 </div>
                 <div id="pv-help">
+
                     <strong>Can’t Find What You’re Looking For?</strong>
                     <p>Our knowledgeable staff will be happy to help you with any of your tractor, backhoe, dozer, or engine parts needs. </p>
                     <a href="tel:8009097060">1-800-909-7060</a> <a href="/pages/parts-request">Parts Request Form</a>

@@ -6,7 +6,7 @@
         "backhoe-information.html": "/pages/case-backhoe-information/"
     },
     "product": {
-
+      "product-view.html": "/p/ford-backhoe-cylinder-head-hf256-hf256/"
     }
   },
   "apiHost": "https://api.bigcommerce.com",
