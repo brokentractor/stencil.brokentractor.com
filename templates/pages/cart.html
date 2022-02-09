@@ -1,6 +1,6 @@
 {{#partial "page"}}
 <div class="page">
-    
+
     <main class="page-content" data-cart>
         {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
@@ -25,7 +25,7 @@
             {{#if cart.show_primary_checkout_button}}
                 <div class="cart-actions">
                     <a class="button button--primary" href="{{urls.checkout.single_address}}" title="{{lang 'cart.checkout.title'}}">{{lang 'cart.checkout.button'}}</a>
-                    
+
                     {{#if cart.show_multiple_address_shipping}}
                         <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
                             {{lang 'cart.preview.checkout_multiple'}}
@@ -58,6 +58,15 @@
         {{/if}}
 
         {{{snippet 'cart'}}}
+        <div id="ymalwrap1">
+            <!-- <h2 style="text-align: center;">FEATURED PRODUCTS</h2> -->
+            <!-- Fast Simon Product Recommendation Widget START -->
+    <div title="Customers also Bought" layout="horizontal" max_suggest="5" sources="related_views,similar_products,related_purchase,related_recent_products,related_purchase" id="isp-related-widget-1"></div>
+    <script src="https://bigcommerce.instantsearchplus.com/js/isp_related_products.js?v=1.0.15&UUID=aa08f87a-100c-4691-8d06-fa8945a45dbd&store=1"></script>
+    <!-- Fast Simon Product Recommendation Widget END -->
+
+            <!-- {{> components/products/carousel products=product.related_products columns=5}} -->
+        </div>
     </main>
 
 </div>
