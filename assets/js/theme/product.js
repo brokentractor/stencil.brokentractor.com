@@ -71,6 +71,7 @@ export default class Product extends PageManager {
             coreprice = parseFloat(coreprice).toFixed(2);
             var newcprice = +startprice - +coreprice;
             newcprice = parseFloat(newcprice).toFixed(2);
+            coreprice = coreprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             startprice = startprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             $('.price.price--withoutTax').html('$'+ newcprice);
