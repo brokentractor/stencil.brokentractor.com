@@ -1,6 +1,6 @@
 {
   "name": "Broken Tractor 7.09.20 + Bolt + Shopper Dashboard + SSO @ 12/1/21 15:22",
-  "version": "1.9.42",
+  "version": "1.9.43",
   "meta": {
     "price": 0,
     "documentation_url": "https://support.bigcommerce.com/articles/Public/Cornerstone-Theme-Manual",
@@ -516,7 +516,7 @@
         "optimizedCheckout-headingPrimary-font": "industry",
         "optimizedCheckout-headingSecondary-color": "#333333",
         "optimizedCheckout-headingSecondary-font": "industry",
-        "optimizedCheckout-body-backgroundColor": "#ffffff",
+        "optimizedCheckout-body-backgroundColor": "#fefefe",
         "optimizedCheckout-colorFocus": "#4496f6",
         "optimizedCheckout-contentPrimary-color": "#333333",
         "optimizedCheckout-contentPrimary-font": "proxima-nova",
