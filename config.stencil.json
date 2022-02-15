@@ -3,7 +3,8 @@
     "brand": {},
     "category": {},
     "page": {
-        "backhoe-information.html": "/pages/case-backhoe-information/"
+        "backhoe-information.html": "/pages/case-backhoe-information/",
+        "compare.html": "/pages/compare/"
     },
     "product": {
       "product-view.html": "/p/ford-backhoe-cylinder-head-hf256-hf256/"
