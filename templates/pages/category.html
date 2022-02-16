@@ -42,7 +42,7 @@ category:
 
 
         {{#if category.products}}
-        <!-- <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name"> -->
+        <input type="text isp_ignore" class="form-input-fits-model isp_ignore" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
         <div id="slidetableouter" class="noref">
             <table id="slidetable">
                 <tr id="tableheaders">
@@ -91,7 +91,7 @@ category:
       padding:.75rem 1rem;
     }
 </style>
-<!-- <script>
+<script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
@@ -110,6 +110,6 @@ function myFunction() {
     }
   }
 }
-</script> -->
+</script>
 {{/partial}}
 {{> layout/base}}
