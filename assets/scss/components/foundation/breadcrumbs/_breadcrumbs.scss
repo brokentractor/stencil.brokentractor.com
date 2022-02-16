@@ -23,6 +23,7 @@
     color: #000;
     margin-bottom: 10px;
 
+
     @include breakpoint("small") {
         display: block; // 1
     }
@@ -32,8 +33,20 @@
     display: inline-block;
     float: none;
 
+    &:before {
+      content: ">";
+      font-weight: bold;
+      color: #ffbe00;
+    }
+    a {
+      color: #151002;
+      font-size: 15px;
+    }
     &.is-active {
-        display: none;
+        // display: none;
+        // font-weight: normal;
+
+
         // scss-lint:disable NestingDepth
         > .breadcrumb-label {
             cursor: text;
@@ -44,4 +57,13 @@
 
 .breadcrumb-label {
     text-decoration: none;
+}
+
+.breadcrumb-info {
+  padding: 5px auto;
+  text-align: center;
+  font-family: "proxima-nova";
+  font-size: 14px;
+  font-weight: 400;
+  color: #757575;
 }
