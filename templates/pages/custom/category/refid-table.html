@@ -34,12 +34,13 @@ category:
     <main class="page-content" id="product-listing-container">
 
         {{#if category.products}}
+        <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name">
             <div id="slidetableouter">
                 <table id="slidetable">
                     <tr id="tableheaders">
                         <td class="thcell pn static ref">REF #</td>
                         <td class="thcell pn image">Image</td>
-                        <td class="thcell pn FitsModel">Fits Model</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
                         <td class="thcell pn ListDescription">Description</td>
                         <td class="thcell pn static sku">Part #</td>
                         <td class="thcell pn price">Price</td>
@@ -62,5 +63,40 @@ category:
         {{{category.description}}}
       {{/if}}
     </div>
+    <style>
+    table#slidetable td.REFID {display: none;}
+    .form-input-fits-model {
+      border: 1px solid #ccc;
+      color: #000;
+      display: block;
+      font-family: inherit;
+      font-size: 16px;
+      height: 40px;
+      width: 100%;
+      position: relative;
+      z-index: 11;
+      padding:.75rem 1rem;
+    }
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
 {{/partial}}
 {{> layout/base}}
