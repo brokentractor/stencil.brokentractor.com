@@ -42,11 +42,12 @@ category:
 
 
         {{#if category.products}}
+        <input type="text" class="form-input" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name">
         <div id="slidetableouter" class="noref">
             <table id="slidetable">
                 <tr id="tableheaders">
                     <td class="thcell pn image">Image</td>
-                    <td class="thcell pn FitsModel">Fits Model</td>
+                    <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
                     <td class="thcell pn ListDescription">Description</td>
                     <td class="thcell pn ListDetails" style="display: none;">Details</td>
                     <td class="thcell pn static sku">Part #</td>
@@ -78,5 +79,25 @@ category:
 <style>
     table#slidetable td.REFID {display: none;}
 </style>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("slidetable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByClassName("FitsModel")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
 {{/partial}}
 {{> layout/base}}
