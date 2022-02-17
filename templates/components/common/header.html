@@ -76,12 +76,12 @@
     </div>
 </header>
 <script>
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {navScroll()};
 
 var navbar = document.getElementById("nav-banner");
 var sticky = navbar.offsetTop;
 
-function myFunction() {
+function navScroll() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky")
   } else {
