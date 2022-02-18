@@ -131,9 +131,9 @@ body {
 // -----------------------------------------------------------------------------
 
 .optimizedCheckout-buttonPrimary {
-    background-color: #f86900;
-    border-color: #f86900;
-    color: #fff;
+    background-color: #fdb913;
+    border-color: #fdb913;
+    color: #001212;
     font-family: "proxima-nova","Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 700;
     font-size: 14px;
@@ -141,8 +141,9 @@ body {
     &:focus,
     &:hover,
     &:active {
-    background-color: #f48742;
-    border-color: #f48742;
+    background-color: #001212;
+    border-color: #001212;
+    color: #fdb913;
     }
 }
 #micro-app-ng-checkout .button--primary {
