@@ -1,9 +1,11 @@
 {
   "customLayouts": {
     "brand": {},
-    "category": {},
+    "category": {
+      "refid-table.html": "/c/case-industrial-parts/loader-backhoe-parts/backhoe-pins-bushings-and-links/580b-580c-580d-580-super-e/frame-and-stabilizer-parts/"
+    },
     "page": {
-        "compare.html": "/pages/compare/"
+      "compare.html": "/pages/compare/"
     },
     "product": {}
   },

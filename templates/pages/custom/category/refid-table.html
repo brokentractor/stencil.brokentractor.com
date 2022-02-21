@@ -30,7 +30,11 @@ category:
 
         <p id="swipemsg">Swipe to see full table</p>
     </div>
-<input type="text isp_ignore" class="form-input-fits-model isp_ignore" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div>
+
     <main class="page-content" id="product-listing-container">
 
         {{#if category.products}}
@@ -61,18 +65,7 @@ category:
       {{/if}}
     </div>
     <style>
-        .form-input-fits-model {
-          border: 1px solid #ccc;
-          color: #000;
-          display: block;
-          font-family: inherit;
-          font-size: 16px;
-          height: 40px;
-          width: 100%;
-          position: relative;
-          z-index: 11;
-          padding:.75rem 1rem;
-        }
+
     </style>
     <script>
     function myFunction() {
