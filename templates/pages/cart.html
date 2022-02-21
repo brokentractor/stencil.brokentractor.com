@@ -1,10 +1,12 @@
 {{#partial "page"}}
-<div class="page">
+<div class="page ">
 
     <main class="page-content" data-cart>
         {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
         {{> components/cart/page-title}}
+        <div id="ymalwrap1">
+
 
         <div data-cart-status>
             {{> components/cart/status-messages}}
@@ -58,6 +60,7 @@
         {{/if}}
 
         {{{snippet 'cart'}}}
+        </div>
         <div id="ymalwrap1">
             <!-- <h2 style="text-align: center;">FEATURED PRODUCTS</h2> -->
             <!-- Fast Simon Product Recommendation Widget START -->

@@ -14,6 +14,9 @@
 .body {
 	background: #fff;
 }
+body .cart-page {
+  background: url(../img/gbg.jpg);
+}
 .homepage .body , .listpage .body, .pvwrap .body  {
     background: #eee;
 	@include breakpoint("medium") {
@@ -211,7 +214,7 @@ div#hp-shopby {
     font-size: 24px;
     color: #fdb913;
     clear: both;
-        @include breakpoint("medium") { 
+        @include breakpoint("medium") {
         top: 10px;
         right: 10px;
 
