@@ -64,6 +64,7 @@ export default class Product extends PageManager {
             $('.price.price--withoutTax').html('Call for Pricing');
             $('#pv-detbtm form').remove();
         } else if (coreprice > 0) {
+
             console.log(startprice);
             startprice = startprice.replace('$', '');
             startprice = startprice.replace(',', '');
@@ -72,13 +73,17 @@ export default class Product extends PageManager {
             var newcprice = +startprice - +coreprice;
             newcprice = parseFloat(newcprice).toFixed(2);
             coreprice = coreprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            startprice = startprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            $('.price.price--withoutTax').html('$'+ newcprice);
-            $('.productView-price').append('<div class="corecharge">Core Charge: $'+ coreprice+'</div>');
-            $('.productView-price').append('<hr class="totalLine"><div class="totalwithcore">Total: $'+ startprice+'</div>');
+            if (isNaN(startprice)) {
+              $('.productView-price').append('<div class="totalwithcore"></div>');
+              $('.productView-price').append('<div class="corecharge" style="display: none;"></div>');
 
-
+            } else if (isNaN(startprice) == false) {
+              newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              startprice = startprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              $('.price.price--withoutTax').html('$'+ newcprice);
+              $('.productView-price').append('<div class="corecharge">Core Charge: $'+ coreprice+'</div>');
+              $('.productView-price').append('<hr class="totalLine"><div class="totalwithcore">Total: $'+ startprice+'</div>');
+            }
         }
         $('#fittext').text(fit);
         $('#partdim-text').text(dim);

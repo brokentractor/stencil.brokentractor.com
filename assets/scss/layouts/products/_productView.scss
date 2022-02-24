@@ -92,6 +92,10 @@ h1#producttitle {
     max-width: 100%;
     padding: 0px;
     margin: 0px;
+
+    @include breakpoint("large") {
+      padding: 0px 6rem;
+    }
 }
 
 .pvwrap .breadcrumbs {
