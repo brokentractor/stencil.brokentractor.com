@@ -126,12 +126,11 @@ iframe {
 }
 .productView-image:before {
     content: "";
-    background: url('../img/watermark.png')
 }
 
 .productView-image:before {
     content: "";
-    background: url(../img/watermark.png);
+    // background: url(../img/watermark.png);
     width: 340px;
     height: 88px;
     position: absolute;
