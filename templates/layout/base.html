@@ -22,7 +22,7 @@
         {{inject 'maintenanceMode' settings.maintenance}}
         {{inject 'urls' urls}}
         {{{snippet 'htmlhead'}}}
-      
+
 
     </head>
     <body class="{{#block 'pagename'}}{{/block}}">
@@ -44,6 +44,21 @@
             // Exported in app.js
             window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
         </script>
+      <script type="text/javascript">
+        (function e(){
+          if(typeof yotpo==='undefined') {
+            var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com//widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)
+          }
+          else {
+            yotpo.initialized=false;yotpo.init();
+          }
+        })();
+      </script>
+      <div class="yotpo bottomLine"
+        data-product-id="%%GLOBAL_ProductId%%"
+        data-url="%%GLOBAL_ProductLink%%">
+      </div>
+
 
         {{{footer.scripts}}}
         {{{snippet 'footer'}}}
