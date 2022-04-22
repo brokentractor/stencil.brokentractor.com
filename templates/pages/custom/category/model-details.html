@@ -1,0 +1,145 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+<div style="display: flex; flex-direction: row; background-color: #fefefe;  box-shadow: 0px 1px 3px rgb(0 0 0 / 20%);">
+  <section class="" data-image-gallery style="width: 50%; padding: 0 20px">
+      <figure class="productView-image"
+              data-image-gallery-main
+              data-zoom-image="{{getImage category.image 'zoom_size' (cdn theme_settings.default_image_category)}}"
+              >
+
+              <img class="productView-image--default"
+                   src="{{getImage category.image 'product_size' (cdn theme_settings.default_image_category)}}"
+                   alt="{{category.main_image.alt}}" title="{{category.main_image.alt}}" data-main-image>
+
+      </figure>
+    <a href="#model-products" class="listatc" style="width: auto; height: auto; padding: 0px 20px; display: block; text-align: center; border: 1px solid #000;">View {{category.name}} Products</a>
+  </section>
+
+  <div id="categoryDescription" style="width: 50%; border-left: solid #ccc 1px; padding: 0;">
+    <div id="fitsmodels" style="width: 100%;">
+        <strong>Model Details:</strong>
+        <div id="fittext">{{category.name}}</div>
+    </div>
+    <div class="description" style="padding: 20px 30px;">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<p id="swipemsg">Swipe to see full table</p>
+
+{{{snippet 'categories'}}}
+<div class="page" id="model-products">
+   <div class="toolbar">
+     <i class="fa fa-search"></i>
+     <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Category" title="Type in a Model Name" isp_ignore>
+     <i class="fa fa-search"></i>
+     <input type="text" class="form-input-fits-model" id="myInputPartNum" onkeyup="partNumSearch()" placeholder="Find by Part #" title="Type in a Part Number" isp_ignore>
+     <ul>
+       {{#each products.subcategories}}
+           <li class="subcat">
+               <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">
+                 <div>
+                   <span>{{name}} </span>
+
+                 </div>
+               </a>
+           </li>
+       {{/each}}
+     </ul>
+   </div>
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter" >
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <th class="thcell pn static ref">REF #</th>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <th class="thcell pn static sku">Part #</th>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+
+
+</div>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("slidetable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByClassName("ListDescription")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function partNumSearch() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputPartNum");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("slidetable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByClassName("sku")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{{/partial}}
+{{> layout/base}}

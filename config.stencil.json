@@ -2,12 +2,14 @@
   "customLayouts": {
     "brand": {},
     "category": {
-      "refid-table.html": "/c/case-industrial-parts/loader-backhoe-parts/backhoe-pins-bushings-and-links/580b-580c-580d-580-super-e/frame-and-stabilizer-parts/"
+      "model-details.html": "/c/case-construction-parts/case-backhoe-parts/all-case-backhoe-models/case-480ck/"
     },
     "page": {
       "compare.html": "/pages/compare/"
     },
-    "product": {}
+    "product": {
+     "product.html": "/p/case-backhoe-4wd-front-hub-assembly-with-swivel-housing-right-ca-2616-rsc1-ca-2616-rsc1/"
+    }
   },
   "apiHost": "https://api.bigcommerce.com",
   "normalStoreUrl": "https://www.brokentractor.com",
