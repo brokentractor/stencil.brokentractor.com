@@ -27,6 +27,17 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
 //
 // -----------------------------------------------------------------------------
 
+.warning-message {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background: #fff;
+    padding: 20px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+    width: 100%;
+}
+
+
 .cart {
     display: block; // 1
     margin-bottom: spacing("single");
@@ -325,7 +336,7 @@ th{
         height: remCalc(32px);
         margin-bottom: spacing("half");
         padding: 0px 10px !important;
-        
+
     }
 
     .form-inlineMessage {
