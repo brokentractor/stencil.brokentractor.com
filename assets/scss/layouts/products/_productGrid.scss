@@ -43,6 +43,30 @@ fieldset.form-fieldset.actionBar-section {
     background: #fff;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
 }
+.refpage {
+  margin: 0px;
+  background: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  .ref-img-container {
+    position: sticky;
+    top: 200px;
+    min-height: 300px;
+    height: 100%;
+    margin-top: 50px;
+    width: 150%;
+  }
+
+  #refImg {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: sticky;
+    align-items: center;
+    top: 300px;
+  }
+
+}
 #categoryDescription {
     padding: 5px 20px 10px 20px;
 
@@ -556,6 +580,23 @@ th.thcell.pn.vd {
         left: 20px;
     }
 }
+.newidtable {
+  .listvd {
+      display: none;
+      @include breakpoint("medium") {
+          color: #001212;
+          display: inline-block;
+          font-family: "industry";
+          text-transform: uppercase;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: underline;
+          padding: 10px 5px;
+          // left: 20px;
+      }
+  }
+}
+
 
 @media only screen and (max-width: 767px) {
 
@@ -662,6 +703,115 @@ th.thcell.pn.vd {
     }
 
 }
+// THIS IS THE NEW CODE FORE THE NEW TABLE
+
+
+
+@media only screen and (min-width: 767px) {
+.newidtable {
+    tr.productrow {
+        display: block;
+        position: relative;
+    }
+
+    table#slidetable {
+        min-width: 50% !important;
+        display: block;
+    }
+
+    tr#tableheaders {
+        display: none !important;
+    }
+
+
+    td.pvcol.image {
+        position: absolute;
+        left: 20px;
+        top: 27px;
+    }
+    tr.productrow {
+        display: block;
+        position: relative;
+        padding-left: calc(30px + 25%);
+        padding-right: 20px;
+        padding-bottom: 75px;
+        padding-top: 25px;
+        float: left;
+        width: 100%;
+    }
+    table#slidetable td, table#slidetable th {
+        text-align: left;
+        height: auto;
+        padding: 0px;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 7px;
+        line-height: 17px;
+    }
+    .noref th.pvcol.REFID, td.pvcol.CorePrice {
+        display: none !important;
+    }
+    td.pvcol.FitsModel:before {
+        display: block;
+        content: "Fits Model";
+        font-weight: bold;
+    }
+    td.pvcol.ListDescription:before {
+        display: block;
+        content: "Description";
+        font-weight: bold;
+    }
+    td.pvcol.sku:before {
+        display: block;
+        content: "Part #";
+        font-weight: bold;
+    }
+    td.pvcol.price:before {
+        display: block;
+        content: "Price";
+        font-weight: bold;
+    }
+    .slidearrow {
+        display:none;
+    }
+    .listatc {
+        background: #ffbe00;
+        display: inline-block;
+        width: calc(100% - 40px);
+        font-family: "industry";
+        height: 36px;
+        line-height: 37px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 12px;
+        position: absolute;
+        left: 20px;
+    }
+    .pvcol.sku a {
+        text-decoration: none;
+        font-weight: normal;
+    }
+    td.pvcol.REFID:before {
+        content: "REF #";
+        font-weight: bold;
+    }
+    tbody {
+        display: block;
+    }
+    div#slidetableouter {
+        width: 100%;
+        overflow-x: hidden;
+        padding-bottom: 0px;
+    }
+    img.listItem-image {
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+    }
+}
+}
+// End of NEW CODE
 span.img-seedet {
     display: block;
     width: 25%;

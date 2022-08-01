@@ -23,15 +23,27 @@ category:
 
 <h1 class="page-heading">{{category.name}}</h1>
 
-
+<div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center;">
+  <i class="fa fa-info" style="margin-right: 20px;"></i>Each number on the image is a "Ref #" that can be matched on the table below.
+</div>
 {{{snippet 'categories'}}}
-<div class="page">
-    <div id="refImg">
+<div class="refpage">
+  <div class="ref-img-container">
+    <div id="refImg" class="productView-image" data-image-gallery-main>
 
     </div>
-    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center;">
-      <i class="fa fa-info" style="margin-right: 20px;"></i>Each number on the image is a "Ref #" that can be matched on the table below.
-    </div>
+  </div>
+  <!-- <figure class="productView-image"
+          data-image-gallery-main
+          data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
+          >
+
+          <img class="productView-image--default"
+               src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+               alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}" data-main-image>
+
+  </figure> -->
+
 
     <!-- <div class="toolbar">
       <i class="fa fa-search"></i>
@@ -41,9 +53,9 @@ category:
     <main class="page-content" id="product-listing-container">
 
         {{#if category.products}}
-            <div id="slidetableouter">
+            <div id="slidetableouter" class="newidtable">
                 <table id="slidetable">
-                    <tr id="tableheaders">
+                    <!-- <tr id="tableheaders ">
                         <td class="thcell pn static ref">REF #</td>
                         <td class="thcell pn image">Image</td>
                         <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
@@ -52,7 +64,7 @@ category:
                         <td class="thcell pn price">Price</td>
                         <td class="thcell pn vd">Product Details</td>
                         <td class="thcell pn atc">Add to Cart</td>
-                    </tr>
+                    </tr> -->
                 {{> components/category/product-listing}}
                 </table>
             </div>
