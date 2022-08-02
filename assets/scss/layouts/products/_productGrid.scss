@@ -589,7 +589,7 @@ th.thcell.pn.vd {
           font-family: "industry";
           text-transform: uppercase;
           cursor: pointer;
-          text-align: center;
+          text-align: left;
           text-decoration: underline;
           padding: 10px 5px;
           // left: 20px;
@@ -614,7 +614,6 @@ th.thcell.pn.vd {
     tr#tableheaders {
         display: none;
     }
-
 
     td.pvcol.image {
         position: absolute;
@@ -743,7 +742,7 @@ th.thcell.pn.vd {
         text-align: left;
         height: auto;
         padding: 0px;
-        font-size: 14px;
+        font-size: 15px;
         display: block;
         margin-bottom: 7px;
         line-height: 17px;
@@ -807,9 +806,10 @@ th.thcell.pn.vd {
     img.listItem-image {
         max-height: 100%;
         max-width: 100%;
+        width: 500px;
         width: auto;
     }
-}
+  }
 }
 // End of NEW CODE
 span.img-seedet {
