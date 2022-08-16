@@ -35,37 +35,55 @@
     width: 100%;
     max-width: 1200px;
 }
+
 fieldset.form-fieldset.actionBar-section {
     display: none;
 }
+
 .listpage .page {
     margin: 0px;
     background: #fff;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
 }
+
 .refpage {
   margin: 0px;
   background: #fff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-  display: flex;
+  display: block;
+  @include breakpoint("medium") {
+    display: flex;
+  }
   .ref-img-container {
-    position: sticky;
-    top: 200px;
-    min-height: 300px;
-    height: 100%;
-    margin-top: 50px;
-    width: 150%;
+    display: block;
+
+    @include breakpoint("medium") {
+      position: sticky;
+      top: 200px;
+      min-height: 300px;
+      height: 100%;
+      margin-top: 50px;
+      width: 150%;
+    }
+
   }
 
   #refImg {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    position: sticky;
-    align-items: center;
-    top: 300px;
+    margin: 0;
+      @include breakpoint("medium") {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: sticky;
+        align-items: center;
+        top: 300px;
+      }
   }
-
+}
+//End of .refpage
+.ref-img-container > .productView-image {
+  max-width: none;
 }
 #categoryDescription {
     padding: 5px 20px 10px 20px;
@@ -727,11 +745,15 @@ th.thcell.pn.vd {
         position: absolute;
         left: 20px;
         top: 27px;
+        a {
+          width: 140px;
+          height: 140px;
+        }
     }
     tr.productrow {
         display: block;
         position: relative;
-        padding-left: calc(30px + 25%);
+        padding-left: calc(75px + 25%);
         padding-right: 20px;
         padding-bottom: 75px;
         padding-top: 25px;
