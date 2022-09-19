@@ -24,6 +24,19 @@ body .cart-page {
 	}
 
 }
+.hero-btn {
+	font-family: industry, sans-serif;
+	font-weight: bold !important;
+	font-size: 18px;
+	border-radius: 0px;
+	text-align: center;
+	width: 100%;
+
+	@include breakpoint("medium") {
+		width: auto;
+	}
+
+}
 
 #hp-hero {
     background-image: url(../img/mobilestore.jpg);
