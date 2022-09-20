@@ -569,6 +569,7 @@ div#shop-parts {
     display: none;
 }
 
+
 @include breakpoint("medium") {
     div#menu.navPages-container {
         background: #fff;
@@ -627,6 +628,22 @@ div#shop-parts {
             font-weight: bold;
         }
     }
+    .parts-request {
+      border: 2px #666666 solid;
+      position: absolute;
+      right: 220px;
+      top: 18px;
+      height: 52px;
+      width: 194px;
+      text-align: center;
+      color: #fff;
+      font-family: $industry;
+      text-transform: uppercase;
+      line-height: 52px;
+      font-size: 18px;
+      cursor: pointer;
+      display: block;
+    }
     div#shop-parts {
         border: 2px #666666 solid;
         position: absolute;
@@ -679,6 +696,9 @@ div#shop-parts {
     div#shop-parts {
         right: 485px;
     }
+    .parts-request {
+      right: 700px;
+    }
     div#menu.navPages-container {
         background: #fff;
         width: 760px;
@@ -716,4 +736,9 @@ div#shop-parts {
 }
 body .nxt-ac-main {
     z-index: 999 !important;
+}
+@media only screen and (max-width: 1155px) and (min-width: 1023px) {
+  .parts-request {
+    display: none;
+  }
 }
