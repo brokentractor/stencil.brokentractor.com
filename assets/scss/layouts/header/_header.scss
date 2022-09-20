@@ -737,6 +737,13 @@ div#shop-parts {
 body .nxt-ac-main {
     z-index: 999 !important;
 }
+
+.parts-request {
+  display: none;
+    @include breakpoint("medium") {
+      display: block;
+    }
+}
 @media only screen and (max-width: 1155px) and (min-width: 1023px) {
   .parts-request {
     display: none;
