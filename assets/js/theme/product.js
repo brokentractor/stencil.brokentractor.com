@@ -83,7 +83,7 @@ export default class Product extends PageManager {
               $('.price.price--withoutTax').html('$'+ newcprice);
               $('.productView-price').append('<div class="corecharge">*Core Charge: $'+ coreprice+'</div>');
               $('.productView-price').append('<hr class="totalLine"><div class="totalwithcore">Total: $'+ startprice+'</div>');
-              $('.productView-price').append('<small style="font-size: 16px; padding: 10px 5px; background-color: #d6e1e4; text-align: center; width: 100%; display: block;">*= $'+coreprice+' will be refunded after your old part is returned.</small>');
+              $('.productView-price').append('<small style="font-size: 16px; padding: 10px 5px; background-color: #d6e1e4; text-align: center; width: 100%; display: block;">*= $'+coreprice+' Core Charge will be refunded after your old part is returned.</small>');
             }
         }
         $('#fittext').text(fit);
