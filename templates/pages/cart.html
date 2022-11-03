@@ -5,10 +5,14 @@
         {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
         {{> components/cart/page-title}}
-        
+
         <div class="warning-message">
           <b>SHIPPING PARTS TO CANADA:</b><br><br>
           Unfortunately, we cannot discount or refund the Canadian duties and/or Import fees. Please be aware of these non-refundable fees when ordering parts to Canada. If you have any questions about fees please email us at <a href="mailto:parts@brokentractor.com?subject=shipping">parts@brokentractor.com</a>.
+        </div>
+        <div class="warning-message">
+          <b>TAX EXEMPTION:</b><br><br>
+          All sales that require tax exemption will be charged tax and refunded after the purchase and your tax exemption form is accepted. You must request your state’s Resale Exemption Form to <b><a href="mailto:parts@brokentractor.com?subject=tax">parts@brokentractor.com</a></b>. Please include your sale order and/or invoice number.
         </div>
         <div id="ymalwrap1">
 
@@ -54,6 +58,12 @@
                         .cart-additionalCheckoutButtons .FloatRight p {
                             margin: 0;
                         }
+                        @media only screen and (min-width: 200px) {
+                          .paypal-button.paypal-button-shape-pill {
+                            border-radius: 0px;
+                          }
+                        }
+
                     </style>
                     {{#each cart.additional_checkout_buttons}}
                         {{{this}}}
