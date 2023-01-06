@@ -62,7 +62,7 @@ export default class Product extends PageManager {
 
         if (startprice == '$0.00') {
             $('.price.price--withoutTax').html('Call for Pricing');
-            $('#pv-detbtm form').remove();
+            $('#pv-descriptionbox form').remove();
         } else if (coreprice > 0) {
 
             console.log(startprice);

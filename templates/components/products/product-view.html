@@ -213,10 +213,13 @@
                     {{/if}}
                 </div>
 
-                <div id="partnum" class="pv-infobox"><strong>Part #</strong> <span id="partnum-text">{{product.sku}}</span>     <div class="pv-description pv-btmbox"{{#if schema}} itemprop="description"{{/if}}>
+                <div id="partnum" class="pv-infobox"><strong>Part #</strong> <span id="partnum-text">{{product.sku}}</span>
+                  <div class="pv-description pv-btmbox"{{#if schema}} itemprop="description"{{/if}}>
                          <h2>Description:</h2>
                          {{> components/products/description}}
-                    </div></div>
+                    </div>
+                  </div>
+
 
                 {{#if product.call_for_price}}
                     <p class="productView-price">
@@ -226,7 +229,7 @@
                         <p class="preorder-banner">{{product.release_date}}</p>
                     {{/if}}
                 {{/if}}
-                <div id="pv-detbtm">
+                <div id="pv-descriptionbox">
                     <div class="productView-price">
                         {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                             {{> components/products/price price=product.price schema_org=schema}}
@@ -288,6 +291,8 @@
             </div>
 
             {{{snippet 'product_details'}}}
+            <!-- {{> components/products/videos}} -->
+
         </section>
     </div>
     <div id="ymalwrap1">

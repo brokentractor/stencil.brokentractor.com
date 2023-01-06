@@ -43,6 +43,7 @@ section.productView-images {
 
 .productView-details {
     display: none;
+    // This might be the real clickable description
 }
 
 .productView-description {
@@ -146,24 +147,23 @@ div#fitsmodels {
     }
 }
 
-div#pv-detbtm {
+div#pv-descriptionbox {
     padding: 26px 15px 10px 15px;
     border-bottom: 1px #ccc solid;
-    position: relative;
+    // position: relative;
     @include breakpoint("large") {
     padding: 26px 30px 10px 30px;
     }
 }
 
-#pv-detbtm .productView-price {
-    position: relative;
+#pv-descriptionbox .productView-price {
+    // position: relative;
     font-family:$industry;
     font-size: 24px;
-    position: relative;
     text-align: left;
 
     @include breakpoint("medium") {
-        position: relative;
+        // position: relative;
         right: 0px;
         font-size: 36px;
         top: 0px;
