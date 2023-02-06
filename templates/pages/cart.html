@@ -7,12 +7,15 @@
         {{> components/cart/page-title}}
 
         <div class="warning-message">
-          <b>SHIPPING PARTS TO CANADA:</b><br><br>
-          Unfortunately, we cannot discount or refund the Canadian duties and/or Import fees. Please be aware of these non-refundable fees when ordering parts to Canada. If you have any questions about fees please email us at <a href="mailto:parts@brokentractor.com?subject=shipping">parts@brokentractor.com</a>.
-        </div>
-        <div class="warning-message">
-          <b>TAX EXEMPTION:</b><br><br>
-          All sales that require tax exemption will be charged tax and refunded after the purchase and your tax exemption form is accepted. You must submit your state’s Resale Exemption Form and order ID. You can start the process by clicking the yellow button below. <br><br><a class="hero-btn button button--primary" href="/pages/tax-exemption-request/">SUBMIT YOUR TAX EXEMPTION</a>
+          <p>Read More About:</p>
+          <button type="button" class="collapsible">SHIPPING PARTS TO CANADA</button>
+          <div class="collapse-content">
+            <p><br> Unfortunately, we cannot discount or refund the Canadian duties and/or Import fees. Please be aware of these non-refundable fees when ordering parts to Canada. If you have any questions about fees please email us at <a href="mailto:parts@brokentractor.com?subject=shipping">parts@brokentractor.com</a>.</p>
+          </div>
+          <button type="button" class="collapsible">TAX EXEMPTION</button>
+          <div class="collapse-content">
+            <p><br>All sales that require tax exemption will be charged tax and refunded after the purchase and your tax exemption form is accepted. You must submit your state’s Resale Exemption Form and order ID. You can start the process by clicking the yellow button below. <br><br><a class="hero-btn button button--primary" href="/pages/tax-exemption-request/">SUBMIT YOUR TAX EXEMPTION</a></p>
+          </div>
         </div>
         <div id="ymalwrap1">
 
@@ -76,6 +79,8 @@
 
         {{{snippet 'cart'}}}
         </div>
+
+
         <div id="ymalwrap1">
             <!-- <h2 style="text-align: center;">FEATURED PRODUCTS</h2> -->
             <!-- Fast Simon Product Recommendation Widget START -->
@@ -89,5 +94,21 @@
 
 </div>
 
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 {{/partial}}
 {{> layout/base}}
