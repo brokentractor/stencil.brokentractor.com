@@ -664,7 +664,9 @@ th.thcell.pn.vd {
 }
 span.img-seedet {
     display: block;
-    width: 25%;
+    padding: 10px;
+    border: 1px solid grey;
+    // width: 25%;
     text-align: center;
     margin-top: 5px;
     font-size: 13px;
