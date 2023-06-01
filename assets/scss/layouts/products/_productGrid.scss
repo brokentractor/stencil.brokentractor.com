@@ -657,10 +657,10 @@ th.thcell.pn.vd {
     }
     img.listItem-image {
         max-height: 25%;
-        // max-width: 25%;
-        width: auto;
+        width: 100%;
     }
 
+// End of media only screen and (max-width: 767px)
 }
 span.img-seedet {
     display: block;
@@ -675,6 +675,20 @@ span.img-seedet {
         display: none;
     }
 }
+
+@media only screen and (max-width: 400px) {
+  td.pvcol.image {
+      width: 25%;
+  }
+  img.listItem-image {
+      width: 100%;
+  }
+  span.img-sedlet {
+
+  }
+  // End of media only screen and (max-width: 400px)
+}
+
 
 #categoryDescription img {
     display: none;
