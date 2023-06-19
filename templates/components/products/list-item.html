@@ -2,11 +2,11 @@
     <td class="pvcol REFID">
         {{#each custom_fields}}
         {{#if name '===' 'REFID'}}
-        {{{value}}}
+        <span id="{{{value}}}">{{{value}}}</span>
         {{/if}}
         {{/each}}
     </td>
-    
+
     <td class="pvcol image">
         <a href="{{url}}">
             <img class="listItem-image" src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
