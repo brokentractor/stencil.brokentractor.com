@@ -3,6 +3,8 @@
     <head>
         <script src="{{cdn 'assets/js/fa-solid.min.js'}}"></script>
         <script src="{{cdn 'assets/js/fontawesome.min.js'}}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{cdn 'assets/js/jquery.rwdImageMaps.min.js'}}"></script>
         <title>{{ head.title }}</title>
         {{{ head.meta_tags }}}
         {{{ head.config }}}
@@ -69,5 +71,10 @@
 
         {{{footer.scripts}}}
         {{{snippet 'footer'}}}
+        <script type="text/javascript">
+        $(document).ready(function(e) {
+          $('img[usemap]').rwdImageMaps();
+        });
+        </script>
     </body>
 </html>
