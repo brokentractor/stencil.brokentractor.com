@@ -1,0 +1,133 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/deere-pins-bushings-and-hlinks.png?t=1683832475" usemap="#jd-image-map">
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="jd-image-map">
+  <area target="" alt="1" title="1 - Pin, Bucket to Dipper Arm" href="/p/john-deere-excavator-bucket-to-dipper-arm-pin-th108941-th108941/" coords="814,353,22" shape="circle">
+  <area target="" alt="2" title="2 - Pin, Bucket to H-Link" href="/p/john-deere-excavator-bucket-to-h-link-pin-th108942-th108942/" coords="804,279,22" shape="circle">
+  <area target="" alt="3" title="3 - Pin, Link to Dipper" href="/p/john-deere-excavator-link-to-dipper-pin-th108940-th108940/" coords="1154,207,21" shape="circle">
+  <area target="" alt="4" title="4 - Pin, Link to Cylinder" href="/p/john-deere-excavator-link-to-cylinder-pin-th108943-th108943/" coords="1117,32,23" shape="circle">
+  <area target="" alt="5" title="5 - Bucket H-Link" href="/p/john-deere-490e-110-120-excavator-bucket-h-link-at154498-at154498/" coords="167,343,21" shape="circle">
+  <area target="" alt="6" title="6 - Bushing, H-Link Closed End" href="/p/john-deere-excavator-h-link-closed-end-bushing-th108930-th108930/" coords="295,269,22" shape="circle">
+  <area target="" alt="6" title="6 - Bushing, H-Link Closed End" href="/p/john-deere-excavator-h-link-closed-end-bushing-th108930-th108930/" coords="120,272,21" shape="circle">
+  <area target="" alt="7" title="7 - Bushing, H-Link Open End" href="/p/john-deere-excavator-h-link-open-end-bushing-at122209-at122209/" coords="166,180,22" shape="circle">
+  <area target="" alt="7" title="7 - Bushing, H-Link Open End" href="/p/john-deere-excavator-h-link-open-end-bushing-at122209-at122209/" coords="321,178,23" shape="circle">
+  <area target="" alt="7" title="7 - Bushing, H-Link Open End" href="/p/john-deere-excavator-h-link-open-end-bushing-at122209-at122209/" coords="233,38,24" shape="circle">
+  <area target="" alt="7" title="7 - Bushing, H-Link Open End" href="/p/john-deere-excavator-h-link-open-end-bushing-at122209-at122209/" coords="393,36,22" shape="circle">
+  <area target="" alt="8" title="8 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374/" coords="321,22,21" shape="circle">
+  <area target="" alt="8" title="8 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374/" coords="468,97,24" shape="circle">
+  <area target="" alt="8" title="8 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374/" coords="113,103,23" shape="circle">
+  <area target="" alt="9" title="9 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374-8/" coords="36,294,24" shape="circle">
+  <area target="" alt="9" title="9 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374-8/" coords="361,270,22" shape="circle">
+  <area target="" alt="10" title="10 - Dipper Link Left Hand (With Bolt Holes)" href="/p/john-deere-excavator-left-hand-dipper-link-with-bolt-holes-at154543-at154543/" coords="633,129,20" shape="circle">
+  <area target="" alt="11" title="11 - Dipper Link Right Hand" href="/p/john-deere-excavator-right-hand-dipper-link-at154248-at154248/" coords="1080,109,22" shape="circle">
+  <area target="" alt="12" title="12 - Bushing, Dipper At Link" href="/p/john-deere-excavator-dipper-link-bushing-at122209-at122209/" coords="978,122,23" shape="circle">
+  <area target="" alt="12" title="12 - Bushing, Dipper At Link" href="/p/john-deere-excavator-dipper-link-bushing-at122209-at122209/" coords="795,118,22" shape="circle">
+  <area target="" alt="13" title="13 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374-9/" coords="1020,186,22" shape="circle">
+  <area target="" alt="13" title="13 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374-9/" coords="741,118,22" shape="circle">
+  <area target="" alt="14" title="14 - Bushing, Dipper To Bucket" href="/p/john-deere-excavator-dipper-to-bucket-bushing-at122209-at122209/" coords="714,189,20" shape="circle">
+  <area target="" alt="14" title="14 - Bushing, Dipper To Bucket" href="/p/john-deere-excavator-dipper-to-bucket-bushing-at122209-at122209/" coords="929,270,21" shape="circle">
+  <area target="" alt="15" title="15 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374-10/" coords="665,189,22" shape="circle">
+  <area target="" alt="15" title="15 - Seal" href="/p/john-deere-excavator-seal-th100374-th100374-10/" coords="975,269,21" shape="circle">
+  <area target="" alt="16" title="16 - O - Ring" href="/p/john-deere-excavator-o-ring-at154340-at154340/" coords="1021,268,22" shape="circle">
+  <area target="" alt="16" title="16 - O - Ring" href="/p/john-deere-excavator-o-ring-at154340-at154340/" coords="440,192,23" shape="circle">
+  <area target="" alt="16" title="16 - O - Ring" href="/p/john-deere-excavator-o-ring-at154340-at154340/" coords="613,188,21" shape="circle">
+  <area target="" alt="16" title="16 - O - Ring" href="/p/john-deere-excavator-o-ring-at154340-at154340/" coords="52,190,23" shape="circle">
+</map>
+    <!-- <div id="refImg">
+
+    </div> -->
+    <!-- <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+    <div class="commonninja_component pid-1df55403-f450-4a96-83b9-cb3bd9ae019a"></div> -->
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}

@@ -58,10 +58,10 @@ module.exports = {
             jQuery: 'jquery',
             'window.jQuery': 'jquery',
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            children: true,
-            minChunks: 2,
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     children: true,
+        //     minChunks: 2,
+        // }),
     ],
     resolve: {
         alias: {
