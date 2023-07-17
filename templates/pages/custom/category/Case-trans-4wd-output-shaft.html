@@ -1,0 +1,124 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-4wd-transmission-output-shaft-assembly-resize.png" width="1200" height="539" usemap="#case-image-map">
+  <!-- https://www.brokentractor.com/c/case-backhoe/carraro-transmission-parts-580l-580m-580-super-l-m/carraro-transmission-4wd-output-shaft-rebuild-kit-580l-580-super-l-570lxt/ -->
+  <!-- This mapping can be generated at https://www.image-map.net/ -->
+  <map name="case-image-map">
+   <area target="" alt="1 - Shaft Flange" title="1 - Shaft Flange" href="/p/case-backhoe-shaft-flange-181230a1-181230a1/" coords="530,39,15" shape="circle">
+   <area target="" alt="2" title="2" href="/pages/parts-request" coords="578,71,13" shape="circle">
+   <area target="" alt="3" title="3" href="/pages/parts-request" coords="613,66,12" shape="circle">
+   <area target="" alt="4 - O-Ring" title="4 - O-Ring" href="/p/case-backhoe-o-ring-112517a1-112517a1/" coords="660,67,13" shape="circle">
+   <area target="" alt="5 - Oil Seal 60x75x8 mm" title="5 - Oil Seal 60x75x8 mm" href="/p/case-backhoe-oil-seal-60x75x8-mm-181122a1-181122a1/" coords="697,65,14" shape="circle">
+   <area target="" alt="6" title="6" href="/pages/parts-request" coords="735,67,14" shape="circle">
+   <area target="" alt="7" title="7" href="/pages/parts-request" coords="793,66,14" shape="circle">
+   <area target="" alt="8 - Grooved Bushing" title="8 - Grooved Bushing" href="/p/case-backhoe-grooved-bushing-181194a1-181194a1/" coords="804,100,13" shape="circle">
+   <area target="" alt="9 - Bearing" title="9 - Bearing" href="/p/case-backhoe-transmission-bearing-181126a1-181126a1/" coords="774,440,14" shape="circle">
+   <area target="" alt="10" title="10" href="/pages/parts-request" coords="740,439,14" shape="circle">
+   <area target="" alt="11 - Drive Gear 36 Teeth" title="11 - Drive Gear 36 Teeth" href="/p/case-backhoe-drive-gear-36-teeth-181223a1-181223a1/" coords="699,438,15" shape="circle">
+   <area target="" alt="12 - O-Ring" title="12 - O-Ring" href="/p/case-backhoe-o-ring-100747a1-100747a1/" coords="657,437,13" shape="circle">
+   <area target="" alt="13 - Output Shaft Update" title="13 - Output Shaft Update" href="/p/case-backhoe-output-shaft-update-includes-369470a1-369471a1-and-369472a1-cs-580l-osu-cs-580l-osu/" coords="606,437,15" shape="circle">
+   <area target="" alt="14 - O-Ring" title="14 - O-Ring" href="/p/case-backhoe-o-ring-100748a1-100748a1/" coords="475,434,14" shape="circle">
+   <area target="" alt="15 - Sleeve" title="15 - Sleeve" href="/p/case-backhoe-sleeve-4-notches-181248a1-181248a1/" coords="432,433,13" shape="circle">
+   <area target="" alt="16" title="16" href="/pages/parts-request" coords="524,440,13" shape="circle">
+   <area target="" alt="17 - Spring" title="17 - Spring" href="/p/case-backhoe-spring-100753a1-100753a1/" coords="379,433,14" shape="circle">
+   <area target="" alt="18 - Flat Washer" title="18 - Flat Washer" href="/p/case-backhoe-flat-washer-181276a1-181276a1/" coords="338,432,13" shape="circle">
+   <area target="" alt="19 - Snap Ring" title="19 - Snap Ring" href="/p/case-backhoe-snap-ring-181120a1-181120a1/" coords="297,433,14" shape="circle">
+   <area target="" alt="20" title="20" href="/pages/parts-request" coords="399,84,15" shape="circle">
+   <area target="" alt="21" title="21" href="/pages/parts-request" coords="443,80,14" shape="circle">
+   <area target="" alt="22" title="22" href="/pages/parts-request" coords="489,69,13" shape="circle">
+    <!-- <div id="refImg">
+
+    </div> -->
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
