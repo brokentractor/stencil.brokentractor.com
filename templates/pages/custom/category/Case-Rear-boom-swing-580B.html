@@ -1,0 +1,122 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-boom-and-swing-tower-parts-case-580b.png" width="1200" height="495" usemap="#case-image-map">
+  <!-- https://www.brokentractor.com/c/case-industrial-parts/loader-backhoe-parts/backhoe-pins-bushings-and-links/580b-580c-580d-580-super-e/boom-and-swing-tower-parts/ -->
+  <!-- This mapping can be generated at https://www.image-map.net/ -->
+  <map name="case-image-map">
+    <area target="" alt="1 - Pin, Dipper to Dipper Cylinder Rod" title="1 - Pin, Dipper to Dipper Cylinder Rod" href="/p/case-backhoe-pin-dipper-to-dipper-cylinder-rod-d52522-d52522/" coords="568,88,17" shape="circle">
+    <area target="" alt="2 - Bushing, Dipper at Dipper Cylinder Rod" title="2 - Bushing, Dipper at Dipper Cylinder Rod" href="/p/case-580b-580c-backhoe-bushing-dipper-at-dipper-cylinder-rod-d52434-d52434/" coords="632,119,19" shape="circle">
+    <area target="" alt="3 - Pin, Boom to Dipper" title="3 - Pin, Boom to Dipper" href="/p/case-backhoe-pin-boom-to-dipper-d45523-d45523/" coords="863,230,18" shape="circle">
+    <area target="" alt="4 - Bushing, Dipper and Boom" title="4 - Bushing, Dipper and Boom" href="/p/case-backhoe-bushing-dipper-at-boom-d31142-d31142/" coords="816,210,18" shape="circle">
+    <area target="" alt="5 - Pin, Boom to Boom Cylinder Rod" title="5 - Pin, Boom to Boom Cylinder Rod" href="/p/case-backhoe-pin-boom-to-boom-cylinder-rod-d49865-d49865/" coords="807,297,16" shape="circle">
+    <area target="" alt="6 - Bushing, Boom at Boom Cylinder" title="6 - Bushing, Boom at Boom Cylinder" href="/p/case-backhoe-bushing-boom-at-boom-cylinder-d95362-d95362/" coords="767,267,18" shape="circle">
+    <area target="" alt="6 - Bushing, Boom at Boom Cylinder" title="6 - Bushing, Boom at Boom Cylinder" href="/p/case-backhoe-bushing-boom-at-boom-cylinder-d95362-d95362/" coords="666,223,17" shape="circle">
+    <area target="" alt="7 - Bushing, Dipper and Boom" title="7 - Bushing, Dipper and Boom" href="/p/case-backhoe-bushing-dipper-at-boom-d31142-d31142/" coords="785,175,17" shape="circle">
+    <area target="" alt="8 - Pin, Boom to Dipper Cylinder Tube End" title="8 - Pin, Boom to Dipper Cylinder Tube End" href="/p/case-backhoe-pin-boom-to-dipper-cylinder-tube-end-d72359-d72359/" coords="834,384,17" shape="circle">
+    <area target="" alt="9 - Bushing, Boom at Swing Tower" title="9 - Bushing, Boom at Swing Tower" href="/p/case-backhoe-bushing-boom-at-swing-tower-d50698-d50698/" coords="822,432,17" shape="circle">
+    <area target="" alt="10 - 	Pin, Boom Cylinder Tube to Swing Tower" title="10 - 	Pin, Boom Cylinder Tube to Swing Tower" href="/p/case-backhoe-pin-boom-cylinder-tube-to-swing-tower-d49866-d49866/" coords="527,264,17" shape="circle">
+    <area target="" alt="11 - Bushing, Swing Tower at Boom Cylinder" title="11 - Bushing, Swing Tower at Boom Cylinder" href="/p/case-backhoe-bushing-swing-tower-at-boom-cylinder-d49429-d49429/" coords="465,307,17" shape="circle">
+    <area target="" alt="12 - Pin, Swing Tower to Boom (1 Pin Style)" title="12 - Pin, Swing Tower to Boom (1 Pin Style)" href="/p/case-backhoe-pin-swing-tower-to-boom-1-pin-style-d91240-d91240/" coords="532,350,18" shape="circle">
+    <area target="" alt="13 - Bushing, Swing Tower to Boom (1 Pin Style)" title="13 - Bushing, Swing Tower to Boom (1 Pin Style)" href="/p/case-backhoe-bushing-swing-tower-to-boom-1-pin-style-d91241-d91241/" coords="500,323,17" shape="circle">
+    <area target="" alt="14 - Pin, Upper - Swing Tower to Frame" title="14 - Pin, Upper - Swing Tower to Frame" href="#13" coords="399,196,18" shape="circle">
+    <area target="" alt="15 - Pin, Lower -Swing Tower to Frame" title="15 - Pin, Lower -Swing Tower to Frame" href="/p/case-backhoe-pin-lower-swing-tower-to-frame-d123653-d123653/" coords="357,428,19" shape="circle">
+    <area target="" alt="16 - Nut, Lower Swing Tower to Frame Pin" title="16 - Nut, Lower Swing Tower to Frame Pin" href="/p/case-backhoe-nut-lower-swing-tower-to-frame-pin-181042a1-181042a1/" coords="333,367,19" shape="circle">
+    <area target="" alt="17 - Pin, Swing Cylinder to Swing Tower" title="17 - Pin, Swing Cylinder to Swing Tower" href="#16" coords="433,423,18" shape="circle">
+    <area target="" alt="18 - Bushing, In Swing Tower at Swing Cylinder" title="18 - Bushing, In Swing Tower at Swing Cylinder" href="/p/case-backhoe-bushing-swing-tower-at-swing-cylinder-d94018-d94018/" coords="440,370,17" shape="circle">
+  </map>
+    <!-- <div id="refImg">
+
+    </div> -->
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
