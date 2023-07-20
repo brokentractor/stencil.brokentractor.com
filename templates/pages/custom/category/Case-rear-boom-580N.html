@@ -1,0 +1,118 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-boom-dipper-580n.png" width="1200" height="411" usemap="#case-image-map">
+  <!-- https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-rear-backhoe-parts/case-backhoe-pins-bushings-and-links/580n-580-super-n/boom-and-dipper-parts/ -->
+  <!-- This mapping can be generated at https://www.image-map.net/ -->
+  <map name="case-image-map">
+    <area target="" alt="1 - Bushing, Boom at Swing Tower" title="1 - Bushing, Boom at Swing Tower" href="/p/case-backhoe-bushing-boom-at-swing-tower-84246051-84246051/" coords="262,359,17" shape="circle">
+     <area target="" alt="2 - Pin, Boom at Boom Cylinder and Dipper Cylinder" title="2 - Pin, Boom at Boom Cylinder and Dipper Cylinder" href="/p/case-backhoe-pin-boom-at-boom-and-dipper-cylinder-84248656-84248656/" coords="393,312,19" shape="circle">
+     <area target="" alt="3 - Bushing, Boom at Dipper" title="3 - Bushing, Boom at Dipper" href="/p/case-backhoe-bushing-boom-at-dipper-stick-84240578-84240578/" coords="427,60,17" shape="circle">
+     <area target="" alt="4 - Pin, Boom to Dipper Stick" title="4 - Pin, Boom to Dipper Stick" href="/p/case-580n-580sn-backhoe-pin-boom-to-dipper-84520512-84520512/" coords="455,255,19" shape="circle">
+     <area target="" alt="5 - Bushing, Dipper Stick" title="5 - Bushing, Dipper Stick" href="/p/case-backhoe-bushing-dipper-stick-84170645-84170645/" coords="932,247,17" shape="circle">
+     <area target="" alt="6 - Bushing, Standard Dipper at Boom" title="6 - Bushing, Standard Dipper at Boom" href="/p/case-backhoe-bushing-standard-dipper-at-boom-84223633-84223633/" coords="544,125,18" shape="circle">
+     <area target="" alt="7 - Bushing, Inner Dipper" title="7 - Bushing, Inner Dipper" href="/p/case-backhoe-bushing-inner-dipper-d137218-d137218/" coords="644,248,18" shape="circle">
+     <area target="" alt="7 - Bushing, Inner Dipper" title="7 - Bushing, Inner Dipper" href="/p/case-backhoe-bushing-inner-dipper-d137218-d137218/" coords="744,140,17" shape="circle">
+     <area target="" alt="7 - Bushing, Inner Dipper" title="7 - Bushing, Inner Dipper" href="/p/case-backhoe-bushing-inner-dipper-d137218-d137218/" coords="818,21,19" shape="circle">
+     <area target="" alt="8 - Bushing, Inner Dipper at Boom" title="8 - Bushing, Inner Dipper at Boom" href="/p/case-backhoe-bushing-inner-dipper-at-boom-84229925-84229925/" coords="709,37,18" shape="circle">
+     <area target="" alt="9 - Not Available, Request Part " title="9 - Not Available, Request Part " href="/parts/parts-request/" coords="584,79,18" shape="circle">
+     <area target="" alt="1 - Bushing, Boom at Swing Tower" title="1 - Bushing, Boom at Swing Tower" href="/p/case-backhoe-bushing-boom-at-swing-tower-84246051-84246051/" coords="166,249,17" shape="circle">
+     <area target="" alt="3 - Bushing, Boom at Dipper" title="3 - Bushing, Boom at Dipper" href="/p/case-backhoe-bushing-boom-at-dipper-stick-84240578-84240578/" coords="544,204,18" shape="circle">
+     <area target="" alt="6 - Bushing, Standard Dipper at Boom" title="6 - Bushing, Standard Dipper at Boom" href="/p/case-backhoe-bushing-standard-dipper-at-boom-84223633-84223633/" coords="676,79,19" shape="circle">
+     <area target="" alt="5 - Bushing, Dipper Stick" title="5 - Bushing, Dipper Stick" href="/p/case-backhoe-bushing-dipper-stick-84170645-84170645/" coords="843,330,17" shape="circle">
+  </map>
+    <!-- <div id="refImg">
+
+    </div> -->
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
