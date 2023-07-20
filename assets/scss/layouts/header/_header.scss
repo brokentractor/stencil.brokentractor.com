@@ -355,6 +355,7 @@ div#hlinks {
 span#hphone {
     float: left;
     font-family:$industry;
+    font-weight: 600;
 }
 
 
@@ -467,6 +468,7 @@ div#accountMenu:before {
     width: 170px;
     text-align: center;
     font-family:$industry;
+    font-weight: 600;
     line-height: 44px;
     margin-bottom: 10px;
     font-size: 16px;
@@ -536,6 +538,7 @@ div#accountMenu:before {
     line-height: 43px;
     border-radius: 0px;
     font-family:$industry;
+    font-weight: 600;
     background: #ffbe00;
     color: #000;
     font-weight: bold !important;
@@ -638,6 +641,7 @@ div#shop-parts {
       text-align: center;
       color: #fff;
       font-family: $industry;
+      font-weight: 600;
       text-transform: uppercase;
       line-height: 52px;
       font-size: 18px;
@@ -654,6 +658,7 @@ div#shop-parts {
         text-align: center;
         color: #fff;
         font-family: $industry;
+        font-weight: 600;
         text-transform: uppercase;
         line-height: 52px;
         font-size: 18px;

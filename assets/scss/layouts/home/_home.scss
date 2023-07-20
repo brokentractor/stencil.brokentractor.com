@@ -7,6 +7,7 @@
 }
 .welcome-title {
 	font-family: $industry;
+	font-weight: 600;
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 28px;
@@ -35,8 +36,8 @@ body .cart-page {
 
 }
 .hero-btn {
-	font-family: industry, sans-serif;
-	font-weight: bold !important;
+	font-family: $industry, sans-serif;
+	font-weight: 600 !important;
 	font-size: 18px;
 	border-radius: 0px;
 	text-align: center;

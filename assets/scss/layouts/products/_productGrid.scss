@@ -63,6 +63,7 @@ fieldset.form-fieldset.actionBar-section {
     color: #121212;
     width: 120px;
     font-family: "industry";
+    font-weight: 600;
     text-transform: uppercase;
     text-align: center;
     font-weight: 700;
@@ -139,6 +140,7 @@ table#slidetable td, table#slidetable th {
     display: inline-block;
     width: 120px;
     font-family: "industry";
+    font-weight: 600;
     height: 30px;
     line-height: 33px;
     text-transform: uppercase;
@@ -502,6 +504,7 @@ div#refImg .schematic-image {
     left: 0px;
     height: auto;
     font-family: industry;
+    font-weight: 600;
     color: #000;
     text-transform: uppercase;
     cursor: pointer;
@@ -548,6 +551,7 @@ th.thcell.pn.vd {
         color: #001212;
         display: inline-block;
         font-family: "industry";
+        font-weight: 600;
         text-transform: uppercase;
         cursor: pointer;
         text-align: center;
@@ -630,6 +634,7 @@ th.thcell.pn.vd {
         display: inline-block;
         width: calc(100% - 40px);
         font-family: "industry";
+        font-weight: 600;
         height: 36px;
         line-height: 37px;
         text-transform: uppercase;
@@ -706,6 +711,7 @@ div#backtotop {
     color: #000;
     text-align: center;
     font-family: Industry;
+    font-weight: 600;
     font-size: 20px;
     padding: 10px 24px;
     position: fixed;

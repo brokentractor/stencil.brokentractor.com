@@ -161,6 +161,7 @@ div#pv-descriptionbox {
 #pv-descriptionbox .productView-price {
     // position: relative;
     font-family:$industry;
+    font-weight: 600;
     font-size: 24px;
     text-align: left;
 
@@ -219,6 +220,7 @@ input#form-action-addToCart {
     border: none;
     border-radius: 0px;
     font-family:$industry;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: 24px;
     padding: 17px 0px 13px 0px;
@@ -253,6 +255,7 @@ div#pv-help {
         border: 2px #ccc solid;
         font-weight: bold;
         font-family:$industry;
+        font-weight: 600;
         margin-top: 10px;
         text-transform: uppercase;
         font-size: 18px;
@@ -387,6 +390,7 @@ div#ymalwrap1 {
         display: inline-block;
         width: calc(100% - 20px);
         font-family: "industry";
+        font-weight: 600;
         height: 40px;
         line-height: 38px;
         text-transform: uppercase;
