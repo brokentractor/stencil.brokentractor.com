@@ -1,0 +1,117 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <div class="click-container">
+    <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+    <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/frame-and-stabilizer-580l-resize.png" alt="" width="1200" height="430" usemap="#case-map">
+    <!-- https://www.brokentractor.com/c/case-construction-parts/loader-backhoe-parts/backhoe/backhoe-pins-bushings-and-links/580l-580-super-l-580m-580-super-m/frame-and-stabilizer-parts/ -->
+    <!-- This mapping can be generated at https://www.image-map.net/ -->
+    <map name="case-map">
+      <area target="" alt="1 - Stabilizer Plate, Metal Cleat" title="1 - Stabilizer Plate, Metal Cleat" href="/p/case-backhoe-stabilizer-plate-for-cleat-d88427-d88427/" coords="388,157,17" shape="circle">
+    <area target="" alt="2 - Pin, Stabilizer Plate to Leg (Metal Cleat)" title="2 - Pin, Stabilizer Plate to Leg (Metal Cleat)" href="/p/case-backhoe-pin-stabilizer-plate-to-leg-cleat-d28648-d28648/" coords="477,47,17" shape="circle">
+    <area target="" alt="3 - Stabilizer Plate, Single Rubber Pad Style" title="3 - Stabilizer Plate, Single Rubber Pad Style" href="/p/case-backhoe-stabilizer-street-pad-plate-style-with-single-rubber-pad-d142519-d142519/" coords="515,315,18" shape="circle">
+    <area target="" alt="4 - Stabilizer Pad (Single-Pad Plate)" title="4 - Stabilizer Pad (Single-Pad Plate)" href="/p/case-backhoe-rubber-stabilizer-pad-d61368-d61368/" coords="504,355,18" shape="circle">
+    <area target="" alt="5 - Pin, Stabilizer Plate to Leg (Single Rubber Pad)" title="5 - Pin, Stabilizer Plate to Leg (Single Rubber Pad)" href="/p/case-backhoe-pin-stabilizer-plate-to-leg-single-rubber-pad-d39256-d39256/" coords="434,230,18" shape="circle">
+    <area target="" alt="7 - Rubber Pad (Flip-Pad Style)" title="7 - Rubber Pad (Flip-Pad Style)" href="#6" coords="364,220,18" shape="circle">
+    <area target="" alt="7 - Rubber Pad (Flip-Pad Style)" title="7 - Rubber Pad (Flip-Pad Style)" href="#6" coords="183,277,15" shape="circle">
+    <area target="" alt="6 - Flip-Style Stabilizer Plate (3-Pad Style)" title="6 - Flip-Style Stabilizer Plate (3-Pad Style)" href="/p/case-backhoe-flip-over-stabilizer-plate-189955a1-189955a1/" coords="158,196,17" shape="circle">
+    <area target="" alt="9 - Stabilizer Leg" title="9 - Stabilizer Leg" href="#7" coords="885,321,16" shape="circle">
+    <area target="" alt="10 - 	Bushing, Upper Stabilizer Leg at Frame" title="10 - 	Bushing, Upper Stabilizer Leg at Frame" href="/p/case-backhoe-upper-stabilizer-leg-bushing-d50146-d50146-3/" coords="776,248,18" shape="circle">
+    <area target="" alt="10 - 	Bushing, Upper Stabilizer Leg at Frame" title="10 - 	Bushing, Upper Stabilizer Leg at Frame" href="/p/case-backhoe-upper-stabilizer-leg-bushing-d50146-d50146-3/" coords="904,219,18" shape="circle">
+    <area target="" alt="11 - Pin, Stabilizer Cylinder to Leg" title="11 - Pin, Stabilizer Cylinder to Leg" href="/p/case-backhoe-pin-outrigger-cylinder-to-leg-d26002-d26002/" coords="945,368,16" shape="circle">
+    <area target="" alt="12 - 	Pin, Stabilizer Leg to Frame" title="12 - 	Pin, Stabilizer Leg to Frame" href="/p/case-backhoe-pin-stabilizer-leg-to-frame-121665a1-121665a1-1/" coords="714,266,17" shape="circle">
+    <area target="" alt="13 - Bushing, Frame at Stabilizer Leg" title="13 - Bushing, Frame at Stabilizer Leg" href="/p/case-backhoe-bushing-frame-at-stabilizer-leg-107124a1-107124a1/" coords="940,151,19" shape="circle">
+    <area target="" alt="14 - Pin, Stabilizer Cylinder Tube to Frame" title="14 - Pin, Stabilizer Cylinder Tube to Frame" href="/p/case-backhoe-pin-stabilizer-cylinder-tube-to-frame-d38907-d38907/" coords="840,48,18" shape="circle">
+    <area target="" alt="15 - Bushing, Frame at Swing Tower(Lower)" title="15 - Bushing, Frame at Swing Tower(Lower)" href="/p/case-backhoe-bushing-lower-frame-at-swing-tower-d151070-d151070/" coords="605,265,16" shape="circle">
+    <area target="" alt="16 - Bushing, Frame at Swing Tower (Upper)" title="16 - Bushing, Frame at Swing Tower (Upper)" href="/p/case-backhoe-bushing-upper-frame-at-swing-tower-d151069-d151069/" coords="634,65,17" shape="circle">
+    <area target="" alt="20 - Flip-Pad Assembly" title="20 - Flip-Pad Assembly" href="/p/case-backhoe-flip-style-stabilizer-pad-assembly-cs-580k-fopa/" coords="240,127,17" shape="circle">
+    <area target="" alt="17 - Stabilizer (Outrigger) Cylinder " title="17 - Stabilizer (Outrigger) Cylinder " href="#16" coords="1024,220,19" shape="circle">
+</map>
+  </div>
+
+<!-- Non-clickable reference ID auto loaded -->
+    <!-- <div id="refImg"></div> -->
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
