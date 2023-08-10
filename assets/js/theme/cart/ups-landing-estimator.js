@@ -198,7 +198,7 @@ export default class UpsLandingEstimator {
             transId: 'string',
             transactionSrc: 'testing',
             AccountNumber: 'string',
-            Authorization: 'Bearer eyJraWQiOiI2NGM0YjYyMC0yZmFhLTQzNTYtYjA0MS1mM2EwZjM2Y2MxZmEiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzM4NCJ9'
+            Authorization: 'Bearer <token here>'
             },
             body: JSON.stringify({
             currencyCode: 'GBP',
