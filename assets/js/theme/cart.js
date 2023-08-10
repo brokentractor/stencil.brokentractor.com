@@ -4,6 +4,7 @@ import _ from 'lodash';
 import giftCertCheck from './common/gift-certificate-validator';
 import utils from '@bigcommerce/stencil-utils';
 import ShippingEstimator from './cart/shipping-estimator';
+import UpsLandingEstimator from './cart/ups-landing-estimator';
 import { defaultModal } from './global/modal';
 import swal from 'sweetalert2';
 
@@ -363,5 +364,6 @@ export default class Cart extends PageManager {
 
         // initiate shipping estimator module
         this.shippingEstimator = new ShippingEstimator($('[data-shipping-estimator]'));
+        this.upsLandingEstimator = new UpsLandingEstimator($('[data-shipping-estimator-landing]'));
     }
 }

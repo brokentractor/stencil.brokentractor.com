@@ -100,10 +100,16 @@
             "hide_ups_rates": "Hide UPS Rates",
             "show_ups_rates": "Show UPS Rates"
         },
+        "shipping_estimator_ups_landed" : {
+            "add_info": "Add Info",
+            "select_country_export": "Country Exporting To",
+            "select_country_export_current": "Exporting Country Currency",
+            "estimate_landing_cost": "Estimate Landing Cost"
+        },
         "gift_wrapping": {
             "title": "Gift Wrapping",
             "add": "Add",
-            "change": "Change",
+            "change": "Change", 
             "remove": "Remove",
             "choose_how": "Please choose how you'd like to have this item gift wrapped.",
             "option_same": "I'd like to wrap each of this item using the same wrapping options",
