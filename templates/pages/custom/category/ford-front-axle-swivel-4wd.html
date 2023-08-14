@@ -1,0 +1,134 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/swivel-housing-and-steering-.png" width="1200" height="507" usemap="#ford-image-map">
+  <!-- https://www.brokentractor.com/c/ford-new-holland-parts/ford-new-holland-backhoe-and-industrial-parts/front-axle-parts-four-wheel-drive/swivel-housing-and-steering-top-hat-cover/ -->
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="ford-image-map">
+    <area target="" alt="1 - LH Swivel Housing" title="1 - LH Swivel Housing" href="#1" coords="418,141,14" shape="circle">
+    <area target="" alt="2 - RH Swivel Housing" title="2 - RH Swivel Housing" href="#2" coords="853,282,14" shape="circle">
+    <area target="" alt="3 - Bolt" title="3 - Bolt" href="/p/new-holland-backhoe-axle-stop-bolt-85805987-8585987/" coords="777,275,12" shape="circle">
+    <area target="" alt="4 - Power Steering Cylinder Kit (4WD)" title="4 - Power Steering Cylinder Kit (4WD)" href="/p/new-holland-4wd-backhoe-power-steering-cylinder-seal-kit-85805990-85805990/" coords="534,473,15" shape="circle">
+    <area target="" alt="5 - Tie Rod End" title="5 - Tie Rod End" href="/p/new-holland-backhoe-tie-rod-end-85805977-85805977/" coords="881,119,15" shape="circle">
+    <area target="" alt="5 - Tie Rod End" title="5 - Tie Rod End" href="/p/new-holland-backhoe-tie-rod-end-85805977-85805977/" coords="543,88,14" shape="circle">
+    <area target="" alt="6 - Jam Nut" title="6 - Jam Nut" href="/p/new-holland-backhoe-tie-rod-jam-nut-85805976-85805976/" coords="578,99,14" shape="circle">
+    <area target="" alt="6 - Jam Nut" title="6 - Jam Nut" href="/p/new-holland-backhoe-tie-rod-jam-nut-85805976-85805976/" coords="842,118,14" shape="circle">
+    <area target="" alt="7 - Ball Joint" title="7 - Ball Joint" href="/p/new-holland-backhoe-front-axle-ball-joint-85805975-85805975/" coords="808,123,13" shape="circle">
+    <area target="" alt="7 - Ball Joint" title="7 - Ball Joint" href="/p/new-holland-backhoe-front-axle-ball-joint-85805975-85805975/" coords="614,87,14" shape="circle">
+    <area target="" alt="8 - Swivel Housing Bushing" title="8 - Swivel Housing Bushing" href="/p/new-holland-backhoe-swivel-housing-bushing-85805988-85805988/" coords="745,285,13" shape="circle">
+    <area target="" alt="9 - Seal (45mm ID x 65mm OD x 12 mm Thick)" title="9 - Seal (45mm ID x 65mm OD x 12 mm Thick)" href="/p/new-holland-backhoe-swivel-housing-seal-85805991-85805991/" coords="724,255,14" shape="circle">
+    <area target="" alt="10 - Upper Grease Fitting" title="10 - Upper Grease Fitting" href="/p/new-holland-front-axle-king-pin-grease-fitting-321204-321204/" coords="507,119,15" shape="circle">
+    <area target="" alt="11 - King Pin Bolt" title="11 - King Pin Bolt" href="#10" coords="476,98,13" shape="circle">
+    <area target="" alt="11 - King Pin Bolt" title="11 - King Pin Bolt" href="#10" coords="442,313,14" shape="circle">
+    <area target="" alt="12 - 4 Bolt King Pin" title="12 - 4 Bolt King Pin" href="/p/new-holland-4wd-backhoe-front-axle-upper-king-pin-85805980-85805980/" coords="445,116,14" shape="circle">
+    <area target="" alt="13 - Jam Nut" title="13 - Jam Nut" href="/p/new-holland-backhoe-swivel-housing-jam-nut-87313789-87313789/" coords="815,290,13" shape="circle">
+    <area target="" alt="14 - 4 Bolt King Pin" title="14 - 4 Bolt King Pin" href="/p/new-holland-4wd-backhoe-front-axle-lower-king-pin-85805983-85805983/" coords="464,283,14" shape="circle">
+    <area target="" alt="15 - Tie Rod Nut" title="15 - Tie Rod Nut" href="/p/new-holland-backhoe-tie-rod-nut-85805982-85805982/" coords="510,285,15" shape="circle">
+    <area target="" alt="15 - Tie Rod Nut" title="15 - Tie Rod Nut" href="/p/new-holland-backhoe-tie-rod-nut-85805982-85805982/" coords="892,269,14" shape="circle">
+    <area target="" alt="16 - 4wd Steering Cylinder" title="16 - 4wd Steering Cylinder" href="/p/new-holland-backhoe-steering-cylinder-85805978-85805978/" coords="677,265,14" shape="circle">
+    <area target="" alt="17 - Bolt" title="17 - Bolt" href="/p/new-holland-4wd-backhoe-steering-cylinder-bolt-9968028-9968028/" coords="607,198,15" shape="circle">
+    <area target="" alt="18 - LH Swivel Housing (3 Bolt King Pin)" title="18 - LH Swivel Housing (3 Bolt King Pin)" href="/p/new-holland-backhoe-left-hand-swivel-housing-85827740-85827740/" coords="259,164,14" shape="circle">
+    <area target="" alt="20 - Grease Fitting" title="20 - Grease Fitting" href="/p/new-holland-4wd-backhoe-front-axle-lower-grease-fitting-85805984-85805984/" coords="483,314,13" shape="circle">
+    <area target="" alt="21 - Tie Rod Assy (4 Bolt King Pin)" title="21 - Tie Rod Assy (4 Bolt King Pin)" href="/p/new-holland-4wd-backhoe-front-axle-tie-rod-assembly-85805974-85805974/" coords="566,45,13" shape="circle">
+    <area target="" alt="21 - Tie Rod Assy (3 Bolt King Pin)" title="21 - Tie Rod Assy (3 Bolt King Pin)" href="/p/new-holland-4wd-backhoe-front-axle-tie-rod-assembly-87306934-87306934/" coords="840,60,13" shape="circle">
+    <area target="" alt="22 - RH Swivel Housing" title="22 - RH Swivel Housing" href="/p/new-holland-backhoe-right-hand-front-axle-swivel-housing-85827739-85827739/" coords="935,110,15" shape="circle">
+    <area target="" alt="23 - 3 Bolt Upper King Pin" title="23 - 3 Bolt Upper King Pin" href="/p/new-holland-4wd-backhoe-3-bolt-upper-king-pin-9968023-9968023/" coords="299,99,15" shape="circle">
+    <area target="" alt="24 - 3 Bolt Lower King Pin" title="24 - 3 Bolt Lower King Pin" href="/p/new-holland-4wd-backhoe-3-bolt-lower-king-pin-9968025-9968025/" coords="245,233,15" shape="circle">
+</map>
+
+    <!-- <div id="refImg">
+
+    </div> -->
+    <!-- <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+    <div class="commonninja_component pid-1df55403-f450-4a96-83b9-cb3bd9ae019a"></div> -->
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
