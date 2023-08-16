@@ -1,0 +1,117 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-front-axle-parts-two-wheel-drive.png" width="1200" height="542" usemap="#case-image-map">
+  <!-- https://www.brokentractor.com/c/case-backhoe/front-axle-parts-2wd-two-wheel-drive/front-axle-parts-spindle-hub-steering-cylinder-beam-kin-pin-kit-580k-580l-580m/ -->
+  <!-- This mapping can be generated at https://www.image-map.net/ -->
+  <map name="case-image-map">
+    <area target="" alt="1 - Front Axle Assembly - Two Wheel Drive" title="1 - Front Axle Assembly - Two Wheel Drive" href="" coords="458,64,15" shape="circle">
+    <area target="" alt="2 - King Pin Kit" title="2 - King Pin Kit" href="/p/case-backhoe-front-axle-king-pin-kit-two-wheel-drive-d103626-d103626/" coords="751,244,15" shape="circle">
+    <area target="" alt="3 - Spindle " title="3 - Spindle " href="#2" coords="613,508,15" shape="circle">
+    <area target="" alt="4 - Front Axle Pivot Pin" title="4 - Front Axle Pivot Pin" href="/p/case-backhoe-front-axle-pivot-pin-d127445-d127445/" coords="691,37,14" shape="circle">
+    <area target="" alt="5 - Front Axle Pivot Bushing (Rear)" title="5 - Front Axle Pivot Bushing (Rear)" href="/p/case-backhoe-front-axle-pivot-bushing-rear-d137345-d137345/" coords="599,77,14" shape="circle">
+    <area target="" alt="6 - Front Axle Pivot Bushing (Front)" title="6 - Front Axle Pivot Bushing (Front)" href="/p/case-backhoe-front-axle-pivot-bushing-front-d138047-d138047/" coords="596,162,15" shape="circle">
+    <area target="" alt="7 - Power Steering Cylinder (2WD)" title="7 - Power Steering Cylinder (2WD)" href="#6" coords="463,251,14" shape="circle">
+    <area target="" alt="8 - Steering Link (From Cylinder to Spindle)" title="8 - Steering Link (From Cylinder to Spindle)" href="/p/case-backhoe-steering-link-from-cylinder-to-spindle-d123806-d123806/" coords="505,379,15" shape="circle">
+    <area target="" alt="9 - Steering Link Pin" title="9 - Steering Link Pin" href="/p/case-backhoe-front-axle-steering-link-pin-d150155-d150155/" coords="665,415,13" shape="circle">
+    <area target="" alt="9 - Steering Link Pin" title="9 - Steering Link Pin" href="/p/case-backhoe-front-axle-steering-link-pin-d150155-d150155/" coords="619,283,14" shape="circle">
+    <area target="" alt="10 - Snap Ring" title="10 - Snap Ring" href="/p/case-backhoe-steering-pin-snap-ring-643522-643522/" coords="602,477,14" shape="circle">
+    <area target="" alt="11 - Steering Pin Washer" title="11 - Steering Pin Washer" href="/p/case-backhoe-steering-pin-washer-87366-87366/" coords="599,447,14" shape="circle">
+    <area target="" alt="12 - Power Steering Cylinder Eyelet (Left Hand Thread) (2WD)" title="12 - Power Steering Cylinder Eyelet (Left Hand Thread) (2WD)" href="/p/case-power-steering-cylinder-eyelet-left-hand-thread-2wd-g106832-g106832/" coords="396,167,16" shape="circle">
+    <area target="" alt="13 - Power Steering Cylinder Eyelet (Right Hand Thread)(2WD)" title="13 - Power Steering Cylinder Eyelet (Right Hand Thread)(2WD)" href="/p/case-backhoe-power-steering-cylinder-eyelet-right-hand-thread-2wd-g106813-g106813/" coords="519,269,14" shape="circle">
+  </map>
+    <!-- <div id="refImg">
+
+    </div> -->
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
