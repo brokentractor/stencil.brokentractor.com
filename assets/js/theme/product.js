@@ -60,6 +60,7 @@ export default class Product extends PageManager {
         var coreprice = $('.productView-info-value.CorePrice').text();
         var startprice = $('.price.price--withoutTax').text();
 
+
         if (startprice == '$0.00') {
             $('.price.price--withoutTax').html('Call for Pricing');
             $('#pv-descriptionbox form').remove();
@@ -80,7 +81,7 @@ export default class Product extends PageManager {
             } else if (isNaN(startprice) == false) {
               newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
               startprice = startprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-              $('.price.price--withoutTax').html('$'+ newcprice);
+              $('.productView-price').append('<div>Total After Core Return'$'+ newcprice+'</div>');
               $('.productView-price').append('<div class="corecharge">Refundable Core Deposit: $'+ coreprice+'</div>');
               $('.productView-price').append('<hr class="totalLine"><div class="totalwithcore">Total: $'+ startprice+'</div>');
 
