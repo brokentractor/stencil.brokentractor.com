@@ -1,0 +1,114 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <div class="click-container">
+    <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+    <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580k-loader-pins-bushings-and-links.png" alt="" width="1200" height="450" usemap="#case-map">
+    <!-- https://www.brokentractor.com/c/case-backhoe/front-end-loader-pins-bushings-links-cylinders/580k-580-super-k-bucket/ -->
+    <!-- This mapping can be generated at https://www.image-map.net/ -->
+  <map name="case-map">
+    <area target="" alt="1 - Loader Lift Cylinder (New)" title="1 - Loader Lift Cylinder (New)" href="/p/case-backhoe-loader-lift-cylinder-new-110303a1-110303a1/" coords="507,280,18" shape="circle">
+    <area target="" alt="2 - Pin, Lower Bucket" title="2 - Pin, Lower Bucket" href="/p/case-backhoe-lower-loader-bucket-pin-d129256-d129256/" coords="842,206,19" shape="circle">
+    <area target="" alt="3 - Pin, Upper Loader Bucket" title="3 - Pin, Upper Loader Bucket" href="/p/case-580k-580sk-backhoe-upper-loader-bucket-pin-d129257-d129257/" coords="852,100,17" shape="circle">
+    <area target="" alt="4 - Pin, Tilt Cylinder Rod" title="4 - Pin, Tilt Cylinder Rod" href="/p/case-backhoe-pin-loader-bucket-tilt-cylinder-rod-d129279-d129279/" coords="780,264,17" shape="circle">
+    <area target="" alt="5 - Bushing, Loader Bucket" title="5 - Bushing, Loader Bucket" href="/p/case-backhoe-loader-bucket-bushing-d129264-d129264/" coords="652,25,20" shape="circle">
+    <area target="" alt="6 - Bushing, Loader Frame and Link" title="6 - Bushing, Loader Frame and Link" href="/p/case-backhoe-loader-frame-bushing-d129240-d129240/" coords="571,57,18" shape="circle">
+    <area target="" alt="6 - Bushing, Loader Frame and Link" title="6 - Bushing, Loader Frame and Link" href="/p/case-backhoe-loader-frame-bushing-d129240-d129240/" coords="755,221,19" shape="circle">
+    <area target="" alt="7 - Bushing, Bucket Link Pivot" title="7 - Bushing, Bucket Link Pivot" href="/p/case-backhoe-bushing-loader-bucket-link-pivot-d132076-d132076/" coords="397,142,18" shape="circle">
+    <area target="" alt="7 - Bushing, Bucket Link Pivot" title="7 - Bushing, Bucket Link Pivot" href="/p/case-backhoe-bushing-loader-bucket-link-pivot-d132076-d132076/" coords="719,320,19" shape="circle">
+    <area target="" alt="7 - Bushing, Bucket Link Pivot" title="7 - Bushing, Bucket Link Pivot" href="/p/case-backhoe-bushing-loader-bucket-link-pivot-d132076-d132076/" coords="460,31,18" shape="circle">
+    <area target="" alt="8 - Bushing, Loader Frame" title="8 - Bushing, Loader Frame" href="/p/case-backhoe-bushing-loader-frame-100696a1-100696a1/" coords="543,242,19" shape="circle">
+    <area target="" alt="8 - Bushing, Loader Frame" title="8 - Bushing, Loader Frame" href="/p/case-backhoe-bushing-loader-frame-100696a1-100696a1/" coords="675,374,18" shape="circle">
+    <area target="" alt="9 - Bushing, Loader Frame" title="9 - Bushing, Loader Frame" href="/p/case-backhoe-bushing-rear-loader-frame-d37392-d37392/" coords="341,301,19" shape="circle">
+    <area target="" alt="9 - Bushing, Loader Frame" title="9 - Bushing, Loader Frame" href="/p/case-backhoe-bushing-rear-loader-frame-d37392-d37392/" coords="463,427,19" shape="circle">
+    <area target="" alt="10 - Shaft, Main Frame" title="10 - Shaft, Main Frame" href="/p/case-backhoe-cross-shaft-main-loader-frame-182650a1-182650a1/" coords="452,346,19" shape="circle">
+    <area target="" alt="11 - Bushing, Loader Frame and Link" title="11 - Bushing, Loader Frame and Link" href="/p/case-backhoe-loader-frame-bushing-d129240-d129240/" coords="734,100,17" shape="circle">
+</map>
+  </div>
+
+<!-- Non-clickable reference ID auto loaded -->
+    <!-- <div id="refImg"></div> -->
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
