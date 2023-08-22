@@ -1,0 +1,116 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/idler-and-primary-shaft-case-580l-resize.png" width="1222" height="575" usemap="#case-image-map">
+  <!-- https://www.brokentractor.com/c/case-backhoe/carraro-transmission-parts-580l-580m-580-super-l-m/carraro-transmission-primary-idler-shaft-rebuild-kit-580l-580-super-l-570lxt/ -->
+  <!-- This mapping can be generated at https://www.image-map.net/ -->
+  <map name="case-image-map">
+    <area target="" alt="1" title="1" href="" coords="409,38,19" shape="circle">
+    <area target="" alt="2 - Circle Clip" title="2 - Circle Clip" href="/p/case-backhoe-transmission-circle-clip-a48041-a48041/" coords="453,44,18" shape="circle">
+    <area target="" alt="3 - Pinion Idler Gear, 27 Teeth" title="3 - Pinion Idler Gear, 27 Teeth" href="/p/case-backhoe-pinion-idler-gear-27-teeth-181186a1-181186a1/" coords="513,44,18" shape="circle">
+    <area target="" alt="4 - Reverse Idler Shaft" title="4 - Reverse Idler Shaft" href="/p/case-backhoe-reverse-idler-shaft-181181a1-181181a1/" coords="667,43,17" shape="circle">
+    <area target="" alt="5 - Pinion Idler Gear, 27 Teeth" title="5 - Pinion Idler Gear, 27 Teeth" href="/p/case-backhoe-pinion-idler-gear-27-teeth-181186a1-181186a1/" coords="792,44,19" shape="circle">
+    <area target="" alt="2 - Circle Clip" title="2 - Circle Clip" href="/p/case-backhoe-transmission-circle-clip-a48041-a48041/" coords="872,43,19" shape="circle">
+    <area target="" alt="1" title="1" href="" coords="933,42,17" shape="circle">
+    <area target="" alt="6" title="6" href="" coords="871,331,19" shape="circle">
+    <area target="" alt="7" title="7" href="" coords="811,331,19" shape="circle">
+    <area target="" alt="8" title="8" href="" coords="760,333,18" shape="circle">
+    <area target="" alt="9 - Third Gear 28 tooth" title="9 - Third Gear 28 tooth" href="/p/case-backhoe-third-gear-28-tooth-181188a1-181188a1/" coords="683,332,19" shape="circle">
+    <area target="" alt="10 - Fourth Gear, 39 Teeth" title="10 - Fourth Gear, 39 Teeth" href="/p/case-backhoe-fourth-gear-39-teeth-181187a1-181187a1/" coords="608,332,18" shape="circle">
+    <area target="" alt="11 - Primary Shaft" title="11 - Primary Shaft" href="#10" coords="435,333,19" shape="circle">
+  </map>
+    <!-- <div id="refImg">
+
+    </div> -->
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
