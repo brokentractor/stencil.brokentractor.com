@@ -22,26 +22,7 @@
 		    <script src="https://use.typekit.net/jsn3czo.js"></script>
         <script>try{Typekit.load({ async: false });}catch(e){}</script>
         <script src="{{cdn 'assets/modernizr-custom.js'}}"></script>
-        <script type="text/javascript">
 
-        // Block IP address script- By JavaScriptKit.com (http://www.javascriptkit.com)
-        // For this and over 400+ free scripts, visit JavaScript Kit- http://www.javascriptkit.com/
-        // This notice must stay intact for use.
-
-        //Enter list of banned ips, each separated with a comma:
-        var bannedips=["104.131.188.187, 167.71.168.69, 159.203.146.44, 41.211.35.20"]
-
-        var ip = '<!--#echo var="REMOTE_ADDR"-->'
-
-        var handleips=bannedips.join("|")
-        handleips=new RegExp(handleips, "i")
-
-        if (ip.search(handleips)!=-1){
-        alert("Your IP has been banned from this site. Redirecting...")
-        window.location.replace("http://www.google.com")
-        }
-
-        </script>
 
         {{{head.scripts}}}
         {{{head.rsslinks}}}
@@ -84,7 +65,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {{{snippet 'footer'}}}
         <script type="text/javascript">
         $(document).ready(function(e) {
-          $('img[usemap]').rwdImageMaps();
+          $('img.map').rwdImageMaps();
         });
         </script>
         <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=SFFDX5"></script>
