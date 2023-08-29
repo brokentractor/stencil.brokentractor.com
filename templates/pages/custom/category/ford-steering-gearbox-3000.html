@@ -1,0 +1,133 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/ford-power-steering-gearbox-parts.png" width="1481" height="688" usemap="#ford-image-map">
+  <!-- https://www.brokentractor.com/c/ford-new-holland-tractor/power-steering-gearbox-parts/shaft-rebuild-kit-2000-3000-2600-3600-4000su/ -->
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="ford-image-map">
+  <area target="" alt="1 - Front Axle Shaft Assy" title="1 - Front Axle Shaft Assy" href="#1" coords="551,200,18" shape="circle">
+  <area target="" alt="1 - Steering Wheel" title="1 - Steering Wheel" href="/p/ford-tractor-steering-wheel-d6nn3600b-d6nn3600b-1/" coords="468,84,20" shape="circle">
+  <area target="" alt="2 - Steering Wheel Nut" title="2 - Steering Wheel Nut" href="/p/ford-tractor-steering-wheel-nut-d5nn3n602a-d5nn3n602a-1/" coords="358,63,19" shape="circle">
+  <area target="" alt="3 - Steering Column Grommet" title="3 - Steering Column Grommet" href="/p/ford-tractor-steering-column-dash-grommet-d2nn3a566b-d2nn3a566b/" coords="441,131,17" shape="circle">
+  <area target="" alt="4 - Steering Column Bushing" title="4 - Steering Column Bushing" href="/p/ford-tractor-steering-column-bushing-d5nn3517a-d5nn3517a/" coords="468,209,16" shape="circle">
+  <area target="" alt="5 - Gearbox Upper Seal" title="5 - Gearbox Upper Seal" href="/p/ford-tractor-power-steering-gearbox-upper-seal-d5nn3n632a-d5nn3n632a/" coords="631,344,18" shape="circle">
+  <area target="" alt="7 - Steering Shaft Nut" title="7 - Steering Shaft Nut" href="/p/ford-tractor-power-steering-shaft-nut-c5nn3707a-c5nn3707a/" coords="591,428,15" shape="circle">
+  <area target="" alt="8 - Spring Washer" title="8 - Spring Washer" href="/p/ford-tractor-power-steering-gearbox-spring-washer-310867-310867/" coords="631,438,15" shape="circle">
+  <area target="" alt="9 - Bearing and Race Set" title="9 - Bearing and Race Set" href="/p/ford-tractor-bearing-and-race-set-power-steering-gearbox-la33586a-la33586a/" coords="608,480,17" shape="circle">
+  <area target="" alt="10 - Power Steering Control Valve Assembly" title="10 - Power Steering Control Valve Assembly" href="/p/ford-tractor-power-steering-control-valve-assembly-c5nn3a730b-c5nn3a730b/" coords="512,590,18" shape="circle">
+  <area target="" alt="6 - O-Ring" title="6 - O-Ring" href="/p/ford-tractor-steering-gearbox-o-ring-87150s94-87150s94/" coords="614,386,18" shape="circle">
+  <area target="" alt="11 - O-Ring" title="11 - O-Ring" href="/p/ford-tractor-steering-gearbox-o-ring-87150s94-87150s94/" coords="149,247,17" shape="circle">
+  <area target="" alt="12 - Lower Steering Adapter Seal" title="12 - Lower Steering Adapter Seal" href="/p/ford-tractor-steering-gearbox-lower-steering-adapter-seal-c5nn3n739a-c5nn3n739a/" coords="52,293,19" shape="circle">
+  <area target="" alt="13 - Steering Adapter Housing" title="13 - Steering Adapter Housing" href="/p/ford-tractor-steering-adapter-housing-d9nn3n748aa-d9nn3n748aa/" coords="69,381,16" shape="circle">
+  <area target="" alt="9 - Bearing and Race Set" title="9 - Bearing and Race Set" href="/p/ford-tractor-bearing-and-race-set-power-steering-gearbox-la33586a-la33586a/" coords="135,208,18" shape="circle">
+  <area target="" alt="14 - Upper Bearing (In Steering Adapter)" title="14 - Upper Bearing (In Steering Adapter)" href="/p/ford-tractor-upper-steering-bearing-c5nn3n657a-c5nn3n657a/" coords="109,412,15" shape="circle">
+  <area target="" alt="15 - Steering Nut and Shaft Assembly" title="15 - Steering Nut and Shaft Assembly" href="/p/ford-tractor-power-steering-nut-and-shaft-assembly-d6nn3a710a-d6nn3a710a/" coords="341,525,21" shape="circle">
+  <area target="" alt="16 - Lower Steering Bearing" title="16 - Lower Steering Bearing" href="/p/ford-tractor-power-steering-gearbox-lower-bearing-86512848-86512848/" coords="366,585,23" shape="circle">
+  <area target="" alt="17 - O-Ring For Steering Side Shaft Cover" title="17 - O-Ring For Steering Side Shaft Cover" href="/p/ford-tractor-steering-side-shaft-cover-o-ring-87073s94-87073s94/" coords="730,46,21" shape="circle">
+  <area target="" alt="18 - Steering Side Gear (Single) (5-Teeth)" title="18 - Steering Side Gear (Single) (5-Teeth)" href="/p/ford-tractor-steering-side-5-tooth-single-gear-c7nn3n575a-c7nn3n575a/" coords="890,84,21" shape="circle">
+  <area target="" alt="19 - Steering Sector Seal (0.160&quot; Thick)" title="19 - Steering Sector Seal (0.160&quot; Thick)" href="/p/ford-tractor-sector-shaft-seal-c5nn3c615a-c5nn3c615a/" coords="809,281,21" shape="circle">
+  <area target="" alt="20 - Felt Dust Seal" title="20 - Felt Dust Seal" href="/p/ford-tractor-steering-sector-felt-dust-seal-c5nn3586a-c5nn3586a-1/" coords="758,264,22" shape="circle">
+  <area target="" alt="21 - Steering Gearbox Arm" title="21 - Steering Gearbox Arm" href="/p/ford-tractor-steering-gearbox-arm-c5nn3590f-c5nn3590f/" coords="692,326,21" shape="circle">
+  <area target="" alt="22 - Steering Side Gear (Double)" title="22 - Steering Side Gear (Double)" href="#21" coords="1155,485,20" shape="circle">
+  <area target="" alt="19 - Steering Sector Seal (0.160&quot; Thick)" title="19 - Steering Sector Seal (0.160&quot; Thick)" href="/p/ford-tractor-sector-shaft-seal-c5nn3c615a-c5nn3c615a/" coords="1247,327,16" shape="circle">
+  <area target="" alt="20 - Felt Dust Seal" title="20 - Felt Dust Seal" href="/p/ford-tractor-steering-sector-felt-dust-seal-c5nn3586a-c5nn3586a-1/" coords="1293,335,15" shape="circle">
+  <area target="" alt="21 - Steering Gearbox Arm" title="21 - Steering Gearbox Arm" href="/p/ford-tractor-steering-gearbox-arm-c5nn3590f-c5nn3590f/" coords="1344,340,15" shape="circle">
+  <area target="" alt="17 - O-Ring For Steering Side Shaft Cover" title="17 - O-Ring For Steering Side Shaft Cover" href="/p/ford-tractor-steering-side-shaft-cover-o-ring-87073s94-87073s94/" coords="1349,519,19" shape="circle">
+</map>
+
+    <!-- <div id="refImg">
+
+    </div> -->
+    <!-- <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+    <div class="commonninja_component pid-1df55403-f450-4a96-83b9-cb3bd9ae019a"></div> -->
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
