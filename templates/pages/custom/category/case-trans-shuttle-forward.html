@@ -1,0 +1,118 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-backhoe-shuttle-and-transmission/case-backhoe-power-shuttle-and-parts/case-backhoe-shuttle-forward-clutch/" width="1375" height="519" usemap="#case-image-map">
+  <!-- https://www.brokentractor.com/c/case-backhoe/carraro-transmission-parts-580l-580m-580-super-l-m/carraro-transmission-secondary-shaft-rebuild-kit-580l-580-super-l-570lxt/ -->
+  <!-- This mapping can be generated at https://www.image-map.net/ -->
+  <map name="case-image-map">
+   <area target="" alt="1 - Shuttle Drive Gear and Shaft Assembly" title="1 - Shuttle Drive Gear and Shaft Assembly" href="/p/case-backhoe-shuttle-drive-gear-and-shaft-assembly-d70666-d70666/" coords="299,92,17" shape="circle">
+   <area target="" alt="2 - Sealing Ring" title="2 - Sealing Ring" href="/p/case-backhoe-shuttle-shaft-sealing-ring-d50080-d50080/" coords="470,107,18" shape="circle">
+   <area target="" alt="4 - Power Shuttle Clutch Hub" title="4 - Power Shuttle Clutch Hub" href="/p/case-backhoe-power-shuttle-clutch-hub-d50050-d50050/" coords="792,80,21" shape="circle">
+   <area target="" alt="5 - Retaining Ring" title="5 - Retaining Ring" href="/p/case-backhoe-shuttle-clutch-hub-retaining-ring-d50049-d50049/" coords="854,101,19" shape="circle">
+   <area target="" alt="6 - End Plate" title="6 - End Plate" href="/p/case-backhoe-transmission-shuttle-forward-clutch-end-plate-d50084-d50084/" coords="95,469,20" shape="circle">
+   <area target="" alt="7 - Forward Steel Disc" title="7 - Forward Steel Disc" href="/p/case-backhoe-forward-steel-disc-6-used-per-machine-d50083-d50083/" coords="476,469,20" shape="circle">
+   <area target="" alt="8 - Forward Friction Disc" title="8 - Forward Friction Disc" href="/p/case-backhoe-power-shuttle-forward-friction-disc-7-used-per-machine-d70672-d70672/" coords="517,462,20" shape="circle">
+   <area target="" alt="9 - Front Pressure Plate" title="9 - Front Pressure Plate" href="/p/case-backhoe-shuttle-forward-clutch-front-pressure-plate-d50081-d50081/" coords="619,467,17" shape="circle">
+   <area target="" alt="10 - Belleville Washer" title="10 - Belleville Washer" href="/p/case-backhoe-power-shuttle-belleville-washer-d50047-d50047/" coords="709,463,19" shape="circle">
+   <area target="" alt="11 - Piston Ring" title="11 - Piston Ring" href="/p/case-backhoe-power-shuttle-piston-ring-d50078-d50078/" coords="773,431,18" shape="circle">
+   <area target="" alt="12 - Outer Piston Sealing Ring" title="12 - Outer Piston Sealing Ring" href="/p/case-backhoe-power-shuttle-outer-piston-sealing-ring-d50077-d50077/" coords="837,446,22" shape="circle">
+   <area target="" alt="13 - Forward Clutch Piston" title="13 - Forward Clutch Piston" href="/p/case-backhoe-power-shuttle-forward-clutch-piston-d70670-d70670/" coords="916,449,19" shape="circle">
+   <area target="" alt="14 - Inner Piston Sealing Ring" title="14 - Inner Piston Sealing Ring" href="/p/case-backhoe-power-shuttle-inner-piston-sealing-ring-d50079-d50079/" coords="962,408,18" shape="circle">
+   <area target="" alt="15 - Power Shuttle Cylinder" title="15 - Power Shuttle Cylinder" href="/p/case-backhoe-power-shuttle-cylinder-d50075-d50075/" coords="1032,467,20" shape="circle">
+   <area target="" alt="17 - Bearing" title="17 - Bearing" href="/p/case-backhoe-power-shuttle-shaft-bearing-d50044-d50044/" coords="1244,423,18" shape="circle">
+  </map>
+    <!-- <div id="refImg">
+
+    </div> -->
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <!-- <div class="toolbar">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
+    </div> -->
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
