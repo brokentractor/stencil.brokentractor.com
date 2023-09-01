@@ -1,0 +1,81 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-track-adj-750j.png" width="1200" height="392" usemap="#jd-image-map">
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="jd-image-map">
+  <area target="" alt="1 - Track Adjuster &amp; Recoil Spring" title="1 - Track Adjuster &amp; Recoil Spring" href="#1" coords="506,35,18" shape="circle">
+    <area target="" alt="2 - Recoil Spring" title="2 - Recoil Spring" href="#2" coords="426,117,18" shape="circle">
+    <area target="" alt="3 - Recoil Spring Cover" title="3 - Recoil Spring Cover" href="#2" coords="705,90,18" shape="circle">
+    <area target="" alt="4 - Track Adjuster Seal Kit" title="4 - Track Adjuster Seal Kit" href="#3" coords="488,217,16" shape="circle">
+    <area target="" alt="6 - Wear Plate" title="6 - Wear Plate" href="/p/john-deere-dozer-wear-plate-at277938-at277938/" coords="573,345,17" shape="circle">
+    <area target="" alt="7 - Wear Plate" title="7 - Wear Plate" href="/p/john-deere-dozer-wear-plate-t250445-t250445/" coords="684,306,17" shape="circle">
+    <area target="" alt="8 - Shim" title="8 - Shim" href="/p/john-deere-750j-750k-850j-850k-shim-t204101-t204101/" coords="680,351,17" shape="circle">
+    <area target="" alt="9 - Wear Plate" title="9 - Wear Plate" href="/p/john-deere-dozer-wear-plate-at226968-at226968/" coords="737,356,17" shape="circle">
+    <area target="" alt="11 - Washer" title="11 - Washer" href="/p/john-deere-dozer-washer-t204320-t204320/" coords="623,262,18" shape="circle">
+    <area target="" alt="12 - Bushing, Spring" title="12 - Bushing, Spring" href="/p/john-deere-dozer-bushing-spring-at274298-at274298/" coords="571,306,15" shape="circle">
+</map>
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+
+
+{{/partial}}
+{{> layout/base}}
