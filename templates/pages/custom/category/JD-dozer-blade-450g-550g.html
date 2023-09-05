@@ -1,0 +1,116 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-blade-450g.png" width="1200" height="446" usemap="#jd-image-map">
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="jd-image-map">
+  <area target="" alt="1 - Pin, Main Center Blade (Early Style)" title="1 - Pin, Main Center Blade (Early Style)" href="/p/john-deere-dozer-early-style-main-center-blade-pin-t122600-t122600/" coords="1167,245,17" shape="circle">
+  <area target="" alt="2 - Bushing, Main Center (Early Style)" title="2 - Bushing, Main Center (Early Style)" href="/p/john-deere-early-style-main-center-blade-bushing-at157247-at157247/" coords="410,219,17" shape="circle">
+  <area target="" alt="3 - Spacer and Retainer" title="3 - Spacer and Retainer" href="#2" coords="398,260,17" shape="circle">
+  <area target="" alt="5 - Bushing, Blade Link" title="5 - Bushing, Blade Link" href="/p/john-deere-dozer-blade-link-bushing-450g-550g-650g-at157174-at157174/" coords="25,140,16" shape="circle">
+  <area target="" alt="6 - Pin (Angle / Tilt Cylinder)" title="6 - Pin (Angle / Tilt Cylinder)" href="/p/john-deere-dozer-angle-or-tilt-cylinder-pin-t104739-t104739/" coords="169,79,17" shape="circle">
+  <area target="" alt="7 - Pin (Pitch)" title="7 - Pin (Pitch)" href="/p/john-deere-dozer-blade-pitch-pin-at120388-at120388/" coords="254,72,19" shape="circle">
+  <area target="" alt="8 - Blade Pin (Lift Cylinder Rear)" title="8 - Blade Pin (Lift Cylinder Rear)" href="/p/john-deere-dozer-blade-lift-cylinder-rear-pin-at85792-at85792/" coords="652,221,18" shape="circle">
+  <area target="" alt="9 - Pin (Angle Cylinder Rear)" title="9 - Pin (Angle Cylinder Rear)" href="/p/john-deere-450g-550g-650g-dozer-angle-cylinder-rear-pin-at142432-at142432/" coords="850,371,18" shape="circle">
+  <area target="" alt="10 - Lift Cylinder Bushing (Tube End)" title="10 - Lift Cylinder Bushing (Tube End)" href="/p/john-deere-450g-550g-650g-blade-lift-cylinder-tube-end-bushing-r89683-r89683/" coords="660,44,19" shape="circle">
+  <area target="" alt="11 - Bushing (Lift Cylinder Front)" title="11 - Bushing (Lift Cylinder Front)" href="/p/john-deere-dozer-lift-cylinder-rod-bushing-r89940-r89940/" coords="841,23,17" shape="circle">
+  <area target="" alt="13 - Pin (Angle Cylinder Front)" title="13 - Pin (Angle Cylinder Front)" href="/p/john-deere-front-angle-cylinder-pin-t104741-t104741/" coords="432,67,18" shape="circle">
+  <area target="" alt="14 - Pin (Lift Cylinder Front)" title="14 - Pin (Lift Cylinder Front)" href="/p/john-deere-dozer-lift-cylinder-front-pin-at113692-at113692/" coords="700,194,17" shape="circle">
+  <area target="" alt="15 - Pin (C-Frame Rear)" title="15 - Pin (C-Frame Rear)" href="/p/john-deere-dozer-rear-c-frame-pin-t122576-t122576/" coords="652,336,20" shape="circle">
+  <area target="" alt="16 - Bushing and Seal" title="16 - Bushing and Seal" href="#15" coords="763,379,18" shape="circle">
+  <area target="" alt="17 - Angle Cylinder" title="17 - Angle Cylinder" href="/p/john-deere-dozer-blade-angle-cylinder-ah161770-ah161770-1/" coords="1130,56,37" shape="circle">
+  <area target="" alt="24 - Blade Face (104&quot; Blade) (2-Piece)" title="24 - 	Blade Face (104&quot; Blade) (2-Piece)" href="#17" coords="566,103,25" shape="circle">
+  <area target="" alt="30 - C-Frame" title="30 - C-Frame" href="/p/john-deere-dozer-blade-c-frame-at184571-at184571/" coords="431,414,18" shape="circle">
+  <area target="" alt="31 - Ball, Blade Pivot" title="31 - Ball, Blade Pivot" href="/p/john-deere-dozer-blade-pivot-ball-t147801-t147801/" coords="251,360,18" shape="circle">
+  <area target="" alt="33 - Socket Kit with Gussets" title="33 - Socket Kit with Gussets" href="/p/john-deere-dozer-blade-ball-socket-kit-with-weld-on-gussets-t180534-t180534/" coords="142,408,17" shape="circle">
+  <area target="" alt="34 - Blade Cap" title="34 - Blade Cap" href="/p/john-deere-dozer-blade-cap-t180535-t180535/" coords="180,424,18" shape="circle">
+  <area target="" alt="35 - Blade Cap Bolt" title="35 - Blade Cap Bolt" href="/p/john-deere-dozer-blade-cap-bolt-19m7963-19m7963/" coords="299,393,18" shape="circle">
+  <area target="" alt="17 - Angle Cylinder" title="17 - Angle Cylinder" href="/p/john-deere-dozer-blade-angle-cylinder-ah161770-ah161770-1/" coords="1037,388,37" shape="circle">
+</map>
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
