@@ -1,0 +1,105 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/international-dresser-dozer-final-drive-resize.png" width="1200" height="492" usemap="#jd-image-map">
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="jd-image-map">
+  <area target="" alt="1 - Pinion Seal" title="1 - Pinion Seal" href="/p/dresser-dozer-top-pinion-seal-621113c93-621113c93/" coords="233,102,19" shape="circle">
+  <area target="" alt="3 - Cup" title="3 - Cup" href="/p/dresser-dozer-final-drive-bearing-cup-13390d-13390d/" coords="285,93,17" shape="circle">
+  <area target="" alt="4 - Cone" title="4 - Cone" href="#3" coords="328,87,17" shape="circle">
+  <area target="" alt="6 - Cone" title="6 - Cone" href="#4" coords="511,47,18" shape="circle">
+  <area target="" alt="7 - Cup" title="7 - Cup" href="#6, 23" coords="552,37,17" shape="circle">
+  <area target="" alt="11 - Cup" title="11 - Cup" href="/p/dresser-final-drive-bearing-cup-race-622337c1-622337c1/" coords="796,52,17" shape="circle">
+  <area target="" alt="12 - Cone" title="12 - Cone" href="/p/dresser-dozer-bearing-cone-67190r91-67190r91/" coords="836,40,17" shape="circle">
+  <area target="" alt="14 - Seal" title="14 - Seal" href="/p/dresser-dozer-final-drive-seal-716720c91-716720c91/" coords="904,23,18" shape="circle">
+  <area target="" alt="22 - Cup" title="22 - Cup" href="/p/dresser-dozer-bearing-cup-622224c1-622224c1/" coords="482,212,17" shape="circle">
+  <area target="" alt="23 - Cone" title="23 - Cone" href="/p/dresser-dozer-final-drive-bearing-cone-622204c91-622204c91/" coords="465,322,18" shape="circle">
+  <area target="" alt="17 - Bull Gear" title="17 - Bull Gear" href="#14" coords="678,382,17" shape="circle">
+</map>
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
