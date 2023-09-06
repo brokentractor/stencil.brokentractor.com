@@ -79,6 +79,9 @@
     margin: 0 auto;
     text-align: center;
     width: 100%;
+    a {
+      color: blue;
+    }
 
     @include breakpoint("small") {
         width: grid-calc(10, $total-columns);
