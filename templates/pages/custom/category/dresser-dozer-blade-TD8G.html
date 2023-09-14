@@ -1,0 +1,116 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/dresser-dozer-blade-parts-main.png" width="1200" height="450" usemap="#jd-image-map">
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="jd-image-map">
+  <area target="" alt="1 - Main Center Mounting Pin" title="1 - Main Center Mounting Pin" href="/p/dresser-td8g-dozer-main-center-mounting-pin-1209088h1-1209088h1/" coords="684,52,16" shape="circle">
+   <area target="" alt="2 - Main Blade Pin" title="2 - Main Blade Pin" href="/p/dresser-dozer-main-blade-pin-620693c2-620693c2/" coords="445,249,16" shape="circle">
+   <area target="" alt="3 - Main Blade Bushing" title="3 - Main Blade Bushing" href="/p/dresser-dozer-main-blade-bushing-705734c1-705734c1/" coords="420,330,17" shape="circle">
+   <area target="" alt="4 - Blade Bushing" title="4 - Blade Bushing" href="/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/" coords="819,113,16" shape="circle">
+   <area target="" alt="5 - U-Frame Bushing" title="5 - U-Frame Bushing" href="/p/dresser-dozer-u-frame-bushing-620665c1-620665c1/" coords="787,95,15" shape="circle">
+   <area target="" alt="6 - Cylinder Mount Pin" title="6 - Cylinder Mount Pin" href="/p/dresser-dozer-cylinder-mount-pin-645351c1-645351c1/" coords="899,140,16" shape="circle">
+   <area target="" alt="7 - Angle Cylinder Pin" title="7 - Angle Cylinder Pin" href="/p/dresser-dozer-angle-cylinder-pin-734761c1-734761c1/" coords="577,64,17" shape="circle">
+   <area target="" alt="7 - Angle Cylinder Pin" title="7 - Angle Cylinder Pin" href="/p/dresser-dozer-angle-cylinder-pin-734761c1-734761c1/" coords="747,233,17" shape="circle">
+   <area target="" alt="6 - Cylinder Mount Pin" title="6 - Cylinder Mount Pin" href="/p/dresser-dozer-cylinder-mount-pin-645351c1-645351c1/" coords="789,35,17" shape="circle">
+   <area target="" alt="5 - U-Frame Bushing" title="5 - U-Frame Bushing" href="/p/dresser-dozer-u-frame-bushing-620665c1-620665c1/" coords="884,174,15" shape="circle">
+   <area target="" alt="8 - Blade Mount Pin" title="8 - Blade Mount Pin" href="/p/dresser-dozer-blade-mount-pin-620873c2-620873c2/" coords="858,349,16" shape="circle">
+   <area target="" alt="8 - Blade Mount Pin" title="8 - Blade Mount Pin" href="/p/dresser-dozer-blade-mount-pin-620873c2-620873c2/" coords="756,326,16" shape="circle">
+   <area target="" alt="10 - Lower Retainer" title="10 - Lower Retainer" href="/p/dresser-dozer-lower-retainer-646670c1-646670c1/" coords="496,309,15" shape="circle">
+   <area target="" alt="11 - Upper Retainer" title="11 - Upper Retainer" href="/p/dresser-dozer-upper-blade-retainer-705760c1-705760c1/" coords="341,331,17" shape="circle">
+   <area target="" alt="11 - Upper Retainer" title="11 - Upper Retainer" href="/p/dresser-dozer-upper-blade-retainer-705760c1-705760c1/" coords="536,255,17" shape="circle">
+   <area target="" alt="12 - Blade Angle Cylinder" title="12 - Blade Angle Cylinder" href="/p/dresser-dozer-blade-angle-cylinder-620630c92-620630c92/" coords="761,290,16" shape="circle">
+   <area target="" alt="12 - Blade Angle Cylinder" title="12 - Blade Angle Cylinder" href="/p/dresser-dozer-blade-angle-cylinder-620630c92-620630c92/" coords="594,126,15" shape="circle">
+   <area target="" alt="4 - Blade Bushing" title="4 - Blade Bushing" href="/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/" coords="911,341,17" shape="circle">
+   <area target="" alt="4 - Blade Bushing" title="4 - Blade Bushing" href="/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/" coords="645,380,15" shape="circle">
+   <area target="" alt="4 - Blade Bushing" title="4 - Blade Bushing" href="/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/" coords="556,289,16" shape="circle">
+   <area target="" alt="3 - Main Blade Bushing" title="3 - Main Blade Bushing" href="/p/dresser-dozer-main-blade-bushing-705734c1-705734c1/" coords="536,420,16" shape="circle">
+   <area target="" alt="6 - Cylinder Mount Pin" title="6 - Cylinder Mount Pin" href="/p/dresser-dozer-cylinder-mount-pin-645351c1-645351c1/" coords="639,314,15" shape="circle">
+</map>
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}

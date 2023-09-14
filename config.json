@@ -1,6 +1,6 @@
 {
   "name": "Broken Tractor 7.09.20 + Bolt + Shopper Dashboard + SSO @ 12/1/21 15:22",
-  "version": "1.9.296",
+  "version": "1.9.297",
   "meta": {
     "price": 0,
     "documentation_url": "https://support.bigcommerce.com/articles/Public/Cornerstone-Theme-Manual",
@@ -55,7 +55,7 @@
     "productpage_reviews_count": 9,
     "productpage_related_products_count": 10,
     "productpage_similar_by_views_count": 10,
-    "categorypage_products_per_page": 100,
+    "categorypage_products_per_page": 10000,
     "shop_by_price_visible": true,
     "brandpage_products_per_page": 12,
     "searchpage_products_per_page": 12,
