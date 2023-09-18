@@ -1,0 +1,102 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+
+{{{snippet 'categories'}}}
+<div class="page">
+  <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-stabilizer-pins-and-pads-resize.png" width="1200" height="448" usemap="#jd-image-map">
+<!-- This mapping can be generated at https://www.image-map.net/ -->
+<map name="jd-image-map">
+  <area target="" alt="1 - Stabilizer Pad (Cleat)" title="1 - Stabilizer Pad (Cleat)" href="/p/john-deere-backhoe-metal-cleat-stabilizer-pad-t126867-t126867/" coords="175,223,16" shape="circle">
+   <area target="" alt="2 - Stabilizer Pad (Reversible)" title="2 - Stabilizer Pad (Reversible)" href="/p/john-deere-backhoe-reversible-stabilizer-pad-t166258-t166258/" coords="524,327,16" shape="circle">
+   <area target="" alt="3 - Rubber Pad, Fits Reversible Cleat" title="3 - Rubber Pad, Fits Reversible Cleat" href="/p/john-deere-backhoe-rubber-reversible-stabilizer-pad-at195669-at195669/" coords="516,388,17" shape="circle">
+   <area target="" alt="4 - Pin, Stabilizer Pad to Leg" title="4 - Pin, Stabilizer Pad to Leg" href="#3" coords="347,127,17" shape="circle">
+   <area target="" alt="5 - Pin, Stabilizer Cylinder Rod to Leg" title="5 - Pin, Stabilizer Cylinder Rod to Leg" href="/p/john-deere-backhoe-stabilizer-cylinder-rod-to-leg-pin-t127437-t127437/" coords="616,299,17" shape="circle">
+   <area target="" alt="6 - Pin, Stabilizer Cylinder Tube to Frame" title="6 - Pin, Stabilizer Cylinder Tube to Frame" href="/p/john-deere-backhoe-stabilizer-cylinder-tube-to-frame-pin-t68296-t68296/" coords="947,252,17" shape="circle">
+   <area target="" alt="7 - Pin, Stabilizer Leg to Frame" title="7 - Pin, Stabilizer Leg to Frame" href="#6" coords="947,342,17" shape="circle">
+   <area target="" alt="8 - Stabilizer Cylinder(Left Hand When Operating Backhoe)" title="8 - Stabilizer Cylinder(Left Hand When Operating Backhoe)" href="#7" coords="639,47,17" shape="circle">
+</map>
+
+
+    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
+    </div>
+
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+            <div id="slidetableouter">
+                <table id="slidetable">
+                    <tr id="tableheaders">
+                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn image">Image</td>
+                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription">Description</td>
+                        <td class="thcell pn static sku">Part #</td>
+                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn vd">Product Details</td>
+                        <td class="thcell pn atc">Add to Cart</td>
+                    </tr>
+                {{> components/category/product-listing}}
+                </table>
+            </div>
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+    <div id="categoryDescription">
+      {{#if category.description}}
+        {{{category.description}}}
+      {{/if}}
+    </div>
+    <style>
+
+    </style>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("slidetable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("FitsModel")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+{{/partial}}
+{{> layout/base}}
