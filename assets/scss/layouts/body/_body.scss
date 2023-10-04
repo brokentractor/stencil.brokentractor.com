@@ -240,3 +240,15 @@ span.large-only {
   display: flex;
   margin: 0px auto;
 }
+
+.slick-prev:before {
+  content: "<";
+  color: red;
+  font-size: 30px;
+}
+
+.slick-next:before {
+  content: ">";
+  color: red;
+  font-size: 30px;
+}
