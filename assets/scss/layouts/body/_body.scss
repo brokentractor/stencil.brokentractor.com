@@ -243,12 +243,16 @@ span.large-only {
 
 .slick-prev:before {
   content: "<";
-  color: red;
+  color: #000;
   font-size: 30px;
+  margin
 }
 
 .slick-next:before {
   content: ">";
-  color: red;
+  color: #000;
   font-size: 30px;
+}
+.slick-prev, .slick-next {
+  margin-top: 0px;
 }
