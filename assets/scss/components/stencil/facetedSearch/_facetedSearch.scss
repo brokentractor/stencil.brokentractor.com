@@ -84,7 +84,7 @@ div#nxt-fwrap {
         .fa-times {
             display: inline-block;
             color: #efb200;
-        }        
+        }
     }
 }
 span.sorticons {
@@ -98,7 +98,7 @@ span.sorticons {
     margin-right: 0px;
     margin-left: 0px;
     width: calc(50% - 7px);
-    
+
     z-index: 200;
 
     @include breakpoint("medium") {
@@ -115,7 +115,7 @@ span.sorticons {
 
 #sortitems {
     margin: 0px;
-    position: absolute;    
+    position: absolute;
     background: #fff;
     border: 2px #666 solid;
     margin-top: -2px;
@@ -130,7 +130,7 @@ span.sorticons {
         width: 270px;
         border-top: 0px;
         right: 0px;
-        margin-top: 0px;                
+        margin-top: 0px;
     }
 }
 
@@ -236,7 +236,7 @@ div#searchactions {
 }
 div#facetedSearch-navList {
     position: absolute;
-    width: calc(100% - 22px);    
+    width: calc(100% - 22px);
     z-index: 99;
     background: #fff;
     left: 11px;
@@ -271,7 +271,7 @@ span.checkicon {
         z-index: 99;
     }
 }
-.is-selected span.checkicon { 
+.is-selected span.checkicon {
     border-color: #fff;
 }
 #facetedSearch-navList--category .navList-action--checkbox.is-selected::after {
@@ -280,6 +280,11 @@ span.checkicon {
 .pv-description.pv-btmbox p {
     text-align: left !important;
     margin-bottom: 2px;
+
+    a {
+      color: #4287f5;
+      text-decoration: underline;
+    }
 }
 a.facetedSearch-clearLink {
     display: none;
