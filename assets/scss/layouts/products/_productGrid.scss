@@ -267,6 +267,11 @@ table#slidetable {
                     display: block;
                     margin: 0 auto;
                     padding: 2px;
+                    @include breakpoint("small") {
+                        max-width: none;
+                        max-height: none;
+                        width: 100%;
+                    }
 
                 }
 
