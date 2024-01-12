@@ -1,3 +1,4 @@
+const TerserPlugin = require('terser-webpack-plugin'); // Ensure this is at the top of the file
 var CleanWebpackPlugin = require('clean-webpack-plugin'),
     config = require('./config.json'),
     LodashModuleReplacementPlugin = require('lodash-webpack-plugin'),
@@ -63,6 +64,22 @@ module.exports = {
         //     minChunks: 2,
         // }),
     ],
+    optimization: {
+    minimize: true,
+    // Optionally specify a minimizer. Below is just an example using TerserPlugin.
+    // You can omit this part if you're okay with the default minimizer.
+    minimizer: [
+        new TerserPlugin({
+            terserOptions: {
+                format: {
+                    comments: false,
+                },
+            },
+            extractComments: false,
+        }),
+    ],
+},
+
     resolve: {
         alias: {
             'async': path.resolve(__dirname, 'node_modules/async/dist/async.min.js'),
