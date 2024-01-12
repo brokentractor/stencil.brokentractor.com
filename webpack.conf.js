@@ -73,7 +73,7 @@ module.exports = {
             'pace': path.resolve(__dirname, 'node_modules/pace/pace.min.js'),
             'slick-carousel': path.resolve(__dirname, 'node_modules/slick-carousel/slick/slick.min.js'),
             sweetalert2: path.resolve(__dirname, 'node_modules/sweetalert2/dist/sweetalert2.min.js'),
-        },
+        }
     },
     watch: false,
 };

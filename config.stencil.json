@@ -5,7 +5,6 @@
     "page": {},
     "product": {}
   },
-  "apiHost": "https://api.bigcommerce.com",
   "normalStoreUrl": "https://www.brokentractor.com",
   "port": 3000
 }
