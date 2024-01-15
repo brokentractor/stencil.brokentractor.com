@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+var webpackConfig = require('./webpack.conf.js');
 /**
  * Watch options for the core watcher
  * @type {{files: string[], ignored: string[]}}
@@ -23,7 +25,7 @@ var watchOptions = {
  */
 function development() {
     var webpack = require('webpack');
-var webpackConfig = require('./webpack.conf.js');
+    var webpackConfig = require('./webpack.conf.js');
     // Rebuild the bundle once at bootup
     webpack(webpackConfig).watch({}, err => {
         if (err) {
@@ -39,20 +41,14 @@ var webpackConfig = require('./webpack.conf.js');
  */
 function production() {
     var webpack = require('webpack');
-var webpackConfig = require('./webpack.conf.js');
+    var webpackConfig = require('./webpack.conf.js');
 
     webpackConfig.watch = false;
     webpackConfig.devtool = false;
     webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({
         minimize: true,
     }));
-    /* webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        comments: false,
-        compress: {
-            warnings: true,
-        },
-        sourceMap: false, // Toggle to turn on source maps.
-    })); */
+
 
     webpack(webpackConfig).run(err => {
         if (err) {
