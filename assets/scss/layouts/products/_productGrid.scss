@@ -146,6 +146,17 @@ table#slidetable td, table#slidetable th {
     text-transform: uppercase;
     cursor: pointer;
 }
+.listview-style {
+    background: #ffbe00;
+    display: inline-block;
+    width: 120px;
+    font-family: "industry";
+    font-weight: 600;
+    height: 30px;
+    line-height: 33px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
 
 tr.productrow:nth-child(odd) {
     background: #eee;
