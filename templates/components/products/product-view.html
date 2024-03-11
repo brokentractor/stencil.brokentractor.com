@@ -188,8 +188,13 @@
                             {{#if schema}}
                                 <meta itemprop="ratingValue" content="{{product.rating}}">
                                 <meta itemprop="ratingCount" content="{{product.num_reviews}}">
-                                <meta itemprop="reviewCount" content="{{product.num_reviews}}">
+
+                                {{else}}
+                                    <meta itemprop="ratingValue" content="0">
+                                    <meta itemprop="ratingCount" content="0">
+
                             {{/if}}
+
                         {{/if}}
                         {{> components/products/ratings rating=product.rating}}
                         <span class="productView-reviewLink">
@@ -199,6 +204,8 @@
                                 </a>
                             {{else}}
                                 {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                                <meta itemprop="ratingValue" content="0">
+                                <meta itemprop="ratingCount" content="0">
                             {{/if}}
                         </span>
                     {{/if}}
