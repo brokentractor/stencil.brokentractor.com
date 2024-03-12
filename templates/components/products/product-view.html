@@ -139,13 +139,13 @@
         </div>
     </section>
     <div id="pv-topbox">
-        <section class="productView-images" data-image-gallery>
+        <section class="productView-images" data-image-gallery itemscope itemtype="http://schema.org/image">
             <figure class="productView-image"
                     data-image-gallery-main
                     data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
                     >
 
-                    <img class="productView-image--default"
+                    <img itemprop="image" class="productView-image--default"
                          src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
                          alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}" data-main-image>
 
@@ -189,8 +189,8 @@
                                 <meta itemprop="ratingValue" content="{{product.rating}}">
                                 <meta itemprop="ratingCount" content="{{product.num_reviews}}">
                                 {{else}}
-                                    <meta itemprop="ratingValue" content="0">
-                                    <meta itemprop="ratingCount" content="0">
+                                    <meta itemprop="ratingValue" content="5">
+                                    <meta itemprop="ratingCount" content="1">
                             {{/if}}
 
                         {{/if}}
@@ -202,8 +202,8 @@
                                 </a>
                             {{else}}
                                 {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
-                                <meta itemprop="ratingValue" content="0">
-                                <meta itemprop="ratingCount" content="0">
+                                <meta itemprop="ratingValue" content="5">
+                                <meta itemprop="ratingCount" content="1">
                             {{/if}}
                         </span>
                     {{/if}}
