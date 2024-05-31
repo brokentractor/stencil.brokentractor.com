@@ -7,9 +7,7 @@ import Review from './product/reviews';
 import collapsibleFactory from './common/collapsible';
 import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
-import {
-    classifyForm
-} from './common/form-utils';
+import { classifyForm } from './common/form-utils';
 
 export default class Product extends PageManager {
     constructor(context) {
@@ -55,38 +53,34 @@ export default class Product extends PageManager {
             return false;
         });
 
+        // Product price handling logic
         var fit = $('.productView-info-value.FitsModel').text();
         var dim = $('.productView-info-value.ProductDim').text();
         var coreprice = $('.productView-info-value.CorePrice').text();
         var startprice = $('.price.price--withoutTax').text();
 
-
-        if (startprice == '$0.00') {
+        if (startprice === '$0.00') {
             $('.price.price--withoutTax').html('Call for Pricing');
             $('#pv-descriptionbox form').remove();
-        } else if (coreprice > 0) {
-
-            console.log(startprice);
-            startprice = startprice.replace('$', '');
-            startprice = startprice.replace(',', '');
+        } else {
+            startprice = startprice.replace('$', '').replace(',', '');
             startprice = parseFloat(startprice).toFixed(2);
-            coreprice = parseFloat(coreprice).toFixed(2);
-            var newcprice = +startprice - +coreprice;
-            newcprice = parseFloat(newcprice).toFixed(2);
-            coreprice = coreprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            if (isNaN(startprice)) {
-              $('.productView-price').append('<div class="totalwithcore"></div>');
-              $('.productView-price').append('<div class="corecharge" style="display: none;"></div>');
 
-            } else if (isNaN(startprice) == false) {
-              newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-              startprice = startprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-              $('.price.price--withoutTax').html('$'+ newcprice);
-              $('.productView-price').append('<div class="corecharge">Refundable Core Deposit: $'+ coreprice+'</div>');
-              $('.productView-price').append('<hr class="totalLine"><div class="totalwithcore">Total: $'+ startprice+'</div>');
+            if (coreprice > 0 && startprice !== 'NaN') {
+                coreprice = coreprice.replace('$', '').replace(',', '');
+                coreprice = parseFloat(coreprice).toFixed(2);
 
+                var totalAfterCore = parseFloat(startprice - coreprice).toFixed(2);
+                totalAfterCore = totalAfterCore.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                coreprice = coreprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                startprice = startprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                $('.productView-price').append('<div class="corecharge">Refundable Core Deposit: -$' + coreprice + '</div>');
+                $('.productView-price').append('<hr class="totalLine"><div class="totalprice">Total After Core Return: $' + totalAfterCore + '</div>');
             }
         }
+
         $('#fittext').text(fit);
         $('#partdim-text').text(dim);
 
@@ -95,7 +89,6 @@ export default class Product extends PageManager {
 
     after(next) {
         this.productReviewHandler();
-
         next();
     }
 
