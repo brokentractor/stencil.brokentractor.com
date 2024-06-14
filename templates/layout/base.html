@@ -70,5 +70,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
         </script>
         <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=SFFDX5"></script>
+        <!-- Include Klevu JavaScript Library -->
+        <script src="https://js.klevu.com/core/v2/klevu.js"></script>
+
+        <!-- Include Quick Search Theme -->
+        <script src="https://js.klevu.com/theme/default/v2/quick-search.js"></script>
+
+        {{#if page_type '===' 'search'}}
+        <!-- Include Search Results Landing Page Theme -->
+        <script src="https://js.klevu.com/theme/default/v2/search-results-page.js"></script>
+        {{/if}}
+
+        {{#if page_type '===' 'category'}}
+        <!-- Include Category Page Theme -->
+        <script src="https://js.klevu.com/theme/default/v2/category-page.js"></script>
+        <script type="text/javascript">
+            var klevu_pageCategory = "{{#each breadcrumbs}}{{#unless @first}}{{name}}{{#unless @last}};{{/unless}}{{/unless}}{{/each}}";
+            sessionStorage.setItem("klevu_pageCategory", klevu_pageCategory);
+        </script>
+        {{/if}}
+        <!-- Initialise Klevu for your store -->
+        <script type="text/javascript">
+            klevu.interactive(function () {
+                var options = {
+                    url : {
+                        protocol: 'https:',
+                        queryParam: 'search_query',
+                        landing: '/search.php', // your BigCommerce Search Results Page
+                        search: 'https://uscs33v2.ksearchnet.com/cs/v2/search' // your Klevu APIv2 Search URL + endpoint path
+                    },
+                    search: {
+                        minChars: 0,
+                        searchBoxSelector: "#search_query_adv", // your BigCommerce Search Input
+                        apiKey: "klevu-171839235759717388" // your Klevu JS API Key
+                    },
+                    analytics: {
+                        apiKey: 'klevu-171839235759717388' // your Klevu JS API Key
+                    }
+                };
+                klevu(options);
+            });
+        </script>
     </body>
 </html>
