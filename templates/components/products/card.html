@@ -3,7 +3,7 @@
 
             <a href="{{url}}">
                 <img class="card-image lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
-                <span class="img-seedet">See Details</span>                
+                <span class="img-seedet">See Details</span>
             </a>
         <figcaption class="card-figcaption">
             <div class="card-figcaption-body">
@@ -16,11 +16,11 @@
         <h4 class="card-title">
              <a href="{{url}}">{{name}}</a>
         </h4>
-        {{#each custom_fields}}            
+        {{#each custom_fields}}
             <div class="grid-item {{{name}}}">
                 {{#if name '==' 'ListDescription'}}<strong>Description</strong>{{else if name '==' 'FitsModel'}}<strong>Fits Model</strong>{{else}}<strong>{{name}}</strong>{{/if}}
                 {{{value}}}
-            </div>            
+            </div>
         {{/each}}
         <div class="grid-item">
             <strong>Part #</strong>
@@ -31,7 +31,6 @@
             {{> components/products/price price=price}}
         </div>
 
-        <a href="{{add_to_cart_url}}" class="listatc" data-id="{{id}}" data-name="{{name}}" data-thumb="{{getImage image 'product' (cdn theme_settings.default_image_product)}}">Add To Cart</a> 
+        <a href="{{url}}" class="listatc" data-id="{{id}}" data-name="{{name}}">View Details</a>
     </div>
 </article>
- 
