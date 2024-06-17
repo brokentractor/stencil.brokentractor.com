@@ -258,3 +258,36 @@ span.large-only {
 .alertBox {
     display:inline-flex;
 }
+/* get rid of the kuClippedOne CSS */
+.kuSearchResultsPageContainer .kuResults ul li .kuName {
+    display: block !important;
+}
+
+.kuSearchResultsPageContainer .kuResults ul li .kuProdWrap .kuProdBottom {
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+}
+/* END get rid of the kuClippedOne CSS */
+
+/* align products */
+.kuSearchResultsPageContainer .kuResults ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.kuSearchResultsPageContainer .kuResults ul li .kuProdWrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+footer[data-block-id="ku_landing_result_item_footer"] {
+    flex: 1;
+}
+
+.kuProdBottom .kuPrice {
+    margin-top: auto;
+}
+
+/* END align products */
