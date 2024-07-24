@@ -11,8 +11,8 @@ import nod from './common/nod';
 function coreprices() {
     $('.productrow').each( function() {
         var coreprice = 0;
-        var startprice = $(this).find('.price.price--withoutTax').text();         
-        
+        var startprice = $(this).find('.price.price--withoutTax').text();
+
         if ($(this).find('.CorePrice').length > 0) {
             coreprice = $(this).find('.CorePrice').text();
         }
@@ -20,27 +20,27 @@ function coreprices() {
         if ($(this).find('.pvcol.FitsModel').length < 1) {
             $('<td class="pvcol FitsModel">&nbsp;</td>').insertAfter($(this).children('.pvcol.image'));
         }
-        
+
         if ($(this).find('.pvcol.ListDescription').length < 1) {
             $('<td class="pvcol ListDescription">&nbsp;</td>').insertAfter($(this).children('.pvcol.FitsModel'));
         }
-        
+
         if (startprice == '$0.00') {
             $(this).find('.price.price--withoutTax').html('Call for Pricing');
             $(this).find('.listatc').hide();
-        } else if (coreprice != '0') {                
+        } else if (coreprice != '0') {
             startprice = startprice.replace('$', '');
             startprice = startprice.replace(',', '');
-            startprice = parseFloat(startprice).toFixed(2);            
-            coreprice = parseFloat(coreprice).toFixed(2);                        
+            startprice = parseFloat(startprice).toFixed(2);
+            coreprice = parseFloat(coreprice).toFixed(2);
             var newcprice = +startprice - +coreprice;
             newcprice = parseFloat(newcprice).toFixed(2);
             newcprice = newcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            
+
             $(this).find('.price.price--withoutTax').html('$'+ newcprice);
             $(this).find('.price-section--withoutTax').append('<div class="corecharge">Core Charge: $'+ coreprice+'</div>');
         }
-        
+
     });
 
 }
@@ -49,7 +49,7 @@ $('#sort-toggle').click( function() {
     $(this).toggleClass('active');
     $('#sortitems').toggle();
     $('.toggleLink.is-open').removeClass('is-open');
-    $('.facetedSearch-navList.is-open').removeClass('is-open');    
+    $('.facetedSearch-navList.is-open').removeClass('is-open');
 });
 
 $('#sort').change( function() {
@@ -59,7 +59,7 @@ $('#sort').change( function() {
 
 $('.navList-action--checkbox').click( function() {
     $('.toggleLink.is-open').removeClass('is-open');
-    $('.facetedSearch-navList.is-open').removeClass('is-open');     
+    $('.facetedSearch-navList.is-open').removeClass('is-open');
 });
 
 $('.sortitem').click( function() {
@@ -220,14 +220,14 @@ export default class Search extends CatalogPage {
         });
 
 
-        
+
         if ($('.Additional.Information').text().length > 0) {
             $('.Additional.Information').show();
             $('.ListDetails').show();
             $('.productrow:not(:has(.Additional.Information))').each( function() {
                 $('<td class="filler"></td>').insertAfter($(this).find('.ListDescription'));
-            });                   
-        }       
+            });
+        }
 
     }
 
@@ -306,14 +306,14 @@ export default class Search extends CatalogPage {
 
             if ($('.is-selected').length > 0) {
                 $('#searchactions > .facetedSearch-refineFilters').remove();
-                $('.facetedSearch-refineFilters').clone().appendTo('#searchactions');            
-                $('.facetedSearch-refineFilters').show();     
+                $('.facetedSearch-refineFilters').clone().appendTo('#searchactions');
+                $('.facetedSearch-refineFilters').show();
             } else {
                 $('#searchactions > .facetedSearch-refineFilters').remove();
             }
             $('.toggleLink.is-open').removeClass('is-open');
-            $('.facetedSearch-navList.is-open').removeClass('is-open');   
-            
+            $('.facetedSearch-navList.is-open').removeClass('is-open');
+
 
             coreprices();
             $('html, body').animate({
@@ -352,3 +352,63 @@ export default class Search extends CatalogPage {
         return false;
     }
 }
+/* eslint-disable no-undef, no-unused-vars */
+
+// Hook into Klevu Events
+
+klevu.coreEvent.build({
+  name: "setRemoteConfigLandingOverride",
+  fire: function () {
+    if (
+      klevu.getSetting(
+        klevu,
+        "settings.flags.setRemoteConfigLanding.build",
+        false
+      )
+    ) {
+      return true;
+    }
+    return false;
+  },
+  maxCount: 150,
+  delay: 100
+});
+
+klevu.coreEvent.attach("setRemoteConfigLandingOverride", {
+  name: "attachRemoteConfigLandingOverride",
+  fire: function () {
+    klevu.search.landing.getScope().chains.template.events.add({
+      name: "updateLanding",
+      fire: function (data, scope) {
+        // oninput guarantee that function will be executed once per change
+        document.getElementById("klevu-landing-input")?.oninput = function (e) {
+          var elScope = klevu.search.landing.getScope().element;
+
+          // change search term for productList query
+          klevu.setObjectPath(
+            elScope.kScope.data,
+            "localOverrides.query.productList" + ".settings.query.term",
+            e.target.value
+          );
+
+          elScope.kScope.data = elScope.kObject.resetData(elScope.kElem);
+          // fire search event
+          klevu.event.fireChain(
+            elScope.kScope,
+            "chains.events.keyUp",
+            elScope,
+            elScope.kScope.data,
+            event
+          );
+        };
+      }
+    });
+
+    //power up landing
+    klevu({
+      powerUp: {
+        landing: true
+      }
+    });
+  }
+});
