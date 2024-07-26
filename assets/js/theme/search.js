@@ -357,58 +357,36 @@ export default class Search extends CatalogPage {
 // Hook into Klevu Events
 
 klevu.coreEvent.build({
-  name: "setRemoteConfigLandingOverride",
-  fire: function () {
-    if (
-      klevu.getSetting(
-        klevu,
-        "settings.flags.setRemoteConfigLanding.build",
-        false
-      )
-    ) {
-      return true;
-    }
-    return false;
-  },
-  maxCount: 150,
-  delay: 100
-});
+      name: "setRemoteConfigLandingOverride",
+      fire: function() {
+        return !!klevu.getSetting(klevu, "settings.flags.setRemoteConfigLanding.build", !1)
+      },
+      maxCount: 150,
+      delay: 100
+    }),
+    klevu.coreEvent.attach("setRemoteConfigLandingOverride", {
+      name: "attachRemoteConfigLandingOverride",
+      fire: function() {
+        klevu.search.landing.getScope().chains.template.events.add({
+          name: "updateLanding",
+          fire: function(e, t) {
 
-klevu.coreEvent.attach("setRemoteConfigLandingOverride", {
-  name: "attachRemoteConfigLandingOverride",
-  fire: function () {
-    klevu.search.landing.getScope().chains.template.events.add({
-      name: "updateLanding",
-      fire: function (data, scope) {
-        // oninput guarantee that function will be executed once per change
-        document.getElementById("klevu-landing-input")?.oninput = function (e) {
-          var elScope = klevu.search.landing.getScope().element;
+            var inputElement = document.getElementById("klevu-landing-input");
+            if (inputElement) {
+              inputElement.oninput = function(e) {
+                var t = klevu.search.landing.getScope().element;
+                klevu.setObjectPath(t.kScope.data, "localOverrides.query.productList.settings.query.term", e.target.value);
+                t.kScope.data = t.kObject.resetData(t.kElem);
+                klevu.event.fireChain(t.kScope, "chains.events.keyUp", t, t.kScope.data, e); // use 'e' instead of 'event'
+              }
+            }
 
-          // change search term for productList query
-          klevu.setObjectPath(
-            elScope.kScope.data,
-            "localOverrides.query.productList" + ".settings.query.term",
-            e.target.value
-          );
-
-          elScope.kScope.data = elScope.kObject.resetData(elScope.kElem);
-          // fire search event
-          klevu.event.fireChain(
-            elScope.kScope,
-            "chains.events.keyUp",
-            elScope,
-            elScope.kScope.data,
-            event
-          );
-        };
+          }
+        }),
+        klevu({
+          powerUp: {
+            landing: !0
+          }
+        })
       }
-    });
-
-    //power up landing
-    klevu({
-      powerUp: {
-        landing: true
-      }
-    });
-  }
-});
+    })
