@@ -77,8 +77,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script src="https://js.klevu.com/theme/default/v2/quick-search.js"></script>
 
         {{#if page_type '===' 'search'}}
-        <!-- Include Search Results Landing Page Theme -->
-        <script src="https://js.klevu.com/theme/default/v2/search-results-page.js"></script>
+        <style>
+            .footer:not(.klevuFinishLoading) {
+            display: none !important;
+        }
+        .klevuLanding{
+        min-height:1073px;
+        }
+       li.klevuProduct{
+           min-height:302px;
+       }
+       </style>
+<!-- Include Search Results Landing Page Theme -->
+<script src="https://js.klevu.com/theme/default/v2/search-results-page.js"></script>
+
+<script>
+    // 3000 is the number of milliseconds to wait for a response from Klevu before bringing back the footer automatically
+    const klevuBringBackFooter = setTimeout(klevuBringBackFooterTimeout, 3000);
+    function klevuBringBackFooterTimeout() {
+        klevuBringBackFooterFunction();
+        clearTimeout(klevuBringBackFooter);
+    }
+    function klevuBringBackFooterFunction() {
+        // Add selectors of all elements to be reinstated below. These should match the hidden
+        //  elements as targetted by CSS _without_ the :not() pseudo-selector
+        let hideFooterElements = document.querySelectorAll('.footer');
+        let hideFooterElementIndex = 0;
+        while (hideFooterElementIndex < hideFooterElements.length) {
+            hideFooterElements[hideFooterElementIndex].classList.add("klevuFinishLoading");
+            hideFooterElementIndex++;
+        }
+    }
+    // Ensure elements are reinstated after a response from Klevu
+    window._klvWebhook = window._klvWebhook || [];
+    window._klvWebhook.push({
+        object: "search",
+        scope: "full_page",
+        name: "chains.response.success",
+        action: "after",
+        fire: function(data, scope) {
+            clearTimeout(klevuBringBackFooter);
+            klevuBringBackFooterFunction();
+        }
+    });
+    window._klvWebhook.push({
+        object: "search",
+        scope: "full_page",
+        name: "chains.response.fail",
+        action: "after",
+        fire: function(data,scope) {
+           clearTimeout(klevuBringBackFooter);
+            klevuBringBackFooterFunction();
+        }
+    });
+</script>
         {{/if}}
 
         {{#if page_type '===' 'category'}}
