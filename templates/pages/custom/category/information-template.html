@@ -1,0 +1,37 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "pagename"}}listpage lev1{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+<div class="cat-subcats lev-1">
+    <ul>
+        {{#each category.products}}
+        <li class="subcat">
+            <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">
+                <div class="subimgwrap">
+                    <img  src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                </div>
+                <div>
+                    <span>{{name}}</span>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+{{{snippet 'categories'}}}
+
+
+{{/partial}}
+{{> layout/base}}
