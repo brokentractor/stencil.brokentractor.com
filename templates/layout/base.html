@@ -11,7 +11,17 @@
         <script src="{{cdn 'assets/js/fa-solid.min.js'}}"></script>
         <script src="{{cdn 'assets/js/fontawesome.min.js'}}"></script>
 
-        <title>{{ head.title }}</title>
+        <title>
+          {{#if product}}
+            {{product.name}} | {{settings.store_name}}
+          {{else if category}}
+            {{category.name}} | {{settings.store_name}}
+          {{else if brand}}
+            {{brand.name}} | {{settings.store_name}}
+          {{else}}
+            {{head.title}}
+          {{/if}}
+        </title>
         {{{ head.meta_tags }}}
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
