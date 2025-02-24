@@ -11,10 +11,62 @@
 //    The font-size is reset in the breadcrumb settings file.
 //
 // -----------------------------------------------------------------------------
+.breadcrumbs-row {
+  display: flex;
+  justify-content: center;
+}
+.hover-text {
+    display: none;
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  color: white;
+  font-size: 12px;
+  background-color: #192733;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+}
 
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
 
+#top {
+  top: -40px;
+  left: -50%;
+}
+
+#bottom {
+  top: 25px;
+  left: -50%;
+  width: 200px;
+}
+
+#left {
+  top: -8px;
+  right: 120%;
+}
+
+#right {
+  top: -8px;
+  left: 120%;
+  width: 200px;
+}
+
+.hover-text {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  font-family: Arial;
+  text-align: center;
+}
+}
 .breadcrumbs {
-    text-align: center;
     display: block;
     text-align: center;
     padding: 0px 15px;
@@ -22,11 +74,6 @@
     font-weight: bold;
     color: #000;
     margin-bottom: 10px;
-
-
-    @include breakpoint("small") {
-        display: block; // 1
-    }
 }
 
 .breadcrumb {
@@ -35,7 +82,7 @@
 
     &:before {
       content: ">";
-      font-weight: bold;
+      font-weight: bolder;
       color: #ffbe00;
     }
     a {
@@ -54,6 +101,14 @@
         }
     }
 }
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+    .breadcrumbs {
+        text-align: left;
+        display: inline-grid;
+    }
+}
+
 
 .breadcrumb-label {
     text-decoration: none;

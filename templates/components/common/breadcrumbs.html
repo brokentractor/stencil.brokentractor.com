@@ -1,14 +1,20 @@
-<ul class="breadcrumbs">
-    {{#each breadcrumbs}}
-        <li class="breadcrumb {{#if @last}}is-active{{/if}}">
-            {{#if url}}
-                <a href="{{url}}" class="breadcrumb-label">{{name}}</a>
-            {{else}}
-                <span class="breadcrumb-label">{{name}}</span>
-            {{/if}}
-        </li>
-    {{/each}}
-</ul>
+<div class="breadcrumbs-row">
+    <div class="hover-text"><img width="20" height="20" src="https://img.icons8.com/ios/50/info--v1.png" alt="info--v1"/>
+      <span class="tooltip-text" id="bottom">This is the navigation bar. This shows the category you're currently viewing and allows you to explore back to previous categories.</span>
+    </div>
+  <ul class="breadcrumbs">
+      {{#each breadcrumbs}}
+          <li class="breadcrumb {{#if @last}}is-active{{/if}}">
+              {{#if url}}
+                  <a href="{{url}}" class="breadcrumb-label">{{name}}</a>
+              {{else}}
+                  <span class="breadcrumb-label">{{name}}</span>
+              {{/if}}
+          </li>
+      {{/each}}
+  </ul>
+</div>
+
 <div class="breadcrumb-info">
   <hr>
 </div>
