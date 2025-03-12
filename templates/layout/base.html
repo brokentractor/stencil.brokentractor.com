@@ -11,17 +11,7 @@
         <script src="{{cdn 'assets/js/fa-solid.min.js'}}"></script>
         <script src="{{cdn 'assets/js/fontawesome.min.js'}}"></script>
 
-        <title>
-          {{#if product}}
-            {{product.name}} | {{settings.store_name}}
-          {{else if category}}
-            {{category.name}} | {{settings.store_name}}
-          {{else if brand}}
-            {{brand.name}} | {{settings.store_name}}
-          {{else}}
-            {{head.title}}
-          {{/if}}
-        </title>
+        <title>{{truncate head.title 60}}</title>
         {{{ head.meta_tags }}}
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
@@ -173,5 +163,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 klevu(options);
             });
         </script>
+        <div style="display:none;">
+  Product: {{product.name}}
+  Category: {{category.name}}
+  Brand: {{brand.name}}
+  Head Title: {{head.title}}
+</div>
     </body>
 </html>

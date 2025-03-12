@@ -1,7 +1,9 @@
 {
   "customLayouts": {
     "brand": {},
-    "category": {},
+    "category": {
+        "information-template.html":"/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/"
+    },
     "page": {},
     "product": {}
   },
