@@ -277,7 +277,9 @@
                     </form>
 
                     <div style="clear: both;"></div>
-                    <h2 class="preorder-banner" style="margin-top:0; font-family: industry;">Shipping charges are calculated at checkout. <br>Items are NOT guaranteed to be in stock at the time of order. <br>Refunds are offered if the item is on back-order.</h2>
+                    {{#if product.can_purchase}}
+                        <h2 class="preorder-banner" style="margin-top:0; font-family: industry;">Shipping charges are calculated at checkout. <br>Items are NOT guaranteed to be in stock at the time of order. <br>Refunds are offered if the item is on back-order.</h2>
+                    {{/if}}
                 </div>
                 <div id="pv-help">
 
