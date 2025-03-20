@@ -1,4 +1,4 @@
-var CleanWebpackPlugin = require('clean-webpack-plugin'),
+const CleanWebpackPlugin  = require('clean-webpack-plugin'),
     config = require('./config.json'),
     LodashModuleReplacementPlugin = require('lodash-webpack-plugin'),
     path = require('path'),
@@ -42,12 +42,12 @@ module.exports = {
     output: {
         chunkFilename: 'theme-bundle.chunk.[name].js',
         filename: 'theme-bundle.[name].js',
-        path: path.resolve(__dirname, "assets/dist"),
+        path: path.resolve(__dirname, "assets/dist")
     },
     plugins: [
         new CleanWebpackPlugin(['assets/dist'], {
             verbose: false,
-            watch: false,
+            watch: true,
         }),
         new webpack.LoaderOptionsPlugin({
              minimize: true,
