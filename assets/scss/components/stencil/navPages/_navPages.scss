@@ -16,386 +16,258 @@
 // Shared styles for sub page navigation
 // -----------------------------------------------------------------------------
 
+// Page Navigation
+// -----------------------------------------------------------------------------
+//
+// Purpose: Contains the styles for the page navigation, deals with 2 views
+// due to responsive layout of that navigation.
+//
+// 1. Shared styling for child lists.
+// 2. Prevent document scrolling when nav is open.
+// 3. Styles for top-level nav container.
+// 4. Styling for nav pages layout and interaction.
+// 5. Submenu interaction, arrow toggles, hover styles.
+// -----------------------------------------------------------------------------
+
+// 1. Shared styles for sub page navigation
 %navPage-childList {
-    border-left: 1px solid $navPage-childList-borderColor;
-    margin: spacing("quarter") spacing("half");
-    padding-left: spacing("half");
+  border-left: 1px solid $navPage-childList-borderColor;
+  margin: spacing("quarter") spacing("half");
+  padding-left: spacing("half");
 }
 
-//
-// When navPages is open
-// -----------------------------------------------------------------------------
-
+// 2. Lock scrolling when menu is open
 .has-activeNavPages {
-    // scss-lint:disable VendorPrefix
-    overflow: hidden;
-    -webkit-overflow-scrolling: auto;
-    height: 100%;
-    display: fixed;
-    font-family: "industry";
+  overflow: hidden;
+  -webkit-overflow-scrolling: auto;
+  height: 100%;
+  display: fixed;
+  font-family: "proxima-nova", arial, sans-serif;
 }
-//
-// Top level Pages navigation container
-// -----------------------------------------------------------------------------
 
+// 3. Navigation wrapper container
 .navPages-container {
-    // scss-lint:disable VendorPrefix
-    bottom: 0;
-    display: none;
-    height: 100%;
-    left: 0;
-    -webkit-overflow-scrolling: touch;
-    position: absolute;
-    right: 0;
-    z-index: zIndex("lower");
-    font-family: "industry";
-    &.is-open {
-		display: block;
-		padding-top: 72px;
-		z-index: 9999;
-    }
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  right: 0;
+  z-index: zIndex("lower");
+  font-family: "proxima-nova", arial, sans-serif;
 
-}
-
-//
-// Top level Pages navigation list styles
-// -----------------------------------------------------------------------------
-
-.navPages {
-    background-color: #333;
-    height: 100%;
-    overflow-y: auto;
-    font-family: "industry";
-
-    ul {
-        list-style: none;
-        font-family: "industry";
-    }
-
-    .navPages .navPage-subMenu-list, .navPage-childList {
-		margin: 0px;
-		background: #434343;
-    font-family: "industry";
-	}
-}
-
-.navPages-list {
-    margin: 0;
-    font-family: "industry";
-
-    + .navPages-list {
-        border-top: 1px solid $navPages-list--user-borderColor;
-        margin-top: spacing("half");
-        padding-top: spacing("half");
-        font-family: "industry";
-    }
-}
-
-.navPages-list-depth-max.subMenu-is-open {
-    .is-hidden {
-        display: none;
-
-        @include breakpoint("medium") {
-            display: inline-block;
-        }
-    }
-}
-
-.navPages-action-depth-max.has-subMenu.is-root.is-open {
-    .navPages-action-moreIcon {
-        @include breakpoint("medium") {
-            transform: rotate(0);
-        }
-    }
-}
-
-.navPages-action-depth-max.has-subMenu.is-open {
-    border-bottom: 1px solid $navPages-list--user-borderColor;
-
-    .navPages-action-moreIcon {
-        border: solid 1px $navPages-action-moreIcon-borderColor;
-        border-radius: 4px;
-        float: left;
-        height: 35px;
-        margin-top: -10px;
-        padding: 11.7px; // (33 - 9.6) / 2
-        transform: rotate(90deg);
-        width: 35px;
-
-
-    }
-
-    svg {
-        height: 9.6px;
-        width: 9.6px;
-
-
-    }
-}
-.navPages-action {
-    color: #fff;
+  &.is-open {
     display: block;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 0px 0px 0px 15px;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-top: 1px #676767 solid;
-    font-family: $fontFamily-hero;
-    height: 50px;
-    line-height: 52px;
-    overflow-y: hidden;
-    font-family: "industry";
-
-    svg {
-        fill: stencilColor("navPages-color");
-        stroke: stencilColor("navPages-color");
-        transition: all 0.15s ease;
-    }
+    padding-top: 72px;
+    z-index: 9999;
+  }
 }
 
+// 4. Main nav panel
+.navPages {
+  background-color: #333;
+  height: 100%;
+  overflow-y: auto;
+  font-family: "proxima-nova", arial, sans-serif;
+
+  ul {
+    list-style: none;
+  }
+
+  .navPage-subMenu-list, .navPage-childList {
+    margin: 0;
+    background: #ffbe00;
+  }
+}
+
+// Top-level list container
+.navPages-list {
+  margin: 0;
+
+  + .navPages-list {
+    border-top: 1px solid $navPages-list--user-borderColor;
+    margin-top: spacing("half");
+    padding-top: spacing("half");
+  }
+}
+
+// Navigation links
 .navPages-action {
-    &:hover, &:active, &:focus, &.is-open{
+  color: #fff;
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 0 0 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-top: 1px #676767 solid;
+  font-family: "proxima-nova", arial, sans-serif;
+  height: 50px;
+  line-height: 52px;
+
+  svg {
+    fill: stencilColor("navPages-color");
+    stroke: stencilColor("navPages-color");
+    transition: all 0.15s ease;
+  }
+
+  &:hover,
+  &:active,
+  &.is-open {
     color: #fff !important;
     background-color: #ffbe00;
-    text-shadow: 1px 1px 2px #000000;
-    font-family: "industry";
-    }
+  }
 }
+
+// Arrow icons
 .navPages-action.has-subMenu svg {
-    font-size: 22px;
-    float: right;
-    position: relative;
-    top: 15px;
-    right: 13px;
+  font-size: 22px;
+  float: right;
+  position: relative;
+  top: 15px;
+  right: 13px;
 
-    @include breakpoint("medium") {
-        float: none;
-        display: inline-block;
-        top: -3px;
-        right: -3px;
-    }
+  @include breakpoint("medium") {
+    float: none;
+    display: inline-block;
+    top: -3px;
+    right: -3px;
+  }
 }
 
+// State styling when open
 .navPages-action.has-subMenu.is-open {
-        color: #ffbe00;
-    background: #001212;
-    font-family: "industry";
+  color: #ffbe00;
+  background: #001212;
 
-    &:hover, &:active, &:focus {
-        color: #ffbe00;
-    }
+  &:hover,
+  &:active,
+  &:focus {
+    color: #fff;
+  }
 
-    @include breakpoint("medium") {
+  @include breakpoint("medium") {
     color: #000;
-    background:transparent;
-    font-family: "industry";
+    background: transparent;
 
-    &:hover, &:active, &:focus {
-        color: #000;
+    &:hover,
+    &:focus {
+      color: #000;
     }
-}
-}
+  }
 
-.navPages-action.has-subMenu.is-open svg {
-    color: #ffbe00;
+  svg {
+    color: #fff;
     transform: rotate(-180deg);
+  }
 }
-.navPages-item > .navPages-action {
-    @include breakpoint("medium") {
-        border: 1px solid #676767;
-        font-family: "industry";
 
-         &.is-open {
-            color: #fff;
-            background-color: #333;
-            border: 1px #676767 solid;
-            font-family: "industry";
-        }
+// Desktop-specific styling
+.navPages-item > .navPages-action {
+  @include breakpoint("medium") {
+    border: 1px solid #676767;
+
+    &.is-open {
+      color: #fff;
+      background-color: #333;
     }
+  }
 }
+
+// Miscellaneous
 .navPages-action--storeCredit {
-    color: stencilColor("color-textSecondary");
+  color: stencilColor("color-textSecondary");
 }
 
 .navPages-action--compare {
-    display: none;
+  display: none;
 
-    &.show {
-        display: block;
-    }
+  &.show {
+    display: block;
+  }
 }
 
+// Expand arrow styles
 .navPages-action-moreIcon {
-    @include square(8px);
-    margin-left: spacing("quarter");
-    transform: rotate(-90deg);
+  @include square(8px);
+  margin-left: spacing("quarter");
+  transform: rotate(-90deg);
 
-    .has-subMenu.is-open & {
-        transform: rotate(0);
-    }
+  .has-subMenu.is-open & {
+    transform: rotate(0);
+  }
 }
+
+// Hide SVG arrows in child submenus
 .navPage-subMenu-action.navPages-action.has-subMenu svg {
-    display: none;
+  display: none;
 }
 
-
-// Sub page navigation and children of sub pages
-// -----------------------------------------------------------------------------
-
-.navPage-childList {
-    display: none;
-}
-
-
-// Sub menu, first level down from top level categories
-// -----------------------------------------------------------------------------
-//
-// 1. navBar mixin has lots of decendant child selectors to deal with
-//
-// -----------------------------------------------------------------------------
-
+// 5. Submenu block
 .navPage-subMenu {
-    display: none;
-    outline: 0;
+  display: none;
+  outline: 0;
 
+  &.is-open {
+    display: block;
+    width: -webkit-fill-available;
+    text-wrap-mode: nowrap;
+  }
 
-    &.is-open {
-        display: block;
-        width: -webkit-fill-available;
-    }
-    @include breakpoint("medium") {
-        position: absolute;
-        z-index: 100;
-        background: #001212;
-        padding: 0;
-    }
+  @include breakpoint("medium") {
+    position: absolute;
+    z-index: 100;
+    background: #001212;
+    padding: 0;
+  }
 }
-.navPage-subMenu.is-open {
-  display: block;
-}
+
+// Rotate darrow
 .navPages-action[aria-expanded="true"] .darrow {
   transform: rotate(180deg);
 }
-.navPage-subMenu-item-child,
-.navPage-subMenu-item-parent {
-    width: 100%;
 
-}
-
+// Submenu links
 .navPage-subMenu-action {
-    padding: spacing("half") 0;
-
-}
-
-
-//
-// Child pages of sub pages navigation lists
-// -----------------------------------------------------------------------------
-
-.navPage-childList-action {
-    font-weight: fontWeight("normal");
-    padding: 0 0 spacing("quarter");
-}
-
-
-//
-// Quick search inside the mobile nav
-// -----------------------------------------------------------------------------
-
-.navPages-quickSearch {
-    border-bottom: container("border");
-    margin-bottom: spacing("half");
-
-    @include breakpoint("medium") {
-        display: none;
-    }
-
-    > .container {
-        padding: 0;
-    }
-
-    .form {
-        margin: 0;
-    }
-
-    .form-field {
-        margin-bottom: 0;
-    }
-}
-
-
-//
-// NavPages user section for mobile nav panel
-// -----------------------------------------------------------------------------
-
-.navPages-list--user {
-    @include breakpoint("medium") {
-        display: none;
-    }
-
-    // scss-lint:disable SelectorDepth, NestingDepth, IdSelector
-    #currencySelection2 {
-        background-color: color("whites", "bright");
-        border: container("border");
-
-        .dropdown-menu-item {
-            padding: 0;
-
-            // scss-lint:disable NestingDepth
-            &:not(:last-child) {
-                border-bottom: container("border");
-            }
-        }
-
-        a {
-            padding: spacing("half") spacing("single");
-        }
-    }
-}
-
-a.navPage-subMenu-action.navPages-action, a.navPage-childList-action.navPages-action {
-    text-transform: capitalize;
-    font-size: 15px;
-    font-family: "Industry", sans-serif;
-    font-weight: bold;
-    padding: 0px 15px;
-    color: #000;
-    line-height: 48px;
+  padding: spacing("half") 0;
+  text-transform: capitalize;
+  font-size: 15px;
+  font-family: "proxima-nova", arial, sans-serif;
+  font-weight: bold;
+  padding: 0 15px;
+  color: #000;
+  line-height: 48px;
 }
 
 ul.navPage-subMenu-list {
-    margin-left: 0px;
-    background: #ffbe00;
-    color: #000;
-    font-family: "industry";
-}
-#toplevel-cat {
-	margin-left: 0px;
-}
-.navPages-action.has-subMenu.is-open span.darrow {
-    transform: rotate(180deg);
-    border-color: #fff transparent transparent transparent;
+  margin-left: 0;
+  background: #ffbe00;
+  color: #000;
+  font-family: "proxima-nova", arial, sans-serif;
 }
 
 li.navPage-subMenu-item:hover {
-    background: transparent;
+  background: transparent;
 
-    a.navPage-subMenu-action.navPages-action:before {
-        border-top: 3px #ffbe00 solid;
-        border-right: 3px #ffbe00 solid;
-    }
+  a.navPage-subMenu-action.navPages-action:before {
+    border-top: 3px #ffbe00 solid;
+    border-right: 3px #ffbe00 solid;
+  }
 }
 
-#menu .navPage-subMenu-item a:hover, #menu .navPage-subMenu-item a:focus {
-    color: #fff;
-
+// Hover state cleanup
+#menu .navPage-subMenu-item a:hover,
+#menu .navPage-subMenu-item a:focus {
+  color: #fff;
 }
+
+// Account menu cleanup
 #menu #navPages-acc > ul > li > a {
-    color: #fff;
-    padding: 10px 20px;
-    border-top: 1px #676767 solid;
-    display: block;
-    width: 100%;
-    font-family: "industry";
+  color: #fff;
+  padding: 10px 20px;
+  border-top: 1px #676767 solid;
+  display: block;
+  width: 100%;
+  font-family: "proxima-nova", arial, sans-serif;
 }
