@@ -112,7 +112,10 @@
     transition: all 0.15s ease;
   }
 
-  &:hover,
+  &:hover {
+    background-color: #333333;
+    color: #fff !important;
+  }
   &:active,
   &.is-open {
     color: #fff !important;
