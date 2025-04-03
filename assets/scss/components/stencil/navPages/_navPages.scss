@@ -32,6 +32,7 @@
     -webkit-overflow-scrolling: auto;
     height: 100%;
     display: fixed;
+    font-family: "industry";
 }
 //
 // Top level Pages navigation container
@@ -47,13 +48,13 @@
     position: absolute;
     right: 0;
     z-index: zIndex("lower");
-
+    font-family: "industry";
     &.is-open {
 		display: block;
 		padding-top: 72px;
 		z-index: 9999;
     }
-	
+
 }
 
 //
@@ -64,24 +65,29 @@
     background-color: #333;
     height: 100%;
     overflow-y: auto;
+    font-family: "industry";
 
     ul {
         list-style: none;
+        font-family: "industry";
     }
 
     .navPages .navPage-subMenu-list, .navPage-childList {
 		margin: 0px;
 		background: #434343;
+    font-family: "industry";
 	}
 }
 
 .navPages-list {
     margin: 0;
+    font-family: "industry";
 
     + .navPages-list {
         border-top: 1px solid $navPages-list--user-borderColor;
         margin-top: spacing("half");
         padding-top: spacing("half");
+        font-family: "industry";
     }
 }
 
@@ -92,10 +98,6 @@
         @include breakpoint("medium") {
             display: inline-block;
         }
-    }
-
-    .navPages-item-page {
-
     }
 }
 
@@ -143,6 +145,7 @@
     height: 50px;
     line-height: 52px;
     overflow-y: hidden;
+    font-family: "industry";
 
     svg {
         fill: stencilColor("navPages-color");
@@ -153,7 +156,10 @@
 
 .navPages-action {
     &:hover, &:active, &:focus, &.is-open{
-    color: #fff;
+    color: #fff !important;
+    background-color: #ffbe00;
+    text-shadow: 1px 1px 2px #000000;
+    font-family: "industry";
     }
 }
 .navPages-action.has-subMenu svg {
@@ -174,17 +180,19 @@
 .navPages-action.has-subMenu.is-open {
         color: #ffbe00;
     background: #001212;
+    font-family: "industry";
 
     &:hover, &:active, &:focus {
-        color: #ffbe00;    
+        color: #ffbe00;
     }
 
     @include breakpoint("medium") {
     color: #000;
     background:transparent;
+    font-family: "industry";
 
     &:hover, &:active, &:focus {
-        color: #000;    
+        color: #000;
     }
 }
 }
@@ -196,11 +204,13 @@
 .navPages-item > .navPages-action {
     @include breakpoint("medium") {
         border: 1px solid #676767;
+        font-family: "industry";
 
          &.is-open {
             color: #fff;
             background-color: #333;
             border: 1px #676767 solid;
+            font-family: "industry";
         }
     }
 }
@@ -249,11 +259,24 @@
     display: none;
     outline: 0;
 
+
     &.is-open {
         display: block;
+        width: -webkit-fill-available;
+    }
+    @include breakpoint("medium") {
+        position: absolute;
+        z-index: 100;
+        background: #001212;
+        padding: 0;
     }
 }
-
+.navPage-subMenu.is-open {
+  display: block;
+}
+.navPages-action[aria-expanded="true"] .darrow {
+  transform: rotate(180deg);
+}
 .navPage-subMenu-item-child,
 .navPage-subMenu-item-parent {
     width: 100%;
@@ -334,19 +357,21 @@
 a.navPage-subMenu-action.navPages-action, a.navPage-childList-action.navPages-action {
     text-transform: capitalize;
     font-size: 15px;
-    font-family: "proxima-nova", sans-serif;
+    font-family: "Industry", sans-serif;
     font-weight: bold;
     padding: 0px 15px;
-    color: #fff;
+    color: #000;
     line-height: 48px;
 }
 
 ul.navPage-subMenu-list {
     margin-left: 0px;
-    background: #001212;
+    background: #ffbe00;
+    color: #000;
+    font-family: "industry";
 }
 #toplevel-cat {
-	margin-left: 0px;	
+	margin-left: 0px;
 }
 .navPages-action.has-subMenu.is-open span.darrow {
     transform: rotate(180deg);
@@ -372,4 +397,5 @@ li.navPage-subMenu-item:hover {
     border-top: 1px #676767 solid;
     display: block;
     width: 100%;
+    font-family: "industry";
 }

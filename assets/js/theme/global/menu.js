@@ -14,7 +14,7 @@ class Menu {
         this.$body = $('body');
         this.hasMaxMenuDisplayDepth = this.$body.find('.navPages-list').hasClass('navPages-list-depth-max');
 
-        // Init collapsible
+        // Init collapsibles (kept for compatibility, but not used for submenu toggles)
         this.collapsibles = collapsibleFactory('[data-collapsible]', { $context: this.$menu });
         this.collapsibleGroups = collapsibleGroupFactory($menu);
 
@@ -53,7 +53,6 @@ class Menu {
 
             if (this.hasMaxMenuDisplayDepth) {
                 const $neighbors = $(event.target).parent().siblings();
-
                 this.collapseNeighbors($neighbors);
             }
         }
@@ -79,19 +78,54 @@ export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
     }
 
     const menu = new Menu($menu);
-
     $menu.data(instanceKey, menu);
 
-        $('#shop-parts').click( function() {
-            $(this).toggleClass('active');
-            $('.navPages-container').toggle();
-        });
+    // Toggle full menu open/close
+    $('#shop-parts').on('click', function () {
+        const $container = $('.navPages-container');
+        const isOpen = $container.is(':visible');
+        $(this).toggleClass('active');
+        $container.toggle();
+        $container.attr('aria-hidden', isOpen ? 'true' : 'false');
+        if (document.activeElement) document.activeElement.blur();
+    });
 
-        $('.navPages-action.has-subMenu').click( function() {
-            if ($(window).width() < 768) {
-                document.location.href = this.attr('href');
-            }
-        });
+    // Custom submenu toggle (desktop only)
+    $(document).on('click', '.navPages-action.has-subMenu', function (e) {
+    const $link = $(this);
+    const targetId = $link.data('collapsible');
+    const $submenu = $('#' + targetId);
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+        
+    }
+
+    e.preventDefault();
+
+    const wasOpen = $link.attr('data-open') === 'true';
+
+    // Close all
+    $('.navPage-subMenu').removeClass('is-open').attr('aria-hidden', 'true').hide();
+    $('.navPages-action.has-subMenu')
+        .removeClass('is-open')
+        .attr('aria-expanded', 'false')
+        .attr('data-open', 'false');
+
+    if (!wasOpen) {
+        // Open the clicked one
+        $submenu.addClass('is-open').attr('aria-hidden', 'false').show();
+        $link
+            .addClass('is-open')
+            .attr('aria-expanded', 'true')
+            .attr('data-open', 'true');
+    }
+});
+
+
+
+
+
 
     return menu;
 }
