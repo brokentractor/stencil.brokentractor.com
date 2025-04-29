@@ -6,7 +6,7 @@
             {{/if}}
             {{#if page_type '!==' 'product'}}
                 {{#if theme_settings.price_as_low_as}}
-                    <span translate>As low as </span>
+                    <span translate>From </span>
                 {{/if}}
             {{/if}}
             <span data-product-price-with-tax class="price">{{price.with_tax.formatted}}</span>
@@ -28,7 +28,7 @@
             {{/if}}
             {{#if page_type '!==' 'product'}}
                 {{#if theme_settings.price_as_low_as}}
-                    <span translate>As low as </span>
+                    <span translate>From </span>
                 {{/if}}
             {{/if}}
             <span data-product-price-without-tax class="price price--withoutTax">{{price.without_tax.formatted}}</span>
