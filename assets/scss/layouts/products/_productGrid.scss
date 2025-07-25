@@ -237,10 +237,13 @@ table#slidetable {
 
     &.lev-1, &.lev-2 {
         li {
-            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            margin: 0 20px 10px;
-            width: 100%;
+            // box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+            // text-align: center;
+            // margin: 0 20px 10px;
+            // width: 100%;
+            display: flex;
+            margin: 0 10px 20px;
+            width: calc(50% - 20px);
 
             @include breakpoint("medium") {
                 display: flex;
@@ -253,7 +256,7 @@ table#slidetable {
 
             a {
                 display: block;
-                padding: 15px;
+                padding: 5px;
                 font-size: 18px;
                 line-height: 20px;
                 width: 100%;
@@ -264,7 +267,7 @@ table#slidetable {
 
                 div.subimgwrap {
                     text-align: center;
-                    padding: 20px;
+                    // padding: 20px;
                 }
 
                 @include breakpoint("medium") {
@@ -475,10 +478,10 @@ div#dsubcat .subcat svg {
 
 .subimgwrap {
     text-align: center;
-    min-height: 252px;
+    // min-height: 252px;
 
     @include breakpoint("medium") {
-
+        min-height: 252px;
         position: relative;
     }
 }
