@@ -290,4 +290,9 @@ footer[data-block-id="ku_landing_result_item_footer"] {
     margin-top: auto;
 }
 
+@media only screen and (max-width:576px){
+  .kuSearchResultsPageContainer .kuResults ul li{
+    width:50% !important;
+  }
+}
 /* END align products */
