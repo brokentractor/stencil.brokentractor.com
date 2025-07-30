@@ -329,6 +329,11 @@ div#hp-quote {
     line-height: 21px;
     position: relative;
 
+    a {
+        color: #0a46b4;
+        text-decoration: underline;
+    }
+
     @include breakpoint("medium") {
 	    margin: 0px 20px 25px 20px;
         font-size: 24px;
@@ -338,7 +343,7 @@ div#hp-quote {
 		margin: 0px 0px 25px 0px;
 		width: calc(33% - 10px);
 		float: left;
-        min-height: 620px;
+        min-height: 515px;
 	}
 }
 .rmbox:nth-child(2) {
