@@ -448,3 +448,20 @@ div#subfooter {
 // .klevuWrap {
 // 	display: none !important;
 // }
+
+
+@media (max-width: 750px) {
+    
+    .video-background-section {
+        background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
+        background-size: cover;
+    }
+ }
+ #background-video {
+    width: 100vw;
+    height: 600px;
+    object-fit: cover;
+    max-width: 1920px;
+    margin-bottom: -6px;
+    
+ }
