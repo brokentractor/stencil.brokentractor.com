@@ -450,13 +450,11 @@ div#subfooter {
 // }
 
 
-@media (max-width: 750px) {
-    
-    .video-background-section {
-        background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
-        background-size: cover;
-    }
- }
+
+.video-background-section {
+    background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
+    background-size: cover;
+}
  #background-video {
     width: 100vw;
     height: 600px;
@@ -464,4 +462,19 @@ div#subfooter {
     max-width: 1920px;
     margin-bottom: -6px;
     
+ }
+ .home-card-container {
+    margin: 0 auto; 
+    max-width: 1240px;
+ }
+.home-card {
+    padding: 38px 38px; 
+    width: 30%; 
+    background: #fff; 
+    border-radius: 8px; 
+    position: absolute; 
+    z-index: 1; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    margin-left: 60px;
  }
