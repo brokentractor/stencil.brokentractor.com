@@ -468,7 +468,8 @@ div#subfooter {
     max-width: 1240px;
  }
 .home-card {
-    padding: 38px 38px; 
+     
+    border: 2px #ffbe00 solid;
     width: 100%; 
     background: #fff; 
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
@@ -480,13 +481,17 @@ div#subfooter {
     background-color: #001212;
     color: #fff;
     font-family: $industry;
+    span {
+        color: #ffbe00;
+    }
 
     h1 {
         color: #f9f9f9;
     }
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 1200px) {
         width: 30%;
-        margin-left: 60px;
+        margin-left: 15px;
+        padding: 38px 38px;
     }
     
  }
