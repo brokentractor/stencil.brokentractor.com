@@ -70,39 +70,84 @@ blog:
         </div>
     </div> -->
     <div id="shopbytype">
-        
-        <div class="video-background-section" style="position: relative;">
-            <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
-                <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
-              </video>
-            <div class="home-card-container">
-            <div class="home-card">
-                <h1 class="welcome-title" style="margin: 0;">Quality parts you need to get back to work ... <i>fast!</i></h1>
-                <div class="row" style="display: flex; flex-direction: row;">
-                    
-                <form action="/action_page.php">
-                    <label for="cars">Choose a Brand:</label>
-                    <select name="cars" id="cars">
-                      <option value="volvo">Volvo</option>
-                      <option value="saab">Saab</option>
-                      <option value="opel">Opel</option>
-                      <option value="audi">Audi</option>
-                    </select>
-                    <label for="cars">Choose a Machine:</label>
-                    <select name="cars" id="cars">
-                      <option value="volvo">Volvo</option>
-                      <option value="saab">Saab</option>
-                      <option value="opel">Opel</option>
-                      <option value="audi">Audi</option>
-                    </select>
-                    <br><br>
-                    <input type="submit" value="Submit">
-                </form>
-                </div>
-            </div>
+  <div class="video-background-section" style="position: relative;">
+    <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
+      <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+    </video>
+    <div class="home-card-container">
+      <div class="home-card">
+        <h1 class="welcome-title" style="margin: 0;">
+          Quality parts you need to get back to work ... <i>fast!</i>
+        </h1>
+
+        <div class="row" style="display: flex; flex-direction: row;">
+          <form id="shopby-form">
+            <!-- Brand Dropdown -->
+            <label for="brand">Choose a Brand</label>
+            <select id="brand">
+              <option value="">— Select a brand —</option>
+              {{#each categories}}
+                <option value="{{url}}" data-subcats="subcats-{{id}}">{{name}}</option>
+              {{/each}}
+            </select>
+
+            <!-- Sub-Category Dropdown -->
+            <label for="subcat">Choose a Machine:</label>
+            <select id="subcat" disabled>
+              <option value="">Select a brand first…</option>
+            </select>
+
+            <br><br>
+            <input type="submit" id="shopby-submit" class="hero-btn button button--primary" value="SUBMIT" disabled>
+          </form>
         </div>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- Pre-rendered subcategory option templates -->
+<div id="subcat-templates" style="display:none;">
+  {{#each categories}}
+    <template id="subcats-{{id}}">
+      <option value="{{url}}">All {{name}}</option>
+      {{#each children}}
+        <option value="{{url}}">{{name}}</option>
+      {{/each}}
+    </template>
+  {{/each}}
+</div>
+
+<script>
+(function(){
+  const brandSel = document.getElementById('brand');
+  const subcatSel = document.getElementById('subcat');
+  const submitBtn = document.getElementById('shopby-submit');
+
+  brandSel.addEventListener('change', function(){
+    subcatSel.innerHTML = '';
+    subcatSel.disabled = true;
+    submitBtn.disabled = true;
+
+    const selected = this.options[this.selectedIndex];
+    if (!selected || !selected.dataset.subcats) return;
+
+    const tmpl = document.getElementById(selected.dataset.subcats);
+    if (tmpl && tmpl.content) {
+      subcatSel.appendChild(tmpl.content.cloneNode(true));
+      subcatSel.disabled = false;
+      submitBtn.disabled = false;
+    }
+  });
+
+  document.getElementById('shopby-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const url = subcatSel.value || brandSel.value;
+    if (url) window.location.href = url;
+  });
+})();
+</script>
+
     <div id="hp-hero">
         <div id="heroinner">
             <h3>New, rebuilt & used </h3>
@@ -167,6 +212,7 @@ blog:
      </div>
      <div style="clear:both;"></div>
 </div>
+
 {{/partial}}
 
 {{#partial "page"}}

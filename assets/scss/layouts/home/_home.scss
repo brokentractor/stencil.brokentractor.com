@@ -469,12 +469,54 @@ div#subfooter {
  }
 .home-card {
     padding: 38px 38px; 
-    width: 30%; 
+    width: 100%; 
     background: #fff; 
-    border-radius: 8px; 
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     position: absolute; 
     z-index: 1; 
     top: 50%; 
     transform: translateY(-50%); 
-    margin-left: 60px;
+    
+    background-color: #001212;
+    color: #fff;
+    font-family: $industry;
+
+    h1 {
+        color: #f9f9f9;
+    }
+    @media only screen and (min-width: 600px) {
+        width: 30%;
+        margin-left: 60px;
+    }
+    
  }
+ #shopby-form {
+    width: 100%;
+ }
+#shopby-form  label {
+         color: #ffbe00;
+    }
+ #shopbytype select {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-bottom: 2px solid #333;
+  background: #f9f9f9;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+   position: relative;
+  overflow: hidden; /* prevents browser from trying to pop it upward */
+}
+
+#shopbytype label {
+  display: block;
+  margin: 8px 0 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ffbe00;
+}
+#shopbytype {
+  overflow: visible; /* let dropdown extend downward */
+}
+
