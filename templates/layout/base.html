@@ -16,6 +16,9 @@
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
         <link href="{{ head.favicon }}" rel="shortcut icon">
+        {{#if page_type 'login'}}
+        <link rel="canonical" href="{{urls.auth.login}}" />
+        {{/if}}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         {{{stylesheet '/assets/css/theme.css'}}}
 		    <script src="https://use.typekit.net/jsn3czo.js"></script>
