@@ -47,6 +47,18 @@
         margin-top: spacing("half");
     }
 }
+
+.preorder-banner.expected-date {
+    font-size: 20px;
+    background-color: #FFF989;
+    border: 3px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        margin: 0px 5px 0px;
+    }
+}
 .preorder-banner {
     font-size: 16px;
     padding: 10px 5px;

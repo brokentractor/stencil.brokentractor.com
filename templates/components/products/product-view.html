@@ -243,7 +243,10 @@
                             {{> components/common/login-for-pricing}}
                         {{/or}}
                         {{#if product.release_date }}
-                            <p class="preorder-banner">{{product.release_date}}</p>
+                        <div class="preorder-banner expected-date"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+<path d="M12 16.99V17M12 7V14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg><p class="">{{product.release_date}}</p></div>
+                            
                         {{/if}}
                     </div>
                     <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
@@ -278,7 +281,7 @@
 
                     <div style="clear: both;"></div>
                     {{#if product.can_purchase}}
-                    <h2 class="preorder-banner" style="margin-top:0; font-family: industry;">
+                    <h2 class="preorder-banner shipping-message" style="margin-top:0; font-family: industry;">
                         Shipping charges are calculated at checkout. <br>
                         Items are NOT guaranteed to be in stock at the time of order. <br>
                         Refunds are offered if the item is on back-order.
