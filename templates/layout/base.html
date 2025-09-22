@@ -166,6 +166,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 klevu(options);
             });
         </script>
+        <script>
+(function () {
+  // Map of field types that SHOULD have limits
+  const LIMITS = new Map([
+    ["FirstName", 25],
+    ["LastName", 25],
+    ["CompanyName", 25],
+  ]);
+
+  function applyNameLimits(root = document) {
+    const inputs = root.querySelectorAll('.form-field input.form-input[data-field-type]');
+    inputs.forEach(input => {
+      const type = input.dataset.fieldType; // e.g., "FirstName", "AddressLine1", "EmailAddress"
+      if (LIMITS.has(type)) {
+        input.setAttribute('maxlength', String(LIMITS.get(type)));
+      } else {
+        // Ensure other fields (Email, Address, City, Zip, Phone, etc.) have no hard cap
+        input.removeAttribute('maxlength');
+      }
+    });
+  }
+
+  // Run on load
+  document.addEventListener('DOMContentLoaded', () => applyNameLimits());
+
+  // Re-apply if the form is re-rendered (BigCommerce can re-render fields on country/state changes)
+  const mo = new MutationObserver(muts => {
+    for (const m of muts) {
+      if (m.addedNodes && m.addedNodes.length) {
+        m.addedNodes.forEach(node => {
+          if (node.nodeType === 1) applyNameLimits(node);
+        });
+      }
+    }
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
         <div style="display:none;">
   Product: {{product.name}}
   Category: {{category.name}}
