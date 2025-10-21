@@ -18,7 +18,10 @@
         </h4>
         {{#each custom_fields}}
             <div class="grid-item {{{name}}}">
-                {{#if name '==' 'ListDescription'}}<strong>Description</strong>{{else if name '==' 'FitsModel'}}<strong>Fits Model</strong>{{else}}<strong>{{name}}</strong>{{/if}}
+                {{#if name '==' 'ListDescription'}}<strong>Description</strong>
+                {{else if name '==' 'FitsModel'}}<strong>Fits Model</strong>
+                {{else if name '==' 'exclude_in_klevu_search'}}<strong style="display:none;"></strong>
+                {{else}}<strong>{{name}}</strong>{{/if}}
                 {{{value}}}
             </div>
         {{/each}}
@@ -27,9 +30,10 @@
             {{{sku}}}
         </div>
         <div class="grid-item">
-            <strong>Price</strong>
-            {{> components/products/price price=price}}
-        </div>
+    <strong>Price</strong>
+        {{> components/products/price price=price}}
+</div>
+
 
         <a href="{{url}}" class="listatc" data-id="{{id}}" data-name="{{name}}">View Details</a>
     </div>
