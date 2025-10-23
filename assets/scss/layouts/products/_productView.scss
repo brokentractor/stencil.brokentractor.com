@@ -272,6 +272,10 @@ div#pv-help {
 .productView-options {
     margin-bottom: 0px;
     text-align: center;
+
+    table {
+        max-width: fit-content;
+    }
 }
 section#pv-details {
     float: left;

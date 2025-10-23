@@ -228,24 +228,43 @@
 
 
                 {{#if product.call_for_price}}
-                    <p class="productView-price">
-                        <span>{{product.call_for_price}}</span>
-                    </p>
+                    {{#if product.stock_level '>' 0}}
+    {{> components/products/price price=price}}
+{{else if product.inventory_tracking '===' 'simple' }}
+    {{! Inventory is tracked, and it's zero }}
+    {{! So, hide price }}
+{{else if product.inventory_tracking '===' 'variant'}}
+    {{! Inventory is tracked per variant — also hide price }}
+{{else}}
+    {{> components/products/price price=price}}
+{{/if}}
+
                     {{#if product.release_date }}
                         <p class="preorder-banner">{{product.release_date}}</p>
                     {{/if}}
                 {{/if}}
                 <div id="pv-descriptionbox">
                     <div class="productView-price">
-                        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                            {{> components/products/price price=product.price schema_org=schema}}
-                        {{else}}
-                            {{> components/common/login-for-pricing}}
-                        {{/or}}
-                        {{#if product.release_date }}
-                            <p class="preorder-banner">{{product.release_date}}</p>
-                        {{/if}}
-                    </div>
+    {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+        {{#if product.can_purchase}}
+            {{> components/products/price price=product.price schema_org=schema}}
+        {{else}}
+            <span class="price price--withoutTax">Out of Stock</span>
+        {{/if}}
+    {{else}}
+        {{> components/common/login-for-pricing}}
+    {{/or}}
+
+    {{#if product.release_date }}
+        <div class="preorder-banner expected-date">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path d="M12 16.99V17M12 7V14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>{{product.release_date}}</p>
+        </div>
+    {{/if}}
+</div>
+
                     <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
                           data-cart-item-add>
                         <input type="hidden" name="action" value="add">
@@ -278,24 +297,25 @@
 
                     <div style="clear: both;"></div>
                     {{#if product.can_purchase}}
-                        <h2 class="preorder-banner" style="margin-top:0; font-family: industry;">Shipping charges are calculated at checkout. <br>Items are NOT guaranteed to be in stock at the time of order. <br>Refunds are offered if the item is on back-order.</h2>
+                    <h2 class="preorder-banner shipping-message" style="margin-top:0; font-family: industry;">
+                        Shipping charges are calculated at checkout. <br>
+                        Items are NOT guaranteed to be in stock at the time of order. <br>
+                        Refunds are offered if the item is on back-order.
+                    </h2>
+                    {{else}}
+                        <h2 class="preorder-banner" style="margin-top:0; font-family: industry;">
+                            This item is OUT OF STOCK and must be special ordered. <br>
+                            Please call us to check availability.
+                        </h2>
                     {{/if}}
                 </div>
+               
                 <div id="pv-help">
 
                     <strong>Can’t Find What You’re Looking For?</strong>
                     <p>Our knowledgeable staff will be happy to help you with any of your tractor, backhoe, dozer, or engine parts needs. </p>
                     <a href="tel:8009097060">1-800-909-7060</a> <a href="/pages/parts-request">Parts Request Form</a>
                 </div>
-                <!--
-                {{#if settings.show_wishlist}}
-                    <form class="form" method="post" action="{{product.add_to_wishlist_url}}" data-wishlist-add>
-                        <div class="form-action">
-                            <input type="hidden" name="variation_id" value="">
-                            <input class="button" type="submit" value="{{lang 'account.wishlists.add_item'}}">
-                        </div>
-                    </form>
-                {{/if}}-->
             </div>
 
             {{{snippet 'product_details'}}}

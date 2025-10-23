@@ -20,7 +20,13 @@
     {{/each}}
     <td class="pvcol sku"><a href="{{url}}">{{{sku}}}</a></td>
 
-    <td class="pvcol price">{{> components/products/price price=price}}</td>
+   {{#if out_of_stock_message}}
+  <td class="pvcol price"><span class="out-of-stock">Out of Stock</span></td>
+{{else}}
+  <td class="pvcol price">{{price.without_tax.formatted}}</td>
+{{/if}}
+
+
     <td class="pvcol view-details"> <a href="{{url}}" class="listview-style">View Info</a></td>
     <!-- <td class="pvcol atc"> <a href="{{add_to_cart_url}}" class="listatc" data-id="{{id}}" data-name="{{name}}" data-thumb="{{getImage image 'product' (cdn theme_settings.default_image_product)}}">Add To Cart</a>  <div class="slidearrow"><span class="slideabox"></span></div></td> -->
 
