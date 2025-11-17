@@ -170,7 +170,8 @@ div#hp-shopby {
 }
 
 #hp-shopby a {
-    background: #fff;
+    // background: #fff;
+    background-color: rgba(0, 18, 18, 0.8);
     display: block;
     margin-bottom: 10px;
     text-align: left;
@@ -445,19 +446,13 @@ div#subfooter {
 	top: -10px !important;
 	width: 30px !important;
 }
-// .klevuWrap {
-// 	display: none !important;
-// }
-
-
-
 .video-background-section {
     background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
     background-size: cover;
 }
  #background-video {
     width: 100vw;
-    height: 600px;
+    height: 80vh;
     object-fit: cover;
     max-width: 1920px;
     margin-bottom: -6px;
@@ -465,11 +460,11 @@ div#subfooter {
  }
  .home-card-container {
     margin: 0 auto; 
-    max-width: 1240px;
+    // max-width: 1240px;
  }
 .home-card {
-     
-    border: 2px #ffbe00 solid;
+    // border: 2px #ffbe00 solid;
+    height: 100%;;
     width: 100%; 
     background: #fff; 
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
@@ -477,29 +472,46 @@ div#subfooter {
     z-index: 1; 
     top: 50%; 
     transform: translateY(-50%); 
-    
-    background-color: #001212;
+    background-color: rgba(0, 18, 18, 0.8);
     color: #fff;
     font-family: $industry;
     span {
-        color: #ffbe00;
+        color: #f9f9f9;
+        
+        &:hover, &:active, &:focus {
+            color: #ffbe00;
+        }
+        i {
+            color: #ffbe00;
+        }
     }
+    
 
     h1 {
         color: #f9f9f9;
     }
     @media only screen and (min-width: 1200px) {
-        width: 40%;
-        margin-left: 15px;
+        
+        // margin-left: 15px;
         padding: 38px 38px;
+        // height: auto;
+        // top: 68%; 
     }
-    
- }
+   
+}
+.home-card-content {
+    @media only screen and (max-width: 850px) {
+        padding: 40px;
+        top: 50%;
+        height: 50%;
+        width: 100%;
+    }
+}
  #shopby-form {
     width: 100%;
  }
 #shopby-form  label {
-         color: #ffbe00;
+        color: #ffbe00;
     }
  #shopbytype select {
   width: 100%;
@@ -524,4 +536,3 @@ div#subfooter {
 #shopbytype {
   overflow: visible; /* let dropdown extend downward */
 }
-

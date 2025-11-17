@@ -40,10 +40,11 @@ module.exports = {
         ],
     },
     output: {
-        chunkFilename: 'theme-bundle.chunk.[name].js',
-        filename: 'theme-bundle.[name].js',
-        path: path.resolve(__dirname, "assets/dist")
-    },
+  chunkFilename: 'theme-bundle.chunk.[name].js',
+  filename: 'theme-bundle.[name].js',
+  path: path.resolve(__dirname, "assets/dist"),
+  publicPath: 'assets/dist/',
+},
     plugins: [
         new CleanWebpackPlugin(['assets/dist'], {
             verbose: false,
