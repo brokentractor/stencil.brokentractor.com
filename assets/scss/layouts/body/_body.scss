@@ -160,11 +160,12 @@ iframe {
     position: absolute;
     z-index: 10;
     background-size: 100%;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 0%;
+    // transform: translate(-50%, -50%);
     @media screen and (min-width: 767px) {
-      top: 50%;
+      top: 40%;
+      left: 0%;
     }
 }
 .button--primary {
