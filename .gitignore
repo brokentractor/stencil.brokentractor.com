@@ -8,7 +8,7 @@ reports/
 ngrok.exe
 .idea/
 yarn.lock
-package-lock.json
+
 assets/dist/*
 secrets.stencil.json
 assets/dist/theme-bundle.chunk.0.js
