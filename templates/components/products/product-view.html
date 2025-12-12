@@ -177,12 +177,11 @@
 
         <section id="pv-details">
             <div class="productView-options">
-                <!-- <div id="fitsmodels">
-                    <strong>Fits Models:</strong>
-                    <div id="fittext">Placeholder</div>
-                </div> -->
+                <div id="fitsmodels">
+                    <strong>Part #</strong> <span id="partnum-text">{{product.sku}}</span>
+                </div>
 
-                <div class="productView-rating"{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}>
+                <!-- <div class="productView-rating"{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}>
                     {{#if settings.show_product_rating}}
                         {{#if product.num_reviews '>' 0}}
                             {{#if schema}}
@@ -216,13 +215,11 @@
                         </span>
                         {{> components/products/modals/writeReview}}
                     {{/if}}
-                </div>
+                </div> -->
 
-                <div id="partnum" class="pv-infobox"><strong>Part #</strong> <span id="partnum-text">{{product.sku}}</span>
+                <div id="partnum" class="pv-infobox">
                   <div class="pv-description pv-btmbox"{{#if schema}} itemprop="description"{{/if}}>
-                         <h2>Description:</h2>
                          {{> components/products/description}}
-
                     </div>
                   </div>
 
