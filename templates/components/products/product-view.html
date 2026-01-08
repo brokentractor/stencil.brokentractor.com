@@ -314,6 +314,29 @@
                     <a href="tel:8009097060">1-800-909-7060</a> <a href="/pages/parts-request">Parts Request Form</a>
                 </div>
             </div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{product.title}}",
+  "sku": "{{product.sku}}",
+  "description": "{{strip_tags product.description}}",
+  "brand": {
+    "@type": "Brand",
+    "name": "{{product.brand.name}}"
+  },
+  "image": [
+    "{{getImage product.main_image 'product_size'}}"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "{{currency_selector.active_currency_code}}",
+    "price": "{{product.price.without_tax.value}}",
+    "availability": "https://schema.org/{{#if product.can_purchase}}InStock{{else}}OutOfStock{{/if}}",
+    "url": "{{product.url}}"
+  }
+}
+</script>
 
             {{{snippet 'product_details'}}}
 
