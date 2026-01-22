@@ -37,9 +37,12 @@ function coreprices() {
             // var totalcprice = +newcprice - +coreprice;
             // totalcprice = parseFloat(totalcprice).toFixed(2);
             // totalcprice = totalcprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            $(this).find('.corecharge').remove();
+
 
             $(this).find('.price.price--withoutTax').html('$'+ newcprice);
-            $(this).find('.price-section--withoutTax').append('<div class="corecharge">Refundable Core Charge: $'+ coreprice+'</div>');
+            $(this).find('.price-section--withoutTax').first().append('<div class="corecharge">Refundable Core Charge: $'+ coreprice+'</div>');
+
             // $(this).find('.price.price--withoutTax').html('$'+ totalcprice);
 
         }
@@ -121,7 +124,10 @@ export default class Category extends CatalogPage {
         if ($('#refImg').length > 0) {
             $('#categoryDescription img').appendTo('#refImg');
         }
-        coreprices();
+        if (!$('#facetedSearch').length) {
+    coreprices();
+}
+
 
         if ($('.Additional.Information').text().length > 0) {
             $('.Additional.Information').show();

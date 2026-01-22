@@ -21,10 +21,17 @@
     <td class="pvcol sku"><a href="{{url}}">{{{sku}}}</a></td>
 
    {{#if out_of_stock_message}}
-  <td class="pvcol price"><span class="out-of-stock">Out of Stock</span></td>
+  <td class="pvcol price">
+      <span class="out-of-stock">Out of Stock</span>
+  </td>
 {{else}}
-  <td class="pvcol price">{{price.without_tax.formatted}}</td>
+  <td class="pvcol price">
+      {{> components/products/price price=price}}
+      <div class="price-section--withoutTax"></div>
+  </td>
 {{/if}}
+
+
 
 
     <td class="pvcol view-details"> <a href="{{url}}" class="listview-style">View Info</a></td>
