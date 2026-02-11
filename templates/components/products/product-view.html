@@ -249,7 +249,7 @@
         {{#if product.can_purchase}}
             {{> components/products/price price=product.price schema_org=schema}}
         {{else}}
-            <span class="price price--withoutTax">Out of Stock <br>{{product.call_for_price}}</span>
+            <span class="price price--withoutTax">{{product.call_for_price}}</span>
         {{/if}}
     {{else}}
         {{> components/common/login-for-pricing}}
@@ -303,9 +303,9 @@
                         Refunds are offered if the item is on back-order.
                     </h2>
                     {{else}}
-                        <h2 class="preorder-banner" style="margin-top:0; font-family: industry;">
-                            This item is OUT OF STOCK and must be special ordered. <br>
-                            Please call us to check availability.
+                        <h2 class="preorder-banner" style="margin-top:0; font-family: industry; display: none;">
+                        
+                            Please call us at 1-800-909-7060 to check availability.
                         </h2>
                     {{/if}}
                 </div>
