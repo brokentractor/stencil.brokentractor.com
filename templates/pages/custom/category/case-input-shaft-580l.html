@@ -93,6 +93,10 @@ category:
     <main class="page-content" id="product-listing-container">
 
         {{#if category.products}}
+         <div class="toolbar">
+          <i class="fa fa-search"></i>
+          <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Type to Quick Filter" title="Filter Current Category" isp_ignore>
+        </div>
             <div id="slidetableouter">
                 <table id="slidetable">
                     <tr id="tableheaders">
@@ -123,24 +127,33 @@ category:
 
     </style>
     <script>
-    function myFunction() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("slidetable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByClassName("FitsModel")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
+function myFunction() {
+  const input = document.getElementById("myInput");
+  const filter = (input.value || "").toUpperCase();
+  const table = document.getElementById("slidetable");
+  const tr = table.getElementsByTagName("tr");
+ 
+  for (let i = 0; i < tr.length; i++) {
+    // Keep header row visible
+    if (tr[i].id === "tableheaders") {
+      tr[i].style.display = "";
+      continue;
     }
-    </script>
+ 
+    const modelEl = tr[i].getElementsByClassName("FitsModel")[0];
+    const descEl  = tr[i].getElementsByClassName("ListDescription")[0];
+    const partEl  = tr[i].getElementsByClassName("sku")[0]; // Part # column
+ 
+    // Combine text from all three fields
+    const modelTxt = modelEl ? (modelEl.textContent || modelEl.innerText) : "";
+    const descTxt  = descEl  ? (descEl.textContent  || descEl.innerText)  : "";
+    const partTxt  = partEl  ? (partEl.textContent  || partEl.innerText)  : "";
+ 
+    const haystack = (modelTxt + " " + descTxt + " " + partTxt).toUpperCase();
+ 
+    tr[i].style.display = haystack.indexOf(filter) > -1 ? "" : "none";
+  }
+}
+</script>
 {{/partial}}
 {{> layout/base}}
