@@ -5,8 +5,13 @@
 
 // Blog post
 // -----------------------------------------------------------------------------
-
+.body {
+      background: url(../img/gbg.jpg) !important;  
+    }
 .blog {
+    box-shadow: 0px 0px 8px #ccc;
+    background: #fff;
+    padding: 30px 50px;
     margin-bottom: spacing("single");
 
     @include breakpoint("medium") {
@@ -31,7 +36,7 @@
 
     // scss-lint:disable SelectorFormat
     .addthis_toolbox {
-        margin-top: spacing("double");
+        display: none;
     }
     // scss-lint:enable SelectorFormat
 }
@@ -70,7 +75,10 @@
     text-align: center;
 
     @include breakpoint("medium") {
-        width: grid-calc(8, $total-columns);
+        a img {
+            // width: 100%;
+            max-height: 200px;
+        } 
     }
 }
 
@@ -80,7 +88,7 @@
     text-align: center;
     width: 100%;
     a {
-      color: blue;
+      color: rgb(102, 68, 0);
     }
 
     @include breakpoint("small") {
@@ -92,6 +100,23 @@
     }
 
     @include breakpoint("large") {
-        width: grid-calc(6, $total-columns);
+        width: 100%;
+    }
+}
+.blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.blog-block {
+    flex: 0 0 100%; // Mobile default (1 per row)
+    padding: 20px;
+    // box-shadow: 0px 0px 8px #ccc;
+    // background: #fff;
+
+    @include breakpoint("medium") {
+        flex: 0 0 calc(50% - 10px); // 2 per row on medium+
+        padding: 20px;
     }
 }

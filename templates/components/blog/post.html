@@ -3,7 +3,7 @@
         {{#if post.thumbnail}}
             <figure class="blog-thumbnail">
                 <a href="{{post.url}}">
-                    <img src="{{getImage post.thumbnail 'blog_size'}}" alt="{{post.thumbnail.alt}}" title="{{post.thumbnail.alt}}">
+                    <img src="{{getImage post.thumbnail}}" alt="{{post.thumbnail.alt}}" title="{{post.thumbnail.alt}}">
                 </a>
             </figure>
         {{/if}}
@@ -23,7 +23,7 @@
             {{else}}
                <p>{{{post.summary}}}</p>
                 {{#if post.show_read_more}}
-                    &hellip; <a href="{{url}}">read more</a>
+                    <a href="{{url}}" class="listview-style" style="color: #0a0a0a; text-align: center; font-size: 16px; width: 100%;">Read More</a>
                 {{/if}}
             {{/if}}
         </div>
