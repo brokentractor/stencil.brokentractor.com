@@ -42,6 +42,7 @@ fieldset.form-fieldset.actionBar-section {
     margin: 0px;
     background: #fff;
     box-shadow: none;
+    border: 1px solid #ddd;
 }
 #categoryDescription {
     padding: 5px 20px 10px 20px;
@@ -319,6 +320,7 @@ table#slidetable {
 
                 div.subimgwrap {
                     text-align: center;
+                    border: 1px solid #ddd;
                     // padding: 20px;
                 }
 
@@ -343,6 +345,9 @@ table#slidetable {
 
                     @include breakpoint("medium") {
                         border-top: 1px solid #ddd;
+                        border-left: 1px solid #ddd;
+                        border-right: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
                         padding: 15px;
                     }
 
@@ -380,7 +385,7 @@ table#slidetable {
         .subcat {
             text-align: left;
             position: relative;
-
+            border: 1px solid #ddd;
             > a {
                 padding: 15px;
 
@@ -510,6 +515,7 @@ div#dsubcat {
     margin-bottom: 10px;
     box-shadow: none;
     font-weight: bold;
+    border: 1px solid #ddd;
 
     @include breakpoint("medium") {
         background: #fff;
