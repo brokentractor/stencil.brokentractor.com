@@ -23,26 +23,87 @@ blog:
 
         <div class="hp-inner">
 
-            <h1 class="welcome-title">Quality parts you need to get back to work ... <i>fast!</i></h1>
-            <p>We sell discount new, used, and rebuilt parts for every major heavy equipment brand. Click any button below to browse our catalog. <i>100% USA based customer support. Si Hablamos Espanol</i>.</p>
+            <h1 class="welcome-title">Quality parts you need to get back to work ... <i class="welcome-fast">fast!</i></h1>
+            <div class="hp-trust-bar">
+                <span><i class="fa fa-home"></i> Family Owned Since 2006</span>
+                <span><i class="fa fa-phone"></i> USA-Based Support</span>
+                <span><i class="fa fa-truck"></i> Fast Global Shipping</span>
+                <span><i class="fa fa-comment"></i> Hablamos Español</span>
+            </div>
 
             <div id="pf-embed-container" style="margin-bottom: 20px; box-shadow: 0 1px 3px rgb(0 0 0 / 20%);"></div>
-            <div id="hp-shopby">
-                <a href="/c/case-industrial-parts/"><span>Case</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/john-deere-industrial-parts/"><span>John Deere</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/ford-tractor-and-industrial-parts/"><span>Ford / New Holland</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/cat-industrial-parts/"><span>Caterpillar</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/international-dresser-industrial-parts/"><span>International / Dresser </span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/king-kutter-parts/"><span>King Kutter</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/komatsu-industrial-parts/"><span>Komatsu</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/bobcat/"><span>Bobcat</span><i class="fa fa-angle-right"></i></a>
+            <!-- Top Brand Hero Cards -->
+            <div id="hp-top-brands">
+                <a href="/c/case-industrial-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">Case</span>
+                    <span class="brand-hero-label">Construction &amp; Backhoe Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/john-deere-industrial-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">John Deere</span>
+                    <span class="brand-hero-label">Tractor &amp; Equipment Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/ford-tractor-and-industrial-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">Ford / NH</span>
+                    <span class="brand-hero-label">Tractor &amp; Equipment Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/cat-industrial-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">Caterpillar</span>
+                    <span class="brand-hero-label">Construction Equipment Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/kubota-tractor-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">Kubota</span>
+                    <span class="brand-hero-label">Compact Tractor Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/komatsu-industrial-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">Komatsu</span>
+                    <span class="brand-hero-label">Construction Equipment Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/volvo/" class="brand-hero-card">
+                    <span class="brand-hero-name">Volvo</span>
+                    <span class="brand-hero-label">Construction Equipment Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/king-kutter-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">King Kutter</span>
+                    <span class="brand-hero-label">Tractor Implement Parts</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+            </div>
+
+            <!-- Row 3 Brands -->
+            <div id="hp-action-row">
+                <a href="/c/international-dresser-industrial-parts/" class="brand-hero-card">
+                    <span class="brand-hero-name">Dresser</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/bobcat/" class="brand-hero-card">
+                    <span class="brand-hero-name">Bobcat</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/kobelco/" class="brand-hero-card">
+                    <span class="brand-hero-name">Kobelco</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+                <a href="/c/jcb/" class="brand-hero-card">
+                    <span class="brand-hero-name">JCB</span>
+                    <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
+                </a>
+            </div>
+
+            <!-- More Brands (collapsible) -->
+            <button id="more-brands-toggle" aria-expanded="false">
+                Click for More Brands <span class="more-brands-icon">+</span>
+            </button>
+            <div id="hp-shopby" class="hp-shopby-collapsed">
                 <a href="/c/long-agribusiness-tractor-parts/"><span>Long</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/kubota-tractor-parts/"><span>Kubota</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/kobelco/"><span>Kobelco</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/jcb/"><span>JCB</span><i class="fa fa-angle-right"></i></a>
                 <a href="/c/hitachi/"><span>Hitachi</span><i class="fa fa-angle-right"></i></a>
                 <a href="/c/hyundai/"><span>Hyundai</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/volvo/"><span>Volvo</span><i class="fa fa-angle-right"></i></a>
                 <a href="/c/doosan/"><span>Doosan</span><i class="fa fa-angle-right"></i></a>
                 <a href="/c/daewoo/"><span>Daewoo</span><i class="fa fa-angle-right"></i></a>
                 <a href="/c/samsung/"><span>Samsung</span><i class="fa fa-angle-right"></i></a>
@@ -52,26 +113,24 @@ blog:
                 <a href="/c/takeuchi/"><span>Takeuchi</span><i class="fa fa-angle-right"></i></a>
                 <a href="/c/jlg/"><span>JLG</span><i class="fa fa-angle-right"></i></a>
                 <a href="/c/genie/"><span>Genie</span><i class="fa fa-angle-right"></i></a>
-                <a href="/c/wacker-neuson/"><span>Wacker Neuson</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/gehl/"><span>Gehl</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/ditch-witch/"><span>Ditch Witch</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/hyster/"><span>Hyster</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/hanix/"><span>Hanix</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/koehring/"><span>Koehring</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/liebherr/"><span>Liebherr</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/sumitomo/"><span>Sumitomo</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/mitsubishi/"><span>Mitsubishi</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/timberjack/"><span>Timberjack</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/c/tigercat-parts/"><span>TigerCat</span><img class="new-icon" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/new.png" alt=""><i class="fa fa-angle-right"></i></a>
-                <a href="/pages/return-exchange-request/" class="alt-cat-button"><span>Make a Return or Exchange</span><i class="fa fa-angle-right"></i></a>
-                <a href="/pages/parts-request/" class="alt-cat-button"><span>Parts Request</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/wacker-neuson/"><span>Wacker Neuson</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/gehl/"><span>Gehl</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/ditch-witch/"><span>Ditch Witch</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/hyster/"><span>Hyster</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/hanix/"><span>Hanix</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/koehring/"><span>Koehring</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/liebherr/"><span>Liebherr</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/sumitomo/"><span>Sumitomo</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/mitsubishi/"><span>Mitsubishi</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/timberjack/"><span>Timberjack</span><i class="fa fa-angle-right"></i></a>
+                <a href="/c/tigercat-parts/"><span>TigerCat</span><i class="fa fa-angle-right"></i></a>
                 <div style="clear:both;"></div>
             </div>
         </div>
     </div>
     <div id="hp-hero">
         <div id="heroinner">
-            <h3>New, rebuilt & used </h3>
+            <h3>New, rebuilt &amp; used</h3>
             <h2>MACHINERY PARTS ONLINE</h2>
             <p>Since 2006, Broken Tractor has been a family-owned cornerstone in the machinery parts industry. Whether you're in need of tractor, backhoe, dozer parts, or more, we're your go-to source. Can't find what you're searching for? Don't hesitate to reach out; we're here to help!</p>
             <a href="/pages/parts-request/" class="hero-btn button button--primary">
@@ -95,7 +154,7 @@ blog:
             <div class="rmbox">
                 <strong>New, Used, and Rebuilt Tractor & Heavy Equipment Parts</strong>
                 <p>Welcome to Broken Tractor—your dependable online source for new, used, and rebuilt parts for tractors, backhoes, dozers, excavators, and other heavy equipment. We proudly supply top-quality replacement parts for trusted brands like <a href="/c/case-construction-parts/">Case</a>, <a href="/c/john-deere-parts/">John Deere</a>, <a href="/c/ford-new-holland-parts/">Ford / New Holland</a>, <a href="/c/caterpillar/">Caterpillar</a>, <a href="/c/kubota/">Kubota</a>, <a href="/c/komatsu-parts/">Komatsu</a>, <a href="/c/dresser/">Dresser</a>, <a href="/c/king-kutter-parts/">King Kutter</a>, <a href="/c/long/">Long</a>, and more.</p>
-                <p>Customers across the United States and around the world rely on us for new aftermarket, OEM, rebuilt, and Used parts. Through our strong relationships with a wide range of trusted suppliers, salvage yards, and rebuilders, we can quickly source the parts you need to keep your equipment running. Most orders ship directly from North America, offering you fast delivery and significant savings compared to dealer prices. Count on Broken Tractor for reliable parts, expert guidance, and honest, friendly service.</p>
+                <p>Customers across the United States and around the world rely on us for new aftermarket, OEM, rebuilt, and used parts. Through our strong relationships with a wide range of trusted suppliers, salvage yards, and rebuilders, we can quickly source the parts you need to keep your equipment running. Most orders ship directly from North America, offering you fast delivery and significant savings compared to dealer prices. Count on Broken Tractor for reliable parts, expert guidance, and honest, friendly service.</p>
             </div>
             <div class="rmbox">
                 <strong>Your Trusted Source for Quality Parts</strong>
@@ -105,7 +164,7 @@ blog:
             <div class="rmbox">
                 <strong>Fast Global Shipping & Hassle-Free Returns</strong>
                 <p>Broken Tractor offers fast, dependable shipping to customers worldwide. With warehouses across North America and a streamlined logistics network, most orders ship the same day, ensuring your parts arrive quickly—no matter where you are located.</p>
-                <p>Need to return or exchange a part? Our easy returns process and knowledgeable support team make it simple to get the correct replacement. Simply fill out our <a href="/pages/return-exchange-request/">Return Request form</a> and we will contact you in a timley manner.</p>
+                <p>Need to return or exchange a part? Our easy returns process and knowledgeable support team make it simple to get the correct replacement. Simply fill out our <a href="/pages/return-exchange-request/">Return Request form</a> and we will contact you in a timely manner.</p>
                 <p>Call us at (800) 909-7060 or browse our online parts catalog to get started. Broken Tractor—your global source for heavy equipment and tractor parts!</p>
             </div>
             <div style="clear:both;"></div>
@@ -133,6 +192,17 @@ blog:
      </div>
      <div style="clear:both;"></div>
 </div>
+<script>
+document.getElementById('more-brands-toggle').addEventListener('click', function () {
+    var shopby = document.getElementById('hp-shopby');
+    var icon = this.querySelector('.more-brands-icon');
+    var isOpen = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!isOpen));
+    shopby.classList.toggle('hp-shopby-collapsed');
+    icon.textContent = isOpen ? '+' : '−';
+    this.childNodes[0].textContent = isOpen ? 'Click for More Brands ' : 'Click to Close ';
+});
+</script>
 {{/partial}}
 
 {{#partial "page"}}

@@ -5,6 +5,10 @@
 .homepage .banners {
 	display: none;
 }
+.welcome-fast {
+    color: #ffbe00;
+}
+
 .welcome-title {
 	font-family: $industry;
 	font-weight: 600;
@@ -157,6 +161,149 @@ div#heroinner * {
     line-height: 44px;
     padding-top: 50px;
     }
+}
+
+// Trust bar animation
+
+// Trust Bar
+.hp-trust-bar .svg-inline--fa {
+    color: #ffbe00 !important;
+}
+
+.hp-trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 30px;
+    margin: 12px 0 24px 0;
+
+    span {
+        font-family: $industry;
+        font-size: 15px;
+        font-weight: 600;
+        color: #444;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+
+        @include breakpoint("medium") {
+            font-size: 17px;
+        }
+
+        .fa {
+            margin-right: 5px;
+        }
+    }
+}
+
+// Top Brand Hero Cards
+#hp-top-brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 10px 0;
+}
+
+.brand-hero-card {
+    background: #001212;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 18px 16px 18px;
+    text-decoration: none;
+    flex: 1 1 calc(50% - 5px);
+    border-bottom: 4px solid #ffbe00;
+    transition: background 0.15s, border-color 0.15s;
+
+    @include breakpoint("medium") {
+        flex: 1 1 calc(25% - 8px);
+        max-width: calc(25% - 8px);
+    }
+
+    &:hover, &:focus {
+        background: #ffbe00;
+        border-bottom-color: #001212;
+        transform: scale(1.02);
+
+        .brand-hero-icon,
+        .brand-hero-name,
+        .brand-hero-cta { color: #001212; }
+
+        .brand-hero-label { color: #333; }
+    }
+}
+
+.brand-hero-name {
+    font-family: $industry;
+    font-size: 22px;
+    font-weight: 900;
+    color: #ffbe00;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 6px;
+
+    @include breakpoint("medium") {
+        font-size: 26px;
+    }
+}
+
+.brand-hero-label {
+    display: none;
+}
+
+.brand-hero-cta {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+// Action Row (Return & Parts Request)
+#hp-action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+#more-brands-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: 3px solid #ffbe00;
+    padding: 14px 18px;
+    margin: 24px 0 30px 0;
+    font-family: $industry;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #001212;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    &:hover {
+        background: #f5f5f5;
+    }
+
+    .more-brands-icon {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1;
+        color: #ffbe00;
+    }
+}
+
+.hp-shopby-collapsed {
+    display: none;
 }
 
 div#hp-shopby {
@@ -438,12 +585,6 @@ div#subfooter {
 #subfooter a {
     color: #ccc;
     text-decoration: none;
-}
-.new-icon {
-	position: absolute;
-	left: -10px !important;
-	top: -10px !important;
-	width: 30px !important;
 }
 // .klevuWrap {
 // 	display: none !important;
