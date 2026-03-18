@@ -317,10 +317,10 @@ table#slidetable {
                 text-decoration: none;
                 background: #fff;
                 text-align: center;
+                border: 1px solid #ddd;
 
                 div.subimgwrap {
                     text-align: center;
-                    border: 1px solid #ddd;
                     // padding: 20px;
                 }
 
@@ -345,9 +345,6 @@ table#slidetable {
 
                     @include breakpoint("medium") {
                         border-top: 1px solid #ddd;
-                        border-left: 1px solid #ddd;
-                        border-right: 1px solid #ddd;
-                        border-bottom: 1px solid #ddd;
                         padding: 15px;
                     }
 
