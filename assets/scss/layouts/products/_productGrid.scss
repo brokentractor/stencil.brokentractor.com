@@ -13,7 +13,7 @@
 .page-heading {
     margin: 0 0 10px;
     text-align: center;
-    font-family: "proxima-nova", sans-serif;
+    font-family: $industry;
     margin-top: -15px;
     margin-bottom: 20px;
     font-size: 30px;
@@ -41,7 +41,7 @@ fieldset.form-fieldset.actionBar-section {
 .listpage .page {
     margin: 0px;
     background: #fff;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
 }
 #categoryDescription {
     padding: 5px 20px 10px 20px;
@@ -103,9 +103,16 @@ ul.productList {
 }
 
 #tableheaders th, #tableheaders td {
-    background: #666;
-    color: #fff;
-    border-right: 1px #999 solid;
+    background: #001212;
+    color: #ffbe00;
+    border-right: 1px #ffbe00 solid;
+    position: sticky;
+    top: 92px;
+    z-index: 10;
+
+    &:last-child {
+        border-right: none;
+    }
 }
 
 // Sortable column headers — desktop only
@@ -152,7 +159,13 @@ table#slidetable td, table#slidetable th {
     height: 60px;
     padding: 0px 10px;
     font-size: 16px;
+}
 
+@include breakpoint("medium") {
+    table#slidetable tr:not(#tableheaders):hover td {
+        background: rgba(255, 190, 0, 0.07);
+        transition: background 0.15s ease;
+    }
 }
 
 .listatc {
@@ -193,12 +206,29 @@ tr.productrow:nth-child(odd) {
         font-size: 21px;
     }
 }
+.table-sort-tip {
+    display: none;
+    color: rgba(255,190,0,0.85);
+    font-size: 13px;
+    @include breakpoint("medium") {
+        display: inline;
+        font-size: 17px;
+    }
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: center;
+    border-left: 2px solid rgba(255,190,0,0.4);
+    padding-left: 14px;
+}
+
 div#slidetableouter {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     padding-bottom: 25px;
     @include breakpoint("medium") {
-        overflow-x: auto;
+        overflow-x: visible;
     }
 }
 /*.thcell.pn.image, .pvcol.image {
@@ -374,7 +404,7 @@ table#slidetable {
 td.pvcol.sku {
 position: fixed;
 background: #fff;
-box-shadow: 2px 4px 5px #ccc;
+box-shadow: none;
 line-height: 47px;
 width: 100px;
 left: 0px;
@@ -476,14 +506,14 @@ div#dsubcat {
     background: #fff;
     padding: 10px 15px;
     margin-bottom: 10px;
-    box-shadow: 0px 0px 8px #ccc;
+    box-shadow: none;
     font-weight: bold;
 
     @include breakpoint("medium") {
         background: #fff;
         padding: 10px 15px;
         margin-bottom: 10px;
-        box-shadow: 0px 0px 8px #ccc;
+        box-shadow: none;
         font-weight: bold;
         width: calc(25% - 10px);
         margin-right: 5px;

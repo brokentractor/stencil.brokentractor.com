@@ -86,18 +86,20 @@
       color: #ffbe00;
     }
     a {
-      color: #151002;
+      color: #888;
       font-size: 15px;
+      text-decoration: underline;
+
+      &:hover {
+        color: #001212;
+      }
     }
     &.is-active {
-        // display: none;
-        // font-weight: normal;
-
-
         // scss-lint:disable NestingDepth
         > .breadcrumb-label {
             cursor: text;
-
+            color: #001212;
+            font-weight: 700;
         }
     }
 }
