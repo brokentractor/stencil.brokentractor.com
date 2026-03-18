@@ -163,6 +163,155 @@ div#heroinner * {
     }
 }
 
+// Parts Finder Widget
+#parts-finder {
+    margin: 0 0 24px 0;
+    border: 1px solid #ddd;
+    border-top: 4px solid #ffbe00;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.pf-header {
+    background: #001212;
+    color: #ffbe00;
+    font-family: $industry;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 20px;
+
+    @include breakpoint("medium") {
+        font-size: 20px;
+    }
+}
+
+.pf-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px 20px;
+    align-items: flex-end;
+}
+
+.pf-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+
+    @include breakpoint("medium") {
+        flex: 1 1 0;
+    }
+
+    label {
+        font-family: $industry;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #444;
+        margin-bottom: 6px;
+    }
+
+    select,
+    input[type="text"] {
+        font-size: 16px;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        background: #fff;
+        color: #001212;
+        width: 100%;
+        height: 44px;
+        font-family: proxima-nova, sans-serif;
+        appearance: auto;
+
+        &:disabled {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        &:focus {
+            outline: 2px solid #ffbe00;
+            border-color: #ffbe00;
+        }
+    }
+}
+
+
+@keyframes pf-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pf-field-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#pf-subcat-wrap {
+    animation: pf-field-in 0.25s ease forwards;
+}
+
+.pf-spinner {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 2px solid #ddd;
+    border-top-color: #ffbe00;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 4px;
+    opacity: 0;
+    pointer-events: none;
+
+    &.pf-spinner--active {
+        opacity: 1;
+        animation: pf-spin 0.7s linear infinite;
+    }
+}
+
+.pf-field--btn {
+    flex: 1 1 100%;
+
+    @include breakpoint("medium") {
+        flex: 0 0 140px;
+    }
+}
+
+#pf-go {
+    width: 100%;
+    height: 44px;
+    background: #ffbe00;
+    color: #001212;
+    border: none;
+    font-family: $industry;
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover:not(:disabled) {
+        background: #001212;
+        color: #ffbe00;
+    }
+
+    &:disabled {
+        background: #ccc;
+        color: #888;
+        cursor: not-allowed;
+    }
+}
+
 // Trust bar animation
 
 // Trust Bar
@@ -238,15 +387,16 @@ div#heroinner * {
 
 .brand-hero-name {
     font-family: $industry;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 900;
     color: #ffbe00;
     text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 6px;
+    white-space: nowrap;
 
     @include breakpoint("medium") {
-        font-size: 26px;
+        font-size: clamp(13px, 2.2vw, 22px);
     }
 }
 

@@ -32,6 +32,7 @@ blog:
             </div>
 
             <div id="pf-embed-container" style="margin-bottom: 20px; box-shadow: 0 1px 3px rgb(0 0 0 / 20%);"></div>
+
             <!-- Top Brand Hero Cards -->
             <div id="hp-top-brands">
                 <a href="/c/case-industrial-parts/" class="brand-hero-card">
@@ -45,7 +46,7 @@ blog:
                     <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
                 </a>
                 <a href="/c/ford-tractor-and-industrial-parts/" class="brand-hero-card">
-                    <span class="brand-hero-name">Ford / NH</span>
+                    <span class="brand-hero-name">Ford / New Holland</span>
                     <span class="brand-hero-label">Tractor &amp; Equipment Parts</span>
                     <span class="brand-hero-cta">Shop Parts <i class="fa fa-arrow-right"></i></span>
                 </a>
@@ -126,6 +127,52 @@ blog:
                 <a href="/c/tigercat-parts/"><span>TigerCat</span><i class="fa fa-angle-right"></i></a>
                 <div style="clear:both;"></div>
             </div>
+
+            <!-- Parts Finder Widget -->
+            <div id="parts-finder">
+                <div class="pf-header">Jump to Category</div>
+                <div class="pf-body">
+                    <div class="pf-field">
+                        <label for="pf-brand">Brand</label>
+                        <select id="pf-brand">
+                            <option value="">Select Brand...</option>
+                        </select>
+                    </div>
+                    <div class="pf-field">
+                        <label for="pf-type">Machine Type</label>
+                        <select id="pf-type" disabled>
+                            <option value="">Select Brand First</option>
+                        </select>
+                    </div>
+                    <div class="pf-field">
+                        <label for="pf-cat">Part Category <span class="pf-spinner" id="pf-cat-spinner"></span></label>
+                        <select id="pf-cat" disabled>
+                            <option value="">Select Machine Type First</option>
+                        </select>
+                    </div>
+                    <div class="pf-field pf-field--subcat" id="pf-subcat-wrap" style="display:none">
+                        <label for="pf-subcat">Sub-Category <span class="pf-spinner" id="pf-subcat-spinner"></span></label>
+                        <select id="pf-subcat" disabled>
+                            <option value="">All Sub-Categories</option>
+                        </select>
+                    </div>
+                    <div class="pf-field pf-field--btn">
+                        <button id="pf-go" disabled>FIND PARTS</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden category data for parts finder (populated by Stencil) -->
+            <div id="pf-data" style="display:none">
+                {{#each categories}}
+                <div class="pf-brand-data" data-name="{{name}}" data-url="{{url}}">
+                    {{#each children}}
+                    <span data-name="{{name}}" data-url="{{url}}"></span>
+                    {{/each}}
+                </div>
+                {{/each}}
+            </div>
+
         </div>
     </div>
     <div id="hp-hero">
@@ -193,6 +240,160 @@ blog:
      <div style="clear:both;"></div>
 </div>
 <script>
+// ── Parts Finder Widget ──────────────────────────────────────────────
+(function () {
+    var brandSel    = document.getElementById('pf-brand');
+    var typeSel     = document.getElementById('pf-type');
+    var catSel      = document.getElementById('pf-cat');
+    var subcatWrap  = document.getElementById('pf-subcat-wrap');
+    var subcatSel   = document.getElementById('pf-subcat');
+    var goBtn       = document.getElementById('pf-go');
+    var catSpinner    = document.getElementById('pf-cat-spinner');
+    var subcatSpinner = document.getElementById('pf-subcat-spinner');
+    var catCache      = {};
+    var subcatCache   = {};
+
+    // Populate brand dropdown from hidden Stencil data
+    document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+        var allChild = div.querySelector('span'); // first child is usually "All [Brand]"
+        var realUrl  = allChild ? allChild.dataset.url : div.dataset.url;
+        if (!realUrl || realUrl === '#') return;
+        var opt = document.createElement('option');
+        opt.value       = realUrl;
+        opt.textContent = div.dataset.name;
+        opt.dataset.divName = div.dataset.name;
+        brandSel.appendChild(opt);
+    });
+
+    function reset(sel, msg) {
+        sel.innerHTML = '<option value="">' + msg + '</option>';
+        sel.disabled  = true;
+    }
+
+    function resetSubcat() {
+        reset(subcatSel, 'All Sub-Categories');
+        subcatWrap.style.display = 'none';
+    }
+
+    function checkGo() {
+        goBtn.disabled = !brandSel.value;
+    }
+
+    // Brand selected → populate Machine Type
+    brandSel.addEventListener('change', function () {
+        reset(typeSel, 'Select Machine Type...');
+        reset(catSel, 'Select Machine Type First');
+        resetSubcat();
+        checkGo();
+        if (!this.value) return;
+
+        // Find matching brand data div
+        var brandDiv = null;
+        document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+            var first = div.querySelector('span');
+            if (first && first.dataset.url === brandSel.value) brandDiv = div;
+        });
+        if (!brandDiv) return;
+
+        var children = brandDiv.querySelectorAll('span');
+        var added = 0;
+        children.forEach(function (span) {
+            var name = span.dataset.name || '';
+            if (name.toLowerCase().indexOf('all ') === 0) return; // skip "All Case..."
+            var opt = document.createElement('option');
+            opt.value       = span.dataset.url;
+            opt.textContent = name;
+            typeSel.appendChild(opt);
+            added++;
+        });
+        if (added > 0) typeSel.disabled = false;
+    });
+
+    // Machine Type selected → fetch Part Categories
+    typeSel.addEventListener('change', function () {
+        reset(catSel, 'Loading categories...');
+        resetSubcat();
+        checkGo();
+        if (!this.value) { reset(catSel, 'Select Machine Type First'); return; }
+
+        var url = this.value;
+        if (catCache[url]) { populateCats(catCache[url]); return; }
+
+        catSpinner.classList.add('pf-spinner--active');
+        fetch(url)
+            .then(function (r) { return r.text(); })
+            .then(function (html) {
+                var doc  = new DOMParser().parseFromString(html, 'text/html');
+                var links = doc.querySelectorAll('.subcat a.navList-action');
+                var cats = [];
+                links.forEach(function (a) {
+                    cats.push({ name: a.textContent.trim(), url: a.getAttribute('href') });
+                });
+                catCache[url] = cats;
+                populateCats(cats);
+            })
+            .catch(function () { reset(catSel, 'Could not load — try again'); })
+            .finally(function () { catSpinner.classList.remove('pf-spinner--active'); });
+    });
+
+    function populateCats(cats) {
+        catSel.innerHTML = '<option value="">All Categories</option>';
+        cats.forEach(function (cat) {
+            var opt = document.createElement('option');
+            opt.value       = cat.url;
+            opt.textContent = cat.name;
+            catSel.appendChild(opt);
+        });
+        catSel.disabled = cats.length === 0;
+    }
+
+    // Part Category selected → fetch Sub-Categories
+    catSel.addEventListener('change', function () {
+        resetSubcat();
+        checkGo();
+        if (!this.value) return;
+
+        var url = this.value;
+        if (subcatCache[url]) { populateSubcats(subcatCache[url]); return; }
+
+        subcatSpinner.classList.add('pf-spinner--active');
+        fetch(url)
+            .then(function (r) { return r.text(); })
+            .then(function (html) {
+                var doc   = new DOMParser().parseFromString(html, 'text/html');
+                var links = doc.querySelectorAll('.subcat a.navList-action');
+                var subcats = [];
+                links.forEach(function (a) {
+                    subcats.push({ name: a.textContent.trim(), url: a.getAttribute('href') });
+                });
+                subcatCache[url] = subcats;
+                populateSubcats(subcats);
+            })
+            .finally(function () { subcatSpinner.classList.remove('pf-spinner--active'); })
+            .catch(function () { /* silently skip — subcat is optional */ });
+    });
+
+    function populateSubcats(subcats) {
+        if (subcats.length === 0) { subcatWrap.style.display = 'none'; return; }
+        subcatSel.innerHTML = '<option value="">All Sub-Categories</option>';
+        subcats.forEach(function (sub) {
+            var opt = document.createElement('option');
+            opt.value       = sub.url;
+            opt.textContent = sub.name;
+            subcatSel.appendChild(opt);
+        });
+        subcatSel.disabled       = false;
+        subcatWrap.style.display = '';
+    }
+
+    // FIND PARTS button — navigate to deepest selected category
+    goBtn.addEventListener('click', function () {
+        var dest = subcatSel.value || catSel.value || typeSel.value || brandSel.value;
+        if (dest) window.location.href = dest;
+    });
+})();
+
+// ── More Brands Toggle ───────────────────────────────────────────────
 document.getElementById('more-brands-toggle').addEventListener('click', function () {
     var shopby = document.getElementById('hp-shopby');
     var icon = this.querySelector('.more-brands-icon');
