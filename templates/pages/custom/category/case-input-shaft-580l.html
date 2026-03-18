@@ -100,12 +100,12 @@ category:
             <div id="slidetableouter">
                 <table id="slidetable">
                     <tr id="tableheaders">
-                        <td class="thcell pn static ref">REF #</td>
+                        <td class="thcell pn static ref" data-sort-col="REFID">REF #</td>
                         <td class="thcell pn image">Image</td>
-                        <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
-                        <td class="thcell pn ListDescription">Description</td>
-                        <td class="thcell pn static sku">Part #</td>
-                        <td class="thcell pn price">Price</td>
+                        <td class="thcell pn FitsModel" id="FitsModel" data-sort-col="FitsModel">Fits Model</td>
+                        <td class="thcell pn ListDescription" data-sort-col="ListDescription">Description</td>
+                        <td class="thcell pn static sku" data-sort-col="sku">Part #</td>
+                        <td class="thcell pn price" data-sort-col="price">Price</td>
                         <td class="thcell pn vd">Product Details</td>
                         <!-- <td class="thcell pn atc">Add to Cart</td> -->
                     </tr>
@@ -127,6 +127,48 @@ category:
 
     </style>
     <script>
+document.addEventListener('DOMContentLoaded', function () {
+  var table = document.getElementById('slidetable');
+  if (!table) return;
+  var sortState = {};
+  var sortableHeaders = table.querySelectorAll('.thcell[data-sort-col]');
+  sortableHeaders.forEach(function (th) {
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', function () {
+      var col = this.getAttribute('data-sort-col');
+      var dir = sortState[col] === 'asc' ? 'desc' : 'asc';
+      sortState = {};
+      sortState[col] = dir;
+      sortableHeaders.forEach(function (h) {
+        var caret = h.querySelector('.sort-caret');
+        if (caret) caret.remove();
+        if (h.getAttribute('data-sort-col') === col) {
+          var span = document.createElement('span');
+          span.className = 'sort-caret';
+          span.style.cssText = 'font-size:10px;margin-left:4px;';
+          span.textContent = dir === 'asc' ? ' ▲' : ' ▼';
+          h.appendChild(span);
+        }
+      });
+      var rows = Array.from(table.querySelectorAll('tr.productrow'));
+      rows.sort(function (a, b) {
+        var aEl = a.querySelector('.' + col);
+        var bEl = b.querySelector('.' + col);
+        var aVal = aEl ? aEl.textContent.trim() : '';
+        var bVal = bEl ? bEl.textContent.trim() : '';
+        if (col === 'price') {
+          aVal = parseFloat(aVal.replace(/[^0-9.]/g, '')) || 0;
+          bVal = parseFloat(bVal.replace(/[^0-9.]/g, '')) || 0;
+          return dir === 'asc' ? aVal - bVal : bVal - aVal;
+        }
+        var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
+        return dir === 'asc' ? cmp : -cmp;
+      });
+      rows.forEach(function (row) { table.appendChild(row); });
+    });
+  });
+});
+
 function myFunction() {
   const input = document.getElementById("myInput");
   const filter = (input.value || "").toUpperCase();

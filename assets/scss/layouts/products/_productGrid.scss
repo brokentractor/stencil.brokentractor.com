@@ -108,6 +108,26 @@ ul.productList {
     border-right: 1px #999 solid;
 }
 
+// Sortable column headers — desktop only
+@include breakpoint("medium") {
+    .thcell[data-sort-col] {
+        cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+
+        &:hover {
+            background: #555;
+        }
+    }
+
+    .sort-caret {
+        font-size: 10px;
+        margin-left: 3px;
+        opacity: 0.85;
+        vertical-align: middle;
+    }
+}
+
 td.pvcol.image img {
     padding: 5px;
     background-color: #fff;

@@ -84,6 +84,56 @@ $(document).on('click', 'a.listatc', function(e){
     addItemToCartFromSearch(id, currentCartNum, title);
 });
 
+function initTableSort() {
+    var $table = $('#slidetable');
+    if (!$table.length) return;
+
+    var sortState = {}; // { colClass: 'asc' | 'desc' }
+
+    $table.find('.thcell[data-sort-col]').on('click', function () {
+        var colClass = $(this).data('sort-col');
+        var currentDir = sortState[colClass] || 'none';
+        var newDir = currentDir === 'asc' ? 'desc' : 'asc';
+
+        // Reset all, then set the clicked one
+        sortState = {};
+        sortState[colClass] = newDir;
+
+        // Update carets on all sortable headers
+        $table.find('.thcell[data-sort-col]').each(function () {
+            $(this).find('.sort-caret').remove();
+            var col = $(this).data('sort-col');
+            if (sortState[col]) {
+                var arrow = sortState[col] === 'asc' ? ' ▲' : ' ▼';
+                $(this).append('<span class="sort-caret">' + arrow + '</span>');
+            }
+        });
+
+        // Collect visible + hidden rows (keep filter state intact)
+        var $rows = $table.find('tr.productrow').toArray();
+
+        $rows.sort(function (a, b) {
+            var aVal = $(a).find('.' + colClass).text().trim();
+            var bVal = $(b).find('.' + colClass).text().trim();
+
+            // Price: strip non-numeric chars; treat "Call for Pricing" as 0
+            if (colClass === 'price') {
+                aVal = parseFloat(aVal.replace(/[^0-9.]/g, '')) || 0;
+                bVal = parseFloat(bVal.replace(/[^0-9.]/g, '')) || 0;
+                return newDir === 'asc' ? aVal - bVal : bVal - aVal;
+            }
+
+            var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
+            return newDir === 'asc' ? cmp : -cmp;
+        });
+
+        // Re-append rows in sorted order (preserves display:none filter state)
+        $.each($rows, function (i, row) {
+            $table.append(row);
+        });
+    });
+}
+
 export default class Category extends CatalogPage {
 
     before(next) {
@@ -125,8 +175,10 @@ export default class Category extends CatalogPage {
             $('#categoryDescription img').appendTo('#refImg');
         }
         if (!$('#facetedSearch').length) {
-    coreprices();
-}
+            coreprices();
+        }
+
+        initTableSort();
 
 
         if ($('.Additional.Information').text().length > 0) {
