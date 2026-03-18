@@ -88,10 +88,10 @@
     a {
       color: #888;
       font-size: 15px;
-      text-decoration: underline;
 
       &:hover {
         color: #001212;
+        text-decoration: underline;
       }
     }
     &.is-active {
@@ -108,6 +108,10 @@
     .breadcrumbs {
         text-align: left;
         display: inline-grid;
+    }
+    .breadcrumb a,
+    .breadcrumb-label {
+        font-size: 11px;
     }
 }
 

@@ -77,8 +77,9 @@ h1#producttitle {
     margin-top: 0px;
     text-align: center;
     padding: 0px 15px;
+    font-family: $industry;
     font-weight: bold;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 30px;
     margin-bottom: 20px;
     font-size: 24px;
@@ -90,7 +91,6 @@ h1#producttitle {
     }
     @include breakpoint("large") {
         font-size: 35px;
-        text-transform: inherit;
     }
 }
 .pvwrap .container {
@@ -159,17 +159,14 @@ div#pv-descriptionbox {
 }
 
 #pv-descriptionbox .productView-price {
-    // position: relative;
     font-family:$industry;
-    font-weight: 600;
-    font-size: 24px;
+    font-weight: 700;
+    font-size: 30px;
+    color: #001212;
     text-align: left;
 
     @include breakpoint("medium") {
-        // position: relative;
-        right: 0px;
         font-size: 36px;
-        top: 0px;
         text-align: right;
         float: none;
     }
