@@ -322,20 +322,24 @@ div#heroinner * {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px 30px;
+    gap: 8px 16px;
     margin: 12px 0 24px 0;
 
     span {
         font-family: $industry;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 600;
         color: #444;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         white-space: nowrap;
+        flex: 1 1 calc(50% - 16px);
+        text-align: center;
 
         @include breakpoint("medium") {
             font-size: 17px;
+            flex: 0 0 auto;
+            text-align: left;
         }
 
         .fa {
@@ -363,6 +367,8 @@ div#heroinner * {
     padding: 20px 18px 16px 18px;
     text-decoration: none;
     flex: 1 1 calc(50% - 5px);
+    max-width: calc(50% - 5px);
+    min-width: 0;
     border-bottom: 4px solid #ffbe00;
     transition: background 0.15s, border-color 0.15s;
 
@@ -386,16 +392,17 @@ div#heroinner * {
 
 .brand-hero-name {
     font-family: $industry;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 900;
     color: #ffbe00;
     text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 6px;
-    white-space: nowrap;
+    word-break: break-word;
 
     @include breakpoint("medium") {
         font-size: clamp(13px, 2.2vw, 22px);
+        white-space: nowrap;
     }
 }
 
