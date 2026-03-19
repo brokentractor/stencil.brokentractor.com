@@ -297,34 +297,39 @@ input#search_query_adv {
     }
 }
 
-@keyframes phone-flash {
-    0%, 100%  { color: #ffbe00; }
-    50%       { color: #ffffff; }
+@-webkit-keyframes phone-ring {
+    0%   { -webkit-transform: rotate(0deg);   color: #ffbe00; }
+    10%  { -webkit-transform: rotate(-15deg); color: #ffbe00; }
+    20%  { -webkit-transform: rotate(15deg);  color: #ffffff; }
+    30%  { -webkit-transform: rotate(-15deg); color: #ffbe00; }
+    40%  { -webkit-transform: rotate(15deg);  color: #ffffff; }
+    50%  { -webkit-transform: rotate(0deg);   color: #ffbe00; }
+    100% { -webkit-transform: rotate(0deg);   color: #ffbe00; }
 }
-
-@keyframes phone-vibrate {
-    0%, 100% { transform: rotate(0deg); }
-    10%      { transform: rotate(-15deg); }
-    20%      { transform: rotate(15deg); }
-    30%      { transform: rotate(-15deg); }
-    40%      { transform: rotate(15deg); }
-    50%      { transform: rotate(0deg); }
+@keyframes phone-ring {
+    0%   { transform: rotate(0deg);   color: #ffbe00; }
+    10%  { transform: rotate(-15deg); color: #ffbe00; }
+    20%  { transform: rotate(15deg);  color: #ffffff; }
+    30%  { transform: rotate(-15deg); color: #ffbe00; }
+    40%  { transform: rotate(15deg);  color: #ffffff; }
+    50%  { transform: rotate(0deg);   color: #ffbe00; }
+    100% { transform: rotate(0deg);   color: #ffbe00; }
 }
 
 a#mphonelink {
-    position: absolute;
-    right: 135px;
-    top: 29px;
+    position: absolute !important;
+    right: 135px !important;
+    top: 29px !important;
     text-decoration: none;
-    color: #ffbe00;
+    color: #ffbe00 !important;
     font-size: 22px;
     line-height: 1;
-    animation:
-        phone-vibrate 3s ease-in-out infinite,
-        phone-flash   3s ease-in-out infinite;
+    display: block;
+    -webkit-animation: phone-ring 3s ease-in-out infinite;
+    animation: phone-ring 3s ease-in-out infinite;
 
     @include breakpoint("medium") {
-        display: none;
+        display: none !important;
     }
 }
 
