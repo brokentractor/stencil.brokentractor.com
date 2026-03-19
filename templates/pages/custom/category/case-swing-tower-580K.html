@@ -23,8 +23,8 @@ category:
 
 <h1 class="page-heading">{{category.name}}</h1>
 
-
 {{{snippet 'categories'}}}
+
 <div class="page">
   <!-- This is the clickable image that should be uploaded to Big Commerce image manager -->
   <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-swing-tower-parts-case-580k-resize.png" width="1200" height="391" usemap="#case-image-map">
@@ -50,114 +50,6 @@ category:
 
     </div> -->
 
-
-    <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
-      <i class="fa fa-info" style="margin-right: 20px;"></i><span class="large-only"><b style="margin-right: 5px;">Click on each number to jump to the product page.</b> </span> Each number on the image is a "Ref #" that can be matched on the table below.
-    </div>
-
-
-    <div class="toolbar">
-      <div class="toolbar-filter">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Filter parts on this page..." title="Filter Current Category" isp_ignore>
-      </div>
-      <span class="table-sort-tip">&#9432; Click headers to sort &#8597;</span>
-    </div>
-    <div id="slidetableouter">
-        <table id="slidetable">
-            <tr id="tableheaders">
-                <td class="thcell pn static ref" data-sort-col="REFID">REF #</td>
-                <td class="thcell pn image">Image</td>
-                <td class="thcell pn FitsModel" id="FitsModel" data-sort-col="FitsModel">Fits Model</td>
-                <td class="thcell pn ListDescription" data-sort-col="ListDescription">Description</td>
-                <td class="thcell pn static sku" data-sort-col="sku">Part #</td>
-                <td class="thcell pn price" data-sort-col="price">Price</td>
-                <td class="thcell pn vd">Product Details</td>
-            </tr>
-            {{> components/category/product-listing}}
-        </table>
-    </div>
-
-</div>
-
-    <div id="categoryDescription">
-      {{#if category.description}}
-        {{{category.description}}}
-      {{/if}}
-    </div>
-    <style>
-
-    </style>
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var table = document.getElementById('slidetable');
-  if (!table) return;
-  var sortState = {};
-  var sortableHeaders = table.querySelectorAll('.thcell[data-sort-col]');
-  sortableHeaders.forEach(function (th) {
-    th.style.cursor = 'pointer';
-    th.addEventListener('click', function () {
-      var col = this.getAttribute('data-sort-col');
-      var dir = sortState[col] === 'asc' ? 'desc' : 'asc';
-      sortState = {};
-      sortState[col] = dir;
-      sortableHeaders.forEach(function (h) {
-        var caret = h.querySelector('.sort-caret');
-        if (caret) caret.remove();
-        if (h.getAttribute('data-sort-col') === col) {
-          var span = document.createElement('span');
-          span.className = 'sort-caret';
-          span.style.cssText = 'font-size:10px;margin-left:4px;';
-          span.textContent = dir === 'asc' ? ' ▲' : ' ▼';
-          h.appendChild(span);
-        }
-      });
-      var rows = Array.from(table.querySelectorAll('tr.productrow'));
-      rows.sort(function (a, b) {
-        var aEl = a.querySelector('.' + col);
-        var bEl = b.querySelector('.' + col);
-        var aVal = aEl ? aEl.textContent.trim() : '';
-        var bVal = bEl ? bEl.textContent.trim() : '';
-        if (col === 'price') {
-          aVal = parseFloat(aVal.replace(/[^0-9.]/g, '')) || 0;
-          bVal = parseFloat(bVal.replace(/[^0-9.]/g, '')) || 0;
-          return dir === 'asc' ? aVal - bVal : bVal - aVal;
-        }
-        var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
-        return dir === 'asc' ? cmp : -cmp;
-      });
-      rows.forEach(function (row) { table.appendChild(row); });
-    });
-  });
-});
-
-function myFunction() {
-  const input = document.getElementById("myInput");
-  const filter = (input.value || "").toUpperCase();
-  const table = document.getElementById("slidetable");
-  const tr = table.getElementsByTagName("tr");
- 
-  for (let i = 0; i < tr.length; i++) {
-    // Keep header row visible
-    if (tr[i].id === "tableheaders") {
-      tr[i].style.display = "";
-      continue;
-    }
- 
-    const modelEl = tr[i].getElementsByClassName("FitsModel")[0];
-    const descEl  = tr[i].getElementsByClassName("ListDescription")[0];
-    const partEl  = tr[i].getElementsByClassName("sku")[0]; // Part # column
- 
-    // Combine text from all three fields
-    const modelTxt = modelEl ? (modelEl.textContent || modelEl.innerText) : "";
-    const descTxt  = descEl  ? (descEl.textContent  || descEl.innerText)  : "";
-    const partTxt  = partEl  ? (partEl.textContent  || partEl.innerText)  : "";
- 
-    const haystack = (modelTxt + " " + descTxt + " " + partTxt).toUpperCase();
- 
-    tr[i].style.display = haystack.indexOf(filter) > -1 ? "" : "none";
-  }
-}
-</script>
+  {{> components/custom/category-table-body}}
 {{/partial}}
 {{> layout/base}}
