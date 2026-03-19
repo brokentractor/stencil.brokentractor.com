@@ -297,6 +297,37 @@ input#search_query_adv {
     }
 }
 
+@keyframes phone-flash {
+    0%, 100%  { color: #ffbe00; }
+    50%       { color: #ffffff; }
+}
+
+@keyframes phone-vibrate {
+    0%, 100% { transform: rotate(0deg); }
+    10%      { transform: rotate(-15deg); }
+    20%      { transform: rotate(15deg); }
+    30%      { transform: rotate(-15deg); }
+    40%      { transform: rotate(15deg); }
+    50%      { transform: rotate(0deg); }
+}
+
+a#mphonelink {
+    position: absolute;
+    right: 135px;
+    top: 29px;
+    text-decoration: none;
+    color: #ffbe00;
+    font-size: 22px;
+    line-height: 1;
+    animation:
+        phone-vibrate 3s ease-in-out infinite,
+        phone-flash   3s ease-in-out infinite;
+
+    @include breakpoint("medium") {
+        display: none;
+    }
+}
+
 a#mcartlink {
     position: absolute;
     right: 80px;
