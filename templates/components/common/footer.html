@@ -113,6 +113,377 @@
     </div>
 
 <div style="clear:both;"></div>
+
+<script>
+// Model aliases: exceptions that don't follow the automatic S[Letter] ↔ Super [Letter] pattern.
+var BT_MODEL_ALIASES = {
+    '580SE':     ['580E'],   // 580E is a legacy name for 580SE / 580 Super E
+    '580E':      ['580SE'],
+    '590T':      ['590 Turbo'],
+    '590 Turbo': ['590T'],
+    '680CK':     ['680']
+};
+// Returns all search terms for a model: the model itself + explicit exceptions + automatic S[X] ↔ Super [X].
+function btGetAliases(model) {
+    var result = (BT_MODEL_ALIASES[model] || []).slice();
+    // e.g. "580SK" → "580 Super K"
+    var m = model.match(/^(.+)S([A-Z])$/);
+    if (m) { var lf = m[1] + ' Super ' + m[2]; if (result.indexOf(lf) === -1) result.push(lf); }
+    // e.g. "580 Super K" → "580SK"
+    var n = model.match(/^(.+) Super ([A-Z])$/);
+    if (n) { var sf = n[1] + 'S' + n[2]; if (result.indexOf(sf) === -1) result.push(sf); }
+    return result;
+}
+(function () {
+    try {
+        var machines = JSON.parse(localStorage.getItem('bt_machines') || '[]');
+        if (!machines.length) return;
+        var active = machines[0];
+        var label  = active.brand + ' ' + active.model;
+
+        // Update search placeholder on every page
+        var searchInput = document.getElementById('search');
+        if (searchInput) {
+            searchInput.placeholder = 'Search ' + label + ' parts...';
+        }
+
+        // Intercept search — prepend machine before Klevu processes the query
+        if (searchInput) {
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key !== 'Enter') return;
+                var val = searchInput.value.trim();
+                if (val && val.toLowerCase().indexOf(active.model.toLowerCase()) === -1) {
+                    searchInput.value = active.model + ' ' + val;
+                }
+            });
+            // Also catch clicks on the search icon/submit button
+            var searchForm = searchInput.closest('form');
+            if (searchForm) {
+                var submitBtn = searchForm.querySelector('[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.addEventListener('click', function () {
+                        var val = searchInput.value.trim();
+                        if (val && val.toLowerCase().indexOf(active.model.toLowerCase()) === -1) {
+                            searchInput.value = active.model + ' ' + val;
+                        }
+                    });
+                }
+            }
+        }
+        // Returns matching model labels from the fleet for a given FitsModel text.
+        function btMatchingModels(fitsText) {
+            var matched = [];
+            for (var i = 0; i < machines.length; i++) {
+                var m = machines[i];
+                if (!m.model) continue;
+                var terms = [m.model.toLowerCase()].concat(btGetAliases(m.model).map(function (a) { return a.toLowerCase(); }));
+                if (terms.some(function (t) { return fitsText.indexOf(t) !== -1; })) {
+                    matched.push(m.model);
+                }
+            }
+            return matched;
+        }
+
+        // ── Fitment badge on product page ──
+        var pvBadge = document.getElementById('pv-fits-badge');
+        if (pvBadge) {
+            var pvFitsEl = document.querySelector('dd.FitsModel');
+            if (pvFitsEl) {
+                var pvMatched = btMatchingModels(pvFitsEl.textContent.toLowerCase());
+                if (pvMatched.length) {
+                    pvBadge.className = 'bt-fits-badge';
+                    pvBadge.innerHTML = '&#10003; Fits your ' + pvMatched.join(', ');
+                }
+            }
+        }
+
+        // ── Fitment badges on category table pages ──
+        var fitsModelCells = document.querySelectorAll('td.FitsModel');
+        if (fitsModelCells.length) {
+            fitsModelCells.forEach(function (cell) {
+                var cellMatched = btMatchingModels(cell.textContent.toLowerCase());
+                if (cellMatched.length) {
+                    var badge = document.createElement('span');
+                    badge.className = 'bt-fits-badge';
+                    badge.innerHTML = '&#10003; Fits your ' + cellMatched.join(', ');
+                    cell.appendChild(badge);
+                }
+            });
+        }
+
+    } catch (e) {}
+})();
+</script>
+
+<!-- Category data for My Machine picker (used on every page) -->
+<div id="pf-data" style="display:none">
+    {{#each categories}}
+    <div class="pf-brand-data" data-name="{{name}}" data-url="{{url}}">
+        {{#each children}}
+        <span data-name="{{name}}" data-url="{{url}}"></span>
+        {{/each}}
+    </div>
+    {{/each}}
+</div>
+
+<script>
+// ── My Machine Picker (sitewide) ──────────────────────────────────────
+(function () {
+    var MAX_MACHINES = 5;
+    var STORAGE_KEY  = 'bt_machines';
+
+    function getMachines() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+        catch (e) { return []; }
+    }
+    function saveMachines(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+
+    // Panel elements (every page)
+    var navBtn      = document.getElementById('mm-nav-btn');
+    var navLabel    = document.getElementById('mm-nav-label');
+    var overlay     = document.getElementById('mm-overlay');
+    var panel       = document.getElementById('mm-panel');
+    var panelClose  = document.getElementById('mm-panel-close');
+    var panelCancel = document.getElementById('mm-panel-cancel');
+    var panelSaved  = document.getElementById('mm-panel-saved');
+    var panelChips  = document.getElementById('mm-panel-chips');
+    var changeLink  = document.getElementById('mm-change-link');
+    var addLink     = document.getElementById('mm-add-link');
+    var clearLink   = document.getElementById('mm-clear-link');
+    var brandSel    = document.getElementById('mm-brand-sel');
+    var typeWrap    = document.getElementById('mm-type-wrap');
+    var typeSel     = document.getElementById('mm-type-sel');
+    var modelWrap   = document.getElementById('mm-model-wrap');
+    var modelSel    = document.getElementById('mm-model-sel');
+    var modelInput  = document.getElementById('mm-model-input');
+    var modelLabel  = document.getElementById('mm-model-label');
+    var saveBtn     = document.getElementById('mm-save-machine');
+
+    // Homepage-only elements (null on other pages)
+    var firstVisit = document.getElementById('mm-first-visit');
+    var hasMachine = document.getElementById('mm-has-machine');
+    var hpGreeting = document.getElementById('mm-greeting');
+    var hpChips    = document.getElementById('mm-chips');
+
+    var editIndex = null;
+
+    // ── Populate brand dropdown from #pf-data ──
+    document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+        var first = div.querySelector('span');
+        var url   = first ? first.dataset.url : div.dataset.url;
+        if (!url || url === '#') return;
+        var opt = document.createElement('option');
+        opt.value        = url;
+        opt.textContent  = div.dataset.name;
+        opt.dataset.name = div.dataset.name;
+        brandSel.appendChild(opt);
+    });
+
+    // ── Brand selected ──
+    brandSel.addEventListener('change', function () {
+        typeSel.innerHTML = '<option value="">Select Machine Type...</option>';
+        typeSel.disabled  = true;
+        typeWrap.style.display = 'none';
+        modelWrap.style.display = 'none';
+        modelInput.value = '';
+        saveBtn.disabled = true;
+        if (!this.value) return;
+        var brandDiv = null;
+        document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+            var first = div.querySelector('span');
+            if (first && first.dataset.url === brandSel.value) brandDiv = div;
+        });
+        if (!brandDiv) return;
+        var added = 0;
+        brandDiv.querySelectorAll('span').forEach(function (span) {
+            var name = span.dataset.name || '';
+            if (name.toLowerCase().indexOf('all ') === 0) return;
+            var opt = document.createElement('option');
+            opt.value = span.dataset.url;
+            opt.textContent = name;
+            typeSel.appendChild(opt);
+            added++;
+        });
+        if (added > 0) { typeSel.disabled = false; typeWrap.style.display = ''; }
+    });
+
+    // ── Machine Type selected ──
+    typeSel.addEventListener('change', function () {
+        modelWrap.style.display = 'none';
+        modelSel.innerHTML = '<option value="">Select Model...</option>';
+        modelInput.value = '';
+        saveBtn.disabled = true;
+        if (!this.value) return;
+        var models = (window.BT_MODELS && window.BT_MODELS[this.value]) || [];
+        modelWrap.style.display = '';
+        if (models.length > 0) {
+            models.forEach(function (m) {
+                var opt = document.createElement('option');
+                opt.value       = (typeof m === 'object') ? m.value : m;
+                opt.textContent = (typeof m === 'object') ? m.label : m;
+                modelSel.appendChild(opt);
+            });
+            modelSel.style.display = '';
+            modelInput.style.display = 'none';
+            modelLabel.textContent = 'Model';
+        } else {
+            modelSel.style.display = 'none';
+            modelInput.style.display = '';
+            modelLabel.innerHTML = 'Model Number <span style="font-weight:400;text-transform:none;font-size:12px;color:#888;">(e.g. 580K, 310SL)</span>';
+            modelInput.focus();
+        }
+        checkSave();
+    });
+
+    modelSel.addEventListener('change', checkSave);
+    modelInput.addEventListener('input', checkSave);
+
+    function checkSave() {
+        saveBtn.disabled = !(typeSel.value && (
+            (modelSel.style.display !== 'none' && modelSel.value) ||
+            (modelInput.style.display !== 'none' && modelInput.value.trim())
+        ));
+    }
+    function getModelValue() {
+        return modelSel.style.display !== 'none' ? modelSel.value : modelInput.value.trim();
+    }
+
+    // ── Open / close panel ──
+    function openPanel(index) {
+        editIndex = (typeof index === 'number') ? index : null;
+        brandSel.value = '';
+        typeSel.innerHTML = '<option value="">Select Machine Type...</option>';
+        typeSel.disabled  = true;
+        typeWrap.style.display  = 'none';
+        modelWrap.style.display = 'none';
+        modelSel.innerHTML = '<option value="">Select Model...</option>';
+        modelSel.style.display  = '';
+        modelInput.style.display = 'none';
+        modelInput.value = '';
+        saveBtn.disabled = true;
+        panel.classList.add('mm-panel--open');
+        overlay.classList.add('mm-overlay--active');
+        document.body.classList.add('mm-noscroll');
+        navBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closePanel() {
+        panel.classList.remove('mm-panel--open');
+        overlay.classList.remove('mm-overlay--active');
+        document.body.classList.remove('mm-noscroll');
+        navBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    navBtn.addEventListener('click', function () {
+        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null);
+    });
+    panelClose.addEventListener('click', closePanel);
+    panelCancel.addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+
+    // Homepage "Set Your Machine" button opens panel
+    var openPickerBtn = document.getElementById('mm-open-picker');
+    if (openPickerBtn) openPickerBtn.addEventListener('click', function () { openPanel(null); });
+
+    // Change / Add / Clear links
+    changeLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        var m = getMachines();
+        if (m.length === 1) { openPanel(0); }
+        else { saveMachines([]); renderMachines(); }
+    });
+    addLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        openPanel(null);
+    });
+    clearLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        saveMachines([]);
+        renderMachines();
+    });
+
+    // ── Save machine ──
+    saveBtn.addEventListener('click', function () {
+        var brandOpt = brandSel.options[brandSel.selectedIndex];
+        var typeOpt  = typeSel.options[typeSel.selectedIndex];
+        if (!brandOpt || !typeOpt || !typeOpt.value) return;
+        var machine = {
+            brand:   brandOpt.textContent.trim(),
+            type:    typeOpt.textContent.trim(),
+            model:   getModelValue(),
+            typeUrl: typeOpt.value
+        };
+        var machines = getMachines();
+        if (editIndex !== null) {
+            machines[editIndex] = machine;
+        } else {
+            if (machines.length >= MAX_MACHINES) machines.shift();
+            machines.push(machine);
+        }
+        saveMachines(machines);
+        closePanel();
+        renderMachines();
+    });
+
+    // ── Render ──
+    function renderMachines() {
+        var machines = getMachines();
+
+        // Nav button label
+        if (machines.length === 1) {
+            navLabel.textContent = machines[0].brand + ' ' + machines[0].model;
+        } else if (machines.length > 1) {
+            navLabel.textContent = 'My Fleet (' + machines.length + ')';
+        } else {
+            navLabel.textContent = 'My Machine';
+        }
+
+        // Panel saved section
+        if (machines.length > 0) {
+            panelSaved.style.display = '';
+            panelChips.innerHTML = '';
+            machines.forEach(function (m) {
+                var chip = document.createElement('a');
+                chip.href      = m.typeUrl;
+                chip.className = 'mm-chip';
+                chip.textContent = m.brand + ' ' + m.model;
+                panelChips.appendChild(chip);
+            });
+            addLink.style.display  = machines.length >= MAX_MACHINES ? 'none' : '';
+            changeLink.innerHTML   = '<i class="fa fa-pencil"></i> Change';
+            changeLink.style.display = machines.length === 1 ? '' : 'none';
+        } else {
+            panelSaved.style.display = 'none';
+        }
+
+        // Homepage chips (if present)
+        if (firstVisit) {
+            if (machines.length === 0) {
+                firstVisit.style.display = '';
+                if (hasMachine) hasMachine.style.display = 'none';
+            } else {
+                firstVisit.style.display = 'none';
+                if (hasMachine) hasMachine.style.display = '';
+                if (hpGreeting) hpGreeting.textContent = machines.length === 1
+                    ? 'Shopping for your ' + machines[0].brand + ' ' + machines[0].model
+                    : 'Your saved machines:';
+                if (hpChips) {
+                    hpChips.innerHTML = '';
+                    machines.forEach(function (m) {
+                        var chip = document.createElement('a');
+                        chip.href        = m.typeUrl;
+                        chip.className   = 'mm-chip';
+                        chip.textContent = m.brand + ' ' + m.model;
+                        hpChips.appendChild(chip);
+                    });
+                }
+            }
+        }
+    }
+
+    renderMachines();
+})();
+</script>
+
 <div id="subfooter">
 	<a href="/pages/privacy-policy/">Privacy Policy</a> | <a href="/pages/terms-conditions/">Terms & Conditions</a> <br /><br /> <span class="footerspace"></span>
     Copyright © 2026 Broken Tractor LLC - All Rights Reserved <br /> <span class="footerspace"></span>

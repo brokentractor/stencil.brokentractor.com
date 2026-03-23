@@ -1,3 +1,4 @@
+<script src="{{cdn 'js/machine-models.js'}}"></script>
 {{#if banners.top}}
 <div class="banners" data-banner-location="top">
     <div class="banner">
@@ -58,6 +59,11 @@
             <svg id="header-logo"><use xlink:href="#icon-brokentractor-logo" /></svg>
         </a>
 
+        <button id="mm-nav-btn" aria-expanded="false" aria-controls="mm-panel" aria-label="My Machine">
+            <i class="fa-solid fa-tractor"></i>
+            <span id="mm-nav-label">My Machine</span>
+        </button>
+
         <a href="tel:8009097060" id="mphonelink" aria-label="Call us at (800) 909-7060">
             <i class="fa fa-phone"></i>
         </a>
@@ -79,10 +85,11 @@
         </div>
         </a>
 
-        <div id="shop-parts">
+        <!-- Shop Parts temporarily hidden — My Machine takes this slot -->
+        <!-- <div id="shop-parts">
             Shop Parts
             <svg class="svg-inline--fa fa-angle-down fa-w-10" aria-hidden="true" data-fa-processed="" data-prefix="fa" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg>
-        </div>
+        </div> -->
 
 
         <div class="navPages-container" id="menu" data-menu>
@@ -90,6 +97,43 @@
         </div>
     </div>
 </header>
+<!-- My Machine overlay + slide-in panel (sitewide) -->
+<div id="mm-overlay"></div>
+<div id="mm-panel" role="dialog" aria-label="My Machine">
+    <div id="mm-panel-head">
+        <strong>My Machine</strong>
+        <button id="mm-panel-close" aria-label="Close">&times;</button>
+    </div>
+    <div id="mm-panel-saved" style="display:none">
+        <div id="mm-panel-chips"></div>
+        <div id="mm-panel-actions">
+            <a href="#" id="mm-change-link"><i class="fa fa-pencil"></i> Change</a>
+            <a href="#" id="mm-add-link"><i class="fa fa-plus"></i> Add Machine</a>
+            <a href="#" id="mm-clear-link"><i class="fa fa-times"></i> Clear</a>
+        </div>
+    </div>
+    <div id="mm-panel-form">
+        <p id="mm-panel-intro">What machine do you work on?</p>
+        <div class="mm-field">
+            <label for="mm-brand-sel">Brand</label>
+            <select id="mm-brand-sel"><option value="">Select Brand...</option></select>
+        </div>
+        <div class="mm-field" id="mm-type-wrap" style="display:none">
+            <label for="mm-type-sel">Machine Type</label>
+            <select id="mm-type-sel" disabled><option value="">Select Machine Type...</option></select>
+        </div>
+        <div class="mm-field" id="mm-model-wrap" style="display:none">
+            <label id="mm-model-label" for="mm-model-sel">Model</label>
+            <select id="mm-model-sel"><option value="">Select Model...</option></select>
+            <input type="text" id="mm-model-input" placeholder="Enter model number..." autocomplete="off" style="display:none">
+        </div>
+        <div id="mm-panel-btns">
+            <button id="mm-save-machine" disabled>Save My Machine</button>
+            <button id="mm-panel-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
 <script>
 window.onscroll = function() {navScroll()};
 

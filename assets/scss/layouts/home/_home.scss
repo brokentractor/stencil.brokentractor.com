@@ -145,6 +145,105 @@ div#heroinner * {
     }
 }
 }
+// ── My Machine ───────────────────────────────────────────────────────
+#my-machine-section {
+    margin: 16px 0 20px;
+}
+
+#mm-first-visit {
+    #mm-open-picker {
+        background: #ffbe00;
+        color: #001212;
+        border: none;
+        font-family: $industry;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 16px 24px;
+        cursor: pointer;
+        width: 100%;
+        letter-spacing: 0.5px;
+        @include breakpoint("medium") {
+            font-size: 18px;
+            width: auto;
+        }
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        &:hover { background: #e6a800; }
+        i { margin-right: 8px; }
+        .mm-nav-icon { height: 22px; width: auto; flex-shrink: 0; }
+    }
+}
+
+#mm-has-machine {
+    #mm-greeting {
+        font-family: $industry;
+        font-size: 18px;
+        color: #001212;
+        margin: 0 0 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        @include breakpoint("medium") { font-size: 22px; }
+    }
+    #mm-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+    .mm-chip {
+        background: #001212;
+        color: #ffbe00;
+        font-family: $industry;
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 10px 18px;
+        text-decoration: none;
+        border-bottom: 3px solid #ffbe00;
+        &:hover { background: #002020; }
+        @include breakpoint("medium") { font-size: 17px; }
+    }
+    #mm-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        a {
+            color: #888;
+            font-size: 14px;
+            text-decoration: none;
+            &:hover { color: #001212; }
+        }
+    }
+}
+
+// ── Panel form fields (shared with header panel) ──────────────────────
+.mm-field {
+    margin-bottom: 16px;
+    label {
+        display: block;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #555;
+        margin-bottom: 6px;
+    }
+    select, input[type="text"] {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-bottom: 2px solid #001212;
+        background: #fff;
+        box-sizing: border-box;
+        &:focus { outline: none; border-bottom-color: #ffbe00; }
+    }
+}
+
 #hp-quote .hp-inner {
     max-width: 728px;
     padding: 0px;

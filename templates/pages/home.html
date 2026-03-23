@@ -24,6 +24,19 @@ blog:
         <div class="hp-inner">
 
             <h1 class="welcome-title">Quality parts you need to get back to work ... <i class="welcome-fast">fast!</i></h1>
+
+            <div id="my-machine-section">
+                <!-- First visit: no machine saved — button opens the nav panel -->
+                <div id="mm-first-visit">
+                    <button id="mm-open-picker"><svg class="mm-nav-icon"><use xlink:href="#icon-brokentractor-logoicon" /></svg> Set Your Machine — Get Personalized Results</button>
+                </div>
+                <!-- Returning: machine(s) saved -->
+                <div id="mm-has-machine" style="display:none">
+                    <p id="mm-greeting"></p>
+                    <div id="mm-chips"></div>
+                </div>
+            </div>
+
             <div class="hp-trust-bar">
                 <span><i class="fa fa-home"></i> Family Owned Since 2006</span>
                 <span><i class="fa fa-phone"></i> USA-Based Support</span>
@@ -168,17 +181,6 @@ blog:
                 <span class="return-btn-cta">Click here to start your return &rarr;</span>
             </a>
         </div>
-
-            <!-- Hidden category data for parts finder (populated by Stencil) -->
-            <div id="pf-data" style="display:none">
-                {{#each categories}}
-                <div class="pf-brand-data" data-name="{{name}}" data-url="{{url}}">
-                    {{#each children}}
-                    <span data-name="{{name}}" data-url="{{url}}"></span>
-                    {{/each}}
-                </div>
-                {{/each}}
-            </div>
 
         </div>
 

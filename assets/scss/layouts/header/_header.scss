@@ -798,3 +798,172 @@ body .nxt-ac-main {
         display: none;
     }
 }
+
+// ── My Machine nav button (takes #shop-parts slot) ──────────────────
+#mm-nav-btn {
+    display: none; // hidden on mobile (matches #shop-parts behaviour)
+    background: #ffbe00;
+    color: #001212;
+    border: none;
+    font-family: $industry, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    white-space: nowrap;
+    z-index: 11;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    &:hover { background: #e6a800; }
+    i { font-size: 16px; }
+    .mm-nav-icon { height: 22px; width: auto; flex-shrink: 0; }
+
+    @include breakpoint("medium") {
+        display: flex;
+        position: absolute;
+        right: 15px;
+        top: 18px;
+        height: 52px;
+        width: 194px;
+    }
+
+    @include breakpoint("large") {
+        right: 485px;
+    }
+}
+
+// ── Overlay ──────────────────────────────────────────────────────────
+#mm-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1001;
+
+    &.mm-overlay--active { display: block; }
+}
+
+// ── Slide-in panel ───────────────────────────────────────────────────
+#mm-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1002;
+    overflow-y: auto;
+    transition: right 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+
+    @include breakpoint("medium") {
+        width: 380px;
+        right: -380px;
+    }
+
+    &.mm-panel--open { right: 0; }
+}
+
+body.mm-noscroll { overflow: hidden; }
+
+#mm-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #001212;
+    border-bottom: 3px solid #ffbe00;
+    flex-shrink: 0;
+
+    strong {
+        font-family: $industry, sans-serif;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #fff;
+    }
+}
+
+#mm-panel-close {
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #ffbe00;
+    line-height: 1;
+    &:hover { color: #fff; }
+}
+
+#mm-panel-saved {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+#mm-panel-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+#mm-panel-actions {
+    display: flex;
+    gap: 16px;
+    a {
+        color: #888;
+        font-size: 13px;
+        text-decoration: none;
+        &:hover { color: #001212; }
+    }
+}
+
+#mm-panel-form {
+    padding: 20px;
+    flex: 1;
+
+    #mm-panel-intro {
+        font-family: $industry, sans-serif;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #555;
+        margin: 0 0 18px;
+        letter-spacing: 0.3px;
+    }
+}
+
+#mm-panel-btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+
+    #mm-save-machine {
+        flex: 1;
+        background: #ffbe00;
+        color: #001212;
+        border: none;
+        font-family: $industry, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 14px;
+        cursor: pointer;
+        &:disabled { opacity: 0.4; cursor: default; }
+        &:not(:disabled):hover { background: #e6a800; }
+    }
+
+    #mm-panel-cancel {
+        background: none;
+        border: 1px solid #ddd;
+        font-size: 15px;
+        padding: 14px 20px;
+        cursor: pointer;
+        color: #555;
+        &:hover { border-color: #001212; color: #001212; }
+    }
+}
