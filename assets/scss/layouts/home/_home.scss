@@ -165,7 +165,7 @@ div#heroinner * {
 
 // Parts Finder Widget
 #parts-finder {
-    margin: 0 0 24px 0;
+    margin: 0;
     border: 1px solid #ddd;
     border-top: 4px solid #ffbe00;
     background: #fff;
@@ -308,6 +308,51 @@ div#heroinner * {
         background: #ccc;
         color: #888;
         cursor: not-allowed;
+    }
+}
+
+.return-btn-wrap {
+    text-align: center;
+    padding: 20px 16px;
+}
+
+.return-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 480px;
+    padding: 20px 24px 16px;
+    background: #ffbe00;
+    border-bottom: 4px solid #001212;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.15s, border-color 0.15s;
+
+    .return-btn-title {
+        font-family: $industry;
+        font-size: clamp(16px, 4vw, 22px);
+        font-weight: 900;
+        color: #001212;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+    }
+
+    .return-btn-cta {
+        font-size: 13px;
+        font-weight: 700;
+        color: #001212;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    &:hover {
+        background: #001212;
+        border-bottom-color: #ffbe00;
+        .return-btn-title { color: #ffbe00; }
+        .return-btn-cta { color: #fff; }
     }
 }
 
