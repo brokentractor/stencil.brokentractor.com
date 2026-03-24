@@ -504,12 +504,11 @@ div#heroinner * {
 }
 
 .return-btn {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 480px;
     padding: 20px 24px 16px;
     background: #ffbe00;
     border-bottom: 4px solid #001212;

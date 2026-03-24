@@ -241,6 +241,7 @@ function btGetAliases(model) {
     // Panel elements (every page)
     var navBtn      = document.getElementById('mm-nav-btn');
     var navLabel    = document.getElementById('mm-nav-label');
+    var navIcon     = document.getElementById('mm-nav-icon');
     var overlay     = document.getElementById('mm-overlay');
     var panel       = document.getElementById('mm-panel');
     var panelClose  = document.getElementById('mm-panel-close');
@@ -465,7 +466,7 @@ function btGetAliases(model) {
         } else if (machines.length > 1) {
             navLabel.textContent = 'My Fleet (' + machines.length + ')';
         } else {
-            navLabel.textContent = 'Add Machine';
+            navLabel.textContent = 'Add My Machine';
         }
 
         // Panel saved section
@@ -516,6 +517,16 @@ function btGetAliases(model) {
                 if (t.indexOf(key) !== -1) return EQUIP_ICONS[key];
             }
             return '/assets/icons/equip-backhoe.svg'; // fallback
+        }
+
+        // Nav button icon
+        if (navIcon) {
+            if (machines.length > 0) {
+                var navTypeLabel = machines[0].type.replace(new RegExp('^' + machines[0].brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
+                navIcon.src = getEquipIcon(navTypeLabel);
+            } else {
+                navIcon.src = '/assets/icons/brokentractor-logoicon.svg';
+            }
         }
 
         // Homepage hero banner (if present)
