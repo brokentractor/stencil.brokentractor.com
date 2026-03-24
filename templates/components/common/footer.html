@@ -192,7 +192,7 @@ function btGetAliases(model) {
                 var pvMatched = btMatchingModels(pvFitsEl.textContent.toLowerCase());
                 if (pvMatched.length) {
                     pvBadge.className = 'bt-fits-badge';
-                    pvBadge.innerHTML = '&#10003; Fits your ' + pvMatched.join(', ');
+                    pvBadge.innerHTML = '&#10003; Potential Match for ' + pvMatched.join(', ');
                 }
             }
         }
@@ -205,7 +205,7 @@ function btGetAliases(model) {
                 if (cellMatched.length) {
                     var badge = document.createElement('span');
                     badge.className = 'bt-fits-badge';
-                    badge.innerHTML = '&#10003; Fits your ' + cellMatched.join(', ');
+                    badge.innerHTML = '&#10003; Potential Match for ' + cellMatched.join(', ');
                     cell.appendChild(badge);
                 }
             });
@@ -239,17 +239,18 @@ function btGetAliases(model) {
     function saveMachines(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
 
     // Panel elements (every page)
-    var navBtn      = document.getElementById('mm-nav-btn');
-    var navLabel    = document.getElementById('mm-nav-label');
-    var navIcon     = document.getElementById('mm-nav-icon');
+    var navBtn        = document.getElementById('mm-nav-btn');
+    var navLabel      = document.getElementById('mm-nav-label');
+    var navIcon       = document.getElementById('mm-nav-icon');
+    var mobileBtn     = document.getElementById('mm-mobile-btn');
+    var mobileBtnLabel = document.getElementById('mm-mobile-label');
+    var mobileBtnIcon  = document.getElementById('mm-mobile-icon');
     var overlay     = document.getElementById('mm-overlay');
     var panel       = document.getElementById('mm-panel');
     var panelClose  = document.getElementById('mm-panel-close');
     var panelCancel = document.getElementById('mm-panel-cancel');
     var panelSaved  = document.getElementById('mm-panel-saved');
     var panelChips  = document.getElementById('mm-panel-chips');
-    var changeLink  = document.getElementById('mm-change-link');
-    var addLink     = document.getElementById('mm-add-link');
     var clearLink   = document.getElementById('mm-clear-link');
     var brandSel    = document.getElementById('mm-brand-sel');
     var typeWrap    = document.getElementById('mm-type-wrap');
@@ -406,6 +407,9 @@ function btGetAliases(model) {
     navBtn.addEventListener('click', function () {
         panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null);
     });
+    if (mobileBtn) mobileBtn.addEventListener('click', function () {
+        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null);
+    });
     panelClose.addEventListener('click', closePanel);
     panelCancel.addEventListener('click', closePanel);
     overlay.addEventListener('click', closePanel);
@@ -414,17 +418,7 @@ function btGetAliases(model) {
     var openPickerBtn = document.getElementById('mm-open-picker');
     if (openPickerBtn) openPickerBtn.addEventListener('click', function () { openPanel(null); });
 
-    // Change / Add / Clear links
-    changeLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        var m = getMachines();
-        if (m.length === 1) { openPanel(0); }
-        else { saveMachines([]); renderMachines(); }
-    });
-    addLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        openPanel(null);
-    });
+    // Clear link
     clearLink.addEventListener('click', function (e) {
         e.preventDefault();
         saveMachines([]);
@@ -460,14 +454,17 @@ function btGetAliases(model) {
     function renderMachines() {
         var machines = getMachines();
 
-        // Nav button label
+        // Nav button label (desktop + mobile)
+        var btnText;
         if (machines.length === 1) {
-            navLabel.textContent = machines[0].brand + ' ' + machines[0].model;
+            btnText = machines[0].brand + ' ' + machines[0].model;
         } else if (machines.length > 1) {
-            navLabel.textContent = 'My Fleet (' + machines.length + ')';
+            btnText = 'My Fleet (' + machines.length + ')';
         } else {
-            navLabel.textContent = 'Add My Machine';
+            btnText = 'Add My Machine';
         }
+        navLabel.textContent = btnText;
+        if (mobileBtnLabel) mobileBtnLabel.textContent = btnText;
 
         // Panel saved section
         if (machines.length > 0) {
@@ -480,9 +477,6 @@ function btGetAliases(model) {
                 chip.textContent = m.brand + ' ' + m.model;
                 panelChips.appendChild(chip);
             });
-            addLink.style.display  = machines.length >= MAX_MACHINES ? 'none' : '';
-            changeLink.innerHTML   = '<i class="fa fa-pencil"></i> Change';
-            changeLink.style.display = machines.length === 1 ? '' : 'none';
         } else {
             panelSaved.style.display = 'none';
         }
@@ -519,15 +513,14 @@ function btGetAliases(model) {
             return '/assets/icons/equip-backhoe.svg'; // fallback
         }
 
-        // Nav button icon
-        if (navIcon) {
-            if (machines.length > 0) {
-                var navTypeLabel = machines[0].type.replace(new RegExp('^' + machines[0].brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
-                navIcon.src = getEquipIcon(navTypeLabel);
-            } else {
-                navIcon.src = '/assets/icons/brokentractor-logoicon.svg';
-            }
+        // Nav button icon (desktop + mobile)
+        var iconSrc = '/assets/icons/brokentractor-logoicon.svg';
+        if (machines.length > 0) {
+            var navTypeLabel = machines[0].type.replace(new RegExp('^' + machines[0].brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
+            iconSrc = getEquipIcon(navTypeLabel);
         }
+        if (navIcon) navIcon.src = iconSrc;
+        if (mobileBtnIcon) mobileBtnIcon.src = iconSrc;
 
         // Homepage hero banner (if present)
         var hero = document.getElementById('mm-hero');
@@ -551,12 +544,35 @@ function btGetAliases(model) {
                 heroTitle.textContent = 'Looking for ' + m.brand + ' ' + m.model + ' Parts?';
                 heroSub.textContent   = 'Browse our selection of ' + m.brand + ' ' + typeLabel.toLowerCase() + ' parts today.';
                 heroLink.href         = m.typeUrl;
+                heroLink.innerHTML    = 'Browse ' + m.brand + ' <i class="fa fa-arrow-right"></i>';
                 hero.style.display    = '';
             }
         }
     }
 
     renderMachines();
+
+    // ── Onboarding tooltip (first visit only) ────────────────────────
+    var TIP_KEY      = 'bt_mm_tip_seen';
+    var tip          = document.getElementById('mm-onboard-tip');
+    var tipClose     = document.getElementById('mm-tip-close');
+    var mobileTip    = document.getElementById('mm-mobile-tip');
+    var mobileTipClose = document.getElementById('mm-mobile-tip-close');
+    if (/* !localStorage.getItem(TIP_KEY) && */ (tip || mobileTip)) {
+        setTimeout(function () {
+            if (tip)       tip.classList.add('mm-tip--visible');
+            if (mobileTip) mobileTip.classList.add('mm-tip--visible');
+        }, 2000);
+        function dismissTip() {
+            if (tip)       tip.classList.remove('mm-tip--visible');
+            if (mobileTip) mobileTip.classList.remove('mm-tip--visible');
+            // localStorage.setItem(TIP_KEY, '1');
+        }
+        if (tipClose)       tipClose.addEventListener('click', dismissTip);
+        if (mobileTipClose) mobileTipClose.addEventListener('click', dismissTip);
+        navBtn.addEventListener('click', dismissTip);
+        if (mobileBtn) mobileBtn.addEventListener('click', dismissTip);
+    }
 })();
 </script>
 

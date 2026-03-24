@@ -65,6 +65,12 @@
             <i class="fa fa-angle-right" id="mm-nav-chevron"></i>
         </button>
 
+        <div id="mm-onboard-tip" role="tooltip" aria-live="polite">
+            <button id="mm-tip-close" aria-label="Dismiss">&times;</button>
+            <strong>New Feature!</strong>
+            <p>Save your machine to see potential part matches. Always double-check fitment before purchasing.</p>
+        </div>
+
         <a href="tel:8009097060" id="mphonelink" aria-label="Call us at (800) 909-7060">
             <i class="fa fa-phone"></i>
         </a>
@@ -77,6 +83,17 @@
 
         <div id="header-search">
             {{> components/common/search-box}}
+        </div>
+
+        <button id="mm-mobile-btn" aria-controls="mm-panel" aria-label="Add My Machine">
+            <img id="mm-mobile-icon" src="/assets/icons/brokentractor-logoicon.svg">
+            <span id="mm-mobile-label">Add My Machine</span>
+        </button>
+
+        <div id="mm-mobile-tip" role="tooltip">
+            <button id="mm-mobile-tip-close" aria-label="Dismiss">&times;</button>
+            <strong>New Feature!</strong>
+            <p>Save your machine to see potential part matches. Always double-check fitment before purchasing.</p>
         </div>
 
         {{{region name="header_bottom"}}}
@@ -108,14 +125,13 @@
     <div id="mm-panel-saved" style="display:none">
         <div id="mm-panel-chips"></div>
         <div id="mm-panel-actions">
-            <a href="#" id="mm-change-link"><i class="fa fa-pencil"></i> Change</a>
-            <a href="#" id="mm-add-link"><i class="fa fa-plus"></i> Add Machine</a>
             <a href="#" id="mm-clear-link"><i class="fa fa-times"></i> Clear</a>
         </div>
     </div>
     <div id="mm-panel-form">
-        <h4 id="mm-panel-intro">What machine do you work on?</h4>
-        <p>This helps find the right parts for your equipment. You will see a green checkmark when a compatible part is found that looks like this: <span class="bt-fits-badge">✓ Fits Your Machine</span></p>
+        <h4 id="mm-panel-intro">What machine are you working on?</h4>
+        <p>This helps find the right parts for your equipment. When a potential match is found you will see: <span class="bt-fits-badge">✓ Potential Match</span></p>
+        <p class="mm-panel-disclaimer">⚠ Please double-check fitment before ordering.</p>
         <div class="mm-field">
             <label for="mm-brand-sel">Brand</label>
             <select id="mm-brand-sel"><option value="">Select Brand...</option></select>
