@@ -273,16 +273,16 @@ window.BT_MODELS = {
   '/c/hitachi/hitachi-model-specs/': ['EX5','EX7','EX8','EX10','EX12','EX14','EX15','EX16','EX17','EX18','EX20','EX21','EX22','EX24','EX25','EX27','EX29','EX30','EX32','EX33','EX35','EX36','EX40','EX45','EX50','EX55','EX58','EX60','EX75','EX80','EX90','EX100','EX110','EX120','EX130','EX135','EX150','EX160','EX165','EX200','EX210','EX220','EX225','EX230','EX250','EX270','EX280','EX300','EX310','EX320','EX330','EX340','EX345','EX350','EX360','EX370','EX385','EX400','EX450','EX550','EX600','EX700','EX750','EX800','EX1000','EX1100','EX1200','EX1800','EX1900','EX2500','EX3500','EX3600','EX5500','EX5600','EX8000','UH04','UH07','UH09','UH10','UH16','UH20','UH025','UH033','UH045','UH052','UH053','UH061','UH062','UH063','UH081','UH082','UH083','UH101','UH103','UH121','UH122','UH123','UH181','ZX8','ZX10','ZX15','ZX16','ZX17','ZX18','ZX19','ZX20','ZX22','ZX25','ZX26','ZX27','ZX29','ZX30','ZX33','ZX35','ZX38','ZX40','ZX48','ZX50','ZX52','ZX55','ZX60','ZX65','ZX70','ZX75','ZX80','ZX85','ZX110','ZX120','ZX125','ZX130','ZX135','ZX140','ZX145','ZX160','ZX170','ZX180','ZX185','ZX190','ZX200','ZX210','ZX220','ZX225','ZX230','ZX240','ZX245','ZX250','ZX260','ZX270','ZX280','ZX290','ZX300','ZX330','ZX350','ZX352','ZX360','ZX370','ZX380','ZX400','ZX450','ZX460','ZX470','ZX480','ZX500','ZX520','ZX600','ZX650','ZX670','ZX800','ZX850','ZX870','ZX1000','ZX1800'],
 
   // ── HYUNDAI ───────────────────────────────────────────────────────────────
-  '/c/hyundai-parts/hyundai-excavator-hydraulic-cylinder/': [],
-  '/c/hyundai/hyundai-seat/': [],
-  '/c/hyundai/hydraulic-pump/': [],
-  '/c/hyundai/hyundai-final-drive/': [],
-  '/c/hyundai/hyundai-hydraulic-cylinder-seal-kits/': [],
-  '/c/hyundai/hyundai-radiator-and-oil-cooler/': [],
-  '/c/hyundai/hyundai-rubber-tracks/': [],
-  '/c/hyundai/swing-motor/': [],
-  '/c/hyundai/hyundai-engine-parts/': [],
-  '/c/hyundai/hyundai-excavator-specs/': [],
+  '/c/hyundai-parts/hyundai-excavator-hydraulic-cylinder/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hyundai-seat/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hydraulic-pump/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hyundai-final-drive/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hyundai-hydraulic-cylinder-seal-kits/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hyundai-radiator-and-oil-cooler/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hyundai-rubber-tracks/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/swing-motor/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hyundai-engine-parts/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
+  '/c/hyundai/hyundai-excavator-specs/': ['R180LC-3','R180LC-9S','R210LC-9','R220LC-9','R260LC-9S','R300LC-9','R450LC-7','R520LC-9'],
 
   // ── VOLVO ─────────────────────────────────────────────────────────────────
   '/c/volvo/excavator/': ['EC13','EC14','EC15','EC17','EC18','EC20','EC25','EC27','EC30','EC35','EC45','EC50','EC55','EC60','EC70','EC80','EC130','EC135','EC140','EC150','EC160','EC170','EC180','EC200','EC210','EC220','EC230','EC235','EC240','EC250','EC280','EC290','EC300','EC330','EC340','EC350','EC360','EC380','EC390','EC450','EC460','EC480','EC650','EC700','EC750','EC950','ECR18','ECR25','ECR28','ECR35','ECR38','ECR40','ECR45','ECR48','ECR50','ECR58','ECR88','ECR145','ECR235','ECR305','ECR355','EW50','EW55','EW60','EW130','EW140','EW145','EW160','EW170','EW180','EW200','EW210','EW230','MX132','MX225','MX255','MX452','MX465','SE50','SE130','SE210','SE235','SE240','SE350','SE450'],

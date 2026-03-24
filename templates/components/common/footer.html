@@ -269,7 +269,7 @@ function btGetAliases(model) {
 
     // ── Populate brand dropdown from #pf-data ──
     // Brands excluded from the My Machine picker
-    var PICKER_EXCLUDE = ['king kutter'];
+    var PICKER_EXCLUDE = ['king kutter', 'broken tractor merchandise'];
     document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
         var first = div.querySelector('span');
         var url   = first ? first.dataset.url : div.dataset.url;
