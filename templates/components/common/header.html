@@ -59,9 +59,10 @@
             <svg id="header-logo"><use xlink:href="#icon-brokentractor-logo" /></svg>
         </a>
 
-        <button id="mm-nav-btn" aria-expanded="false" aria-controls="mm-panel" aria-label="My Machine">
-            <i class="fa-solid fa-tractor"></i>
-            <span id="mm-nav-label">My Machine</span>
+        <button id="mm-nav-btn" aria-expanded="false" aria-controls="mm-panel" aria-label="Add Machine">
+            <img style="width: 30px; flex-shrink: 0;" src="/assets/icons/brokentractor-logoicon.svg">
+            <span id="mm-nav-label">Add Machine</span>
+            <i class="fa fa-angle-right" id="mm-nav-chevron"></i>
         </button>
 
         <a href="tel:8009097060" id="mphonelink" aria-label="Call us at (800) 909-7060">
@@ -113,7 +114,8 @@
         </div>
     </div>
     <div id="mm-panel-form">
-        <p id="mm-panel-intro">What machine do you work on?</p>
+        <h4 id="mm-panel-intro">What machine do you work on?</h4>
+        <p>This helps find the right parts for your equipment. You will see a green checkmark when a compatible part is found that looks like this: <span class="bt-fits-badge">✓ Fits Your Machine</span></p>
         <div class="mm-field">
             <label for="mm-brand-sel">Brand</label>
             <select id="mm-brand-sel"><option value="">Select Brand...</option></select>
