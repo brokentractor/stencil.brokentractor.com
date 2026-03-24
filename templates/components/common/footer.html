@@ -268,10 +268,14 @@ function btGetAliases(model) {
     var editIndex = null;
 
     // ── Populate brand dropdown from #pf-data ──
+    // Brands excluded from the My Machine picker
+    var PICKER_EXCLUDE = ['king kutter'];
     document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
         var first = div.querySelector('span');
         var url   = first ? first.dataset.url : div.dataset.url;
         if (!url || url === '#') return;
+        var nameLower = (div.dataset.name || '').toLowerCase();
+        if (PICKER_EXCLUDE.some(function(e){ return nameLower.indexOf(e) !== -1; })) return;
         var opt = document.createElement('option');
         opt.value           = url;
         opt.textContent     = div.dataset.name;
@@ -482,6 +486,38 @@ function btGetAliases(model) {
             panelSaved.style.display = 'none';
         }
 
+        // Equipment type → SVG icon map
+        var EQUIP_ICONS = {
+            'backhoe':      '/assets/icons/equip-backhoe.svg',
+            'excavator':    '/assets/icons/equip-excavator.svg',
+            'dozer':        '/assets/icons/equip-dozer.svg',
+            'bulldozer':    '/assets/icons/equip-dozer.svg',
+            'wheel loader': '/assets/icons/equip-wheel-loader.svg',
+            'wheel-loader': '/assets/icons/equip-wheel-loader.svg',
+            'skid steer':   '/assets/icons/equip-skid-steer.svg',
+            'skid-steer':   '/assets/icons/equip-skid-steer.svg',
+            'track loader': '/assets/icons/equip-track-loader.svg',
+            'motor grader': '/assets/icons/equip-motor-grader.svg',
+            'grader':       '/assets/icons/equip-motor-grader.svg',
+            'dump truck':       '/assets/icons/equip-dump-truck.svg',
+            'articulated truck':'/assets/icons/equip-dump-truck.svg',
+            'articulated dump': '/assets/icons/equip-dump-truck.svg',
+            'tractor':      '/assets/icons/equip-tractor.svg',
+            'telehandler':  '/assets/icons/equip-telehandler.svg',
+            'forklift':     '/assets/icons/equip-forklift.svg',
+            'scraper':      '/assets/icons/equip-dozer.svg',
+            'trencher':     '/assets/icons/equip-trencher.svg',
+            'roller':       '/assets/icons/equip-roller.svg',
+            'compactor':    '/assets/icons/equip-roller.svg'
+        };
+        function getEquipIcon(typeLabel) {
+            var t = typeLabel.toLowerCase();
+            for (var key in EQUIP_ICONS) {
+                if (t.indexOf(key) !== -1) return EQUIP_ICONS[key];
+            }
+            return '/assets/icons/equip-backhoe.svg'; // fallback
+        }
+
         // Homepage hero banner (if present)
         var hero = document.getElementById('mm-hero');
         if (hero) {
@@ -493,13 +529,14 @@ function btGetAliases(model) {
                 var heroTitle = hero.querySelector('.mm-hero-title');
                 var heroSub   = hero.querySelector('.mm-hero-sub');
                 var heroLink  = hero.querySelector('.mm-hero-link');
-                if (m.image) {
-                    heroImg.style.backgroundImage = 'url(' + m.image + ')';
-                    heroImg.style.display = '';
-                } else {
-                    heroImg.style.display = 'none';
-                }
                 var typeLabel = m.type.replace(new RegExp('^' + m.brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
+                var iconSrc   = getEquipIcon(typeLabel);
+                if (iconSrc.indexOf('fa:') === 0) {
+                    heroImg.innerHTML = '<i class="' + iconSrc.slice(3) + '" style="font-size:80px;color:#000;"></i>';
+                } else {
+                    heroImg.innerHTML = '<img src="' + iconSrc + '" alt="' + typeLabel + '">';
+                }
+                heroImg.style.display = '';
                 heroTitle.textContent = 'Looking for ' + m.brand + ' ' + m.model + ' Parts?';
                 heroSub.textContent   = 'Browse our selection of ' + m.brand + ' ' + typeLabel.toLowerCase() + ' parts today.';
                 heroLink.href         = m.typeUrl;
