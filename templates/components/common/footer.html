@@ -273,9 +273,10 @@ function btGetAliases(model) {
         var url   = first ? first.dataset.url : div.dataset.url;
         if (!url || url === '#') return;
         var opt = document.createElement('option');
-        opt.value        = url;
-        opt.textContent  = div.dataset.name;
-        opt.dataset.name = div.dataset.name;
+        opt.value           = url;
+        opt.textContent     = div.dataset.name;
+        opt.dataset.name    = div.dataset.name;
+        opt.dataset.brandUrl = div.dataset.url || url;
         brandSel.appendChild(opt);
     });
 
@@ -305,7 +306,28 @@ function btGetAliases(model) {
             typeSel.appendChild(opt);
             added++;
         });
-        if (added > 0) { typeSel.disabled = false; typeWrap.style.display = ''; }
+        if (added > 0) {
+            // Check directly against spans whether all children share the same model list
+            var childUrls = [];
+            brandDiv.querySelectorAll('span').forEach(function (span) {
+                var name = span.dataset.name || '';
+                if (name.toLowerCase().indexOf('all ') === 0) return;
+                if (span.dataset.url) childUrls.push(span.dataset.url);
+            });
+            var firstKey  = childUrls[0] || null;
+            var firstList = firstKey ? JSON.stringify((window.BT_MODELS && window.BT_MODELS[firstKey]) || []) : null;
+            var allSame   = firstList && firstList !== '[]' && childUrls.every(function (url) {
+                return JSON.stringify((window.BT_MODELS && window.BT_MODELS[url]) || []) === firstList;
+            });
+            if (allSame) {
+                typeSel.value = firstKey;
+                typeWrap.style.display = 'none';
+                typeSel.dispatchEvent(new Event('change'));
+            } else {
+                typeSel.disabled = false;
+                typeWrap.style.display = '';
+            }
+        }
     });
 
     // ── Machine Type selected ──
