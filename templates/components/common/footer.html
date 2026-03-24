@@ -321,9 +321,11 @@ function btGetAliases(model) {
             });
             if (allSame) {
                 typeSel.value = firstKey;
+                typeSel.dataset.brandRedirect = brandSel.options[brandSel.selectedIndex].dataset.brandUrl || firstKey;
                 typeWrap.style.display = 'none';
                 typeSel.dispatchEvent(new Event('change'));
             } else {
+                delete typeSel.dataset.brandRedirect;
                 typeSel.disabled = false;
                 typeWrap.style.display = '';
             }
@@ -429,12 +431,13 @@ function btGetAliases(model) {
         var brandOpt = brandSel.options[brandSel.selectedIndex];
         var typeOpt  = typeSel.options[typeSel.selectedIndex];
         if (!brandOpt || !typeOpt || !typeOpt.value) return;
+        var brandRedirect = typeSel.dataset.brandRedirect || null;
         var machine = {
             brand:   brandOpt.textContent.trim().replace(/\s+(construction|industrial|equipment|parts)(\s+.*)?$/i, '').trim(),
             type:    typeOpt.textContent.trim(),
             model:   getModelValue(),
-            typeUrl: typeOpt.value,
-            image:   (typeOpt.dataset.image || '').replace('{:size}', '1280x480')
+            typeUrl: brandRedirect || typeOpt.value,
+            image:   brandRedirect ? '' : (typeOpt.dataset.image || '').replace('{:size}', '1280x480')
         };
         var machines = getMachines();
         if (editIndex !== null) {

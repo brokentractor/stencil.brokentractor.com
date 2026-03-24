@@ -268,17 +268,24 @@ blog:
     var catCache      = {};
     var subcatCache   = {};
 
-    // Populate brand dropdown from hidden Stencil data
-    document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
-        var allChild = div.querySelector('span'); // first child is usually "All [Brand]"
-        var realUrl  = allChild ? allChild.dataset.url : div.dataset.url;
-        if (!realUrl || realUrl === '#') return;
-        var opt = document.createElement('option');
-        opt.value       = realUrl;
-        opt.textContent = div.dataset.name;
-        opt.dataset.divName = div.dataset.name;
-        brandSel.appendChild(opt);
-    });
+    // Populate brand dropdown — deferred so #pf-data (in footer) is in the DOM
+    function populateBrands() {
+        document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+            var allChild = div.querySelector('span'); // first child is usually "All [Brand]"
+            var realUrl  = allChild ? allChild.dataset.url : div.dataset.url;
+            if (!realUrl || realUrl === '#') return;
+            var opt = document.createElement('option');
+            opt.value       = realUrl;
+            opt.textContent = div.dataset.name;
+            opt.dataset.divName = div.dataset.name;
+            brandSel.appendChild(opt);
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', populateBrands);
+    } else {
+        populateBrands();
+    }
 
     function reset(sel, msg) {
         sel.innerHTML = '<option value="">' + msg + '</option>';
