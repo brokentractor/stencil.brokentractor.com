@@ -141,35 +141,8 @@ function btGetAliases(model) {
         var active = machines[0];
         var label  = active.brand + ' ' + active.model;
 
-        // Update search placeholder on every page
         var searchInput = document.getElementById('search');
-        if (searchInput) {
-            searchInput.placeholder = 'Search ' + label + ' parts...';
-        }
 
-        // Intercept search — prepend machine before Klevu processes the query
-        if (searchInput) {
-            searchInput.addEventListener('keydown', function (e) {
-                if (e.key !== 'Enter') return;
-                var val = searchInput.value.trim();
-                if (val && val.toLowerCase().indexOf(active.model.toLowerCase()) === -1) {
-                    searchInput.value = active.model + ' ' + val;
-                }
-            });
-            // Also catch clicks on the search icon/submit button
-            var searchForm = searchInput.closest('form');
-            if (searchForm) {
-                var submitBtn = searchForm.querySelector('[type="submit"]');
-                if (submitBtn) {
-                    submitBtn.addEventListener('click', function () {
-                        var val = searchInput.value.trim();
-                        if (val && val.toLowerCase().indexOf(active.model.toLowerCase()) === -1) {
-                            searchInput.value = active.model + ' ' + val;
-                        }
-                    });
-                }
-            }
-        }
         // Returns matching model labels from the fleet for a given FitsModel text.
         function btMatchingModels(fitsText) {
             var matched = [];
