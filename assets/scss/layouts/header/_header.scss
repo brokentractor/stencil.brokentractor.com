@@ -878,7 +878,16 @@ body .nxt-ac-main {
     z-index: 11;
 
     img { display: none; }
-    span { text-align: center; line-height: 1.1; }
+    span {
+        text-align: center;
+        line-height: 1.1;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
 
     &:hover { background: #e6a800; }
 
