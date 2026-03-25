@@ -272,16 +272,19 @@ function btGetAliases(model) {
     // ── Populate brand dropdown from #pf-data ──
     // Brands excluded from the My Machine picker
     var PICKER_EXCLUDE = ['king kutter', 'broken tractor merchandise'];
+    // Brands with only one machine type — skip the type step and go straight to models
+    var SINGLE_TYPE_BRANDS = ['kobelco', 'hyundai', 'hitachi', 'long tractor'];
     document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
         var first = div.querySelector('span');
         var url   = first ? first.dataset.url : div.dataset.url;
         if (!url || url === '#') return;
         var nameLower = (div.dataset.name || '').toLowerCase();
         if (PICKER_EXCLUDE.some(function(e){ return nameLower.indexOf(e) !== -1; })) return;
+        var cleanName = (div.dataset.name || '').replace(/\s+parts$/i, '').trim();
         var opt = document.createElement('option');
         opt.value           = url;
-        opt.textContent     = div.dataset.name;
-        opt.dataset.name    = div.dataset.name;
+        opt.textContent     = cleanName;
+        opt.dataset.name    = cleanName;
         opt.dataset.brandUrl = div.dataset.url || url;
         brandSel.appendChild(opt);
     });
@@ -313,6 +316,9 @@ function btGetAliases(model) {
             added++;
         });
         if (added > 0) {
+            var selOpt = brandSel.options[brandSel.selectedIndex];
+            var brandNameLower = (selOpt ? selOpt.dataset.name || '' : '').toLowerCase();
+            var isForcedSingle = SINGLE_TYPE_BRANDS.some(function(b){ return brandNameLower.indexOf(b) !== -1; });
             // Check directly against spans whether all children share the same model list
             var childUrls = [];
             brandDiv.querySelectorAll('span').forEach(function (span) {
@@ -325,9 +331,24 @@ function btGetAliases(model) {
             var allSame   = firstList && firstList !== '[]' && childUrls.every(function (url) {
                 return JSON.stringify((window.BT_MODELS && window.BT_MODELS[url]) || []) === firstList;
             });
-            if (allSame) {
+            if (allSame || isForcedSingle) {
+                // For forced single-type brands whose type URL isn't in BT_MODELS,
+                // aggregate models from all BT_MODELS keys matching the brand slug
+                if (isForcedSingle && (!firstList || firstList === '[]')) {
+                    var brandSlug = brandNameLower.replace(/\s+/g, '-');
+                    var seen = {}, agg = [];
+                    Object.keys(window.BT_MODELS || {}).forEach(function(k) {
+                        if (k.toLowerCase().indexOf(brandSlug) !== -1) {
+                            (window.BT_MODELS[k] || []).forEach(function(m) {
+                                var val = typeof m === 'object' ? m.value : m;
+                                if (!seen[val]) { seen[val] = true; agg.push(m); }
+                            });
+                        }
+                    });
+                    if (agg.length) window._btTempModels = agg;
+                }
                 typeSel.value = firstKey;
-                typeSel.dataset.brandRedirect = brandSel.options[brandSel.selectedIndex].dataset.brandUrl || firstKey;
+                typeSel.dataset.brandRedirect = selOpt ? (selOpt.dataset.brandUrl || firstKey) : firstKey;
                 typeWrap.style.display = 'none';
                 typeSel.dispatchEvent(new Event('change'));
             } else {
@@ -345,7 +366,8 @@ function btGetAliases(model) {
         modelInput.value = '';
         saveBtn.disabled = true;
         if (!this.value) return;
-        var models = (window.BT_MODELS && window.BT_MODELS[this.value]) || [];
+        var models = window._btTempModels || (window.BT_MODELS && window.BT_MODELS[this.value]) || [];
+        window._btTempModels = null;
         modelWrap.style.display = '';
         if (models.length > 0) {
             models.forEach(function (m) {
