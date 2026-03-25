@@ -273,7 +273,7 @@ function btGetAliases(model) {
     // Brands excluded from the My Machine picker
     var PICKER_EXCLUDE = ['king kutter', 'broken tractor merchandise'];
     // Brands with only one machine type — skip the type step and go straight to models
-    var SINGLE_TYPE_BRANDS = ['kobelco', 'hyundai', 'hitachi', 'long tractor'];
+    var SINGLE_TYPE_BRANDS = ['kobelco', 'hyundai', 'hitachi', 'long tractor', 'doosan', 'daewoo', 'samsung', 'yanmar', 'linkbelt', 'ihi', 'jlg', 'genie', 'wacker neuson', 'gehl', 'ditch witch', 'hyster', 'hanix', 'koehring', 'liebherr', 'mitsubishi', 'sumitomo', 'timberjack', 'tigercat'];
     document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
         var first = div.querySelector('span');
         var url   = first ? first.dataset.url : div.dataset.url;
@@ -308,9 +308,11 @@ function btGetAliases(model) {
         brandDiv.querySelectorAll('span').forEach(function (span) {
             var name = span.dataset.name || '';
             if (name.toLowerCase().indexOf('all ') === 0) return;
+            if (/spec|spotlight/i.test(name)) return;
+            var cleanLabel = name.replace(/\s+[Pp]arts$/i, '').trim();
             var opt = document.createElement('option');
             opt.value = span.dataset.url;
-            opt.textContent = name;
+            opt.textContent = cleanLabel;
             opt.dataset.image = span.dataset.image || '';
             typeSel.appendChild(opt);
             added++;
@@ -324,6 +326,7 @@ function btGetAliases(model) {
             brandDiv.querySelectorAll('span').forEach(function (span) {
                 var name = span.dataset.name || '';
                 if (name.toLowerCase().indexOf('all ') === 0) return;
+                if (/spec|spotlight/i.test(name)) return;
                 if (span.dataset.url) childUrls.push(span.dataset.url);
             });
             var firstKey  = childUrls[0] || null;
@@ -580,7 +583,7 @@ function btGetAliases(model) {
     var tipClose     = document.getElementById('mm-tip-close');
     var mobileTip    = document.getElementById('mm-mobile-tip');
     var mobileTipClose = document.getElementById('mm-mobile-tip-close');
-    if (/* !localStorage.getItem(TIP_KEY) && */ (tip || mobileTip)) {
+    if (!localStorage.getItem(TIP_KEY) && (tip || mobileTip)) {
         setTimeout(function () {
             if (tip)       tip.classList.add('mm-tip--visible');
             if (mobileTip) mobileTip.classList.add('mm-tip--visible');
@@ -588,7 +591,7 @@ function btGetAliases(model) {
         function dismissTip() {
             if (tip)       tip.classList.remove('mm-tip--visible');
             if (mobileTip) mobileTip.classList.remove('mm-tip--visible');
-            // localStorage.setItem(TIP_KEY, '1');
+            localStorage.setItem(TIP_KEY, '1');
         }
         if (tipClose)       tipClose.addEventListener('click', dismissTip);
         if (mobileTipClose) mobileTipClose.addEventListener('click', dismissTip);
