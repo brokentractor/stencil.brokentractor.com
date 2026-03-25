@@ -558,7 +558,7 @@ function btGetAliases(model) {
                 var iconId2   = getEquipIcon(typeLabel);
                 heroImg.innerHTML = equipSvg(iconId2);
                 heroImg.style.display = '';
-                heroTitle.textContent = 'Looking for ' + m.brand + ' ' + m.model + ' Parts?';
+                heroTitle.textContent = m.brand + ' ' + m.model + ' Parts';
                 heroSub.textContent   = 'Browse our selection of ' + m.brand + ' ' + typeLabel.toLowerCase() + ' parts today.';
                 heroLink.href         = m.typeUrl;
                 heroLink.innerHTML    = 'Browse ' + m.brand + ' <i class="fa fa-arrow-right"></i>';
