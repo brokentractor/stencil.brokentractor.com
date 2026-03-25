@@ -538,7 +538,7 @@ function btGetAliases(model) {
             if (nudgeBtn && !nudgeBtn.dataset.bound) {
                 nudgeBtn.dataset.bound = '1';
                 nudgeBtn.addEventListener('click', function () {
-                    if (panel) { panel.classList.add('is-open'); if (overlay) overlay.style.display = ''; }
+                    openPanel();
                 });
             }
         }
