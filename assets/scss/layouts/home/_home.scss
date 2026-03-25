@@ -660,11 +660,11 @@ div#heroinner * {
 
 
 #more-brands-toggle {
-    display: flex;
+    // display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background: #fff;
+    background: #001212;
     border: 1px solid #ddd;
     border-top: 3px solid #ffbe00;
     padding: 14px 18px;
@@ -674,12 +674,12 @@ div#heroinner * {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #001212;
+    color: #fff;
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 
     &:hover {
-        background: #f5f5f5;
+        color: #ffbe00;
     }
 
     .more-brands-icon {

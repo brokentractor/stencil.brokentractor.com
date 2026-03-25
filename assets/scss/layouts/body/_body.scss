@@ -235,8 +235,8 @@ iframe {
 .form-input-fits-model {
   border: none;
   border-bottom: 2px solid #ffbe00;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  background: #e2e2e2;
+  color: #000;
   display: block;
   font-family: inherit;
   font-size: 15px;
@@ -249,13 +249,12 @@ iframe {
   border-radius: 0;
 
   &::placeholder {
-    color: rgba(255,255,255,0.5);
+    color: #000;
   }
 
   &:focus {
     outline: none;
-    background: rgba(255,255,255,0.15);
-    border-bottom-color: #fff;
+    background: #e2e2e2;
   }
 }
 span.large-only {
