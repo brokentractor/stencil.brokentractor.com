@@ -425,3 +425,30 @@ label.form-option {
     font-family: "industry";
     font-size: 24px;
 }
+
+#mm-fitment-nudge {
+    margin-top: 10px;
+
+    #mm-fitment-nudge-btn {
+        background: none;
+        border: 1px dashed #ccc;
+        border-radius: 4px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        color: #555;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+
+        span {
+            color: #b8860b;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        &:hover {
+            border-color: #ffbe00;
+            color: #333;
+        }
+    }
+}

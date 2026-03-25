@@ -530,6 +530,19 @@ function btGetAliases(model) {
         if (navIcon) navIcon.querySelector('use').setAttribute('href', '#' + iconId);
         if (mobileBtnIcon) mobileBtnIcon.querySelector('use').setAttribute('href', '#' + iconId);
 
+        // Product page fitment nudge
+        var nudge = document.getElementById('mm-fitment-nudge');
+        if (nudge) {
+            nudge.style.display = machines.length === 0 ? '' : 'none';
+            var nudgeBtn = document.getElementById('mm-fitment-nudge-btn');
+            if (nudgeBtn && !nudgeBtn.dataset.bound) {
+                nudgeBtn.dataset.bound = '1';
+                nudgeBtn.addEventListener('click', function () {
+                    if (panel) { panel.classList.add('is-open'); if (overlay) overlay.style.display = ''; }
+                });
+            }
+        }
+
         // Homepage hero banner (if present)
         var hero = document.getElementById('mm-hero');
         if (hero) {
