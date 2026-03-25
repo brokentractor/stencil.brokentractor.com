@@ -232,6 +232,13 @@ function btGetAliases(model) {
     var MAX_MACHINES = 5;
     var STORAGE_KEY  = 'bt_machines';
 
+    // BigCommerce returns absolute URLs in pf-data on live but relative on localhost.
+    // Normalize to relative path so BT_MODELS lookups always work.
+    function relUrl(url) {
+        if (!url) return url;
+        try { return new URL(url).pathname; } catch(e) { return url; }
+    }
+
     function getMachines() {
         try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
         catch (e) { return []; }
@@ -330,9 +337,9 @@ function btGetAliases(model) {
                 if (span.dataset.url) childUrls.push(span.dataset.url);
             });
             var firstKey  = childUrls[0] || null;
-            var firstList = firstKey ? JSON.stringify((window.BT_MODELS && window.BT_MODELS[firstKey]) || []) : null;
+            var firstList = firstKey ? JSON.stringify((window.BT_MODELS && window.BT_MODELS[relUrl(firstKey)]) || []) : null;
             var allSame   = firstList && firstList !== '[]' && childUrls.every(function (url) {
-                return JSON.stringify((window.BT_MODELS && window.BT_MODELS[url]) || []) === firstList;
+                return JSON.stringify((window.BT_MODELS && window.BT_MODELS[relUrl(url)]) || []) === firstList;
             });
             if (allSame || isForcedSingle) {
                 // For forced single-type brands whose type URL isn't in BT_MODELS,
@@ -369,7 +376,7 @@ function btGetAliases(model) {
         modelInput.value = '';
         saveBtn.disabled = true;
         if (!this.value) return;
-        var models = window._btTempModels || (window.BT_MODELS && window.BT_MODELS[this.value]) || [];
+        var models = window._btTempModels || (window.BT_MODELS && window.BT_MODELS[relUrl(this.value)]) || [];
         window._btTempModels = null;
         modelWrap.style.display = '';
         if (models.length > 0) {
@@ -508,44 +515,47 @@ function btGetAliases(model) {
 
         // Equipment type → SVG icon map
         var EQUIP_ICONS = {
-            'backhoe':      '/assets/icons/equip-backhoe.svg',
-            'excavator':    '/assets/icons/equip-excavator.svg',
-            'dozer':        '/assets/icons/equip-dozer.svg',
-            'bulldozer':    '/assets/icons/equip-dozer.svg',
-            'wheel loader': '/assets/icons/equip-wheel-loader.svg',
-            'wheel-loader': '/assets/icons/equip-wheel-loader.svg',
-            'skid steer':   '/assets/icons/equip-skid-steer.svg',
-            'skid-steer':   '/assets/icons/equip-skid-steer.svg',
-            'track loader': '/assets/icons/equip-track-loader.svg',
-            'motor grader': '/assets/icons/equip-motor-grader.svg',
-            'grader':       '/assets/icons/equip-motor-grader.svg',
-            'dump truck':       '/assets/icons/equip-dump-truck.svg',
-            'articulated truck':'/assets/icons/equip-dump-truck.svg',
-            'articulated dump': '/assets/icons/equip-dump-truck.svg',
-            'tractor':      '/assets/icons/equip-tractor.svg',
-            'telehandler':  '/assets/icons/equip-telehandler.svg',
-            'forklift':     '/assets/icons/equip-forklift.svg',
-            'scraper':      '/assets/icons/equip-dozer.svg',
-            'trencher':     '/assets/icons/equip-trencher.svg',
-            'roller':       '/assets/icons/equip-roller.svg',
-            'compactor':    '/assets/icons/equip-roller.svg'
+            'backhoe':           'icon-equip-backhoe',
+            'excavator':         'icon-equip-excavator',
+            'dozer':             'icon-equip-dozer',
+            'bulldozer':         'icon-equip-dozer',
+            'wheel loader':      'icon-equip-wheel-loader',
+            'wheel-loader':      'icon-equip-wheel-loader',
+            'skid steer':        'icon-equip-skid-steer',
+            'skid-steer':        'icon-equip-skid-steer',
+            'track loader':      'icon-equip-track-loader',
+            'motor grader':      'icon-equip-motor-grader',
+            'grader':            'icon-equip-motor-grader',
+            'dump truck':        'icon-equip-dump-truck',
+            'articulated truck': 'icon-equip-dump-truck',
+            'articulated dump':  'icon-equip-dump-truck',
+            'tractor':           'icon-equip-tractor',
+            'telehandler':       'icon-equip-telehandler',
+            'forklift':          'icon-equip-forklift',
+            'scraper':           'icon-equip-dozer',
+            'trencher':          'icon-equip-trencher',
+            'roller':            'icon-equip-roller',
+            'compactor':         'icon-equip-roller'
         };
         function getEquipIcon(typeLabel) {
             var t = typeLabel.toLowerCase();
             for (var key in EQUIP_ICONS) {
                 if (t.indexOf(key) !== -1) return EQUIP_ICONS[key];
             }
-            return '/assets/icons/equip-backhoe.svg'; // fallback
+            return 'icon-equip-backhoe'; // fallback
+        }
+        function equipSvg(iconId) {
+            return '<svg class="mm-equip-icon" aria-hidden="true"><use href="#' + iconId + '"></use></svg>';
         }
 
         // Nav button icon (desktop + mobile)
-        var iconSrc = '/assets/icons/brokentractor-logoicon.svg';
+        var iconId = 'icon-equip-backhoe';
         if (machines.length > 0) {
             var navTypeLabel = machines[0].type.replace(new RegExp('^' + machines[0].brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
-            iconSrc = getEquipIcon(navTypeLabel);
+            iconId = getEquipIcon(navTypeLabel);
         }
-        if (navIcon) navIcon.src = iconSrc;
-        if (mobileBtnIcon) mobileBtnIcon.src = iconSrc;
+        if (navIcon) navIcon.querySelector('use').setAttribute('href', '#' + iconId);
+        if (mobileBtnIcon) mobileBtnIcon.querySelector('use').setAttribute('href', '#' + iconId);
 
         // Homepage hero banner (if present)
         var hero = document.getElementById('mm-hero');
@@ -559,12 +569,8 @@ function btGetAliases(model) {
                 var heroSub   = hero.querySelector('.mm-hero-sub');
                 var heroLink  = hero.querySelector('.mm-hero-link');
                 var typeLabel = m.type.replace(new RegExp('^' + m.brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
-                var iconSrc   = getEquipIcon(typeLabel);
-                if (iconSrc.indexOf('fa:') === 0) {
-                    heroImg.innerHTML = '<i class="' + iconSrc.slice(3) + '" style="font-size:80px;color:#000;"></i>';
-                } else {
-                    heroImg.innerHTML = '<img src="' + iconSrc + '" alt="' + typeLabel + '">';
-                }
+                var iconId2   = getEquipIcon(typeLabel);
+                heroImg.innerHTML = equipSvg(iconId2);
                 heroImg.style.display = '';
                 heroTitle.textContent = 'Looking for ' + m.brand + ' ' + m.model + ' Parts?';
                 heroSub.textContent   = 'Browse our selection of ' + m.brand + ' ' + typeLabel.toLowerCase() + ' parts today.';

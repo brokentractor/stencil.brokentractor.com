@@ -197,12 +197,13 @@ div#heroinner * {
         justify-content: center;
         overflow: hidden;
 
-        img {
+        img, svg {
             max-width: 90%;
             max-height: 90%;
-            width: auto;
-            height: auto;
+            width: 90%;
+            height: 90%;
             display: block;
+            fill: #000;
         }
     }
 

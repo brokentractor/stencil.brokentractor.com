@@ -802,6 +802,8 @@ body .nxt-ac-main {
 }
 
 // ── My Machine nav button (takes #shop-parts slot) ──────────────────
+.mm-equip-icon { fill: #000; }
+
 #mm-nav-btn {
     display: none; // hidden on mobile (matches #shop-parts behaviour)
     background: #ffbe00;
