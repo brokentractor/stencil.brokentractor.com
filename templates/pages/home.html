@@ -24,11 +24,25 @@ blog:
         <div class="hp-inner">
 
             <h1 class="welcome-title">Quality parts you need to get back to work ... <i class="welcome-fast">fast!</i></h1>
+
+
             <div class="hp-trust-bar">
                 <span><i class="fa fa-home"></i> Family Owned Since 2006</span>
                 <span><i class="fa fa-phone"></i> USA-Based Support</span>
                 <span><i class="fa fa-truck"></i> Fast Global Shipping</span>
                 <span><i class="fa fa-comment"></i> Hablamos Español</span>
+            </div>
+
+            <!-- My Machine hero banner — shown when a machine is saved -->
+            <div id="mm-hero" style="display:none">
+                <div class="mm-hero-img"></div>
+                <div class="mm-hero-content">
+                    <div class="mm-hero-inner">
+                        <h2 class="mm-hero-title"></h2>
+                        <p class="mm-hero-sub"></p>
+                        <a class="mm-hero-link" href="#"><i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
 
             <div id="pf-embed-container" style="margin-bottom: 20px; box-shadow: 0 1px 3px rgb(0 0 0 / 20%);"></div>
@@ -169,17 +183,6 @@ blog:
             </a>
         </div>
 
-            <!-- Hidden category data for parts finder (populated by Stencil) -->
-            <div id="pf-data" style="display:none">
-                {{#each categories}}
-                <div class="pf-brand-data" data-name="{{name}}" data-url="{{url}}">
-                    {{#each children}}
-                    <span data-name="{{name}}" data-url="{{url}}"></span>
-                    {{/each}}
-                </div>
-                {{/each}}
-            </div>
-
         </div>
 
         
@@ -265,17 +268,24 @@ blog:
     var catCache      = {};
     var subcatCache   = {};
 
-    // Populate brand dropdown from hidden Stencil data
-    document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
-        var allChild = div.querySelector('span'); // first child is usually "All [Brand]"
-        var realUrl  = allChild ? allChild.dataset.url : div.dataset.url;
-        if (!realUrl || realUrl === '#') return;
-        var opt = document.createElement('option');
-        opt.value       = realUrl;
-        opt.textContent = div.dataset.name;
-        opt.dataset.divName = div.dataset.name;
-        brandSel.appendChild(opt);
-    });
+    // Populate brand dropdown — deferred so #pf-data (in footer) is in the DOM
+    function populateBrands() {
+        document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+            var allChild = div.querySelector('span'); // first child is usually "All [Brand]"
+            var realUrl  = allChild ? allChild.dataset.url : div.dataset.url;
+            if (!realUrl || realUrl === '#') return;
+            var opt = document.createElement('option');
+            opt.value       = realUrl;
+            opt.textContent = div.dataset.name;
+            opt.dataset.divName = div.dataset.name;
+            brandSel.appendChild(opt);
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', populateBrands);
+    } else {
+        populateBrands();
+    }
 
     function reset(sel, msg) {
         sel.innerHTML = '<option value="">' + msg + '</option>';
