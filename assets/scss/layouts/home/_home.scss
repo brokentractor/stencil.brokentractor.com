@@ -196,6 +196,13 @@ div#heroinner * {
         justify-content: center;
         overflow: hidden;
 
+        @include breakpoint("medium") {
+            flex: 0 0 auto;
+            width: auto;
+            aspect-ratio: 1;
+            height: 100%;
+        }
+
         img, svg {
             max-width: 90%;
             max-height: 90%;
