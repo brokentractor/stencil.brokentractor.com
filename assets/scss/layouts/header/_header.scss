@@ -1019,3 +1019,140 @@ body.mm-noscroll { overflow: hidden; }
         &:hover { border-color: #001212; color: #001212; }
     }
 }
+
+// ── Mobile onboarding tooltip ────────────────────────────────────────
+#mm-mobile-tip {
+    display: none;
+    position: absolute;
+    top: 120px;
+    right: 0;
+    width: 210px;
+    background: #001212;
+    color: #fff;
+    border-radius: 4px;
+    padding: 12px 32px 12px 14px;
+    z-index: 200;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    line-height: 1.45;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        right: 42px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #001212;
+    }
+
+    strong {
+        display: block;
+        font-family: $industry, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #ffbe00;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 12px;
+        color: #ccc;
+    }
+
+    #mm-mobile-tip-close {
+        position: absolute;
+        top: 6px;
+        right: 8px;
+        background: none;
+        border: none;
+        color: #777;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0;
+        &:hover { color: #fff; }
+    }
+
+    &.mm-tip--visible {
+        display: block;
+        animation: mmTipFadeIn 0.3s ease forwards;
+    }
+
+    @include breakpoint("medium") { display: none !important; }
+}
+
+// ── Onboarding tooltip ───────────────────────────────────────────────
+#mm-onboard-tip {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    width: 210px;
+    background: #001212;
+    color: #fff;
+    border-radius: 4px;
+    padding: 12px 32px 12px 14px;
+    z-index: 200;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    line-height: 1.45;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        right: 89px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #001212;
+    }
+
+    strong {
+        display: block;
+        font-family: $industry, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #ffbe00;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 12px;
+        color: #ccc;
+    }
+
+    #mm-tip-close {
+        position: absolute;
+        top: 6px;
+        right: 8px;
+        background: none;
+        border: none;
+        color: #777;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0;
+        &:hover { color: #fff; }
+    }
+
+    &.mm-tip--visible {
+        @include breakpoint("medium") {
+            display: block;
+            animation: mmTipFadeIn 0.3s ease forwards;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        right: 485px;
+    }
+}
+
+@keyframes mmTipFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

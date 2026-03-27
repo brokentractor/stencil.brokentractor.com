@@ -145,6 +145,11 @@ function btGetAliases(model) {
 
         var searchInput = document.getElementById('search');
 
+        // Update search placeholder to reflect saved machine
+        if (searchInput) {
+            searchInput.placeholder = 'Search ' + label + ' parts...';
+        }
+
         // Expands letter-suffix ranges: "721–f" → "721 721a 721b ... 721f"
         // and "550e–h" → "550e 550f 550g 550h"
         function btExpandRanges(text) {
@@ -242,7 +247,7 @@ function btGetAliases(model) {
                         'Authorization': 'Bearer ' + sfToken
                     },
                     body: JSON.stringify({
-                        query: '{ site { products(entityIds: [' + productIds.join(',') + ']) { edges { node { entityId description } } } } }'
+                        query: '{ site { products(entityIds: [' + productIds.join(',') + '], first: 50) { edges { node { entityId description } } } } }'
                     })
                 })
                 .then(function (r) { return r.json(); })
@@ -283,7 +288,7 @@ function btGetAliases(model) {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + klSfToken },
                     body: JSON.stringify({
-                        query: '{ site { products(entityIds: [' + uniqueIds.join(',') + ']) { edges { node { entityId description customFields { edges { node { name value } } } } } } } }'
+                        query: '{ site { products(entityIds: [' + uniqueIds.join(',') + '], first: 50) { edges { node { entityId description customFields { edges { node { name value } } } } } } } }'
                     })
                 })
                 .then(function (r) { return r.json(); })
@@ -300,7 +305,7 @@ function btGetAliases(model) {
                         var combinedText = (fitsModel + ' ' + (p.description || '')).toLowerCase();
                         var matched = btMatchingModels(combinedText);
                         if (matched.length) {
-                            var card = document.querySelector('li.klevuProduct[data-id="' + p.entityId + '"]');
+                            var card = document.querySelector('li.klevuProduct[data-id^="' + p.entityId + '"]');
                             if (card && !card.querySelector('.bt-fits-badge')) {
                                 var badge = document.createElement('div');
                                 badge.className = 'bt-fits-badge';
@@ -329,6 +334,9 @@ function btGetAliases(model) {
                 }
             });
             klObserver.observe(klLanding, { childList: true, subtree: true });
+
+            // Run immediately for cards already in the DOM on page load
+            setTimeout(btApplyKlevuBadges, 600);
         }
 
     } catch (e) {}
@@ -621,6 +629,17 @@ function btGetAliases(model) {
         navLabel.textContent = btnText;
         if (mobileBtnLabel) mobileBtnLabel.textContent = btnText;
 
+        // Update search placeholder to reflect active machine
+        var searchEl = document.getElementById('search');
+        if (searchEl) {
+            if (machines.length > 0) {
+                var active = machines[0];
+                searchEl.placeholder = 'Search ' + active.brand + ' ' + active.model + ' parts...';
+            } else {
+                searchEl.placeholder = 'Search by Part Number, Model or Brand';
+            }
+        }
+
         // Panel saved section
         if (machines.length > 0) {
             panelSaved.style.display = '';
@@ -718,6 +737,52 @@ function btGetAliases(model) {
     }
 
     renderMachines();
+
+    // ── Search query filler ──────────────────────────────────────────
+    (function () {
+        var searchEl = document.getElementById('search');
+        if (!searchEl) return;
+        function appendModel() {
+            var ms = getMachines();
+            if (!ms.length) return;
+            var model = ms[0].model;
+            var val = searchEl.value.trim();
+            if (val && val.toLowerCase().indexOf(model.toLowerCase()) === -1) {
+                searchEl.value = val + ' ' + model;
+            }
+        }
+        searchEl.addEventListener('keydown', function (e) {
+            if (e.key !== 'Enter') return;
+            appendModel();
+        });
+        var searchForm = searchEl.closest('form');
+        if (searchForm) {
+            var submitBtn = searchForm.querySelector('[type="submit"]');
+            if (submitBtn) submitBtn.addEventListener('click', appendModel);
+        }
+    })();
+
+    // ── Onboarding tooltip (first visit only) ────────────────────────
+    var TIP_KEY        = 'bt_mm_tip_seen';
+    var tip            = document.getElementById('mm-onboard-tip');
+    var tipClose       = document.getElementById('mm-tip-close');
+    var mobileTip      = document.getElementById('mm-mobile-tip');
+    var mobileTipClose = document.getElementById('mm-mobile-tip-close');
+    if (!localStorage.getItem(TIP_KEY) && (tip || mobileTip)) {
+        setTimeout(function () {
+            if (tip)       tip.classList.add('mm-tip--visible');
+            if (mobileTip) mobileTip.classList.add('mm-tip--visible');
+        }, 800);
+        function dismissTip() {
+            if (tip)       tip.classList.remove('mm-tip--visible');
+            if (mobileTip) mobileTip.classList.remove('mm-tip--visible');
+            localStorage.setItem(TIP_KEY, '1');
+        }
+        if (tipClose)       tipClose.addEventListener('click', dismissTip);
+        if (mobileTipClose) mobileTipClose.addEventListener('click', dismissTip);
+        navBtn.addEventListener('click', dismissTip);
+        if (mobileBtn) mobileBtn.addEventListener('click', dismissTip);
+    }
 
 })();
 </script>
