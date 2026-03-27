@@ -265,14 +265,16 @@ function btGetAliases(model) {
         }
 
         // ── Fitment badges on Klevu search results ──
-        if (document.querySelector('.klevuLanding')) {
+        var klLanding = document.querySelector('.klevuLanding');
+        if (klLanding) {
             var klSfTokenMeta = document.getElementById('bt-sf-token');
             var klSfToken = klSfTokenMeta ? klSfTokenMeta.getAttribute('content') : '';
+            var klBadgeTimer = null;
 
             function btApplyKlevuBadges() {
-                if (!getMachines().length) return;
+                if (!machines.length || !klSfToken) return;
                 var cards = document.querySelectorAll('li.klevuProduct[data-id]');
-                if (!cards.length || !klSfToken) return;
+                if (!cards.length) return;
 
                 var ids = Array.from(cards).map(function (c) { return parseInt(c.getAttribute('data-id'), 10); });
                 var uniqueIds = ids.filter(function (id, i) { return ids.indexOf(id) === i; });
@@ -303,7 +305,7 @@ function btGetAliases(model) {
                                 var badge = document.createElement('div');
                                 badge.className = 'bt-fits-badge';
                                 badge.innerHTML = '&#10003; Potential Match for ' + matched.join(', ');
-                                var target = card.querySelector('.kuProdPrice') || card.querySelector('.kuProdName') || card.querySelector('main') || card;
+                                var target = card.querySelector('.kuProdBottom') || card.querySelector('.kuProdWrap') || card;
                                 target.appendChild(badge);
                             }
                         }
@@ -312,14 +314,21 @@ function btGetAliases(model) {
                 .catch(function () {});
             }
 
-            window._klvWebhook = window._klvWebhook || [];
-            window._klvWebhook.push({
-                object: 'search',
-                scope: 'full_page',
-                name: 'chains.response.success',
-                action: 'after',
-                fire: function (data, scope) { setTimeout(btApplyKlevuBadges, 600); }
+            var klObserver = new MutationObserver(function (mutations) {
+                var hasNewCards = mutations.some(function (m) {
+                    return Array.from(m.addedNodes).some(function (n) {
+                        return n.nodeType === 1 && (
+                            (n.matches && n.matches('li.klevuProduct')) ||
+                            (n.querySelector && n.querySelector('li.klevuProduct'))
+                        );
+                    });
+                });
+                if (hasNewCards) {
+                    clearTimeout(klBadgeTimer);
+                    klBadgeTimer = setTimeout(btApplyKlevuBadges, 400);
+                }
             });
+            klObserver.observe(klLanding, { childList: true, subtree: true });
         }
 
     } catch (e) {}

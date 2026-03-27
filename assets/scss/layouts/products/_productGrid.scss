@@ -227,6 +227,13 @@ tr.productrow:nth-child(odd) {
     font-size: 14px;
 }
 
+.kuProdBottom .bt-fits-badge {
+    display: block;
+    white-space: normal;
+    margin-left: 0;
+    margin-top: 6px;
+}
+
 .table-sort-tip {
     display: none;
     color: rgba(255,190,0,0.85);
