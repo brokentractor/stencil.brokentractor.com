@@ -33,7 +33,7 @@
           width: 100%;
         }
     }
-    @include breakpoint("large") {
+    @media (min-width: 1280px) {
         min-height: 92px;
     }
 
@@ -276,7 +276,7 @@ div#header-search {
         padding: 3px 15px;
         top: 90px;
     }
-    @include breakpoint("large") {
+    @media (min-width: 1280px) {
         top: 20px;
         max-width: 450px;
         right: 15px;
@@ -292,7 +292,7 @@ div#header-search {
 }
 
 input#search_query_adv {
-    @include breakpoint("large") {
+    @media (min-width: 1280px) {
         border: 0px;
         margin-top: 0px;
         height: 50px;
@@ -609,8 +609,6 @@ div#accountMenu:before {
 div#shop-parts {
     display: none;
 }
-
-
 @include breakpoint("medium") {
     div#menu.navPages-container {
         background: #fff;
@@ -669,27 +667,10 @@ div#shop-parts {
             font-weight: bold;
         }
     }
-    .parts-request {
-      border: 2px #666666 solid;
-      position: absolute;
-      right: 220px;
-      top: 18px;
-      height: 52px;
-      width: 194px;
-      text-align: center;
-      color: #fff;
-      font-family: $industry;
-      font-weight: 600;
-      text-transform: uppercase;
-      line-height: 52px;
-      font-size: 18px;
-      cursor: pointer;
-      display: block;
-    }
     div#shop-parts {
         border: 2px #666666 solid;
         position: absolute;
-        right: 15px;
+        right: 220px;
         top: 18px;
         height: 52px;
         width: 194px;
@@ -736,12 +717,7 @@ div#shop-parts {
     }
 }
 @include breakpoint("large") {
-    div#shop-parts {
-        right: 485px;
-    }
-    .parts-request {
-      right: 700px;
-    }
+
     div#menu.navPages-container {
         background: #fff;
         width: 760px;
@@ -764,6 +740,13 @@ div#shop-parts {
         top: -5px;
         left: 331px;
         right: auto;
+    }
+}
+
+@media (min-width: 1280px) {
+    div#shop-parts {
+        display: block;
+        right: 700px;
     }
 }
 
@@ -847,7 +830,7 @@ body .nxt-ac-main {
         width: 194px;
     }
 
-    @include breakpoint("large") {
+    @media (min-width: 1280px) {
         right: 485px;
     }
 }
@@ -894,144 +877,6 @@ body .nxt-ac-main {
     @include breakpoint("medium") { display: none; }
 }
 
-// ── Mobile onboarding tooltip ────────────────────────────────────────
-#mm-mobile-tip {
-    display: none;
-    position: absolute;
-    top: 120px; // flush with button bottom so caret overlaps yellow
-    right: 0;
-    width: 210px;
-    background: #001212;
-    color: #fff;
-    border-radius: 4px;
-    padding: 12px 32px 12px 14px;
-    z-index: 200;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    line-height: 1.45;
-
-    // Caret pointing up toward button center
-    &::before {
-        content: '';
-        position: absolute;
-        top: -8px;
-        right: 42px; // centers arrow over middle of 25% button
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid #001212;
-    }
-
-    strong {
-        display: block;
-        font-family: $industry, sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #ffbe00;
-        margin-bottom: 5px;
-    }
-
-    p {
-        margin: 0;
-        font-size: 12px;
-        color: #ccc;
-    }
-
-    #mm-mobile-tip-close {
-        position: absolute;
-        top: 6px;
-        right: 8px;
-        background: none;
-        border: none;
-        color: #777;
-        font-size: 20px;
-        line-height: 1;
-        cursor: pointer;
-        padding: 0;
-        &:hover { color: #fff; }
-    }
-
-    &.mm-tip--visible {
-        display: block;
-        animation: mmTipFadeIn 0.3s ease forwards;
-    }
-
-    @include breakpoint("medium") { display: none !important; }
-}
-
-// ── Onboarding tooltip ───────────────────────────────────────────────
-#mm-onboard-tip {
-    display: none;
-    position: absolute;
-    top: 70px; // flush with button bottom so caret overlaps yellow
-    right: 15px;
-    width: 210px;
-    background: #001212;
-    color: #fff;
-    border-radius: 4px;
-    padding: 12px 32px 12px 14px;
-    z-index: 200;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    line-height: 1.45;
-
-    // Caret pointing up toward button center
-    &::before {
-        content: '';
-        position: absolute;
-        top: -8px;
-        right: 89px; // centers arrow over 194px-wide button
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid #001212;
-    }
-
-    strong {
-        display: block;
-        font-family: $industry, sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #ffbe00;
-        margin-bottom: 5px;
-    }
-
-    p {
-        margin: 0;
-        font-size: 12px;
-        color: #ccc;
-    }
-
-    #mm-tip-close {
-        position: absolute;
-        top: 6px;
-        right: 8px;
-        background: none;
-        border: none;
-        color: #777;
-        font-size: 20px;
-        line-height: 1;
-        cursor: pointer;
-        padding: 0;
-        &:hover { color: #fff; }
-    }
-
-    &.mm-tip--visible {
-        @include breakpoint("medium") {
-            display: block;
-            animation: mmTipFadeIn 0.3s ease forwards;
-        }
-    }
-
-    @include breakpoint("large") {
-        right: 485px;
-    }
-}
-
-@keyframes mmTipFadeIn {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
 
 // ── Overlay ──────────────────────────────────────────────────────────
 #mm-overlay {

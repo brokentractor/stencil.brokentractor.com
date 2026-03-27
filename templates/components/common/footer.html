@@ -569,27 +569,6 @@ function btGetAliases(model) {
 
     renderMachines();
 
-    // ── Onboarding tooltip (first visit only) ────────────────────────
-    var TIP_KEY      = 'bt_mm_tip_seen';
-    var tip          = document.getElementById('mm-onboard-tip');
-    var tipClose     = document.getElementById('mm-tip-close');
-    var mobileTip    = document.getElementById('mm-mobile-tip');
-    var mobileTipClose = document.getElementById('mm-mobile-tip-close');
-    if (!localStorage.getItem(TIP_KEY) && (tip || mobileTip)) {
-        setTimeout(function () {
-            if (tip)       tip.classList.add('mm-tip--visible');
-            if (mobileTip) mobileTip.classList.add('mm-tip--visible');
-        }, 2000);
-        function dismissTip() {
-            if (tip)       tip.classList.remove('mm-tip--visible');
-            if (mobileTip) mobileTip.classList.remove('mm-tip--visible');
-            localStorage.setItem(TIP_KEY, '1');
-        }
-        if (tipClose)       tipClose.addEventListener('click', dismissTip);
-        if (mobileTipClose) mobileTipClose.addEventListener('click', dismissTip);
-        navBtn.addEventListener('click', dismissTip);
-        if (mobileBtn) mobileBtn.addEventListener('click', dismissTip);
-    }
 })();
 </script>
 
