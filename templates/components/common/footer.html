@@ -264,6 +264,64 @@ function btGetAliases(model) {
             }
         }
 
+        // ── Fitment badges on Klevu search results ──
+        if (document.querySelector('.klevuLanding')) {
+            var klSfTokenMeta = document.getElementById('bt-sf-token');
+            var klSfToken = klSfTokenMeta ? klSfTokenMeta.getAttribute('content') : '';
+
+            function btApplyKlevuBadges() {
+                if (!getMachines().length) return;
+                var cards = document.querySelectorAll('li.klevuProduct[data-id]');
+                if (!cards.length || !klSfToken) return;
+
+                var ids = Array.from(cards).map(function (c) { return parseInt(c.getAttribute('data-id'), 10); });
+                var uniqueIds = ids.filter(function (id, i) { return ids.indexOf(id) === i; });
+
+                fetch('/graphql', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + klSfToken },
+                    body: JSON.stringify({
+                        query: '{ site { products(entityIds: [' + uniqueIds.join(',') + ']) { edges { node { entityId description customFields { edges { node { name value } } } } } } } }'
+                    })
+                })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    var edges = (data.data && data.data.site && data.data.site.products && data.data.site.products.edges) || [];
+                    edges.forEach(function (edge) {
+                        var p = edge.node;
+                        var fitsModel = '';
+                        if (p.customFields && p.customFields.edges) {
+                            p.customFields.edges.forEach(function (cf) {
+                                if (cf.node.name === 'FitsModel') fitsModel = cf.node.value;
+                            });
+                        }
+                        var combinedText = (fitsModel + ' ' + (p.description || '')).toLowerCase();
+                        var matched = btMatchingModels(combinedText);
+                        if (matched.length) {
+                            var card = document.querySelector('li.klevuProduct[data-id="' + p.entityId + '"]');
+                            if (card && !card.querySelector('.bt-fits-badge')) {
+                                var badge = document.createElement('div');
+                                badge.className = 'bt-fits-badge';
+                                badge.innerHTML = '&#10003; Potential Match for ' + matched.join(', ');
+                                var target = card.querySelector('.kuProdPrice') || card.querySelector('.kuProdName') || card.querySelector('main') || card;
+                                target.appendChild(badge);
+                            }
+                        }
+                    });
+                })
+                .catch(function () {});
+            }
+
+            window._klvWebhook = window._klvWebhook || [];
+            window._klvWebhook.push({
+                object: 'search',
+                scope: 'full_page',
+                name: 'chains.response.success',
+                action: 'after',
+                fire: function (data, scope) { setTimeout(btApplyKlevuBadges, 600); }
+            });
+        }
+
     } catch (e) {}
 })();
 </script>
@@ -533,7 +591,7 @@ function btGetAliases(model) {
         saveMachines(machines);
         closePanel();
         renderMachines();
-        if (/\/p\//.test(window.location.pathname) || document.querySelector('td.FitsModel')) {
+        if (/\/p\//.test(window.location.pathname) || document.querySelector('td.FitsModel') || document.querySelector('.klevuLanding')) {
             setTimeout(function () { location.reload(); }, 300);
         }
     });
