@@ -1,8 +1,6 @@
 <div class="breadcrumbs-row">
-    <div class="hover-text"><img width="20" height="20" src="https://img.icons8.com/ios/50/info--v1.png" alt="info--v1"/>
-      <span class="tooltip-text" id="bottom">This is the navigation bar. This shows the category you're currently viewing and allows you to explore back to previous categories.</span>
-    </div>
-  <ul class="breadcrumbs">
+
+  <ul class="breadcrumbs" id="bt-breadcrumbs">
       {{#each breadcrumbs}}
           <li class="breadcrumb {{#if @last}}is-active{{/if}}">
               {{#if url}}
@@ -18,3 +16,36 @@
 <div class="breadcrumb-info">
   <hr>
 </div>
+
+<script>
+(function () {
+    var crumb = document.querySelector('#bt-breadcrumbs .breadcrumb:nth-last-child(2)');
+    var row   = document.querySelector('.breadcrumbs-row');
+    if (!crumb || !row) return;
+    if (crumb.textContent.trim().toLowerCase() === 'home') return;
+
+    var tip = document.createElement('div');
+    tip.className = 'bc-crumb-tip';
+    tip.textContent = 'Click the text above to view more products in this category';
+    row.style.position = 'relative';
+    row.appendChild(tip);
+
+    function positionTip() {
+        var crumbRect = crumb.getBoundingClientRect();
+        var rowRect   = row.getBoundingClientRect();
+        var centerX   = crumbRect.left + crumbRect.width / 2 - rowRect.left;
+        var topY      = crumbRect.bottom - rowRect.top + 10;
+        tip.style.left = centerX + 'px';
+        tip.style.top  = topY + 'px';
+    }
+
+    positionTip();
+
+    setTimeout(function () {
+        tip.classList.add('is-visible');
+        setTimeout(function () {
+            tip.classList.add('is-fading');
+        }, 8000);
+    }, 1500);
+})();
+</script>
