@@ -1,4 +1,4 @@
-<tr class="productrow">
+<tr class="productrow" data-product-id="{{id}}">
     <td class="pvcol REFID">
         {{#each custom_fields}}
         {{#if name '===' 'REFID'}}
@@ -41,5 +41,6 @@
     {{#if summary}}
     <p style="display:none;">{{{summary}}}</p>
     {{/if}}
+    <td class="bt-desc" style="display:none;">{{{description}}}</td>
 
 </tr>

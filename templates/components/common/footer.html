@@ -114,6 +114,8 @@
 
 <div style="clear:both;"></div>
 
+<meta id="bt-sf-token" content="{{settings.storefront_api.token}}">
+
 <script>
 // Model aliases: exceptions that don't follow the automatic S[Letter] ↔ Super [Letter] pattern.
 var BT_MODEL_ALIASES = {
@@ -143,14 +145,49 @@ function btGetAliases(model) {
 
         var searchInput = document.getElementById('search');
 
+        // Expands letter-suffix ranges: "721–f" → "721 721a 721b ... 721f"
+        // and "550e–h" → "550e 550f 550g 550h"
+        function btExpandRanges(text) {
+            return text.replace(/([a-z]?\d+[a-z]?)[\u2013\-]([a-z])\b/g, function (match, base, endLetter) {
+                var nm = base.match(/^([a-z]?\d+)([a-z])?$/);
+                if (!nm) return match;
+                var num = nm[1], startLetter = nm[2] || '';
+                var expanded = [base];
+                var s = startLetter ? startLetter.charCodeAt(0) : 'a'.charCodeAt(0) - 1;
+                var e = endLetter.charCodeAt(0);
+                for (var c = s + 1; c <= e; c++) expanded.push(num + String.fromCharCode(c));
+                return expanded.join(' ');
+            });
+        }
+
+        // Checks if a model falls within a numeric range like "sr130–sr270" or "410–465"
+        function btInNumericRange(term, fitsText) {
+            var mm = term.match(/^([a-z]*)(\d+)([a-z]*)$/);
+            if (!mm) return false;
+            var mPfx = mm[1], mNum = parseInt(mm[2]), mSfx = mm[3];
+            var re = /([a-z]*)(\d+)([a-z]*)[\u2013\-]([a-z]*)(\d+)([a-z]*)/g;
+            var m;
+            while ((m = re.exec(fitsText)) !== null) {
+                var sPfx = m[1], sNum = parseInt(m[2]), sSfx = m[3];
+                var ePfx = m[4], eNum = parseInt(m[5]), eSfx = m[6];
+                if ((sPfx === mPfx || ePfx === mPfx) && (sSfx === mSfx || eSfx === mSfx)) {
+                    if (mNum >= sNum && mNum <= eNum) return true;
+                }
+            }
+            return false;
+        }
+
         // Returns matching model labels from the fleet for a given FitsModel text.
         function btMatchingModels(fitsText) {
+            var expandedText = btExpandRanges(fitsText);
             var matched = [];
             for (var i = 0; i < machines.length; i++) {
                 var m = machines[i];
                 if (!m.model) continue;
                 var terms = [m.model.toLowerCase()].concat(btGetAliases(m.model).map(function (a) { return a.toLowerCase(); }));
-                if (terms.some(function (t) { return fitsText.indexOf(t) !== -1; })) {
+                if (terms.some(function (t) {
+                    return expandedText.indexOf(t) !== -1 || btInNumericRange(t, expandedText);
+                })) {
                     matched.push(m.model);
                 }
             }
@@ -160,9 +197,12 @@ function btGetAliases(model) {
         // ── Fitment badge on product page ──
         var pvBadge = document.getElementById('pv-fits-badge');
         if (pvBadge) {
-            var pvFitsEl = document.querySelector('dd.FitsModel');
-            if (pvFitsEl) {
-                var pvMatched = btMatchingModels(pvFitsEl.textContent.toLowerCase());
+            var pvFitsEl  = document.querySelector('dd.FitsModel');
+            var pvDescEl  = document.querySelector('.pv-description');
+            var pvFitsText = (pvFitsEl  ? pvFitsEl.textContent  : '') + ' ' +
+                             (pvDescEl  ? pvDescEl.textContent  : '');
+            if (pvFitsText.trim()) {
+                var pvMatched = btMatchingModels(pvFitsText.toLowerCase());
                 if (pvMatched.length) {
                     pvBadge.className = 'bt-fits-badge';
                     pvBadge.innerHTML = '&#10003; Potential Match for ' + pvMatched.join(', ');
@@ -173,15 +213,55 @@ function btGetAliases(model) {
         // ── Fitment badges on category table pages ──
         var fitsModelCells = document.querySelectorAll('td.FitsModel');
         if (fitsModelCells.length) {
-            fitsModelCells.forEach(function (cell) {
-                var cellMatched = btMatchingModels(cell.textContent.toLowerCase());
-                if (cellMatched.length) {
-                    var badge = document.createElement('span');
-                    badge.className = 'bt-fits-badge';
-                    badge.innerHTML = '&#10003; Potential Match for ' + cellMatched.join(', ');
-                    cell.appendChild(badge);
-                }
-            });
+            function applyFitmentBadges() {
+                fitsModelCells.forEach(function (cell) {
+                    var row = cell.closest('tr');
+                    var descEl = row ? row.querySelector('.bt-desc') : null;
+                    var rowText = cell.textContent + ' ' + (descEl ? descEl.textContent : '');
+                    var cellMatched = btMatchingModels(rowText.toLowerCase());
+                    if (cellMatched.length) {
+                        var badge = document.createElement('span');
+                        badge.className = 'bt-fits-badge';
+                        badge.innerHTML = '&#10003; Potential Match for ' + cellMatched.join(', ');
+                        cell.appendChild(badge);
+                    }
+                });
+            }
+
+            var productIds = Array.from(document.querySelectorAll('tr[data-product-id]'))
+                .map(function (r) { return parseInt(r.getAttribute('data-product-id'), 10); })
+                .filter(Boolean);
+            var tokenMeta = document.getElementById('bt-sf-token');
+            var sfToken = tokenMeta ? tokenMeta.getAttribute('content') : '';
+
+            if (productIds.length && sfToken) {
+                fetch('/graphql', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + sfToken
+                    },
+                    body: JSON.stringify({
+                        query: '{ site { products(entityIds: [' + productIds.join(',') + ']) { edges { node { entityId description } } } } }'
+                    })
+                })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    var edges = (data.data && data.data.site && data.data.site.products && data.data.site.products.edges) || [];
+                    edges.forEach(function (edge) {
+                        var p = edge.node;
+                        var row = document.querySelector('tr[data-product-id="' + p.entityId + '"]');
+                        if (row) {
+                            var descEl = row.querySelector('.bt-desc');
+                            if (descEl) descEl.innerHTML = p.description || '';
+                        }
+                    });
+                })
+                .catch(function () {})
+                .then(applyFitmentBadges);
+            } else {
+                applyFitmentBadges();
+            }
         }
 
     } catch (e) {}
@@ -453,7 +533,7 @@ function btGetAliases(model) {
         saveMachines(machines);
         closePanel();
         renderMachines();
-        if (/\/p\//.test(window.location.pathname)) {
+        if (/\/p\//.test(window.location.pathname) || document.querySelector('td.FitsModel')) {
             setTimeout(function () { location.reload(); }, 300);
         }
     });
