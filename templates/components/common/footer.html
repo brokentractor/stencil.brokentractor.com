@@ -453,6 +453,9 @@ function btGetAliases(model) {
         saveMachines(machines);
         closePanel();
         renderMachines();
+        if (/\/p\//.test(window.location.pathname)) {
+            setTimeout(function () { location.reload(); }, 300);
+        }
     });
 
     // ── Render ──
