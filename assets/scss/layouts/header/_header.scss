@@ -449,7 +449,7 @@ input#searchsubmit {
     z-index: 99;
     font-size:  24px;
     cursor:  pointer;
-    @include breakpoint("large") {
+    @media (min-width: 1280px) {
         right: 15px;
         top: 13px;
     }

@@ -230,6 +230,67 @@ iframe {
     font-size: 18px;
     flex-shrink: 0;
   }
+
+  #myInputClear {
+    background: #ffbe00;
+    border: none;
+    border-radius: 0;
+    color: #000;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: 700;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 12px;
+    flex-shrink: 0;
+
+    &:hover { background: #e6a800; }
+  }
+}
+
+#myInputNoResults {
+  background: #ffbe00;
+  border-left: 6px solid #000;
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 16px;
+  padding: 16px 20px;
+}
+
+#bt-search-tip {
+  position: fixed;
+  background: #ffbe00;
+  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  white-space: nowrap;
+  z-index: 9999;
+  pointer-events: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ffbe00;
+  }
+
+  &.is-visible { animation: btSearchTipIn 0.4s ease forwards; }
+  &.is-hiding  { animation: btSearchTipOut 0.4s ease forwards; }
+}
+
+@keyframes btSearchTipIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes btSearchTipOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
 }
 
 .form-input-fits-model {

@@ -8,6 +8,7 @@
     <div class="toolbar-filter">
       <i class="fa fa-search"></i>
       <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Filter parts on this page..." title="Filter Current Category" isp_ignore>
+      <button type="button" id="myInputClear" style="display:none;" onclick="document.getElementById('myInput').value='';myFunction();">&times;</button>
     </div>
     <span class="table-sort-tip">&#9432; Click headers to sort &#8597;</span>
   </div>
@@ -26,6 +27,7 @@
       {{> components/category/product-listing}}
     </table>
   </div>
+  <div id="myInputNoResults" style="display:none;">Your search does not appear on this page. You can search the entire site by using the search at the top of the window.</div>
 
 </div>{{!-- closes <div class="page"> opened in the calling template --}}
 
@@ -79,10 +81,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function myFunction() {
-  const input = document.getElementById("myInput");
-  const filter = (input.value || "").toUpperCase();
-  const table = document.getElementById("slidetable");
-  const tr = table.getElementsByTagName("tr");
+  const input     = document.getElementById("myInput");
+  const filter    = (input.value || "").toUpperCase();
+  const table     = document.getElementById("slidetable");
+  const tr        = table.getElementsByTagName("tr");
+  const clearBtn  = document.getElementById("myInputClear");
+  const noResults = document.getElementById("myInputNoResults");
+
+  if (clearBtn) clearBtn.style.display = filter ? "inline-block" : "none";
+
+  let visibleCount = 0;
 
   for (let i = 0; i < tr.length; i++) {
     if (tr[i].id === "tableheaders") {
@@ -99,8 +107,32 @@ function myFunction() {
     const partTxt  = partEl  ? (partEl.textContent  || partEl.innerText)  : "";
 
     const haystack = (modelTxt + " " + descTxt + " " + partTxt).toUpperCase();
+    const visible  = !filter || haystack.indexOf(filter) > -1;
 
-    tr[i].style.display = haystack.indexOf(filter) > -1 ? "" : "none";
+    tr[i].style.display = visible ? "" : "none";
+    if (visible) visibleCount++;
+  }
+
+  var noMatch = filter && visibleCount === 0;
+  if (noResults) noResults.style.display = noMatch ? "block" : "none";
+
+  var existingTip = document.getElementById('bt-search-tip');
+  if (noMatch) {
+    var searchEl = document.getElementById('search_query_adv') || document.getElementById('search') || document.querySelector('input[name="search_query"]');
+    if (searchEl && !existingTip) {
+      var tip = document.createElement('div');
+      tip.id = 'bt-search-tip';
+      tip.textContent = 'Search the entire site here';
+      document.body.appendChild(tip);
+      var rect = searchEl.getBoundingClientRect();
+      tip.style.left = (rect.left + rect.width / 2 - tip.offsetWidth / 2) + 'px';
+      tip.style.top  = (rect.bottom + 10) + 'px';
+      tip.classList.add('is-visible');
+    }
+  } else if (existingTip) {
+    existingTip.classList.remove('is-visible');
+    existingTip.classList.add('is-hiding');
+    setTimeout(function () { if (existingTip.parentNode) existingTip.parentNode.removeChild(existingTip); }, 400);
   }
 }
 </script>
