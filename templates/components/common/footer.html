@@ -552,6 +552,7 @@ function btGetAliases(model) {
         modelInput.style.display = 'none';
         modelInput.value = '';
         saveBtn.disabled = true;
+        saveBtn.textContent = 'Save My Machine';
         panel.classList.add('mm-panel--open');
         overlay.classList.add('mm-overlay--active');
         document.body.classList.add('mm-noscroll');
@@ -602,15 +603,23 @@ function btGetAliases(model) {
         if (editIndex !== null) {
             machines[editIndex] = machine;
         } else {
+            // Deduplicate — remove any existing entry with the same model
+            machines = machines.filter(function (m) { return m.model !== machine.model; });
             if (machines.length >= MAX_MACHINES) machines.shift();
             machines.push(machine);
         }
         saveMachines(machines);
-        closePanel();
-        renderMachines();
-        if (/\/p\//.test(window.location.pathname) || document.querySelector('td.FitsModel') || document.querySelector('.klevuLanding')) {
-            setTimeout(function () { location.reload(); }, 300);
-        }
+
+        // Show confirmation before closing
+        saveBtn.textContent = '✓ Machine Saved!';
+        saveBtn.disabled = true;
+        setTimeout(function () {
+            closePanel();
+            renderMachines();
+            if (/\/p\//.test(window.location.pathname) || document.querySelector('td.FitsModel') || document.querySelector('.klevuLanding')) {
+                setTimeout(function () { location.reload(); }, 300);
+            }
+        }, 800);
     });
 
     // ── Render ──
