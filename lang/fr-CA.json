@@ -1,5 +1,223 @@
 {
-    "header": {
-        "welcome_back": "Bonjour, {name}"
+  "header": {
+    "welcome_back": "Bonjour, {name}"
+  },
+  "brands": {
+    "no_products": "There are no products listed under this brand."
+  },
+  "brand": {
+    "label": "Brands"
+  },
+  "cart": {
+    "checkout": {
+      "title": "Click here to proceed to checkout",
+      "item": "Item",
+      "subtotal": "Subtotal"
+    },
+    "coupons": {
+      "add_coupon": "Add Coupon"
+    },
+    "gift_certificates": {
+      "gift_certificate": "Gift Certificate"
+    },
+    "gift_wrapping": {
+      "title": "Gift Wrapping"
+    },
+    "label": "Your Cart ({quantity, plural, one {# item} other {# items}})",
+    "added_to_cart": {
+      "what_next": "Ok, {num_products, plural, one {1 item was} other {# items were}} added to your cart. What's next?"
+    },
+    "shipping_estimator": {
+      "add_info": "Add Info"
+    },
+    "reconfigure_product": "Configure '{name}'",
+    "preview": {
+      "checkout_multiple": "or check out with multiple addresses"
     }
+  },
+  "checkout": {
+    "title": "Checkout"
+  },
+  "compare": {
+    "header": "Comparing {products, plural, one {# Product} other {# Products}}"
+  },
+  "forms": {
+    "contact_us": {
+      "successful": "We've received your feedback and will respond shortly if required. <a href=\"{shopPath}\">Continue</a>.",
+      "full_name": "Full Name"
+    },
+    "new_password": {
+      "heading": "Change Password"
+    },
+    "address": {
+      "edit": {
+        "heading": "Update Address"
+      }
+    },
+    "inbox": {
+      "send_message": "Send a Message"
+    },
+    "search": {
+      "title": "Advanced Search",
+      "search": "Search"
+    }
+  },
+  "newsletter": {
+    "subscribed_heading_error": "Oops...",
+    "unsubscribed_heading": "Unsubscribed!"
+  },
+  "sitemap": {
+    "page_title": "Sitemap"
+  },
+  "categories": {
+    "no_products": "There are no products listed under this category."
+  },
+  "create_account": {
+    "created": {
+      "heading": "Your account has been created"
+    },
+    "heading": "New Account"
+  },
+  "reset_password": {
+    "heading": "Reset Password"
+  },
+  "login": {
+    "heading": "Sign in"
+  },
+  "forbidden": {
+    "page_heading": "Sorry! Please sign in to continue"
+  },
+  "server_error": {
+    "page_heading": "Something Went Wrong..."
+  },
+  "page_not_found": {
+    "page_heading": "404 Error - Page not found"
+  },
+  "gift_certificate": {
+    "heading": "Gift Certificates",
+    "purchase": {
+      "heading": "Purchase Gift Certificate"
+    }
+  },
+  "unavailable": {
+    "hibernation_title": "We'll be back"
+  },
+  "maintenance": {
+    "down": "Down for Maintenance"
+  },
+  "account": {
+    "returns": {
+      "new_return": "New Return",
+      "heading": "Returns"
+    },
+    "wishlists": {
+      "edit": "Edit Wish List",
+      "view_heading": "Wish List: {name}",
+      "heading": "Wish lists",
+      "remove_item": "Remove Item",
+      "name": "Wish list Name"
+    },
+    "addresses": {
+      "heading": "Addresses",
+      "phone": "Phone:"
+    },
+    "orders": {
+      "downloads": {
+        "heading": "Order #{number} Downloads"
+      },
+      "heading": "Orders",
+      "details": {
+        "heading": "Order #{number}",
+        "order_contents": "Order Contents"
+      }
+    },
+    "settings": {
+      "heading": "Account Settings",
+      "first_name": "First Name"
+    },
+    "messages": {
+      "heading": "Messages"
+    },
+    "recent_items": {
+      "heading": "Recently Viewed"
+    },
+    "nav": {
+      "orders": "Orders"
+    }
+  },
+  "invoice": {
+    "for_order": "{name} Invoice for Order #{id}"
+  },
+  "blog": {
+    "posted_by": "Posted by {name}"
+  },
+  "category": {
+    "shop_by_price": "Shop By Price",
+    "view_all": {
+      "name": "All {category}"
+    }
+  },
+  "common": {
+    "sorter": {
+      "featured": "Featured Items",
+      "sort_by": "Sort By:"
+    },
+    "close": "Close",
+    "currency": "Select Currency: {code}",
+    "email_address": "Email Address",
+    "store_credit_overview": "{credit} Store Credit",
+    "previous": "Previous",
+    "required": "Required"
+  },
+  "page": {
+    "rss": {
+      "intro": "RSS feeds are used for syndicating regularly changing content on a web site, including this one. You can open an RSS feed using an RSS reader and use it to see if there is any new content on this site or you can set up a server-side script to parse the feed and display it on your web site."
+    }
+  },
+  "search": {
+    "results": {
+      "count": "{ count, plural, one {# result} other {# results} } for '{ search_query }'",
+      "product_count": "Products ({count})"
+    },
+    "faceted": {
+      "selected": {
+        "title": "Refine by"
+      },
+      "clear": "Clear"
+    },
+    "error": {
+      "empty_field": "Search field cannot be empty."
+    }
+  },
+  "errors": {
+    "shipping_quote_failure": "There was a problem retrieving your shipping quote"
+  },
+  "cookies": {
+    "accept": "Accept Cookies"
+  },
+  "products": {
+    "quantity": "Quantity:",
+    "bulk_pricing": {
+      "title": "Bulk Pricing:"
+    },
+    "description": "Description",
+    "featured": "Featured Products",
+    "new": "New Products",
+    "price_with_tax": "(Inc. {tax_label})",
+    "sku": "SKU:",
+    "related_products": "Related Products",
+    "reviews": {
+      "post_on_by": "Posted by { name } on { date }",
+      "write_a_review": "Write a Review",
+      "header": "{total, plural, =0{0 Reviews} one {# Review} other {# Reviews}}"
+    },
+    "top": "Most Popular Products",
+    "videos": {
+      "header": "Videos"
+    },
+    "choose_options": "Choose Options"
+  },
+  "footer": {
+    "navigate": "Navigate"
+  }
 }
