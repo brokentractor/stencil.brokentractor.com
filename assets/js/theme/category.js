@@ -26,6 +26,9 @@ function coreprices() {
         if (startprice == '$0.00') {
             $(this).find('.price.price--withoutTax').html('Call for Pricing');
             $(this).find('.listatc').hide();
+        } else if (startprice == '') {
+            $(this).find('.price-section--withoutTax').first().html('<span class="price price--withoutTax">Call for Pricing</span>');
+            $(this).find('.listatc').hide();
         } else if (coreprice != '0') {
             startprice = startprice.replace('$', '');
             startprice = startprice.replace(',', '');
