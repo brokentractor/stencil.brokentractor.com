@@ -249,7 +249,9 @@
         {{#if product.can_purchase}}
             {{> components/products/price price=product.price schema_org=schema}}
         {{else}}
-            <span class="price price--withoutTax">{{product.call_for_price}}</span>
+            {{#if product.call_for_price}}
+                <span class="price price--withoutTax">{{product.call_for_price}}</span>
+            {{/if}}
         {{/if}}
     {{else}}
         {{> components/common/login-for-pricing}}
@@ -304,7 +306,7 @@
                     </h2>
                     {{else}}
                         <h2 class="preorder-banner" style="margin-top:0; font-family: industry; display: none;">
-                        
+
                             Please call us at 1-800-909-7060 to check availability.
                         </h2>
                     {{/if}}
