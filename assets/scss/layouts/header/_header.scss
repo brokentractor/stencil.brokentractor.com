@@ -667,6 +667,23 @@ div#shop-parts {
             font-weight: bold;
         }
     }
+
+    // Top 12 brands — permanent "active" state: black bg, white text
+    .navPages-item > .navPages-action[aria-controls="navPages-31"],
+    .navPages-item > .navPages-action[aria-controls="navPages-336"],
+    .navPages-item > .navPages-action[aria-controls="navPages-411"],
+    .navPages-item > .navPages-action[aria-controls="navPages-1174"],
+    .navPages-item > .navPages-action[aria-controls="navPages-693"],
+    .navPages-item > .navPages-action[aria-controls="navPages-806"],
+    .navPages-item > .navPages-action[aria-controls="navPages-1458"],
+    .navPages-item > .navPages-action[aria-controls="navPages-958"],
+    .navPages-item > .navPages-action[aria-controls="navPages-1014"],
+    .navPages-item > .navPages-action[aria-controls="navPages-995"],
+    .navPages-item > .navPages-action[aria-controls="navPages-1046"],
+    .navPages-item > .navPages-action[aria-controls="navPages-1642"] {
+        color: #ffbe00;
+        background: #3a3a3a;
+    }
     div#shop-parts {
         border: 2px #666666 solid;
         position: absolute;
