@@ -28,6 +28,62 @@
 
 
 {{{ checkout.checkout_content }}}
+<script>
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return; // only on checkout
+  const LIMIT = 25;
+
+  // target by your checkout class names
+  const blocks = [
+    '.dynamic-form-field--firstName',
+    '.dynamic-form-field--lastName',
+    '.dynamic-form-field--company',
+  ];
+
+  function capInput(input) {
+    if (!input) return;
+    if (input.getAttribute('maxlength') !== String(LIMIT)) {
+      input.setAttribute('maxlength', String(LIMIT));
+    }
+    const trim = (e) => {
+      const v = e.target.value;
+      if (v && v.length > LIMIT) e.target.value = v.slice(0, LIMIT);
+    };
+    if (!input._btLimiter) {
+      input.addEventListener('input', trim, { passive: true });
+      input.addEventListener('change', trim);
+      input._btLimiter = true;
+    }
+  }
+
+  function apply(root = document) {
+    blocks.forEach(b =>
+      root.querySelectorAll(b + ' input').forEach(capInput)
+    );
+  }
+
+  // initial run
+  document.addEventListener('DOMContentLoaded', () => {
+    const app = document.getElementById('checkout-app') || document.body;
+    apply(app);
+
+    // re-apply on React re-renders
+    const mo = new MutationObserver(muts => {
+      for (const m of muts) {
+        if (m.type === 'childList' && m.addedNodes.length) {
+          m.addedNodes.forEach(n => n.nodeType === 1 && apply(n));
+        }
+      }
+    });
+    mo.observe(app, { childList: true, subtree: true });
+
+    // small safety nets for autofill/delayed mount
+    setTimeout(() => apply(app), 600);
+    setTimeout(() => apply(app), 1500);
+  });
+})();
+</script>
+
 
 {{{ footer.scripts }}}
 

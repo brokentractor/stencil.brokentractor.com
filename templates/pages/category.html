@@ -42,25 +42,30 @@ category:
 
 
         {{#if category.products}}
-        <!-- <div class="toolbar">
-          <i class="fa fa-search"></i>
-          <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Find by Model" title="Type in a Model Name" isp_ignore>
-        </div> -->
+        <div class="toolbar">
+          <div class="toolbar-filter">
+            <i class="fa fa-search"></i>
+            <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Filter parts on this page..." title="Filter Current Category" isp_ignore>
+            <button type="button" id="myInputClear" style="display:none;" onclick="document.getElementById('myInput').value='';myFunction();">&times;</button>
+          </div>
+          <span class="table-sort-tip">&#9432; Click headers to sort &#8597;</span>
+        </div>
         <div id="slidetableouter" class="noref">
             <table id="slidetable">
                 <tr id="tableheaders">
                     <td class="thcell pn image">Image</td>
-                    <td class="thcell pn FitsModel" id="FitsModel">Fits Model</td>
-                    <td class="thcell pn ListDescription">Description</td>
+                    <td class="thcell pn FitsModel" id="FitsModel" data-sort-col="FitsModel">Fits Model</td>
+                    <td class="thcell pn ListDescription" data-sort-col="ListDescription">Description</td>
                     <td class="thcell pn ListDetails" style="display: none;">Details</td>
-                    <td class="thcell pn static sku">Part #</td>
-                    <td class="thcell pn price">Price</td>
+                    <td class="thcell pn static sku" data-sort-col="sku">Part #</td>
+                    <td class="thcell pn price" data-sort-col="price">Price</td>
                     <td class="thcell pn vd">Product Details</td>
                     <!-- <td class="thcell pn atc">Add to Cart</td> -->
                 </tr>
                     {{> components/category/product-listing}}
             </table>
         </div>
+        <div id="myInputNoResults" style="display:none;">Your search does not appear on this page. You can search the entire site by using the search at the top of the window.</div>
         {{else}}
         <style>#product-listing-container, #swipemsg {display: none;}</style>
         {{/if}}
@@ -83,24 +88,113 @@ category:
     table#slidetable td.REFID {display: none;}
 </style>
 <script>
+// Table sort — runs after DOM is ready, no webpack dependency
+document.addEventListener('DOMContentLoaded', function () {
+  var table = document.getElementById('slidetable');
+  if (!table) return;
+
+  var sortState = {};
+
+  var sortableHeaders = table.querySelectorAll('.thcell[data-sort-col]');
+  sortableHeaders.forEach(function (th) {
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', function () {
+      var col = this.getAttribute('data-sort-col');
+      var dir = sortState[col] === 'asc' ? 'desc' : 'asc';
+      sortState = {};
+      sortState[col] = dir;
+
+      // Update carets
+      sortableHeaders.forEach(function (h) {
+        var caret = h.querySelector('.sort-caret');
+        if (caret) caret.remove();
+        if (h.getAttribute('data-sort-col') === col) {
+          var span = document.createElement('span');
+          span.className = 'sort-caret';
+          span.style.cssText = 'font-size:10px;margin-left:4px;';
+          span.textContent = dir === 'asc' ? ' ▲' : ' ▼';
+          h.appendChild(span);
+        }
+      });
+
+      // Sort rows
+      var rows = Array.from(table.querySelectorAll('tr.productrow'));
+      rows.sort(function (a, b) {
+        var aEl = a.querySelector('.' + col);
+        var bEl = b.querySelector('.' + col);
+        var aVal = aEl ? aEl.textContent.trim() : '';
+        var bVal = bEl ? bEl.textContent.trim() : '';
+
+        if (col === 'price') {
+          aVal = parseFloat(aVal.replace(/[^0-9.]/g, '')) || 0;
+          bVal = parseFloat(bVal.replace(/[^0-9.]/g, '')) || 0;
+          return dir === 'asc' ? aVal - bVal : bVal - aVal;
+        }
+        var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
+        return dir === 'asc' ? cmp : -cmp;
+      });
+
+      rows.forEach(function (row) { table.appendChild(row); });
+    });
+  });
+});
+
 function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("slidetable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByClassName("FitsModel")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+  const input     = document.getElementById("myInput");
+  const filter    = (input.value || "").toUpperCase();
+  const table     = document.getElementById("slidetable");
+  const tr        = table.getElementsByTagName("tr");
+  const clearBtn  = document.getElementById("myInputClear");
+  const noResults = document.getElementById("myInputNoResults");
+
+  if (clearBtn) clearBtn.style.display = filter ? "inline-block" : "none";
+
+  let visibleCount = 0;
+
+  for (let i = 0; i < tr.length; i++) {
+    if (tr[i].id === "tableheaders") {
+      tr[i].style.display = "";
+      continue;
     }
+
+    const modelEl = tr[i].getElementsByClassName("FitsModel")[0];
+    const descEl  = tr[i].getElementsByClassName("ListDescription")[0];
+    const partEl  = tr[i].getElementsByClassName("sku")[0];
+
+    const modelTxt = modelEl ? (modelEl.textContent || modelEl.innerText) : "";
+    const descTxt  = descEl  ? (descEl.textContent  || descEl.innerText)  : "";
+    const partTxt  = partEl  ? (partEl.textContent  || partEl.innerText)  : "";
+
+    const haystack = (modelTxt + " " + descTxt + " " + partTxt).toUpperCase();
+    const visible  = !filter || haystack.indexOf(filter) > -1;
+
+    tr[i].style.display = visible ? "" : "none";
+    if (visible) visibleCount++;
+  }
+
+  var noMatch = filter && visibleCount === 0;
+  if (noResults) noResults.style.display = noMatch ? "block" : "none";
+
+  var existingTip = document.getElementById('bt-search-tip');
+  if (noMatch) {
+    var searchEl = document.getElementById('search_query_adv') || document.getElementById('search') || document.querySelector('input[name="search_query"]');
+    if (searchEl && !existingTip) {
+      var tip = document.createElement('div');
+      tip.id = 'bt-search-tip';
+      tip.textContent = 'Search the entire site here';
+      document.body.appendChild(tip);
+      var rect = searchEl.getBoundingClientRect();
+      tip.style.left = (rect.left + rect.width / 2 - tip.offsetWidth / 2) + 'px';
+      tip.style.top  = (rect.bottom + 10) + 'px';
+      tip.classList.add('is-visible');
+    }
+  } else if (existingTip) {
+    existingTip.classList.remove('is-visible');
+    existingTip.classList.add('is-hiding');
+    setTimeout(function () { if (existingTip.parentNode) existingTip.parentNode.removeChild(existingTip); }, 400);
   }
 }
 </script>
+
 {{/partial}}
 {{> layout/base}}

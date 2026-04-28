@@ -77,20 +77,20 @@ h1#producttitle {
     margin-top: 0px;
     text-align: center;
     padding: 0px 15px;
+    font-family: $industry;
     font-weight: bold;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 30px;
     margin-bottom: 20px;
     font-size: 24px;
 
     @include breakpoint("medium") {
-        font-size: 40px;
+        font-size: 35px;
         line-height: 50px;
         margin-bottom: 40px;
     }
     @include breakpoint("large") {
-        font-size: 40px;
-        text-transform: inherit;
+        font-size: 35px;
     }
 }
 .pvwrap .container {
@@ -127,7 +127,7 @@ div#fitsmodels {
     color: #000;
     padding: 15px 15px;
     font-size: 20px;
-    display: none;
+    // display: none;
 
     @include breakpoint("large") {
         padding: 15px 30px;
@@ -159,17 +159,14 @@ div#pv-descriptionbox {
 }
 
 #pv-descriptionbox .productView-price {
-    // position: relative;
     font-family:$industry;
-    font-weight: 600;
-    font-size: 24px;
+    font-weight: 700;
+    font-size: 30px;
+    color: #001212;
     text-align: left;
 
     @include breakpoint("medium") {
-        // position: relative;
-        right: 0px;
         font-size: 36px;
-        top: 0px;
         text-align: right;
         float: none;
     }
@@ -272,6 +269,10 @@ div#pv-help {
 .productView-options {
     margin-bottom: 0px;
     text-align: center;
+
+    table {
+        max-width: fit-content;
+    }
 }
 section#pv-details {
     float: left;

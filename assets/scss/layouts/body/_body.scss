@@ -160,9 +160,13 @@ iframe {
     position: absolute;
     z-index: 10;
     background-size: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 0%;
+    // transform: translate(-50%, -50%);
+    @media screen and (min-width: 767px) {
+      top: 40%;
+      left: 0%;
+    }
 }
 .button--primary {
   font-weight: bold;
@@ -203,32 +207,116 @@ iframe {
 .page-content--centered {
   width: 100%;
 }
+.toolbar {
+  background-color: #001212;
+  padding: 12px 16px;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.toolbar-filter {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+  min-width: 0;
+
+  .svg-inline--fa, .fa {
+    color: #ffbe00;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  #myInputClear {
+    background: #ffbe00;
+    border: none;
+    border-radius: 0;
+    color: #000;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: 700;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 12px;
+    flex-shrink: 0;
+
+    &:hover { background: #e6a800; }
+  }
+}
+
+#myInputNoResults {
+  background: #ffbe00;
+  border-left: 6px solid #000;
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 16px;
+  padding: 16px 20px;
+}
+
+#bt-search-tip {
+  position: fixed;
+  background: #ffbe00;
+  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  white-space: nowrap;
+  z-index: 9999;
+  pointer-events: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ffbe00;
+  }
+
+  &.is-visible { animation: btSearchTipIn 0.4s ease forwards; }
+  &.is-hiding  { animation: btSearchTipOut 0.4s ease forwards; }
+}
+
+@keyframes btSearchTipIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes btSearchTipOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
+}
+
 .form-input-fits-model {
-  border: 1px solid #ccc;
+  border: none;
+  border-bottom: 2px solid #ffbe00;
+  background: #e2e2e2;
   color: #000;
   display: block;
   font-family: inherit;
-  font-size: 16px;
-  height: 40px;
-  width: 100%;
+  font-size: 15px;
+  height: 38px;
+  flex: 1;
+  min-width: 0;
   position: relative;
   z-index: 11;
-  padding:.75rem 1rem;
-  margin-left: 15px;
-  @include breakpoint("medium") {
-    width: inherit;
-  }
-}
-.toolbar {
-  background-color: #001212;
-  padding: 20px 10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  // margin: 20px 0px;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-size: 24px;
+  padding: .5rem .75rem;
+  border-radius: 0;
 
+  &::placeholder {
+    color: #000;
+  }
+
+  &:focus {
+    outline: none;
+    background: #e2e2e2;
+  }
 }
 span.large-only {
   display: inline;
@@ -290,4 +378,12 @@ footer[data-block-id="ku_landing_result_item_footer"] {
     margin-top: auto;
 }
 
+@media only screen and (max-width:576px){
+  .kuSearchResultsPageContainer .kuResults ul li{
+    width:50% !important;
+  }
+}
 /* END align products */
+.exclude_in_klevu_search {
+    display: none;
+}

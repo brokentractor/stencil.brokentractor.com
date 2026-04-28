@@ -1,0 +1,24 @@
+# Broken Tractor
+
+> Broken Tractor is a trusted source for new and used tractor parts, offering a wide selection of components for various tractor brands and models.
+
+## Company Info
+- [About Us](https://www.brokentractor.com/pages/about-us/): Learn more about our mission, team, and customer commitment.
+
+## Product Categories
+- [John Deere Parts](https://www.brokentractor.com/c/john-deere-parts/): Replacement parts for John Deere tractors.
+- [Case IH Parts](https://www.brokentractor.com/c/case-construction-parts/): Components for Case IH machinery.
+- [Ford/New Holland Parts](https://www.brokentractor.com/c/ford-new-holland-parts/): Parts for Ford and New Holland tractors.
+- [Caterpillar Industrial Parts](https://www.brokentractor.com/c/caterpillar/): Parts for Caterpillar tractors.
+- [Dresser / Gallion Parts](https://www.brokentractor.com/c/dresser/): Parts for Dresser tractors.
+
+## Customer Support
+- [Returns](https://www.brokentractor.com/pages/return-exchange-request/): Information on shipping policies and return procedures.
+- [Contact Us](https://www.brokentractor.com/pages/contact-us/): Get in touch with our support team.
+- [Parts Request](https://www.brokentractor.com/pages/parts-request/) Request a part from your machine.
+
+## Optional
+- [Blog](https://www.brokentractor.com/blog/): Articles and tips on tractor maintenance and parts.
+
+## Technical
+- [Sitemap](https://www.brokentractor.com/sitemap.xml)

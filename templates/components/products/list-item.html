@@ -1,4 +1,4 @@
-<tr class="productrow">
+<tr class="productrow" data-product-id="{{id}}">
     <td class="pvcol REFID">
         {{#each custom_fields}}
         {{#if name '===' 'REFID'}}
@@ -20,7 +20,20 @@
     {{/each}}
     <td class="pvcol sku"><a href="{{url}}">{{{sku}}}</a></td>
 
-    <td class="pvcol price">{{> components/products/price price=price}}</td>
+   {{#if out_of_stock_message}}
+  <td class="pvcol price">
+      <span class="out-of-stock">Call for Price</span>
+  </td>
+{{else}}
+  <td class="pvcol price">
+      {{> components/products/price price=price}}
+      <div class="price-section--withoutTax">{{#unless price.without_tax}}{{#unless price.with_tax}}<span class="price price--withoutTax">Call for Pricing</span>{{/unless}}{{/unless}}</div>
+  </td>
+{{/if}}
+
+
+
+
     <td class="pvcol view-details"> <a href="{{url}}" class="listview-style">View Info</a></td>
     <!-- <td class="pvcol atc"> <a href="{{add_to_cart_url}}" class="listatc" data-id="{{id}}" data-name="{{name}}" data-thumb="{{getImage image 'product' (cdn theme_settings.default_image_product)}}">Add To Cart</a>  <div class="slidearrow"><span class="slideabox"></span></div></td> -->
 
@@ -28,5 +41,6 @@
     {{#if summary}}
     <p style="display:none;">{{{summary}}}</p>
     {{/if}}
+    <td class="bt-desc" style="display:none;">{{{description}}}</td>
 
 </tr>

@@ -113,8 +113,691 @@
     </div>
 
 <div style="clear:both;"></div>
+
+<meta id="bt-sf-token" content="{{settings.storefront_api.token}}">
+
+<script>
+// Model aliases: exceptions that don't follow the automatic S[Letter] ↔ Super [Letter] pattern.
+var BT_MODEL_ALIASES = {
+    '580SE':     ['580E'],   // 580E is a legacy name for 580SE / 580 Super E
+    '580E':      ['580SE'],
+    '590T':      ['590 Turbo'],
+    '590 Turbo': ['590T'],
+    '680CK':     ['680']
+};
+// Returns all search terms for a model: the model itself + explicit exceptions + automatic S[X] ↔ Super [X].
+function btGetAliases(model) {
+    var result = (BT_MODEL_ALIASES[model] || []).slice();
+    // e.g. "580SK" → "580 Super K"
+    var m = model.match(/^(.+)S([A-Z])$/);
+    if (m) { var lf = m[1] + ' Super ' + m[2]; if (result.indexOf(lf) === -1) result.push(lf); }
+    // e.g. "580 Super K" → "580SK"
+    var n = model.match(/^(.+) Super ([A-Z])$/);
+    if (n) { var sf = n[1] + 'S' + n[2]; if (result.indexOf(sf) === -1) result.push(sf); }
+    return result;
+}
+(function () {
+    try {
+        var machines = JSON.parse(localStorage.getItem('bt_machines') || '[]');
+        if (!machines.length) return;
+        var active = machines[0];
+        var label  = active.brand + ' ' + active.model;
+
+        var searchInput = document.getElementById('search');
+
+        // Update search placeholder to reflect saved machine
+        if (searchInput) {
+            searchInput.placeholder = 'Search ' + label + ' parts...';
+        }
+
+        // Expands letter-suffix ranges: "721–f" → "721 721a 721b ... 721f"
+        // and "550e–h" → "550e 550f 550g 550h"
+        function btExpandRanges(text) {
+            return text.replace(/([a-z]?\d+[a-z]?)[\u2013\-]([a-z])\b/g, function (match, base, endLetter) {
+                var nm = base.match(/^([a-z]?\d+)([a-z])?$/);
+                if (!nm) return match;
+                var num = nm[1], startLetter = nm[2] || '';
+                var expanded = [base];
+                var s = startLetter ? startLetter.charCodeAt(0) : 'a'.charCodeAt(0) - 1;
+                var e = endLetter.charCodeAt(0);
+                for (var c = s + 1; c <= e; c++) expanded.push(num + String.fromCharCode(c));
+                return expanded.join(' ');
+            });
+        }
+
+        // Checks if a model falls within a numeric range like "sr130–sr270" or "410–465"
+        function btInNumericRange(term, fitsText) {
+            var mm = term.match(/^([a-z]*)(\d+)([a-z]*)$/);
+            if (!mm) return false;
+            var mPfx = mm[1], mNum = parseInt(mm[2]), mSfx = mm[3];
+            var re = /([a-z]*)(\d+)([a-z]*)[\u2013\-]([a-z]*)(\d+)([a-z]*)/g;
+            var m;
+            while ((m = re.exec(fitsText)) !== null) {
+                var sPfx = m[1], sNum = parseInt(m[2]), sSfx = m[3];
+                var ePfx = m[4], eNum = parseInt(m[5]), eSfx = m[6];
+                if ((sPfx === mPfx || ePfx === mPfx) && (sSfx === mSfx || eSfx === mSfx)) {
+                    if (mNum >= sNum && mNum <= eNum) return true;
+                }
+            }
+            return false;
+        }
+
+        // Returns matching model labels from the fleet for a given FitsModel text.
+        function btMatchingModels(fitsText) {
+            var expandedText = btExpandRanges(fitsText);
+            var matched = [];
+            for (var i = 0; i < machines.length; i++) {
+                var m = machines[i];
+                if (!m.model) continue;
+                var terms = [m.model.toLowerCase()].concat(btGetAliases(m.model).map(function (a) { return a.toLowerCase(); }));
+                if (terms.some(function (t) {
+                    return expandedText.indexOf(t) !== -1 || btInNumericRange(t, expandedText);
+                })) {
+                    matched.push(m.model);
+                }
+            }
+            return matched;
+        }
+
+        // ── Fitment badge on product page ──
+        var pvBadge = document.getElementById('pv-fits-badge');
+        if (pvBadge) {
+            var pvFitsEl  = document.querySelector('dd.FitsModel');
+            var pvDescEl  = document.querySelector('.pv-description');
+            var pvFitsText = (pvFitsEl  ? pvFitsEl.textContent  : '') + ' ' +
+                             (pvDescEl  ? pvDescEl.textContent  : '');
+            if (pvFitsText.trim()) {
+                var pvMatched = btMatchingModels(pvFitsText.toLowerCase());
+                if (pvMatched.length) {
+                    pvBadge.className = 'bt-fits-badge';
+                    pvBadge.innerHTML = '&#10003; Potential Match for ' + pvMatched.join(', ');
+                }
+            }
+        }
+
+        // ── Fitment badges on category table pages ──
+        var fitsModelCells = document.querySelectorAll('td.FitsModel');
+        if (fitsModelCells.length) {
+            function applyFitmentBadges() {
+                fitsModelCells.forEach(function (cell) {
+                    var row = cell.closest('tr');
+                    var descEl = row ? row.querySelector('.bt-desc') : null;
+                    var rowText = cell.textContent + ' ' + (descEl ? descEl.textContent : '');
+                    var cellMatched = btMatchingModels(rowText.toLowerCase());
+                    if (cellMatched.length) {
+                        var badge = document.createElement('span');
+                        badge.className = 'bt-fits-badge';
+                        badge.innerHTML = '&#10003; Potential Match for ' + cellMatched.join(', ');
+                        cell.appendChild(badge);
+                    }
+                });
+            }
+
+            var productIds = Array.from(document.querySelectorAll('tr[data-product-id]'))
+                .map(function (r) { return parseInt(r.getAttribute('data-product-id'), 10); })
+                .filter(Boolean);
+            var tokenMeta = document.getElementById('bt-sf-token');
+            var sfToken = tokenMeta ? tokenMeta.getAttribute('content') : '';
+
+            if (productIds.length && sfToken) {
+                fetch('/graphql', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + sfToken
+                    },
+                    body: JSON.stringify({
+                        query: '{ site { products(entityIds: [' + productIds.join(',') + '], first: 50) { edges { node { entityId description } } } } }'
+                    })
+                })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    var edges = (data.data && data.data.site && data.data.site.products && data.data.site.products.edges) || [];
+                    edges.forEach(function (edge) {
+                        var p = edge.node;
+                        var row = document.querySelector('tr[data-product-id="' + p.entityId + '"]');
+                        if (row) {
+                            var descEl = row.querySelector('.bt-desc');
+                            if (descEl) descEl.innerHTML = p.description || '';
+                        }
+                    });
+                })
+                .catch(function () {})
+                .then(applyFitmentBadges);
+            } else {
+                applyFitmentBadges();
+            }
+        }
+
+        // ── Fitment badges on Klevu search results ──
+        var klLanding = document.querySelector('.klevuLanding');
+        if (klLanding) {
+            var klSfTokenMeta = document.getElementById('bt-sf-token');
+            var klSfToken = klSfTokenMeta ? klSfTokenMeta.getAttribute('content') : '';
+            var klBadgeTimer = null;
+
+            function btApplyKlevuBadges() {
+                if (!machines.length || !klSfToken) return;
+                var cards = document.querySelectorAll('li.klevuProduct[data-id]');
+                if (!cards.length) return;
+
+                var ids = Array.from(cards).map(function (c) { return parseInt(c.getAttribute('data-id'), 10); });
+                var uniqueIds = ids.filter(function (id, i) { return ids.indexOf(id) === i; });
+
+                fetch('/graphql', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + klSfToken },
+                    body: JSON.stringify({
+                        query: '{ site { products(entityIds: [' + uniqueIds.join(',') + '], first: 50) { edges { node { entityId description customFields { edges { node { name value } } } } } } } }'
+                    })
+                })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    var edges = (data.data && data.data.site && data.data.site.products && data.data.site.products.edges) || [];
+                    edges.forEach(function (edge) {
+                        var p = edge.node;
+                        var fitsModel = '';
+                        if (p.customFields && p.customFields.edges) {
+                            p.customFields.edges.forEach(function (cf) {
+                                if (cf.node.name === 'FitsModel') fitsModel = cf.node.value;
+                            });
+                        }
+                        var combinedText = (fitsModel + ' ' + (p.description || '')).toLowerCase();
+                        var matched = btMatchingModels(combinedText);
+                        if (matched.length) {
+                            var card = document.querySelector('li.klevuProduct[data-id^="' + p.entityId + '"]');
+                            if (card && !card.querySelector('.bt-fits-badge')) {
+                                var badge = document.createElement('div');
+                                badge.className = 'bt-fits-badge';
+                                badge.innerHTML = '&#10003; Potential Match for ' + matched.join(', ');
+                                var target = card.querySelector('.kuProdBottom') || card.querySelector('.kuProdWrap') || card;
+                                target.appendChild(badge);
+                            }
+                        }
+                    });
+                })
+                .catch(function () {});
+            }
+
+            var klObserver = new MutationObserver(function (mutations) {
+                var hasNewCards = mutations.some(function (m) {
+                    return Array.from(m.addedNodes).some(function (n) {
+                        return n.nodeType === 1 && (
+                            (n.matches && n.matches('li.klevuProduct')) ||
+                            (n.querySelector && n.querySelector('li.klevuProduct'))
+                        );
+                    });
+                });
+                if (hasNewCards) {
+                    clearTimeout(klBadgeTimer);
+                    klBadgeTimer = setTimeout(btApplyKlevuBadges, 400);
+                }
+            });
+            klObserver.observe(klLanding, { childList: true, subtree: true });
+
+            // Run immediately for cards already in the DOM on page load
+            setTimeout(btApplyKlevuBadges, 600);
+        }
+
+    } catch (e) {}
+})();
+</script>
+
+<!-- Category data for My Machine picker (used on every page) -->
+<div id="pf-data" style="display:none">
+    {{#each categories}}
+    <div class="pf-brand-data" data-name="{{name}}" data-url="{{url}}">
+        {{#each children}}
+        <span data-name="{{name}}" data-url="{{url}}" data-image="{{image.data}}"></span>
+        {{/each}}
+    </div>
+    {{/each}}
+</div>
+
+<script>
+// ── My Machine Picker (sitewide) ──────────────────────────────────────
+(function () {
+    var MAX_MACHINES = 5;
+    var STORAGE_KEY  = 'bt_machines';
+
+    // BigCommerce returns absolute URLs in pf-data on live but relative on localhost.
+    // Normalize to relative path so BT_MODELS lookups always work.
+    function relUrl(url) {
+        if (!url) return url;
+        try { return new URL(url).pathname; } catch(e) { return url; }
+    }
+
+    function getMachines() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+        catch (e) { return []; }
+    }
+    function saveMachines(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+
+    // Panel elements (every page)
+    var navBtn        = document.getElementById('mm-nav-btn');
+    var navLabel      = document.getElementById('mm-nav-label');
+    var navIcon       = document.getElementById('mm-nav-icon');
+    var mobileBtn     = document.getElementById('mm-mobile-btn');
+    var mobileBtnLabel = document.getElementById('mm-mobile-label');
+    var mobileBtnIcon  = document.getElementById('mm-mobile-icon');
+    var overlay     = document.getElementById('mm-overlay');
+    var panel       = document.getElementById('mm-panel');
+    var panelClose  = document.getElementById('mm-panel-close');
+    var panelCancel = document.getElementById('mm-panel-cancel');
+    var panelSaved  = document.getElementById('mm-panel-saved');
+    var panelChips  = document.getElementById('mm-panel-chips');
+    var clearLink   = document.getElementById('mm-clear-link');
+    var brandSel    = document.getElementById('mm-brand-sel');
+    var typeWrap    = document.getElementById('mm-type-wrap');
+    var typeSel     = document.getElementById('mm-type-sel');
+    var modelWrap   = document.getElementById('mm-model-wrap');
+    var modelSel    = document.getElementById('mm-model-sel');
+    var modelInput  = document.getElementById('mm-model-input');
+    var modelLabel  = document.getElementById('mm-model-label');
+    var saveBtn     = document.getElementById('mm-save-machine');
+
+    // Homepage-only elements (null on other pages)
+    var firstVisit = document.getElementById('mm-first-visit');
+    var hasMachine = document.getElementById('mm-has-machine');
+    var hpGreeting = document.getElementById('mm-greeting');
+    var hpChips    = document.getElementById('mm-chips');
+
+    var editIndex = null;
+
+    // ── Populate brand dropdown from #pf-data ──
+    // Brands excluded from the My Machine picker
+    var PICKER_EXCLUDE = ['king kutter', 'broken tractor merchandise'];
+    // Brands with only one machine type — skip the type step and go straight to models
+    var SINGLE_TYPE_BRANDS = ['kobelco', 'hyundai', 'hitachi', 'long tractor', 'doosan', 'daewoo', 'samsung', 'yanmar', 'linkbelt', 'ihi', 'jlg', 'genie', 'wacker neuson', 'gehl', 'ditch witch', 'hyster', 'hanix', 'koehring', 'liebherr', 'mitsubishi', 'sumitomo', 'timberjack', 'tigercat'];
+    document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+        var first = div.querySelector('span');
+        var url   = first ? first.dataset.url : div.dataset.url;
+        if (!url || url === '#') return;
+        var nameLower = (div.dataset.name || '').toLowerCase();
+        if (PICKER_EXCLUDE.some(function(e){ return nameLower.indexOf(e) !== -1; })) return;
+        var cleanName = (div.dataset.name || '').replace(/\s+parts$/i, '').trim();
+        var opt = document.createElement('option');
+        opt.value           = url;
+        opt.textContent     = cleanName;
+        opt.dataset.name    = cleanName;
+        opt.dataset.brandUrl = div.dataset.url || url;
+        brandSel.appendChild(opt);
+    });
+
+    // ── Brand selected ──
+    brandSel.addEventListener('change', function () {
+        typeSel.innerHTML = '<option value="">Select Machine Type...</option>';
+        typeSel.disabled  = true;
+        typeWrap.style.display = 'none';
+        modelWrap.style.display = 'none';
+        modelInput.value = '';
+        saveBtn.disabled = true;
+        if (!this.value) return;
+        var brandDiv = null;
+        document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
+            var first = div.querySelector('span');
+            if (first && first.dataset.url === brandSel.value) brandDiv = div;
+        });
+        if (!brandDiv) return;
+        var added = 0;
+        brandDiv.querySelectorAll('span').forEach(function (span) {
+            var name = span.dataset.name || '';
+            if (name.toLowerCase().indexOf('all ') === 0) return;
+            if (/spec|spotlight/i.test(name)) return;
+            var cleanLabel = name.replace(/\s+[Pp]arts$/i, '').trim();
+            var opt = document.createElement('option');
+            opt.value = span.dataset.url;
+            opt.textContent = cleanLabel;
+            opt.dataset.image = span.dataset.image || '';
+            typeSel.appendChild(opt);
+            added++;
+        });
+        if (added > 0) {
+            var selOpt = brandSel.options[brandSel.selectedIndex];
+            var brandNameLower = (selOpt ? selOpt.dataset.name || '' : '').toLowerCase();
+            var isForcedSingle = SINGLE_TYPE_BRANDS.some(function(b){ return brandNameLower.indexOf(b) !== -1; });
+            // Check directly against spans whether all children share the same model list
+            var childUrls = [];
+            brandDiv.querySelectorAll('span').forEach(function (span) {
+                var name = span.dataset.name || '';
+                if (name.toLowerCase().indexOf('all ') === 0) return;
+                if (/spec|spotlight/i.test(name)) return;
+                if (span.dataset.url) childUrls.push(span.dataset.url);
+            });
+            var firstKey  = childUrls[0] || null;
+            var firstList = firstKey ? JSON.stringify((window.BT_MODELS && window.BT_MODELS[relUrl(firstKey)]) || []) : null;
+            var allSame   = firstList && firstList !== '[]' && childUrls.every(function (url) {
+                return JSON.stringify((window.BT_MODELS && window.BT_MODELS[relUrl(url)]) || []) === firstList;
+            });
+            if (allSame || isForcedSingle) {
+                // For forced single-type brands whose type URL isn't in BT_MODELS,
+                // aggregate models from all BT_MODELS keys matching the brand slug
+                if (isForcedSingle && (!firstList || firstList === '[]')) {
+                    var brandSlug = brandNameLower.replace(/\s+/g, '-');
+                    var seen = {}, agg = [];
+                    Object.keys(window.BT_MODELS || {}).forEach(function(k) {
+                        if (k.toLowerCase().indexOf(brandSlug) !== -1) {
+                            (window.BT_MODELS[k] || []).forEach(function(m) {
+                                var val = typeof m === 'object' ? m.value : m;
+                                if (!seen[val]) { seen[val] = true; agg.push(m); }
+                            });
+                        }
+                    });
+                    if (agg.length) window._btTempModels = agg;
+                }
+                typeSel.value = firstKey;
+                typeSel.dataset.brandRedirect = selOpt ? (selOpt.dataset.brandUrl || firstKey) : firstKey;
+                typeWrap.style.display = 'none';
+                typeSel.dispatchEvent(new Event('change'));
+            } else {
+                delete typeSel.dataset.brandRedirect;
+                typeSel.disabled = false;
+                typeWrap.style.display = '';
+            }
+        }
+    });
+
+    // ── Machine Type selected ──
+    typeSel.addEventListener('change', function () {
+        modelWrap.style.display = 'none';
+        modelSel.innerHTML = '<option value="">Select Model...</option>';
+        modelInput.value = '';
+        saveBtn.disabled = true;
+        if (!this.value) return;
+        var models = window._btTempModels || (window.BT_MODELS && window.BT_MODELS[relUrl(this.value)]) || [];
+        window._btTempModels = null;
+        modelWrap.style.display = '';
+        if (models.length > 0) {
+            models.forEach(function (m) {
+                var opt = document.createElement('option');
+                opt.value       = (typeof m === 'object') ? m.value : m;
+                opt.textContent = (typeof m === 'object') ? m.label : m;
+                modelSel.appendChild(opt);
+            });
+            modelSel.style.display = '';
+            modelInput.style.display = 'none';
+            modelLabel.textContent = 'Model';
+        } else {
+            modelSel.style.display = 'none';
+            modelInput.style.display = '';
+            modelLabel.innerHTML = 'Model Number <span style="font-weight:400;text-transform:none;font-size:12px;color:#888;">(e.g. 580K, 310SL)</span>';
+            modelInput.focus();
+        }
+        checkSave();
+    });
+
+    modelSel.addEventListener('change', checkSave);
+    modelInput.addEventListener('input', checkSave);
+
+    function checkSave() {
+        saveBtn.disabled = !(typeSel.value && (
+            (modelSel.style.display !== 'none' && modelSel.value) ||
+            (modelInput.style.display !== 'none' && modelInput.value.trim())
+        ));
+    }
+    function getModelValue() {
+        return modelSel.style.display !== 'none' ? modelSel.value : modelInput.value.trim();
+    }
+
+    // ── Open / close panel ──
+    function openPanel(index) {
+        editIndex = (typeof index === 'number') ? index : null;
+        brandSel.value = '';
+        typeSel.innerHTML = '<option value="">Select Machine Type...</option>';
+        typeSel.disabled  = true;
+        typeWrap.style.display  = 'none';
+        modelWrap.style.display = 'none';
+        modelSel.innerHTML = '<option value="">Select Model...</option>';
+        modelSel.style.display  = '';
+        modelInput.style.display = 'none';
+        modelInput.value = '';
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Save My Machine';
+        panel.classList.add('mm-panel--open');
+        overlay.classList.add('mm-overlay--active');
+        document.body.classList.add('mm-noscroll');
+        navBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closePanel() {
+        panel.classList.remove('mm-panel--open');
+        overlay.classList.remove('mm-overlay--active');
+        document.body.classList.remove('mm-noscroll');
+        navBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    navBtn.addEventListener('click', function () {
+        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null);
+    });
+    if (mobileBtn) mobileBtn.addEventListener('click', function () {
+        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null);
+    });
+    panelClose.addEventListener('click', closePanel);
+    panelCancel.addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+
+    // Homepage "Set Your Machine" button opens panel
+    var openPickerBtn = document.getElementById('mm-open-picker');
+    if (openPickerBtn) openPickerBtn.addEventListener('click', function () { openPanel(null); });
+
+    // Clear link
+    clearLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        saveMachines([]);
+        renderMachines();
+    });
+
+    // ── Save machine ──
+    saveBtn.addEventListener('click', function () {
+        var brandOpt = brandSel.options[brandSel.selectedIndex];
+        var typeOpt  = typeSel.options[typeSel.selectedIndex];
+        if (!brandOpt || !typeOpt || !typeOpt.value) return;
+        var brandRedirect = typeSel.dataset.brandRedirect || null;
+        var machine = {
+            brand:   brandOpt.textContent.trim().replace(/\s+(construction|industrial|equipment|parts)(\s+.*)?$/i, '').trim(),
+            type:    typeOpt.textContent.trim(),
+            model:   getModelValue(),
+            typeUrl: brandRedirect || typeOpt.value,
+            image:   brandRedirect ? '' : (typeOpt.dataset.image || '').replace('{:size}', '1280x480')
+        };
+        var machines = getMachines();
+        if (editIndex !== null) {
+            machines[editIndex] = machine;
+        } else {
+            // Deduplicate — remove any existing entry with the same model
+            machines = machines.filter(function (m) { return m.model !== machine.model; });
+            if (machines.length >= MAX_MACHINES) machines.shift();
+            machines.push(machine);
+        }
+        saveMachines(machines);
+
+        // Show confirmation before closing
+        saveBtn.textContent = '✓ Machine Saved!';
+        saveBtn.disabled = true;
+        setTimeout(function () {
+            closePanel();
+            renderMachines();
+            if (/\/p\//.test(window.location.pathname) || document.querySelector('td.FitsModel') || document.querySelector('.klevuLanding')) {
+                setTimeout(function () { location.reload(); }, 300);
+            }
+        }, 800);
+    });
+
+    // ── Render ──
+    function renderMachines() {
+        var machines = getMachines();
+
+        // Nav button label (desktop + mobile)
+        var btnText;
+        if (machines.length === 1) {
+            btnText = machines[0].brand + ' ' + machines[0].model;
+        } else if (machines.length > 1) {
+            btnText = 'My Fleet (' + machines.length + ')';
+        } else {
+            btnText = 'Add My Machine';
+        }
+        navLabel.textContent = btnText;
+        if (mobileBtnLabel) mobileBtnLabel.textContent = btnText;
+
+        // Update search placeholder to reflect active machine
+        var searchEl = document.getElementById('search');
+        if (searchEl) {
+            if (machines.length > 0) {
+                var active = machines[0];
+                searchEl.placeholder = 'Search ' + active.brand + ' ' + active.model + ' parts...';
+            } else {
+                searchEl.placeholder = 'Search by Part Number, Model or Brand';
+            }
+        }
+
+        // Panel saved section
+        if (machines.length > 0) {
+            panelSaved.style.display = '';
+            panelChips.innerHTML = '';
+            machines.forEach(function (m) {
+                var chip = document.createElement('a');
+                chip.href      = m.typeUrl;
+                chip.className = 'mm-chip';
+                chip.textContent = m.brand + ' ' + m.model;
+                panelChips.appendChild(chip);
+            });
+        } else {
+            panelSaved.style.display = 'none';
+        }
+
+        // Equipment type → SVG icon map
+        var EQUIP_ICONS = {
+            'backhoe':           'icon-equip-backhoe',
+            'excavator':         'icon-equip-excavator',
+            'dozer':             'icon-equip-dozer',
+            'bulldozer':         'icon-equip-dozer',
+            'wheel loader':      'icon-equip-wheel-loader',
+            'wheel-loader':      'icon-equip-wheel-loader',
+            'skid steer':        'icon-equip-skid-steer',
+            'skid-steer':        'icon-equip-skid-steer',
+            'track loader':      'icon-equip-track-loader',
+            'motor grader':      'icon-equip-motor-grader',
+            'grader':            'icon-equip-motor-grader',
+            'dump truck':        'icon-equip-dump-truck',
+            'articulated truck': 'icon-equip-dump-truck',
+            'articulated dump':  'icon-equip-dump-truck',
+            'tractor':           'icon-equip-tractor',
+            'telehandler':       'icon-equip-telehandler',
+            'forklift':          'icon-equip-forklift',
+            'scraper':           'icon-equip-dozer',
+            'trencher':          'icon-equip-trencher',
+            'roller':            'icon-equip-roller',
+            'compactor':         'icon-equip-roller'
+        };
+        function getEquipIcon(typeLabel) {
+            var t = typeLabel.toLowerCase();
+            for (var key in EQUIP_ICONS) {
+                if (t.indexOf(key) !== -1) return EQUIP_ICONS[key];
+            }
+            return 'icon-equip-backhoe'; // fallback
+        }
+        function equipSvg(iconId) {
+            return '<svg class="mm-equip-icon" aria-hidden="true"><use href="#' + iconId + '"></use></svg>';
+        }
+
+        // Nav button icon (desktop + mobile)
+        var iconId = 'icon-equip-backhoe';
+        if (machines.length > 0) {
+            var navTypeLabel = machines[0].type.replace(new RegExp('^' + machines[0].brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
+            iconId = getEquipIcon(navTypeLabel);
+        }
+        if (navIcon) navIcon.querySelector('use').setAttribute('href', '#' + iconId);
+        if (mobileBtnIcon) mobileBtnIcon.querySelector('use').setAttribute('href', '#' + iconId);
+
+        // Product page fitment nudge
+        var nudge = document.getElementById('mm-fitment-nudge');
+        if (nudge) {
+            nudge.style.display = machines.length === 0 ? '' : 'none';
+            var nudgeBtn = document.getElementById('mm-fitment-nudge-btn');
+            if (nudgeBtn && !nudgeBtn.dataset.bound) {
+                nudgeBtn.dataset.bound = '1';
+                nudgeBtn.addEventListener('click', function () {
+                    openPanel();
+                });
+            }
+        }
+
+        // Homepage hero banner (if present)
+        var hero = document.getElementById('mm-hero');
+        if (hero) {
+            if (machines.length === 0) {
+                hero.style.display = 'none';
+            } else {
+                var m = machines[0];
+                var heroImg   = hero.querySelector('.mm-hero-img');
+                var heroTitle = hero.querySelector('.mm-hero-title');
+                var heroSub   = hero.querySelector('.mm-hero-sub');
+                var heroLink  = hero.querySelector('.mm-hero-link');
+                var typeLabel = m.type.replace(new RegExp('^' + m.brand + '\\s*', 'i'), '').replace(/\s*parts\s*$/i, '').trim();
+                var iconId2   = getEquipIcon(typeLabel);
+                heroImg.innerHTML = equipSvg(iconId2);
+                heroImg.style.display = '';
+                heroTitle.textContent = m.brand + ' ' + m.model + ' Parts';
+                heroSub.textContent   = 'Browse our selection of ' + m.brand + ' ' + typeLabel.toLowerCase() + ' parts today.';
+                heroLink.href         = m.typeUrl;
+                heroLink.innerHTML    = 'Browse ' + m.brand + ' <i class="fa fa-arrow-right"></i>';
+                hero.style.display    = '';
+            }
+        }
+    }
+
+    renderMachines();
+
+    // ── Search query filler ──────────────────────────────────────────
+    (function () {
+        var searchEl = document.getElementById('search');
+        if (!searchEl) return;
+        function appendModel() {
+            var ms = getMachines();
+            if (!ms.length) return;
+            var model = ms[0].model;
+            var val = searchEl.value.trim();
+            if (val && val.toLowerCase().indexOf(model.toLowerCase()) === -1) {
+                searchEl.value = val + ' ' + model;
+            }
+        }
+        searchEl.addEventListener('keydown', function (e) {
+            if (e.key !== 'Enter') return;
+            appendModel();
+        });
+        var searchForm = searchEl.closest('form');
+        if (searchForm) {
+            var submitBtn = searchForm.querySelector('[type="submit"]');
+            if (submitBtn) submitBtn.addEventListener('click', appendModel);
+        }
+    })();
+
+    // ── Onboarding tooltip (first visit only) ────────────────────────
+    var TIP_KEY        = 'bt_mm_tip_seen';
+    var tip            = document.getElementById('mm-onboard-tip');
+    var tipClose       = document.getElementById('mm-tip-close');
+    var mobileTip      = document.getElementById('mm-mobile-tip');
+    var mobileTipClose = document.getElementById('mm-mobile-tip-close');
+    if (!localStorage.getItem(TIP_KEY) && (tip || mobileTip)) {
+        setTimeout(function () {
+            if (tip)       tip.classList.add('mm-tip--visible');
+            if (mobileTip) mobileTip.classList.add('mm-tip--visible');
+        }, 800);
+        function dismissTip() {
+            if (tip)       tip.classList.remove('mm-tip--visible');
+            if (mobileTip) mobileTip.classList.remove('mm-tip--visible');
+            localStorage.setItem(TIP_KEY, '1');
+        }
+        if (tipClose)       tipClose.addEventListener('click', dismissTip);
+        if (mobileTipClose) mobileTipClose.addEventListener('click', dismissTip);
+        navBtn.addEventListener('click', dismissTip);
+        if (mobileBtn) mobileBtn.addEventListener('click', dismissTip);
+    }
+
+})();
+</script>
+
 <div id="subfooter">
 	<a href="/pages/privacy-policy/">Privacy Policy</a> | <a href="/pages/terms-conditions/">Terms & Conditions</a> <br /><br /> <span class="footerspace"></span>
-    Copyright © 2024 Broken Tractor LLC - All Rights Reserved <br /> <span class="footerspace"></span>
+    Copyright © 2026 Broken Tractor LLC - All Rights Reserved <br /> <span class="footerspace"></span>
 	<br /> <br />
 </div>
