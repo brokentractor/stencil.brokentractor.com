@@ -45,10 +45,10 @@ module.exports = {
         path: path.resolve(__dirname, "assets/dist"),
     },
     plugins: [
-        new CleanWebpackPlugin(['assets/dist'], {
-            verbose: false,
-            watch: false,
-        }),
+        // new CleanWebpackPlugin(['assets/dist'], {
+        //     verbose: false,
+        //     watch: false,
+        // }),
         new webpack.LoaderOptionsPlugin({
              minimize: true,
         }),
