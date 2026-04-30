@@ -32,7 +32,13 @@ function coreprices() {
         } else if (coreprice != '0') {
             startprice = startprice.replace('$', '');
             startprice = startprice.replace(',', '');
-            startprice = parseFloat(startprice).toFixed(2);
+            startprice = parseFloat(startprice);
+            if (isNaN(startprice)) {
+                // No numeric price (e.g. "Call for Pricing") — skip core price math
+                $(this).find('.price-section--withoutTax').first().append('<div class="corecharge">Refundable Core Charge: $'+ parseFloat(coreprice).toFixed(2) +'</div>');
+                return;
+            }
+            startprice = startprice.toFixed(2);
             coreprice = parseFloat(coreprice).toFixed(2);
             var newcprice = +startprice - +coreprice;
             newcprice = parseFloat(newcprice).toFixed(2);
