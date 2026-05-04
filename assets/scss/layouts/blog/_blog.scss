@@ -120,3 +120,63 @@
         padding: 20px;
     }
 }
+
+// Shop parts CTA block — shown at the bottom of full blog posts
+.blog-shop-cta {
+    margin-top: 40px;
+    padding: 28px 32px;
+    background: #1a1a1a;
+    border-left: 4px solid #ffbe00;
+    text-align: left;
+
+    &__heading {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffbe00;
+        margin: 0 0 10px;
+        font-family: "proxima-nova", arial, sans-serif;
+    }
+
+    &__text {
+        color: #ccc;
+        font-size: 15px;
+        margin: 0 0 20px;
+        line-height: 1.6;
+    }
+
+    &__btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    &__btn {
+        display: inline-block;
+        padding: 10px 22px;
+        background: #ffbe00;
+        color: #000;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        font-family: "proxima-nova", arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background 0.15s ease;
+
+        &:hover {
+            background: #e6aa00;
+            color: #000;
+        }
+
+        &--secondary {
+            background: transparent;
+            color: #ffbe00;
+            border: 2px solid #ffbe00;
+
+            &:hover {
+                background: #ffbe00;
+                color: #000;
+            }
+        }
+    }
+}

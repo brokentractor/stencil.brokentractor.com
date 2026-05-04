@@ -35,6 +35,39 @@
         {{inject 'urls' urls}}
         {{{snippet 'htmlhead'}}}
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Broken Tractor LLC",
+          "url": "https://www.brokentractor.com/",
+          "logo": "https://www.brokentractor.com/content/bt-logo-schema.png",
+          "telephone": "+1-800-909-7060",
+          "foundingDate": "2006",
+          "sameAs": [
+            "https://www.facebook.com/brokentractor",
+            "https://www.bbb.org/us/la/baton-rouge/profile/tractor-parts/broken-tractor-llc-0835-90021806"
+          ],
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "9172 Castille Rd",
+              "addressLocality": "Baton Rouge",
+              "addressRegion": "LA",
+              "postalCode": "70809",
+              "addressCountry": "US"
+            },
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "74070 Old 21 Rd",
+              "addressLocality": "Kimbolton",
+              "addressRegion": "OH",
+              "postalCode": "43749",
+              "addressCountry": "US"
+            }
+          ]
+        }
+        </script>
 
     </head>
     <body class="{{#block 'pagename'}}{{/block}}">
