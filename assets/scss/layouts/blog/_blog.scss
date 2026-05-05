@@ -444,6 +444,16 @@
     }
 }
 
+// Blog index — email subscribe strip
+// -----------------------------------------------------------------------------
+.blog-index__subscribe {
+    margin: 0 16px 40px;
+
+    @include breakpoint("medium") {
+        margin: 0 0 40px;
+    }
+}
+
 // Blog pagination override
 // -----------------------------------------------------------------------------
 .blog-index__wrap .pagination {
@@ -947,5 +957,31 @@
                 color: #000;
             }
         }
+    }
+}
+
+// Blog email subscribe section
+// -----------------------------------------------------------------------------
+.blog-email-subscribe {
+    margin-top: 40px;
+    padding: 28px 24px 24px;
+    background: #f5f5f5;
+    border-top: 3px solid #ffbe00;
+
+    &__heading {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 0 0 6px;
+        font-family: "proxima-nova", arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    &__sub {
+        font-size: 14px;
+        color: #444;
+        margin: 0 0 16px;
+        line-height: 1.5;
     }
 }
