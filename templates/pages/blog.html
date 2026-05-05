@@ -66,6 +66,37 @@ blog:
 
 <script>
 (function () {
+    // On page 2+, convert the featured post into a regular grid card
+    var urlParams = new URLSearchParams(window.location.search);
+    var page = parseInt(urlParams.get('page') || '1', 10);
+    if (page > 1) {
+        var featured = document.querySelector('.blog-featured');
+        var grid = document.querySelector('.blog-index__grid');
+        if (featured && grid) {
+            var titleEl = featured.querySelector('.blog-featured__title');
+            var imgEl = featured.querySelector('.blog-featured__img img');
+            var dateEl = featured.querySelector('.blog-featured__date');
+            var excerptEl = featured.querySelector('.blog-featured__excerpt');
+            var href = featured.getAttribute('href');
+
+            var card = document.createElement('a');
+            card.href = href;
+            card.className = 'blog-card';
+            card.innerHTML =
+                (imgEl ? '<div class="blog-card__img"><img src="' + imgEl.getAttribute('src') + '" alt="' + imgEl.getAttribute('alt') + '" loading="lazy"></div>' : '') +
+                '<div class="blog-card__body">' +
+                '<h3 class="blog-card__title">' + (titleEl ? titleEl.textContent.trim() : '') + '</h3>' +
+                '<p class="blog-card__date">' + (dateEl ? dateEl.textContent.trim() : '') + '</p>' +
+                '<p class="blog-card__excerpt">' + (excerptEl ? excerptEl.innerHTML : '') + '</p>' +
+                '</div>';
+
+            grid.insertBefore(card, grid.firstChild);
+            featured.parentNode.removeChild(featured);
+        }
+    }
+})();
+
+(function () {
     var months = { Jan:'January',Feb:'February',Mar:'March',Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December' };
     document.querySelectorAll('.blog-card__date, .blog-featured__date').forEach(function (el) {
         var m = el.textContent.match(/([A-Za-z]+)\s+(\d+)(?:st|nd|rd|th)\s+(\d{4})/);
