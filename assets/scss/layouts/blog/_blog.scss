@@ -11,12 +11,17 @@
 .blog {
     box-shadow: 0px 0px 8px #ccc;
     background: #fff;
-    padding: 30px 50px;
+    padding: 16px 12px;
     margin-bottom: spacing("single");
 
     @include breakpoint("medium") {
         margin: auto;
         width: 100%;
+        padding: 24px 32px;
+    }
+
+    @include breakpoint("large") {
+        padding: 30px 50px;
     }
 
     + .blog {
@@ -103,21 +108,785 @@
         width: 80%;
     }
 }
-.blog-grid {
+// Share bar
+// -----------------------------------------------------------------------------
+.blog-share {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 8px;
+    margin: 24px 0;
+
+    &__label {
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #666;
+        font-family: "proxima-nova", arial, sans-serif;
+        margin-right: 4px;
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: "proxima-nova", arial, sans-serif;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition: background 0.15s ease, color 0.15s ease;
+
+        &--facebook,
+        &--x,
+        &--copy {
+            background: transparent;
+            color: #333;
+            border: none;
+            padding: 0 10px;
+
+            &:hover { color: #000; }
+        }
+
+        &--facebook svg { fill: #1a3e6e; }
+        &--facebook:hover svg { fill: #142f54; }
+
+        &--x svg { fill: #1da1f2; }
+        &--x:hover svg { fill: #0d8ecf; }
+
+        &--email svg { fill: #555; }
+        &--email:hover svg { fill: #333; }
+
+        &--print svg { fill: #555; }
+        &--print:hover svg { fill: #333; }
+
+        &--copy i { color: #ffbe00; font-size: 15px; }
+    }
 }
 
-.blog-block {
-    flex: 0 0 100%; // Mobile default (1 per row)
-    padding: 20px;
-    // box-shadow: 0px 0px 8px #ccc;
-    // background: #fff;
+// Blog index — tag/topic filter bar
+// -----------------------------------------------------------------------------
+.blog-tag-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 16px 24px;
 
     @include breakpoint("medium") {
-        flex: 0 0 calc(50% - 10px); // 2 per row on medium+
-        padding: 20px;
+        padding: 0 0 28px;
+    }
+
+    &__tag {
+        display: inline-block;
+        padding: 6px 14px;
+        background: #f0f0f0;
+        color: #333;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        font-family: "proxima-nova", arial, sans-serif;
+        transition: background 0.15s ease, color 0.15s ease;
+        white-space: nowrap;
+
+        &:hover {
+            background: #ffbe00;
+            color: #000;
+        }
+
+        &--active {
+            background: #ffbe00;
+            color: #000;
+        }
+    }
+}
+
+// Blog index — hero banner
+.blog-hero {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../img/blog-hero-bg.jpg') center center / cover;
+    border-bottom: 4px solid #ffbe00;
+    padding: 48px 24px;
+    text-align: center;
+
+    &__inner {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: 800;
+        color: #fff;
+        margin: 0 0 12px;
+        font-family: "proxima-nova", arial, sans-serif;
+        line-height: 1.2;
+
+        @include breakpoint("medium") {
+            font-size: 42px;
+        }
+    }
+
+    &__sub {
+        font-size: 16px;
+        color: #aaa;
+        margin: 0;
+        line-height: 1.6;
+    }
+}
+
+// Blog index — wrapper
+.blog-index__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 0;
+
+    @include breakpoint("medium") {
+        padding: 40px 20px;
+    }
+}
+
+// Featured post — large horizontal card
+.blog-featured {
+    display: flex;
+    flex-direction: column;
+    background: #1a1a1a;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    margin: 0 16px 32px;
+
+    @include breakpoint("medium") {
+        margin: 0 0 48px;
+    }
+    text-decoration: none;
+    color: #fff;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 6px 24px rgba(0,0,0,0.16);
+    }
+
+    @include breakpoint("medium") {
+        flex-direction: row;
+        min-height: 320px;
+    }
+
+    &__img {
+        flex: 0 0 100%;
+        overflow: hidden;
+        max-height: 260px;
+
+        @include breakpoint("medium") {
+            flex: 0 0 55%;
+            max-height: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    &:hover &__img img {
+        transform: scale(1.03);
+    }
+
+    &__content {
+        flex: 1;
+        padding: 28px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__label {
+        display: inline-block;
+        background: #ffbe00;
+        color: #000;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        margin-bottom: 14px;
+        font-family: "proxima-nova", arial, sans-serif;
+    }
+
+    &__title {
+        font-size: 22px;
+        font-weight: 800;
+        color: #fff;
+        margin: 0 0 10px;
+        line-height: 1.3;
+        font-family: "proxima-nova", arial, sans-serif;
+
+        @include breakpoint("medium") {
+            font-size: 26px;
+        }
+    }
+
+    &__date {
+        font-size: 13px;
+        color: #aaa;
+        margin: 0 0 14px;
+    }
+
+    &__excerpt {
+        font-size: 15px;
+        color: #ccc;
+        line-height: 1.6;
+        margin: 0 0 20px;
+        flex: 1;
+        // Clamp to 4 lines — long enough to read, never truncates mid-sentence oddly
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__cta {
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffbe00;
+        font-family: "proxima-nova", arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+// Blog index — 3-column card grid
+.blog-index__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+    padding: 0 16px;
+
+    @include breakpoint("medium") {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
+        gap: 24px;
+    }
+
+    @include breakpoint("large") {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+}
+
+// Blog card
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 6px 20px rgba(0,0,0,0.14);
+        transform: translateY(-3px);
+    }
+
+    &__img {
+        overflow: hidden;
+        height: 190px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    &:hover &__img img {
+        transform: scale(1.04);
+    }
+
+    &__body {
+        padding: 18px 20px 22px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    &__title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin: 0 0 8px;
+        line-height: 1.35;
+        font-family: "proxima-nova", arial, sans-serif;
+    }
+
+    &__date {
+        font-size: 12px;
+        color: #999;
+        margin: 0 0 10px;
+    }
+
+    &__excerpt {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.55;
+        margin: 0;
+        // Clamp to 3 lines
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+// Blog pagination override
+// -----------------------------------------------------------------------------
+.blog-index__wrap .pagination {
+    padding: 8px 0 32px;
+
+    .pagination-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+    .pagination-item {
+        border: none;
+        float: none;
+
+        .pagination-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 42px;
+            padding: 0 12px;
+            background: #1a1a1a;
+            color: #ccc;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "proxima-nova", arial, sans-serif;
+            text-decoration: none;
+            transition: background 0.15s ease, color 0.15s ease;
+
+            &:hover {
+                background: #ffbe00;
+                color: #000;
+            }
+        }
+
+        &.pagination-item--current .pagination-link {
+            background: #ffbe00;
+            color: #000;
+            font-weight: 800;
+        }
+
+        &.pagination-item--previous,
+        &.pagination-item--next {
+            float: none;
+
+            > a {
+                background: #ffbe00;
+                color: #000;
+                font-weight: 800;
+                font-family: "proxima-nova", arial, sans-serif;
+                padding: 0 20px;
+                gap: 6px;
+
+                .icon {
+                    fill: #000;
+                    height: 14px;
+                    width: 14px;
+                    margin: 0;
+
+                    svg { fill: #000; }
+                }
+
+                &:hover {
+                    background: #e6aa00;
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+
+// Inline Table of Contents
+// -----------------------------------------------------------------------------
+.blog-toc {
+    background: #1a1a1a;
+    border-left: 4px solid #ffbe00;
+    padding: 18px 20px;
+    margin-bottom: 32px;
+
+    &__heading {
+        font-size: 12px;
+        font-weight: 800;
+        color: #ffbe00;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 12px;
+        font-family: "proxima-nova", arial, sans-serif;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-height: 220px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #ffbe00 #2e2e2e;
+
+        &::-webkit-scrollbar { width: 4px; }
+        &::-webkit-scrollbar-track { background: #2e2e2e; }
+        &::-webkit-scrollbar-thumb { background: #ffbe00; }
+
+        li {
+            border-bottom: 1px solid #2e2e2e;
+            &:last-child { border-bottom: none; }
+        }
+
+        a {
+            display: block;
+            padding: 7px 0;
+            color: #ccc;
+            font-size: 13px;
+            text-decoration: none;
+            line-height: 1.4;
+            transition: color 0.15s ease;
+
+            &:hover { color: #ffbe00; }
+        }
+    }
+}
+
+// Blog post — two-column layout (article + sidebar)
+// -----------------------------------------------------------------------------
+.blog-post-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0 40px;
+    display: block;
+
+    @include breakpoint("medium") {
+        padding: 0 16px 40px;
+    }
+
+    @include breakpoint("large") {
+        padding: 0 20px 40px;
+    }
+
+    @include breakpoint("large") {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 32px;
+        align-items: start;
+    }
+
+    &__main {
+        min-width: 0; // prevent grid blowout
+    }
+}
+
+// Blog sidebar
+// -----------------------------------------------------------------------------
+.blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 32px;
+
+    @include breakpoint("large") {
+        margin-top: 0;
+        position: sticky;
+        top: 112px; // 92px fixed header + 20px breathing room
+    }
+
+    &__widget {
+        background: #1a1a1a;
+        padding: 24px;
+        border-left: 4px solid #ffbe00;
+
+        &--cta {
+            // hide on mobile — in-article CTA already covers this
+            display: none;
+
+            @include breakpoint("large") {
+                display: block;
+            }
+        }
+
+        &--call {
+            background: #ffbe00;
+            border-left: none;
+            text-align: center;
+        }
+    }
+
+    &__heading {
+        font-size: 13px;
+        font-weight: 800;
+        color: #ffbe00;
+        margin: 0 0 12px;
+        font-family: "proxima-nova", arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    &__text {
+        font-size: 14px;
+        color: #ccc;
+        margin: 0 0 16px;
+        line-height: 1.55;
+    }
+
+    &__btn {
+        display: block;
+        text-align: center;
+        padding: 10px 16px;
+        background: #ffbe00;
+        color: #000;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        font-family: "proxima-nova", arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+        transition: background 0.15s ease;
+
+        &:hover {
+            background: #e6aa00;
+            color: #000;
+        }
+
+        &--outline {
+            background: transparent;
+            color: #fff !important;
+            border: 2px solid #ffbe00;
+            margin-bottom: 0;
+
+            &:hover {
+                background: #ffbe00;
+                color: #000 !important;
+            }
+        }
+    }
+
+    &__links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        &.is-expanded {
+            max-height: 280px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #ffbe00 #2e2e2e;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #2e2e2e;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #ffbe00;
+            }
+        }
+
+        li {
+            border-bottom: 1px solid #2e2e2e;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        a {
+            display: block;
+            padding: 9px 0;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.15s ease;
+
+            &:hover {
+                color: #ffbe00;
+            }
+        }
+
+        &-showall {
+            border-bottom: none !important;
+        }
+    }
+
+    &__toggle {
+        background: none;
+        border: none;
+        padding: 9px 0 0;
+        color: #ffbe00;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: "proxima-nova", arial, sans-serif;
+        cursor: pointer;
+        text-align: left;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__call-label {
+        font-size: 12px;
+        color: #000;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 6px;
+    }
+
+    &__call-number {
+        display: block;
+        font-size: 22px;
+        font-weight: 800;
+        color: #000;
+        text-decoration: none;
+        font-family: "proxima-nova", arial, sans-serif;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// You Might Also Like — related posts section
+// -----------------------------------------------------------------------------
+.blog-related {
+    margin-top: 40px;
+    margin-bottom: 8px;
+
+    &__heading {
+        font-size: 18px;
+        font-weight: 800;
+        color: #111;
+        margin: 0 0 20px;
+        font-family: "proxima-nova", arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #ffbe00;
+        display: inline-block;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 20px;
+
+        @include breakpoint("medium") {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        background: #1a1a1a;
+        border-left: 3px solid #ffbe00;
+        text-decoration: none;
+        color: #fff;
+        transition: background 0.2s ease;
+        overflow: hidden;
+
+        &:hover {
+            background: #222;
+        }
+    }
+
+    &__thumb {
+        overflow: hidden;
+        height: 160px;
+        flex-shrink: 0;
+
+        @include breakpoint("medium") {
+            height: 140px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    &__card-body {
+        flex: 1;
+        padding: 16px 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__label {
+        font-size: 11px;
+        font-weight: 800;
+        color: #ffbe00;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+        font-family: "proxima-nova", arial, sans-serif;
+    }
+
+    &__title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 12px;
+        line-height: 1.4;
+        font-family: "proxima-nova", arial, sans-serif;
+        // Clamp to 3 lines
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__cta {
+        font-size: 11px;
+        font-weight: 700;
+        color: #ffbe00;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: "proxima-nova", arial, sans-serif;
+        flex-shrink: 0;
+    }
+
+    &__all {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        color: #555;
+        text-decoration: none;
+        font-family: "proxima-nova", arial, sans-serif;
+
+        &:hover {
+            color: #111;
+        }
     }
 }
 

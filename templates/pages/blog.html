@@ -1,28 +1,78 @@
 ---
 blog:
     posts:
-        limit: 20
+        limit: 21
         pages: 3
-        summary: 200
+        summary: 400
 ---
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="blog-index">
 
-<main class="page">
-    <h1 class="page-heading">{{ blog.name }}</h1>
-{{> components/common/paginator pagination.blog}}
-    <div class="blog-grid">
-        {{#each blog.posts}}
-            <div class="blog-block">
-                {{> components/blog/post post=this settings=../settings}}
-            </div>
-        {{/each}}
+    <div class="blog-hero">
+        <div class="blog-hero__inner">
+            <h1 class="blog-hero__title">Broken Tractor Blog</h1>
+            <p class="blog-hero__sub">Heavy Equipment Repair Knowledge — tips, guides, and parts advice from the Broken Tractor team, written for the people actually turning wrenches.</p>
+        </div>
     </div>
-    <br>
-    {{> components/common/paginator pagination.blog}}
-</main>
 
+    <div class="blog-index__wrap">
+
+{{#each blog.posts}}
+        {{#if @first}}
+        <a href="{{url}}" class="blog-featured">
+            {{#if thumbnail}}
+            <div class="blog-featured__img">
+                <img src="{{getImage thumbnail 'grande'}}" alt="{{thumbnail.alt}}" loading="eager">
+            </div>
+            {{/if}}
+            <div class="blog-featured__content">
+                <span class="blog-featured__label">Latest Post</span>
+                <h2 class="blog-featured__title">{{title}}</h2>
+                <p class="blog-featured__date">{{date_published}}</p>
+                <p class="blog-featured__excerpt">{{{summary}}}</p>
+                <span class="blog-featured__cta">Read Article &rarr;</span>
+            </div>
+        </a>
+        {{/if}}
+        {{/each}}
+
+        <div class="blog-index__grid">
+            {{#each blog.posts}}
+            {{#unless @first}}
+            <a href="{{url}}" class="blog-card">
+                {{#if thumbnail}}
+                <div class="blog-card__img">
+                    <img src="{{getImage thumbnail 'medium'}}" alt="{{thumbnail.alt}}" loading="lazy">
+                </div>
+                {{/if}}
+                <div class="blog-card__body">
+                    <h3 class="blog-card__title">{{title}}</h3>
+                    <p class="blog-card__date">{{date_published}}</p>
+                    <p class="blog-card__excerpt">{{{summary}}}</p>
+                </div>
+            </a>
+            {{/unless}}
+            {{/each}}
+        </div>
+
+        {{> components/common/paginator pagination.blog}}
+
+    </div>
+</div>
 
 {{/partial}}
 {{> layout/base}}
+
+<script>
+(function () {
+    var months = { Jan:'January',Feb:'February',Mar:'March',Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December' };
+    document.querySelectorAll('.blog-card__date, .blog-featured__date').forEach(function (el) {
+        var m = el.textContent.match(/([A-Za-z]+)\s+(\d+)(?:st|nd|rd|th)\s+(\d{4})/);
+        if (m) {
+            var month = months[m[1]] || m[1];
+            el.textContent = month + ' ' + m[2] + ', ' + m[3];
+        }
+    });
+})();
+</script>

@@ -58,7 +58,150 @@
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-{{> components/blog/post post=blog.post show_tags=true}}
-<br><br>
+<div class="blog-post-layout">
+    <div class="blog-post-layout__main">
+        {{> components/blog/post post=blog.post show_tags=true}}
+    </div>
+    <aside class="blog-sidebar">
+        <div class="blog-sidebar__widget blog-sidebar__widget--cta">
+            <h3 class="blog-sidebar__heading">Need Parts?</h3>
+            <p class="blog-sidebar__text">We stock thousands of hard-to-find parts for tractors, backhoes, excavators, and more.</p>
+            <a href="/" class="blog-sidebar__btn">Browse All Parts</a>
+            <a href="/pages/parts-request/" class="blog-sidebar__btn blog-sidebar__btn--outline">Request a Part</a>
+        </div>
+        <div class="blog-sidebar__widget">
+            <h3 class="blog-sidebar__heading">Shop by Brand</h3>
+            <ul class="blog-sidebar__links" id="sidebarBrandList">
+                <li><a href="/c/case-parts/">Case Parts</a></li>
+                <li><a href="/c/john-deere-parts/">John Deere</a></li>
+                <li><a href="/c/ford-new-holland-parts/">Ford / New Holland Parts</a></li>
+                <li><a href="/c/king-kutter-parts/">King Kutter Parts</a></li>
+                <li><a href="/c/caterpillar-parts/">Caterpillar Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/kubota-parts/">Kubota Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/bobcat-parts/">Bobcat Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/komatsu-parts/">Komatsu Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/kobelco-parts/">Kobelco Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/dresser-gallion-parts/">Dresser / Gallion Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/jcb-parts/">JCB Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/long-tractor-parts/">Long Tractor Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/doosan-excavator-parts/">Doosan Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/hitachi-parts/">Hitachi Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/volvo-parts/">Volvo Parts</a></li>
+                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/yanmar-parts/">Yanmar Parts</a></li>
+                <li class="blog-sidebar__links-showall">
+                    <button class="blog-sidebar__toggle" onclick="(function(btn){var list=document.getElementById('sidebarBrandList');var extras=list.querySelectorAll('.blog-sidebar__links-extra');var open=extras[0].style.display!=='none';extras.forEach(function(el){el.style.display=open?'none':'list-item';});list.classList.toggle('is-expanded',!open);btn.textContent=open?'View All Brands ▾':'▴ Show Less';})(this)" type="button">View All Brands &#9662;</button>
+                </li>
+            </ul>
+        </div>
+        <div class="blog-sidebar__widget blog-sidebar__widget--call">
+            <p class="blog-sidebar__call-label">Can't find it? Call us:</p>
+            <a href="tel:8009097060" class="blog-sidebar__call-number">(800) 909-7060</a>
+        </div>
+    </aside>
+</div>
+
 {{/partial}}
 {{> layout/base}}
+
+<script>
+(function () {
+    var currentPath = window.location.pathname.replace(/\/$/, '');
+
+    function shuffle(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        }
+        return arr;
+    }
+
+    function parsePosts(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var posts = [];
+
+        // Featured post (first card on index)
+        var featured = doc.querySelector('a.blog-featured');
+        if (featured) {
+            var ft = featured.querySelector('.blog-featured__title');
+            var fi = featured.querySelector('.blog-featured__img img');
+            if (ft) posts.push({ url: featured.getAttribute('href'), title: ft.textContent.trim(), img: fi ? fi.getAttribute('src') : null });
+        }
+
+        // Grid cards
+        doc.querySelectorAll('a.blog-card').forEach(function (card) {
+            var ct = card.querySelector('.blog-card__title');
+            var ci = card.querySelector('.blog-card__img img');
+            if (ct) posts.push({ url: card.getAttribute('href'), title: ct.textContent.trim(), img: ci ? ci.getAttribute('src') : null });
+        });
+
+        return posts;
+    }
+
+    function renderCards(posts) {
+        var grid = document.querySelector('.blog-related__grid');
+        if (!grid) return;
+        grid.innerHTML = posts.map(function (p) {
+            var imgHtml = p.img ? '<div class="blog-related__thumb"><img src="' + p.img + '" alt="' + p.title + '" loading="lazy"></div>' : '';
+            return '<a href="' + p.url + '" class="blog-related__card">' +
+                imgHtml +
+                '<div class="blog-related__card-body">' +
+                '<h4 class="blog-related__title">' + p.title + '</h4>' +
+                '<span class="blog-related__cta">Read Article →</span>' +
+                '</div>' +
+                '</a>';
+        }).join('');
+    }
+
+    fetch('/blog/')
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+            var posts = parsePosts(html).filter(function (p) {
+                return p.url && p.url.replace(/\/$/, '') !== currentPath;
+            });
+            posts = shuffle(posts).slice(0, 4);
+            if (posts.length > 0) renderCards(posts);
+        })
+        .catch(function () { /* keep hardcoded fallback */ });
+})();
+
+// Date reformat — "Feb 18th 2026" → "February 18, 2026"
+(function () {
+    var months = { Jan:'January',Feb:'February',Mar:'March',Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December' };
+    document.querySelectorAll('.blog-date').forEach(function (el) {
+        var m = el.textContent.match(/([A-Za-z]+)\s+(\d+)(?:st|nd|rd|th)\s+(\d{4})/);
+        if (m) {
+            var month = months[m[1]] || m[1];
+            el.textContent = el.textContent.replace(m[0], month + ' ' + m[2] + ', ' + m[3]);
+        }
+    });
+})();
+
+// Table of Contents
+(function () {
+    var article = document.querySelector('.blog-post');
+    if (!article) return;
+
+    var headings = article.querySelectorAll('h2, h3, h4');
+    if (headings.length < 3) return;
+
+    var items = [];
+    headings.forEach(function (h, i) {
+        var id = h.id || ('toc-heading-' + i);
+        h.id = id;
+        items.push('<li><a href="#' + id + '">' + h.textContent.trim() + '</a></li>');
+    });
+
+    var toc = document.createElement('nav');
+    toc.className = 'blog-toc';
+    toc.innerHTML = '<p class="blog-toc__heading">In This Article</p><ul class="blog-toc__list">' + items.join('') + '</ul>';
+    article.insertBefore(toc, article.firstChild);
+
+    toc.addEventListener('click', function (e) {
+        var a = e.target.closest('a');
+        if (!a) return;
+        e.preventDefault();
+        var target = document.getElementById(a.getAttribute('href').slice(1));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+})();
+</script>

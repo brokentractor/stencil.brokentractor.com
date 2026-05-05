@@ -3,7 +3,7 @@
         {{#if post.thumbnail}}
             <figure class="blog-thumbnail">
                 <a href="{{post.url}}">
-                    <img src="{{getImage post.thumbnail}}" alt="{{post.thumbnail.alt}}" title="{{post.thumbnail.alt}}">
+                    <img src="{{getImage post.thumbnail 'grande'}}" alt="{{post.thumbnail.alt}}" title="{{post.thumbnail.alt}}" loading="eager">
                 </a>
             </figure>
         {{/if}}
@@ -42,6 +42,39 @@
         {{/if}}
 
         {{>components/common/share}}
+
+        {{#if show_tags}}
+        <div class="blog-related">
+            <h3 class="blog-related__heading">You Might Also Like</h3>
+            <div class="blog-related__grid">
+                <a href="/blog/case-580-shuttle-transmission-problems-rebuild-tips" class="blog-related__card">
+                    <div class="blog-related__card-body">
+                        <h4 class="blog-related__title">Case 580 Shuttle Transmission Problems: The 3 Symptoms That Tell You What's Worn</h4>
+                        <span class="blog-related__cta">Read Article &rarr;</span>
+                    </div>
+                </a>
+                <a href="/blog/why-an-excavator-emits-black-smoke-causes-and-solutions/" class="blog-related__card">
+                    <div class="blog-related__card-body">
+                        <h4 class="blog-related__title">Why an Excavator Emits Black Smoke: Causes and Solutions</h4>
+                        <span class="blog-related__cta">Read Article &rarr;</span>
+                    </div>
+                </a>
+                <a href="/blog/case-580-series-loader-backhoe-serial-number-guide-find-your-year-fast-and-order-the-right-parts-the-first-time/" class="blog-related__card">
+                    <div class="blog-related__card-body">
+                        <h4 class="blog-related__title">Case 580 Serial Number Guide: Find Your Year Fast and Order the Right Parts</h4>
+                        <span class="blog-related__cta">Read Article &rarr;</span>
+                    </div>
+                </a>
+                <a href="/blog/why-an-excavator-emits-black-smoke-causes-and-solutions/" class="blog-related__card">
+                    <div class="blog-related__card-body">
+                        <h4 class="blog-related__title">Ford Tractor 3-Point Hitch Problems: What to Check Before You Buy Parts</h4>
+                        <span class="blog-related__cta">Read Article &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <a href="/blog/" class="blog-related__all">View All Articles &rarr;</a>
+        </div>
+        {{/if}}
 
         {{#if show_tags}}
         <div class="blog-shop-cta">
