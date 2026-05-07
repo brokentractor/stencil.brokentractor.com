@@ -56,55 +56,198 @@
 
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<!-- Reading progress bar -->
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
 
-<div class="blog-post-layout">
-    <div class="blog-post-layout__main">
-        {{> components/blog/post post=blog.post show_tags=true}}
+<div class="bt-article-wrap">
+    <div class="bt-article-shell">
+
+        <!-- Breadcrumbs -->
+        <nav class="bt-breadcrumbs">
+            <a href="/">Home</a>
+            <span class="sep">/</span>
+            <a href="/blog/">Blog</a>
+            <span class="sep">/</span>
+            <strong>{{blog.post.title}}</strong>
+        </nav>
+
+        <!-- Article header -->
+        <header class="bt-article-header">
+            <span class="bt-article-header__cat">Repair Guide</span>
+            <h1>{{blog.post.title}}</h1>
+            <div class="bt-article-header__meta">
+                <span class="bt-article-meta__date">{{blog.post.date_published}}</span>
+                {{#if blog.post.author}}
+                <span class="sep-dot">&middot;</span>
+                <span>{{blog.post.author}}</span>
+                {{/if}}
+            </div>
+        </header>
+
+        <!-- Cover image (full-bleed) -->
+        {{#if blog.post.thumbnail}}
+        <div class="bt-article-cover">
+            <img src="{{getImage blog.post.thumbnail 'original'}}" alt="{{blog.post.title}}">
+        </div>
+        {{/if}}
+
+        <!-- 2-column body shell: Article | Sidebar -->
+        <div class="bt-article-body-shell">
+
+            <!-- Left column: article body -->
+            <div class="bt-article-center">
+                {{> components/blog/post post=blog.post show_tags=false}}
+
+                <!-- Article footer: tags + share -->
+                <footer class="bt-article-foot">
+                    {{#if blog.post.tags}}
+                    <div class="tags">
+                        <span>Tagged</span>
+                        {{#each blog.post.tags}}
+                        <a href="{{url}}" class="tag">#{{name}}</a>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                    <div class="bt-article-foot__share">
+                        <span>Share</span>
+                        <a href="#" class="bt-share-btn" id="shareFooterFacebook" aria-label="Facebook">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7c0-1 .3-1.7 1.7-1.7H17V2.2C16.7 2.1 15.6 2 14.4 2c-2.6 0-4.4 1.6-4.4 4.5v3H7v3.5h3V22h3.5Z"/></svg>
+                        </a>
+                        <a href="#" class="bt-share-btn" id="shareFooterX" aria-label="X">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.3 8.4L22 22h-6.6l-5.2-6.8L4 22H1l7.8-8.9L1 2h6.7l4.7 6.2Zm-1 18h1.6L7 4H5.3l11.7 16Z"/></svg>
+                        </a>
+                        <a href="#" class="bt-share-btn" id="shareFooterCopy" aria-label="Copy link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 1 0-5.7-5.7L11.6 7"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 1 0 5.7 5.7L12.4 17"/></svg>
+                        </a>
+                        <a href="javascript:window.print()" class="bt-share-btn" aria-label="Print">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+                        </a>
+                    </div>
+                </footer>
+
+                <!-- You might also like -->
+                <section class="bt-yma">
+                    <div class="bt-section-head">
+                        <h2>You might also like</h2>
+                        <span class="bt-section-head__rule"></span>
+                    </div>
+                    <div class="bt-yma__row" id="ymaGrid"></div>
+                </section>
+            </div>
+
+            <!-- Right column: sidebar -->
+            <aside class="bt-side">
+
+                <!-- Request a Part -->
+                <div class="bt-side__card bt-side__card--ink">
+                    <div class="bt-side__heading">Can't find it?</div>
+                    <h4 class="bt-side__title">Let our team source it.</h4>
+                    <p class="bt-side__sub">If we don't have it listed, we'll find it. Tell us what you need &mdash; most requests get a quote within 24 hours.</p>
+                    <a href="/pages/parts-request/" class="bt-side__btn">Request a Part</a>
+                </div>
+
+                <!-- Shop by Brand -->
+                <div class="bt-side__card">
+                    <div class="bt-side__heading">Shop by Brand</div>
+                    <ul class="bt-side__links" id="sidebarBrandList">
+                        <li><a href="/c/case-parts/">Case Parts</a></li>
+                        <li><a href="/c/john-deere-parts/">John Deere</a></li>
+                        <li><a href="/c/ford-new-holland-parts/">Ford / New Holland</a></li>
+                        <li><a href="/c/caterpillar-parts/">Caterpillar Parts</a></li>
+                        <li><a href="/c/kubota-parts/">Kubota Parts</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/bobcat-parts/">Bobcat Parts</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/komatsu-parts/">Komatsu Parts</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/king-kutter-parts/">King Kutter</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/kobelco-parts/">Kobelco Parts</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/dresser-gallion-parts/">Dresser / Gallion</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/jcb-parts/">JCB Parts</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/yanmar-parts/">Yanmar Parts</a></li>
+                        <li class="bt-side__links-extra" style="display:none"><a href="/c/volvo-parts/">Volvo Parts</a></li>
+                        <li class="bt-side__links-showall">
+                            <button class="bt-side__toggle" onclick="(function(btn){var list=document.getElementById('sidebarBrandList');var extras=list.querySelectorAll('.bt-side__links-extra');var open=extras[0].style.display!=='none';extras.forEach(function(el){el.style.display=open?'none':'list-item';});btn.textContent=open?'View All Brands ▾':'▴ Show Less';})(this)" type="button">View All Brands &#9662;</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Call us -->
+                <div class="bt-side__card bt-call-card">
+                    <div class="bt-call-card__label">Talk to a Tech</div>
+                    <a href="tel:8009097060" class="bt-call-card__phone">(800) 909-7060</a>
+                    <div class="bt-call-card__hours">Mon&ndash;Fri 8a&ndash;6p CT &middot; Sat 8a&ndash;12p</div>
+                </div>
+
+            </aside>
+
+        </div><!-- end bt-article-body-shell -->
+
+    </div><!-- end bt-article-shell -->
+</div><!-- end bt-article-wrap -->
+
+<section class="bt-newsletter">
+    <div class="bt-newsletter__inner">
+        <div>
+            <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+            <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+        </div>
+        <div>
+            <div class="klaviyo-form-Vc3CTQ"></div>
+        </div>
     </div>
-    <aside class="blog-sidebar">
-        <div class="blog-sidebar__widget blog-sidebar__widget--cta">
-            <h3 class="blog-sidebar__heading">Need Parts?</h3>
-            <p class="blog-sidebar__text">We stock thousands of hard-to-find parts for tractors, backhoes, excavators, and more.</p>
-            <a href="/" class="blog-sidebar__btn">Browse All Parts</a>
-            <a href="/pages/parts-request/" class="blog-sidebar__btn blog-sidebar__btn--outline">Request a Part</a>
-        </div>
-        <div class="blog-sidebar__widget">
-            <h3 class="blog-sidebar__heading">Shop by Brand</h3>
-            <ul class="blog-sidebar__links" id="sidebarBrandList">
-                <li><a href="/c/case-parts/">Case Parts</a></li>
-                <li><a href="/c/john-deere-parts/">John Deere</a></li>
-                <li><a href="/c/ford-new-holland-parts/">Ford / New Holland Parts</a></li>
-                <li><a href="/c/king-kutter-parts/">King Kutter Parts</a></li>
-                <li><a href="/c/caterpillar-parts/">Caterpillar Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/kubota-parts/">Kubota Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/bobcat-parts/">Bobcat Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/komatsu-parts/">Komatsu Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/kobelco-parts/">Kobelco Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/dresser-gallion-parts/">Dresser / Gallion Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/jcb-parts/">JCB Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/long-tractor-parts/">Long Tractor Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/doosan-excavator-parts/">Doosan Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/hitachi-parts/">Hitachi Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/volvo-parts/">Volvo Parts</a></li>
-                <li class="blog-sidebar__links-extra" style="display:none"><a href="/c/yanmar-parts/">Yanmar Parts</a></li>
-                <li class="blog-sidebar__links-showall">
-                    <button class="blog-sidebar__toggle" onclick="(function(btn){var list=document.getElementById('sidebarBrandList');var extras=list.querySelectorAll('.blog-sidebar__links-extra');var open=extras[0].style.display!=='none';extras.forEach(function(el){el.style.display=open?'none':'list-item';});list.classList.toggle('is-expanded',!open);btn.textContent=open?'View All Brands ▾':'▴ Show Less';})(this)" type="button">View All Brands &#9662;</button>
-                </li>
-            </ul>
-        </div>
-        <div class="blog-sidebar__widget blog-sidebar__widget--call">
-            <p class="blog-sidebar__call-label">Can't find it? Call us:</p>
-            <a href="tel:8009097060" class="blog-sidebar__call-number">(800) 909-7060</a>
-        </div>
-    </aside>
-</div>
+</section>
 
 {{/partial}}
 {{> layout/base}}
 
 <script>
+// Reading progress bar
 (function () {
+    var bar = document.getElementById('btProgressBar');
+    if (!bar) return;
+    function update() {
+        var root = document.documentElement;
+        var max = root.scrollHeight - window.innerHeight;
+        var pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
+        bar.style.width = pct + '%';
+    }
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+})();
+
+
+// Share buttons
+(function () {
+    var url = encodeURIComponent(window.location.href);
+    var title = encodeURIComponent(document.title);
+
+    function wire(id, href) {
+        var el = document.getElementById(id);
+        if (el) el.href = href;
+    }
+
+    wire('shareFacebook',    'https://www.facebook.com/sharer/sharer.php?u=' + url);
+    wire('shareX',           'https://x.com/intent/tweet?url=' + url + '&text=' + title);
+    wire('shareEmail',       'mailto:?subject=' + title + '&body=' + url);
+    wire('shareFooterFacebook', 'https://www.facebook.com/sharer/sharer.php?u=' + url);
+    wire('shareFooterX',    'https://x.com/intent/tweet?url=' + url + '&text=' + title);
+
+    var copyBtns = [document.getElementById('shareCopy'), document.getElementById('shareFooterCopy')];
+    copyBtns.forEach(function (btn) {
+        if (!btn) return;
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            navigator.clipboard && navigator.clipboard.writeText(window.location.href);
+            btn.setAttribute('aria-label', 'Copied!');
+            setTimeout(function () { btn.setAttribute('aria-label', 'Copy link'); }, 2000);
+        });
+    });
+})();
+
+// Related posts — fetch blog index and build the YMA grid
+(function () {
+    var grid = document.getElementById('ymaGrid');
+    if (!grid) return;
+
     var currentPath = window.location.pathname.replace(/\/$/, '');
 
     function shuffle(arr) {
@@ -119,37 +262,30 @@
         var doc = new DOMParser().parseFromString(html, 'text/html');
         var posts = [];
 
-        // Featured post (first card on index)
-        var featured = doc.querySelector('a.blog-featured');
+        // Featured post
+        var featured = doc.querySelector('a.bt-featured, a.blog-featured');
         if (featured) {
-            var ft = featured.querySelector('.blog-featured__title');
-            var fi = featured.querySelector('.blog-featured__img img');
-            if (ft) posts.push({ url: featured.getAttribute('href'), title: ft.textContent.trim(), img: fi ? fi.getAttribute('src') : null });
+            var ft = featured.querySelector('.bt-featured__title, .blog-featured__title');
+            var fi = featured.querySelector('img');
+            if (ft) posts.push({
+                url: featured.getAttribute('href'),
+                title: ft.textContent.trim(),
+                img: fi ? fi.getAttribute('src') : null
+            });
         }
 
         // Grid cards
-        doc.querySelectorAll('a.blog-card').forEach(function (card) {
-            var ct = card.querySelector('.blog-card__title');
-            var ci = card.querySelector('.blog-card__img img');
-            if (ct) posts.push({ url: card.getAttribute('href'), title: ct.textContent.trim(), img: ci ? ci.getAttribute('src') : null });
+        doc.querySelectorAll('a.bt-card, a.blog-card').forEach(function (card) {
+            var ct = card.querySelector('.bt-card__title, .blog-card__title');
+            var ci = card.querySelector('img');
+            if (ct) posts.push({
+                url: card.getAttribute('href'),
+                title: ct.textContent.trim(),
+                img: ci ? ci.getAttribute('src') : null
+            });
         });
 
         return posts;
-    }
-
-    function renderCards(posts) {
-        var grid = document.querySelector('.blog-related__grid');
-        if (!grid) return;
-        grid.innerHTML = posts.map(function (p) {
-            var imgHtml = p.img ? '<div class="blog-related__thumb"><img src="' + p.img + '" alt="' + p.title + '" loading="lazy"></div>' : '';
-            return '<a href="' + p.url + '" class="blog-related__card">' +
-                imgHtml +
-                '<div class="blog-related__card-body">' +
-                '<h4 class="blog-related__title">' + p.title + '</h4>' +
-                '<span class="blog-related__cta">Read Article →</span>' +
-                '</div>' +
-                '</a>';
-        }).join('');
     }
 
     fetch('/blog/')
@@ -158,50 +294,39 @@
             var posts = parsePosts(html).filter(function (p) {
                 return p.url && p.url.replace(/\/$/, '') !== currentPath;
             });
-            posts = shuffle(posts).slice(0, 4);
-            if (posts.length > 0) renderCards(posts);
+            posts = shuffle(posts).slice(0, 3);
+            if (!posts.length) {
+                document.querySelector('.bt-yma') && (document.querySelector('.bt-yma').style.display = 'none');
+                return;
+            }
+            grid.innerHTML = posts.map(function (p) {
+                var imgHtml = p.img
+                    ? '<div class="bt-card__img"><img src="' + p.img + '" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy"></div>'
+                    : '';
+                return '<a href="' + p.url + '" class="bt-card">' +
+                    imgHtml +
+                    '<div class="bt-card__body">' +
+                    '<h3 class="bt-card__title">' + p.title + '</h3>' +
+                    '<div class="bt-card__cta">Read article &rarr;</div>' +
+                    '</div>' +
+                    '</a>';
+            }).join('');
         })
-        .catch(function () { /* keep hardcoded fallback */ });
+        .catch(function () {
+            var yma = document.querySelector('.bt-yma');
+            if (yma) yma.style.display = 'none';
+        });
 })();
 
 // Date reformat — "Feb 18th 2026" → "February 18, 2026"
 (function () {
     var months = { Jan:'January',Feb:'February',Mar:'March',Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December' };
-    document.querySelectorAll('.blog-date').forEach(function (el) {
+    document.querySelectorAll('.bt-article-meta__date, .blog-date').forEach(function (el) {
         var m = el.textContent.match(/([A-Za-z]+)\s+(\d+)(?:st|nd|rd|th)\s+(\d{4})/);
         if (m) {
             var month = months[m[1]] || m[1];
-            el.textContent = el.textContent.replace(m[0], month + ' ' + m[2] + ', ' + m[3]);
+            el.textContent = month + ' ' + m[2] + ', ' + m[3];
         }
-    });
-})();
-
-// Table of Contents
-(function () {
-    var article = document.querySelector('.blog-post');
-    if (!article) return;
-
-    var headings = article.querySelectorAll('h2, h3, h4');
-    if (headings.length < 3) return;
-
-    var items = [];
-    headings.forEach(function (h, i) {
-        var id = h.id || ('toc-heading-' + i);
-        h.id = id;
-        items.push('<li><a href="#' + id + '">' + h.textContent.trim() + '</a></li>');
-    });
-
-    var toc = document.createElement('nav');
-    toc.className = 'blog-toc';
-    toc.innerHTML = '<p class="blog-toc__heading">In This Article</p><ul class="blog-toc__list">' + items.join('') + '</ul>';
-    article.insertBefore(toc, article.firstChild);
-
-    toc.addEventListener('click', function (e) {
-        var a = e.target.closest('a');
-        if (!a) return;
-        e.preventDefault();
-        var target = document.getElementById(a.getAttribute('href').slice(1));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 })();
 </script>

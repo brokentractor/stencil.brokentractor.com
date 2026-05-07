@@ -9,47 +9,128 @@ blog:
 
 <div class="blog-index">
 
-    <div class="blog-hero">
-        <div class="blog-hero__inner">
-            <h1 class="blog-hero__title">Broken Tractor Blog</h1>
-            <p class="blog-hero__sub">Heavy Equipment Repair Knowledge — tips, guides, and parts advice from the Broken Tractor team, written for the people actually turning wrenches.</p>
+    <section class="bt-blog-hero">
+        <div class="bt-blog-hero__inner">
+            <div class="bt-blog-hero__crumb">Heavy Equipment &middot; Field Manual</div>
+            <h1 class="bt-blog-hero__title">IN THE <em>SHOP</em></h1>
+            <p class="bt-blog-hero__sub">Repair guides, diagnostics, and parts intel from the bench. Written by the people pulling apart Case 580s on a Tuesday &mdash; for the people who&rsquo;ll be doing the same on a Saturday.</p>
+        </div>
+    </section>
+
+    <!-- Category / tag chip rail — brand filters -->
+    <div class="bt-chips">
+        <div class="bt-chips__inner">
+            <div class="bt-chips__sort">
+                <span>Sort</span>
+                <select id="btSortSelect">
+                    <option value="recent">Most recent</option>
+                    <option value="alpha">A &ndash; Z</option>
+                </select>
+            </div>
+            <a href="/blog/" class="bt-chip" data-tag-all aria-pressed="true">All Posts</a>
+            <a href="/blog/tag/Case" class="bt-chip" data-tag-slug="Case">Case</a>
+            <a href="/blog/tag/John+Deere" class="bt-chip" data-tag-slug="John Deere">John Deere</a>
+            <a href="/blog/tag/Ford" class="bt-chip" data-tag-slug="Ford">Ford / New Holland</a>
+            <a href="/blog/tag/Caterpillar" class="bt-chip" data-tag-slug="Caterpillar">Caterpillar</a>
+            <a href="/blog/tag/Kubota" class="bt-chip" data-tag-slug="Kubota">Kubota</a>
+            <a href="/blog/tag/Bobcat" class="bt-chip" data-tag-slug="Bobcat">Bobcat</a>
+            <a href="/blog/tag/Komatsu" class="bt-chip" data-tag-slug="Komatsu">Komatsu</a>
+            <a href="/blog/tag/King+Kutter" class="bt-chip" data-tag-slug="King Kutter">King Kutter</a>
+            <a href="/blog/tag/Volvo" class="bt-chip" data-tag-slug="Volvo">Volvo</a>
+            <a href="/blog/tag/JCB" class="bt-chip" data-tag-slug="JCB">JCB</a>
+            <a href="/blog/tag/Doosan" class="bt-chip" data-tag-slug="Doosan">Doosan</a>
+            <a href="/blog/tag/Hitachi" class="bt-chip" data-tag-slug="Hitachi">Hitachi</a>
         </div>
     </div>
 
-    <div class="blog-index__wrap">
+    <div class="bt-page">
 
-{{#each blog.posts}}
+        {{#each blog.posts}}
         {{#if @first}}
-        <a href="{{url}}" class="blog-featured">
+        <a href="{{url}}" class="bt-featured blog-featured">
             {{#if thumbnail}}
-            <div class="blog-featured__img">
+            <div class="bt-featured__img">
                 <img src="{{getImage thumbnail 'grande'}}" alt="{{thumbnail.alt}}" loading="eager">
+                <div class="bt-featured__stamp">
+                    <span class="pulse"></span>
+                    Latest Post
+                </div>
             </div>
             {{/if}}
-            <div class="blog-featured__content">
-                <span class="blog-featured__label">Latest Post</span>
-                <h2 class="blog-featured__title">{{title}}</h2>
-                <p class="blog-featured__date">{{date_published}}</p>
-                <p class="blog-featured__excerpt">{{{summary}}}</p>
-                <span class="blog-featured__cta">Read Article &rarr;</span>
+            <div class="bt-featured__content">
+                <div>
+                    <div class="bt-featured__meta">
+                        <span class="blog-featured__date">{{date_published}}</span>
+                        <span class="sep"></span>
+                        <span>Repair Guide</span>
+                    </div>
+                    <h2 class="bt-featured__title">{{title}}</h2>
+                    <p class="bt-featured__excerpt">{{{summary}}}</p>
+                </div>
+                {{#if author}}
+                <div class="bt-featured__byline">
+                    <div class="bt-byline-avatar" data-author="{{author}}"></div>
+                    <div class="bt-byline-text">
+                        <strong>{{author}}</strong><br>
+                        Broken Tractor Staff
+                    </div>
+                </div>
+                {{/if}}
+                <div class="bt-featured__cta">Read the article</div>
             </div>
         </a>
         {{/if}}
         {{/each}}
 
-        <div class="blog-index__grid">
+        <div class="bt-section-head">
+            <h2>Recent Articles</h2>
+            <span class="bt-section-head__sub" id="btArticleCount"></span>
+            <span class="bt-section-head__rule"></span>
+            <!-- Grid / Detail / List density toggle -->
+            <div class="bt-density-toggle" id="btDensityToggle">
+                <button data-density="compact" aria-pressed="true" aria-label="Grid view" title="Grid">
+                    <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="2" width="6" height="6" fill="currentColor"/><rect x="9" y="2" width="6" height="6" fill="currentColor"/><rect x="1" y="10" width="6" height="4" fill="currentColor"/><rect x="9" y="10" width="6" height="4" fill="currentColor"/></svg>
+                    Grid
+                </button>
+                <button data-density="horizontal" aria-pressed="false" aria-label="Detail view" title="Detail">
+                    <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="3" width="6" height="10" fill="currentColor"/><rect x="9" y="4" width="6" height="2" fill="currentColor"/><rect x="9" y="8" width="6" height="2" fill="currentColor"/><rect x="9" y="12" width="4" height="1.5" fill="currentColor"/></svg>
+                    Detail
+                </button>
+                <button data-density="list" aria-pressed="false" aria-label="List view" title="List">
+                    <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="3" width="14" height="2" fill="currentColor"/><rect x="1" y="7" width="14" height="2" fill="currentColor"/><rect x="1" y="11" width="14" height="2" fill="currentColor"/></svg>
+                    List
+                </button>
+            </div>
+        </div>
+
+        <div class="bt-grid" id="blogGrid">
             {{#each blog.posts}}
             {{#unless @first}}
-            <a href="{{url}}" class="blog-card">
+            <a href="{{url}}" class="bt-card blog-card" data-tags="{{#each tags}}{{name}}|{{/each}}">
                 {{#if thumbnail}}
-                <div class="blog-card__img">
+                <div class="bt-card__img">
                     <img src="{{getImage thumbnail 'medium'}}" alt="{{thumbnail.alt}}" loading="lazy">
+                    <span class="bt-card__cat">Repair Guide</span>
                 </div>
                 {{/if}}
-                <div class="blog-card__body">
-                    <h3 class="blog-card__title">{{title}}</h3>
-                    <p class="blog-card__date">{{date_published}}</p>
-                    <p class="blog-card__excerpt">{{{summary}}}</p>
+                <div class="bt-card__body">
+                    <div class="bt-card__meta">
+                        <span class="blog-card__date">{{date_published}}</span>
+                    </div>
+                    <h3 class="bt-card__title">{{title}}</h3>
+                    <p class="bt-card__excerpt">{{{summary}}}</p>
+                    <div class="bt-card__bottom">
+                        {{#if author}}
+                        <div class="bt-card__byline">
+                            <span class="av" data-author="{{author}}"></span>
+                            <span class="bt-card__author-name">{{author}}</span>
+                        </div>
+                        {{/if}}
+                        <button class="bt-card__bookmark" aria-label="Save for later" onclick="event.preventDefault();this.dataset.saved=this.dataset.saved==='true'?'false':'true';">
+                            <svg class="icon-unsaved" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                            <svg class="icon-saved" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                        </button>
+                    </div>
                 </div>
             </a>
             {{/unless}}
@@ -59,35 +140,78 @@ blog:
         {{> components/common/paginator pagination.blog}}
 
     </div>
+
+    <section class="bt-newsletter">
+        <div class="bt-newsletter__inner">
+            <div>
+                <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+                <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+            </div>
+            <div>
+                <div class="klaviyo-form-Vc3CTQ"></div>
+            </div>
+        </div>
+    </section>
+
 </div>
 
 {{/partial}}
 {{> layout/base}}
 
 <script>
+// Highlight the active chip based on current URL path (/blog/tag/Bobcat)
 (function () {
-    // On page 2+, convert the featured post into a regular grid card
+    var match = window.location.pathname.match(/\/blog\/tag\/(.+)/);
+    var activeTag = match ? decodeURIComponent(match[1]).toLowerCase() : null;
+    document.querySelectorAll('.bt-chip').forEach(function (chip) {
+        if (activeTag) {
+            var chipSlug = (chip.getAttribute('data-tag-slug') || '').toLowerCase();
+            chip.setAttribute('aria-pressed', chipSlug === activeTag ? 'true' : 'false');
+        } else {
+            chip.setAttribute('aria-pressed', chip.hasAttribute('data-tag-all') ? 'true' : 'false');
+        }
+    });
+})();
+
+// On page 2+, convert the featured post into a regular grid card
+(function () {
     var urlParams = new URLSearchParams(window.location.search);
     var page = parseInt(urlParams.get('page') || '1', 10);
     if (page > 1) {
-        var featured = document.querySelector('.blog-featured');
-        var grid = document.querySelector('.blog-index__grid');
+        var featured = document.querySelector('.bt-featured');
+        var grid = document.getElementById('blogGrid');
         if (featured && grid) {
-            var titleEl = featured.querySelector('.blog-featured__title');
-            var imgEl = featured.querySelector('.blog-featured__img img');
-            var dateEl = featured.querySelector('.blog-featured__date');
-            var excerptEl = featured.querySelector('.blog-featured__excerpt');
-            var href = featured.getAttribute('href');
+            var titleEl    = featured.querySelector('.bt-featured__title');
+            var imgEl      = featured.querySelector('.bt-featured__img img');
+            var dateEl     = featured.querySelector('.blog-featured__date');
+            var excerptEl  = featured.querySelector('.bt-featured__excerpt');
+            var bylineEl   = featured.querySelector('.bt-featured__byline');
+            var href       = featured.getAttribute('href');
 
             var card = document.createElement('a');
             card.href = href;
-            card.className = 'blog-card';
+            card.className = 'bt-card blog-card';
+
+            var imgHtml = imgEl
+                ? '<div class="bt-card__img"><img src="' + imgEl.getAttribute('src') + '" alt="' + (imgEl.getAttribute('alt') || '') + '" loading="lazy"><span class="bt-card__cat">Repair Guide</span></div>'
+                : '';
+
+            var bylineHtml = '';
+            if (bylineEl) {
+                var avEl = bylineEl.querySelector('.bt-byline-avatar');
+                var nameEl = bylineEl.querySelector('strong');
+                if (avEl && nameEl) {
+                    bylineHtml = '<div class="bt-card__byline"><span class="av" data-author="' + nameEl.textContent.trim() + '"></span><span class="bt-card__author-name">' + nameEl.textContent.trim() + '</span></div>';
+                }
+            }
+
             card.innerHTML =
-                (imgEl ? '<div class="blog-card__img"><img src="' + imgEl.getAttribute('src') + '" alt="' + imgEl.getAttribute('alt') + '" loading="lazy"></div>' : '') +
-                '<div class="blog-card__body">' +
-                '<h3 class="blog-card__title">' + (titleEl ? titleEl.textContent.trim() : '') + '</h3>' +
-                '<p class="blog-card__date">' + (dateEl ? dateEl.textContent.trim() : '') + '</p>' +
-                '<p class="blog-card__excerpt">' + (excerptEl ? excerptEl.innerHTML : '') + '</p>' +
+                imgHtml +
+                '<div class="bt-card__body">' +
+                '<div class="bt-card__meta"><span class="blog-card__date">' + (dateEl ? dateEl.textContent.trim() : '') + '</span></div>' +
+                '<h3 class="bt-card__title">' + (titleEl ? titleEl.textContent.trim() : '') + '</h3>' +
+                '<p class="bt-card__excerpt">' + (excerptEl ? excerptEl.innerHTML : '') + '</p>' +
+                '<div class="bt-card__bottom">' + bylineHtml + '</div>' +
                 '</div>';
 
             grid.insertBefore(card, grid.firstChild);
@@ -96,6 +220,110 @@ blog:
     }
 })();
 
+// Article count in section head
+(function () {
+    var countEl = document.getElementById('btArticleCount');
+    var grid = document.getElementById('blogGrid');
+    if (countEl && grid) {
+        var n = grid.querySelectorAll('.bt-card').length;
+        countEl.textContent = n + ' article' + (n === 1 ? '' : 's');
+    }
+})();
+
+// Density toggle (Detail / Grid / List)
+(function () {
+    var grid    = document.getElementById('blogGrid');
+    var toggle  = document.getElementById('btDensityToggle');
+    if (!grid || !toggle) return;
+
+    var STORAGE_KEY = 'bt-blog-density';
+    var saved = sessionStorage.getItem(STORAGE_KEY) || 'compact';
+
+    function setDensity(density) {
+        grid.setAttribute('data-density', density);
+        toggle.querySelectorAll('button').forEach(function (btn) {
+            btn.setAttribute('aria-pressed', btn.dataset.density === density ? 'true' : 'false');
+        });
+        sessionStorage.setItem(STORAGE_KEY, density);
+    }
+
+    setDensity(saved);
+
+    toggle.addEventListener('click', function (e) {
+        var btn = e.target.closest('button[data-density]');
+        if (btn) setDensity(btn.dataset.density);
+    });
+})();
+
+// Sort (A–Z re-orders the rendered cards in place)
+(function () {
+    var select = document.getElementById('btSortSelect');
+    var grid   = document.getElementById('blogGrid');
+    if (!select || !grid) return;
+
+    select.addEventListener('change', function () {
+        var cards = Array.from(grid.querySelectorAll('.bt-card'));
+        if (select.value === 'alpha') {
+            cards.sort(function (a, b) {
+                var ta = (a.querySelector('.bt-card__title') || {}).textContent || '';
+                var tb = (b.querySelector('.bt-card__title') || {}).textContent || '';
+                return ta.localeCompare(tb);
+            });
+        } else {
+            // Restore DOM order (recent = original order)
+            cards.sort(function (a, b) {
+                return Array.from(grid.children).indexOf(a) - Array.from(grid.children).indexOf(b);
+            });
+        }
+        cards.forEach(function (c) { grid.appendChild(c); });
+    });
+})();
+
+// Brand badge: replace "Repair Guide" with the matching brand tag
+(function () {
+    var brandRules = [
+        { keywords: ['john deere', 'deere'],          label: 'John Deere' },
+        { keywords: ['ford', 'new holland'],           label: 'Ford / New Holland' },
+        { keywords: ['king kutter'],                   label: 'King Kutter' },
+        { keywords: ['caterpillar', ' cat ', 'cat 3'], label: 'Caterpillar' },
+        { keywords: ['kubota'],                        label: 'Kubota' },
+        { keywords: ['bobcat'],                        label: 'Bobcat' },
+        { keywords: ['komatsu'],                       label: 'Komatsu' },
+        { keywords: ['volvo'],                         label: 'Volvo' },
+        { keywords: ['doosan'],                        label: 'Doosan' },
+        { keywords: ['hitachi'],                       label: 'Hitachi' },
+        { keywords: ['case'],                                               label: 'Case' },
+        { keywords: ['jcb'],                           label: 'JCB' }
+    ];
+    document.querySelectorAll('.bt-card[data-tags]').forEach(function (card) {
+        var raw = (card.getAttribute('data-tags') || '').toLowerCase();
+        var badge = card.querySelector('.bt-card__cat');
+        if (!badge) return;
+        for (var i = 0; i < brandRules.length; i++) {
+            var rule = brandRules[i];
+            for (var j = 0; j < rule.keywords.length; j++) {
+                if (raw.indexOf(rule.keywords[j]) !== -1) {
+                    badge.textContent = rule.label;
+                    return;
+                }
+            }
+        }
+    });
+})();
+
+// Author initials: populate avatar divs from data-author attribute
+(function () {
+    document.querySelectorAll('[data-author]').forEach(function (el) {
+        var name = el.getAttribute('data-author') || '';
+        var parts = name.trim().split(/\s+/);
+        var initials = parts.length >= 2
+            ? parts[0][0] + parts[parts.length - 1][0]
+            : (parts[0] || '?')[0];
+        el.textContent = initials.toUpperCase();
+    });
+})();
+
+// Date reformat — "Feb 18th 2026" → "February 18, 2026"
 (function () {
     var months = { Jan:'January',Feb:'February',Mar:'March',Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December' };
     document.querySelectorAll('.blog-card__date, .blog-featured__date').forEach(function (el) {
