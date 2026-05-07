@@ -244,7 +244,12 @@
     font-size: 14px;
     font-weight: 700;
     color: #1a1a1a;
+    display: block;
   }
+  a.bt-brand-row { color: #FFC107; transition: background .15s; }
+  a.bt-brand-row:hover { color: #FFC107; background: rgba(255,255,255,0.07); }
+  a.bt-brand-more-row { color: #1a1a1a; transition: background .15s; }
+  a.bt-brand-more-row:hover { color: #1a1a1a; background: #f5f3ef; }
 </style>
 {{/partial}}
 
@@ -621,9 +626,9 @@
         </div>
         <div class="bt-person-grid">
 
-          <a href="#" class="bt-card bt-card--no-link">
+          <a href="/meet-michael-alford-web-manager-ecommerce-expert-at-broken-tractor/" class="bt-card">
             <div class="bt-card__left">
-              <img class="bt-av" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/michael-alford.jfif" alt="Michael Alford">
+              <img class="bt-av" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/michael-desk.png" alt="Michael Alford">
               <div class="bt-card__city">Baton R</div>
             </div>
             <div>
@@ -631,6 +636,7 @@
               <div class="bt-card__role">Web &amp; Catalog</div>
               <div class="bt-card__meta">6 YRS &middot; Baton Rouge, LA</div>
               <p class="bt-card__line">Runs brokentractor.com &mdash; search, listings, fitment data.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
             </div>
           </a>
 
@@ -961,30 +967,18 @@
 
       <!-- Featured brands (dark) -->
       <div style="background: #0d1f1c; border: 2px solid #1a1a1a; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;">
-        <!-- i=0 left, has bottom+right border -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Case Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=1 right, has bottom border -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>John Deere Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=2 left -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Ford / New Holland Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=3 right -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>King Kutter Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=4 left -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Dresser / Gallion Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=5 right -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Caterpillar Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=6 left -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Bobcat Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=7 right -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Komatsu Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=8 left, i<10 so still has bottom border -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Kobelco Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=9 right, i<10 so still has bottom border -->
-        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Kubota Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=10 left, last row so no bottom; left col so right border -->
-        <div class="bt-brand-row" style="border-right: 1px solid rgba(255,255,255,0.08);"><span>Long Tractor Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
-        <!-- i=11 right, last row, no borders -->
-        <div class="bt-brand-row"><span>JCB Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <a class="bt-brand-row" href="/c/case-construction-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Case Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/john-deere-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>John Deere Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/ford-new-holland-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Ford / New Holland Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/king-kutter-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>King Kutter Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/dresser-gallion-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Dresser / Gallion Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/caterpillar-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Caterpillar Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/bobcat-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Bobcat Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/komatsu-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Komatsu Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/kobelco-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Kobelco Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/kubota-parts/" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Kubota Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/long-tractor-parts/" style="border-right: 1px solid rgba(255,255,255,0.08);"><span>Long Tractor Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
+        <a class="bt-brand-row" href="/c/jcb-parts/"><span>JCB Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></a>
       </div>
 
       <!-- "+ More" toggle -->
@@ -1000,30 +994,30 @@
 
       <!-- More brands (hidden by default) -->
       <div id="bt-brands-more" style="display: none; grid-template-columns: repeat(4, 1fr); border: 2px solid #1a1a1a; border-top: none; background: #fff;">
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Daewoo Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Ditch Witch Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Doosan Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Gehl Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Genie Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hanix Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hitachi Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Hyster Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hyundai Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">IHI Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">JLG Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Koehring Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Liebherr Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Link-Belt Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Mitsubishi Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Samsung Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Sumitomo Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Takeuchi Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Tigercat Parts</div>
-        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Timberjack Parts</div>
-        <div class="bt-brand-more-row" style="border-right: 1px solid #d8d2c4;">Volvo Parts</div>
-        <div class="bt-brand-more-row" style="border-right: 1px solid #d8d2c4;">Wacker Neuson Parts</div>
-        <div class="bt-brand-more-row" style="border-right: 1px solid #d8d2c4;">Yanmar Parts</div>
-        <div class="bt-brand-more-row">Broken Tractor Merchandise</div>
+        <a class="bt-brand-more-row" href="/c/daewoo-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Daewoo Parts</a>
+        <a class="bt-brand-more-row" href="/c/ditch-witch-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Ditch Witch Parts</a>
+        <a class="bt-brand-more-row" href="/c/doosan-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Doosan Parts</a>
+        <a class="bt-brand-more-row" href="/c/gehl-parts/" style="border-bottom: 1px solid #d8d2c4;">Gehl Parts</a>
+        <a class="bt-brand-more-row" href="/c/genie-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Genie Parts</a>
+        <a class="bt-brand-more-row" href="/c/hanix-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hanix Parts</a>
+        <a class="bt-brand-more-row" href="/c/hitachi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hitachi Parts</a>
+        <a class="bt-brand-more-row" href="/c/hyster-parts/" style="border-bottom: 1px solid #d8d2c4;">Hyster Parts</a>
+        <a class="bt-brand-more-row" href="/c/hyundai-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hyundai Parts</a>
+        <a class="bt-brand-more-row" href="/c/ihi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">IHI Parts</a>
+        <a class="bt-brand-more-row" href="/c/jlg-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">JLG Parts</a>
+        <a class="bt-brand-more-row" href="/c/koehring-parts/" style="border-bottom: 1px solid #d8d2c4;">Koehring Parts</a>
+        <a class="bt-brand-more-row" href="/c/liebherr-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Liebherr Parts</a>
+        <a class="bt-brand-more-row" href="/c/link-belt-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Link-Belt Parts</a>
+        <a class="bt-brand-more-row" href="/c/mitsubishi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Mitsubishi Parts</a>
+        <a class="bt-brand-more-row" href="/c/samsung-parts/" style="border-bottom: 1px solid #d8d2c4;">Samsung Parts</a>
+        <a class="bt-brand-more-row" href="/c/sumitomo-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Sumitomo Parts</a>
+        <a class="bt-brand-more-row" href="/c/takeuchi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Takeuchi Parts</a>
+        <a class="bt-brand-more-row" href="/c/tigercat-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Tigercat Parts</a>
+        <a class="bt-brand-more-row" href="/c/timberjack-parts/" style="border-bottom: 1px solid #d8d2c4;">Timberjack Parts</a>
+        <a class="bt-brand-more-row" href="/c/volvo-parts/" style="border-right: 1px solid #d8d2c4;">Volvo Parts</a>
+        <a class="bt-brand-more-row" href="/c/wacker-neuson-parts/" style="border-right: 1px solid #d8d2c4;">Wacker Neuson Parts</a>
+        <a class="bt-brand-more-row" href="/c/yanmar-parts/" style="border-right: 1px solid #d8d2c4;">Yanmar Parts</a>
+        <a class="bt-brand-more-row" href="/c/broken-tractor-merchandise/">Broken Tractor Merchandise</a>
       </div>
 
     </div>
