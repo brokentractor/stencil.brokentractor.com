@@ -1,0 +1,1083 @@
+{{#partial "head"}}
+<meta name="description" content="Meet the Broken Tractor team — 27 people across two U.S. warehouses in Baton Rouge, LA and Kimbolton, OH. No phone tree. No chatbot. Real people who know the parts." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Us — Broken Tractor",
+  "url": "https://www.brokentractor.com/pages/about-us/",
+  "description": "Broken Tractor is a family-owned aftermarket parts company founded in 2006. 27 people. 20,000+ SKUs. Two warehouses.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "telephone": "+18009097060",
+    "foundingDate": "2006",
+    "address": [
+      { "@type": "PostalAddress", "addressLocality": "Baton Rouge", "addressRegion": "LA", "addressCountry": "US" },
+      { "@type": "PostalAddress", "addressLocality": "Kimbolton", "addressRegion": "OH", "addressCountry": "US" }
+    ]
+  }
+}
+</script>
+<style>
+  /* ─── About-Us Page Styles ─────────────────────────────── */
+  .bt-about {
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    background-color: #f0eeea;
+    background-image: radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+  .bt-about *, .bt-about *::before, .bt-about *::after { box-sizing: border-box; }
+  .bt-about a { text-decoration: none; color: inherit; }
+  .bt-about h1, .bt-about h2, .bt-about h3, .bt-about p, .bt-about ul { margin: 0; padding: 0; }
+  .bt-about ul { list-style: none; }
+
+  /* Max-width wrapper */
+  .bt-about-section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  /* Section stamp / divider */
+  .bt-stamp {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-top: 2px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 10px 0;
+    margin: 0 0 28px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    color: #1a1a1a;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .bt-stamp__mark {
+    background: #1a1a1a;
+    color: #FFC107;
+    padding: 3px 8px;
+    letter-spacing: .18em;
+    flex-shrink: 0;
+  }
+  .bt-stamp__rule {
+    flex: 1;
+    border-top: 1px dashed #1a1a1a;
+  }
+
+  /* Image placeholder box */
+  .bt-ph {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    text-align: center;
+    background: linear-gradient(135deg, #2a3835 0%, #0d1f1c 100%);
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 16px, transparent 16px, transparent 32px),
+      linear-gradient(135deg, #2a3835 0%, #0d1f1c 100%);
+    color: #cfd8d4;
+  }
+  .bt-ph__tag { font-size: 10px; letter-spacing: .18em; opacity: .55; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+  .bt-ph__label { font-size: 13px; font-weight: 700; opacity: .92; line-height: 1.4; text-transform: uppercase; letter-spacing: .04em; }
+  .bt-ph__note { font-size: 10px; opacity: .55; margin-top: 8px; line-height: 1.5; }
+
+  /* Initials avatar */
+  .bt-av {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: #1a1a1a;
+    color: #FFC107;
+    font-family: Archivo, sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    display: grid;
+    place-items: center;
+    letter-spacing: .03em;
+  }
+  /* Photo headshot replaces initials circle */
+  img.bt-av {
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    background: #1a1a1a;
+  }
+
+  /* Group header */
+  .bt-group-hdr {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .bt-group-hdr h2 {
+    font-family: Archivo, sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #1a1a1a;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+  }
+  .bt-group-hdr__idx {
+    color: #d6a300;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    margin-right: 14px;
+    letter-spacing: .14em;
+    vertical-align: middle;
+  }
+  .bt-group-hdr__count {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #6b7975;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* 3-col person grid */
+  .bt-person-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Person card */
+  .bt-card {
+    background: #fff;
+    border: 1.5px solid #1a1a1a;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: start;
+    transition: background .15s;
+  }
+  .bt-card:hover { background: #f8f7f4; }
+  .bt-card__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .bt-card__city {
+    display: none;
+  }
+  .bt-card__name {
+    font-family: Archivo, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #1a1a1a;
+    letter-spacing: -.005em;
+    line-height: 1.15;
+  }
+  .bt-card__role {
+    font-size: 12px;
+    color: #3a4a47;
+    font-weight: 700;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .bt-card__meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #d6a300;
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+  .bt-card__line {
+    font-size: 13px;
+    color: #3a4a47;
+    line-height: 1.45;
+    margin-top: 10px;
+  }
+  .bt-card__cta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #1a1a1a;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-top: 1px solid #d8d2c4;
+    padding-top: 8px;
+    margin-top: 12px;
+  }
+  .bt-card--no-link .bt-card__cta { display: none; }
+
+  /* Brand grid rows */
+  .bt-brand-row {
+    padding: 14px 18px;
+    font-family: Archivo, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #FFC107;
+    letter-spacing: .01em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bt-brand-more-row {
+    padding: 12px 16px;
+    font-family: Archivo, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<div class="bt-about">
+
+  <!-- ─── Page Header ─────────────────────────────────────── -->
+  <section style="padding: 40px 0 32px;">
+    <div class="bt-about-section">
+
+      <div style="display: inline-block; background: #FFC107; color: #1a1a1a; padding: 8px 16px; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 22px; font-family: Archivo, sans-serif;">Meet the Team</div>
+
+      <h1 style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 80px; line-height: .95; color: #1a1a1a; letter-spacing: -.025em; margin: 0 0 24px; max-width: 1100px;">
+        The voice on the other end of the line.
+      </h1>
+
+      <p style="font-size: 22px; color: #3a4a47; line-height: 1.5; max-width: 860px; margin: 0 0 28px; font-weight: 400;">
+        When you call (800) 909-7060, you&rsquo;re talking to one of 27 people across two
+        U.S. warehouses. No phone tree. No chatbot. Find the person you spoke with &mdash; or the person
+        you&rsquo;ll be calling next &mdash; below.
+      </p>
+
+      <div style="display: flex; gap: 28px; padding-top: 22px; border-top: 1px solid #d8d2c4; font-size: 13px; color: #6b7975; font-family: 'JetBrains Mono', monospace; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; flex-wrap: wrap;">
+        <span><span style="color: #d6a300;">&#9679;</span> 27 people on the roster</span>
+        <span><span style="color: #d6a300;">&#9679;</span> 2 warehouses &middot; LA &amp; OH</span>
+        <span><span style="color: #d6a300;">&#9679;</span> Family-owned &middot; Est. 2006</span>
+        <span><span style="color: #d6a300;">&#9679;</span> No phone tree</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Hero Image ──────────────────────────────────────── -->
+  <section style="padding: 0 0 24px;">
+    <div class="bt-about-section">
+      <div class="bt-ph" style="aspect-ratio: 3/1; border: 2px solid #1a1a1a;">
+        <div>
+          <div class="bt-ph__tag">Image placeholder</div>
+          <div class="bt-ph__label">Hero &mdash; wide shot of the Baton Rouge sales floor mid-call</div>
+          <div class="bt-ph__note">3:1 wide &middot; multiple sales desks visible, headsets on, parts catalogs open &middot; NOT a posed founder portrait</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── § 01  Who You&rsquo;re Talking To ───────────────────────── -->
+  <section style="padding: 64px 0 32px;">
+    <div class="bt-about-section">
+
+      <div class="bt-stamp">
+        <span class="bt-stamp__mark">&sect; 01</span>
+        <span>Section One &mdash; Who you&rsquo;re talking to</span>
+        <span class="bt-stamp__rule"></span>
+      </div>
+
+      <p style="font-size: 16px; color: #3a4a47; line-height: 1.6; max-width: 720px; margin: 0 0 32px;">
+        Grouped by what your call is about. Click any name to read their full spotlight &mdash;
+        how long they&rsquo;ve been here, what they specialize in, and how to reach them direct.
+      </p>
+
+      <!-- Group 01: Sales -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 01</span>If sales picks up</h2>
+          <div class="bt-group-hdr__count">9 people</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="/meet-coy-lapeyrolerie-sales-manager-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">CL</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Coy Lapeyrolerie</div>
+              <div class="bt-card__role">Sales Manager</div>
+              <div class="bt-card__meta">13 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Employee #4. Joined 2012. Trained most of the floor. Still answers his own phone.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-jt-thigpen-senior-sales-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">JT</div>
+              <div class="bt-card__city">Denham</div>
+            </div>
+            <div>
+              <div class="bt-card__name">JT Thigpen</div>
+              <div class="bt-card__role">Senior Sales Specialist &middot; Ext. 138</div>
+              <div class="bt-card__meta">21 YRS &middot; Denham Springs, LA</div>
+              <p class="bt-card__line">21 yrs in parts. The guy you call when the part is hard to find &mdash; reman blocks, swing motors, torque converters.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-justin-winters-senior-sales-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">JW</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Justin Winters</div>
+              <div class="bt-card__role">Senior Sales Specialist</div>
+              <div class="bt-card__meta">5 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Case &amp; John Deere. The rebuild and reman calls &mdash; long blocks, hydraulics, dealer-quote alternatives.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-pedro-silva-sales-specialist-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">PS</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Pedro Silva</div>
+              <div class="bt-card__role">Sales Specialist &middot; Ext. 126</div>
+              <div class="bt-card__meta">2 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">25 yrs in equipment rental. Spanish-speaking, international, and used-equipment calls. Case &amp; JD.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-kenny-broussard-sales-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">KB</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Kenny Broussard</div>
+              <div class="bt-card__role">Sales Specialist</div>
+              <div class="bt-card__meta">3 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Modern JD construction, Bobcat hydraulics, older Case dozers/backhoes. Asks for pictures. Handles freight-forwarder calls.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-ross-biegler-sales-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">RB</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Ross Biegler</div>
+              <div class="bt-card__role">Sales Specialist</div>
+              <div class="bt-card__meta">New &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Newest on the floor &mdash; already running JD final drives, Komatsu long blocks, Takeuchi components. Handles his own freight.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-collin-conte-sales-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">CC</div>
+              <div class="bt-card__city">Kimbolt</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Collin Conte</div>
+              <div class="bt-card__role">Sales Specialist &middot; Ext. 124</div>
+              <div class="bt-card__meta">3 YRS &middot; Kimbolton, OH</div>
+              <p class="bt-card__line">Case &amp; JD. Methodical. &ldquo;Ask more questions.&rdquo; Direct line for Southeastern Equipment, Joseph Equipment, Turbo Terminal Tractors.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-ryan-douglas-case-john-deere-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <img class="bt-av" src="{{cdn 'img/ryan-douglas.jpg.png'}}" alt="Ryan Douglas">
+              <div class="bt-card__city">Cambrid</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Ryan Douglas</div>
+              <div class="bt-card__role">Sales Specialist &middot; Ext. 139</div>
+              <div class="bt-card__meta">14 YRS &middot; Cambridge, OH</div>
+              <p class="bt-card__line">Case &amp; John Deere. Operator&rsquo;s eye &mdash; grew up running an IH 706 and a Case dozer. Runs the serial first, every time.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">BR</div>
+              <div class="bt-card__city">Kimbolt</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Brandon</div>
+              <div class="bt-card__role">Sales Specialist</div>
+              <div class="bt-card__meta">5 YRS &middot; Kimbolton, OH</div>
+              <p class="bt-card__line">Construction &amp; forestry equipment specialist.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Group 02: Front Desk -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 02</span>If the front desk picks up</h2>
+          <div class="bt-group-hdr__count">2 people</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="/meet-ashleigh-harris-operations-support-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">AH</div>
+              <div class="bt-card__city">Prairie</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Ashleigh Harris</div>
+              <div class="bt-card__role">Operations Support Specialist &middot; Ext. 119</div>
+              <div class="bt-card__meta">3.5 YRS &middot; Prairieville, LA</div>
+              <p class="bt-card__line">First voice most customers hear. Pulls up your account before the salesman picks up &mdash; &ldquo;the behind-the-scenes glue.&rdquo;</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-lee-lebas-sales-order-specialist-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">LL</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Lee LeBas</div>
+              <div class="bt-card__role">Online Orders &amp; Domestic Purchasing</div>
+              <div class="bt-card__meta">6 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Puts online orders into shipment and runs domestic purchasing.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Group 03: Purchasing / Accounting -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 03</span>If it&rsquo;s about purchasing, an invoice, or accounting</h2>
+          <div class="bt-group-hdr__count">4 people</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">DO</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Donna</div>
+              <div class="bt-card__role">Purchasing</div>
+              <div class="bt-card__meta">12 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Places orders with suppliers. May call you back to clarify a part you&rsquo;ve ordered.</p>
+            </div>
+          </a>
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">DM</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Dominick</div>
+              <div class="bt-card__role">Financial Controller</div>
+              <div class="bt-card__meta">9 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Books, AP/AR escalation, dealer terms, fleet billing.</p>
+            </div>
+          </a>
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">MA</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Marie</div>
+              <div class="bt-card__role">Accounting</div>
+              <div class="bt-card__meta">3 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Invoicing, billing, and account reconciliation.</p>
+            </div>
+          </a>
+
+          <a href="/meet-gavin-pankey-accounts-receivable-accountant-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">GP</div>
+              <div class="bt-card__city">Mandevi</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Gavin Pankey</div>
+              <div class="bt-card__role">A/R Accountant</div>
+              <div class="bt-card__meta">1 YR &middot; Mandeville, LA</div>
+              <p class="bt-card__line">The customer side of the books &mdash; invoices, payments, credits, returns and refunds.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Group 04: Warehouse -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 04</span>Behind the scenes &mdash; pulling and packing your order</h2>
+          <div class="bt-group-hdr__count">4 people</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">JO</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Johnny</div>
+              <div class="bt-card__role">Warehouse Lead</div>
+              <div class="bt-card__meta">11 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Pulls, packs, and stages every order leaving LA.</p>
+            </div>
+          </a>
+
+          <a href="/meet-thomas-shipping-specialist-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">TH</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Thomas</div>
+              <div class="bt-card__role">Shipping Specialist</div>
+              <div class="bt-card__meta">4 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Four years on the floor, a Case 580L on his first day, and a bass guitar at church on Sundays.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-celle-warehouse-specialist-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">CE</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Marcelle &ldquo;Celle&rdquo;</div>
+              <div class="bt-card__role">Warehouse · Shipping, Receiving, Picking</div>
+              <div class="bt-card__meta">3 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Always on Go. Three years running shipping, receiving, and picking at the Baton Rouge warehouse.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">BR</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Brad</div>
+              <div class="bt-card__role">Warehouse</div>
+              <div class="bt-card__meta">New &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">New hire &mdash; learning the LA shelves.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Group 05: Web -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 05</span>If it&rsquo;s about the website or a listing</h2>
+          <div class="bt-group-hdr__count">1 person</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">MI</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Michael</div>
+              <div class="bt-card__role">Web &amp; Catalog</div>
+              <div class="bt-card__meta">6 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Runs brokentractor.com &mdash; search, listings, fitment data.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Group 06: Escalation -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 06</span>If you ask to escalate to a manager</h2>
+          <div class="bt-group-hdr__count">1 person</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="/meet-coy-lapeyrolerie-sales-manager-at-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">CL</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Coy Lapeyrolerie</div>
+              <div class="bt-card__role">Sales Manager</div>
+              <div class="bt-card__meta">14 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Manages the sales floor across both warehouses. Escalation point for sales issues.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Group 07: Interns -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 07</span>Interns</h2>
+          <div class="bt-group-hdr__count">3 people</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">MD</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Maddison</div>
+              <div class="bt-card__role">Intern</div>
+              <div class="bt-card__meta">Baton Rouge, LA</div>
+              <p class="bt-card__line">Helping out across departments while in school.</p>
+            </div>
+          </a>
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">SA</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Sammy</div>
+              <div class="bt-card__role">Intern</div>
+              <div class="bt-card__meta">Baton Rouge, LA</div>
+              <p class="bt-card__line">Helping out across departments while in school.</p>
+            </div>
+          </a>
+
+          <a href="#" class="bt-card bt-card--no-link">
+            <div class="bt-card__left">
+              <div class="bt-av">CO</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Cooper</div>
+              <div class="bt-card__role">Intern</div>
+              <div class="bt-card__meta">Baton Rouge, LA</div>
+              <p class="bt-card__line">Helping out across departments while in school.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Group 08: Leadership -->
+      <div style="margin-bottom: 36px;">
+        <div class="bt-group-hdr">
+          <h2><span class="bt-group-hdr__idx">&rarr; 08</span>Leadership</h2>
+          <div class="bt-group-hdr__count">3 people</div>
+        </div>
+        <div class="bt-person-grid">
+
+          <a href="/meet-christy-carpenter-co-owner-coo-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">CC</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Christy Carpenter</div>
+              <div class="bt-card__role">COO &middot; Louisiana</div>
+              <div class="bt-card__meta">20 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Runs Louisiana operations.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-chris-conte-coo-ohio-operations-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">CC</div>
+              <div class="bt-card__city">Kimbolt</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Chris Conte</div>
+              <div class="bt-card__role">COO &middot; Ohio</div>
+              <div class="bt-card__meta">8 YRS &middot; Kimbolton, OH</div>
+              <p class="bt-card__line">The guy who handles whatever needs handling that day — pricing, shipping, sourcing, site fixes, and every order that leaves the Ohio dock.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+          <a href="/meet-chance-carpenter-founder-owner-of-broken-tractor/" class="bt-card">
+            <div class="bt-card__left">
+              <div class="bt-av">CC</div>
+              <div class="bt-card__city">Baton R</div>
+            </div>
+            <div>
+              <div class="bt-card__name">Chance Carpenter</div>
+              <div class="bt-card__role">Founder &amp; CEO</div>
+              <div class="bt-card__meta">20 YRS &middot; Baton Rouge, LA</div>
+              <p class="bt-card__line">Founded Broken Tractor in 2006.</p>
+              <div class="bt-card__cta">&nearr; Read spotlight</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── § 02  The Short Version ─────────────────────────── -->
+  <section style="padding: 32px 0 64px;">
+    <div class="bt-about-section">
+
+      <div class="bt-stamp">
+        <span class="bt-stamp__mark">&sect; 02</span>
+        <span>Section Two &mdash; The short version</span>
+        <span class="bt-stamp__rule"></span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: #fff; border: 2px solid #1a1a1a; padding: 40px 44px;">
+        <p style="color: #3a4a47; font-size: 17px; line-height: 1.6;">
+          Broken Tractor is a family-owned aftermarket parts company, founded in Baton Rouge,
+          Louisiana in 2006. We started with one phone, a cardboard box of Case parts, and a
+          stubborn belief that the people calling for parts deserved to talk to someone who
+          actually knew the answer.
+        </p>
+        <p style="color: #3a4a47; font-size: 17px; line-height: 1.6;">
+          Twenty years in, that&rsquo;s still the bet. 27 people. 20,000+ SKUs across two warehouses.
+          36+ brands. The same phone number we&rsquo;ve had since day one &mdash; and a real person
+          at the other end of it. The roster above is the rest of the story.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── § 03  Two Warehouses ────────────────────────────── -->
+  <section style="padding: 0 0 64px;">
+    <div class="bt-about-section">
+
+      <div class="bt-stamp">
+        <span class="bt-stamp__mark">&sect; 03</span>
+        <span>Section Three &mdash; Two warehouses, one phone number</span>
+        <span class="bt-stamp__rule"></span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+        <!-- Baton Rouge -->
+        <div style="background: #fff; border: 2px solid #1a1a1a;">
+          <div class="bt-ph" style="aspect-ratio: 16/9;">
+            <div>
+              <div class="bt-ph__tag">Image placeholder</div>
+              <div class="bt-ph__label">Baton Rouge, LA warehouse &mdash; exterior or shelf aisle</div>
+            </div>
+          </div>
+          <div style="padding: 20px 22px 22px; border-top: 2px solid #1a1a1a;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #d6a300; font-weight: 700; letter-spacing: .14em; margin-bottom: 6px; text-transform: uppercase;">Headquarters &middot; Louisiana</div>
+            <h3 style="font-family: Archivo, sans-serif; font-size: 30px; font-weight: 900; color: #1a1a1a; line-height: 1.05; letter-spacing: -.015em; text-transform: uppercase; margin: 0;">Baton Rouge, LA</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #d8d2c4; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .06em; text-transform: uppercase;">
+              <div>
+                <div style="font-weight: 700; margin-bottom: 4px;">Run by</div>
+                <div style="color: #1a1a1a; font-family: Archivo, sans-serif; font-size: 14px; font-weight: 800; text-transform: none; letter-spacing: 0;">Christy Carpenter</div>
+              </div>
+              <div>
+                <div style="font-weight: 700; margin-bottom: 4px;">Staff</div>
+                <div style="color: #1a1a1a; font-family: Archivo, sans-serif; font-size: 14px; font-weight: 800; text-transform: none; letter-spacing: 0;">16 people</div>
+              </div>
+              <div>
+                <div style="font-weight: 700; margin-bottom: 4px;">Hours</div>
+                <div style="color: #1a1a1a; font-family: Archivo, sans-serif; font-size: 13px; font-weight: 700; text-transform: none; letter-spacing: 0;">Mon&ndash;Fri 7:00a&ndash;5:30p CT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kimbolton -->
+        <div style="background: #fff; border: 2px solid #1a1a1a;">
+          <div class="bt-ph" style="aspect-ratio: 16/9;">
+            <div>
+              <div class="bt-ph__tag">Image placeholder</div>
+              <div class="bt-ph__label">Kimbolton, OH warehouse &mdash; exterior or shelf aisle</div>
+            </div>
+          </div>
+          <div style="padding: 20px 22px 22px; border-top: 2px solid #1a1a1a;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #d6a300; font-weight: 700; letter-spacing: .14em; margin-bottom: 6px; text-transform: uppercase;">Northern operations &middot; Ohio</div>
+            <h3 style="font-family: Archivo, sans-serif; font-size: 30px; font-weight: 900; color: #1a1a1a; line-height: 1.05; letter-spacing: -.015em; text-transform: uppercase; margin: 0;">Kimbolton, OH</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #d8d2c4; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .06em; text-transform: uppercase;">
+              <div>
+                <div style="font-weight: 700; margin-bottom: 4px;">Run by</div>
+                <div style="color: #1a1a1a; font-family: Archivo, sans-serif; font-size: 14px; font-weight: 800; text-transform: none; letter-spacing: 0;">Chris</div>
+              </div>
+              <div>
+                <div style="font-weight: 700; margin-bottom: 4px;">Staff</div>
+                <div style="color: #1a1a1a; font-family: Archivo, sans-serif; font-size: 14px; font-weight: 800; text-transform: none; letter-spacing: 0;">4 people</div>
+              </div>
+              <div>
+                <div style="font-weight: 700; margin-bottom: 4px;">Hours</div>
+                <div style="color: #1a1a1a; font-family: Archivo, sans-serif; font-size: 13px; font-weight: 700; text-transform: none; letter-spacing: 0;">Mon&ndash;Fri 8:00a&ndash;5:30p ET</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── § 04  By the Numbers ────────────────────────────── -->
+  <section style="padding: 0 0 64px;">
+    <div class="bt-about-section">
+
+      <div class="bt-stamp">
+        <span class="bt-stamp__mark">&sect; 04</span>
+        <span>Section Four &mdash; By the numbers</span>
+        <span class="bt-stamp__rule"></span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid #1a1a1a; background: #fff;">
+        <div style="padding: 32px 24px; border-right: 1px solid #1a1a1a;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .18em; color: #6b7975; margin-bottom: 16px; font-weight: 600;">STAT-01</div>
+          <div style="font-family: Archivo, sans-serif; font-size: 64px; font-weight: 900; color: #1a1a1a; line-height: .9; letter-spacing: -.03em; margin-bottom: 14px;">20</div>
+          <div style="font-weight: 800; color: #1a1a1a; font-size: 14px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .02em;">years in business</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .04em;">Est. 2006</div>
+        </div>
+        <div style="padding: 32px 24px; border-right: 1px solid #1a1a1a;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .18em; color: #6b7975; margin-bottom: 16px; font-weight: 600;">STAT-02</div>
+          <div style="font-family: Archivo, sans-serif; font-size: 64px; font-weight: 900; color: #1a1a1a; line-height: .9; letter-spacing: -.03em; margin-bottom: 14px;">20,000+</div>
+          <div style="font-weight: 800; color: #1a1a1a; font-size: 14px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .02em;">parts in stock</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .04em;">Not &ldquo;available to order&rdquo;</div>
+        </div>
+        <div style="padding: 32px 24px; border-right: 1px solid #1a1a1a;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .18em; color: #6b7975; margin-bottom: 16px; font-weight: 600;">STAT-03</div>
+          <div style="font-family: Archivo, sans-serif; font-size: 64px; font-weight: 900; color: #1a1a1a; line-height: .9; letter-spacing: -.03em; margin-bottom: 14px;">30+</div>
+          <div style="font-weight: 800; color: #1a1a1a; font-size: 14px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .02em;">brands carried</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .04em;">JD &middot; Case &middot; Cat &middot; Cummins &middot; Komatsu &middot; more</div>
+        </div>
+        <div style="padding: 32px 24px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .18em; color: #6b7975; margin-bottom: 16px; font-weight: 600;">STAT-04</div>
+          <div style="font-family: Archivo, sans-serif; font-size: 64px; font-weight: 900; color: #1a1a1a; line-height: .9; letter-spacing: -.03em; margin-bottom: 14px;">2</div>
+          <div style="font-weight: 800; color: #1a1a1a; font-size: 14px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .02em;">U.S. warehouses</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .04em;">Baton Rouge, LA &middot; Kimbolton, OH</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── § 05  What We Refuse to Do ─────────────────────── -->
+  <section style="padding: 0 0 64px;">
+    <div class="bt-about-section">
+
+      <div class="bt-stamp">
+        <span class="bt-stamp__mark">&sect; 05</span>
+        <span>Section Five &mdash; What we refuse to do</span>
+        <span class="bt-stamp__rule"></span>
+      </div>
+
+      <div style="background: #fff; border: 2px solid #1a1a1a; padding: 40px 44px;">
+        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 56px; font-family: Archivo, sans-serif; font-size: 20px; font-weight: 700; color: #1a1a1a; line-height: 1.35; letter-spacing: -.005em;">
+          <li style="display: flex; gap: 14px; align-items: flex-start;">
+            <span style="color: #d6a300; font-size: 22px; line-height: 1.3; flex-shrink: 0;">&rarr;</span>
+            <span>We won&rsquo;t sell you a part we wouldn&rsquo;t put on our own machine.</span>
+          </li>
+          <li style="display: flex; gap: 14px; align-items: flex-start;">
+            <span style="color: #d6a300; font-size: 22px; line-height: 1.3; flex-shrink: 0;">&rarr;</span>
+            <span>We won&rsquo;t hide behind a chatbot when your job site is stopped.</span>
+          </li>
+          <li style="display: flex; gap: 14px; align-items: flex-start;">
+            <span style="color: #d6a300; font-size: 22px; line-height: 1.3; flex-shrink: 0;">&rarr;</span>
+            <span>We won&rsquo;t tell you a part fits when we&rsquo;re not sure it does.</span>
+          </li>
+          <li style="display: flex; gap: 14px; align-items: flex-start;">
+            <span style="color: #d6a300; font-size: 22px; line-height: 1.3; flex-shrink: 0;">&rarr;</span>
+            <span>We won&rsquo;t bounce you between five people before somebody helps.</span>
+          </li>
+          <li style="display: flex; gap: 14px; align-items: flex-start;">
+            <span style="color: #d6a300; font-size: 22px; line-height: 1.3; flex-shrink: 0;">&rarr;</span>
+            <span>We won&rsquo;t tell you the part shipped when we don&rsquo;t know that it did.</span>
+          </li>
+          <li style="display: flex; gap: 14px; align-items: flex-start;">
+            <span style="color: #d6a300; font-size: 22px; line-height: 1.3; flex-shrink: 0;">&rarr;</span>
+            <span>We won&rsquo;t ever be too big to answer the phone.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── § 06  Brands ────────────────────────────────────── -->
+  <section style="padding: 0 0 64px;">
+    <div class="bt-about-section">
+
+      <div class="bt-stamp">
+        <span class="bt-stamp__mark">&sect; 06</span>
+        <span>Section Six &mdash; Brand lines we carry</span>
+        <span class="bt-stamp__rule"></span>
+      </div>
+
+      <!-- Featured brands (dark) -->
+      <div style="background: #0d1f1c; border: 2px solid #1a1a1a; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;">
+        <!-- i=0 left, has bottom+right border -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Case Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=1 right, has bottom border -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>John Deere Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=2 left -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Ford / New Holland Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=3 right -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>King Kutter Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=4 left -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Dresser / Gallion Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=5 right -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Caterpillar Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=6 left -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Bobcat Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=7 right -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Komatsu Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=8 left, i<10 so still has bottom border -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08);"><span>Kobelco Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=9 right, i<10 so still has bottom border -->
+        <div class="bt-brand-row" style="border-bottom: 1px solid rgba(255,255,255,0.08);"><span>Kubota Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=10 left, last row so no bottom; left col so right border -->
+        <div class="bt-brand-row" style="border-right: 1px solid rgba(255,255,255,0.08);"><span>Long Tractor Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+        <!-- i=11 right, last row, no borders -->
+        <div class="bt-brand-row"><span>JCB Parts</span><span style="font-size: 11px; opacity: .7;">&#9660;</span></div>
+      </div>
+
+      <!-- "+ More" toggle -->
+      <div style="margin-top: 16px; display: flex; gap: 12px; align-items: center;">
+        <button id="bt-more-btn" onclick="var el=document.getElementById('bt-brands-more');var btn=document.getElementById('bt-more-btn');var open=el.style.display==='grid';el.style.display=open?'none':'grid';btn.textContent=open?'+ 24 more brands ▾':'+ 24 more brands ▴';"
+          style="padding: 12px 22px; border: 1.5px solid #1a1a1a; background: #fff; font-family: Archivo, sans-serif; font-size: 13px; font-weight: 800; letter-spacing: .08em; color: #1a1a1a; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; cursor: pointer;">
+          + 24 more brands &#9660;
+        </button>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .08em; text-transform: uppercase; font-weight: 600;">
+          Daewoo &middot; Doosan &middot; Hitachi &middot; Volvo &middot; Yanmar &middot; and more
+        </span>
+      </div>
+
+      <!-- More brands (hidden by default) -->
+      <div id="bt-brands-more" style="display: none; grid-template-columns: repeat(4, 1fr); border: 2px solid #1a1a1a; border-top: none; background: #fff;">
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Daewoo Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Ditch Witch Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Doosan Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Gehl Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Genie Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hanix Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hitachi Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Hyster Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hyundai Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">IHI Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">JLG Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Koehring Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Liebherr Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Link-Belt Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Mitsubishi Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Samsung Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Sumitomo Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Takeuchi Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Tigercat Parts</div>
+        <div class="bt-brand-more-row" style="border-bottom: 1px solid #d8d2c4;">Timberjack Parts</div>
+        <div class="bt-brand-more-row" style="border-right: 1px solid #d8d2c4;">Volvo Parts</div>
+        <div class="bt-brand-more-row" style="border-right: 1px solid #d8d2c4;">Wacker Neuson Parts</div>
+        <div class="bt-brand-more-row" style="border-right: 1px solid #d8d2c4;">Yanmar Parts</div>
+        <div class="bt-brand-more-row">Broken Tractor Merchandise</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Closing CTA ──────────────────────────────────────── -->
+  <section style="background: #FFC107; color: #1a1a1a; padding: 64px 32px; border-top: 4px solid #1a1a1a;">
+    <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center;">
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .18em; margin-bottom: 18px; text-transform: uppercase; opacity: .7;">
+          &#9615; End of file
+        </div>
+        <h2 style="font-family: Archivo, sans-serif; font-size: 64px; font-weight: 900; line-height: .95; letter-spacing: -.025em; margin: 0; text-transform: uppercase;">
+          Got a part number?<br>Let&rsquo;s ship today.
+        </h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <a href="/parts/" style="background: #1a1a1a; color: #fff; padding: 20px 36px; font-family: Archivo, sans-serif; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: 16px; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 12px;">SHOP PARTS</a>
+        <a href="tel:+18009097060" style="background: #fff; color: #1a1a1a; padding: 18px 36px; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; text-align: center; border: 2px solid #1a1a1a;">&#128222; (800) 909-7060</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// Populate About Us cards from each employee page's #bt-card-data JSON block.
+// To update a card: edit the employee's template file — changes appear here automatically.
+(function () {
+  var cards = document.querySelectorAll('.bt-card[href]:not([href="#"])');
+  cards.forEach(function (card) {
+    var url = card.getAttribute('href');
+    fetch(url)
+      .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var el = doc.getElementById('bt-card-data');
+        if (!el) return;
+        var d;
+        try { d = JSON.parse(el.textContent); } catch (e) { return; }
+        var q = function (sel) { return card.querySelector(sel); };
+        if (d.name)        { var n = q('.bt-card__name');  if (n) n.textContent = d.name; }
+        if (d.initials)    { var av = q('.bt-av');          if (av) av.textContent = d.initials; }
+        if (d.role)        { var r = q('.bt-card__role');  if (r) r.textContent = d.role; }
+        if (d.city_short)  { var c = q('.bt-card__city');  if (c) c.textContent = d.city_short; }
+        if (d.years_label && d.base) {
+          var m = q('.bt-card__meta');
+          if (m) m.textContent = d.years_label + ' · ' + d.base;
+        }
+        if (d.line)        { var l = q('.bt-card__line');  if (l) l.textContent = d.line; }
+      })
+      .catch(function () { /* silently keep static fallback */ });
+  });
+}());
+</script>
+
+{{/partial}}
+{{> layout/base}}
