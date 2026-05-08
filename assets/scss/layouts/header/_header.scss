@@ -383,6 +383,15 @@ div#hlinks {
     font-size: 16px;
     cursor: pointer;
 }
+@media (min-width: 768px) and (max-width: 1060px) {
+    #hlinks a, #account-dd {
+        margin-left: 12px;
+        font-size: 14px;
+    }
+    span#hphone a, span#hphone .callortext {
+        font-size: 15px;
+    }
+}
 .svg-inline--fa.fa-shopping-cart.fa-w-18 {
     font-size: 18px;
 }
