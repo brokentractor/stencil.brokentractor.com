@@ -195,8 +195,8 @@
     .bt-person-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  /* Person card */
-  .bt-card {
+  /* Person card — use .bt-person-grid parent for specificity over global blog .bt-card rule */
+  .bt-person-grid .bt-card {
     background: #fff;
     border: 1.5px solid #1a1a1a;
     padding: 16px;
@@ -206,7 +206,7 @@
     align-items: start;
     transition: background .15s;
   }
-  .bt-card:hover { background: #f8f7f4; }
+  .bt-person-grid .bt-card:hover { background: #f8f7f4; }
   .bt-card__left {
     display: flex;
     flex-direction: column;
