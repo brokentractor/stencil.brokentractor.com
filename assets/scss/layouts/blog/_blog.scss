@@ -1803,6 +1803,98 @@
 }
 
 // =============================================================================
+// MOBILE RESPONSIVE — Blog Index
+// =============================================================================
+@media (max-width: 767px) {
+
+  // Hero: tighten padding on small screens
+  .bt-blog-hero__inner {
+    padding: 32px 16px 20px;
+  }
+
+  // Chip rail: reduce side padding so chips have more room to scroll
+  .bt-chips__inner {
+    padding: 12px 16px;
+  }
+
+  // Page wrapper: reduce horizontal padding from 32px to 16px
+  .bt-page {
+    padding: 28px 16px 48px;
+  }
+
+  // Section head: shrink h2 so the row fits on one line
+  .bt-section-head {
+    gap: 10px;
+    margin-bottom: 20px;
+
+    h2 { font-size: 20px; }
+  }
+
+  // Density toggle: drop text labels on mobile, keep icons only
+  .bt-density-toggle button {
+    padding: 6px 8px;
+    gap: 0;
+    font-size: 0; // collapses text nodes; SVG sizes are px-defined so unaffected
+  }
+}
+
+// =============================================================================
+// MOBILE RESPONSIVE — Blog Post (article view)
+// =============================================================================
+@media (max-width: 767px) {
+
+  // Shell: reduce side padding so text has more room
+  .bt-article-shell {
+    padding: 0 16px;
+  }
+
+  // Cover image: negative margin must match shell padding to stay full-bleed
+  .bt-article-cover {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  // Article body shell: reduce top/bottom padding
+  .bt-article-body-shell {
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
+
+  // Body prose: drop from 18px to 16px for better line length on small screens
+  .bt-article-body-shell .blog-post-body {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  // Breadcrumb: truncate the last (current page) crumb so it doesn't wrap to many lines
+  .bt-breadcrumbs {
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // Tables: scrollable wrapper injected by JS (.bt-table-scroll)
+  // Note: _productGrid.scss has a bare `tbody { display: block }` at max-width:767px that
+  // breaks table column sync globally — we reset it here for blog tables.
+  .bt-article-body-shell .blog-post-body tbody {
+    display: table-row-group;
+  }
+
+  .bt-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.6em 0;
+
+    table { margin: 0; }
+  }
+}
+
+// =============================================================================
 // ARTICLE VIEW — 3-column layout
 // =============================================================================
 
@@ -1911,6 +2003,13 @@
     }
 
     // Override / reset the BigCommerce blog component styles inside the new layout
+    .blog {
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+    }
+
     .blog-post {
         box-shadow: none;
         background: transparent;
@@ -1923,6 +2022,7 @@
 
     .blog-post-body {
         width: 100% !important;
+        max-width: 100% !important;
         text-align: left;
         font-size: 18px;
         line-height: 1.7;

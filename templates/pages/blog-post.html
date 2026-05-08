@@ -318,6 +318,16 @@
         });
 })();
 
+// Wrap tables in a scrollable div so they don't bleed on mobile
+(function () {
+    document.querySelectorAll('.blog-post-body table').forEach(function (table) {
+        var wrap = document.createElement('div');
+        wrap.className = 'bt-table-scroll';
+        table.parentNode.insertBefore(wrap, table);
+        wrap.appendChild(table);
+    });
+})();
+
 // Date reformat — "Feb 18th 2026" → "February 18, 2026"
 (function () {
     var months = { Jan:'January',Feb:'February',Mar:'March',Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December' };
