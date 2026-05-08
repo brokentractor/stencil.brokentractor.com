@@ -188,7 +188,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  @media (min-width: 540px) {
+  @media (min-width: 640px) {
     .bt-person-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 900px) {
@@ -284,6 +284,30 @@
   a.bt-brand-row:hover { color: #FFC107; background: rgba(255,255,255,0.07); }
   a.bt-brand-more-row { color: #1a1a1a; transition: background .15s; }
   a.bt-brand-more-row:hover { color: #1a1a1a; background: #f5f3ef; }
+
+  /* More brands responsive grid */
+  #bt-brands-more {
+    display: none;
+    grid-template-columns: 1fr;
+  }
+  #bt-brands-more .bt-brand-more-row {
+    border-bottom: 1px solid #d8d2c4;
+    border-right: none;
+  }
+  #bt-brands-more .bt-brand-more-row:last-child { border-bottom: none; }
+  @media (min-width: 540px) {
+    #bt-brands-more { grid-template-columns: repeat(2, 1fr); }
+    #bt-brands-more .bt-brand-more-row:nth-child(odd)  { border-right: 1px solid #d8d2c4; }
+    #bt-brands-more .bt-brand-more-row:nth-child(even) { border-right: none; }
+    #bt-brands-more .bt-brand-more-row:nth-last-child(-n+2) { border-bottom: none; }
+  }
+  @media (min-width: 900px) {
+    #bt-brands-more { grid-template-columns: repeat(4, 1fr); }
+    #bt-brands-more .bt-brand-more-row                 { border-right: 1px solid #d8d2c4; border-bottom: 1px solid #d8d2c4; }
+    #bt-brands-more .bt-brand-more-row:nth-child(4n)   { border-right: none; }
+    #bt-brands-more .bt-brand-more-row:nth-child(odd)  { border-right: 1px solid #d8d2c4; }
+    #bt-brands-more .bt-brand-more-row:nth-last-child(-n+4) { border-bottom: none; }
+  }
 
   /* ── Mobile / Responsive ─────────────────────────────── */
 
@@ -443,7 +467,7 @@
             </div>
             <div>
               <div class="bt-card__name">JT Thigpen</div>
-              <div class="bt-card__role">Senior Sales Specialist &middot; Ext. 138</div>
+              <div class="bt-card__role">Sales Specialist &middot; Ext. 138</div>
               <div class="bt-card__meta">2 YRS &middot; Denham Springs, LA</div>
               <p class="bt-card__line">21 yrs in parts. The guy you call when the part is hard to find &mdash; reman blocks, swing motors, torque converters.</p>
               <div class="bt-card__cta">&nearr; Read spotlight</div>
@@ -1021,41 +1045,38 @@
       </div>
 
       <!-- "+ More" toggle -->
-      <div style="margin-top: 16px; display: flex; gap: 12px; align-items: center;">
+      <div style="margin-top: 16px;">
         <button id="bt-more-btn" onclick="var el=document.getElementById('bt-brands-more');var btn=document.getElementById('bt-more-btn');var open=el.style.display==='grid';el.style.display=open?'none':'grid';btn.textContent=open?'+ 24 more brands ▾':'+ 24 more brands ▴';"
-          style="padding: 12px 22px; border: 1.5px solid #1a1a1a; background: #fff; font-family: Archivo, sans-serif; font-size: 13px; font-weight: 800; letter-spacing: .08em; color: #1a1a1a; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; cursor: pointer;">
+          style="width: 100%; padding: 14px 22px; border: 1.5px solid #1a1a1a; background: #fff; font-family: Archivo, sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .08em; color: #1a1a1a; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;">
           + 24 more brands &#9660;
         </button>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b7975; letter-spacing: .08em; text-transform: uppercase; font-weight: 600;">
-          Daewoo &middot; Doosan &middot; Hitachi &middot; Volvo &middot; Yanmar &middot; and more
-        </span>
       </div>
 
       <!-- More brands (hidden by default) -->
-      <div id="bt-brands-more" style="display: none; grid-template-columns: repeat(4, 1fr); border: 2px solid #1a1a1a; border-top: none; background: #fff;">
-        <a class="bt-brand-more-row" href="/c/daewoo-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Daewoo Parts</a>
-        <a class="bt-brand-more-row" href="/c/ditch-witch-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Ditch Witch Parts</a>
-        <a class="bt-brand-more-row" href="/c/doosan-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Doosan Parts</a>
-        <a class="bt-brand-more-row" href="/c/gehl-parts/" style="border-bottom: 1px solid #d8d2c4;">Gehl Parts</a>
-        <a class="bt-brand-more-row" href="/c/genie-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Genie Parts</a>
-        <a class="bt-brand-more-row" href="/c/hanix-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hanix Parts</a>
-        <a class="bt-brand-more-row" href="/c/hitachi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hitachi Parts</a>
-        <a class="bt-brand-more-row" href="/c/hyster-parts/" style="border-bottom: 1px solid #d8d2c4;">Hyster Parts</a>
-        <a class="bt-brand-more-row" href="/c/hyundai-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Hyundai Parts</a>
-        <a class="bt-brand-more-row" href="/c/ihi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">IHI Parts</a>
-        <a class="bt-brand-more-row" href="/c/jlg-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">JLG Parts</a>
-        <a class="bt-brand-more-row" href="/c/koehring-parts/" style="border-bottom: 1px solid #d8d2c4;">Koehring Parts</a>
-        <a class="bt-brand-more-row" href="/c/liebherr-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Liebherr Parts</a>
-        <a class="bt-brand-more-row" href="/c/link-belt-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Link-Belt Parts</a>
-        <a class="bt-brand-more-row" href="/c/mitsubishi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Mitsubishi Parts</a>
-        <a class="bt-brand-more-row" href="/c/samsung-parts/" style="border-bottom: 1px solid #d8d2c4;">Samsung Parts</a>
-        <a class="bt-brand-more-row" href="/c/sumitomo-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Sumitomo Parts</a>
-        <a class="bt-brand-more-row" href="/c/takeuchi-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Takeuchi Parts</a>
-        <a class="bt-brand-more-row" href="/c/tigercat-parts/" style="border-bottom: 1px solid #d8d2c4; border-right: 1px solid #d8d2c4;">Tigercat Parts</a>
-        <a class="bt-brand-more-row" href="/c/timberjack-parts/" style="border-bottom: 1px solid #d8d2c4;">Timberjack Parts</a>
-        <a class="bt-brand-more-row" href="/c/volvo-parts/" style="border-right: 1px solid #d8d2c4;">Volvo Parts</a>
-        <a class="bt-brand-more-row" href="/c/wacker-neuson-parts/" style="border-right: 1px solid #d8d2c4;">Wacker Neuson Parts</a>
-        <a class="bt-brand-more-row" href="/c/yanmar-parts/" style="border-right: 1px solid #d8d2c4;">Yanmar Parts</a>
+      <div id="bt-brands-more" style="display: none; border: 2px solid #1a1a1a; border-top: none; background: #fff;">
+        <a class="bt-brand-more-row" href="/c/daewoo-parts/">Daewoo Parts</a>
+        <a class="bt-brand-more-row" href="/c/ditch-witch-parts/">Ditch Witch Parts</a>
+        <a class="bt-brand-more-row" href="/c/doosan-parts/">Doosan Parts</a>
+        <a class="bt-brand-more-row" href="/c/gehl-parts/">Gehl Parts</a>
+        <a class="bt-brand-more-row" href="/c/genie-parts/">Genie Parts</a>
+        <a class="bt-brand-more-row" href="/c/hanix-parts/">Hanix Parts</a>
+        <a class="bt-brand-more-row" href="/c/hitachi-parts/">Hitachi Parts</a>
+        <a class="bt-brand-more-row" href="/c/hyster-parts/">Hyster Parts</a>
+        <a class="bt-brand-more-row" href="/c/hyundai-parts/">Hyundai Parts</a>
+        <a class="bt-brand-more-row" href="/c/ihi-parts/">IHI Parts</a>
+        <a class="bt-brand-more-row" href="/c/jlg-parts/">JLG Parts</a>
+        <a class="bt-brand-more-row" href="/c/koehring-parts/">Koehring Parts</a>
+        <a class="bt-brand-more-row" href="/c/liebherr-parts/">Liebherr Parts</a>
+        <a class="bt-brand-more-row" href="/c/link-belt-parts/">Link-Belt Parts</a>
+        <a class="bt-brand-more-row" href="/c/mitsubishi-parts/">Mitsubishi Parts</a>
+        <a class="bt-brand-more-row" href="/c/samsung-parts/">Samsung Parts</a>
+        <a class="bt-brand-more-row" href="/c/sumitomo-parts/">Sumitomo Parts</a>
+        <a class="bt-brand-more-row" href="/c/takeuchi-parts/">Takeuchi Parts</a>
+        <a class="bt-brand-more-row" href="/c/tigercat-parts/">Tigercat Parts</a>
+        <a class="bt-brand-more-row" href="/c/timberjack-parts/">Timberjack Parts</a>
+        <a class="bt-brand-more-row" href="/c/volvo-parts/">Volvo Parts</a>
+        <a class="bt-brand-more-row" href="/c/wacker-neuson-parts/">Wacker Neuson Parts</a>
+        <a class="bt-brand-more-row" href="/c/yanmar-parts/">Yanmar Parts</a>
         <a class="bt-brand-more-row" href="/c/broken-tractor-merchandise/">Broken Tractor Merchandise</a>
       </div>
 
