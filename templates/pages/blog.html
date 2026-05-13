@@ -9,17 +9,45 @@ blog:
 
 <div class="blog-index">
 
-    <section class="bt-blog-hero">
+    <style>
+        .bt-blog-hero__badge {
+            position: absolute;
+            top: 50%;
+            right: 48px;
+            transform: translateY(-50%);
+            width: 260px;
+            height: auto;
+        }
+        @media (max-width: 1150px) {
+            .bt-blog-hero__badge {
+                top: 16px;
+                right: 16px;
+                transform: none;
+                width: 110px;
+            }
+        }
+        @media (max-width: 600px) {
+            .bt-blog-hero__badge {
+                top: 12px;
+                right: 12px;
+                width: 80px;
+            }
+        }
+    </style>
+    <section class="bt-blog-hero" style="position:relative;">
         <div class="bt-blog-hero__inner">
             <div class="bt-blog-hero__crumb">Heavy Equipment &middot; Field Manual</div>
             <h1 class="bt-blog-hero__title">IN THE <em>SHOP</em></h1>
             <p class="bt-blog-hero__sub">Repair guides, diagnostics, and parts intel from the bench. Written by the people pulling apart Case 580s on a Tuesday &mdash; for the people who&rsquo;ll be doing the same on a Saturday.</p>
         </div>
+        <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-badge-full-color-rgb-1920px-w-72ppi.png"
+             alt="Broken Tractor — 20 Years of Getting You Back to Work"
+             class="bt-blog-hero__badge">
     </section>
 
     <!-- Category / tag chip rail — brand filters -->
     <div class="bt-chips">
-        <div class="bt-chips__inner">
+        <div class="bt-chips__inner" id="btChipsInner">
             <div class="bt-chips__sort">
                 <span>Sort</span>
                 <select id="btSortSelect">
@@ -41,7 +69,33 @@ blog:
             <a href="/blog/tag/Doosan" class="bt-chip" data-tag-slug="Doosan">Doosan</a>
             <a href="/blog/tag/Hitachi" class="bt-chip" data-tag-slug="Hitachi">Hitachi</a>
         </div>
+        <!-- Fade + scroll arrows -->
+        <div id="btChipsFadeLeft"  style="position:absolute; left:0;  top:0; bottom:0; width:80px; background:linear-gradient(to left,  transparent, #fff 80%); pointer-events:none; display:none;"></div>
+        <div id="btChipsFadeRight" style="position:absolute; right:0; top:0; bottom:0; width:80px; background:linear-gradient(to right, transparent, #fff 80%); pointer-events:none;"></div>
+        <button id="btChipsLeft"  aria-label="Scroll left"  onclick="document.getElementById('btChipsInner').scrollBy({left:-300,behavior:'smooth'})" style="position:absolute; left:8px;  top:50%; transform:translateY(-50%); background:#1a1a1a; border:2px solid #FFC107; color:#FFC107; width:36px; height:36px; border-radius:50%; font-size:18px; line-height:1; cursor:pointer; display:none; align-items:center; justify-content:center;">&#8249;</button>
+        <button id="btChipsRight" aria-label="Scroll right" onclick="document.getElementById('btChipsInner').scrollBy({left:300, behavior:'smooth'})" style="position:absolute; right:8px; top:50%; transform:translateY(-50%); background:#1a1a1a; border:2px solid #FFC107; color:#FFC107; width:36px; height:36px; border-radius:50%; font-size:18px; line-height:1; cursor:pointer; display:flex;  align-items:center; justify-content:center;">&#8250;</button>
     </div>
+    <script>
+    (function() {
+        var inner      = document.getElementById('btChipsInner');
+        var btnLeft    = document.getElementById('btChipsLeft');
+        var btnRight   = document.getElementById('btChipsRight');
+        var fadeLeft   = document.getElementById('btChipsFadeLeft');
+        var fadeRight  = document.getElementById('btChipsFadeRight');
+        if (!inner) return;
+        function update() {
+            var atStart = inner.scrollLeft <= 4;
+            var atEnd   = inner.scrollLeft + inner.clientWidth >= inner.scrollWidth - 4;
+            btnLeft.style.display   = atStart ? 'none' : 'flex';
+            fadeLeft.style.display  = atStart ? 'none' : 'block';
+            btnRight.style.display  = atEnd   ? 'none' : 'flex';
+            fadeRight.style.display = atEnd   ? 'none' : 'block';
+        }
+        inner.addEventListener('scroll', update);
+        window.addEventListener('resize', update);
+        update();
+    })();
+    </script>
 
     <div class="bt-page">
 
