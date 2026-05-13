@@ -2,13 +2,37 @@
 	<div id="footer-inner">
 
     <!-- 20th Anniversary -->
-    <div style="display:flex; align-items:center; gap:28px; padding:24px 32px; border-bottom:1px solid rgba(255,255,255,0.12); margin-bottom:8px; flex-wrap:wrap;">
-      <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-badge-full-color-rgb-1920px-w-72ppi.png"
-           alt="Broken Tractor — 20 Years of Getting You Back to Work, 2006–2026"
-           style="width:100%; max-width:120px; flex-shrink:0;">
-      <div>
-        <div style="color:#FFC107; font-size:17px; font-weight:800; letter-spacing:.02em; margin-bottom:6px; text-transform:uppercase;">20 Years of Getting You Back to Work</div>
-        <div style="color:rgba(255,255,255,0.70); font-size:13px; line-height:1.65; max-width:600px;">Founded in Baton Rouge in 2006. Twenty years, two warehouses, 27 people, and the same phone number we&rsquo;ve had since day one. Thank you for trusting us with your equipment. <a href="/pages/about-us/" style="color:#FFC107; text-decoration:none; font-weight:700;">Meet the team &rarr;</a></div>
+    <style>
+      .bt-anniv { display:flex; justify-content:center; padding:0 32px 24px; border-bottom:1px solid rgba(255,255,255,0.12); margin-bottom:8px; }
+      .bt-anniv__inner { display:flex; align-items:center; gap:28px; flex-wrap:nowrap; }
+      .bt-anniv__img { width:285px; flex-shrink:0; }
+      .bt-anniv__headline { color:#FFC107; font-family:'industry',sans-serif; font-size:48px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; margin-bottom:10px; line-height:1.1; }
+      .bt-anniv__body { color:rgba(255,255,255,0.70); font-size:18px; line-height:1.65; max-width:560px; }
+      .bt-anniv__body a { color:#FFC107; text-decoration:none; font-weight:700; }
+      .bt-anniv__btn { display:inline-block; padding:10px 22px; font-family:'industry',sans-serif; font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; border:2px solid #FFC107; transition:background .15s, color .15s; }
+      .bt-anniv__btn--primary { background:#FFC107; color:#1a1a1a; }
+      .bt-anniv__btn--primary:hover { background:#e6ac00; border-color:#e6ac00; color:#1a1a1a; }
+      .bt-anniv__btn--secondary { background:transparent; color:#FFC107; }
+      .bt-anniv__btn--secondary:hover { background:#FFC107; color:#1a1a1a; }
+      @media (max-width: 767px) {
+        .bt-anniv__inner { flex-direction:column; align-items:center; text-align:center; }
+        .bt-anniv__img { width:140px; }
+        .bt-anniv__headline { font-size:28px; }
+        .bt-anniv__body { font-size:13px; }
+      }
+    </style>
+    <div class="bt-anniv">
+      <div class="bt-anniv__inner">
+        <img class="bt-anniv__img" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-badge-full-color-rgb-1920px-w-72ppi.png"
+             alt="Broken Tractor — 20 Years of Getting You Back to Work, 2006–2026">
+        <div>
+          <div class="bt-anniv__headline">20 Years of Getting You<br><em style="color:#fff;font-style:italic;">Back to Work</em></div>
+          <div class="bt-anniv__body">Founded in Baton Rouge in 2006. Twenty years, two warehouses, 27 people, and the same phone number we&rsquo;ve had since day one. Thank you for trusting us with your equipment.</div>
+          <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+            <a href="/pages/about-us/" class="bt-anniv__btn bt-anniv__btn--primary">Meet the Team</a>
+            <a href="/blog/" class="bt-anniv__btn bt-anniv__btn--secondary">Our Blog</a>
+          </div>
+        </div>
       </div>
     </div>
 
