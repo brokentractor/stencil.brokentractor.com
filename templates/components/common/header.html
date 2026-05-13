@@ -58,7 +58,30 @@
 
         <a href="/" id="logolink">
             <svg id="header-logo"><use xlink:href="#icon-brokentractor-logo" /></svg>
+            <!-- 20th anniversary logo swap 2026 — remove img + style block below to revert -->
+            <img id="header-logo-anniv" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-combo-mark-white-text-full-color-rgb-1920px-w-72ppi.png" alt="Broken Tractor — 20 Years of Getting You Back to Work">
         </a>
+        <style>
+          svg#header-logo { display: none; }
+          #header-logo-anniv { position: absolute; z-index: 10; left: 15px; width: 200px; height: auto; }
+          @media (max-width: 800px) { #header-logo-anniv { top: 10px !important; } }
+          @media (min-width: 801px) and (max-width: 1279px) { #header-logo-anniv { width: 235px; top: 12px !important; } }
+          @media (min-width: 1280px) { #header-logo-anniv { width: 250px; } }
+        </style>
+        <script>
+        (function () {
+            var img = document.getElementById('header-logo-anniv');
+            if (!img) return;
+            function center() {
+                var header = document.querySelector('.header');
+                if (!header) return;
+                var top = Math.max(0, (header.offsetHeight - img.offsetHeight) / 2);
+                img.style.top = top + 'px';
+            }
+            if (img.complete && img.naturalHeight) { center(); } else { img.addEventListener('load', center); }
+            window.addEventListener('resize', center);
+        })();
+        </script>
 
         <button id="mm-nav-btn" aria-expanded="false" aria-controls="mm-panel" aria-label="Add My Machine">
             <svg id="mm-nav-icon" class="mm-equip-icon" aria-hidden="true" style="width:30px;height:30px;flex-shrink:0;fill:#000;"><use href="#icon-equip-backhoe"></use></svg>
