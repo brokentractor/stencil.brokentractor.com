@@ -2,7 +2,6 @@
 <div class="page ">
 
     <main class="page-content" data-cart>
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
         {{> components/cart/page-title}}
 
@@ -23,11 +22,9 @@
         </div>
         <div id="ymalwrap1">
 
-
         <div data-cart-status>
             {{> components/cart/status-messages}}
         </div>
-
 
         {{#if cart.items.length}}
             <div class="loadingOverlay"></div>
@@ -83,7 +80,6 @@
 
         {{{snippet 'cart'}}}
         </div>
-
 
         <div id="ymalwrap1">
             <!-- <h2 style="text-align: center;">FEATURED PRODUCTS</h2> -->

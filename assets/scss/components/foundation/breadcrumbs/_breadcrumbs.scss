@@ -1,131 +1,130 @@
 // =============================================================================
 // BREADCRUMBS (CSS)
 // =============================================================================
-//
-//
-// 1. Hide breadcrumbs on mobile-sized screens to improve screen real estate.
-//
-// 2. Since our breadcrumbs are centred with a variable width, we need to use
-//    display: inline-block; on the breadcrumbs. Hence needing to remove the
-//    white-space with font-size: 0;
-//    The font-size is reset in the breadcrumb settings file.
-//
-// -----------------------------------------------------------------------------
+
 .breadcrumbs-row {
   display: flex;
   justify-content: center;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 10px 16px;
+
+@media (min-width: 540px)  { padding-left: 24px; padding-right: 24px; }
+  @media (min-width: 900px)  { padding-left: 32px; padding-right: 32px; }
 }
+
 .breadcrumbs {
-    display: block;
-    text-align: center;
-    padding: 0px 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-family: var(--bt-font-display, "Industry", "Oswald", sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .breadcrumb {
-    display: inline-block;
-    float: none;
+  display: flex;
+  align-items: center;
 
-    &:before {
-      content: ">";
-      font-weight: bolder;
-      color: #ffbe00;
-    }
-    a {
-      color: #888;
-      font-size: 15px;
+  // Yellow slash separator before every item except the first
+  &:not(:first-child)::before {
+    content: "/";
+    color: #ffbe00;
+    margin: 0 7px;
+    font-weight: 400;
+    line-height: 1;
+  }
 
-      &:hover {
-        color: #001212;
-        text-decoration: underline;
-      }
+  a {
+    color: #555;
+    text-decoration: none;
+
+    &:hover {
+      color: #001212;
+      text-decoration: underline;
     }
-    &.is-active {
-        // scss-lint:disable NestingDepth
-        > .breadcrumb-label {
-            cursor: text;
-            color: #001212;
-            font-weight: 700;
-        }
+  }
+
+  &.is-active {
+    > .breadcrumb-label {
+      cursor: text;
+      color: #1a1a1a;
+      font-weight: 700;
     }
+  }
 }
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 600px) {
-    .breadcrumbs {
-        text-align: left;
-        display: inline-grid;
-    }
-    .breadcrumb a,
-    .breadcrumb-label {
-        font-size: 11px;
-    }
-}
-
 
 .breadcrumb-label {
-    text-decoration: none;
+  text-decoration: none;
 }
 
+// Remove the old HR divider row
+.breadcrumb-info {
+  display: none;
+}
+
+// Mobile
+@media only screen and (max-width: 600px) {
+  .breadcrumbs {
+    font-size: 10px;
+  }
+}
+
+// Tooltip (kept for potential future use, currently commented out in HTML)
 .bc-crumb-tip {
-    display: none;
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background: #001212;
+  color: #ccc;
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+  border-radius: 4px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+  z-index: 100;
+  white-space: normal;
+  text-align: center;
+
+  &::before {
+    content: '';
     position: absolute;
+    top: -6px;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    background: #001212;
-    color: #ccc;
-    font-size: 12px;
-    font-family: Arial, sans-serif;
-    font-weight: normal;
-    text-transform: none;
-    letter-spacing: 0;
-    line-height: 1.5;
-    border-radius: 4px;
-    padding: 10px 14px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
-    z-index: 100;
-    white-space: normal;
-    text-align: center;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #001212;
+  }
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: -6px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 6px solid #001212;
-    }
+  &.is-visible {
+    display: block;
+    animation: bcTipIn 0.4s ease forwards;
+  }
 
-    &.is-visible {
-        display: block;
-        animation: bcTipIn 0.4s ease forwards;
-    }
-
-    &.is-fading {
-        animation: bcTipOut 0.6s ease forwards;
-    }
+  &.is-fading {
+    animation: bcTipOut 0.6s ease forwards;
+  }
 }
 
 @keyframes bcTipIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 @keyframes bcTipOut {
-    from { opacity: 1; transform: translateX(-50%) translateY(0); }
-    to   { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-}
-
-.breadcrumb-info {
-  padding: 5px auto;
-  text-align: center;
-  font-family: "proxima-nova";
-  font-size: 14px;
-  font-weight: 400;
-  color: #757575;
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to   { opacity: 0; transform: translateX(-50%) translateY(-6px); }
 }

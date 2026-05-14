@@ -1,53 +1,13 @@
 <div class="breadcrumbs-row">
-
   <ul class="breadcrumbs" id="bt-breadcrumbs">
-      {{#each breadcrumbs}}
-          <li class="breadcrumb {{#if @last}}is-active{{/if}}">
-              {{#if url}}
-                  <a href="{{url}}" class="breadcrumb-label">{{name}}</a>
-              {{else}}
-                  <span class="breadcrumb-label">{{name}}</span>
-              {{/if}}
-          </li>
-      {{/each}}
+    {{#each breadcrumbs}}
+      <li class="breadcrumb {{#if @last}}is-active{{/if}}">
+        {{#if url}}
+          <a href="{{url}}" class="breadcrumb-label">{{#if @first}}<i class="fa fa-home"></i> {{/if}}{{name}}</a>
+        {{else}}
+          <span class="breadcrumb-label">{{#if @first}}<i class="fa fa-home"></i> {{/if}}{{name}}</span>
+        {{/if}}
+      </li>
+    {{/each}}
   </ul>
 </div>
-
-<div class="breadcrumb-info">
-  <hr>
-</div>
-
-<!-- Breadcrumb tooltip — commented out, may return later
-<script>
-(function () {
-    var crumb = document.querySelector('#bt-breadcrumbs .breadcrumb:nth-last-child(2)');
-    var row   = document.querySelector('.breadcrumbs-row');
-    if (!crumb || !row) return;
-    if (crumb.textContent.trim().toLowerCase() === 'home') return;
-
-    var tip = document.createElement('div');
-    tip.className = 'bc-crumb-tip';
-    tip.textContent = 'Click the text above to view more products in this category';
-    row.style.position = 'relative';
-    row.appendChild(tip);
-
-    function positionTip() {
-        var crumbRect = crumb.getBoundingClientRect();
-        var rowRect   = row.getBoundingClientRect();
-        var centerX   = crumbRect.left + crumbRect.width / 2 - rowRect.left;
-        var topY      = crumbRect.bottom - rowRect.top + 10;
-        tip.style.left = centerX + 'px';
-        tip.style.top  = topY + 'px';
-    }
-
-    positionTip();
-
-    setTimeout(function () {
-        tip.classList.add('is-visible');
-        setTimeout(function () {
-            tip.classList.add('is-fading');
-        }, 4000);
-    }, 1500);
-})();
-</script>
--->

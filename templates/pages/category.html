@@ -14,12 +14,9 @@ category:
 {{/if}}
 {{/partial}}
 
-
 {{#partial "pagename"}}listpage{{/partial}}
 
 {{#partial "page"}}
-
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
 <h1 class="page-heading">{{category.name}}</h1>
 
@@ -37,9 +34,7 @@ category:
 {{{snippet 'categories'}}}
 <div class="page">
 
-
     <main class="page-content" id="product-listing-container">
-
 
         {{#if category.products}}
         <div class="toolbar">
@@ -75,7 +70,6 @@ category:
             <div>TOP</div>
         </div>
     </main>
-
 
 </div>
 

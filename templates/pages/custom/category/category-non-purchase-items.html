@@ -14,15 +14,11 @@ category:
     {{/if}}
 {{/partial}}
 
-
 {{#partial "pagename"}}listpage{{/partial}}
 
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
 <h1 class="page-heading">{{category.name}}</h1>
-
 
 {{{snippet 'categories'}}}
 <div class="page">
@@ -52,7 +48,6 @@ category:
             <p>{{lang 'categories.no_products'}}</p>
         {{/if}}
     </main>
-
 
 </div>
 

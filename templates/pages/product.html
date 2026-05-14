@@ -12,14 +12,12 @@ product:
 {{#partial "pagename"}}pvwrap{{/partial}}
 
 {{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
     <div id="pv-back" onclick="window.history.go(-1); return false;">
     <span id="backarrow"></span> Back
     </div>
     {{#each product.shipping_messages}}
         {{> components/common/alert-info message}}
     {{/each}}
-
 
     <div itemscope itemtype="http://schema.org/Product">
         {{> components/products/product-view schema=true}}

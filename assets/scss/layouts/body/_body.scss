@@ -12,13 +12,9 @@
 }
 
 .body {
-    padding-bottom: 0px ;
-    padding-top: spacing("single"); // 1
+    padding-bottom: 0px;
+    padding-top: 0;
     min-height: 600px;
-
-    @include breakpoint("medium") {
-        padding-top: spacing("single") + spacing("base"); // 1
-    }
 }
 
 
