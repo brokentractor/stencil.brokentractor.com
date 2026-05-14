@@ -330,7 +330,8 @@ div#pv-topbox {
 .pvwrap .breadcrumbs {
     // display: none;
     @include breakpoint("medium") {
-        display: block;
+        display: flex;
+        justify-content: center;
     }
 }
 
