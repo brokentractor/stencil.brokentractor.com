@@ -1,3 +1,10 @@
+# BC category tooling scripts (contain API credentials / generated data)
+get-categories.js
+categories-output.txt
+build_model_ids.py
+fix_comment_format.py
+match_ids.py
+
 node_modules/
 .stencil
 .DS_Store
