@@ -74,7 +74,7 @@ section.productView-images {
 }
 
 h1#producttitle {
-    margin-top: 0px;
+    margin-top: 20px;
     text-align: center;
     padding: 0px 15px;
     font-family: $industry;
@@ -87,6 +87,7 @@ h1#producttitle {
     @include breakpoint("medium") {
         font-size: 35px;
         line-height: 50px;
+        margin-top: 40px;
         margin-bottom: 40px;
     }
     @include breakpoint("large") {
