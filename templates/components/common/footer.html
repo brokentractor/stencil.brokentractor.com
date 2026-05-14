@@ -403,6 +403,13 @@ function btGetAliases(model) {
         try { return new URL(url).pathname; } catch(e) { return url; }
     }
 
+    // Translate a category name string to its permanent numeric ID, then look up
+    // the model list in BT_MODELS. Falls back to [] if not mapped.
+    function btLookup(name) {
+        var id = window.BT_MODEL_IDS && window.BT_MODEL_IDS[name];
+        return (id !== undefined && window.BT_MODELS && window.BT_MODELS[id]) || [];
+    }
+
     function getMachines() {
         try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
         catch (e) { return []; }
@@ -453,7 +460,7 @@ function btGetAliases(model) {
         if (PICKER_EXCLUDE.some(function(e){ return nameLower.indexOf(e) !== -1; })) return;
         var cleanName = (div.dataset.name || '').replace(/\s+parts$/i, '').trim();
         var opt = document.createElement('option');
-        opt.value           = url;
+        opt.value           = cleanName;
         opt.textContent     = cleanName;
         opt.dataset.name    = cleanName;
         opt.dataset.brandUrl = div.dataset.url || url;
@@ -471,8 +478,8 @@ function btGetAliases(model) {
         if (!this.value) return;
         var brandDiv = null;
         document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
-            var first = div.querySelector('span');
-            if (first && first.dataset.url === brandSel.value) brandDiv = div;
+            var divClean = (div.dataset.name || '').replace(/\s+parts$/i, '').trim();
+            if (divClean === brandSel.value) brandDiv = div;
         });
         if (!brandDiv) return;
         var added = 0;
@@ -482,7 +489,8 @@ function btGetAliases(model) {
             if (/spec|spotlight/i.test(name)) return;
             var cleanLabel = name.replace(/\s+[Pp]arts$/i, '').trim();
             var opt = document.createElement('option');
-            opt.value = span.dataset.url;
+            opt.value = name;
+            opt.dataset.url = span.dataset.url || '';
             opt.textContent = cleanLabel;
             opt.dataset.image = span.dataset.image || '';
             typeSel.appendChild(opt);
@@ -493,36 +501,36 @@ function btGetAliases(model) {
             var brandNameLower = (selOpt ? selOpt.dataset.name || '' : '').toLowerCase();
             var isForcedSingle = SINGLE_TYPE_BRANDS.some(function(b){ return brandNameLower.indexOf(b) !== -1; });
             // Check directly against spans whether all children share the same model list
-            var childUrls = [];
+            var childNames = [];
             brandDiv.querySelectorAll('span').forEach(function (span) {
                 var name = span.dataset.name || '';
                 if (name.toLowerCase().indexOf('all ') === 0) return;
                 if (/spec|spotlight/i.test(name)) return;
-                if (span.dataset.url) childUrls.push(span.dataset.url);
+                if (name) childNames.push(name);
             });
-            var firstKey  = childUrls[0] || null;
-            var firstList = firstKey ? JSON.stringify((window.BT_MODELS && window.BT_MODELS[relUrl(firstKey)]) || []) : null;
-            var allSame   = firstList && firstList !== '[]' && childUrls.every(function (url) {
-                return JSON.stringify((window.BT_MODELS && window.BT_MODELS[relUrl(url)]) || []) === firstList;
+            var firstKey  = childNames[0] || null;
+            var firstList = firstKey ? JSON.stringify(btLookup(firstKey)) : null;
+            var allSame   = firstList && firstList !== '[]' && childNames.every(function (name) {
+                return JSON.stringify(btLookup(name)) === firstList;
             });
             if (allSame || isForcedSingle) {
                 // For forced single-type brands whose type URL isn't in BT_MODELS,
                 // aggregate models from all BT_MODELS keys matching the brand slug
                 if (isForcedSingle && (!firstList || firstList === '[]')) {
-                    var brandSlug = brandNameLower.replace(/\s+/g, '-');
                     var seen = {}, agg = [];
-                    Object.keys(window.BT_MODELS || {}).forEach(function(k) {
-                        if (k.toLowerCase().indexOf(brandSlug) !== -1) {
-                            (window.BT_MODELS[k] || []).forEach(function(m) {
-                                var val = typeof m === 'object' ? m.value : m;
-                                if (!seen[val]) { seen[val] = true; agg.push(m); }
-                            });
-                        }
+                    brandDiv.querySelectorAll('span').forEach(function(span) {
+                        var typeName = span.dataset.name || '';
+                        if (!typeName || typeName.toLowerCase().indexOf('all ') === 0) return;
+                        if (/spec|spotlight/i.test(typeName)) return;
+                        btLookup(typeName).forEach(function(m) {
+                            var val = typeof m === 'object' ? m.value : m;
+                            if (!seen[val]) { seen[val] = true; agg.push(m); }
+                        });
                     });
                     if (agg.length) window._btTempModels = agg;
                 }
                 typeSel.value = firstKey;
-                typeSel.dataset.brandRedirect = selOpt ? (selOpt.dataset.brandUrl || firstKey) : firstKey;
+                typeSel.dataset.brandRedirect = selOpt ? (selOpt.dataset.brandUrl || '') : '';
                 typeWrap.style.display = 'none';
                 typeSel.dispatchEvent(new Event('change'));
             } else {
@@ -540,7 +548,7 @@ function btGetAliases(model) {
         modelInput.value = '';
         saveBtn.disabled = true;
         if (!this.value) return;
-        var models = window._btTempModels || (window.BT_MODELS && window.BT_MODELS[relUrl(this.value)]) || [];
+        var models = window._btTempModels || btLookup(this.value);
         window._btTempModels = null;
         modelWrap.style.display = '';
         if (models.length > 0) {
@@ -632,7 +640,7 @@ function btGetAliases(model) {
             brand:   brandOpt.textContent.trim().replace(/\s+(construction|industrial|equipment|parts)(\s+.*)?$/i, '').trim(),
             type:    typeOpt.textContent.trim(),
             model:   getModelValue(),
-            typeUrl: brandRedirect || typeOpt.value,
+            typeUrl: brandRedirect || typeOpt.dataset.url || '',
             image:   brandRedirect ? '' : (typeOpt.dataset.image || '').replace('{:size}', '1280x480')
         };
         var machines = getMachines();
