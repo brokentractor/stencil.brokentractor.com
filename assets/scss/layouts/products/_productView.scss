@@ -105,14 +105,20 @@ h1#producttitle {
 }
 
 .pvwrap .breadcrumbs {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    text-align: left;
     font-size: 0;
-    text-align: center;
     padding: 0px 15px;
     text-transform: uppercase;
     font-weight: bold;
     color: #000;
     margin-bottom: px;
+    @include breakpoint("medium") {
+        justify-content: center;
+        text-align: center;
+    }
 }
 
 section#pv-details {
