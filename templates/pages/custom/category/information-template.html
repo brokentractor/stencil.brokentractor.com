@@ -4,29 +4,79 @@ category:
     products:
         limit: {{theme_settings.categorypage_products_per_page}}
 ---
-{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+
 {{#partial "pagename"}}listpage lev1{{/partial}}
 
 {{#partial "page"}}
 
-<h1 class="page-heading">{{category.name}}</h1>
-<div class="cat-subcats lev-1">
-    <ul>
-        {{#each category.products}}
-        <li class="subcat">
-            <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">
-                <div class="subimgwrap">
-                    <img  src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+<div class="bt-model-index">
+
+    <style>
+        .page-heading { display: none; }
+        .bt-model-index .bt-card { background: #001212; border-bottom: none; }
+        .bt-model-index .bt-card__body { background: #001212; }
+        .bt-model-index .bt-card__title { color: #fff; }
+        .bt-model-index .bt-card__excerpt { color: rgba(255,255,255,0.75); -webkit-line-clamp: 4; }
+        .bt-model-index .bt-card__img { border-radius: 0; background: #fff; aspect-ratio: 1/1 !important; overflow: hidden; }
+        .bt-model-index .bt-card__img img { width: 100%; height: 100%; object-fit: contain; }
+        .bt-model-index .bt-card:hover .bt-card__title { color: #fff; }
+        .bt-model-index .bt-card:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            .bt-model-index .bt-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+        }
+        @media (max-width: 480px) {
+            .bt-model-index .bt-grid { gap: 12px; }
+        }
+    </style>
+
+    <section class="bt-blog-hero">
+        <div class="bt-blog-hero__inner">
+            <h1 class="bt-blog-hero__title">{{category.name}}</h1>
+            <script>
+            (function(){
+                var el = document.currentScript.previousElementSibling;
+                var words = el.textContent.trim().split(' ');
+                if (words.length > 1) {
+                    el.innerHTML = '<span style="color:#FFBE00">' + words[0] + '</span> ' + words.slice(1).join(' ');
+                }
+            })();
+            </script>
+            {{#if category.description}}
+            <p class="bt-blog-hero__sub">{{{category.description}}}</p>
+            {{/if}}
+        </div>
+    </section>
+
+    <div class="bt-page">
+
+        <div class="bt-section-head">
+            <h2>Select Your Model</h2>
+            <span class="bt-section-head__rule"></span>
+        </div>
+
+        <div class="bt-grid" data-density="compact">
+
+            {{#each category.products}}
+            <a href="{{url}}" class="bt-card">
+                <div class="bt-card__img">
+                    <img src="{{getImage image 'productgallery_size' (cdn 'img/noimageavailable.png')}}" alt="{{name}}" loading="lazy">
+                    <span class="bt-card__cat">Model Guide</span>
                 </div>
-                <div>
-                    <span>{{name}}</span>
-                    <i class="fa fa-angle-right"></i>
+                <div class="bt-card__body">
+                    <h3 class="bt-card__title">{{name}}</h3>
+                    {{#if summary}}
+                    <p class="bt-card__excerpt">{{summary}}</p>
+                    {{/if}}
                 </div>
             </a>
-        </li>
-        {{/each}}
-    </ul>
-</div>
+            {{/each}}
+
+        </div>
+
+    </div>
+
+</div><!-- /.bt-model-index -->
 
 {{{snippet 'categories'}}}
 
