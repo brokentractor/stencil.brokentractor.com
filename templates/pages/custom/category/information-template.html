@@ -24,6 +24,7 @@ category:
 
         @media (max-width: 900px) {
             .bt-model-index .bt-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .bt-model-index .bt-card { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
             .bt-model-index .bt-grid { gap: 12px; }
@@ -55,7 +56,7 @@ category:
             <span class="bt-section-head__rule"></span>
         </div>
 
-        <div class="bt-grid" data-density="compact">
+        <div class="bt-grid">
 
             {{#each category.products}}
             <a href="{{url}}" class="bt-card">
