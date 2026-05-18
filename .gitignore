@@ -4,6 +4,8 @@ categories-output.txt
 build_model_ids.py
 fix_comment_format.py
 match_ids.py
+check-dead-templates.js
+check-category-fields.js
 
 node_modules/
 .stencil
