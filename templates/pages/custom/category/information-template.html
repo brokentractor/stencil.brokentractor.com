@@ -22,6 +22,9 @@ category:
         .bt-model-index .bt-card:hover .bt-card__title { color: #fff; }
         .bt-model-index .bt-card:hover { color: #fff; }
 
+        .bt-cat-seo { max-width: 860px; margin: 48px auto 0; padding: 32px 0; border-top: 1px solid #e6e6e6; font-size: 15px; line-height: 1.7; color: #444; }
+        .bt-cat-seo h2, .bt-cat-seo h3 { color: #001212; margin-bottom: 10px; }
+
         @media (max-width: 900px) {
             .bt-model-index .bt-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
             .bt-model-index .bt-card { grid-template-columns: 1fr; }
@@ -43,9 +46,7 @@ category:
                 }
             })();
             </script>
-            {{#if category.description}}
-            <p class="bt-blog-hero__sub">{{{category.description}}}</p>
-            {{/if}}
+            <p class="bt-blog-hero__sub">Factory specs, serial number guides, common failure points, and verified replacement parts — organized by model. Select yours below.</p>
         </div>
     </section>
 
@@ -76,6 +77,14 @@ category:
         </div>
 
     </div>
+
+    {{#if category.description}}
+    <div class="bt-page">
+        <div class="bt-cat-seo">
+            {{{category.description}}}
+        </div>
+    </div>
+    {{/if}}
 
 </div><!-- /.bt-model-index -->
 
