@@ -1,0 +1,334 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 580 Super N Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 2008 – present, the 580 Super N is the turbocharged N-generation Construction King — the current top-of-line small-frame Case backhoe loader. FPT NEF F4HE 4.5L Tier 3 at launch, transitioning through Tier 4 Interim (DPF + EGR) to Tier 4 Final F5BFL413C 3.4L (SCR + DEF). Wide-Track (WT) variant adds rear-end width and stabilizer reach. 61 verified service parts in our inventory across the Super N family.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 11 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580-super-n-hero.jpg" alt="Case 580 Super N Construction King Turbocharged Backhoe Loader">
+</div>
+</header>
+
+<p>The Case 580 Super N is the turbocharged version of the current-generation Construction King small-frame backhoe loader. It came to market in 2008 alongside the naturally aspirated 580N and continues in production today. The Super N runs FPT-family industrial diesels across three emissions tiers: Tier 3 (2008–~2011) with the FPT NEF F4HE9484 4.5L Common-Rail turbo, Tier 4 Interim (~2011–2014) with DPF and EGR added to the F4HE, and Tier 4 Final (2014–present) with the FPT F5BFL413C 3.4L paired with SCR and DEF. A Wide-Track (WT) variant runs alongside the standard machine, distinguished by a wider rear-end configuration that increases stability under heavy lifts.</p>
+
+<p>For owners maintaining a 580 Super N today, the parts ecosystem is exceptionally deep — 61 distinct service items moved across the 580SN family in the last 12 months. Top-volume service categories: stabilizer cylinders (the <a href="https://www.brokentractor.com/p/case-backhoe-stabilizer-boom-cylinder-seal-kit-84259227/">84259227</a> stabilizer cylinder seal kit and <a href="https://www.brokentractor.com/p/stabilizer-cylinder-for-case-580-super-n-backhoe-lh-rh-84421605-84421606-84421606/">84421606</a> stabilizer cylinder), swing-tower pins and bushings (the <a href="https://www.brokentractor.com/p/bushing-for-swing-tower-at-boom-for-case-backhoes-84326988/">84326988</a> and <a href="https://www.brokentractor.com/p/bushing-for-swing-tower-at-machine-frame-for-case-backhoes-84235607/">84235607</a> bushings), and bucket and quick-coupler hardware (the <a href="https://www.brokentractor.com/p/mechanical-quick-coupler-for-case-580n-580sn-backhoes-84229979/">84229979</a> bucket quick coupler and <a href="https://www.brokentractor.com/p/case-580n-quick-coupler-bucket-pin-84223653/">84223653</a> quick coupler pin).</p>
+
+<div class="bt-callout">
+<strong>Emissions tier — confirm before ordering engine and after-treatment parts</strong>
+The 580 Super N ran through three emissions configurations. Tier 3 (2008–~2011): FPT F4HE9484 4.5L turbo, no DPF/SCR. Tier 4 Interim (~2011–2014): F4HE 4.5L with cooled EGR and DPF — active regeneration required; use the <a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590sm-and-580sn-turbo-iveco-cs-590sm-ii-fk/">CS-590SM-II-FK</a> filter kit. Tier 4 Final (2014–present): FPT F5BFL413C 3.4L with SCR and DEF. Engine, after-treatment hardware, ECU, and sensors all differ across tiers. Also confirm standard vs. Wide-Track (WT) — stabilizer cylinders differ between the two variants.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Tier 3 → Tier 4 Interim → Tier 4 Final progression</a></li>
+<li><a href="#section-3">How the 580 Super N differs from the 580N</a></li>
+<li><a href="#section-4">Wide-Track (WT) variant</a></li>
+<li><a href="#section-5">FPT engine families on the Super N</a></li>
+<li><a href="#section-6">Verified top-selling 580 Super N parts</a></li>
+<li><a href="#section-7">Common issues and what to expect</a></li>
+<li><a href="#section-8">Where the 580 Super N sits in the Construction King family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 580 Super N — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>2008 – present</dd>
+<dt>Predecessor</dt><dd>Case 580 Super M (2001 – 2008)</dd>
+<dt>Sibling</dt><dd>Case 580N (naturally aspirated)</dd>
+<dt>Variants</dt><dd>Standard track and Wide-Track (WT)</dd>
+<dt>Engine (Tier 3, 2008–~2011)</dt><dd>FPT NEF F4HE9484 4.5L turbocharged 4-cylinder</dd>
+<dt>Engine (Tier 4 Interim, ~2011–2014)</dt><dd>FPT NEF F4HE with DPF and EGR</dd>
+<dt>Engine (Tier 4 Final, 2014–present)</dt><dd>FPT F5BFL413C 3.4L turbocharged with SCR + DEF</dd>
+<dt>Displacement</dt><dd>4.5 L (Tier 3 / Interim) → 3.4 L (Tier 4 Final)</dd>
+<dt>Cylinders</dt><dd>4, turbocharged, liquid-cooled, direct-injection diesel (Common-Rail)</dd>
+<dt>Power</dt><dd>~90 HP net / ~97 HP gross (varies by tier)</dd>
+<dt>Transmission</dt><dd>Case 4-speed power shuttle (standard); Powershift optional</dd>
+<dt>Drive</dt><dd>2WD standard; 4WD optional (Carraro)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate</dd>
+<dt>Hydraulic system</dt><dd>Open-center; load-sensing on some Tier 4 Final configurations</dd>
+<dt>System pressure</dt><dd>~3,000 – 3,335 psi</dd>
+<dt>Operating weight</dt><dd>~16,500 – 18,500 lb (varies with WT and configuration)</dd>
+<dt>Backhoe dig depth</dt><dd>Up to ~15 ft (standard) or ~18 ft (Extendahoe)</dd>
+<dt>Loader breakout</dt><dd>~11,000 – 12,500 lb</dd>
+<dt>Cab</dt><dd>N-generation cab with refined HVAC and controls</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Tier 3 → Tier 4 Interim → Tier 4 Final progression</h2>
+
+<p>The 580 Super N's most consequential parts-ordering fact is the emissions tier configuration:</p>
+
+<ul>
+<li><strong>Tier 3 (2008 – ~2011)</strong> — FPT NEF F4HE9484 4.5L Common-Rail turbo. Same engine family that arrived on the 580 Super M Series III in 2008. No DPF, no SCR. Passive oxidation catalyst on the exhaust.</li>
+<li><strong>Tier 4 Interim (~2011 – 2014)</strong> — F4HE 4.5L with cooled EGR plus DPF. Periodic active regeneration required. New ECU and harness. The <a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590sm-and-580sn-turbo-iveco-cs-590sm-ii-fk/">CS-590SM-II-FK</a> filter kit (labeled "Turbo Iveco") covers Tier 4 Interim Super N and 590 Super M machines.</li>
+<li><strong>Tier 4 Final (2014 – present)</strong> — FPT F5BFL413C 3.4L Common-Rail with SCR and DEF injection. DEF tank, dosing module, and SCR catalyst all introduced as new service items. Displacement drops from 4.5L to 3.4L but power is maintained through higher injection pressures.</li>
+</ul>
+
+<p>Identifying tier visually: short straight stack with muffler only = Tier 3; large DPF canister behind cab = Tier 4 Interim; separate DEF tank (blue-cap) plus SCR mixing hardware = Tier 4 Final.</p>
+
+<h2 id="section-3">How the 580 Super N differs from the 580N</h2>
+
+<p>The Super N and 580N share their chassis, transmission base architecture, axles, brakes, hydraulics, cab, and most loader and backhoe iron. Most service parts cross-fit cleanly between the two. The differences:</p>
+
+<ul>
+<li><strong>Engine</strong> — Super N uses turbocharged variants; 580N uses naturally aspirated versions of the same FPT engines.</li>
+<li><strong>Power output</strong> — Super N approximately 90–97 HP net; 580N approximately 79–88 HP net.</li>
+<li><strong>Turbocharger</strong> — only on the Super N.</li>
+<li><strong>Stabilizer cylinder</strong> — Super N uses the <a href="https://www.brokentractor.com/p/stabilizer-cylinder-for-case-580-super-n-backhoe-lh-rh-84421605-84421606-84421606/">84421606</a> stabilizer cylinder (Super N-specific casting). The 580N uses the <a href="https://www.brokentractor.com/p/stabilizer-outrigger-cylinder-for-case-580n-backhoes-84421604/">84421604</a> stabilizer cylinder. Different part numbers — confirm machine variant before ordering.</li>
+<li><strong>Loader bucket tilt cylinder</strong> — Super N (including WT) uses the <a href="https://www.brokentractor.com/p/case-580-super-n-loader-tilt-cylinder-84210943/">91708357</a> loader bucket tilt cylinder. The 580N uses <a href="https://www.brokentractor.com/p/case-580n-loader-bucket-tilt-cylinder-rebuilt-84421600-84421600/">84421600</a> rebuilt.</li>
+<li><strong>Filter kits</strong> — turbo-specific filtration on the Super N.</li>
+</ul>
+
+<p>Many chassis and hydraulic items cross. Pins, bushings, swing-tower hardware, cab glass — most of the high-volume parts label "580N, 580SN" because they fit both.</p>
+
+<h2 id="section-4">Wide-Track (WT) variant</h2>
+
+<p>The 580 Super N WT is the wide-track version of the Super N — same engine, transmission, cab, hydraulics, and loader iron as the standard Super N, but with a wider rear-end configuration that increases stability under heavy lifts and provides more stabilizer reach. Most parts cross between standard and WT, but a handful are WT-specific.</p>
+
+<p>The <a href="https://www.brokentractor.com/p/case-extension-cylinder-for-580n-580n-ep-580sn-580sn-wt-loader-backhoe-84159675/">84159675</a> extension cylinder covers both 580SN and 580SN WT plus 580N EP and 580N. The <a href="https://www.brokentractor.com/p/stabilizer-cylinder-seal-kit-for-case-580sn-wt-590sn-backhoes-84259228/">84259228</a> stabilizer cylinder seal kit is explicitly labeled for 580SN WT (and 590SN), making it the WT-specific seal kit.</p>
+
+<h2 id="section-5">FPT engine families on the Super N</h2>
+
+<p>The <strong>FPT NEF F4HE9484 4.5L</strong> Tier 3 launch engine carries forward from the 580 Super M Series III. Common-Rail Bosch injection, electronic engine management, four-cylinder direct-injection diesel. The Tier 4 Interim version adds cooled EGR and a Diesel Particulate Filter for emissions compliance — same engine block with after-treatment additions.</p>
+
+<p>The <strong>FPT F5BFL413C 3.4L</strong> Tier 4 Final engine is a smaller-displacement four-cylinder paired with SCR (Selective Catalytic Reduction) and DEF (Diesel Exhaust Fluid) injection. Power output is maintained through higher injection pressures and more efficient combustion despite the displacement drop. This is the engine on current-production Super Ns.</p>
+
+<h2 id="section-6">Verified top-selling 580 Super N parts</h2>
+
+<p>The parts table below leads with our 12-month top-sellers across the 580 Super N family. Many parts cross-fit with the 580N sibling — labeled where they apply.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Why it sells</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-stabilizer-boom-cylinder-seal-kit-84259227/">84259227</a></td><td>Stabilizer cylinder seal kit</td><td>Our #1 Super N parts seller — 24 units sold over the last 12 months. Seal repacking kit for the stabilizer cylinder. Replace when the cylinder weeps or holding pressure drops.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bushing-for-swing-tower-at-boom-for-case-backhoes-84326988/">84326988</a></td><td>Swing tower at boom bushing (580N + 580SN)</td><td>24 units sold. Wear bushing at the swing-tower-to-boom interface. High-cycle wear point.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bushing-for-swing-tower-at-machine-frame-for-case-backhoes-84235607/">84235607</a></td><td>Swing tower at machine frame bushing</td><td>22 units sold. Wear bushing at the swing-tower-to-frame interface.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/pin-for-stabilizer-leg-to-cylinder-for-case-580n-580-super-n-backhoes-84243668/">84243668</a></td><td>Stabilizer leg to cylinder pin</td><td>18 units sold. Stabilizer leg-to-cylinder pin. Cross-fits 580N and 580 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/dipper-cylinder-seal-kit-for-case-580-super-n-84259222/">84259222</a></td><td>Dipper cylinder seal kit (580SN)</td><td>16 units sold at $2,188 revenue. <strong>580 Super N-specific</strong> dipper cylinder seal kit. The dipper cylinder is the highest-cycle hydraulic component.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bushing-dipper-stick-and-bucket-link-case-580n-580sn-84170645/">84170645</a></td><td>Dipper stick and bucket link bushing</td><td>16 units sold. Wear bushing at the dipper stick / bucket link interfaces. Cross-fits 580N and 580SN.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/clamshell-bucket-cylinder-seal-kit-for-case-580n-590n-570n-loaders-86982377/">86982377</a></td><td>Clamshell bucket cylinder seal kit</td><td>13 units sold. Seal kit for the clamshell bucket cylinder. Cross-fits 580N, 580SN, 580SN WT, 590SN.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/frame-at-swing-tower-bushing-for-case-580n-580-super-n-backhoes-84226810/">84226810</a></td><td>Frame at swing tower bushing</td><td>13 units sold. Wear bushing at the frame-to-swing-tower interface.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bushing-for-swing-tower-at-boom-cylinder-for-case-backhoes-84230813/">84230813</a></td><td>Swing tower at boom cylinder bushing</td><td>12 units sold. Wear bushing at the swing-tower-to-boom-cylinder interface.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/mechanical-quick-coupler-for-case-580n-580sn-backhoes-84229979/">84229979</a></td><td>Mechanical quick coupler (580N + 580SN)</td><td>11 units sold at $6,294 revenue. Mechanical bucket quick coupler. Cross-fits 580N and 580 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580n-quick-coupler-bucket-pin-84223653/">84223653</a></td><td>Quick coupler bucket pin</td><td>11 units sold. Bucket pin used with the quick coupler.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/stabilizer-cylinder-for-case-580-super-n-backhoe-lh-rh-84421605-84421606-84421606/">84421606</a></td><td>Stabilizer cylinder (580 Super N)</td><td>10 units sold at $13,956 revenue. <strong>580 Super N-specific</strong> stabilizer cylinder (LH or RH).</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bucket-link-bushing-for-case-580n-590-super-n-backhoes-84170654/">84170654</a></td><td>Bucket link bushing</td><td>10 units sold. Bucket link bushing. Cross-fits 580N, 580SN, and 590 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580n-580-super-n-boom-bushing-swing-tower-connection-84246051/">84246051</a></td><td>Boom-at-swing-tower bushing</td><td>10 units sold. Bushing at the boom-to-swing-tower connection.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/pin-for-upper-swing-tower-to-frame-for-case-backhoes-84249275/">84249275</a></td><td>Upper swing tower to frame pin</td><td>9 units sold. Pin at the upper swing-tower-to-frame interface.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580n-580-super-n-pin-kit-loader-bucket-cylinder-link-to-bucket-drag-link-84270815k-2/">84270815K</a></td><td>Bucket cylinder link to drag link pin kit</td><td>9 units sold. Pin and bushing kit at the loader bucket cylinder link-to-drag-link interface.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/greaseable-pin-for-swing-tower-to-boom-for-case-backhoes-84248744/">84248744</a></td><td>Swing tower to boom greaseable pin</td><td>9 units sold. Greaseable pin at the swing-tower-to-boom interface — designed to accept periodic lubrication.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-swing-cylinder-for-580sl-580sm-580sn-590sl-590sm-590sn-backhoe-47922074/">47922074</a></td><td>Swing cylinder (Super family cross-fit)</td><td>8 units sold at $14,097 revenue. Swing cylinder. Cross-fits 580SL, 580SM, 580SN, 590SL, 590SM, 590SN — wide cross-fit Super-line item.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590sm-and-580sn-turbo-iveco-cs-590sm-ii-fk/">CS-590SM-II-FK</a></td><td>Filter kit (Turbo Iveco — Super N + 590SM)</td><td>6 units sold at $1,676 revenue. Filter maintenance kit for the Turbo Iveco F4HE engine — cross-fits 580 Super N and 590 Super M Series II.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/inner-dipper-at-boom-bushing-for-case-backhoes-84229925/">84229925</a></td><td>Inner dipper at boom bushing</td><td>6 units sold. Bushing at the inner dipper / boom interface.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/boom-pin-for-case-580sn-590sn-backhoes-84230833/">84230833</a></td><td>Boom pin (580SN + 590SN)</td><td>6 units sold. Boom pin — Super N and 590 Super N cross-fit.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-extension-cylinder-for-580n-580n-ep-580sn-580sn-wt-loader-backhoe-84159675/">84159675</a></td><td>Extension cylinder (Extendahoe)</td><td>5 units sold at $7,190 revenue. Extension cylinder for the Extendahoe. Cross-fits 580N, 580N EP, 580SN, and 580SN WT.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580-super-n-loader-tilt-cylinder-84210943/">91708357</a></td><td>Loader bucket tilt cylinder (Super N + WT)</td><td>5 units sold at $5,030 revenue. <strong>580 Super N and Super N WT-specific</strong> loader bucket tilt cylinder.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580m-580n-580-super-n-pin-kit-loader-lift-cylinder-to-chassis-335177a1k/">335177A1K</a></td><td>Loader lift cylinder to chassis pin kit</td><td>5 units sold. Pin and bushing kit. Cross-fits 580M, 580N, and 580 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/stabilizer-cylinder-seal-kit-for-case-580sn-wt-590sn-backhoes-84259228/">84259228</a></td><td>Stabilizer cylinder seal kit (580SN WT + 590SN)</td><td>5 units sold. <strong>WT-specific and 590SN</strong> stabilizer cylinder seal kit.</td></tr>
+</tbody>
+</table>
+
+<p>For a comprehensive Case 580 Super N parts inventory beyond these top-sellers, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub.</p>
+
+<h2 id="section-7">Common issues and what to expect</h2>
+
+<h3>Tier 4 after-treatment service</h3>
+
+<p>The Tier 4 Interim DPF and Tier 4 Final SCR + DEF systems are the most common sources of service complaints on Super N machines. DPF active-regeneration faults, DEF dosing module failures, NOx sensor faults, and SCR catalyst monitoring faults are all routine items. Most can be cleared with dealer service tools; some require sensor or module replacement.</p>
+
+<h3>Stabilizer cylinder wear (high-volume)</h3>
+
+<p>Stabilizers see hard service every time the operator sets down. The <a href="https://www.brokentractor.com/p/case-backhoe-stabilizer-boom-cylinder-seal-kit-84259227/">84259227</a> stabilizer cylinder seal kit is our #1 Super N seller, and the <a href="https://www.brokentractor.com/p/stabilizer-cylinder-for-case-580-super-n-backhoe-lh-rh-84421605-84421606-84421606/">84421606</a> complete stabilizer cylinder is the replacement when the original casting is past rebuild.</p>
+
+<h3>Swing tower pin and bushing wear</h3>
+
+<p>The swing tower takes the full load of every dig cycle. Multiple Super N bushings and pins move in volume — the <a href="https://www.brokentractor.com/p/bushing-for-swing-tower-at-boom-for-case-backhoes-84326988/">84326988</a>, <a href="https://www.brokentractor.com/p/bushing-for-swing-tower-at-machine-frame-for-case-backhoes-84235607/">84235607</a>, <a href="https://www.brokentractor.com/p/case-580n-580-super-n-boom-bushing-swing-tower-connection-84246051/">84246051</a>, and <a href="https://www.brokentractor.com/p/pin-for-upper-swing-tower-to-frame-for-case-backhoes-84249275/">84249275</a> all see consistent monthly traffic. Symptoms of wear: boom slop, audible knock during swing reversals.</p>
+
+<h3>Dipper cylinder wear</h3>
+
+<p>The dipper cylinder is the highest-cycle hydraulic component on the backhoe. The <a href="https://www.brokentractor.com/p/dipper-cylinder-seal-kit-for-case-580-super-n-84259222/">84259222</a> dipper cylinder seal kit is the verified Super N rebuild path. Replace seals at the first sign of weeping.</p>
+
+<h3>Bucket and quick coupler wear</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/mechanical-quick-coupler-for-case-580n-580sn-backhoes-84229979/">84229979</a> mechanical quick coupler, <a href="https://www.brokentractor.com/p/case-580n-quick-coupler-bucket-pin-84223653/">84223653</a> coupler pin, and <a href="https://www.brokentractor.com/p/bucket-link-bushing-for-case-580n-590-super-n-backhoes-84170654/">84170654</a> bucket link bushing are routine bucket-hardware wear items.</p>
+
+<h3>Loader tilt cylinder wear</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/case-580-super-n-loader-tilt-cylinder-84210943/">91708357</a> loader bucket tilt cylinder is Super N-specific. Different part number than the 580N — confirm machine variant before ordering.</p>
+
+<h3>Cab air filtration</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/cab-air-filter-for-case-580n-580sn-590sn-580ev-backhoes-af55774/">AF55774</a> cab air filter covers 580N, 580SN, 590SN, and 580EV. Replace at major service intervals to keep the cab HVAC clean.</p>
+
+<h3>Filter kit for turbo Iveco engine</h3>
+
+<p>For Tier 4 Interim Super N machines (and 590 Super M Series II), the <a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590sm-and-580sn-turbo-iveco-cs-590sm-ii-fk/">CS-590SM-II-FK</a> filter kit is the verified maintenance set.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 580 Super N?</h3>
+<p>The Super N is the current top of our backhoe parts inventory — 61 distinct service items sold across the family in the last 12 months. Our specialists can verify Tier 3 / Tier 4 Interim / Tier 4 Final fitment by serial number and confirm standard vs. Wide-Track configuration.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-8">Where the 580 Super N sits in the Construction King family</h2>
+
+<p>The 580 Super N is the N-generation turbocharged Construction King small-frame backhoe loader and represents the current state of the Case backhoe platform. It sits alongside the naturally aspirated 580N. Above it sits the larger-frame 590 Super N (same engine family, larger chassis). Before it came the 580 Super M with the Case 445T/M family. The 580EV electric variant (2024+) shares the Super N chassis with a 71 kWh battery in place of the diesel engine. The Super N's emissions and after-treatment evolution — Tier 3 to Tier 4 Interim to Tier 4 Final — represents the most consequential running update in the Construction King's modern history.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 580 Super N and the verified BigCommerce catalog at brokentractor.com — including the actual 12-month sales rankings that informed the parts table above. We sell Case parts every day and call out the Tier 3 / Tier 4 distinctions that show up at the counter.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Naturally aspirated sibling</span><a href="https://www.brokentractor.com/p/case-580n-backhoe-parts-specs/">Case 580N</a> — same chassis, FPT non-turbo</li>
+<li><span class="meta">Predecessor (turbo line)</span><a href="https://www.brokentractor.com/p/case-580-super-m-backhoe-case-580superm-backhoeloader-specs/">Case 580 Super M</a> — Case 445T/M turbo</li>
+<li><span class="meta">Larger-frame contemporary</span><a href="https://www.brokentractor.com/p/case-590-super-n-loader-backhoe-specs-parts-serial-number-info-case-590supern-loaderbackhoe-specs/">Case 590 Super N</a> — same engine family on larger chassis</li>
+<li><span class="meta">Electric variant</span><a href="https://www.brokentractor.com/p/case-580-ev-electric-backhoe-loader-parts-specs-common-issues-case-580-ev-electric-backhoe-loader-parts-specs-common-issues/">Case 580 EV</a> — battery-electric on Super N chassis</li>
+<li><span class="meta">Loader Landscaper sibling</span><a href="https://www.brokentractor.com/p/case-570n-ep-loader-landscaper/">Case 570N EP</a> — same engine family, no backhoe</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

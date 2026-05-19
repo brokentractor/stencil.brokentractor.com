@@ -1,0 +1,324 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 580L Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1995 – 2000, the 580L is the naturally aspirated L-generation Construction King. Cummins 4-390 four-cylinder diesel carrying 75 HP gross forward from the 580K, paired with redesigned L-generation hydraulics, a new cab with substantially improved operator station, and a 17-spline hydraulic pump that defines the L-generation drivetrain. Most service parts cross-fit with the larger-volume 580M that succeeded it.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580l-hero.jpg" alt="Case 580L Construction King Backhoe Loader">
+</div>
+</header>
+
+<p>The Case 580L is the naturally aspirated version of the L-generation Construction King small-frame backhoe loader. It came to market in 1995, replacing the 580K, and ran through 2000 alongside the turbocharged 580 Super L. The 580L carries the same Cummins 4-390 four-cylinder 3.9 L naturally aspirated diesel forward from the 580K — output rated at approximately 75 HP gross — and pairs it with the L-generation cab, refined hydraulics, and a new 17-spline hydraulic pump configuration that distinguishes the L-generation drivetrain from the earlier K-generation 9-spline arrangement.</p>
+
+<p>For owners maintaining a 580L today, the most useful single fact is that many service parts cross-fit with the 580M (2001–2008) that succeeded it. The 580L and 580M share the same cab, the same backhoe iron, the same hydraulic architecture (with the 17-spline pump shaft), and most pin and bushing wear points. Catalog labels reading "580L, 580M" reflect this commonality. The 580 Super L (turbocharged variant of the 580L) sits on the same chassis but with engine and exhaust differences.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 580L differs from the 580 Super L</a></li>
+<li><a href="#section-3">How the 580L differs from the 580K</a></li>
+<li><a href="#section-4">Cummins 4-390 engine (naturally aspirated)</a></li>
+<li><a href="#section-5">Power shuttle and wet-disc brakes</a></li>
+<li><a href="#section-6">Verified top-selling 580L parts</a></li>
+<li><a href="#section-7">Common issues and what to expect</a></li>
+<li><a href="#section-8">Where the 580L sits in the Construction King family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 580L — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1995 – 2000</dd>
+<dt>Predecessor</dt><dd>Case 580K (1987 – 1994)</dd>
+<dt>Sibling (same era)</dt><dd>Case 580 Super L (turbocharged variant)</dd>
+<dt>Successor</dt><dd>Case 580M (2001 – 2008)</dd>
+<dt>Engine</dt><dd>Cummins 4-390 (4BT 3.9L, naturally aspirated)</dd>
+<dt>Displacement</dt><dd>239 cu in (3.9 L)</dd>
+<dt>Cylinders</dt><dd>4, liquid-cooled, direct-injection diesel</dd>
+<dt>Power</dt><dd>~75 HP gross</dd>
+<dt>Transmission</dt><dd>Case 4-speed power shuttle, single-stage torque converter</dd>
+<dt>Drive</dt><dd>2WD standard; 4WD optional (Carraro)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate (continued from 580K)</dd>
+<dt>Hydraulic system</dt><dd>Open-center, gear pump (17-spline shaft)</dd>
+<dt>System pressure</dt><dd>~3,000 psi</dd>
+<dt>Operating weight</dt><dd>~14,500 – 16,500 lb (varies with configuration)</dd>
+<dt>Backhoe dig depth</dt><dd>Up to ~14 ft (standard) or ~18 ft (Extendahoe)</dd>
+<dt>Loader breakout</dt><dd>~9,500 – 10,500 lb</dd>
+<dt>Cab</dt><dd>Redesigned L-generation cab; optional A/C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 580L differs from the 580 Super L</h2>
+
+<p>The 580L and 580 Super L share their chassis, transmission architecture, axles, brakes, hydraulics, cab, and most loader and backhoe iron. The differences are confined to the engine and supporting systems:</p>
+
+<ul>
+<li><strong>Engine</strong> — 580L uses the naturally aspirated Cummins 4-390 (~75 HP gross); 580 Super L uses the turbocharged 4T-390 (~86–91 HP gross depending on Series I or II).</li>
+<li><strong>Turbocharger</strong> — only on the Super L. The wastegated turbo, mounting brackets, oil supply and return lines, and exhaust plumbing are all Super L-specific.</li>
+<li><strong>Muffler</strong> — 192928A1 non-turbo muffler is the 580L's exhaust component; 192483A1 is the turbo muffler for Super L Series I (Series II uses different exhaust).</li>
+<li><strong>Filter kits</strong> — Super L uses Series I (CS-580LI-FK) or Series II (CS-580LIIT-FK) filter sets depending on serial number. The 580L uses a non-turbo filter configuration.</li>
+<li><strong>Power output</strong> — Super L approximately 11–16 HP higher with substantially more low-end torque under load.</li>
+<li><strong>Hydraulic tank capacity</strong> — Super L Series I uses a dedicated hydraulic tank (130050A1) that differs from the 580L's tank configuration.</li>
+</ul>
+
+<p>Everything else — drivetrain, chassis, brakes, cab, loader, and backhoe — interchanges with the Super L. Many parts labeled "580L, 580 Super L" in our catalog fit both machines.</p>
+
+<h2 id="section-3">How the 580L differs from the 580K</h2>
+
+<p>The 580L is a substantial platform refresh over the 580K rather than a minor evolution. The notable changes:</p>
+
+<ul>
+<li><strong>Cab and operator station</strong> — completely redesigned L-generation cab with improved visibility, better operator controls, and refined HVAC architecture.</li>
+<li><strong>Hydraulic pump spline change</strong> — the 580L uses a 17-spline hydraulic pump shaft (257953A1 in our catalog); the 580K used a different spline configuration. This means 580K hydraulic pumps will not fit the 580L and vice versa.</li>
+<li><strong>Refined hydraulic plumbing</strong> — updated hose routing, control valve refinements, and improved cooling integration.</li>
+<li><strong>Loader and backhoe iron refinements</strong> — minor structural updates to the loader frame and backhoe components for improved durability.</li>
+<li><strong>Same engine block</strong> — Cummins 4-390 carried forward from the 580K. Engine internals interchange.</li>
+<li><strong>Same wet-disc brake architecture</strong> — wet-disc multi-plate brakes continue from the 580K.</li>
+</ul>
+
+<div class="bt-callout">
+<strong>The 17-spline hydraulic pump distinction</strong>
+The 580L's main hydraulic pump (257953A1 — one of our top sellers at 22 units sold for $15,617 revenue last 12 months) uses a 17-spline shaft. The earlier 580K pumps use a different spline configuration. This is one of the most common parts-ordering mistakes — confirm spline count before ordering a hydraulic pump for a 580L. The 580M (which succeeded the 580L) uses the same 17-spline pump, which is why the 257953A1 is explicitly labeled "580L, 580M."
+</div>
+
+<h2 id="section-4">Cummins 4-390 engine (naturally aspirated)</h2>
+
+<p>The 580L's Cummins 4-390 is the same naturally aspirated 4BT 3.9 L engine used on the 580K Phase I (and other Phase III variants). The engine carries forward unchanged from the K generation — the 580L's engine changes are calibration and emissions-control refinements rather than fundamental architecture changes. That means 4-390 service parts (pistons, rings, bearings, head gasket sets, water pumps, oil pumps) source through Cummins 4BT industrial channels as well as Case-branded parts.</p>
+
+<p>The 4BT's broad industrial-engine ecosystem is one of the most useful single facts about the 580L's parts availability. The same engine appears on Dodge Ram pickups, industrial generator sets, marine pumps, and a long list of construction equipment.</p>
+
+<h2 id="section-5">Power shuttle and wet-disc brakes</h2>
+
+<p>The 580L uses Case's four-speed Power Shuttle transmission with single-stage torque converter, with refinements over the K-generation shuttle. Wet-disc multi-plate brakes continue from the 580K with the same general architecture. Service items follow the same wear pattern as the K generation: hydraulically actuated clutch packs wear, the shuttle control valve gets sticky, and the torque converter charge pump weakens with age.</p>
+
+<h2 id="section-6">Verified top-selling 580L parts</h2>
+
+<p>The parts table below leads with the items our 580L customers actually buy, ranked by 12-month sales volume. The 580L family ranks among our highest-volume backhoes in service-parts traffic — 33 distinct 580L parts sold over the last 12 months totaling more than $166,000 in revenue, with many cross-fits to the 580M that increase the effective parts pool.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Why it sells</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-loader-bucket-tilt-cylinder-seal-kit-175251a1/">175251A1</a></td><td>Loader bucket tilt cylinder seal kit (580L, 580M)</td><td>Our #1 580L parts seller — 136 units sold over the last 12 months. Tilt cylinder seal rebuild kit. Cross-fits 580L and 580M. The loader bucket tilt cylinder is one of the highest-cycle hydraulic components — seal kits at this rate of sales are a clear high-frequency wear item.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-series-cylinder-seal-kit-131750a2/">131750A2</a></td><td>580L Series cylinder seal kit</td><td>103 units sold. General-purpose cylinder seal kit for the 580L hydraulic system. Used across multiple cylinders during major service.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-o-ring-for-580l-580m-580sm-series-308036a1/">308036A1</a></td><td>O-ring (580L / 580M / 580SM)</td><td>52 units sold. Standard hydraulic O-ring. Cross-fits 580L, 580M, and 580 Super M. Small-dollar item but high volume — common rebuild component.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-new-hydraulic-pump-17-spline-shaft-257953a1/">257953A1</a></td><td>Main hydraulic pump (580L + 580M, 17-spline)</td><td>22 units sold at $15,617 revenue. <strong>The 17-spline shaft hydraulic pump that defines the L-generation drivetrain.</strong> Cross-fits 580L and 580M. Do NOT order a 580K pump for a 580L — the spline counts differ.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-stabilizer-cylinder-new-195503a1/">195503A1</a></td><td>Stabilizer cylinder (new, 580L + 580M)</td><td>18 units sold at $23,184 revenue. New OEM stabilizer cylinder. Cross-fits 580L and 580M. High-cycle hydraulic component; rebuild or replace when seal weeps or holding pressure drops.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-non-turbo-new-muffler-192928a1/">192928A1</a></td><td>Non-turbo muffler (580L)</td><td>17 units sold at $6,498 revenue. <strong>580L-specific non-turbo muffler.</strong> Do NOT order for Super L — the turbo configuration uses a different exhaust.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-new-dipper-cylinder-233114a2/">233114A2</a></td><td>Dipper cylinder (new, 580L + 580M)</td><td>14 units sold at $20,622 revenue. The dipper cylinder is the highest-cycle hydraulic component on the backhoe. New OEM dipper cylinder for 580L and 580M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-backhoe-boom-cylinder-new-189653a2/">189653A2</a></td><td>Boom cylinder (new, PVE)</td><td>10 units sold at $18,676 revenue. New boom cylinder for 580L and 580M. The boom cylinder cycles every dig and load operation.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-backhoe-hydraulic-cylinder-seal-rebuild-kit-4-bore-cs-sk-3-4/">CS-SK-3-4</a></td><td>Hydraulic cylinder seal rebuild kit (4" bore)</td><td>10 units sold. 4-inch bore cylinder seal kit. Use for the main hydraulic cylinders on the 580L.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-seal-kit-package-cs-sk-3a/">CS-SK-3A</a></td><td>580L seal kit package</td><td>9 units sold. Multi-cylinder seal kit package — includes boom cylinder seal kit, stabilizer seal kits, and additional components in one bundle.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-swing-tower-pin-and-bushing-kit-326806a1-kit/">326806A1-KIT</a></td><td>Swing tower pin and bushing kit (580L + 580M)</td><td>8 units sold at $7,662 revenue. Complete swing tower pin and bushing rebuild kit. Includes the D149079 bushings and matching pins. Cross-fits 580L and 580M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-loader-bucket-cylinder-reman-oem-175238a1/">175238A1</a></td><td>Loader bucket cylinder (rebuilt, OEM)</td><td>7 units sold at $7,798 revenue. Rebuilt OEM loader bucket cylinder. Cost-effective alternative to new when the original cylinder is past piecemeal rebuild.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-ring-gear-and-pinion-set-580l-580m-580m-ii-175956a1/">175956A1</a></td><td>Ring gear and pinion set (580L / 580M / 580M II)</td><td>6 units sold. Differential ring and pinion. Cross-fits 580L, 580M, and 580M II.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-new-stabilizer-cylinder-195504a1/">195504A1</a></td><td>Stabilizer cylinder (new, second part number)</td><td>5 units sold. Stabilizer cylinder. Cross-fits 580L and 580M. Confirm orientation (left or right) before ordering.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-580-super-m-pin-kit-stabilizer-cylinder-to-chassis-d38907k/">D38907K</a></td><td>Stabilizer cylinder to chassis pin kit</td><td>5 units sold. Pin and bushing kit for the stabilizer cylinder mount at the chassis. Cross-fits 580L, 580M, and 580 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-dipper-cylinder-gland-234141a2/">234141A2</a></td><td>Dipper cylinder gland (580L + 580M)</td><td>7 units sold at $2,322 revenue. Dipper cylinder gland nut. Service item when the dipper cylinder is rebuilt.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-mirror-for-580-l-and-m-series-87406924np/">87406924NP</a></td><td>Cab mirror (580 L &amp; M series)</td><td>7 units sold. Side mirror for the L-generation cab. Common replacement item as the original glass and mounting hardware degrades.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580l-580m-backhoe-bucket-cylinder-rebuilt-128760a1-r/">128760A1-R</a></td><td>Bucket cylinder (rebuilt, 580L + 580M)</td><td>4 units sold at $4,859 revenue. Rebuilt OEM bucket cylinder. The bucket cylinder is the highest-cycle hydraulic component on the backhoe — many 580Ls are on their second or third bucket cylinder.</td></tr>
+</tbody>
+</table>
+
+<p>For a comprehensive Case 580L parts inventory beyond these top-sellers, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub or consult the related <a href="https://www.brokentractor.com/p/case-580m-580-super-m-backhoe-loader/">Case 580M spotlight</a> for cross-fit items.</p>
+
+<h2 id="section-7">Common issues and what to expect</h2>
+
+<h3>Hydraulic cylinder seal failure (high-volume)</h3>
+
+<p>The 175251A1 loader bucket tilt cylinder seal kit and 131750A2 580L cylinder seal kit are our two highest-volume 580L parts. That tells you the most-common service item on a 580L is hydraulic cylinder seal degradation. 25-plus-year-old seals dry out and weep — every cylinder on an unrestored 580L is a candidate for reseal.</p>
+
+<h3>Hydraulic pump wear</h3>
+
+<p>The 257953A1 17-spline hydraulic pump wears over time. Symptoms: lazy boom and dipper, weak stabilizers, longer cycle times under load.</p>
+
+<h3>Bucket and dipper cylinder wear</h3>
+
+<p>The bucket cylinder (128760A1-R rebuilt, 175238A1 loader bucket cylinder) and dipper cylinder (233114A2 new) are the highest-cycle hydraulic components on the backhoe. Plan on cylinder rebuild or replacement at 5,000–8,000 hour intervals depending on service severity.</p>
+
+<h3>Swing tower wear</h3>
+
+<p>The swing tower takes the full load of every dig cycle. The 326806A1-KIT swing tower pin and bushing kit covers the wear items at the bottom-of-tower interface. Symptoms of wear: slop in the boom under load, audible knock during swing reversals.</p>
+
+<h3>Stabilizer cylinder wear</h3>
+
+<p>The 195503A1 / 195504A1 stabilizer cylinders are routine replacement items. Stabilizers get hammered every time the operator sets down — particularly on hard surfaces.</p>
+
+<h3>Power shuttle clutch wear</h3>
+
+<p>The Power Shuttle's hydraulically actuated clutch packs wear with age. Symptoms: harsh direction changes, slow engagement, slipping under load.</p>
+
+<h3>Wet-disc brake wear</h3>
+
+<p>Continued from the 580K. After 6,000–8,000 hours of service, wet-disc brakes wear out. The L-generation brake architecture is similar to the K-generation, with the same general service profile.</p>
+
+<h3>Cab and HVAC service</h3>
+
+<p>The redesigned L-generation cab introduced more sophisticated HVAC and operator-station electronics. Common items on 25-plus-year-old cabs: weather seal degradation, A/C compressor wear, and gauge cluster aging.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 580L?</h3>
+<p>The 580L is one of our highest-volume backhoes in parts traffic. Our specialists can verify naturally aspirated vs. turbo (Super L) fitment, confirm hydraulic pump spline count, and walk you through cross-references to the 580M that often save money on a parts order.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-8">Where the 580L sits in the Construction King family</h2>
+
+<p>The 580L is the L-generation naturally aspirated Construction King small-frame backhoe loader. It sat alongside the turbocharged 580 Super L from 1995 through 2000. Above it in the L generation was the larger-frame 590 Super L. Before the 580L came the 580K with the same engine family but the earlier 9-spline hydraulic pump and pre-L cab. After the 580L came the 580M (2001–2008) with the Case 445T/M engine replacing the Cummins 4-390 and refined hydraulics carrying the 17-spline pump configuration forward.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 580L and the verified BigCommerce catalog at brokentractor.com — including the actual 12-month sales rankings that informed the parts table above. We sell Case parts every day and call out the 580L vs. Super L distinctions that show up at the counter.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Turbocharged variant</span><a href="https://www.brokentractor.com/p/case-580l-580-super-l-backhoe-loader/">Case 580 Super L</a> — same chassis, Cummins 4T-390 turbocharged</li>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-580k-backhoe-specs-580k/">Case 580K</a> — pre-L-generation cab, different hydraulic pump spline</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-580m-580-super-m-backhoe-loader/">Case 580M</a> — Case 445T/M engine, refined L-platform hydraulics</li>
+<li><span class="meta">Larger-frame contemporary</span><a href="https://www.brokentractor.com/case-590-super-l-590-super-m">Case 590 Super L</a></li>
+<li><span class="meta">Loader Landscaper sibling</span><a href="https://www.brokentractor.com/p/case-570lxt-tractor-loader-parts-specs-common-issues-case-570lxt-tractor-loader-parts-specs-common-issues/">Case 570LXT</a> — same engine family, no backhoe</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

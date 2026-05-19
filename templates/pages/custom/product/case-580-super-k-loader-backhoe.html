@@ -1,0 +1,316 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 580 Super K Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1987 – 1994 as the turbocharged version of the K-generation Construction King. Cummins 4T-390 turbocharged four-cylinder diesel, approximately 75 HP, wet-disc multi-plate brakes, and the same Phase III chassis architecture used on the late 580K. The Super K is mechanically very close to the 580K Phase III minus a few engine and exhaust differences.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580-super-k-hero.jpg" alt="Case 580 Super K Construction King Turbocharged Backhoe Loader">
+</div>
+</header>
+
+<p>The Case 580 Super K is the turbocharged version of the K-generation Construction King small-frame backhoe loader. It came to market in 1987 alongside the naturally aspirated 580K and ran through 1994. The defining Super K feature is the engine: a Cummins 4T-390 turbocharged four-cylinder diesel making approximately 75 HP — about 10 HP more than the 580K's naturally aspirated 4-390, with substantially stronger torque under load. The Super K shares its chassis, hydraulics, drivetrain, wet-disc brakes, axles, loader iron, and backhoe iron with the 580K Phase III (the post-JJG0020000 580K).</p>
+
+<p>For owners maintaining a 580 Super K today, the most useful single fact is that most service parts cross-fit with the 580K Phase III. Many parts in our catalog explicitly carry "580K, 580 Super K" fitment because the two machines share so much architecture. The Super K-specific items are largely confined to the turbocharger and its supporting systems: the A184890 turbo muffler, CS-580SK-FK turbo filter kit, the 580 Super K decal set (C580SK), and a handful of items that differ from the naturally aspirated 580K because of the turbo's heat and pressure load.</p>
+
+<div class="bt-callout">
+<strong>The single most important parts-ordering insight</strong>
+The Super K shares its chassis with the 580K Phase III (after serial JJG0020000), not with the 580K Phase I. Many service items labeled "580K, 580 Super K" in catalogs actually mean "580K Phase III + Super K" rather than all 580Ks. The D146608 hydraulic pump, A188946 metallic transmission disc, 1995361C1 brake plate piston, and CS-580SK-TRAXL-R rebuilt transaxle all reflect this Phase III / Super K commonality.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 580 Super K differs from the 580K</a></li>
+<li><a href="#section-3">The Cummins 4T-390 turbocharged engine</a></li>
+<li><a href="#section-4">Wet-disc brakes (shared with 580K)</a></li>
+<li><a href="#section-5">Power shuttle transmission</a></li>
+<li><a href="#section-6">Verified top-selling 580 Super K parts</a></li>
+<li><a href="#section-7">Common issues and what to expect</a></li>
+<li><a href="#section-8">Where the 580 Super K sits in the Construction King family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 580 Super K — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1987 – 1994</dd>
+<dt>Sibling (same era)</dt><dd>Case 580K (naturally aspirated)</dd>
+<dt>Larger-frame contemporary</dt><dd>Case 590 Turbo (1990 – 1995)</dd>
+<dt>Successor</dt><dd>Case 580 Super L (1995 – 2000)</dd>
+<dt>Engine</dt><dd>Cummins 4T-390 (4BT 3.9L, turbocharged)</dd>
+<dt>Displacement</dt><dd>239 cu in (3.9 L)</dd>
+<dt>Cylinders</dt><dd>4, turbocharged, liquid-cooled, direct-injection diesel</dd>
+<dt>Power</dt><dd>~75 HP</dd>
+<dt>Compared to 580K</dt><dd>~10 HP higher; substantially more torque under load</dd>
+<dt>Transmission</dt><dd>Case 4-speed power shuttle, single-stage torque converter</dd>
+<dt>Drive</dt><dd>2WD standard; 4WD optional (Carraro)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate</dd>
+<dt>Hydraulic system</dt><dd>Open-center, gear pump</dd>
+<dt>System pressure</dt><dd>~3,000 psi</dd>
+<dt>Operating weight</dt><dd>~14,500 – 16,500 lb</dd>
+<dt>Backhoe dig depth</dt><dd>Up to ~14 ft (standard) or ~18 ft (Extendahoe)</dd>
+<dt>Loader breakout</dt><dd>~9,500 – 10,500 lb</dd>
+<dt>Cab</dt><dd>Optional enclosed cab with A/C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 580 Super K differs from the 580K</h2>
+
+<p>The Super K and 580K share most chassis architecture. The differences are largely confined to the engine and supporting systems:</p>
+
+<ul>
+<li><strong>Engine</strong> — Super K uses the Cummins 4T-390 turbocharged 4-cylinder; 580K uses the naturally aspirated 4-390. Same 239 cubic inch (3.9 L) block, same bore-stroke geometry, same Bosch in-line injection pump architecture.</li>
+<li><strong>Turbocharger</strong> — only on the Super K. The wastegated turbo, mounting brackets, oil supply and return lines, and exhaust plumbing are all Super K-specific. The J802290 turbocharger in our catalog is the verified turbo replacement.</li>
+<li><strong>Muffler</strong> — the A184237 non-turbo muffler is for 580K and certain non-turbo Super K configurations; the A184890 turbo muffler is the Super K turbo-engine-specific exhaust component.</li>
+<li><strong>Filter kits</strong> — CS-580SK-FK is the Super K + 590 Turbo filter set (covers the turbo engine's specific filtration); CS-580KIII-FK is the 580K Phase III filter set; CS-580KI-FK is the Phase I 580K filter set.</li>
+<li><strong>Power output</strong> — Super K approximately 75 HP vs. 580K's 65 HP. Peak torque arrives at lower rpm on the Super K, giving it substantially more low-end pull for digging and lifting.</li>
+<li><strong>Cooling system</strong> — slightly larger or higher-flow on the Super K to handle the turbo's additional heat load, though the A172038 radiator cross-fits both.</li>
+<li><strong>Decal set</strong> — C580SK identifies a Super K specifically; C580K is the 580K-only decal.</li>
+</ul>
+
+<p>Everything else — hydraulics, drivetrain, axles, brakes, frame, loader and backhoe iron, cab — interchanges with the Phase III 580K. Many parts labeled "580K, 580 Super K" in our catalog fit both machines.</p>
+
+<h2 id="section-3">The Cummins 4T-390 turbocharged engine</h2>
+
+<p>The Cummins 4T-390 is the turbocharged version of the 4-390 (4BT) used on the 580K. Both engines share the same 239 cubic inch (3.9 L) four-cylinder block casting and the same lower-end architecture. The turbo version adds a wastegated turbocharger and uses heavier-duty internal components — stronger connecting rods, modified pistons with appropriate compression-ratio targets, and head modifications to handle the increased thermal and pressure load.</p>
+
+<p>The Cummins 4BT industrial engine family has one of the broadest parts ecosystems of any small-block diesel in existence. The same engine appears on Dodge Ram pickups, industrial generator sets, marine pumps, military vehicles, and a long list of construction equipment. That parts ecosystem means pistons, rings, bearings, head gasket sets, water pumps, oil pumps, and many valve train components source readily through Cummins 4BT service channels in addition to Case-branded parts. The 580 Super K benefits directly from this engine commonality.</p>
+
+<p>The Super K's wastegated turbocharger is the single most common engine-service item that distinguishes the Super K from the naturally aspirated 580K. Symptoms of turbo wear: blue smoke at startup or under throttle, oil consumption, audible whine outside the normal pitch range, or visible compressor wheel shaft play. Plan on a turbocharger rebuild or replacement as a baseline restoration step on any unrestored Super K.</p>
+
+<h2 id="section-4">Wet-disc brakes (shared with 580K)</h2>
+
+<p>The 580 Super K uses the same wet-disc multi-plate brake architecture as the late 580K. Discs run submerged in the rear-end transaxle oil, providing effectively maintenance-free brake service for the life of the disc pack — typically 6,000–8,000 hours of hard service. When the discs do wear out, the symptom is gradual loss of brake pedal pressure, sometimes with metal flake in the rear-end oil. The 1995361C1 brake plate piston is the verified service component, cross-fitting Super K, 580K Phase III, and 590 Turbo.</p>
+
+<h2 id="section-5">Power shuttle transmission</h2>
+
+<p>The Super K uses Case's four-speed Power Shuttle transmission with single-stage torque converter, the same drivetrain as the Phase III 580K. The A188946 metallic transmission disc is one of our highest-volume parts (137 units sold over the last 12 months) and is the standard replacement for the clutch disc in this drivetrain. The CS-580SK-TRAXL-R rebuilt transaxle covers the Super K and the 580K Phase III as a complete drop-in replacement.</p>
+
+<h2 id="section-6">Verified top-selling 580 Super K parts</h2>
+
+<p>The parts table below leads with the items our 580 Super K customers actually buy, ranked by 12-month sales volume across the 580K / Super K family. Many parts cross-fit between the two — those are clearly labeled. Super K-specific items are flagged.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Why it's relevant</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-after-jjg0020000-580-super-k-590-turbo-metallic-transmission-disc-a188946/">A188946</a></td><td>Metallic transmission disc (Super K + 580K Phase III + 590T)</td><td>Our #1 K-family parts seller — 137 units sold over the last 12 months. The metallic clutch disc used in the Power Shuttle. Cross-fits Super K, 580K after JJG0020000, and 590 Turbo.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-hydraulic-cylinder-seal-kit-package-for-580k-580-super-k-cs-sk-2-3-5/">CS-SK-2-3.5</a></td><td>Hydraulic cylinder seal kit package</td><td>80 units sold at $37,802 revenue. Covers every hydraulic cylinder on the machine in one package. Cross-fits 580K and 580 Super K.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580sk-590-backhoe-upper-radiator-hose-d127774/">D127774</a></td><td>Upper radiator hose</td><td>73 units sold. Cross-fits 580K, 580SK, and 590 Turbo. Original hoses harden and crack over 30+ years.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580sk-590-backhoe-lower-radiator-hose-d127775/">D127775</a></td><td>Lower radiator hose</td><td>69 units sold. Matching lower hose — replace together with the D127774 during cooling system service.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-brake-plate-piston-fits-580k-580-super-k-590-turbo-1341069c1-1995361c1/">1995361C1</a></td><td>Brake plate piston (wet-disc system)</td><td>63 units sold. Wet-disc brake plate piston. Cross-fits Super K, 580K Phase III, 590 Turbo. Use when wet-disc brakes lose holding pressure.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-king-pin-kit-580k-580-super-k-590t-backhoe-4wd-710103/">710103</a></td><td>4WD king pin kit (Super K, 580K, 590T)</td><td>43 units sold. Complete 4WD front axle king pin kit. Critical wear item on 4WD machines.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580-super-k-non-turbo-muffler-a184237/">A184237</a></td><td>Non-turbo muffler (580K + non-turbo Super K)</td><td>40 units sold. Non-turbo muffler — for the 580K and certain non-turbo Super K configurations.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-580-super-k-and-590-turbo-cs-580sk-fk/">CS-580SK-FK</a></td><td>Filter maintenance kit (Super K + 590T turbo)</td><td>38 units sold. <strong>Super K-specific filter set</strong> — covers the turbo engine's specific filtration requirements. Also fits the 590 Turbo. Do NOT use the 580K Phase I or Phase III filter kits on a Super K with the turbo engine.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/radiator-for-case-580k-and-580-super-k-backhoes-a172038/">A172038</a></td><td>Radiator (Super K + 580K)</td><td>27 units sold. Cooling radiator. Cross-fits Super K and 580K. High-replacement item as original cores corrode internally.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580sk-hydraulic-oil-cooler-a184542/">A184542</a></td><td>Hydraulic oil cooler</td><td>14 units sold at $17,442 revenue. Dedicated hydraulic oil cooler. Cross-fits 580K and 580SK.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580-super-k-backhoe-decal-set-c580sk/">C580SK</a></td><td>580 Super K decal set</td><td>14 units sold. <strong>Super K-specific hood decal set.</strong> The visual identifier — useful for restorations where the original decals have faded.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580-super-k-dipper-stick-cylinder-110294a1/">110294A1</a></td><td>Dipper stick cylinder (PVE)</td><td>11 units sold at $20,699 revenue. The dipper cylinder is the highest-cycle hydraulic component on the backhoe. Cross-fits Super K and 580K.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580-super-k-muffler-turbocharged-engine-a184890/">A184890</a></td><td>Super K turbo muffler</td><td>9 units sold. <strong>Super K turbo-engine-specific muffler.</strong> Use only on turbo-equipped Super Ks.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/main-hydraulic-pump-for-case-580-super-k-and-580k-iii-d146608/">D146608</a></td><td>Main hydraulic pump (Super K + 580K Phase III)</td><td>The hydraulic pump explicitly labeled for "580 Super K and 580K-III." Cross-fits Phase III 580K and Super K. Do NOT order for Phase I 580K.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-differential-ring-gear-pinion-set-580-super-k-590-turbo-a190330/">A190330</a></td><td>Ring gear &amp; pinion set (Super K + 590T)</td><td>5 units sold. Differential ring and pinion. Cross-fits 580K Phase III, 580 Super K, and 590 Turbo.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580-super-k-580k-iii-rebuilt-transaxle-cs-580sk-traxl-r/">CS-580SK-TRAXL-R</a></td><td>Rebuilt transaxle (Super K + 580K Phase III)</td><td>Complete rebuilt transaxle for Super K and 580K Phase III. Cost-effective drop-in replacement when the original transaxle is past piecemeal rebuild.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580-super-k-pin-kit-loader-frame-to-bucket-d129256k/">D129256K</a></td><td>Loader frame to bucket pin kit</td><td>12 units sold. Loader bucket-mount pin kit. Cross-fits Super K and 580K.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580sk-580sl-580sm-stabilizer-cylinder-new-199721a1/">199721A1</a></td><td>Stabilizer cylinder (PVE — new)</td><td>20 units sold at $24,961 revenue. Stabilizer cylinder. Cross-fits 580SK, 580SL, and 580SM — the full Super-series line.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580-super-k-580k-iii-rebuilt-4wd-front-axle-assembly-cfa580sk-4/">CFA580SK-4</a></td><td>Rebuilt 4WD front axle (Super K + 580K + 590 Turbo)</td><td>Complete rebuilt Carraro 4WD front axle assembly. Cost-effective fix when the original axle is past piecemeal rebuild.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580-super-k-backhoe-stabilizer-outrigger-pin-and-bushing-kit-cs-580sk-spk/">CS-580SK-SPK</a></td><td>Stabilizer pin &amp; bushing kit (Super K)</td><td><strong>Super K-specific</strong> stabilizer pin/bushing kit. Covers the stabilizer leg-to-frame and stabilizer cylinder ends.</td></tr>
+</tbody>
+</table>
+
+<p>For a comprehensive Case 580 Super K parts inventory beyond these top-sellers, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub or consult the related <a href="https://www.brokentractor.com/p/case-580k-backhoe-specs-580k/">Case 580K spotlight</a> for additional cross-fit items.</p>
+
+<h2 id="section-7">Common issues and what to expect</h2>
+
+<h3>Turbocharger wear</h3>
+
+<p>The Super K's wastegated turbocharger is the most common single failure point that distinguishes the Super K from the naturally aspirated 580K. Symptoms: blue smoke at startup or during throttle application, oil consumption, audible whine outside the normal pitch range, or visible compressor wheel shaft play. Replace or rebuild at the first sign of bearing wear — a failed turbo can ingest its own compressor wheel and damage the engine.</p>
+
+<h3>4T-390 engine wear</h3>
+
+<p>The Cummins 4BT block is durable, with broad service-parts availability. Common items on 30-plus-year-old turbo engines: head gasket failure (typically between cylinders or at the deck), injector wear (causes hard starting and rough running), and the turbocharger items called out above. Engine parts are widely available through both Case sources and Cummins B-series channels.</p>
+
+<h3>Wet-disc brake wear</h3>
+
+<p>After 6,000–8,000 hours of hard service, the wet-disc brakes wear out. The 1995361C1 brake plate piston and matching service components are the verified replacements.</p>
+
+<h3>Hydraulic pump wear</h3>
+
+<p>The D146608 main hydraulic pump wears over time. Symptoms: lazy boom and dipper, weak stabilizers, longer cycle times under load.</p>
+
+<h3>Cooling system service</h3>
+
+<p>Original radiator cores (A172038) corrode internally over 30-plus years. The D127774 / D127775 radiator hose pair is one of the most-replaced cooling system items. Replace the hydraulic oil cooler (A184542) at the same time.</p>
+
+<h3>4WD front axle and king pin wear</h3>
+
+<p>Carraro 4WD front axles see heavy steering loads under loader work. King pin wear shows up as steering slop and front-end wander. The 710103 4WD king pin kit and CFA580SK-4 complete rebuilt 4WD axle are the verified service items.</p>
+
+<h3>Power shuttle clutch wear</h3>
+
+<p>The A188946 metallic transmission disc is the high-volume service item — 137 units sold over the last 12 months. Power Shuttle clutch packs wear with age; the CS-580SK-TRAXL-R rebuilt transaxle is the drop-in alternative when the unit is past piecemeal repair.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 580 Super K?</h3>
+<p>The Super K shares most service parts with the 580K Phase III, with the engine being the primary difference. Our parts specialists can verify turbo vs. non-turbo fitment by serial number and walk you through the cross-references to the 580K and 590 Turbo.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-8">Where the 580 Super K sits in the Construction King family</h2>
+
+<p>The 580 Super K is the turbocharged version of the K-generation Construction King small-frame backhoe loader. It ran alongside the naturally aspirated 580K from 1987 through 1994. Above it in the K generation sat the larger-frame 590 Turbo (1990–1995), which shares the same 4T-390 turbocharged engine on a larger chassis. After the Super K came the 580 Super L (1995–2000), which carried the 4T-390 forward into the L-generation cab and refined hydraulics.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 580 Super K and the verified BigCommerce catalog at brokentractor.com — including the actual 12-month sales rankings that informed the parts table above. We sell Case parts every day and call out the turbo-vs-non-turbo distinctions that come up at the counter.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Naturally aspirated sibling</span><a href="https://www.brokentractor.com/p/case-580k-backhoe-specs-580k/">Case 580K</a> — same chassis, Cummins 4-390 non-turbo</li>
+<li><span class="meta">Larger-frame contemporary</span><a href="https://www.brokentractor.com/case-590-turbo">Case 590 Turbo</a> — same 4T-390 engine on larger chassis</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-580l-580-super-l-backhoe-loader/">Case 580 Super L</a> — L-generation continuation of the turbo line</li>
+<li><span class="meta">Predecessor (turbo line)</span><a href="https://www.brokentractor.com/p/case-580e-580-super-e-backhoe-580e/">Case 580 Super E</a> — earlier 4T-390 turbo on bonded-disc brakes</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

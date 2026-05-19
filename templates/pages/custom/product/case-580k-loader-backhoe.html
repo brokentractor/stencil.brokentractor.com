@@ -1,0 +1,339 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 580K Construction King Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1987 – 1994, the 580K is the naturally aspirated K-generation Construction King — Cummins 4-390 four-cylinder diesel, approximately 65 HP, and the introduction of wet-disc brakes to the small-frame Case backhoe line. Critically, the 580K splits into Phase I and Phase III drivetrain configurations at serial JJG0020000 — the most important parts-ordering distinction on the machine. Our most-active backhoe in service-parts traffic.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 12 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580k-hero.jpg" alt="Case 580K Construction King Backhoe Loader">
+</div>
+</header>
+
+<p>The Case 580K is the K-generation Construction King backhoe loader in naturally aspirated form. It came to market in 1987, replacing the 580 Super E, and ran through 1994. The 580K introduced the Cummins 4-390 — a four-cylinder, 3.9 liter direct-injection diesel rated at approximately 65 HP — and brought the wet-disc multi-plate brake architecture into the small-frame Case backhoe line for the first time. The 580K's stablemate during this run was the turbocharged 580 Super K, which carries the Cummins 4T-390 turbocharged variant of the same engine.</p>
+
+<p>For owners maintaining a 580K today, the single most important fact is the production-split at serial number JJG0020000. Machines built before that serial are "Phase I" and use one set of drivetrain components; machines built after are "Phase III" and use a different set. The brake master cylinder, hydraulic pump, filter kit, transmission disc, and several other major service items differ between Phase I and Phase III. Confirming serial number before ordering is essential — the wrong-phase parts simply will not fit.</p>
+
+<div class="bt-warning bt-callout">
+<strong>Critical: Phase I vs Phase III split at JJG0020000</strong>
+The 580K production split at serial JJG0020000 is the single most-important parts-ordering fact about this machine. Phase I (Before JJG0020000): uses the earlier hydraulic pump (D140801), Phase I brake master cylinder (D141779), Phase I filter kit (CS-580KI-FK), and a different transmission disc configuration. Phase III (After JJG0020000): uses the updated hydraulic pump (D146608, shared with 580 Super K), metallic transmission disc (A188946), and the later filter kit (CS-580KIII-FK). Always confirm serial number before ordering. The 580K Phase III is mechanically very close to the 580 Super K minus the turbocharger.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Phase I vs Phase III — the defining 580K split</a></li>
+<li><a href="#section-3">How the 580K differs from the 580 Super K</a></li>
+<li><a href="#section-4">Cummins 4-390 engine</a></li>
+<li><a href="#section-5">Wet-disc brakes — the K-generation upgrade</a></li>
+<li><a href="#section-6">Power shuttle transmission</a></li>
+<li><a href="#section-7">Verified top-selling 580K parts</a></li>
+<li><a href="#section-8">Common issues and what to expect</a></li>
+<li><a href="#section-9">Where the 580K sits in the Construction King family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 580K — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1987 – 1994</dd>
+<dt>Predecessor</dt><dd>Case 580E (1983 – 1987)</dd>
+<dt>Sibling (same era)</dt><dd>Case 580 Super K (turbocharged variant)</dd>
+<dt>Successor</dt><dd>Case 580L / 580 Super L (1995 – 2000)</dd>
+<dt>Engine</dt><dd>Cummins 4-390 (4BT 3.9L, naturally aspirated)</dd>
+<dt>Displacement</dt><dd>239 cu in (3.9 L)</dd>
+<dt>Cylinders</dt><dd>4, liquid-cooled, direct-injection diesel</dd>
+<dt>Power</dt><dd>~65 HP</dd>
+<dt>Phase split</dt><dd>Serial JJG0020000 — Phase I (before) / Phase III (after)</dd>
+<dt>Transmission</dt><dd>Case 4-speed power shuttle, single-stage torque converter</dd>
+<dt>Drive</dt><dd>2WD standard; 4WD optional (Carraro on Phase III)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate (new on K generation)</dd>
+<dt>Hydraulic system</dt><dd>Open-center, gear pump</dd>
+<dt>System pressure</dt><dd>~3,000 psi</dd>
+<dt>Operating weight</dt><dd>~14,000 – 16,500 lb (varies with configuration)</dd>
+<dt>Backhoe dig depth</dt><dd>Up to ~14 ft (standard) or ~18 ft (Extendahoe)</dd>
+<dt>Loader breakout</dt><dd>~9,000 – 10,000 lb</dd>
+<dt>Cab</dt><dd>Optional enclosed cab with A/C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Phase I vs Phase III — the defining 580K split</h2>
+
+<p>The 580K production run was divided into Phase I and Phase III at serial number JJG0020000. Case made substantial drivetrain and component updates at that break — major enough that several service parts have completely different part numbers between the two phases. The most important Phase I vs Phase III differences:</p>
+
+<table>
+<thead><tr><th>Component</th><th>Phase I (Before JJG0020000)</th><th>Phase III (After JJG0020000)</th></tr></thead>
+<tbody>
+<tr><td>Hydraulic pump</td><td>D140801 (Phase I main pump)</td><td>D146608 (also fits 580 Super K)</td></tr>
+<tr><td>Brake master cylinder</td><td>D141779 (Phase I)</td><td>Updated master cylinder</td></tr>
+<tr><td>Filter kit</td><td>CS-580KI-FK (Phase I)</td><td>CS-580KIII-FK (Phase III + 590 Turbo)</td></tr>
+<tr><td>Transmission disc</td><td>Standard disc</td><td>A188946 metallic disc (also fits Super K, 590 Turbo)</td></tr>
+<tr><td>Transmission 1st gear</td><td>A153751 (47 teeth — Phase I, also 480C, 580E)</td><td>Different gear set</td></tr>
+<tr><td>Transaxle rebuild</td><td>CS-580K1-TRAXL-R (Early)</td><td>CS-580SK-TRAXL-R (Super K + 580K III)</td></tr>
+<tr><td>4WD front axle option</td><td>Limited or unavailable</td><td>Carraro 4WD CFA580K-4 standard option</td></tr>
+</tbody>
+</table>
+
+<p>The Phase III 580K is mechanically very close to the 580 Super K. Many parts that cross-fit the Super K also work on Phase III 580Ks but NOT on Phase I 580Ks. This is reflected in our catalog: parts labeled "580K III" or "580K after JJG0020000" generally interchange with Super K parts.</p>
+
+<h2 id="section-3">How the 580K differs from the 580 Super K</h2>
+
+<p>The 580K and 580 Super K share their chassis, transmission architecture, axles, brakes, hydraulics, and most loader and backhoe iron. The differences:</p>
+
+<ul>
+<li><strong>Engine</strong> — 580K uses the naturally aspirated Cummins 4-390 (~65 HP); 580 Super K uses the turbocharged 4T-390 (~75 HP).</li>
+<li><strong>Turbocharger</strong> — only on the Super K. Adds a wastegated turbo, intercooling on some configurations, and modified exhaust plumbing.</li>
+<li><strong>Muffler</strong> — A184237 muffler is labeled "Non-Turbo (580K, 580 Super K)" — but here "580 Super K" refers to certain non-turbo Super K configurations or service variants. The Super K with turbo uses different exhaust hardware.</li>
+<li><strong>Filter kits</strong> — CS-580SK-FK is the Super K filter set; CS-580KIII-FK is the 580K Phase III set. These differ because of the turbo's filtration requirements.</li>
+<li><strong>Power output</strong> — Super K approximately 10 HP higher with substantially more low-end torque under load.</li>
+<li><strong>Cooling capacity</strong> — slightly larger cooling system on the Super K.</li>
+</ul>
+
+<p>Many parts cross between 580K Phase III and Super K because of the shared chassis. Parts labeled "580K, 580 Super K" in our catalog generally fit both, with the caveat that some are Phase III-specific on the 580K side.</p>
+
+<h2 id="section-4">Cummins 4-390 engine</h2>
+
+<p>The Cummins 4-390 (also known as the 4BT 3.9L) is the K-generation engine that replaced the Case G207 family used on the 580D / 580 Super D and the 580E / 580 Super E. The 4-390 is a 239 cubic inch (3.9 L) four-cylinder direct-injection diesel that became one of the most widely used industrial small-block engines in the world — the same engine family powers everything from Dodge Ram pickups (the 4BT was the smaller sibling of the famous 5.9L 6BT Cummins) to construction equipment, generators, marine pumps, and military vehicles.</p>
+
+<p>That broad parts ecosystem is one of the most useful single facts about the 580K's engine. Pistons, rings, bearings, head gasket sets, water pumps, oil pumps, fuel system components, and many valve train items source readily through Cummins 4BT service channels in addition to Case-branded parts. The 580K is in many ways the easiest Case backhoe engine to service today because of this Cummins lineage.</p>
+
+<h2 id="section-5">Wet-disc brakes — the K-generation upgrade</h2>
+
+<p>The most significant chassis change at the 580K vs. the earlier 580E / Super E was the introduction of wet-disc multi-plate brakes. Wet-disc brakes run the friction plates submerged in the rear-end transaxle oil — they are essentially maintenance-free for the life of the disc pack, last substantially longer than the bonded-disc system used on the 580D and dry-disc systems before that, and provide more consistent braking performance regardless of conditions.</p>
+
+<p>The 1995361C1 brake plate piston in our catalog is labeled "580K III, 580 Super K, 590 Turbo" — confirming the wet-disc architecture is shared across Phase III 580Ks, Super Ks, and the larger-frame 590 Turbo. The Phase I 580K used a similar but distinct earlier brake configuration (hence the D141779 Phase I brake master cylinder).</p>
+
+<p>When wet-disc brakes finally do wear out — typically beyond 6,000–8,000 hours of hard service — the symptom is gradual loss of brake pedal pressure, sometimes with metal flake in the rear-end oil. The A188412 brake disc and 1995365C1 brake backing plate are the verified replacement components for the Phase III / Super K wet-disc system.</p>
+
+<h2 id="section-6">Power shuttle transmission</h2>
+
+<p>The 580K uses Case's four-speed Power Shuttle transmission with single-stage torque converter, similar in architecture to the earlier 580 series but with refinements for the higher Cummins engine output. Phase I and Phase III use different internal components — most notably the transmission discs (A188946 metallic disc is Phase III after JJG0020000) and the 1st gear (A153751 47-tooth for 480C / 580E / 580K Phase I).</p>
+
+<p>Common service items: hydraulically actuated clutch packs wear with age, the shuttle control valve gets sticky, and the torque converter charge pump weakens over time. The CS-580K1-TRAXL-R rebuilt transaxle covers Early 580Ks (Phase I); the CS-580SK-TRAXL-R covers Phase III and Super K. Confirm phase before ordering.</p>
+
+<h2 id="section-7">Verified top-selling 580K parts</h2>
+
+<p>The parts table below leads with the items our 580K customers actually buy, ranked by 12-month sales volume. The 580K is our single most-active backhoe in parts traffic — over 1,200 units sold across the 580K + Super K family in the last year, totaling more than $335,000 in revenue. Every part links to its product page on brokentractor.com.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Why it sells</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-parking-brake-pad-sold-individually-a182740/">A182740</a></td><td>Parking brake pad (sold individually)</td><td>Our #1 580K service item — 160 units sold over the last 12 months. Cross-fits 480E, 580E, 580 Super E, and 580K Phase I. Wear pad for the mechanical parking brake. Replace when the parking brake loses holding ability.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-after-jjg0020000-580-super-k-590-turbo-metallic-transmission-disc-a188946/">A188946</a></td><td>Metallic transmission disc (Phase III)</td><td>137 units sold. Explicitly labeled "580K after JJG0020000, 580 Super K, 590 Turbo." The metallic transmission clutch disc used on Phase III 580Ks, Super Ks, and the 590 Turbo. Phase I 580Ks use a different disc.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-phase-i-brake-master-cylinder-d141779/">D141779</a></td><td>Brake master cylinder (Phase I)</td><td>85 units sold. Phase I 580K-specific brake master cylinder. Replace when pedal pressure drops or the cylinder leaks visibly.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-hydraulic-cylinder-seal-kit-package-for-580k-580-super-k-cs-sk-2-3-5/">CS-SK-2-3.5</a></td><td>Hydraulic cylinder seal kit package (580K + Super K)</td><td>80 units sold at over $37,000 revenue — our #4 580K-family seller. Covers every hydraulic cylinder on the machine in one package. Cross-fits 580K and 580 Super K.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580sk-590-backhoe-upper-radiator-hose-d127774/">D127774</a></td><td>Upper radiator hose</td><td>73 units sold. Upper radiator hose — cross-fits 580K, 580 Super K, and 590 Turbo. The original hose hardens and cracks over decades.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580sk-590-backhoe-lower-radiator-hose-d127775/">D127775</a></td><td>Lower radiator hose</td><td>69 units sold. Lower radiator hose — replace together with the D127774 upper hose during cooling system service.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-4wd-power-steering-cylinder-seal-kit-n14622/">N14622</a></td><td>4WD power steering cylinder seal kit</td><td>63 units sold. Power steering cylinder seal rebuild kit for 4WD-equipped 580Ks. Standard fix for power steering leaks on 4WD machines.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-brake-plate-piston-fits-580k-580-super-k-590-turbo-1341069c1-1995361c1/">1995361C1</a></td><td>Brake plate piston (Phase III / Super K / 590 Turbo)</td><td>63 units sold. Wet-disc brake plate piston. Cross-fits Phase III 580Ks, Super K, and 590 Turbo. Use when the wet-disc brakes lose holding pressure.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-king-pin-kit-580k-580-super-k-590t-backhoe-4wd-710103/">710103</a></td><td>King pin kit (4WD — 580K, Super K, 590T)</td><td>43 units sold. Complete 4WD front axle king pin kit. Critical wear item on 4WD machines — the king pins handle steering loads under heavy front-end weight.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580-super-k-non-turbo-muffler-a184237/">A184237</a></td><td>Non-turbo muffler (580K + Super K)</td><td>40 units sold. Non-turbo exhaust muffler. Cross-fits 580K and certain 580 Super K configurations.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-before-serial-jjg0020000-phase-i-filter-kit-cs-580ki-fk/">CS-580KI-FK</a></td><td>Filter maintenance kit (Phase I)</td><td>29 units sold. Phase I filter set — engine oil, fuel, air, and hydraulic filters in one kit. ONLY for 580Ks before JJG0020000.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-before-sn-jjg0020000-hydraulic-pump-d140801/">D140801</a></td><td>Main hydraulic pump (Phase I)</td><td>22 units sold at over $25,000 revenue — high-dollar Phase I-specific item. Use only on 580Ks before JJG0020000.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/radiator-for-case-580k-and-580-super-k-backhoes-a172038/">A172038</a></td><td>Radiator (580K + Super K)</td><td>27 units sold. Cooling radiator. Cross-fits 580K and 580 Super K. High-replacement item as the original cores corrode internally.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-580sk-hydraulic-oil-cooler-a184542/">A184542</a></td><td>Hydraulic oil cooler</td><td>14 units sold at over $17,000 revenue. Dedicated hydraulic oil cooler. Cross-fits 580K and 580SK. Replace alongside the main radiator when the cooling system is serviced.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-iii-filter-maintenance-kit-cs-580kiii-fk/">CS-580KIII-FK</a></td><td>Filter maintenance kit (Phase III + 590 Turbo)</td><td>The Phase III filter kit. Cross-fits Phase III 580Ks (after JJG0020000) and the 590 Turbo. Use for ALL 580Ks built after the phase split.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/main-hydraulic-pump-for-case-580-super-k-and-580k-iii-d146608/">D146608</a></td><td>Main hydraulic pump (Phase III + Super K)</td><td>Hydraulic pump explicitly labeled "580 Super K and 580K-III." Use for 580Ks built after JJG0020000. Do NOT order for Phase I machines.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-backhoe-early-rebuilt-transaxle/">CS-580K1-TRAXL-R</a></td><td>Rebuilt transaxle (Phase I)</td><td>Complete rebuilt transaxle for Phase I 580Ks. The drop-in alternative when the original transaxle is past piecemeal rebuild.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-master-cylinder-repair-kit-n14254/">N14254</a></td><td>Master cylinder repair kit</td><td>Brake master cylinder seal rebuild kit. Use when the master cylinder is mechanically sound but leaks from worn seals.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-rebuilt-4wd-front-axle-d146847-d149673-127767a1/">CFA580K-4</a></td><td>Carraro 4WD complete front axle (580K III)</td><td>Complete rebuilt Carraro 4WD front axle assembly for Phase III 580Ks. Cost-effective alternative to piecemeal rebuild.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-backhoe-service-repair-manual-1302-pages-ca-s-580k/">CA-S-580K</a></td><td>Service repair manual (1,302 pages)</td><td>Factory Case 580K service manual reproduction. The most useful single document for any 580K restoration or major repair.</td></tr>
+</tbody>
+</table>
+
+<p>For a full Case 580K parts inventory beyond the top-sellers above, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub or contact our parts team for serial-number-specific verification.</p>
+
+<h2 id="section-8">Common issues and what to expect</h2>
+
+<h3>Cummins 4-390 engine wear</h3>
+
+<p>The Cummins 4BT block is durable, with broad service-parts availability through both Case sources and Cummins B-series channels. Common items on 30-plus-year-old engines: head gasket failure (typically between cylinders or at the deck), injector wear (causes hard starting and rough running), fuel lift pump diaphragm failure, and water pump shaft bearing wear. Engine parts are widely available.</p>
+
+<h3>Phase I vs Phase III parts ordering</h3>
+
+<p>The single most common parts-ordering mistake on a 580K is ordering the wrong-phase part. Phase I parts will not fit Phase III machines and vice versa for the major drivetrain and hydraulic components. Always confirm serial number against the JJG0020000 split.</p>
+
+<h3>Hydraulic pump wear</h3>
+
+<p>Both Phase I (D140801) and Phase III (D146608) hydraulic pumps wear over time. Symptoms: lazy boom and dipper, weak stabilizers, longer cycle times under load.</p>
+
+<h3>Wet-disc brake wear</h3>
+
+<p>After 6,000–8,000 hours of hard service, wet-disc brakes wear out. The 1995361C1 brake plate piston and matching service components are the verified replacements for Phase III. Phase I uses a different brake architecture with the D141779 master cylinder as the most common service item.</p>
+
+<h3>Cooling system service</h3>
+
+<p>Original radiator cores (A172038) corrode internally over 30-plus years. The D127774 / D127775 radiator hose pair is one of the most-replaced cooling system items. Replace the hydraulic oil cooler (A184542) at the same time.</p>
+
+<h3>4WD front axle and king pin wear</h3>
+
+<p>The 710103 4WD king pin kit is a high-volume seller — Carraro 4WD front axles see heavy steering loads under loader work. King pin wear shows up as steering slop and front-end wander. The CFA580K-4 complete rebuilt 4WD axle is the cost-effective fix when the original axle is past piecemeal rebuild.</p>
+
+<h3>Power shuttle clutch wear</h3>
+
+<p>The 4-speed Power Shuttle clutch packs wear with age. The A188946 Phase III metallic transmission disc is one of our highest-volume 580K service items — 137 units sold over the last 12 months. Phase I machines use a different disc configuration; the CS-580K1-TRAXL-R complete rebuilt transaxle covers Phase I rebuilds.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 580K?</h3>
+<p>The 580K has the deepest parts inventory of any Case backhoe we stock — over 1,200 service items sold to 580K and Super K owners over the last 12 months. Our parts specialists can verify Phase I vs Phase III fitment by serial number and walk you through the cross-references to the 580 Super K.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-9">Where the 580K sits in the Construction King family</h2>
+
+<p>The 580K is the K-generation Construction King small-frame backhoe loader in naturally aspirated form. Above it in the K generation sat the turbocharged 580 Super K and the larger-frame 590 Turbo. Before the 580K came the 580E and 580 Super E (Cummins 4-390 / 4T-390, bonded-disc brakes). After the 580K came the 580L and 580 Super L (1995–2000), which carried the 4-390 / 4T-390 engine forward with refined hydraulics and a redesigned cab. The K generation's introduction of wet-disc brakes (on Phase III) marked the most significant chassis upgrade since the original Construction King naming was applied.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 580K and the verified BigCommerce catalog at brokentractor.com — including the actual 12-month sales rankings that informed the parts table above. The 580K is our single most-active backhoe in service-parts traffic; we sell these parts every day.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Turbocharged variant</span><a href="https://www.brokentractor.com/p/case-580k-backhoe-loader/">Case 580 Super K</a> — same chassis, Cummins 4T-390 turbocharged</li>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-580e-580-super-e-backhoe-580e/">Case 580E / 580 Super E</a> — same Cummins engine family, bonded-disc brakes</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-580l-580-super-l-backhoe-loader/">Case 580L / 580 Super L</a> — refined hydraulics, redesigned cab</li>
+<li><span class="meta">Larger-frame contemporary</span><a href="https://www.brokentractor.com/case-590-turbo">Case 590 Turbo</a> — larger-frame K-generation backhoe</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>
