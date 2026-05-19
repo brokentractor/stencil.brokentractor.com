@@ -1,0 +1,364 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 580 Super LE: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced approximately 1997 through 2001 — the European-market variant of the 580 Super L with a sideshift backhoe carriage. Cummins 4T-390 turbocharged diesel, wet-disc brakes, optional Carraro 4WD. The "LE" designates a European specification, not a "Limited Edition."</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580-super-le-hero.jpg" alt="Case 580 Super LE European-Market Sideshift Loader Backhoe">
+</div>
+</header>
+
+<p>The Case 580 Super LE (580SLE) is the European-market evolution of the 580 Super L, produced approximately 1997 through 2001. It shares the 580 Super L's Cummins 4T-390 turbocharged engine, wet-disc brake architecture, and Carraro 4WD axle option, but uses a <strong>sideshift backhoe carriage</strong> (a defining European-market feature) and is delivered with Euro-spec lighting, cab, and homologation. The "LE" suffix is Case's European-market designator — used the same way Case later applied "SRE" and "SLE" suffixes to other Euro-spec variants. It is not an abbreviation for "Limited Edition" or "Loader Extender."</p>
+
+<p>This page covers the verified specifications, the engine and drivetrain, the sideshift backhoe carriage, the failure modes 580SLE owners report most often, and the parts we stock with confirmed fitment — most of which cross from the North American 580 Super L parts catalog.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Where to find the serial number plate</a></li>
+<li><a href="#section-3">Production years</a></li>
+<li><a href="#section-4">Engine and powertrain</a></li>
+<li><a href="#section-5">Sideshift backhoe carriage</a></li>
+<li><a href="#section-6">Brakes and front axle</a></li>
+<li><a href="#section-7">Common problems documented by owners</a></li>
+<li><a href="#section-8">Verified replacement parts</a></li>
+<li><a href="#section-9">Maintenance schedule</a></li>
+<li><a href="#section-10">Related Case backhoe models</a></li>
+<li><a href="#section-11">Frequently asked questions</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 580 Super LE — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>~1997 – 2001</dd>
+<dt>Market</dt><dd>European-spec variant of the 580 Super L</dd>
+<dt>Engine</dt><dd>Cummins 4T-390 (4BT 3.9L) turbocharged diesel</dd>
+<dt>Displacement</dt><dd>3.9 L (239 cu in)</dd>
+<dt>Bore &times; stroke</dt><dd>102 mm &times; 120 mm (4.02 in &times; 4.72 in)</dd>
+<dt>Horsepower</dt><dd>91 HP (68 kW)</dd>
+<dt>Fuel system</dt><dd>Stanadyne rotary mechanical IP</dd>
+<dt>Transmission</dt><dd>4-speed power shuttle with single-stage torque converter</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate (Hy-Tran)</dd>
+<dt>Front axle</dt><dd>2WD or Carraro 4WD</dd>
+<dt>Backhoe carriage</dt><dd>Sideshift (European-spec)</dd>
+<dt>Operating weight</dt><dd>~7,650 – 7,800 kg (16,865 – 17,200 lb)</dd>
+<dt>Wheelbase</dt><dd>~2.13 m (~7 ft)</dd>
+<dt>Transport length</dt><dd>5.58 m</dd>
+<dt>Transport width</dt><dd>2.36 m</dd>
+<dt>Transport height</dt><dd>3.42 m</dd>
+<dt>Hydraulic flow</dt><dd>~108 L/min (28.5 gpm)</dd>
+<dt>Hydraulic pressure</dt><dd>~210 bar (~3,045 psi)</dd>
+<dt>Loader bucket capacity</dt><dd>1.0 m&sup3; (1.3 cu yd)</dd>
+<dt>Backhoe dig depth (standard)</dt><dd>4.42 m (14 ft 6 in)</dd>
+<dt>Backhoe dig depth (Extendahoe)</dt><dd>5.58 m (18 ft 3 in)</dd>
+<dt>Backhoe bucket dig force</dt><dd>6,900 kg (15,200 lb)</dd>
+<dt>Tires (2WD)</dt><dd>12.5/80-18 front / 16.9-28 rear</dd>
+<dt>Tires (4WD)</dt><dd>16.5/80-18 front / 16.9-28 rear</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Where to find the serial number plate</h2>
+
+<p>The 580SLE tractor serial is stamped on a data plate on the <strong>right side of the machine frame</strong>, just behind the loader arm pivot point or near the rear right stabilizer leg base. This is different from the 580L / Super L convention (which is left-side dashboard). The Cummins engine carries its own serial stamp on the block. All 580SLE production uses the JJG prefix.</p>
+
+<h2 id="section-3">Production years</h2>
+
+<p>Sources differ slightly on the production window. Lectura Specs lists two overlapping records: <strong>1997–2000</strong> and <strong>1999–2001</strong>, suggesting a Series 1 / Series 2 split mirroring the North American 580 Super L / Super L II split. Tractortechspecs cites <strong>1998–2002</strong> for the broader window. Production was a relatively short run and largely centered around <strong>1997–2001</strong>. Publicly verifiable year-by-serial tables specific to the 580SLE are not consistently published — verify the build year through a Case dealer or CNH parts system using the full JJG serial.</p>
+
+<div class="bt-callout">
+<strong>"LE" is European-market designation</strong>
+The "LE" suffix is Case's standard European-market designator. The 580SLE is the European specification of the 580 Super L, the same way Case used "SLE" and "SRE" suffixes on later European-spec variants (e.g., 580SR-E, 590SLE). It is not "Limited Edition" or "Loader Extender." Many 580SLE parts cross directly with the North American 580 Super L catalog.
+</div>
+
+<h2 id="section-4">Engine and powertrain</h2>
+
+<p>The 580SLE is powered by the <strong>Cummins 4T-390</strong> — Case's catalog designation for the turbocharged Cummins 4BT 3.9L. 239 cubic inches (3.9 L), bore 102 mm &times; stroke 120 mm, rated <strong>91 HP (68 kW)</strong>. Same engine that powers the North American 580 Super L. Fuel system is the Stanadyne (Roosa Master lineage) rotary mechanical injection pump.</p>
+
+<p>Transmission is a 4-speed synchronized power shuttle with a single-stage torque converter — same Carraro-supplied transaxle architecture as the 580 Super L. 2WD or 4-wheel mechanical drive. Travel speeds reported up to ~34–41 km/h (21.5–25.9 mph).</p>
+
+<h2 id="section-5">Sideshift backhoe carriage</h2>
+
+<p>The defining European-market feature of the 580SLE is the <strong>sideshift backhoe carriage</strong>. Rather than the fixed center-mount backhoe that the North American 580 Super L uses, the 580SLE's backhoe slides laterally across the rear frame on a carriage rail system. This lets the operator position the backhoe close to walls, fences, and obstructions without repositioning the entire machine — useful in narrow European jobsite conditions.</p>
+
+<p>The sideshift carriage adds several wear items that aren't on the standard 580 Super L: guide rails, slide pads, and lock pins. These wear faster on the European-market sideshift than equivalent components on the fixed-center backhoe and should be inspected at every major service interval.</p>
+
+<h2 id="section-6">Brakes and front axle</h2>
+
+<p>The 580SLE continues the <strong>wet-disc multi-plate brake architecture</strong> from the 580K and 580 Super L. Friction plates run in Hy-Tran in the rear axle housing. Use genuine Case Hy-Tran or equivalent with the correct wet-brake friction modifier — generic UTF or DOT brake fluid will glaze the discs and cause brake drag or noise.</p>
+
+<p>Front axle: 2WD standard with a Case-supplied steer-only beam, or 4WD with a Carraro planetary drive axle. The 4WD axle is the same family used on the North American 580 Super L, 580K, and 580M — parts cross widely. Note: 4WD machines use a different power-steering cylinder than 2WD machines.</p>
+
+<h2 id="section-7">Common problems documented by owners</h2>
+
+<h3>Power shuttle cold-engagement and forward-loss</h3>
+<p>The classic Super L / SLE drivetrain complaint — won't engage when cold, or loses pull in forward as oil heats. Causes: low Hy-Tran level, shuttle solenoids, control relays. Check shuttle pressure (spec ~160–180 psi) and fluid level/quality before condemning the clutch pack.</p>
+
+<h3>Wet-disc brake noise and grabbing</h3>
+<p>Almost always wrong fluid. Generic universal hydraulic oil lacks the wet-brake friction modifier and causes brake chatter, noise, and uneven application. Cure is to drain the transaxle and refill with Case TDTO / Hy-Tran Plus.</p>
+
+<h3>Cummins 4T-390 head gasket weep</h3>
+<p>Coolant intrusion at cylinders 3 and 4, especially on machines with overheating history. Head studs and torque sequence are critical on reinstall. Case Hy-Tran in the cooling system instead of proper coolant accelerates failure.</p>
+
+<h3>Stanadyne IP fade and leakage</h3>
+<p>Hot-start trouble, weak power, slow throttle response. Seal-kit rebuilds address the most common failures. Filter discipline is critical — old or dirty fuel kills these pumps quickly.</p>
+
+<h3>Sideshift carriage wear</h3>
+<p>The 580SLE-specific failure mode. Guide rails wear, slide pads compress and lose tolerance, lock pins gall. Symptoms: lateral slop in the backhoe, harder lock-engagement, increased noise during operation. Inspect at every major service interval.</p>
+
+<h3>Hydraulic cylinder drift and slow cycle</h3>
+<p>Loader arm creep, boom drift, swing creep — typically valve-spool wear, cylinder seal kit failure, or load-check valve issues. Seal kits cross from the North American 580 Super L catalog.</p>
+
+<h3>European wiring harness corrosion</h3>
+<p>Rear lamp cluster and trailer-light connector are documented wear points on European-spec machines. Salt-air or wet-jobsite use accelerates corrosion.</p>
+
+<h3>Carraro 4WD axle wear</h3>
+<p>Upper and lower kingpin (ball joint) wear from missing or sheared lower grease zerks. King pin kits and steering cylinder rebuild kits cross from the 580 Super L catalog.</p>
+
+<div class="bt-pull">The 580SLE is a 580 Super L with a sideshift carriage and European homologation. 95% of the parts cross from the North American Super L catalog — but the sideshift rails and lock pins are the SLE-specific wear items worth keeping on the maintenance schedule.</div>
+
+<h2 id="section-8">Verified replacement parts</h2>
+
+<p>The 580SLE shares most service parts with the North American 580 Super L. The parts below are confirmed to fit either by explicit Super L fitment or by the Cummins 4T-390 engine family.</p>
+
+<table>
+<thead><tr><th>Part</th><th>SKU</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-engine-long-block-broken-tractor/">Cummins 4B / 4BT Long Block</a></td><td>CS-4390-LB-N</td><td>Replacement long-block engine for 580SLE Cummins 4T-390</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-4390-cummins-4b390-non-turbo-engine-overhaul-kit-bekc39/">Cummins 4-390 Engine Overhaul Kit</a></td><td>BEKC39</td><td>Full Cummins 4B 3.9L overhaul package — covers the 580SLE engine internals</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/rebuilt-fuel-injection-pump-for-case-dozers-loaders-w-cummins-4-cyl-engines-ip4390r/">Rebuilt Fuel Injection Pump</a></td><td>IP4390R</td><td>Rebuilt Stanadyne rotary IP — addresses the documented IP-fade failure</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-cummins-engine-head-gasket-set-3804896/">Cummins 4B Head Gasket Set</a></td><td>3804896</td><td>Head gasket set for the Cummins 4T-390 — replace when coolant in oil or external seepage</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-bushing-for-580k-580sk-580l-580sl-580m-580sm-d138042-d138042/">Backhoe Bushing (Cross-fit)</a></td><td>D138042</td><td>Cross-fits 580K through 580SM — common wear part on the 580SLE rear backhoe assembly</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-bushing-for-580k-580sk-580sl-backhoe-1980335c1-1980335c1/">Backhoe Bushing (Super L family)</a></td><td>1980335C1</td><td>Bushing for the 580K, 580SK, 580SL family — covers 580SLE</td></tr>
+</tbody>
+</table>
+
+<h3>Browse by Super L / Super LE-fit category</h3>
+
+<ul>
+<li><a href="https://www.brokentractor.com/c/case-backhoe-brake-parts-580L-580M-580SL-580SM-590SL-590SM">Wet-Disc Brakes — 580L, 580M, Super L, Super M, 590SL, 590SM</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-backhoe-hydraulics/case-backhoe-hydraulic-cylinder-seal-kits/case-580-super-l-580-super-m-seal-kits/">Hydraulic Cylinder Seal Kits — Super L, Super M</a></li>
+<li><a href="https://www.brokentractor.com/c/case-backhoe/carraro-transmission-parts-580l-580m-580-super-l-m/">Carraro Transmission Parts — 580L, 580M, Super L, Super M</a></li>
+<li><a href="https://www.brokentractor.com/c/case-backhoe/4wd/front-axle/580-series">4WD Front Axle — 580L / Super L / 580M / Super M</a></li>
+<li><a href="https://www.brokentractor.com/c/case-580-super-l-backhoe-pin-kits/">580 Super L Pin Kits — most cross-fit the 580SLE</a></li>
+<li><a href="https://www.brokentractor.com/c/case-580-super-l-backhoe-filters/">580 Super L Backhoe Filters</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+
+<h2 id="section-9">Maintenance schedule</h2>
+
+<table>
+<thead><tr><th>Interval</th><th>Item</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Daily</td><td>Grease loader pivots, sideshift carriage rails, swing tower, stabilizer pins, 4WD king pins</td><td>Sideshift rails are SLE-specific; do not skip</td></tr>
+<tr><td>100 hours</td><td>Inspect air filter, fan belt, hoses, tire pressures</td><td>Inspect sideshift slide pads for compression</td></tr>
+<tr><td>250 hours</td><td>Engine oil and Cummins oil filter</td><td>Tighter interval for turbo 4T-390 — CD/CE-grade diesel oil</td></tr>
+<tr><td>500 hours</td><td>Fuel filter, fuel-water separator</td><td>Critical on machines running marginal fuel</td></tr>
+<tr><td>1,000 hours</td><td>Transaxle / hydraulic oil and filter; cooling flush</td><td>Use Hy-Tran Plus — NOT DOT brake fluid or generic UTF</td></tr>
+<tr><td>1,000 hours</td><td>Inspect sideshift carriage rails, pads, and lock pins</td><td>Replace pads when slop appears in the backhoe lateral position</td></tr>
+<tr><td>1,000 hours (4WD only)</td><td>Inspect Carraro planetary hubs and king pins</td><td>Verify lower kingpin zerk presence</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-10">Related Case backhoe models</h2>
+
+<table>
+<thead><tr><th>Model</th><th>Market</th><th>Backhoe configuration</th><th>Production</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-580k-backhoe-specs-580k/">Case 580 Super K</a></td><td>North America</td><td>Fixed center-mount</td><td>1991 – 1994</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580-super-l-backhoe-580sl/">Case 580 Super L</a></td><td>North America</td><td>Fixed center-mount</td><td>1995 – 2000</td></tr>
+<tr><td><strong>Case 580 Super LE</strong> (this page)</td><td>Europe</td><td>Sideshift carriage</td><td>~1997 – 2001</td></tr>
+<tr><td>Case 590 Super L</td><td>North America</td><td>Larger frame, Extendahoe standard</td><td>1995 – 2000</td></tr>
+<tr><td>Case 580M / 580 Super M</td><td>North America (Tier 2)</td><td>Fixed center-mount; ProControl backhoe option</td><td>2001 – 2005</td></tr>
+<tr><td>Case 580SR / 580 Super SR</td><td>Europe (Tier 2 successor)</td><td>Sideshift carriage</td><td>2002+</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-11">Frequently asked questions</h2>
+
+<h3>What does "LE" mean on a Case 580 Super LE?</h3>
+<p>It's Case's European-market designator. The 580SLE is the European specification of the 580 Super L, with a sideshift backhoe carriage and Euro-spec lighting and cab. The "E" suffix appears on multiple Euro-spec Case construction models (580SLE, 580SRE, 590SLE). It is not an abbreviation for "Limited Edition" or "Loader Extender."</p>
+
+<h3>What years was the 580SLE made?</h3>
+<p>Approximately 1997 through 2001. Sources differ on the exact start and end dates — Lectura lists overlapping records of 1997–2000 and 1999–2001, and Tractortechspecs cites 1998–2002. The model was a relatively short run.</p>
+
+<h3>What engine is in a Case 580 Super LE?</h3>
+<p>The Cummins 4T-390 (4BT 3.9L) — the same turbocharged engine used in the North American 580 Super L. 239 cubic inches, 91 HP (68 kW), Stanadyne rotary injection pump.</p>
+
+<h3>What is a "sideshift" backhoe?</h3>
+<p>A backhoe carriage that slides laterally across the rear frame on a rail system, letting the operator position the backhoe close to walls or obstructions without repositioning the entire machine. This is the defining European-market feature of the 580SLE — North American Super Ls use a fixed center-mount backhoe instead.</p>
+
+<h3>Does the 580SLE have wet-disc brakes?</h3>
+<p>Yes — same architecture as the 580K, 580L, and 580 Super L. Friction plates run in Hy-Tran in the rear axle. Use Hy-Tran Plus — generic UTF or DOT brake fluid will glaze the discs.</p>
+
+<h3>Does the 580SLE have 4WD?</h3>
+<p>4WD with a Carraro planetary front axle was offered as a factory option. Same axle family as the North American 580 Super L. Confirm 2WD vs. 4WD before ordering front-end parts.</p>
+
+<h3>Do North American Super L parts fit the 580SLE?</h3>
+<p>Most do. The engine, transaxle, brake, hydraulic, and cab parts cross widely. The sideshift carriage components (rails, pads, lock pins) are SLE-specific. European lighting and electrical components also differ from the North American spec.</p>
+
+<h3>Where is the serial number on a Case 580SLE?</h3>
+<p>Stamped on a data plate on the right side of the machine frame, just behind the loader arm pivot point or near the rear right stabilizer leg base. Note: this is different from the 580 Super L convention (which is left-side dashboard).</p>
+
+<div class="bt-cta">
+<h3>Need parts for your Case 580 Super LE?</h3>
+<p>Cummins 4T-390 engine overhaul kits and long blocks, Carraro transmission parts, wet-disc brake components, hydraulic cylinder seal kits — most cross-fit from the North American 580 Super L catalog. Talk to a tech for help identifying sideshift-specific parts: (800) 909-7060, Mon–Fri 7a–5p CT.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Shop Case Backhoe Parts</a>
+</div>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong>
+<p>Broken Tractor LLC stocks parts that fit the Case 580 Super LE, primarily cross-fit from the North American 580 Super L catalog — Cummins 4T-390 engine kits and long blocks, Carraro transmission parts, wet-disc brake assemblies, hydraulic seal kits, and complete pin and bushing kits. All parts ship from U.S. warehouses with serial-number-verified fitment.</p></div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Keep reading</h3>
+<ul>
+<li><span class="meta">Case 580 Super L</span><a href="https://www.brokentractor.com/p/case-580-super-l-backhoe-580sl/">Case 580L / 580 Super L — Specs, Parts &amp; Common Issues</a></li>
+<li><span class="meta">Case 580K</span><a href="https://www.brokentractor.com/p/case-580k-backhoe-specs-580k/">Case 580K / 580 Super K — Specs, Parts &amp; Common Issues</a></li>
+<li><span class="meta">Case 580ST</span><a href="https://www.brokentractor.com/p/case-580st-backhoe-580st/">Case 580ST — European-Market 580 Super T</a></li>
+<li><span class="meta">Power Shuttle Guide</span><a href="https://www.brokentractor.com/blog/a-quick-guide-to-rebuilding-a-case-backhoe-power-shuttle-transmission/">A Quick Guide to Rebuilding a Case Backhoe Power Shuttle Transmission</a></li>
+<li><span class="meta">580 Serial Guide</span><a href="https://www.brokentractor.com/blog/case-580-series-loader-backhoe-serial-number-guide-find-your-year-fast-and-order-the-right-parts-the-first-time/">Case 580 Series Serial Number Guide</a></li>
+<li><span class="meta">Hydraulics</span><a href="https://www.brokentractor.com/blog/diagnosing-a-slow-or-weak-hydraulic-system-a-field-troubleshooting-guide/">Diagnosing a Slow or Weak Hydraulic System</a></li>
+<li><span class="meta">Case Backhoe Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Serial Number &amp; Owner's Info</a></li>
+<li><span class="meta">Case Backhoe Parts</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

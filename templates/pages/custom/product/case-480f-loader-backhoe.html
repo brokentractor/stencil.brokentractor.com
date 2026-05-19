@@ -1,0 +1,375 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 480F Construction King: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1992 through 1995 — the final model in the Case 480 Construction King series. Same Cummins 4-390 (4B 3.9L) engine as the 480E, mechanical and power shuttle drivetrains, 2WD and Carraro 4WD configurations, and a 480F LL Landscape Loader variant offered alongside.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 9 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-480f-backhoe-hero.jpg" alt="Case 480F Construction King Backhoe Loader">
+</div>
+</header>
+
+<p>The Case 480F is the last model in the Case 480 Construction King series. Produced from 1992 through 1995, the 480F carried the Cummins 4-390 engine forward from the 480E and was effectively the same machine with refined hydraulics and cosmetics. When 480F production ended, Case did not replace it directly — the small-frame Construction King role was absorbed by the 580K and 580 Super L families on the larger platform.</p>
+
+<p>This guide covers the verified specifications, the engine and drivetrain options, the 2WD and 4WD front axle configurations, the 480F LL Landscape Loader variant, the failure modes 480F owners report most often, and the parts we stock with confirmed 480F fitment.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Where to find the serial number plate</a></li>
+<li><a href="#section-3">Production years</a></li>
+<li><a href="#section-4">Engine and powertrain</a></li>
+<li><a href="#section-5">Loader and backhoe capacities</a></li>
+<li><a href="#section-6">4WD front axle and the 480F LL variant</a></li>
+<li><a href="#section-7">Common problems documented by owners</a></li>
+<li><a href="#section-8">Verified replacement parts</a></li>
+<li><a href="#section-9">Maintenance schedule</a></li>
+<li><a href="#section-10">Related Case Construction King models</a></li>
+<li><a href="#section-11">Frequently asked questions</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 480F — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1992 – 1995</dd>
+<dt>Engine</dt><dd>Case 4-390 (Cummins 4B 3.9L)</dd>
+<dt>Cylinders</dt><dd>4, liquid-cooled, naturally aspirated diesel</dd>
+<dt>Displacement</dt><dd>239 cu in (3.9 L)</dd>
+<dt>Horsepower</dt><dd>69 HP gross at 2,200 rpm</dd>
+<dt>Torque</dt><dd>186 lb-ft at 1,200 rpm</dd>
+<dt>Fuel system</dt><dd>Lucas / CAV or Roosa Master / Stanadyne rotary IP</dd>
+<dt>Transmission options</dt><dd>4-speed mechanical shuttle or 4-speed power shuttle</dd>
+<dt>Front axle</dt><dd>2WD or Carraro 4WD</dd>
+<dt>Brakes</dt><dd>Hydraulically actuated bonded disc in drum</dd>
+<dt>Operating weight</dt><dd>~10,800 – 12,000 lb (configuration-dependent)</dd>
+<dt>Wheelbase</dt><dd>80 in (2WD) / 81 in (4WD)</dd>
+<dt>Hydraulic flow</dt><dd>~23 gpm</dd>
+<dt>Hydraulic pressure</dt><dd>~2,450 psi</dd>
+<dt>Loader breakout force</dt><dd>~8,300 lb</dd>
+<dt>Backhoe dig depth</dt><dd>14 ft 6 in (Extendahoe)</dd>
+<dt>Travel speed (max)</dt><dd>~21 mph forward</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Where to find the serial number plate</h2>
+
+<p>The 480F carries its tractor serial on a stamped data plate riveted to the <strong>left side of the tractor frame rail</strong>, near the clutch housing under the left loader tower. By the 480F era, all serials carry the <strong>JJG</strong> prefix (Burlington, Iowa plant code). The Cummins 4-390 engine has its own block-stamped serial below the cylinder head.</p>
+
+<div class="bt-callout">
+<strong>Verify 2WD vs. 4WD before ordering front-end parts</strong>
+The 480F was offered factory in both 2WD and 4WD (Carraro) configurations. Spindles, hubs, king pins, planetary gears, tie rod ends, and the front axle housing differ between the two. Confirm which axle your machine has before ordering anything front-end.
+</div>
+
+<h2 id="section-3">Production years</h2>
+
+<p>The Case 480F was built from 1992 through 1995 — the 480F LL Landscape Loader variant continued slightly later, with some sources extending its production through 1997 or 1999 for tail-end deliveries. When the 480F line ended, Case did not introduce a 480G or other direct successor; the small-frame Construction King role was rolled into the 580K and later 580 Super L families.</p>
+
+<p>A single, publicly authoritative Case-published year-by-serial table for the 480F is not in the open record. Read the serial off the frame plate and verify through a Case dealer database before ordering anything tied to engine, drivetrain, or front-axle internals.</p>
+
+<h2 id="section-4">Engine and powertrain</h2>
+
+<p>The 480F is powered by the <strong>Case 4-390</strong> — Case's catalog name for the <strong>Cummins 4B 3.9L</strong> four-cylinder naturally aspirated diesel. 239 cubic inches, 69 HP gross at 2,200 rpm, 186 lb-ft of torque at 1,200 rpm. This is the same engine carried over from the 480E and used across the late Case 580 Super E, 580K, and several dozer and skid steer models from the same era. Parts availability is excellent — Cummins 4B consumables are everywhere.</p>
+
+<p>Fuel system varies across the production run. Early 480Fs typically use a Roosa Master / Stanadyne rotary injection pump; later builds switched to a Lucas / CAV rotary pump. The injector lines differ between the two — verify your IP type before ordering injector lines or pump seal kits.</p>
+
+<p>Two transmission options were offered factory:</p>
+
+<ul>
+<li><strong>4-speed mechanical shuttle</strong> — single dry clutch, four gears forward and reverse, manual shuttle lever.</li>
+<li><strong>4-speed power shuttle</strong> — torque converter coupled, hydraulically actuated forward/reverse clutch pack. This is the popular factory configuration and the source of most documented drivetrain failures.</li>
+</ul>
+
+<h2 id="section-5">Loader and backhoe capacities</h2>
+
+<table>
+<thead><tr><th>Capacity</th><th>Spec</th></tr></thead>
+<tbody>
+<tr><td>Loader lift capacity (to full height)</td><td>~4,600 lb</td></tr>
+<tr><td>Loader breakout force</td><td>~8,300 lb</td></tr>
+<tr><td>Loader max lift (to pin)</td><td>~130 in (3,300 mm)</td></tr>
+<tr><td>Loader bucket capacity</td><td>~1.0 cu yd</td></tr>
+<tr><td>Backhoe dig depth (Extendahoe)</td><td>14 ft 6 in</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-6">4WD front axle and the 480F LL variant</h2>
+
+<p>The 480F was offered with an optional <strong>Carraro 4WD front axle</strong> using planetary hub reduction — same architecture as the 480E, with king pin assemblies on each spindle and stud-mounted hubs that share parts with the 580K, 590 Super L, and other Carraro-equipped Case backhoes of the era. 2WD remained the base configuration. The 4WD upgrade is the source of several documented high-hour wear items (planetary gears, king pins, hub bearings) listed in the parts table.</p>
+
+<h3>Case 480F LL (Landscape Loader)</h3>
+
+<p>Case also offered the <strong>480F LL</strong> as a loader-only Landscape Loader configuration — same powertrain and front axle options as the standard 480F, but no backhoe attachment and a different rear frame. Used in landscape, light utility, and skip-loader applications. Production of the 480F LL extended slightly beyond the standard 480F. The 480F LL has its own filter service kit and decal set in our catalog.</p>
+
+<h2 id="section-7">Common problems documented by owners</h2>
+
+<p>The following failure modes are drawn from forum threads on TractorByNet, Yesterday's Tractors, Heavy Equipment Forums, and JustAnswer. Diagnose in order before replacing major components.</p>
+
+<h3>Power shuttle forward clutch burn-up</h3>
+<p>The most-reported 480F drivetrain failure. Symptoms include the machine driving in reverse but slipping or dropping out in forward, with metal and clutch material in the shuttle pan strainer. Root cause is usually upstream — low Hytran fluid, wrong fluid in the shuttle, or a plugged oil-cooler line starving the clutches of cooling. Inspect the oil cooler line and pan strainer before condemning the clutch pack.</p>
+
+<h3>Power shuttle "kick-out" solenoid</h3>
+<p>Documented intermittent failure of the 2-wire kick-out solenoid on the left side of the shuttle housing. Symptom: the machine drops out of gear under load or won't engage from neutral consistently. Replacement solenoid is a straightforward service item.</p>
+
+<h3>Brake master cylinder failure (dual under-dash masters)</h3>
+<p>The 480F uses two separate master cylinders under the dash, one per side, feeding hydraulically actuated bonded discs in drum-style housings. Spongy pedal, one-side-only operation, and pedals that won't hold are usually internal seal failure in one or both master cylinders. The bleed sequence is sensitive — work the side that's farther from the cab fluid reservoir first.</p>
+
+<h3>Cummins 4-390 head gasket weep</h3>
+<p>Common at high hours, especially on machines that have run overheated or with over-advanced injection timing. Symptom: coolant in the oil or external seepage at the deck, typically between cylinders 3 and 4. Replace with a Cummins 4B head gasket set and re-torque to spec.</p>
+
+<h3>Cummins 4-390 injection pump fade</h3>
+<p>Hard hot starts, weak power, and stalling under load on high-hour units trace to the rotary injection pump. Lucas / CAV and Roosa Master / Stanadyne builds have different rebuild paths — confirm pump type before ordering parts.</p>
+
+<h3>4WD Carraro axle wear</h3>
+<p>On 4WD-equipped 480Fs, the Carraro planetary hubs, king pins, planetary gear pins, and tie rod ends are documented high-hour wear items. Common symptom: clunking from the front end during turns, eventually progressing to leaking grease at the planetary hub.</p>
+
+<h3>Pin and bushing wear</h3>
+<p>Same as the rest of the 480 family — wallowed-out lift cylinder rod-end pins, loader tower pivot pins, backhoe boom-to-dipper pin, bucket-link bushings, and swing tower pins. Hardened replacement pins and bushings, plus full bucket-link assemblies that fit the 480D/E/F generation, are in stock.</p>
+
+<div class="bt-pull">The 480F is the same machine as a late 480E with cleaner hydraulics. If you've worked on either, you've worked on both — and the parts cross 95 percent of the way.</div>
+
+<h2 id="section-8">Verified replacement parts</h2>
+
+<table>
+<thead><tr><th>Part</th><th>SKU</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-4390-cummins-4b390-non-turbo-engine-overhaul-kit-bekc39/">Cummins 4-390 Engine Overhaul Kit</a></td><td>BEKC39</td><td>Full Cummins 4B 3.9L non-turbo overhaul package for the 480F engine</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-engine-long-block-broken-tractor/">Cummins 4B / 4BT Long Block</a></td><td>CS-4390-LB-N</td><td>Replacement long-block engine for Case models with the Cummins 4-390</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/rebuilt-fuel-injection-pump-for-case-dozers-loaders-w-cummins-4-cyl-engines-ip4390r/">Rebuilt Fuel Injection Pump</a></td><td>IP4390R</td><td>Rebuilt rotary IP for the Cummins 4-cylinder — addresses the documented IP-fade failure</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-cummins-engine-head-gasket-set-3804896/">Cummins 4B Head Gasket Set</a></td><td>3804896</td><td>Head gasket set for the Cummins 4-390 — replace when coolant appears in oil or between cylinders 3 and 4</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-power-shuttle-rebuild-kit-with-pump-and-torque-converter-cs-cpsk/">Power Shuttle Rebuild Kit with Pump &amp; TC</a></td><td>CS-CPSK</td><td>Complete power-shuttle rebuild package — for forward-clutch burn-up repairs</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-brake-master-cylinder-for-backhoes-dozers-by-broken-tractor-d126695/">Brake Master Cylinder</a></td><td>D126695</td><td>Replacement master cylinder for the 480F dual-master hydraulic brake circuit</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-480-backhoe-boom-cylinder-seal-kit-1543264c1/">Boom Cylinder Seal Kit</a></td><td>1543264C1</td><td>Boom hydraulic cylinder seal kit specifically for 480D, 480E, and 480F backhoes</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-480-backhoe-bucket-cylinder-seal-kit-1543268c1/">Bucket Cylinder Seal Kit</a></td><td>1543268C1</td><td>Bucket hydraulic cylinder seal kit for 480D, 480E, 480F</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-480d-480e-480f-backhoe-boom-cylinder-g102835-g102835/">Backhoe Boom Cylinder</a></td><td>G102835</td><td>Replacement boom cylinder for 480D, 480E, and 480F</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-480c-480d-480e-480f-backhoe-swing-cylinder-rebuilt-g110395-g110395/">Rebuilt Swing Cylinder</a></td><td>G110395</td><td>Complete rebuilt swing cylinder for the 480F family</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/boom-lock-for-case-backhoe-480d-480e-480f-d99787/">Boom Lock</a></td><td>D99787</td><td>Transport boom lock for 480D, 480E, 480F</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-boom-cylinder-rod-end-pin-d43959/">Boom Cylinder Rod End Pin</a></td><td>D43959</td><td>Replacement rod-end pin for the boom cylinder on 480E, 480F (14-ft backhoe)</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-bucket-link-d99731/">Bucket Link with Bushings</a></td><td>D99731</td><td>Center bucket link with hardened bushings for 480D, 480E, 480F</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hood-for-case-480e-480f-d143566/">Engine Hood</a></td><td>D143566</td><td>Direct-fit replacement hood for 480E and 480F</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-new-holland-front-axle-drive-shaft-long/">4WD Front Axle Inner Shaft</a></td><td>9968057</td><td>Front axle inner drive shaft for 4WD 480F — also fits 580K and 590 Turbo</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-dipper-cylinder-extendible-dipper-stick-pin-d53812/">Dipper Cylinder to Extendable Dipper Pin</a></td><td>D53812</td><td>Pin connecting dipper cylinder to extendable dipper stick on 480C-480F backhoes</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/pin-kit-coupler-to-bucket-for-case-480c-480d-480e-480f-580c-580-super-m-d37614k-2/">Pin Kit — Coupler to Bucket</a></td><td>D37614K-2</td><td>Pin kit for the coupler-to-bucket connection on 480C through 480F backhoes</td></tr>
+</tbody>
+</table>
+
+<h3>Browse by 480F-fit category</h3>
+
+<ul>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-backhoe-hydraulics/case-backhoe-hydraulic-cylinder-seal-kits/case-480c-480d-480e-480f-seal-kits/">Hydraulic Cylinder Seal Kits — 480C, 480D, 480E, 480F</a></li>
+<li><a href="https://www.brokentractor.com/c/case-backhoe-parts/brakes/480e-580e-586e">Brakes — 480E LL, 480F LL, 580E, 580 Super E, 584E, 586E</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+
+<h2 id="section-9">Maintenance schedule</h2>
+
+<table>
+<thead><tr><th>Interval</th><th>Item</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Daily</td><td>Grease loader pivots, swing tower, stabilizer pins, 4WD king pins (if equipped)</td><td>Before each shift</td></tr>
+<tr><td>100 hours</td><td>Inspect air filter, fan belt, hoses, tire pressures</td><td>Replace air filter as needed in dusty work</td></tr>
+<tr><td>250 hours</td><td>Engine oil and Cummins oil filter</td><td>Use a CD/CE-grade diesel oil</td></tr>
+<tr><td>500 hours</td><td>Fuel filter, fuel-water separator</td><td>Critical on machines running old fuel — Cummins rotary IPs are contamination-sensitive</td></tr>
+<tr><td>1,000 hours</td><td>Hydraulic / transmission fluid and filter; cooling system flush</td><td>Use Hytran in the shuttle — never substitute engine oil</td></tr>
+<tr><td>1,000 hours (power shuttle)</td><td>Inspect shuttle pan strainer and oil cooler line</td><td>Friction material in the strainer is the early warning of clutch pack wear</td></tr>
+<tr><td>1,000 hours (4WD only)</td><td>Inspect front planetary hubs and king pins</td><td>Wear here is the leading 4WD failure on high-hour units</td></tr>
+<tr><td>As needed</td><td>Brake bleed and master cylinder inspection</td><td>Bleed the side farther from the reservoir first</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-10">Related Case Construction King models</h2>
+
+<table>
+<thead><tr><th>Model</th><th>Engine</th><th>Drivetrain</th><th>Production</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-480d-construction-king-backhoe-loader-parts-specs-common-issues-case-480d-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480D</a></td><td>Case G188D, 52 HP</td><td>Mechanical or power shuttle, 2WD</td><td>1980 – 1987</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-480e-construction-king-backhoe-loader-parts-specs-common-issues-case-480e-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480E</a></td><td>Cummins 4-390, 69 HP</td><td>Mechanical or power shuttle, 2WD or 4WD</td><td>1987 – 1992</td></tr>
+<tr><td><strong>Case 480F</strong> (this page)</td><td>Cummins 4-390, 69 HP</td><td>Mechanical or power shuttle, 2WD or 4WD</td><td>1992 – 1995</td></tr>
+<tr><td>Case 480F LL</td><td>Cummins 4-390, 69 HP</td><td>Loader-only Landscape Loader configuration</td><td>1992 – ~1997</td></tr>
+<tr><td>Case 580 Super E</td><td>Cummins 4-390 / Case G207D</td><td>Mechanical or power shuttle</td><td>1987 – 1991</td></tr>
+<tr><td>Case 580K</td><td>Cummins 4-390</td><td>Mechanical or power shuttle, wet-disc brakes</td><td>1986 – 1994</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-11">Frequently asked questions</h2>
+
+<h3>What years was the Case 480F made?</h3>
+<p>1992 through 1995. The 480F LL Landscape Loader variant continued slightly longer, with some references extending production through 1997.</p>
+
+<h3>What engine is in a Case 480F?</h3>
+<p>The Case 4-390 — Case's name for the Cummins 4B 3.9L four-cylinder naturally aspirated diesel. 239 cubic inches, 69 HP gross at 2,200 rpm, 186 lb-ft torque at 1,200 rpm. The same engine as the 480E.</p>
+
+<h3>Does the 480F have a power shuttle?</h3>
+<p>Both options were offered factory. Synchronized mechanical shuttle (4F/4R with dry clutch) and power shuttle (hydraulic clutch pack with torque converter) were both standard configurations. Power shuttle is the more common factory choice and the source of most documented drivetrain failures.</p>
+
+<h3>Does the 480F have 4WD?</h3>
+<p>4WD with a Carraro planetary front axle was offered as a factory option. Confirm 2WD vs. 4WD before ordering any front-end parts.</p>
+
+<h3>Does the 480F have wet-disc brakes?</h3>
+<p>No. The 480F uses hydraulically actuated bonded discs inside drum housings, with two separate master cylinders under the dash. Same architecture as the 480E and 480D. True wet-disc multi-plate brakes appeared on the 580 Super L generation but were never used on the 480-series.</p>
+
+<h3>What is the 480F LL?</h3>
+<p>The 480F LL (Landscape Loader) is the loader-only configuration without a backhoe — same engine and drivetrain as the standard 480F, used in landscape, skip-loader, and light-utility applications.</p>
+
+<h3>Was there a Case 480G?</h3>
+<p>No. The 480F is the last model in the Case 480 series. After 1995, Case did not produce a 480-series successor; the small-frame Construction King role was rolled into the 580K and 580 Super L families.</p>
+
+<div class="bt-cta">
+<h3>Need parts for your Case 480F?</h3>
+<p>Cummins 4-390 engine overhaul kits and long blocks, mechanical and power shuttle drivetrain components, 4WD front axle parts, brake masters, hydraulic cylinder seal kits for the 480D/E/F family, and bucket links and bushings — serial-verified fitment and same-warehouse shipping from the U.S. Talk to a tech: (800) 909-7060, Mon–Fri 7a–5p CT.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Shop Case Backhoe Parts</a>
+</div>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong>
+<p>Broken Tractor LLC stocks parts for the full Case Construction King 480 lineup — 480CK, 480B, 480C, 480D, 480E, 480E LL, 480F, 480F LL — and the parallel 580 series. Cummins 4-390 engine kits and long blocks, mechanical and power shuttle drivetrain components, 2WD and 4WD front axle parts, brake assemblies, and hydraulic seals with G1/G3 verification. All parts ship from U.S. warehouses with serial-number-verified fitment.</p></div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Keep reading</h3>
+<ul>
+<li><span class="meta">Case 480E</span><a href="https://www.brokentractor.com/p/case-480e-construction-king-backhoe-loader-parts-specs-common-issues-case-480e-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480E Construction King — Specs, Parts &amp; Common Issues</a></li>
+<li><span class="meta">Case 480D</span><a href="https://www.brokentractor.com/p/case-480d-construction-king-backhoe-loader-parts-specs-common-issues-case-480d-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480D Construction King — Specs, Parts &amp; Common Issues</a></li>
+<li><span class="meta">Case Backhoe Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Serial Number &amp; Owner's Info</a></li>
+<li><span class="meta">Power Shuttle Guide</span><a href="https://www.brokentractor.com/blog/a-quick-guide-to-rebuilding-a-case-backhoe-power-shuttle-transmission/">A Quick Guide to Rebuilding a Case Backhoe Power Shuttle Transmission</a></li>
+<li><span class="meta">Hydraulics</span><a href="https://www.brokentractor.com/blog/diagnosing-a-slow-or-weak-hydraulic-system-a-field-troubleshooting-guide/">Diagnosing a Slow or Weak Hydraulic System</a></li>
+<li><span class="meta">Case Backhoe Parts</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

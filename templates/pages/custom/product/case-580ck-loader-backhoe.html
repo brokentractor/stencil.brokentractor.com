@@ -1,0 +1,417 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+  <header class="bt-hero">
+    <span class="bt-tag">Model Spotlight</span>
+    <h1 class="bt-title">Case 580CK Construction King: Specs, Parts &amp; Common Issues</h1>
+    <p class="bt-deck">Produced 1966 through 1971 — the heavier sibling of the 480CK and the model where Case introduced the power shuttle to the Construction King line. G188D 188-cubic-inch diesel or 188-cubic-inch gas, with both mechanical shuttle and power shuttle drivetrains offered factory.</p>
+    <div class="bt-byline">
+      <div class="bt-avatar">BT</div>
+      <div>
+        <strong>Broken Tractor Editorial Team</strong>
+        <span class="dot">•</span> Updated May 2026
+        <span class="dot">•</span> 9 min read
+      </div>
+    </div>
+    <div class="bt-feature">
+      <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580ck-hero.jpg" alt="Case 580CK Construction King Backhoe Loader">
+    </div>
+  </header>
+
+  <p>The Case 580CK is the heavier sibling of the 480CK and the volume Construction King backhoe of the late 1960s. Produced from 1966 through 1971, the 580CK shares the Case G188D 188-cubic-inch diesel with the 480CK and adds a larger 188-cubic-inch gas option. The defining drivetrain difference from the 480-line is the <strong>power shuttle</strong> — Case introduced the hydraulic torque-converter shuttle on the 580CK, making this the first Construction King model offered with a no-clutch directional change.</p>
+
+  <p>This guide covers the verified specifications, where to find the serial number, the engine and drivetrain options, the power shuttle (a 580CK first), the failure modes 580CK owners report most often, the parts we stock with confirmed 580CK fitment, and how the 580CK fits in the Construction King lineage as the predecessor to the 580B and the platform that eventually dominated the Case backhoe lineup.</p>
+
+  <nav aria-label="Table of contents">
+    <h2>What's in this guide</h2>
+    <ol>
+      <li><a href="#section-1">At-a-glance specifications</a></li>
+      <li><a href="#section-2">Where to find the serial number plate</a></li>
+      <li><a href="#section-3">Production years and serial numbers</a></li>
+      <li><a href="#section-4">Engine and powertrain</a></li>
+      <li><a href="#section-5">The power shuttle (introduced on the 580CK)</a></li>
+      <li><a href="#section-6">External band brakes</a></li>
+      <li><a href="#section-7">Loader and backhoe capacities</a></li>
+      <li><a href="#section-8">Common problems documented by owners</a></li>
+      <li><a href="#section-9">Verified replacement parts</a></li>
+      <li><a href="#section-10">Maintenance schedule</a></li>
+      <li><a href="#section-11">Related Case Construction King models</a></li>
+      <li><a href="#section-12">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="section-1">At-a-glance specifications</h2>
+
+  <div class="bt-spec">
+    <h4>Case 580CK — factory specifications</h4>
+    <dl>
+      <dt>Production years</dt><dd>1966 – 1971</dd>
+      <dt>Engine (diesel)</dt><dd>Case G188D, 188 cu in (3.1 L)</dd>
+      <dt>Engine (gas)</dt><dd>Case 188 cu in gas, 4-cyl</dd>
+      <dt>Horsepower (diesel)</dt><dd>~52 HP gross at 2,100 rpm</dd>
+      <dt>Horsepower (gas)</dt><dd>~55 – 57 HP gross</dd>
+      <dt>Fuel system (diesel)</dt><dd>Roosa Master / Stanadyne rotary IP</dd>
+      <dt>Transmission options</dt><dd>4-speed or 8-speed mechanical shuttle, or 4-speed power shuttle</dd>
+      <dt>Brakes</dt><dd>External contracting band brakes (drum)</dd>
+      <dt>Operating weight</dt><dd>~11,000 – 13,000 lb (configuration-dependent)</dd>
+      <dt>Wheelbase</dt><dd>~84 in</dd>
+      <dt>Hydraulic flow</dt><dd>~13.5 gpm</dd>
+      <dt>Hydraulic pressure</dt><dd>~1,500 psi</dd>
+      <dt>Loader bucket capacity</dt><dd>~1.0 cu yd</dd>
+      <dt>Loader lift capacity</dt><dd>~5,000 – 6,000 lb</dd>
+      <dt>Backhoe dig depth (standard)</dt><dd>~14 ft</dd>
+      <dt>Backhoe dig depth (Extendahoe)</dt><dd>~15 ft</dd>
+    </dl>
+  </div>
+
+  <h2 id="section-2">Where to find the serial number plate</h2>
+
+  <p>The 580CK carries its tractor serial on a stamped data plate on the <strong>left side of the tractor frame rail</strong>, under the left loader tower near the clutch housing. Some 580CKs also have a secondary plate on the right side of the instrument panel inside the operator station. The engine serial is stamped separately on the <strong>left side of the engine block</strong>.</p>
+
+  <table>
+    <thead><tr><th>Plate</th><th>Location</th></tr></thead>
+    <tbody>
+      <tr><td>Tractor (machine) serial</td><td>Left frame rail under the loader tower, near the clutch housing</td></tr>
+      <tr><td>Secondary tractor plate (some units)</td><td>Right side of the instrument panel inside the operator station</td></tr>
+      <tr><td>Engine serial (G188D or 188 ci gas)</td><td>Left side of the engine block, below the cylinder head</td></tr>
+      <tr><td>Loader and backhoe serials</td><td>Each attachment carries its own plate</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="section-3">Production years and serial numbers</h2>
+
+  <p>The Case 580CK was produced from 1966 through 1971, when it was replaced by the 580B. Published year-by-serial breaks for the 580CK are widely cited across multiple parts vendors and reference sources.</p>
+
+  <table>
+    <thead><tr><th>Year</th><th>Beginning serial number</th><th>Ending serial number</th></tr></thead>
+    <tbody>
+      <tr><td>1966</td><td>8279001</td><td>8307000</td></tr>
+      <tr><td>1967</td><td>8307001</td><td>8332500</td></tr>
+      <tr><td>1968</td><td>8332501</td><td>8356500</td></tr>
+      <tr><td>1969</td><td>8356501</td><td>8650000</td></tr>
+      <tr><td>1970</td><td>8650001</td><td>8674000</td></tr>
+      <tr><td>1971</td><td>8674001</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="bt-callout">
+    <strong>Identify mechanical shuttle vs. power shuttle before ordering drivetrain parts</strong>
+    The 580CK was offered with three transmission configurations — 4-speed mechanical shuttle, 8-speed mechanical shuttle, and 4-speed power shuttle. They share almost no service parts. Look for the torque converter housing and the absence of a clutch pedal to identify power shuttle units.
+  </div>
+
+  <h2 id="section-4">Engine and powertrain</h2>
+
+  <p>The 580CK was factory-available with two engines, both Case-built inline four-cylinders:</p>
+
+  <ul>
+    <li><strong>Case G188D diesel</strong> — 188 cubic inches (3.1 L), naturally aspirated, indirect injection. Approximately 52 HP gross at 2,100 rpm. Roosa Master / Stanadyne DB-series rotary injection pump. Same engine as the 480CK, 480B, 530CK, 580B, and used continuing through the 580C.</li>
+    <li><strong>Case 188 cubic inch gas</strong> — four-cylinder gasoline, approximately 55–57 HP gross. The 580CK uses the 188 ci gas engine — the smaller 159 ci gas was on the 530CK and 480CK.</li>
+  </ul>
+
+  <p>Three transmission options were offered factory: 4-speed or 8-speed synchronized mechanical shuttle (driven through a single 11-inch dry clutch), and the new 4-speed power shuttle with torque converter and hydraulic clutch packs.</p>
+
+  <h2 id="section-5">The power shuttle (introduced on the 580CK)</h2>
+
+  <p>The 580CK is where Case introduced the <strong>power shuttle transmission</strong> to the Construction King line. Power shuttle uses a torque converter on the engine side and a hydraulically actuated forward/reverse clutch pack — no foot clutch pedal is required for directional changes, just a hand or knee-actuated shuttle lever and an inching pedal that modulates engagement pressure. The smaller 480CK and the earlier 530CK and 430CK never offered power shuttle — that drivetrain stays with the larger 580-class machines from this point forward.</p>
+
+  <p>Power shuttle units are identifiable by:</p>
+
+  <ul>
+    <li>A torque converter housing between the engine and the transmission case</li>
+    <li>An inching pedal in place of (or in addition to) the dry clutch pedal</li>
+    <li>A shuttle control valve with two female-end connections behind the operator station</li>
+    <li>Different fluid specification — the power shuttle originally required Case TCH (now superseded by Hy-Tran Ultra)</li>
+  </ul>
+
+  <p>The power shuttle is also the source of most documented 580CK drivetrain failures (forward clutch burn-up — see common problems below). When the power shuttle works well it's a meaningful productivity advantage; when it fails, it's a tractor-split rebuild.</p>
+
+  <h2 id="section-6">External band brakes</h2>
+
+  <p>The 580CK uses <strong>external contracting band brakes</strong> on each rear axle — the same architecture as the 430CK, 480CK, 480B, 530CK, and 580B. Each pedal operates a band wrapped around a drum on its respective final drive housing. Bonded-disc-in-drum brakes did not arrive in the Construction King line until the 480C and 580C in the mid-1970s.</p>
+
+  <p>Common failure modes: bands sticking to drums after the machine has sat, broken band return springs, rust-frozen ball-and-ramp actuators, contaminated linings from axle-seal leaks. Service parts including brake bands, lining kits, and brake bearing carriers are stocked.</p>
+
+  <h2 id="section-7">Loader and backhoe capacities</h2>
+
+  <table>
+    <thead><tr><th>Capacity</th><th>Spec</th></tr></thead>
+    <tbody>
+      <tr><td>Loader bucket capacity</td><td>~1.0 cu yd</td></tr>
+      <tr><td>Loader lift capacity (to full height)</td><td>~5,000 – 6,000 lb</td></tr>
+      <tr><td>Backhoe dig depth (standard)</td><td>~14 ft</td></tr>
+      <tr><td>Backhoe dig depth (Extendahoe)</td><td>~15 ft</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="section-8">Common problems documented by owners</h2>
+
+  <p>The following failure modes are drawn from long-running threads on TractorByNet, Yesterday's Tractors, Heavy Equipment Forums, JustAnswer, and MyTractorForum. Diagnose in order before replacing major components.</p>
+
+  <h3>Power shuttle forward clutch burn-up</h3>
+  <p>The single most-discussed 580CK problem. Symptoms: machine drives in reverse but slips or drops out in forward, with metal and clutch material in the shuttle pan strainer. Root causes include low fluid level, the wrong fluid in the shuttle, restricted pickup-tube screen, low charge pressure, and worn clutch packs. Repair requires splitting the tractor for clutch pack replacement. Complete rebuilt power shuttles with torque converter are stocked.</p>
+
+  <h3>Single dry clutch wear (mechanical shuttle units)</h3>
+  <p>On mechanical-shuttle 580CKs the 11-inch dry clutch is the most-replaced wear item. Symptoms are the same as on the smaller 480CK: gear grinding on the shuttle shift, slipping under load, pedal hitting the floorboard. Before splitting the tractor, inspect the rear engine main seal and front transmission seal — oil contamination on the dry clutch is a frequent root cause.</p>
+
+  <h3>Roosa Master injection pump fade</h3>
+  <p>The DB-series rotary pump on the G188D develops predictable failures over time: weeping mounting-flange seal, sticking delivery valves, plastic internal coupling failure, gum-up under the fuel return cap. Pump rebuilds with the R14711 seal kit address the seal-related failures; complete rebuilt pumps are stocked for more advanced wear.</p>
+
+  <h3>External band brake sticking</h3>
+  <p>After extended storage, brake bands stick to the drums and the operator will report "no brakes" or "won't release." The fix is usually adjustment and a careful pedal cycle to free the friction surfaces. Worn bands and rivetable linings are still consumables — replacement band sets and lining kits are stocked.</p>
+
+  <h3>Power steering cylinder and pump leaks</h3>
+  <p>The 580CK uses a separate power steering pump and a hydraulic steering cylinder. Both are documented service items. Power steering pump A137187 and steering cylinder 234447A1 are common replacements on high-hour 580CKs.</p>
+
+  <h3>Hydraulic main pump wear</h3>
+  <p>The main hydraulic gear pump on the 580CK is not rebuildable in the field — the housing wears and replacement is the path. Symptoms: slow loader, weak digging, howl under load. Replacement pump D48950 is stocked.</p>
+
+  <h3>Split-piston hydraulic cylinder leakage</h3>
+  <p>The 580CK era uses split-piston hydraulic cylinders. Seal kits exist but whole-cylinder replacement is often the more reliable path on machines with worn cylinder bores.</p>
+
+  <div class="bt-pull">The 580CK is where Case proved the power shuttle worked. It also generated the longest-running drivetrain repair conversation in the Construction King family.</div>
+
+  <h2 id="section-9">Verified replacement parts</h2>
+
+  <table>
+    <thead><tr><th>Part</th><th>SKU</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://www.brokentractor.com/p/case-580ck-service-manual-918-pages-ca-s-580cktlb-ca-s-580cktlb/">Case 580CK Service Manual</a></td><td>CA-S-580CKTLB</td><td>918-page factory service manual — the authoritative reference for engine, drivetrain, hydraulics, and brakes on the 580CK</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-580ck-operators-manual-110-pages-ca-o-580ckb-ca-o-580ckb/">Case 580CK Operator's Manual</a></td><td>CA-O-580CKB</td><td>110-page operator's manual</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-188-diesel-engine-overhaul-kit-by-reliance-bekc1883/">Case 188 Diesel Engine Overhaul Kit</a></td><td>BEKC1883</td><td>Full G188D overhaul package for the 580CK diesel — pistons, sleeves, rings, bearings, gaskets</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-backhoe-fuel-injection-pump-seal-kit-roosa-master-stanadyne-r14711-kit/">Fuel Injection Pump Seal Kit</a></td><td>R14711-Kit</td><td>Reseals the Roosa Master / Stanadyne rotary IP on the G188D</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/zenith-replacement-carburetor-for-case-580-and-580ck-17a41/">Zenith Replacement Carburetor (Gas)</a></td><td>17A41</td><td>Direct replacement carburetor for the 188 ci gas 580CK</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-rebuilt-power-shuttle-with-torque-converter-dcps/">Rebuilt Power Shuttle with Torque Converter</a></td><td>DCPS</td><td>Complete rebuilt power shuttle assembly with torque converter — for power-shuttle-equipped 580CKs</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/shuttle-transmission-metallic-friction-disc-for-case-580ck-580b-a41355/">Power Shuttle Metallic Friction Disc</a></td><td>A41355</td><td>Friction disc for the 580CK power shuttle clutch pack</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-11-inch-button-clutch-disc-1997844c1-a51840/">11" Button Clutch Disc (Mechanical Shuttle)</a></td><td>A51840</td><td>Dry clutch disc for mechanical-shuttle 580CKs — also fits 480C and 580B</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/release-bearing-for-case-480-530-580b-580ck-backhoes-8225518/">Clutch Release Bearing</a></td><td>8225518</td><td>Replacement release bearing — replace whenever the clutch is out</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/transmission-synchronizer-for-case-580b-580ck-480b-530-a151114/">Transmission Synchronizer</a></td><td>A151114</td><td>Synchronizer for the mechanical shuttle gearbox — replace when shifts grind despite a fresh clutch</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-rear-axle-bull-gear-a168925/">Rear Axle Bull Gear</a></td><td>A168925</td><td>Final drive bull gear for the 580CK rear axle</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-rear-differential-ring-gear-pinion-set-a50997/">Rear Differential Ring &amp; Pinion Set</a></td><td>A50997</td><td>Ring and pinion set for the 580CK differential — replace as a matched set</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/brake-bearing-carrier-for-case-580ck-580b-right-a140279/">Brake Bearing Carrier (RH)</a></td><td>A140279</td><td>Right-hand brake bearing carrier for the 580CK band brake assembly</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/brake-band-pair-for-case-480-and-580-series-backhoes-and-forklifts-249018a3/">Brake Band Pair</a></td><td>249018A3</td><td>Replacement external brake bands for both rear axle drums — sold as a matched pair</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/brake-lining-replacement-kit-case-backhoe-forklift-249019a1/">Brake Lining Replacement Kit</a></td><td>249019A1</td><td>Riveted lining kit for relining existing brake bands</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/left-hand-steering-arm-for-case-580ck-580b-480ck-480b-a137741/">Left-Hand Steering Arm</a></td><td>A137741</td><td>LH steering arm for 580CK, 580B, 480CK, 480B front axles</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/right-hand-steering-spindle-arm-for-case-580ck-580b-480ck-480b-a137742/">Right-Hand Steering Spindle Arm</a></td><td>A137742</td><td>RH steering spindle arm for 580CK, 580B, 480CK, 480B</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/8-lug-front-wheel-hub-for-case-580ck-580b-480ck-480b-backhoe-a51157/">8-Lug Front Wheel Hub</a></td><td>A51157</td><td>Front wheel hub for 580CK, 580B, 480CK, 480B 8-lug 2WD axles</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/front-corner-kit-for-case-580ck-580b-430ck-480b-6-lug-spindle-hub-bearings-cs-2wd-ck/">6-Lug Front Corner Kit</a></td><td>CS-2WD-CK</td><td>Complete spindle, hub, and bearings front corner kit for 580CK, 580B, 430CK, 480B (6-lug)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Browse by 580CK-fit category</h3>
+  <ul>
+    <li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/brakes/580CK-580B-430CK-530CK-480CK-480B">Brakes — 430CK, 480CK, 480B, 530CK, 580CK, 580B</a></li>
+    <li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-backhoe-rear-axle-and-differential-parts/580ck-580b-480ck-480b/">Rear Axle &amp; Differential — 580CK, 580B, 480CK, 480B</a></li>
+    <li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-backhoe-front-axle-parts/two-wheel-drive/580ck-580b-480b/">Front Axle 2WD — 430CK, 480CK, 480B, 530CK, 580, 580CK, 580B</a></li>
+    <li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+  </ul>
+
+  <h2 id="section-10">Maintenance schedule</h2>
+
+  <table>
+    <thead><tr><th>Interval</th><th>Item</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Daily</td><td>Grease loader pivots, swing tower, stabilizer pins, steering linkage</td><td>Before each shift</td></tr>
+      <tr><td>100 hours</td><td>Inspect air filter, fan belt, hoses, tire pressures</td><td>Replace air filter as needed in dusty work</td></tr>
+      <tr><td>250 hours</td><td>Engine oil and oil filter</td><td>Use a CC/CD-grade diesel oil on the G188D; a 10W-30 or 15W-40 on the gas units</td></tr>
+      <tr><td>500 hours</td><td>Primary fuel filter, fuel-water separator</td><td>Critical on machines running old fuel</td></tr>
+      <tr><td>1,000 hours</td><td>Hydraulic fluid and filter; transmission fluid; cooling system flush</td><td>Inspect clutch pedal free play and brake band lining at the same interval</td></tr>
+      <tr><td>1,000 hours (power shuttle)</td><td>Inspect shuttle pan strainer; check charge pressure</td><td>Friction material in the strainer is the early warning of clutch pack wear</td></tr>
+      <tr><td>As needed</td><td>Brake band adjustment</td><td>Especially after extended storage — bands frequently stick to drums on first use</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="section-11">Related Case Construction King models</h2>
+
+  <table>
+    <thead><tr><th>Model</th><th>Engine</th><th>Drivetrain</th><th>Production</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://www.brokentractor.com/p/case-530ck-construction-king-backhoe-loader-parts-specs-common-issues-case-530ck-construction-king-backhoe-loader-parts-specs-common-issues/">Case 530CK</a></td><td>Case G159 gas / G188D diesel</td><td>Mechanical shuttle, dry clutch</td><td>1960 – 1967</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-480ck-tractor-loader-backhoe-parts-specs-common-issues-case-480ck-tractor-loader-backhoe-parts-specs-common-issues/">Case 480CK</a></td><td>Case 148 ci gas / G188D diesel</td><td>Mechanical shuttle, dry clutch</td><td>Mid-1960s – 1971</td></tr>
+      <tr><td><strong>Case 580CK</strong> (this page)</td><td>Case 188 ci gas / G188D diesel</td><td>Mechanical shuttle or power shuttle</td><td>1966 – 1971</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-480b-construction-king-backhoe-loader-parts-specs-common-issues-case-480b-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480B</a></td><td>Case G188D / G148B gas</td><td>Mechanical shuttle, dry clutch</td><td>1971 – 1976</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-580b-backhoe-information-reference-page-580b/">Case 580B</a></td><td>Case G188D / 188 ci gas</td><td>Mechanical shuttle or power shuttle</td><td>1971 – 1976</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-480c-construction-king-backhoe-loader-parts-specs-common-issues-case-480c-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480C</a></td><td>Case G188D</td><td>Mechanical or power shuttle, bonded-disc brakes</td><td>1976 – 1980</td></tr>
+      <tr><td><a href="https://www.brokentractor.com/p/case-580c-backhoe-info-and-serial-number-breaks-by-year-580c/">Case 580C</a></td><td>Case G207D</td><td>Mechanical or power shuttle, bonded-disc brakes</td><td>1975 – 1980</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="section-12">Frequently asked questions</h2>
+
+  <h3>What years was the Case 580CK made?</h3>
+  <p>1966 through 1971. The 580B replaced the 580CK in 1971.</p>
+
+  <h3>What engines were offered on the 580CK?</h3>
+  <p>The Case G188D 188 ci diesel (approximately 52 HP gross at 2,100 rpm) and a 188 ci four-cylinder gas engine (approximately 55–57 HP gross).</p>
+
+  <h3>Does the 580CK have a power shuttle?</h3>
+  <p>The 580CK is the model where Case introduced the power shuttle to the Construction King line. Both a 4-speed mechanical shuttle (with dry clutch) and a 4-speed power shuttle (with torque converter and hydraulic clutch packs) were factory configurations. The smaller 480CK and the earlier 530CK and 430CK did not offer power shuttle.</p>
+
+  <h3>What kind of brakes does the 580CK have?</h3>
+  <p>External contracting band brakes on each rear axle — the same architecture as the 430CK, 480CK, 480B, 530CK, and 580B. Bonded-disc-in-drum brakes did not arrive in the Construction King line until the 480C and 580C in the mid-1970s.</p>
+
+  <h3>How deep does the 580CK backhoe dig?</h3>
+  <p>Approximately 14 feet with the standard backhoe attachment, or about 15 feet with the Extendahoe option.</p>
+
+  <h3>What parts cross between the 580CK and the 480CK?</h3>
+  <p>Engine internals (the G188D is shared), brake bands and linings, rear axle bull gears and ring-and-pinion sets, front axle 2WD spindles and steering arms, and most hydraulic components. The 580CK is the heavier machine and uses different sheet metal, frame, and loader geometry, but the wear-item parts catalog cross-references heavily with the 480CK and 480B.</p>
+
+  <h3>Is the 580CK the same as the 580B?</h3>
+  <p>No. The 580B replaced the 580CK in 1971 and brought refined sheet metal, an updated cab and ROPS option, and over-center backhoe geometry. The drivetrain — including the power shuttle option — continued from the 580CK. Many parts cross between the two but they are not identical machines.</p>
+
+  <h3>Where is the serial number on a Case 580CK?</h3>
+  <p>Stamped on a data plate on the left side of the tractor frame rail under the loader tower, near the clutch housing. Some units also carry a secondary plate on the right side of the instrument panel inside the operator station.</p>
+
+  <div class="bt-cta">
+    <h3>Need parts for your Case 580CK?</h3>
+    <p>G188D engine overhaul kits, complete rebuilt power shuttles, mechanical shuttle clutch and synchronizer components, brake bands and linings, steering arms and spindles, hydraulic pumps, and the 918-page factory service manual — serial-verified fitment and same-warehouse shipping from the U.S. Talk to a tech: (800) 909-7060, Mon–Fri 7a–5p CT.</p>
+    <a class="bt-btn" href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Shop Case Backhoe Parts</a>
+  </div>
+
+  <div class="bt-author">
+    <div class="bt-avatar">BT</div>
+    <div>
+      <strong>Broken Tractor Editorial Team</strong>
+      <p>Broken Tractor LLC stocks parts for the full Case Construction King lineup — 430CK, 480CK, 530CK, 580CK, 480B, 580B — and continuing through every later 480 and 580 generation. G188D engine kits, mechanical and power shuttle drivetrain components, brake assemblies, steering and front axle parts, and the hydraulic seals that wear out at 50-plus years of service. All parts ship from U.S. warehouses with serial-number-verified fitment.</p>
+    </div>
+  </div>
+
+  <section class="bt-related" aria-label="Related reading">
+    <h3>Keep reading</h3>
+    <ul>
+      <li><span class="meta">Case 480CK</span><a href="https://www.brokentractor.com/p/case-480ck-tractor-loader-backhoe-parts-specs-common-issues-case-480ck-tractor-loader-backhoe-parts-specs-common-issues/">Case 480CK Construction King — Specs, Parts &amp; Common Issues</a></li>
+      <li><span class="meta">Case 530CK</span><a href="https://www.brokentractor.com/p/case-530ck-construction-king-backhoe-loader-parts-specs-common-issues-case-530ck-construction-king-backhoe-loader-parts-specs-common-issues/">Case 530CK Construction King — Specs, Parts &amp; Common Issues</a></li>
+      <li><span class="meta">Case 580B</span><a href="https://www.brokentractor.com/p/case-580b-backhoe-information-reference-page-580b/">Case 580B Backhoe — Specs and Serial Number Breaks</a></li>
+      <li><span class="meta">Case 480B</span><a href="https://www.brokentractor.com/p/case-480b-construction-king-backhoe-loader-parts-specs-common-issues-case-480b-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480B Construction King — Specs, Parts &amp; Common Issues</a></li>
+      <li><span class="meta">Power Shuttle Guide</span><a href="https://www.brokentractor.com/blog/a-quick-guide-to-rebuilding-a-case-backhoe-power-shuttle-transmission/">A Quick Guide to Rebuilding a Case Backhoe Power Shuttle Transmission</a></li>
+      <li><span class="meta">Case Backhoe Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Serial Number &amp; Owner's Info</a></li>
+      <li><span class="meta">Case Backhoe Parts</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+    </ul>
+  </section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

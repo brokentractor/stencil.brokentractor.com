@@ -1,0 +1,386 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 530CK Construction King: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1960 through 1967 — the first widely produced Case Construction King backhoe, built on the 530 utility tractor platform. Case G188D 188-cubic-inch diesel or G159 159-cubic-inch gas, mechanical shuttle with single dry clutch, and external band brakes.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 9 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-530ck-hero.jpg" alt="Case 530CK Construction King Backhoe Loader">
+</div>
+</header>
+
+<p>The Case 530CK is the first widely produced Case Construction King backhoe. Built from 1960 through 1967 on the Case 530 utility-tractor platform, it established the Construction King product line that ran for the next thirty-plus years through the 480 and 580 families. The 530CK was offered with either the Case G188D 188-cubic-inch diesel or the Case G159 159-cubic-inch gas engine, paired with a 4-speed mechanical shuttle and a single dry clutch. Brakes are external contracting band brakes on each rear axle — pre-dating the bonded-disc-in-drum design that arrived with later Construction King generations.</p>
+
+<p>This guide covers the verified specifications, where to find the serial number, the engine and drivetrain options, the band brake system, the failure modes 530CK owners report most often, the parts we stock with confirmed 530CK fitment, and how the 530CK fits at the head of the Case Construction King lineage.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Where to find the serial number plate</a></li>
+<li><a href="#section-3">Production years and serial numbers</a></li>
+<li><a href="#section-4">Engine and powertrain</a></li>
+<li><a href="#section-5">External band brakes</a></li>
+<li><a href="#section-6">Loader and backhoe capacities</a></li>
+<li><a href="#section-7">Common problems documented by owners</a></li>
+<li><a href="#section-8">Verified replacement parts</a></li>
+<li><a href="#section-9">Maintenance schedule</a></li>
+<li><a href="#section-10">Related Case Construction King models</a></li>
+<li><a href="#section-11">Frequently asked questions</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 530CK — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1960 – 1967</dd>
+<dt>Engine (diesel)</dt><dd>Case G188D, 188 cu in (3.1 L)</dd>
+<dt>Engine (gas)</dt><dd>Case G159, 159 cu in (2.6 L)</dd>
+<dt>Horsepower (diesel)</dt><dd>~52 HP gross at 2,100 rpm</dd>
+<dt>Horsepower (gas)</dt><dd>~47.6 HP gross at 1,900 rpm</dd>
+<dt>Fuel system (diesel)</dt><dd>Roosa Master / Stanadyne rotary IP</dd>
+<dt>Transmission</dt><dd>4-speed sliding-gear with mechanical shuttle</dd>
+<dt>Clutch</dt><dd>Single dry, 11 in</dd>
+<dt>Brakes</dt><dd>External contracting band brakes (drum)</dd>
+<dt>Operating weight</dt><dd>~8,500 – 9,300 lb (configuration-dependent)</dd>
+<dt>Wheelbase (gas)</dt><dd>77.2 in</dd>
+<dt>Wheelbase (diesel)</dt><dd>78.4 in</dd>
+<dt>Hydraulic flow</dt><dd>~13.5 gpm</dd>
+<dt>Hydraulic pressure</dt><dd>~2,000 – 2,100 psi</dd>
+<dt>Loader lift capacity</dt><dd>3,000 lb</dd>
+<dt>Loader max lift</dt><dd>127 in</dd>
+<dt>Loader breakout force</dt><dd>~6,200 lb</dd>
+<dt>Backhoe dig depth (standard)</dt><dd>~14 ft</dd>
+<dt>Backhoe dig depth (Extendahoe)</dt><dd>~15 ft 9 in</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Where to find the serial number plate</h2>
+
+<p>The 530CK carries its tractor serial on a stamped data plate on the <strong>left side of the tractor frame rail</strong>, near the loader-arm pivot tower and the clutch housing. The engine serial is stamped separately on the <strong>left side of the engine block</strong> below the cylinder head. After 60-plus years of service life, plates are often weathered or obscured by grease — wire-brush the area and use a flashlight.</p>
+
+<table>
+<thead><tr><th>Plate</th><th>Location</th></tr></thead>
+<tbody>
+<tr><td>Tractor (machine) serial</td><td>Left frame rail under the loader tower, near the clutch housing</td></tr>
+<tr><td>Engine serial (G188D or G159)</td><td>Left side of the engine block, below the cylinder head</td></tr>
+<tr><td>Loader and backhoe serials</td><td>Each attachment carries its own plate</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-3">Production years and serial numbers</h2>
+
+<p>The Case 530CK was produced from 1960 through 1967, per TractorData and corroborating industry references. Verified year-by-serial breaks for the 1962–1966 production range are widely cited and consistent across multiple sources; the 1960–1961 portion of the run does not have a single authoritative published year-break table in the open record.</p>
+
+<table>
+<thead><tr><th>Year</th><th>Beginning serial number</th><th>Ending serial number</th></tr></thead>
+<tbody>
+<tr><td>1962</td><td>8190001</td><td>8208000</td></tr>
+<tr><td>1963</td><td>8208001</td><td>8229000</td></tr>
+<tr><td>1964</td><td>8229001</td><td>8253500</td></tr>
+<tr><td>1965</td><td>8253501</td><td>8279000</td></tr>
+<tr><td>1966</td><td>8279001</td><td>—</td></tr>
+</tbody>
+</table>
+
+<div class="bt-callout">
+<strong>Verify the build year against the engine and trans</strong>
+60-plus years of service life means most 530CKs in the field have had their engine, transmission, or front axle replaced at least once. Match the tractor frame serial to the year-break table for the chassis, then read the engine block stamp separately for engine-specific parts.
+</div>
+
+<h2 id="section-4">Engine and powertrain</h2>
+
+<p>The 530CK was factory-available with two engines, both Case-built inline four-cylinders:</p>
+
+<ul>
+<li><strong>Case G188D diesel</strong> — 188 cubic inches (3.1 L), naturally aspirated, liquid-cooled, indirect injection. Bore 3.81 in × stroke 4.13 in. 17.5:1 compression. Approximately 52 HP gross at 2,100 rpm. Roosa Master / Stanadyne DB-series rotary injection pump. The G188D became the workhorse engine of the 430CK, 480CK, 480B, 580CK, 580B, and 580C — parts cross widely across all of them.</li>
+<li><strong>Case G159 gas</strong> — 159 cubic inches (2.6 L), four-cylinder. Approximately 47.6 HP gross at 1,900 rpm. Updraft carburetor.</li>
+</ul>
+
+<p>Transmission is a <strong>4-speed sliding-gear gearbox with a mechanical shuttle lever</strong>, driven through a single 11-inch dry clutch. There was no power shuttle option on the 530CK — that drivetrain arrived in the Construction King line with the 580CK in 1966. The 530CK is dry-clutch only.</p>
+
+<h2 id="section-5">External band brakes</h2>
+
+<p>The 530CK uses <strong>external contracting band brakes</strong> on each rear axle — the pre-bonded-disc Case design. Each pedal operates a band wrapped around a drum on its respective final drive housing. The architecture is shared across the 430CK, 480CK, 480B, 580CK, and 580B Construction King models, which is why our brake category groups all six together.</p>
+
+<p>Common failure modes on this brake design: bands sticking to drums after the machine has sat, broken band return springs, rust-frozen ball-and-ramp actuators, and contaminated linings from axle-seal leaks. None of these are catastrophic — band sets and lining kits are stocked and the work is straightforward once you have the access panels off.</p>
+
+<h2 id="section-6">Loader and backhoe capacities</h2>
+
+<table>
+<thead><tr><th>Capacity</th><th>Spec</th></tr></thead>
+<tbody>
+<tr><td>Loader lift capacity</td><td>3,000 lb</td></tr>
+<tr><td>Loader breakout force</td><td>~6,200 lb</td></tr>
+<tr><td>Loader max lift (to pin)</td><td>127 in</td></tr>
+<tr><td>Backhoe dig depth (standard)</td><td>~14 ft</td></tr>
+<tr><td>Backhoe dig depth (Extendahoe)</td><td>~15 ft 9 in (189 in)</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-7">Common problems documented by owners</h2>
+
+<p>The following failure modes are drawn from forum threads on TractorByNet, Yesterday's Tractors, Heavy Equipment Forums, JustAnswer, and MyTractorForum.</p>
+
+<h3>Single dry clutch wear and slip</h3>
+<p>The 530CK's hard direction-change duty cycle destroys clutches over time. Symptoms: gear grinding on the shuttle shift, slipping under load, the pedal hitting the floorboard without releasing. Replacement requires splitting the tractor. Before ordering a clutch kit, inspect the rear engine main seal and the front transmission seal — oil contamination on the dry clutch from either leak is a frequent root cause.</p>
+
+<h3>Roosa Master injection pump issues</h3>
+<p>The DB-series rotary pump on the G188D develops predictable failures with age: weeping mounting-flange seal, sticking delivery valves, internal plastic coupling disintegrating and clogging the return line, gum-up under the fuel return cap. Pump rebuilds with the R14711 seal kit address the seal-related failures; complete rebuilt pumps are stocked for more advanced wear.</p>
+
+<h3>Band brake sticking</h3>
+<p>After the machine sits for extended periods, the brake bands stick to the drums and the operator will report "no brakes" or "won't release." Fix is usually adjustment and a careful pedal cycle to free the friction surfaces. Worn bands and linings are still consumables.</p>
+
+<h3>Steering box leaks</h3>
+<p>Reseal at the steering shaft and steering box housing is a documented service item at high hours. Worn steering arms and tie rod ends contribute to looseness at the wheel.</p>
+
+<h3>Hydraulic pump access</h3>
+<p>The pump is buried under the loader tower on the 530CK — replacement requires loader-frame removal to gain access. Budget shop time accordingly.</p>
+
+<h3>Rodent nests in the bell housing</h3>
+<p>Recurring forum mention on long-stored 530CKs — mice and other rodents make nests in the bell housing, preventing the pressure plate from releasing properly. Pull the inspection cover before chasing a clutch problem on a machine that has been sitting.</p>
+
+<div class="bt-pull">The 530CK started Case's Construction King line — and the basic chassis, engine, brake, and drivetrain architecture you see on this machine continues all the way through the 580B. Parts cross widely.</div>
+
+<h2 id="section-8">Verified replacement parts</h2>
+
+<p>The 530CK shares heavy parts cross-fitment with the 430CK, 480CK, 480B, 580CK, and 580B. The parts below are confirmed to fit the 530CK either by explicit description or by inclusion in a Construction King 430/480/530/580 family category.</p>
+
+<table>
+<thead><tr><th>Part</th><th>SKU</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-188-diesel-engine-overhaul-kit-by-reliance-bekc1883/">Case 188 Diesel Engine Overhaul Kit</a></td><td>BEKC1883</td><td>Full G188D overhaul package for the 530CK diesel — pistons, sleeves, rings, bearings, gaskets</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-rebuilt-rossamaster-fuel-injection-pump-ip188/">Rebuilt Roosa Master Fuel Injection Pump</a></td><td>IP188</td><td>Complete rebuilt injection pump for the G188D — alternative to resealing the original</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-fuel-injection-pump-seal-kit-roosa-master-stanadyne-r14711-kit/">Fuel Injection Pump Seal Kit</a></td><td>R14711-Kit</td><td>Reseals the Roosa Master / Stanadyne rotary IP — addresses the documented mounting-flange and return-line leaks</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/pencil-style-fuel-injector-for-case-188-engines-a140829/">Pencil-Style Fuel Injector</a></td><td>A140829</td><td>Replacement injector for the G188D — replace as a set when one fails</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-transmission-clutch-disc/">10" Transmission Clutch Disc</a></td><td>A36145</td><td>10-inch dry clutch disc for the Case 430, 430CK, 530, and 530CK transmission</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/11-inch-transmission-clutch-disc-for-case-480b-530ck-580-series-a37568/">11" Transmission Clutch Disc</a></td><td>A37568</td><td>11-inch dry clutch disc — fits Case 480B, 530CK, and 580 Series mechanical shuttle drivetrains</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/release-bearing-for-case-480-530-580b-580ck-backhoes-8225518/">Clutch Release Bearing</a></td><td>8225518</td><td>Replacement release bearing — replace whenever the clutch is out</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/transmission-synchronizer-for-case-580b-580ck-480b-530-a151114/">Transmission Synchronizer</a></td><td>A151114</td><td>Synchronizer for the 530 mechanical shuttle transmission — replace when shifts grind despite a fresh clutch</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-rear-axle-bull-gear-a168925/">Rear Axle Bull Gear</a></td><td>A168925</td><td>Final drive bull gear for the 530, 480CK, 480B, 580CK, 580B rear axle family</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-rear-differential-ring-gear-pinion-set-a50997/">Rear Differential Ring &amp; Pinion Set</a></td><td>A50997</td><td>Ring and pinion set for the 530, 480CK, 480B, 580CK, 580B differential — replace as a matched set</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/brake-bearing-carrier-for-case-580ck-580b-right-a140279/">Brake Bearing Carrier (RH)</a></td><td>A140279</td><td>Right-hand brake bearing carrier for the 530CK band brake assembly — also fits 430, 580CK, 580B, 480, 480B</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/brake-band-pair-for-case-480-and-580-series-backhoes-and-forklifts-249018a3/">Brake Band Pair</a></td><td>249018A3</td><td>Replacement external brake bands for both rear axle drums — sold as a matched pair</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/brake-lining-replacement-kit-case-backhoe-forklift-249019a1/">Brake Lining Replacement Kit</a></td><td>249019A1</td><td>Riveted lining kit for relining existing brake bands — includes rivets</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/radiator-for-case-backhoes-without-torque-converter-a39344/">Radiator (No Torque Converter)</a></td><td>A39344</td><td>Direct-fit radiator for 530CK-era machines without a torque converter</td></tr>
+</tbody>
+</table>
+
+<h3>Browse by 530CK-fit category</h3>
+
+<ul>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/brakes/580CK-580B-430CK-530CK-480CK-480B">Brakes — 430CK, 480CK, 480B, 530CK, 580CK, 580B</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-backhoe-front-axle-parts/two-wheel-drive/580ck-580b-480b/">Front Axle 2WD — 430CK, 480CK, 480B, 530CK, 580, 580CK, 580B</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+
+<h2 id="section-9">Maintenance schedule</h2>
+
+<table>
+<thead><tr><th>Interval</th><th>Item</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Daily</td><td>Grease loader pivots, swing tower, stabilizer pins, steering linkage</td><td>Before each shift</td></tr>
+<tr><td>100 hours</td><td>Inspect air filter, fan belt, hoses, tire pressures</td><td>Replace air filter as needed in dusty conditions</td></tr>
+<tr><td>250 hours</td><td>Engine oil and oil filter</td><td>Use a CC/CD-grade diesel oil on the G188D; a 10W-30 or 15W-40 on the G159 gas</td></tr>
+<tr><td>500 hours</td><td>Primary fuel filter</td><td>Critical on machines running old or marginal fuel</td></tr>
+<tr><td>1,000 hours</td><td>Hydraulic fluid and filter; transmission fluid; cooling system flush</td><td>Inspect clutch pedal free play and brake band lining at the same interval</td></tr>
+<tr><td>As needed</td><td>Brake band adjustment</td><td>Especially after extended storage — bands frequently stick to drums on first use</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-10">Related Case Construction King models</h2>
+
+<table>
+<thead><tr><th>Model</th><th>Engine</th><th>Drivetrain</th><th>Production</th></tr></thead>
+<tbody>
+<tr><td>Case 320 Industrial</td><td>Case gas / diesel</td><td>Mechanical shuttle, dry clutch</td><td>Late 1950s</td></tr>
+<tr><td>Case 430CK</td><td>Case 148 ci gas / G188D diesel</td><td>Mechanical shuttle, dry clutch</td><td>Mid-1960s – 1971</td></tr>
+<tr><td><strong>Case 530CK</strong> (this page)</td><td>Case G159 gas / G188D diesel</td><td>Mechanical shuttle, dry clutch</td><td>1960 – 1967</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-480ck-tractor-loader-backhoe-parts-specs-common-issues-case-480ck-tractor-loader-backhoe-parts-specs-common-issues/">Case 480CK</a></td><td>Case 148 ci gas / G188D diesel</td><td>Mechanical shuttle, dry clutch</td><td>Mid-1960s – 1971</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580ck-backhoe-580ck/">Case 580CK</a></td><td>Case 188 ci gas / G188D diesel</td><td>Mechanical shuttle or power shuttle</td><td>1966 – 1971</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-480b-construction-king-backhoe-loader-parts-specs-common-issues-case-480b-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480B</a></td><td>Case G188D, 41.5 HP</td><td>Mechanical shuttle, dry clutch</td><td>1971 – 1976</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580b-backhoe-information-reference-page-580b/">Case 580B</a></td><td>Case G188D</td><td>Mechanical shuttle or power shuttle</td><td>1971 – 1976</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-11">Frequently asked questions</h2>
+
+<h3>What years was the Case 530CK made?</h3>
+<p>1960 through 1967. The 530CK was succeeded in its market role by the 580CK starting in 1966.</p>
+
+<h3>What engines were offered on the Case 530CK?</h3>
+<p>Two factory options: the Case G188D 188-cubic-inch diesel (approximately 52 HP gross at 2,100 rpm) and the Case G159 159-cubic-inch gas (approximately 47.6 HP gross at 1,900 rpm). Both are inline four-cylinder Case-built engines.</p>
+
+<h3>Does the 530CK have a power shuttle?</h3>
+<p>No. The 530CK is dry-clutch and mechanical-shuttle only — 4-speed sliding-gear gearbox with a manual shuttle lever. Power shuttle arrived in the Construction King line with the 580CK in 1966.</p>
+
+<h3>What kind of brakes does the 530CK have?</h3>
+<p>External contracting band brakes on each rear axle — the pre-bonded-disc Case design. The same architecture is shared across the 430CK, 480CK, 480B, 580CK, and 580B.</p>
+
+<h3>How deep does the 530CK backhoe dig?</h3>
+<p>Approximately 14 feet with the standard backhoe attachment, or about 15 feet 9 inches with the Extendahoe option.</p>
+
+<h3>Where is the serial number on a Case 530CK?</h3>
+<p>Stamped on a data plate on the left side of the tractor frame rail near the loader-arm pivot tower and the clutch housing. The engine carries a separate stamp on the left side of the block.</p>
+
+<h3>What parts cross between the 530CK and the 480CK?</h3>
+<p>A lot. Engine internals (the G188D is shared), clutch and mechanical shuttle transmission components, brake bands and linings, rear axle bull gears and ring-and-pinion sets, front axle 2WD components, and many cooling and electrical parts. The Construction King 430/480/530/580 family is one of the most parts-interchangeable lineups Case ever produced.</p>
+
+<div class="bt-cta">
+<h3>Need parts for your Case 530CK?</h3>
+<p>G188D engine overhaul kits, clutch and mechanical shuttle drivetrain parts, brake bands and linings, hydraulic pump and steering parts, and rear axle components — serial-verified fitment and same-warehouse shipping from the U.S. Talk to a tech: (800) 909-7060, Mon–Fri 7a–5p CT.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Shop Case Backhoe Parts</a>
+</div>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong>
+<p>Broken Tractor LLC stocks parts for the full Case Construction King lineup, starting with the foundational 430CK, 530CK, 480CK, and 580CK — and continuing through every later 480 and 580 generation. G188D engine kits, mechanical and power shuttle components, brake assemblies, rear axle parts, and the steering and hydraulic parts that wear out at 60-plus years of service. All parts ship from U.S. warehouses with serial-number-verified fitment.</p></div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Keep reading</h3>
+<ul>
+<li><span class="meta">Case 480CK</span><a href="https://www.brokentractor.com/p/case-480ck-tractor-loader-backhoe-parts-specs-common-issues-case-480ck-tractor-loader-backhoe-parts-specs-common-issues/">Case 480CK Construction King — Specs, Parts &amp; Common Issues</a></li>
+<li><span class="meta">Case 580CK</span><a href="https://www.brokentractor.com/p/case-580ck-backhoe-580ck/">Case 580CK Construction King — Specs and Parts</a></li>
+<li><span class="meta">Case 480B</span><a href="https://www.brokentractor.com/p/case-480b-construction-king-backhoe-loader-parts-specs-common-issues-case-480b-construction-king-backhoe-loader-parts-specs-common-issues/">Case 480B Construction King — Specs, Parts &amp; Common Issues</a></li>
+<li><span class="meta">Case 580B</span><a href="https://www.brokentractor.com/p/case-580b-backhoe-information-reference-page-580b/">Case 580B Backhoe — Specs and Serial Number Breaks</a></li>
+<li><span class="meta">Case Backhoe Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Serial Number &amp; Owner's Info</a></li>
+<li><span class="meta">Case Backhoe Parts</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>
