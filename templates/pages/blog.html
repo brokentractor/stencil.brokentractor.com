@@ -160,13 +160,13 @@ blog:
                 {{#if thumbnail}}
                 <div class="bt-card__img">
                     <img src="{{getImage thumbnail 'medium'}}" alt="{{thumbnail.alt}}" loading="lazy">
-                    <span class="bt-card__cat">Repair Guide</span>
                 </div>
                 {{/if}}
                 <div class="bt-card__body">
                     <div class="bt-card__meta">
                         <span class="blog-card__date">{{date_published}}</span>
                     </div>
+                    <span class="bt-card__cat">Repair Guide</span>
                     <h3 class="bt-card__title">{{title}}</h3>
                     <p class="bt-card__excerpt">{{{summary}}}</p>
                     <div class="bt-card__bottom">
@@ -243,7 +243,7 @@ blog:
             card.className = 'bt-card blog-card';
 
             var imgHtml = imgEl
-                ? '<div class="bt-card__img"><img src="' + imgEl.getAttribute('src') + '" alt="' + (imgEl.getAttribute('alt') || '') + '" loading="lazy"><span class="bt-card__cat">Repair Guide</span></div>'
+                ? '<div class="bt-card__img"><img src="' + imgEl.getAttribute('src') + '" alt="' + (imgEl.getAttribute('alt') || '') + '" loading="lazy"></div>'
                 : '';
 
             var bylineHtml = '';
@@ -259,6 +259,7 @@ blog:
                 imgHtml +
                 '<div class="bt-card__body">' +
                 '<div class="bt-card__meta"><span class="blog-card__date">' + (dateEl ? dateEl.textContent.trim() : '') + '</span></div>' +
+                '<span class="bt-card__cat">Repair Guide</span>' +
                 '<h3 class="bt-card__title">' + (titleEl ? titleEl.textContent.trim() : '') + '</h3>' +
                 '<p class="bt-card__excerpt">' + (excerptEl ? excerptEl.innerHTML : '') + '</p>' +
                 '<div class="bt-card__bottom">' + bylineHtml + '</div>' +

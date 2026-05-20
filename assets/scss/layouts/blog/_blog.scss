@@ -1457,6 +1457,11 @@
         letter-spacing: 0.1em;
         color: #6b6b6b;
         font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    .blog-card__date {
+        margin-bottom: 0;
     }
 
     &__title {
@@ -1483,8 +1488,7 @@
     }
 
     &__cat {
-        position: absolute;
-        top: 10px; left: 10px;
+        display: inline-block;
         background: #ffbe00;
         color: #001212;
         font-family: var(--bt-font-display, "Industry", "Oswald", sans-serif);
@@ -1495,6 +1499,7 @@
         padding: 5px 9px;
         border-radius: 3px;
         pointer-events: none;
+        align-self: flex-start;
     }
 
     &__bottom {
