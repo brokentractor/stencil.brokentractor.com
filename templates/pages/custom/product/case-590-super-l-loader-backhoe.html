@@ -1,0 +1,316 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 590 Super L Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1995 – 2001, the 590 Super L is the larger-frame L-generation Construction King — same Cummins 4T-390 turbocharged engine and L-generation cab as the 580 Super L, but on a substantially larger chassis with stronger backhoe and loader iron, ~95–100 HP gross. Series I / Series II split brought a Powershift transmission option to the larger backhoe.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 9 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-590-super-l-hero.jpg" alt="Case 590 Super L larger-frame L-generation backhoe loader">
+</div>
+</header>
+
+<p>The Case 590 Super L is the larger-frame turbocharged L-generation Construction King backhoe loader. It came to market in 1995, replacing the 590 Turbo, and ran through 2001 before the 590 Super M took over. The 590 Super L runs the same Cummins 4T-390 turbocharged 4-cylinder diesel as the 580 Super L, on the same L-generation cab platform, but with a substantially larger frame, stronger backhoe boom and dipper, larger loader bucket, and heavier counterweight. Net power is approximately 95–100 HP gross — modestly higher than the 580 Super L's 86 HP net.</p>
+
+<p>For owners maintaining a 590 Super L today, most service parts cross-fit with the 580 Super L on shared systems (engine, transmission base, cab, brakes, hydraulics) and with the 590 Super M that succeeded it on shared chassis items. The Series I / Series II split mirrors what happened on the 580 Super L — different filter kits, different hydraulic tank, and the optional Powershift transmission introduced on Series II.</p>
+
+<div class="bt-callout bt-warning">
+<strong>Series I vs Series II — same split as 580 Super L</strong>
+The 590 Super L follows the same Series I / Series II production split logic as the 580 Super L. Series II machines use the <a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590-super-l-series-ii-backhoe-cs-590sliit-fk-1/">CS-590SLIIT-FK-1</a> Series II filter kit. The optional Powershift transmission Series II uses the <a href="https://www.brokentractor.com/p/case-powershift-transmission-controller-580sl-ii-590sl-ii-336551a1/">336551A1</a> controller (cross-fits 580 Super L Series II and 590 Super L Series II). Confirm serial number before ordering Series-specific parts.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 590 Super L differs from the 580 Super L</a></li>
+<li><a href="#section-3">How the 590 Super L differs from the 590 Turbo</a></li>
+<li><a href="#section-4">Engine and powertrain</a></li>
+<li><a href="#section-5">Powershift transmission (Series II option)</a></li>
+<li><a href="#section-6">Routine service parts</a></li>
+<li><a href="#section-7">Common issues and what to expect</a></li>
+<li><a href="#section-8">Where the 590 Super L sits in the lineup</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 590 Super L — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1995 – 2001</dd>
+<dt>Series split</dt><dd>Series I (earlier) / Series II (later)</dd>
+<dt>Predecessor</dt><dd>Case 590 Turbo (1990 – 1995)</dd>
+<dt>Smaller-frame sibling</dt><dd>Case 580 Super L (same engine, smaller chassis)</dd>
+<dt>Successor</dt><dd>Case 590 Super M (2001 – 2008)</dd>
+<dt>Engine</dt><dd>Cummins 4T-390 (4BT 3.9L, turbocharged)</dd>
+<dt>Displacement</dt><dd>239 cu in (3.9 L)</dd>
+<dt>Cylinders</dt><dd>4, turbocharged, liquid-cooled, direct-injection diesel</dd>
+<dt>Power</dt><dd>~95 HP net / ~100 HP gross</dd>
+<dt>Transmission (Series I)</dt><dd>Case 4-speed power shuttle, single-stage torque converter</dd>
+<dt>Transmission (Series II option)</dt><dd>Powershift with electronic controller (<a href="https://www.brokentractor.com/p/case-powershift-transmission-controller-580sl-ii-590sl-ii-336551a1/">336551A1</a>)</dd>
+<dt>Drive</dt><dd>2WD standard; 4WD optional (Carraro)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate</dd>
+<dt>Hydraulic system</dt><dd>Open-center, 17-spline gear pump</dd>
+<dt>Hydraulic pump</dt><dd><a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-590-super-l-590-super-m-backhoes-257955a1/">257955A1</a> (cross-fits 590 Super M)</dd>
+<dt>System pressure</dt><dd>~3,000 psi</dd>
+<dt>Operating weight</dt><dd>~16,500 – 18,500 lb</dd>
+<dt>Backhoe dig depth</dt><dd>~14 ft (standard) or ~18 ft (Extendahoe)</dd>
+<dt>Loader breakout</dt><dd>~11,000 – 12,000 lb</dd>
+<dt>Cab</dt><dd>L-generation cab; optional A/C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 590 Super L differs from the 580 Super L</h2>
+
+<p>The 590 Super L and 580 Super L share the same engine, transmission base architecture, cab, brakes, hydraulics, and many service items. The 590 differences are physical-iron — it's a larger, heavier machine designed for tougher digs and bigger loads:</p>
+
+<ul>
+<li><strong>Larger chassis</strong> — heavier frame, stronger axle, increased operating weight (~16,500–18,500 lb vs. 580 Super L's ~14,500–17,000 lb).</li>
+<li><strong>Bigger backhoe iron</strong> — stronger backhoe boom, longer dipper stick options, larger swing tower. The <a href="https://www.brokentractor.com/p/case-590sl-590sm-backhoe-used-inner-dipper-stick-294300a1-294300a1-u/">294300A1-U</a> inner dipper is 590-specific (cross-fits 590 Super M).</li>
+<li><strong>Larger loader bucket and frame</strong> — heavier loader frame, larger bucket capacity; the <a href="https://www.brokentractor.com/p/loader-lift-cylinder-for-case-backhoes-590-super-l-590-super-m-133936a1-pv/">133936A1</a> loader lift cylinder is 590-specific.</li>
+<li><strong>Power output</strong> — 590 Super L approximately 95 HP net vs. 580 Super L's 86 HP net. Both run the same engine block, with slight calibration differences for the heavier machine.</li>
+<li><strong>Hydraulic pump</strong> — the <a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-590-super-l-590-super-m-backhoes-257955a1/">257955A1</a> 590-specific pump cross-fits 590 Super M. The 580 Super L uses a different pump (87433897 cross-fits 580SL/SM).</li>
+<li><strong>Cylinders</strong> — most hydraulic cylinders are 590-specific (larger bore or longer stroke). The <a href="https://www.brokentractor.com/p/case-590sl-590sm-backhoe-boom-cylinder-175785a1-175785a1/">175785A1</a> boom cylinder, <a href="https://www.brokentractor.com/p/backhoe-dipper-crowd-cylinder-for-case-590sl-590sm-pve-products-140965a1/">140965A1</a> dipper cylinder, and <a href="https://www.brokentractor.com/p/case-590-super-l-590-super-m-backhoe-bucket-cylinder-made-in-usa-296434a1/">296434A1</a> bucket cylinder are all 590 Super L / Super M cross-fits.</li>
+</ul>
+
+<h2 id="section-3">How the 590 Super L differs from the 590 Turbo</h2>
+
+<p>The 590 Super L is the L-generation successor to the 590 Turbo (the K-generation larger-frame turbocharged backhoe). The defining changes:</p>
+
+<ul>
+<li><strong>Cab and operator station</strong> — completely redesigned L-generation cab with better visibility, refined controls, improved HVAC.</li>
+<li><strong>17-spline hydraulic pump shaft</strong> — the 590 Super L uses the L-generation 17-spline pump shaft. The 590 Turbo used a different spline configuration. Pumps do NOT interchange between K and L generations.</li>
+<li><strong>Same Cummins 4T-390 engine</strong> — the engine carries forward unchanged with calibration refinements. Engine internals interchange between the 590 Turbo and 590 Super L.</li>
+<li><strong>Same wet-disc brakes</strong> — wet-disc multi-plate brakes carry forward.</li>
+</ul>
+
+<h2 id="section-4">Engine and powertrain</h2>
+
+<p>Same engine as the 580 Super L. Cummins 4BT 3.9L turbocharged 4-cylinder, Bosch in-line injection pump, wastegated turbocharger. The Cummins B-series industrial-engine ecosystem provides broad service-parts availability — pistons, rings, bearings, head gasket sets, water pumps, oil pumps, and many valve train items source through both Case-branded and Cummins B-series channels.</p>
+
+<p>The wastegated turbocharger is the most common engine-service item. Replace at the first sign of bearing wear — symptoms include blue smoke at startup or under throttle, oil consumption, audible whine, or visible compressor wheel shaft play.</p>
+
+<h2 id="section-5">Powershift transmission (Series II option)</h2>
+
+<p>The 590 Super L Series II introduced an optional Powershift transmission, the same as on the 580 Super L Series II. The <a href="https://www.brokentractor.com/p/case-powershift-transmission-controller-580sl-ii-590sl-ii-336551a1/">336551A1</a> Powershift controller is the standard service item when the Powershift goes into limp mode or refuses to shift cleanly. Cross-fits 580 Super L Series II and 590 Super L Series II.</p>
+
+<h2 id="section-6">Routine service parts for the 590 Super L</h2>
+
+<p>The table below covers routine service and high-cross-fit parts for the 590 Super L. Many parts also cross-fit with the 580 Super L and the 590 Super M, broadening the practical parts pool.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-transmission-compression-spring-100753a1-carraro/">100753A1</a></td><td>Backhoe spring (multi-fit L-family)</td><td>Cross-fits 580L, 580 Super L, 590 Super L, and 570LXT. Carraro-transmission service item.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-cab-door-handle-1958970c1/">1958970C1</a></td><td>Cab door handle</td><td>Cross-fits 580K, 580L, and 590 Super L.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-transmission-retainer-snap-ring-181114a1/">181114A1</a></td><td>Transmission snap ring (multi-fit)</td><td>Transmission retainer snap ring. Cross-fits 570LXT, 580L, 580 Super L, and 590 Super L.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590-super-l-series-ii-backhoe-cs-590sliit-fk-1/">CS-590SLIIT-FK-1</a></td><td>Filter maintenance kit (Series II)</td><td><strong>590 Super L Series II-specific</strong> filter kit. Use only on Series II machines.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-oil-cooler-with-steel-flanges-for-case-backhoes-233817a1/">233817A1</a></td><td>Hydraulic oil cooler (580L / 580SL / 590SL)</td><td>New hydraulic oil cooler with steel flanges. Cross-fits 580L, 580SL, and 590SL.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-powershift-transmission-controller-580sl-ii-590sl-ii-336551a1/">336551A1</a></td><td>Powershift controller (Series II option)</td><td><strong>Series II Powershift option</strong> controller. Cross-fits 580 Super L Series II and 590 Super L Series II.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-cylinder-seal-kit-package-for-case-580-super-l-backhoe-cs-sk-5/">CS-SK-5</a></td><td>590 Super L cylinder seal kit package</td><td><strong>590 Super L-specific</strong> multi-cylinder seal kit package — includes 1980412C2 boom cylinder seal kit and 1542921C1 stabilizer cylinder seal kit.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/brake-service-kit-for-case-590-super-l-and-590-super-m-backhoes-243894a1/">243894A1</a></td><td>Brake kit (590 Super L + Super M)</td><td><strong>590 Super L brake service kit</strong> — includes 4 × 237017A1 disc and 2 × 237018A1 plate. Cross-fits 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-590-super-l-590-super-m-backhoes-257955a1/">257955A1</a></td><td>Main hydraulic pump (590 Super L + Super M)</td><td>New 17-spline hydraulic pump. Cross-fits 590 Super L and 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-transmission-shaft-flange-181231a1-181231a1/">181231A1</a></td><td>Transmission shaft flange (multi-fit)</td><td>Cross-fits 580L, 580 Super L, 590 Super L, and 570LXT.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-pin-dipper-cylinder-to-boom-boom-cylinder-to-boom-dipper-cylinder-to-dipper-175581a1-175581a1/">175581A1</a></td><td>Multi-position pin (590SL/SM)</td><td>Cross-fits 590SL and 590SM at multiple pivot positions: dipper-cyl-to-boom, boom-cyl-to-boom, dipper-cyl-to-dipper.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/rear-cab-glass-seal-bar-for-case-580k-580l-590-super-l-backhoes-d126198/">D126198</a></td><td>Rear cab glass seal bar</td><td>Cross-fits 580K, 580L, and 590 Super L.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-front-knee-glass-rubber-channel-seal-108513a1/">108513A1</a></td><td>Front knee glass rubber channel seal</td><td>Cab glass seal. Cross-fits 580L and 590 Super L.</td></tr>
+</tbody>
+</table>
+
+<p>For additional 590 Super L cross-fit parts, see: <a href="https://www.brokentractor.com/p/case-590-super-l-590-super-m-backhoe-bucket-cylinder-made-in-usa-296434a1/">296434A1</a> bucket cylinder, <a href="https://www.brokentractor.com/p/case-590sl-590sm-backhoe-boom-cylinder-175785a1-175785a1/">175785A1</a> boom cylinder, <a href="https://www.brokentractor.com/p/backhoe-dipper-crowd-cylinder-for-case-590sl-590sm-pve-products-140965a1/">140965A1</a> dipper cylinder, and <a href="https://www.brokentractor.com/p/loader-lift-cylinder-for-case-backhoes-590-super-l-590-super-m-133936a1-pv/">133936A1</a> loader lift cylinder — all 590 Super L / 590 Super M cross-fits. For a comprehensive search, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub.</p>
+
+<h2 id="section-7">Common issues and what to expect</h2>
+
+<h3>Turbocharger wear</h3>
+
+<p>The 4T-390 wastegated turbocharger is the most common engine-service item. Same engine as the 580 Super L — same wear pattern. Symptoms: blue smoke, oil consumption, audible whine, shaft play. Replace at first sign of bearing wear.</p>
+
+<h3>Series I vs Series II parts ordering</h3>
+
+<p>Filter kits and Powershift parts differ between Series. Always confirm serial number before ordering Series-specific parts. The <a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590-super-l-series-ii-backhoe-cs-590sliit-fk-1/">CS-590SLIIT-FK-1</a> Series II filter kit will not fit a Series I machine.</p>
+
+<h3>Hydraulic cylinder seal failure</h3>
+
+<p>Every cylinder on a 25-plus-year-old 590 Super L has seals well past expected service life. The <a href="https://www.brokentractor.com/p/hydraulic-cylinder-seal-kit-package-for-case-580-super-l-backhoe-cs-sk-5/">CS-SK-5</a> 590 Super L cylinder seal kit package covers the major cylinder rebuild components in one bundle.</p>
+
+<h3>Hydraulic pump wear</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-590-super-l-590-super-m-backhoes-257955a1/">257955A1</a> 17-spline hydraulic pump wears over time. Symptoms: lazy boom and dipper, weak stabilizers, longer cycle times under load.</p>
+
+<h3>Cooling system service</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/hydraulic-oil-cooler-with-steel-flanges-for-case-backhoes-233817a1/">233817A1</a> hydraulic oil cooler is a common cooling-system replacement item across 580L/SL/590SL. The original radiator and cooler internals corrode over 25-plus years.</p>
+
+<h3>Brake service</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/brake-service-kit-for-case-590-super-l-and-590-super-m-backhoes-243894a1/">243894A1</a> brake kit covers the wet-disc brake rebuild — 4 × 237017A1 disc and 2 × 237018A1 plate. Use when wet-disc brakes lose holding pressure after sustained service.</p>
+
+<h3>Powershift transmission service (Series II option)</h3>
+
+<p>If your 590 Super L Series II has the Powershift, the <a href="https://www.brokentractor.com/p/case-powershift-transmission-controller-580sl-ii-590sl-ii-336551a1/">336551A1</a> controller is the standard service item when shifting becomes erratic.</p>
+
+<h3>Cab glass and seal aging</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/rear-cab-glass-seal-bar-for-case-580k-580l-590-super-l-backhoes-d126198/">D126198</a> rear cab glass seal bar and <a href="https://www.brokentractor.com/p/case-front-knee-glass-rubber-channel-seal-108513a1/">108513A1</a> front knee glass rubber channel are routine cab service items as the original rubber dries out and cracks.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 590 Super L?</h3>
+<p>The 590 Super L's parts ecosystem reaches in two directions — most service items cross to either the 580 Super L (same engine, smaller chassis) or the 590 Super M (same chassis, successor engine). Our specialists can verify Series I/II fitment and walk you through the cross-references.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-8">Where the 590 Super L sits in the Construction King family</h2>
+
+<p>The 590 Super L is the larger-frame turbocharged L-generation Case backhoe loader. It runs alongside the 580 Super L (same engine, smaller chassis) and replaces the K-generation 590 Turbo. After the 590 Super L came the 590 Super M (2001–2008), which replaced the Cummins 4T-390 with the Case 445T/M family and continued the L-generation cab and hydraulics forward.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 590 Super L and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Smaller-frame sibling</span><a href="https://www.brokentractor.com/p/case-580-super-l-backhoe-case-580sl-backhoe-specs/">Case 580 Super L</a> — same engine, smaller chassis</li>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-590-turbo-backhoe-loader-specs-serial-number-guide/">Case 590 Turbo</a> — K-generation larger-frame turbo</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-590-super-m-backhoe-loader-parts-specs-common-issues-case-590-super-m-backhoe-loader-parts-specs-common-issues/">Case 590 Super M</a> — Case 445T/M turbo on same chassis</li>
+<li><span class="meta">Loader Landscaper sibling</span><a href="https://www.brokentractor.com/p/case-570lxt-tractor-loader-parts-specs-common-issues-case-570lxt-tractor-loader-parts-specs-common-issues/">Case 570LXT</a> — same engine family, no backhoe</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

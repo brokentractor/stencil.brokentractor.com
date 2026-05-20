@@ -1,0 +1,331 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 590 Super N Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The current-production, largest-frame Case Construction King backhoe. In service since 2008 with a Tier 3 launch engine and updated through Tier 4 Interim and Tier 4 Final with SCR + DEF. Extendahoe standard, Carraro Powershift, wet-disc brakes, ProControl pilot joystick — the most refined 590-line machine Case has built.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-590-super-n-hero.jpg" alt="Case 590 Super N current-production larger-frame N-generation backhoe loader">
+</div>
+</header>
+
+<p>The 590 Super N is the current-production larger-frame Case backhoe loader. It launched in 2008 as the N-generation replacement for the 590 Super M, and it continues in production today with running updates through three emissions tiers: Tier 3, Tier 4 Interim (with DPF), and Tier 4 Final (with SCR + DEF). The 590 Super N occupies the same position in Case's lineup the 590 Super L and 590 Super M did before it — the larger-frame sibling of the 580 Super N, with longer backhoe reach and larger loader capacity, sharing most service parts with the smaller 580 line.</p>
+
+<p>If you're maintaining a 590 Super N, the most important thing to know is which emissions configuration you have. Tier 3 (2008–~2011), Tier 4 Interim (~2011–2014, with DPF and EGR), and Tier 4 Final (2014 onward, with SCR and DEF) have meaningful differences in engine, after-treatment, and ECU parts — even though the backhoe iron, frame, cab, axles, and most hydraulics carry across all three.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 590 Super N differs from the 580 Super N</a></li>
+<li><a href="#section-3">Emissions tier progression: Tier 3 → Tier 4 Interim → Tier 4 Final</a></li>
+<li><a href="#section-4">Carraro Powershift transmission</a></li>
+<li><a href="#section-5">Bosch Rexroth load-sensing hydraulics</a></li>
+<li><a href="#section-6">ProControl pilot joystick</a></li>
+<li><a href="#section-7">Replacement parts and components</a></li>
+<li><a href="#section-8">Common issues and what to expect</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 590 Super N — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>2008 – present</dd>
+<dt>Serial prefix</dt><dd>JJG / N7G / N8G (varies by build location and year)</dd>
+<dt>Engine (Tier 3, 2008–~2011)</dt><dd>FPT NEF F4HE9484 4.5L</dd>
+<dt>Engine (Tier 4 Interim, ~2011–2014)</dt><dd>FPT NEF F4HE with DPF + EGR</dd>
+<dt>Engine (Tier 4 Final, 2014+)</dt><dd>FPT F5BFL413C 3.4L with SCR + DEF</dd>
+<dt>Displacement</dt><dd>4.5 L (Tier 3 / Interim) → 3.4 L (Tier 4 Final)</dd>
+<dt>Power</dt><dd>~97 HP net / ~108 HP gross</dd>
+<dt>Transmission</dt><dd>Carraro 4-speed Powershift (standard); H-pattern power shuttle (option early in production)</dd>
+<dt>Drive</dt><dd>2WD standard, 4WD optional (Carraro)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate, hydraulically actuated</dd>
+<dt>Hydraulics</dt><dd>Load-sensing pressure-compensated (Bosch Rexroth Series 31)</dd>
+<dt>Combined flow</dt><dd>~42 gpm</dd>
+<dt>System pressure</dt><dd>3,335 psi (230 bar)</dd>
+<dt>Controls</dt><dd>ProControl pilot joystick standard; mechanical levers optional</dd>
+<dt>Backhoe</dt><dd>Extendahoe standard</dd>
+<dt>Operating weight</dt><dd>~20,532 lb (4WD, Extendahoe, full fluids)</dd>
+<dt>Loader breakout</dt><dd>~12,500 lb</dd>
+<dt>Backhoe dig depth (Extendahoe)</dt><dd>~19 ft 8 in</dd>
+<dt>Backhoe reach (Extendahoe)</dt><dd>~24 ft 0 in</dd>
+</dl>
+</div>
+
+<div class="bt-callout bt-warning">
+<strong>Operating weight correction</strong>
+Some published specs and previous versions of our model spotlight list the 590 Super N operating weight at ~17,200 lb. That figure is wrong by roughly 3,300 lb. Per Case's published operator's manual data for a 4WD, Extendahoe-equipped 590 Super N at full fluids, the actual operating weight is approximately 20,532 lb. The lower figure occasionally appears in trade press articles but does not match Case factory documentation.
+</div>
+
+<h2 id="section-2">How the 590 Super N differs from the 580 Super N</h2>
+
+<p>The 590 Super N sits alongside the 580 Super N in the N-generation lineup. They share the cab, sheet metal, controls, electronics, and most of the powertrain. The differences are physical iron:</p>
+
+<ul>
+<li><strong>Longer backhoe boom (84538196)</strong> — 590-specific casting. The 580 Super N backhoe boom is shorter and carries a different part number.</li>
+<li><strong>Larger dipper stick</strong> — standard 302-series Super L/M dipper was replaced for the N generation with the 84246514 standard stick or 84298779 inner Extendahoe dipper.</li>
+<li><strong>Outer Extendahoe dipper (84234351)</strong> — 590 Super N specific outer telescoping section.</li>
+<li><strong>Larger loader bucket and frame</strong> — gives the 590 Super N about 4,000 lb of operating-weight premium over the 580 Super N.</li>
+<li><strong>Outrigger stabilizer leg (84308123)</strong> — heavier-duty leg for the larger backhoe.</li>
+</ul>
+
+<p>Engine, transmission, axles, brakes, cab, glass, controls, and most hydraulic plumbing all interchange with the 580 Super N. Many parts in our catalog cross-list both models because they're literally the same casting.</p>
+
+<h2 id="section-3">Emissions tier progression</h2>
+
+<h3>Tier 3 — FPT NEF F4HE9484 4.5L (2008 – ~2011)</h3>
+
+<p>The launch engine. Common-rail injection, mechanical EGR, no after-treatment beyond a passive oxidation catalyst. Same engine family that arrived in the 590 Super M Series III at the end of the M generation.</p>
+
+<h3>Tier 4 Interim — FPT NEF with DPF + EGR (~2011 – 2014)</h3>
+
+<p>EPA Tier 4 Interim required reduced PM and NOx. Case responded with cooled EGR plus a Diesel Particulate Filter (DPF) added to the FPT NEF engine. The DPF performs passive regeneration during normal operation and active (parked) regeneration when needed. ECU and harness changes accompanied the DPF — important for parts ordering.</p>
+
+<h3>Tier 4 Final — FPT F5BFL413C 3.4L with SCR + DEF (2014 – present)</h3>
+
+<p>Tier 4 Final brought a downsized 3.4L engine paired with Selective Catalytic Reduction (SCR) and Diesel Exhaust Fluid (DEF) injection. The smaller engine maintains the same ~97 HP rating but with substantially reduced NOx output. DEF tank, dosing module, and SCR catalyst all introduced new service items. The DPF was simplified or removed in Tier 4 Final depending on configuration.</p>
+
+<div class="bt-callout">
+<strong>How to identify your tier without the build plate</strong>
+Look at the exhaust path. A short straight stack with only a muffler suggests Tier 3. A large canister behind the cab (often double-the-size of a muffler) is the Tier 4 Interim DPF. A separate DEF tank near the fuel tank, plus SCR mixing and catalyst hardware on the exhaust, confirms Tier 4 Final. The DEF tank is unmistakable — blue-labeled cap, smaller than the diesel tank.
+</div>
+
+<h2 id="section-4">Carraro Powershift transmission</h2>
+
+<p>The 590 Super N is standard with the Carraro 4-speed Powershift transmission — a meaningful upgrade from the power shuttle that was standard on the Super L and early Super M. The Powershift gives clutch-free shifting under load, electronic shift control, and an integrated torque converter. Combined with the Carraro 4WD planetary front axle, the powertrain on the 590 Super N is essentially the same as a small wheel loader.</p>
+
+<p>The torque converter (87702192) is the same unit used on the 580 Super M through 590 Super N family — it crosses freely across that range, which keeps replacement cost-effective.</p>
+
+<h2 id="section-5">Bosch Rexroth load-sensing hydraulics</h2>
+
+<p>The N generation moved to Bosch Rexroth Series 31 load-sensing pressure-compensated hydraulics. The system delivers flow only when a function is actuated, dramatically improving fuel efficiency and reducing heat compared to open-center systems. Combined flow is approximately 42 gpm at 3,335 psi.</p>
+
+<p>The variable-displacement pump senses load on each function and adjusts displacement to match — the boom, dipper, bucket, and stabilizer functions all see full pressure when called, but the pump destrokes when nothing is being asked of it. The practical result is a backhoe that's smoother under combined functions (boom-out plus dipper-curl plus bucket-curl all at once) and that holds engine speed better when working under load.</p>
+
+<h2 id="section-6">ProControl pilot joystick</h2>
+
+<p>ProControl is Case's pilot-hydraulic joystick system, standard on the 590 Super N. Two short-throw joysticks replace the four-lever mechanical control quadrant — the operator's left hand controls swing and boom, the right controls dipper and bucket. The pilot system uses low-pressure hydraulic signals routed through electrically modulated proportional valves to the main control valve.</p>
+
+<p>ProControl is operator-pattern-switchable between Case standard and JD standard via a dash control, which is useful for fleet owners who run mixed brands.</p>
+
+<h2 id="section-7">Replacement parts and components</h2>
+
+<p>Below are 590 Super N parts stocked at Broken Tractor with verified fitment. All link directly to the product page.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-super-n-used-oem-backhoe-boom-low-hour-made-in-usa-84538196-u/">84538196-U</a></td><td>Backhoe boom (used OEM)</td><td>590 Super N specific backhoe boom. Used low-hour take-off — cost-effective alternative to a new casting. Confirmed 590 Super N fitment only (do not order for 580 Super N — different boom).</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-super-n-backhoe-dipper-stick-used-84246514-u-84246514-u/">84246514-U</a></td><td>Standard dipper stick (used)</td><td>The non-Extendahoe standard dipper for 590 Super N. Used unit.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-super-n-backhoe-inner-dipper-stick-ext-a-hoe-used-84298779-u-84298779-u/">84298779-U</a></td><td>Inner dipper stick — Extendahoe (used)</td><td>The fixed inner section of the Extendahoe. Most 590 Super N owners have Extendahoe — this is the high-demand part.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-super-n-outer-dipper-stick-extend-a-hoe-used-84234351-u-84234351-u/">84234351-U</a></td><td>Outer dipper stick — Extendahoe (used)</td><td>The telescoping outer section. Wears at the slide pads and the lock pin — inspect both before swap.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-super-n-outrigger-stabilizer-leg/">84308123</a></td><td>Outrigger stabilizer leg</td><td>590 Super N specific stabilizer leg — heavier than the 580 Super N leg. Replace when the pad pivot tears out or the leg itself bends.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/rubber-stabilizer-pad-for-case-580n-580sn-590sn-backhoes-84250576/">84250576</a></td><td>Rubber stabilizer pad</td><td>The flip-down rubber pad on the stabilizer foot. High-wear item — plan to replace every couple thousand hours of asphalt work.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/boom-pin-for-case-580sn-590sn-backhoes-84230833/">84230833</a></td><td>Boom pin</td><td>The boom-to-frame pin. Inspect for wear and replace alongside the matching bushing.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-counterweight-used-84254688/">84254688</a></td><td>Counterweight (used)</td><td>Front counterweight assembly. Used unit when budget matters more than cosmetics.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bucket-link-bushing-for-case-580n-590-super-n-backhoes-84170654/">84170654</a></td><td>Bucket link bushing</td><td>Wear bushing at the bucket-to-link pivot. Inspect every 1,000 hours, replace when slop appears.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580n-bucket-link-pin-84171217/">84171217</a></td><td>Bucket link pin</td><td>Replace together with the 84170654 bushing.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580n-quick-coupler-bucket-pin-84223653/">84223653</a></td><td>Quick coupler to bucket pin</td><td>Used when a quick-coupler is fitted between the dipper and bucket. Wears faster than a direct bucket-pin setup.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/a-c-compressor-for-case-580m-580n-590sn-570mxt-backhoes-84159489/">84159489</a></td><td>A/C compressor</td><td>Common replacement item on N-generation cabs. Confirmed fit on 580M, 580N, 590SN, 570MXT — same compressor across the family.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/torque-converter-for-case-580sm-590sn-carraro-87702192-87702192r/">87702192R</a></td><td>Carraro torque converter (rebuilt)</td><td>Rebuilt torque converter for the Powershift transmission. New stator, fresh bearings and seals. Crosses 580 Super M through 590 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-4wd-transmission-84327512r/">84327512R</a></td><td>4WD semi-Powershift transmission (rebuilt)</td><td>Complete rebuilt 4WD semi-Powershift transmission with torque converter.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/rebuilt-4x4-powershift-carraro-transmission-for-case-580sn-590sn-87567534r/">87567534R</a></td><td>4x4 full Powershift Carraro transmission (rebuilt)</td><td>The full-Powershift Carraro transmission rebuilt. For machines with the upgraded full-Powershift option.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/rear-end-assembly-for-case-580sm-iii-580sn-590sm-iii-590sn-wide-track-47876061/">47876061</a></td><td>Rear end assembly — wide track</td><td>Wide-track rear end assembly. Confirmed fit on 580 Super M Series III, 580 Super N, 590 Super M Series III, 590 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/cab-heater-core-for-case-580m-580n-590sn-570n-ep-backhoes-loader-landscapers-360262a2/">360262A2</a></td><td>Cab heater core</td><td>HVAC heater core. Replace when the cab smells of coolant or the heat output drops. Same part across the M and N generations.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/upper-rear-window-glass-for-case-580m-590-super-n-backhoes-352208a1/">352208A1</a></td><td>Upper rear window glass</td><td>Long-fitment rear glass — 580M through 590 Super N. Tempered, OEM-spec.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/lower-rear-window-glass-for-case-580m-590-super-n-backhoes-352210a1/">352210A1</a></td><td>Lower rear window glass</td><td>Matched to the 352208A1 upper rear glass. Replace together when the rear pane is damaged.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/front-axle-steering-arm-kit-for-case-580m-580n-and-590sn-backhoes-401052a1/">401052A1</a></td><td>Front axle steering arm kit</td><td>Complete steering arm rebuild kit for the Carraro 4WD axle. Replace when steering slop or pivot wear shows up.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-trenching-bucket-for-580n-580-super-n-590-super-n-pv2001/">PV2001</a></td><td>Trenching bucket — narrow</td><td>Narrow trenching bucket for utility work. Confirmed fit 580N, 580 Super N, 590 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-48-ditching-bucket-with-smooth-edge-for-580n-590-super-n-pv2006/">PV2006</a></td><td>48" ditching bucket — smooth edge</td><td>Wide ditching bucket for cleanup work. Smooth edge for finished trench bottoms.</td></tr>
+</tbody>
+</table>
+
+<p>For broader N-generation fitment, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub.</p>
+
+<h2 id="section-8">Common issues and what to expect</h2>
+
+<h3>DPF and SCR after-treatment</h3>
+
+<p>The Tier 4 Interim and Tier 4 Final emissions hardware is the most common source of dealer trips on N-generation backhoes. DPF active regeneration faults, DEF dosing module failures, and NOx sensor faults are all routine items. Most can be cleared and reset with a CNH service tool; some require replacement of the affected sensor or module.</p>
+
+<h3>ProControl joystick wear</h3>
+
+<p>The ProControl joysticks use Hall-effect position sensors that don't physically wear — but the rubber boots can tear and let moisture and grit into the joystick base, eventually corroding internal connections. Inspect boots annually and replace at the first sign of cracking.</p>
+
+<h3>Carraro front axle planetary wear</h3>
+
+<p>The Carraro 4WD front axle is durable but has a known wear point at the planetary final drives in the wheel hubs. Symptoms: clicking under steering load, oil weeps at the hub seals, or noticeable bearing rumble. The 401052A1 steering arm kit covers most of the wear items at the king pin and steering linkage.</p>
+
+<h3>Cab glass and weather seals</h3>
+
+<p>The 580M / 580N / 590 Super N cab uses a single-piece molded glass set with rubber weather seals. The 352208A1 / 352210A1 rear glass pair, the 87434783 rear center glass, and the upper door glasses are all common replacement items as the seals dry out and let moisture into the laminate.</p>
+
+<h3>Hydraulic pump destroking issues</h3>
+
+<p>The Bosch Rexroth load-sensing pump occasionally develops issues with the destroke control — the symptom is excessive hydraulic noise at idle or unexpected pressure spikes under combined functions. Usually it's the load-sense line orifice or the destroke piston seal, both of which are rebuildable.</p>
+
+<div class="bt-cta">
+<h3>Need parts for a 590 Super N?</h3>
+<p>From cab glass to torque converters to the full rear end assembly, we keep the major service parts for 590 Super N in stock. Our specialists can verify Tier 3 vs. Tier 4 Interim vs. Tier 4 Final fitment by serial number before you order.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/contact-us/">Contact Broken Tractor</a>
+</div>
+
+<h2>Where it sits in the 580/590 family</h2>
+
+<p>The 590 Super N is the current top of the Construction King backhoe loader lineup. Below it sits the 580 Super N, which shares most of the architecture but with smaller backhoe and loader iron. Before it came the 590 Super M, which it directly replaced in 2008. There is no current 590-line successor announced — the 590 Super N continues in production with running updates.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from Case operator's manuals, factory service literature, CNH parts catalogs, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Smaller-frame N generation</span><a href="https://www.brokentractor.com/p/case-580n-backhoe-parts-specs/">Case 580N</a> — same-generation smaller chassis</li>
+<li><span class="meta">Smaller-frame N generation</span><a href="https://www.brokentractor.com/p/case-580-super-n-backhoe-case-580supern-backhoeloader-parts-specs/">Case 580 Super N</a> — same engine, smaller chassis</li>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-590-super-m-backhoe-loader-parts-specs-common-issues-case-590-super-m-backhoe-loader-parts-specs-common-issues/">Case 590 Super M</a> — 445T/M and F4HE on same chassis</li>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-590-super-l-backhoe-loader-parts-specs-common-issues-case-590-super-l-backhoe-loader-parts-specs-common-issues/">Case 590 Super L</a> — Cummins 4T-390 on same chassis</li>
+<li><span class="meta">Electric variant</span><a href="https://www.brokentractor.com/p/case-580-ev-electric-backhoe-loader-parts-specs-common-issues-case-580-ev-electric-backhoe-loader-parts-specs-common-issues/">Case 580 EV</a> — Project Zeus electric backhoe</li>
+<li><span class="meta">European sibling</span><a href="https://www.brokentractor.com/p/case-580st-tractor-loader-parts-specs-common-issues-case-580st-tractor-loader-parts-specs-common-issues/">Case 580 Super T</a> — European-market 580 Super N</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

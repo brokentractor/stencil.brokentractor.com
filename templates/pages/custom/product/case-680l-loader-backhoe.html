@@ -1,0 +1,280 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 680L Construction King Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The final 680-line backhoe loader. Produced 1989–1993, the 680L stepped up the 680K's Case 6-590 six-cylinder diesel to a turbocharged 6T-590 — same Cummins B-series block geometry, now with a wastegated turbo and aftercooling. Closing chapter of the larger-frame Construction King line before the 590 Super L took over the larger-machine slot.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 9 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-680l-hero.jpg" alt="Case 680L Construction King — 1989–1993, Case 6T-590 turbo, end of the 680 line">
+</div>
+</header>
+
+<p>The Case 680L is the final 680-line backhoe loader. It came to market in 1989, replacing the 680K, and ran through 1993 as Case's largest backhoe loader in the L generation. The defining 680L change is the engine: Case kept the 359 cu in (5.9 L) six-cylinder block introduced on the 680K but added a wastegated turbocharger and aftercooling, designating the resulting engine as the Case 6T-590. The "T" stands for turbocharged; the "590" is the original Case nomenclature for the 5.9L block. The <a href="https://www.brokentractor.com/p/turbocharger-for-case-680l-780d-850g-9030b-cummins-engine-j802289/">Case J802289 turbocharger</a> in our catalog is explicitly labeled for "Cummins Engine" — confirmation that the 6T-590's lower end is the Cummins B-series block branded as Case.</p>
+
+<p>Output figures from authoritative sources put the 680L at 90 HP net at 2,200 rpm with peak torque of 273 lb-ft at 1,200 rpm. The turbocharger's primary benefit is not peak HP (the 680K's naturally aspirated 6-590 made 90 HP net as well) but torque under load — the turbo gives the 680L a substantially stronger working feel during digging and lifting cycles. The 6T-590 is shared with the 780D, 850G dozer, and 9030B excavator from the same Case industrial parts ecosystem.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">The 6T-590 turbocharged engine</a></li>
+<li><a href="#section-3">Hydraulic system</a></li>
+<li><a href="#section-4">Cab and operator station</a></li>
+<li><a href="#section-5">Verified parts in stock</a></li>
+<li><a href="#section-6">Common issues and what to expect</a></li>
+<li><a href="#section-7">Where it sits in the 680 family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 680L — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1989 – 1993</dd>
+<dt>Predecessor</dt><dd>Case 680K (1986 – 1988)</dd>
+<dt>Successor</dt><dd>None in 680 line — Case 590 Super L took over the larger-machine slot</dd>
+<dt>Engine</dt><dd>Case 6T-590 turbocharged (Cummins B-series block)</dd>
+<dt>Cylinders</dt><dd>6, turbocharged, liquid-cooled, direct-injection diesel</dd>
+<dt>Displacement</dt><dd>359 cu in (5.9 L)</dd>
+<dt>Bore × stroke</dt><dd>4.02 in × 4.72 in (102 × 120 mm)</dd>
+<dt>Power (net)</dt><dd>90 HP (67.1 kW) @ 2,200 rpm</dd>
+<dt>Peak torque</dt><dd>273 lb-ft (370 Nm) @ 1,200 rpm</dd>
+<dt>Fuel capacity</dt><dd>43 gal (163 L)</dd>
+<dt>Transmission</dt><dd>4-speed power shuttle</dd>
+<dt>Drive</dt><dd>2WD</dd>
+<dt>Electrical</dt><dd>24V system, dual battery</dd>
+<dt>Brakes</dt><dd>Hydraulically actuated dry-disc</dd>
+<dt>Hydraulic system</dt><dd>Open-center with hydraulic oil cooler</dd>
+<dt>Operating weight</dt><dd>~18,218 lb (8,263 kg)</dd>
+<dt>Length</dt><dd>~276 in (701 cm)</dd>
+<dt>Width</dt><dd>~96 in (243 cm)</dd>
+<dt>Height</dt><dd>~115 in (292 cm)</dd>
+<dt>Wheelbase</dt><dd>~87 in (220 cm)</dd>
+<dt>Ground clearance</dt><dd>~14 in (35 cm)</dd>
+<dt>Cab</dt><dd>ROPS canopy standard; enclosed cab with optional A/C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">The 6T-590 turbocharged engine</h2>
+
+<p>The Case 6T-590 is the turbocharged version of the 6-590 used on the 680K. Same bore-stroke geometry (4.02 × 4.72 in), same displacement (5.9 L), same direct-injection combustion architecture — but with a wastegated turbocharger and air-to-water aftercooling added to feed denser intake air. The result is substantially more torque at low rpm: 273 lb-ft at 1,200 rpm vs. the 6-590's 260 lb-ft at the same speed. Peak HP held at 90 net — the turbo's contribution shows up in working torque, not peak HP.</p>
+
+<p>The Cummins B-series lineage of the 6T-590 is confirmed by our verified parts catalog. The <a href="https://www.brokentractor.com/p/turbocharger-for-case-680l-780d-850g-9030b-cummins-engine-j802289/">J802289 turbocharger</a> is explicitly labeled for "Cummins Engine" fitment across the 680L, 780D, 850G dozer, and 9030B excavator — all Case industrial machines running the same 6T-590 block. The <a href="https://www.brokentractor.com/p/case-680l-ck-backhoe-filter-service-kit/">CS-680LCK-6T590-FK filter service kit</a> in our catalog uses the explicit "6T-590 Diesel" designation, confirming the engine name in the Case parts naming convention.</p>
+
+<div class="bt-callout">
+<strong>How the 6T-590 maps to Cummins B-series</strong>
+The 6T-590 shares the 5.9 L block, bore-stroke geometry, and lower-end architecture of the Cummins 6BTA (turbocharged aftercooled industrial six-cylinder). Case branded the engine as their own and used a different injection pump calibration, but the parts ecosystem is wide: pistons, rings, bearings, head gasket sets, water pumps, oil pumps, and many valve train components cross-fit through Cummins B-series channels. That's a meaningful advantage compared to the orphaned Case 336 engine in the earlier 680E/G/H — and one reason 680L restorations are typically more cost-effective than their predecessors.
+</div>
+
+<h2 id="section-3">Hydraulic system</h2>
+
+<p>The 680L's open-center hydraulic system is supported by a dedicated hydraulic oil cooler (<a href="https://www.brokentractor.com/p/hydraulic-oil-cooler-for-case-680k-680l-backhoes-a171963/">A171963</a>) and the combined radiator + transmission oil cooler (<a href="https://www.brokentractor.com/p/case-backhoe-radiator-a172141-a172138/">A172138</a>). The <a href="https://www.brokentractor.com/p/main-hydraulic-pump-for-case-680l-backhoe-made-in-usa-d138437/">D138437</a> main hydraulic pump is the verified replacement, US-made and OEM-spec for the 680L specifically. The <a href="https://www.brokentractor.com/p/lift-cylinder-for-case-680l-780b-780c-780d-backhoe-loaders-g103073/">G103073</a> loader lift cylinder cross-fits across the 680L, 780B, 780C, and 780D — useful when sourcing the high-cost cylinder casting.</p>
+
+<h2 id="section-4">Cab and operator station</h2>
+
+<p>The 680L was available with a ROPS canopy as standard and an enclosed cab with optional air conditioning. Most surviving working machines have the enclosed cab. Glass and A/C parts cross-fit with the 680K and 780-series machines of the era.</p>
+
+<h2 id="section-5">Verified parts in stock</h2>
+
+<p>The 680L is over 30 years old. Parts availability is good — better than earlier 680 generations because (1) the Cummins B-series engine lineage widens engine-parts availability, (2) the 680L had a longer production run than the 680K, and (3) several non-engine parts cross-fit with the 780B, 780C, 780D, 850G, and 9030B family. The items below are confirmed in stock at Broken Tractor with verified 680L fitment.</p>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/turbocharger-for-case-680l-780d-850g-9030b-cummins-engine-j802289/">J802289</a></td><td>Turbocharger (Cummins engine)</td><td>The 6T-590 turbocharger. Confirmed cross-fit 680L, 780D, 850G, and 9030B — all Case industrial machines on the same Cummins B-series block. Symptoms of failure include blue smoke at startup, oil consumption, or shaft play.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/main-hydraulic-pump-for-case-680l-backhoe-made-in-usa-d138437/">D138437</a></td><td>Main hydraulic pump (Made in USA)</td><td>The 680L-specific main hydraulic pump. US-made, OEM-spec. Symptoms of pump failure: lazy boom, weak stabilizers, longer cycle times under load.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-radiator-a172141-a172138/">A172138</a></td><td>Radiator with transmission oil cooler</td><td>Combined radiator and transmission cooler. Confirmed cross-fit: 680K, 680L, 780C, 780D. High-replacement item as the original cores corrode internally.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-oil-cooler-for-case-680k-680l-backhoes-a171963/">A171963</a></td><td>Hydraulic oil cooler</td><td>Dedicated hydraulic oil cooler. Cross-fit 680K and 680L. Replace when the cooling system is serviced.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/lift-cylinder-for-case-680l-780b-780c-780d-backhoe-loaders-g103073/">G103073</a></td><td>Loader lift cylinder</td><td>Loader lift cylinder with wide cross-fit: 680L, 780B, 780C, and 780D. The cylinder cycles every loader operation — high duty cycle, predictable seal wear.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/swing-cylinder-rod-eye-bushing-for-case-580c-to-680l-part-g34854-g34854/">G34854</a></td><td>Swing cylinder rod eye bushing</td><td>Remarkable long-fitment bushing: confirmed from Case 580B / 580C through 680L. A multi-decade, multi-platform interchange item.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-680l-ck-backhoe-filter-service-kit/">CS-680LCK-6T590-FK</a></td><td>Filter service kit (6T-590 diesel)</td><td>Complete filter kit for the 680L's 6T-590 engine and supporting systems. Engine oil, fuel, air, and hydraulic filters in one kit. The right starting point for any 680L PM service.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="section-6">Common issues and what to expect</h2>
+
+<h3>Turbocharger wear</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/turbocharger-for-case-680l-780d-850g-9030b-cummins-engine-j802289/">J802289 turbo</a> is the most common single failure point on a 680L. Symptoms of wear: blue smoke at startup or cold throttle response, oil consumption, audible whine outside the normal range, or visible shaft play when the compressor wheel is wiggled. Replace at the first sign of bearing wear — a failed turbo can ingest its own compressor wheel and destroy the engine.</p>
+
+<h3>6T-590 engine — Cummins B-series wear patterns</h3>
+
+<p>The Cummins B-series block is durable. Common items: head gasket failure (front of block, between cylinders 1-2 or 5-6 is most common), valve seat recession on heavy-duty service, and injection pump wear on machines with long fuel system service intervals. The <a href="https://www.brokentractor.com/p/case-680l-ck-backhoe-filter-service-kit/">CS-680LCK-6T590-FK filter service kit</a> covers most of the PM items in one package.</p>
+
+<h3>Hydraulic cylinder seal failure</h3>
+
+<p>30-plus-year-old cylinder seals need replacement. The <a href="https://www.brokentractor.com/p/lift-cylinder-for-case-680l-780b-780c-780d-backhoe-loaders-g103073/">G103073</a> loader lift cylinder is a common rebuild candidate; backhoe boom, dipper, and bucket cylinders all wear similarly. Bores are typically still good — most cylinders only need reseal kits.</p>
+
+<h3>Power shuttle wear</h3>
+
+<p>The 4-speed power shuttle in the 680L has the same general architecture as earlier 680-line shuttles. Hydraulically actuated clutch packs wear with age; the shuttle valve gets sticky over time.</p>
+
+<h3>24V starting system</h3>
+
+<p>Same 24V system as the 680K. Corroded battery cables, marginal connections, and failed starter solenoids are the routine items. Inspect at every service.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 680L?</h3>
+<p>The 680L is the most parts-supported 680-line machine due to its Cummins B-series engine and the wide cross-fit network. Our specialists can verify fitment by serial number and engine ID, and walk you through the cross-references that save money on a parts order.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/contact-us/">Contact Broken Tractor</a>
+</div>
+
+<h2 id="section-7">Where it sits in the 680 family</h2>
+
+<p>The 680L is the closing chapter of the 680-line backhoe loader. After 1993, Case did not develop a direct 680M successor. Instead, the 590 Super L (introduced 1995) took over the larger-frame Construction King slot, sharing its Cummins 4T-390 turbo and L-generation cab with the 580 Super L. The 680L marks the end of a 28-year run for the 680 nameplate — from the 680CK launch in 1966 through the 680L finale in 1993.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from dealer parts catalogs and the verified BigCommerce catalog at brokentractor.com — including the explicit "Cummins Engine" and "6T-590 Diesel" callouts in our verified parts data.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-680k-backhoe-loader-parts-specs-case-680k-backhoe-loader-parts-specs/">Case 680K</a> — naturally aspirated 6-590, 1986–1988</li>
+<li><span class="meta">Effective successor</span><a href="https://www.brokentractor.com/p/case-590-super-l-backhoe-loader-parts-specs-common-issues-case-590-super-l-backhoe-loader-parts-specs-common-issues/">Case 590 Super L</a> — larger-frame slot in the L generation</li>
+<li><span class="meta">Larger sibling</span><a href="https://www.brokentractor.com/p/case-780d-backhoe-loader-parts-specs-case-780d-backhoe-loader-parts-specs/">Case 780D</a> — same 6T-590 engine, larger frame</li>
+<li><span class="meta">Smaller-frame contemporary</span><a href="https://www.brokentractor.com/p/case-580l-backhoe-case-580l-backhoeloader-specs/">Case 580L</a> — Construction King smaller frame</li>
+<li><span class="meta">Smaller-frame contemporary</span><a href="https://www.brokentractor.com/p/case-580-super-l-backhoe-case-580sl-backhoe-specs/">Case 580 Super L</a> — Construction King smaller frame</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

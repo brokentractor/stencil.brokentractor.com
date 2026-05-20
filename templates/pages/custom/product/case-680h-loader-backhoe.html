@@ -1,0 +1,272 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 680H Construction King Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1982–1984, the 680H closed out the 336 ci engine generation of the 680 line. Same Case 5.5L four-cylinder diesel as the 680E and 680G with output settled at 85 HP, paired with refined cab, a 24V electrical system, and parts that share with the 780 series sibling. Bridge machine between the 680G and the substantially-revised 680K.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-680h-hero.jpg" alt="Case 680H Construction King — 1982–1984, closing of the 336-engine generation">
+</div>
+</header>
+
+<p>The Case 680H is the third generation of the 336 cu in / 5.5 L engine 680 platform, following the 680E and 680G. It came to market in 1982 and ran through 1984 (some sources extend the run into 1985), bridging from the 680G to the substantially-revised 680K that introduced wet-disc brakes and a stronger powertrain. The 680H carries the same Case 5.5L four-cylinder diesel as its two predecessors, with output settled at 85 HP at 2,200 rpm and peak torque of 261 lb-ft at 1,500 rpm.</p>
+
+<p>Cab refinements, hydraulic control updates, and a step up to 24V electrical (uncommon for backhoe loaders of this era, which typically use 12V) define the 680H's update to the platform. Several service items cross to the 780 series and W14 wheel loader of the same era — Case used common starters, brake hardware, and cab glass across these industrial machines. The D40089 backhoe bushing crosses all the way from the 680E forward to the 680L, making it one of the most useful long-fitment parts in the 680 line.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">The 24V electrical system</a></li>
+<li><a href="#section-3">Cab and operator station</a></li>
+<li><a href="#section-4">Hydraulic and backhoe iron</a></li>
+<li><a href="#section-5">Verified parts in stock</a></li>
+<li><a href="#section-6">Common issues and what to expect</a></li>
+<li><a href="#section-7">Where it sits in the 680 family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 680H — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1982 – 1984 (some sources to 1985)</dd>
+<dt>Predecessor</dt><dd>Case 680G (1979 – 1981)</dd>
+<dt>Successor</dt><dd>Case 680K (1985 onward)</dd>
+<dt>Engine</dt><dd>Case 336 ci four-cylinder diesel (5.5 L)</dd>
+<dt>Cylinders</dt><dd>4, liquid-cooled, direct-injection diesel</dd>
+<dt>Power</dt><dd>85 HP (63.4 kW) @ 2,200 rpm</dd>
+<dt>Peak torque</dt><dd>261 lb-ft (354 Nm) @ 1,500 rpm</dd>
+<dt>Fuel capacity</dt><dd>33 gal (125 L)</dd>
+<dt>Transmission</dt><dd>4-speed power shuttle</dd>
+<dt>Drive</dt><dd>2WD</dd>
+<dt>Electrical</dt><dd>24V system, dual battery</dd>
+<dt>Brakes</dt><dd>Hydraulically actuated dry-disc</dd>
+<dt>Hydraulic system</dt><dd>Open-center, two-section pump (carried from 680G)</dd>
+<dt>Operating weight</dt><dd>~15,375 lb (6,974 kg)</dd>
+<dt>Length</dt><dd>~273 in (693 cm)</dd>
+<dt>Width</dt><dd>~90.5 in (230 cm)</dd>
+<dt>Height</dt><dd>~115 in (292 cm)</dd>
+<dt>Wheelbase</dt><dd>~87 in (221 cm)</dd>
+<dt>Cab</dt><dd>Available (refined from 680G)</dd>
+</dl>
+</div>
+
+<h2 id="section-2">The 24V electrical system</h2>
+
+<p>The 24V electrical system is the most distinctive technical detail of the 680H — most Case backhoe loaders of the era ran 12V systems, and the 24V configuration on the 680H put it in the same electrical class as the 780B and 850C / W14 wheel loaders. The practical implication is that the starter, alternator, and starting batteries are all 24V-rated components — they do not interchange with 12V systems.</p>
+
+<p>Our <a href="https://www.brokentractor.com/p/case-24v-starter-motor-r46156/">A176539 24V starter motor</a> (Case part number R46156) is the verified replacement, with confirmed cross-fit to the 680H, 780B, 850C, and W14. That's a useful four-machine cross-reference that widens parts availability when the original 24V starter fails.</p>
+
+<div class="bt-callout bt-warning">
+<strong>Don't swap to 12V</strong>
+Some hobbyist conversions try to drop a 12V starter into a 680H to take advantage of cheaper batteries and parts. The starter ring gear, charging system wiring, and gauge cluster are all 24V-designed — partial conversions usually end up with starting reliability problems and a discharge-prone battery system. The right fix is to source a verified 24V replacement (the <a href="https://www.brokentractor.com/p/case-24v-starter-motor-r46156/">A176539 / R46156</a> is in stock at Broken Tractor) rather than mixing voltages.
+</div>
+
+<h2 id="section-3">Cab and operator station</h2>
+
+<p>The 680H cab is a refinement of the 680G cab with updated glass mounting, improved sealing, and quieter operator-station hardware. Several glass items cross to the 580D / 580 Super D / 580 Super E / 780 series — the <a href="https://www.brokentractor.com/p/case-backhoe-lower-rear-cab-glass-f44630/">F44630</a> lower rear cab glass in our catalog covers all of those models with one part number. That long-fitment cross-reference is useful when sourcing glass on a 40-year-old machine.</p>
+
+<h2 id="section-4">Hydraulic and backhoe iron</h2>
+
+<p>The 680H carries forward the 680G's two-section open-center hydraulic system. The big swing tower and backhoe pivot wear items continue: the <a href="https://www.brokentractor.com/p/swing-cylinder-rod-to-swing-tower-pin-for-case-680h-680k-backhoes-l108156/">L108156</a> swing cylinder rod to swing tower pin is shared with the 680K, and the D40089 backhoe bushing crosses the entire 680E-through-680L production span.</p>
+
+<h2 id="section-5">Verified parts in stock</h2>
+
+<p>The 680H is over 40 years old. Parts availability is moderate, supported by cross-fit with the 680E, 680G, 680K, 680L, and several other Case industrial machines of the era. The items below are confirmed in stock at Broken Tractor with verified 680H fitment.</p>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-24v-starter-motor-r46156/">A176539 (R46156)</a></td><td>24V starter motor</td><td>The 24V starter — verified cross-fit on 680H, 780B, 850C, and W14. Confirms the four-machine 24V electrical commonality of this era. The single most-replaced item on machines that sat for years between operations.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/brake-pedal-return-spring-for-case-480c-580c-680h-584c-585c-d129921/">D129921</a></td><td>Brake pedal return spring</td><td>Brake pedal return spring with surprising cross-fit: 480C, 580C, 680H, 584C, and 585C. Case used a common pedal return spring across multiple machine sizes. Small part, but easy to overlook — replace when the brake pedal stops returning fully.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-lower-rear-cab-glass-f44630/">F44630</a></td><td>Lower rear cab glass</td><td>Lower rear cab glass with long-fitment cross-reference: 580D, 580 Super D, 580 Super E, 680H, and 780 series. Same glass spec across half a decade of Case backhoe cab production.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/swing-cylinder-rod-to-swing-tower-pin-for-case-680h-680k-backhoes-l108156/">L108156</a></td><td>Swing cylinder rod to swing tower pin</td><td>Swing cylinder rod-end pin — shared 680H and 680K. Wears at the swing tower interface; replace alongside the matching bushing when slop appears.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="section-6">Common issues and what to expect</h2>
+
+<h3>336 ci engine wear</h3>
+
+<p>Same engine family as the 680E and 680G; same age-related issues. Pre-combustion chamber cracks, head gasket failures, and warping from past overheating are all expected. Plan on a full top-end rebuild on any unrestored 680H.</p>
+
+<h3>24V starter and charging system</h3>
+
+<p>The 24V starter and dual-battery configuration is durable when maintained but vulnerable to neglect. Common failure modes: corroded battery cables (the larger 24V cables carry more current and get hot when corroded), starter solenoid failure, and alternator output drop. The <a href="https://www.brokentractor.com/p/case-24v-starter-motor-r46156/">A176539 24V starter</a> is the verified replacement; battery cables and connections should be inspected at every service.</p>
+
+<h3>Cab glass cracking and seal wear</h3>
+
+<p>40-plus-year-old cab seals are hard, brittle, and let moisture in. Cab glass cracking from vibration is routine. The <a href="https://www.brokentractor.com/p/case-backhoe-lower-rear-cab-glass-f44630/">F44630</a> lower rear glass and matching upper/side glass items are common replacement parts. Replace the rubber seals when you replace the glass.</p>
+
+<h3>Hydraulic cylinder seal failure</h3>
+
+<p>Every cylinder on a 680H has seals that are 40-plus years old. Plan on rebuilding every cylinder as part of any restoration.</p>
+
+<h3>Brake pedal return failure</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/brake-pedal-return-spring-for-case-480c-580c-680h-584c-585c-d129921/">D129921</a> brake pedal return spring is a small but easy-to-overlook part. Symptom of failure: the brake pedal stays partially depressed after release, causing drag and possible overheating of the brake disc.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 680H?</h3>
+<p>The 680H's parts ecosystem reaches forward to the 680K and 680L and sideways to the 780, 850, and W14 series. Our specialists can verify fitment by serial number and walk you through the cross-references that often save money on a parts order.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/contact-us/">Contact Broken Tractor</a>
+</div>
+
+<h2 id="section-7">Where it sits in the 680 family</h2>
+
+<p>The 680H closes out the 336 cu in / 5.5 L engine generation of the 680 line. After the 680H came the 680K — a substantial platform update that introduced wet-disc multi-plate brakes (matching the 580K that arrived around the same time) and refined drivetrain hardware. The 680L closed out the line in the 1990s. Today the 590 Super N occupies the larger-frame slot the 680 family once held in Case's lineup.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-680g-backhoe-loader-parts-specs-case-680g-backhoe-loader-parts-specs/">Case 680G</a> — 1979–1981, same engine family</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-680k-backhoe-loader-parts-specs-case-680k-backhoe-loader-parts-specs/">Case 680K</a> — wet-disc brakes, 1985 onward</li>
+<li><span class="meta">Smaller-frame contemporary</span><a href="https://www.brokentractor.com/p/case-580d-backhoe-580d/">Case 580D / Super D</a> — Construction King smaller frame</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

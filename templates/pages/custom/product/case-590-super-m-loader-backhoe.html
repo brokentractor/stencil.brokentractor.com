@@ -1,0 +1,332 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 590 Super M Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 2001 – 2008, the 590 Super M is the larger-frame turbocharged M-generation Construction King — Case 445T/M Series I → 445T/M2 Series II → FPT/Iveco F4HE Series III progression on a substantially larger chassis than the 580 Super M, ~108 HP gross. Same engine and drivetrain architecture as the 580 Super M; the 590 distinction is physical iron — heavier frame, stronger backhoe, larger loader.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-590-super-m-hero.jpg" alt="Case 590 Super M Construction King larger-frame M-generation backhoe loader">
+</div>
+</header>
+
+<p>The Case 590 Super M is the larger-frame turbocharged version of the M-generation Construction King backhoe loader. It came to market in 2001 alongside the 580 Super M, ran through 2008, and brought the same Case 445T/M Series I → 445T/M2 Series II → FPT/Iveco F4HE9484 Series III engine progression that the 580 Super M used — but on a substantially larger chassis with stronger backhoe iron, larger loader frame, and heavier counterweight. Output is approximately 108 HP gross — modestly higher than the 580 Super M.</p>
+
+<p>For owners maintaining a 590 Super M today, the most useful single fact is the deep parts cross-fit with the 580 Super M on shared systems and with the 590 Super L on shared chassis items. The 590 Super L predecessor uses the same backhoe boom, dipper, loader frame, and many hydraulic cylinders as the 590 Super M, while the 580 Super M shares the engine, transmission, and cab. That two-direction cross-fit broadens parts availability substantially.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 590 Super M differs from the 580 Super M</a></li>
+<li><a href="#section-3">How the 590 Super M differs from the 590 Super L</a></li>
+<li><a href="#section-4">Series I / II / III engine progression</a></li>
+<li><a href="#section-5">Powershift transmission (Series II/III option)</a></li>
+<li><a href="#section-6">Routine service parts</a></li>
+<li><a href="#section-7">Common issues and what to expect</a></li>
+<li><a href="#section-8">Where the 590 Super M sits in the lineup</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 590 Super M — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>2001 – 2008 (Series I, II, III)</dd>
+<dt>Predecessor</dt><dd>Case 590 Super L (1995 – 2001)</dd>
+<dt>Smaller-frame sibling</dt><dd>Case 580 Super M (same engine, smaller chassis)</dd>
+<dt>Successor</dt><dd>Case 590 Super N (2008 – present)</dd>
+<dt>Engine (Series I)</dt><dd>Case 445T/M turbocharged 4.5L 4-cylinder</dd>
+<dt>Engine (Series II)</dt><dd>Case 445T/M2 Tier 2 turbo</dd>
+<dt>Engine (Series III, 2008)</dt><dd>FPT/Iveco F4HE9484 4.5L Tier 3 Common-Rail turbo</dd>
+<dt>Displacement</dt><dd>275 cu in (4.5 L)</dd>
+<dt>Cylinders</dt><dd>4, turbocharged, liquid-cooled, direct-injection diesel</dd>
+<dt>Power</dt><dd>~99 HP net / ~108 HP gross</dd>
+<dt>Transmission</dt><dd>Case 4-speed power shuttle (standard); Powershift optional (Series II/III)</dd>
+<dt>Drive</dt><dd>2WD standard; 4WD optional (Carraro)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate</dd>
+<dt>Hydraulic system</dt><dd>Open-center, 17-spline gear pump</dd>
+<dt>System pressure</dt><dd>~3,000 psi</dd>
+<dt>Operating weight</dt><dd>~17,500 – 19,500 lb (varies with configuration)</dd>
+<dt>Backhoe dig depth</dt><dd>~15 ft (standard) or ~18 ft (Extendahoe)</dd>
+<dt>Loader breakout</dt><dd>~11,500 – 12,500 lb</dd>
+<dt>Cab</dt><dd>L-generation cab with M-series refinements; optional A/C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 590 Super M differs from the 580 Super M</h2>
+
+<p>The 590 Super M and 580 Super M share the engine, transmission base architecture, brakes, and cab. The 590 distinction is the chassis and iron:</p>
+
+<ul>
+<li><strong>Larger frame and heavier operating weight</strong> — ~17,500–19,500 lb vs. 580 Super M's ~15,500–17,000 lb.</li>
+<li><strong>Stronger backhoe</strong> — larger boom, longer dipper stick options, heavier swing tower. The <a href="https://www.brokentractor.com/p/backhoe-dipper-crowd-cylinder-for-case-590sl-590sm-pve-products-140965a1/">140965A1</a> dipper cylinder, <a href="https://www.brokentractor.com/p/case-590sl-590sm-backhoe-boom-cylinder-175785a1-175785a1/">175785A1</a> boom cylinder, and <a href="https://www.brokentractor.com/p/case-590-super-l-590-super-m-backhoe-bucket-cylinder-made-in-usa-296434a1/">296434A1</a> bucket cylinder are all 590-specific (cross-fit 590 Super L).</li>
+<li><strong>Larger loader bucket and frame</strong> — heavier loader frame. The <a href="https://www.brokentractor.com/p/loader-lift-cylinder-for-case-backhoes-590-super-l-590-super-m-133936a1-pv/">133936A1</a> loader lift cylinder is 590-specific.</li>
+<li><strong>Hydraulic pump</strong> — the <a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-590-super-l-590-super-m-backhoes-257955a1/">257955A1</a> 590-specific 17-spline pump. The 580 Super M uses 87433897.</li>
+<li><strong>Power output</strong> — 590 Super M ~108 HP gross vs. 580 Super M ~108 HP gross (very close — the 590's gain is mainly in working torque under load due to the heavier chassis).</li>
+<li><strong>Same engine family</strong> — 445T/M Series I → 445T/M2 Series II → F4HE Series III progression on both machines.</li>
+<li><strong>Same transmission options</strong> — Power Shuttle standard; Powershift option available on Series II/III.</li>
+</ul>
+
+<h2 id="section-3">How the 590 Super M differs from the 590 Super L</h2>
+
+<p>The 590 Super M is the M-generation successor to the 590 Super L. The key changes:</p>
+
+<ul>
+<li><strong>Engine family change</strong> — the 590 Super L used the Cummins 4T-390 (3.9 L turbo). The 590 Super M switches to the larger Case 445T/M family (4.5 L turbo). More displacement, more torque, more cylinder pressure.</li>
+<li><strong>Same chassis</strong> — backhoe boom, dipper stick, loader frame, and most cylinder hardware carry forward from the 590 Super L. The 175785A1 boom cylinder, 140965A1 dipper cylinder, 133936A1 loader lift cylinder, and 296434A1 bucket cylinder all cross-fit 590 Super L and 590 Super M.</li>
+<li><strong>Same L-generation cab</strong> — refined for the M-series but architecturally the same as the Super L.</li>
+<li><strong>Same wet-disc brakes</strong> — wet-disc multi-plate brake architecture continues.</li>
+<li><strong>Series II Powershift continues</strong> — the Powershift transmission option introduced on 590 Super L Series II carries forward to 590 Super M Series II/III.</li>
+</ul>
+
+<h2 id="section-4">Series I / II / III engine progression</h2>
+
+<p>Three Series of running engine and emissions updates:</p>
+
+<ul>
+<li><strong>Series I (2001 – 2004)</strong> — Case 445T/M turbo. Standard Power Shuttle transmission.</li>
+<li><strong>Series II (2004 – 2007)</strong> — 445T/M2 with Tier 2 emissions. Powershift transmission option becomes available. The <a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590sm-and-580sn-turbo-iveco-cs-590sm-ii-fk/">CS-590SM-II-FK</a> filter kit covers Series II machines (also fits 580 Super N).</li>
+<li><strong>Series III (2008)</strong> — single-year transition to the FPT/Iveco F4HE9484 4.5L Tier 3 Common-Rail engine. The <a href="https://www.brokentractor.com/p/a-c-condenser-for-case-580sm-590sm-series-iii-backhoes-87546291/">87546291</a> A/C condenser is Series III-specific (cross-fits 580 Super M Series III).</li>
+</ul>
+
+<p>Confirm Series by serial number before ordering engine-related parts. Filter kits, fuel system components, ECU, and certain electronic items differ between Series.</p>
+
+<h2 id="section-5">Powershift transmission (Series II/III option)</h2>
+
+<p>The Powershift transmission becomes available as a factory option starting on Series II 590 Super M machines. The Powershift offers clutch-free shifting under load with electronic clutch control. The standard Power Shuttle remains available on all three Series.</p>
+
+<p>If your 590 Super M has the Powershift option and shifting becomes erratic, the controller and wiring harness are the most common service items. Mechanical Powershift internals are durable.</p>
+
+<h2 id="section-6">Routine service parts for the 590 Super M</h2>
+
+<p>The parts table below covers the routine service and high-cross-fit parts for this model.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-bushing-100522a1-for-570mxt-580m-580n-590sm-loader-backhoe-585g-586g-forklift-100522a1-100522a1/">100522A1</a></td><td>Bushing (multi-fit M/N family)</td><td>Cross-fits 570MXT, 580M, 580N, 590SM, 585G and 586G forklifts. Wide cross-fit modern Case industrial bushing.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/new-holland-backhoe-4wd-front-hub-planetary-needle-bearing-set-9968075/">9968075</a></td><td>Needle bearing (590SM)</td><td>4WD front hub planetary needle bearing set.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-dipper-cylinder-seal-kit-179011a1-179011a1/">179011A1</a></td><td>Dipper cylinder seal kit (590SM)</td><td><strong>590 Super M-specific</strong> dipper cylinder seal kit. The dipper cylinder is the highest-cycle hydraulic component.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590sl-ii-590sm-backhoe-bucket-cylinder-seal-kit-297895a1-297895a1/">297895A1</a></td><td>Bucket cylinder seal kit (590SM)</td><td><strong>590 Super M-specific</strong> bucket cylinder seal kit. Also fits 590 Super L Series II.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/front-axle-tie-rod-for-case-580m-580n-and-590n-backhoes-401054a1/">401054A1</a></td><td>2WD tie rod late style (580M / Super M / 590 Super M)</td><td>Front-axle 2WD tie rod. Cross-fits 580M, 580 Super M, 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bucket-pin-and-bushing-kit-for-case-backhoes-cs-580-d-b-kit/">CS-580-D-B-Kit</a></td><td>Dipper stick to bucket pin kit (multi-fit)</td><td>Bucket pin and bushing kit. Cross-fits 580L/SL/M/SM and 590 Super L/M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/upper-cab-door-glass-right-side-for-case-580m-590-super-m-two-door-cab-394700a1/">394700A1</a></td><td>Upper door window RH (Series I 2-door cab)</td><td><strong>Series I 2-door cab</strong> upper RH door glass. Cross-fits 580M, 580 Super M, 590 Super M Series I.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-cylinder-seal-kit-package-for-case-590-super-m-backhoe-cs-sk-7/">CS-SK-7</a></td><td>590 Super M cylinder seal kit package</td><td><strong>590 Super M-specific</strong> multi-cylinder seal kit package — includes 1980412C2 boom cylinder seal kit, 297895A1 bucket cylinder seal kit, and additional components.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-loader-backhoe-and-forklift-o-ring-for-570n-580n-590sm-series-87711038-87711038/">87711038</a></td><td>O-ring (570N / 580N / 590SM)</td><td>Standard hydraulic O-ring with N-series and 590SM cross-fit.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-bushing-boom-at-swing-tower-d151059-d151059/">D151059</a></td><td>Flanged bushing (590SL + 590SM)</td><td>Flanged bushing at the boom-to-swing-tower interface. Cross-fits 590 Super L and 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590sm-and-580sn-turbo-iveco-cs-590sm-ii-fk/">CS-590SM-II-FK</a></td><td>Filter maintenance kit (Series II Turbo Iveco)</td><td>Filter kit for the 445T/M2 Tier 2 engine. Cross-fits 590 Super M Series II and 580 Super N.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-replacement-hydraulic-reservoir-tank-battery-box-87429272/">87429272</a></td><td>Hydraulic tank (multi-fit late L / early M)</td><td>New hydraulic reservoir tank. Cross-fits 580L II, 580SL II, 590SL II, 580M I, 580SM I, 590SM I, 570MXT, 585G, 586G.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/backhoe-dipper-crowd-cylinder-for-case-590sl-590sm-pve-products-140965a1/">140965A1</a></td><td>Dipper/crowd cylinder (590SL + 590SM)</td><td>New dipper/crowd cylinder. Cross-fits 590 Super L and 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/loader-lift-cylinder-for-case-backhoes-590-super-l-590-super-m-133936a1-pv/">133936A1</a></td><td>Loader lift cylinder (590SL + 590SM)</td><td>New OEM loader lift cylinder. Cross-fits 590 Super L and 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590sl-590sm-backhoe-boom-cylinder-175785a1-175785a1/">175785A1</a></td><td>Boom cylinder (590SL + 590SM)</td><td>Boom cylinder. Cross-fits 590 Super L and 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/front-loader-bucket-tilt-cylinder-rebuilt-for-case-590-super-l-590-super-m-255756a1/">255756A1</a></td><td>Loader bucket tilt cylinder (rebuilt, 590SL + SM)</td><td>Rebuilt OEM front loader bucket tilt cylinder. Cross-fits 590 Super L and 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/dipper-stick-end-spacer-bushing-for-case-backhoes-d141076/">D141076</a></td><td>Dipper stick end spacer (multi-fit)</td><td>Dipper stick end spacer bushing. Cross-fits 580K, 580 Super K, 580L, 580 Super L, 580M, and 590 series.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-loader-backhoe-washer-for-580sl-580sm-590sm-series-292898a1-292898a1/">292898A1</a></td><td>Washer (580SL / 580SM / 590SM)</td><td>Loader backhoe washer.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590SL-590SM-bucket-hydraulic-cylinder-296434a1/">296434A1R</a></td><td>Bucket cylinder (rebuilt OEM, 590SL + SM)</td><td>Rebuilt OEM bucket cylinder. Cross-fits 590 Super L and 590 Super M.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-super-l-590-super-m-backhoe-bucket-cylinder-made-in-usa-296434a1/">296434A1</a></td><td>Bucket cylinder (new USA-made, 590SL + SM)</td><td>New USA-made bucket cylinder.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590sl-590sm-backhoe-used-inner-dipper-stick-294300a1-294300a1-u/">294300A1-U</a></td><td>Inner dipper stick (used, 590SL + SM)</td><td>Used inner dipper stick for the 590 Extendahoe.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-580m-580sm-590sm-fender-set-right-left-hand-low-hour-take-off-cs-580m-fs-cs-580m-fs/">CS-580M-FS</a></td><td>Fender set (used, low-hour, 580M/SM/590SM)</td><td>Right and left-hand fender set, low-hour take-off.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-boom-swing-tower-pin-spacer-bushing-122897a1/">122897A1</a></td><td>Boom-to-swing-tower pin spacer bushing</td><td>Pin spacer bushing at the boom-to-swing-tower interface. Cross-fits 580L and 590SM.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/a-c-condenser-for-case-580sm-590sm-series-iii-backhoes-87546291/">87546291</a></td><td>A/C condenser (Series III)</td><td><strong>Series III-specific</strong> A/C condenser. Cross-fits 580 Super M Series III and 590 Super M Series III.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/brake-service-kit-for-case-590-super-l-and-590-super-m-backhoes-243894a1/">243894A1</a></td><td>Brake kit (590 Super L + Super M)</td><td>Brake service kit. Cross-fits 590 Super L and 590 Super M.</td></tr>
+</tbody>
+</table>
+
+<p>For a comprehensive Case 590 Super M parts inventory, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub.</p>
+
+<h2 id="section-7">Common issues and what to expect</h2>
+
+<h3>Series I vs Series II vs Series III parts ordering</h3>
+
+<p>Filter kits, fuel system components, ECU, and certain cab and HVAC items differ between Series. Always confirm Series by serial number. The <a href="https://www.brokentractor.com/p/a-c-condenser-for-case-580sm-590sm-series-iii-backhoes-87546291/">87546291</a> A/C condenser is Series III-specific. The <a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-590sm-and-580sn-turbo-iveco-cs-590sm-ii-fk/">CS-590SM-II-FK</a> filter kit is Series II-specific.</p>
+
+<h3>Turbocharger wear</h3>
+
+<p>The 4.5L turbocharger is the most common engine-service item. Symptoms: blue smoke, oil consumption, audible whine, shaft play. Series III F4HE machines use a slightly different turbo configuration than Series I/II 445T/M.</p>
+
+<h3>Bushing wear</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/case-bushing-100522a1-for-570mxt-580m-580n-590sm-loader-backhoe-585g-586g-forklift-100522a1-100522a1/">100522A1</a> bushing wears at multiple pivot points across the loader and backhoe. Stock a few.</p>
+
+<h3>Hydraulic cylinder seal failure</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/case-backhoe-dipper-cylinder-seal-kit-179011a1-179011a1/">179011A1</a> dipper cylinder seal kit and <a href="https://www.brokentractor.com/p/case-590sl-ii-590sm-backhoe-bucket-cylinder-seal-kit-297895a1-297895a1/">297895A1</a> bucket cylinder seal kit are the major seal kits. The <a href="https://www.brokentractor.com/p/hydraulic-cylinder-seal-kit-package-for-case-590-super-m-backhoe-cs-sk-7/">CS-SK-7</a> 590 Super M-specific multi-cylinder seal kit package bundles them with boom and stabilizer seal kits.</p>
+
+<h3>Dipper, boom, and bucket cylinder wear</h3>
+
+<p>The 590-specific cylinders — <a href="https://www.brokentractor.com/p/backhoe-dipper-crowd-cylinder-for-case-590sl-590sm-pve-products-140965a1/">140965A1</a> dipper cylinder, <a href="https://www.brokentractor.com/p/case-590sl-590sm-backhoe-boom-cylinder-175785a1-175785a1/">175785A1</a> boom cylinder, <a href="https://www.brokentractor.com/p/case-590-super-l-590-super-m-backhoe-bucket-cylinder-made-in-usa-296434a1/">296434A1</a> bucket cylinder, <a href="https://www.brokentractor.com/p/loader-lift-cylinder-for-case-backhoes-590-super-l-590-super-m-133936a1-pv/">133936A1</a> loader lift cylinder — all cross-fit 590 Super L. Routine wear and rebuild items.</p>
+
+<h3>Cab glass</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/upper-cab-door-glass-right-side-for-case-580m-590-super-m-two-door-cab-394700a1/">394700A1</a> Series I 2-door cab upper RH door glass cross-fits 580M, 580 Super M, and 590 Super M Series I.</p>
+
+<h3>Brake service</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/brake-service-kit-for-case-590-super-l-and-590-super-m-backhoes-243894a1/">243894A1</a> brake service kit covers the wet-disc brake rebuild for 590 Super L and 590 Super M.</p>
+
+<h3>Hydraulic pump and tank</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-590-super-l-590-super-m-backhoes-257955a1/">257955A1</a> hydraulic pump is the 590-specific 17-spline pump. The <a href="https://www.brokentractor.com/p/case-backhoe-replacement-hydraulic-reservoir-tank-battery-box-87429272/">87429272</a> hydraulic reservoir tank covers the late L / early M generation tank configuration.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 590 Super M?</h3>
+<p>The 590 Super M shares most engine, transmission, and cab parts with the 580 Super M and most chassis parts with the 590 Super L. Our parts specialists can verify Series I/II/III fitment by serial number and walk you through the two-direction cross-references.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-8">Where the 590 Super M sits in the Construction King family</h2>
+
+<p>The 590 Super M is the M-generation larger-frame turbocharged Construction King backhoe loader. It runs alongside the 580 Super M (same engine, smaller chassis). Before the 590 Super M came the 590 Super L with the Cummins 4T-390 engine on the same chassis. After the 590 Super M came the 590 Super N (2008–present), which carried the F4HE Series III engine forward and added FPT NEF Tier 3 and F5BFL Tier 4 Final engines over its run.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 590 Super M and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Smaller-frame sibling</span><a href="https://www.brokentractor.com/p/case-580-super-m-backhoe-case-580superm-backhoeloader-specs/">Case 580 Super M</a> — same engine, smaller chassis</li>
+<li><span class="meta">Same-engine smaller-frame</span><a href="https://www.brokentractor.com/p/case-580m-backhoe-loader-parts-specs/">Case 580M</a></li>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-590-super-l-backhoe-loader-parts-specs-common-issues-case-590-super-l-backhoe-loader-parts-specs-common-issues/">Case 590 Super L</a> — Cummins 4T-390 on same chassis</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-590-super-n-loader-backhoe-specs-parts-serial-number-info-case-590supern-loaderbackhoe-specs/">Case 590 Super N</a> — FPT engine families, Tier 3 → Tier 4 Final</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

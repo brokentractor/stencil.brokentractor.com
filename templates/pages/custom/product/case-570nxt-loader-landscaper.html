@@ -1,0 +1,278 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-pull{font-size:24px;line-height:1.4;color:var(--bt-ink);font-weight:600;font-style:italic;border-left:4px solid var(--bt-orange);padding:8px 0 8px 22px;margin:32px 0;font-family:Georgia,"Times New Roman",serif}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 570NXT Loader Landscaper: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 2012 – 2014, the 570NXT is the N-generation successor to the 570MXT Loader Landscaper — FPT F5HFL413D 3.4-liter four-cylinder diesel with DPF (Tier 4 Interim emissions), 3-point hitch rear, front loader, no backhoe. Built on the N-generation 580N chassis with the backhoe deleted in favor of a 3-point hitch. Two-year production window makes it one of the rarer modern Case Loader Landscapers.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-570nxt-hero.jpg" alt="Case 570NXT Loader Landscaper with FPT F5HFL Tier 4 Interim diesel">
+</div>
+</header>
+
+<p>The Case 570NXT is the N-generation Loader Landscaper that replaced the 570MXT in 2012. It ran through 2014 — a short two-year production window — before being succeeded by the 570N EP (Efficient Power) variant. The 570NXT is built on the N-generation 580N chassis with the backhoe deleted and a 3-point hitch installed in its place, the same architectural approach used on the 570LXT and 570MXT predecessors. What distinguishes the 570NXT from those earlier machines is the engine: the FPT F5HFL413D 3.4-liter four-cylinder Common-Rail diesel with a Diesel Particulate Filter (DPF) for Tier 4 Interim emissions compliance.</p>
+
+<p>For owners maintaining a 570NXT today, the key fact is the Tier 4 Interim after-treatment requirement. The DPF requires periodic active regeneration (in-operation or parked), and DPF-related faults are among the most common service complaints on Tier 4 Interim machines. The <a href="https://www.brokentractor.com/p/case-570nxt-skip-loader-filter-maintenance-kit-full-service-set-cs-580nt-fk-1/">CS-570NXT-FK</a> (also listed as CS-580NT-FK-1) filter maintenance kit is the verified Tier 4 Interim full-service filter set.</p>
+
+<h2>At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 570NXT — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>2012 – 2014</dd>
+<dt>Predecessor</dt><dd>Case 570MXT (2003 – 2007)</dd>
+<dt>Sibling (same era)</dt><dd>Case 570N EP (Efficient Power variant)</dd>
+<dt>Engine</dt><dd>FPT F5HFL413D 4-cylinder Common-Rail diesel</dd>
+<dt>Displacement</dt><dd>207 cu in (3.4 L)</dd>
+<dt>Cylinders</dt><dd>4, turbocharged, liquid-cooled, direct-injection Common-Rail</dd>
+<dt>After-treatment</dt><dd>Diesel Particulate Filter (DPF) — Tier 4 Interim emissions</dd>
+<dt>Power</dt><dd>~80 – 99 HP (depending on configuration)</dd>
+<dt>Transmission</dt><dd>Case 4-speed power shuttle, single-stage torque converter</dd>
+<dt>Drive</dt><dd>2WD or 4WD (Carraro)</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate</dd>
+<dt>Hydraulic system</dt><dd>Open-center, shared with 580N architecture</dd>
+<dt>System pressure</dt><dd>~3,000 psi</dd>
+<dt>Rear attachment</dt><dd>3-point hitch (Category I/II)</dd>
+<dt>Front attachment</dt><dd>Loader bucket (similar capacity to 580N)</dd>
+<dt>Operating weight</dt><dd>~12,500 – 14,500 lb (no backhoe — lighter than 580N)</dd>
+<dt>Cab</dt><dd>N-generation cab with refined HVAC and controls</dd>
+</dl>
+</div>
+
+<h2>How the 570NXT differs from the 570MXT predecessor</h2>
+
+<p>The 570NXT is the N-generation successor to the 570MXT. The major changes mirror the 580M → 580N transition on the backhoe loader side:</p>
+
+<ul>
+<li><strong>Engine</strong> — 570MXT used the Case 445T/M family (4.5L Cummins-derived); 570NXT uses the FPT F5HFL413D (3.4L FPT-built). Smaller displacement, modern Common-Rail injection, full electronic engine management.</li>
+<li><strong>Tier 4 Interim after-treatment</strong> — DPF (Diesel Particulate Filter) is new on the 570NXT. The 570MXT was pre-Tier-4. DPF active regeneration, ECU/sensor diagnostics, and DPF-related fault codes are entirely new service concerns on the 570NXT.</li>
+<li><strong>Cab and controls refinement</strong> — N-generation cab is more refined than the M-series cab, with updated HVAC, refined controls, and updated operator-station electronics.</li>
+<li><strong>Same 3-point hitch architecture</strong> — the 3-point hitch cylinders carry forward. The <a href="https://www.brokentractor.com/p/3-point-hitch-lift-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982373/">86982373</a> lift cylinder seal kit, <a href="https://www.brokentractor.com/p/3-point-hitch-pitch-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982374/">86982374</a> pitch cylinder seal kit, and <a href="https://www.brokentractor.com/p/3-point-hitch-tilt-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982384/">86982384</a> tilt cylinder seal kit all cross-fit 570MXT, 570NXT, and 570N EP.</li>
+<li><strong>Same wet-disc brake architecture</strong> — wet-disc multi-plate brakes carry forward.</li>
+</ul>
+
+<h2>How the 570NXT differs from the 570N EP</h2>
+
+<p>The 570NXT and 570N EP ran in parallel during 2012 – 2014 as two distinct Loader Landscaper variants. Both share the N-generation chassis and 3-point hitch architecture, but they target slightly different uses:</p>
+
+<ul>
+<li><strong>Engine calibration</strong> — the 570NXT runs the F5HFL413D in its standard calibration. The 570N EP runs an "Efficient Power" calibration that optimizes for fuel economy at lighter loads — well-suited to landscape work where peak power isn't always needed.</li>
+<li><strong>Different filter kits</strong> — the <a href="https://www.brokentractor.com/p/case-570nxt-skip-loader-filter-maintenance-kit-full-service-set-cs-580nt-fk-1/">CS-570NXT-FK</a> is the 570NXT-specific filter kit. The 570N EP uses its own Tier 4B filter kit (CS-570NEP-T4B-FK) for the slightly different after-treatment configuration.</li>
+<li><strong>Most chassis parts cross-fit</strong> — pin and bushing kits, glass, 3-point hitch hardware, drivetrain wear components all interchange.</li>
+</ul>
+
+<h2>The FPT F5HFL413D engine and DPF</h2>
+
+<p>The 570NXT's FPT F5HFL413D is a 3.4-liter Common-Rail Tier 4 Interim four-cylinder diesel. The smaller displacement vs. the 570MXT's 4.5L reflects emissions strategy: with Common-Rail injection's higher cylinder pressures and DPF after-treatment for particulate compliance, the smaller engine can deliver similar power with lower emissions. The DPF traps soot during normal operation and burns it off during active regeneration — either passively while the engine runs at sufficient exhaust temperatures, or actively when the ECU commands a controlled high-temp burn.</p>
+
+<p>The most common service complaints on Tier 4 Interim machines involve the DPF: fault codes related to regeneration failures, soot loading exceeding thresholds, ECU-commanded derate situations. Most can be cleared with dealer service tools; sensor or DPF replacement is needed less often.</p>
+
+<h2>Verified top-selling 570NXT parts</h2>
+
+<p>The 570NXT is a lower-volume Loader Landscaper — the short production window and limited fleet size keep parts demand modest. Many parts cross-fit with the 580N backhoe loader and the 570MXT predecessor.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Why it's relevant</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/fuel-cooler-for-case-backhoes-570nxt-wheel-loader-84298489/">84298489</a></td><td>Fuel cooler (Case backhoes + 570NXT)</td><td><strong>570NXT-specific</strong> fuel cooler. Tier 4 Interim machines run fuel coolers to manage injection-system temperatures.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-570nxt-skip-loader-filter-maintenance-kit-full-service-set-cs-580nt-fk-1/">CS-570NXT-FK</a></td><td>Filter maintenance kit (570NXT Skip Loader)</td><td><strong>570NXT Tier 4 Interim</strong> full-service filter set — engine oil, fuel, air, hydraulic, transmission filters.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-2wd-front-axle-hub-401065a1/">401065A1</a></td><td>2WD front axle wheel hub (580M / 580N / 570NXT)</td><td>2WD front axle wheel hub. Cross-fits 580M, 580N, and 570NXT.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/transmission-oil-cooler-for-case-new-holland-backhoe-570mxt-570nxt-87441876/">87441876</a></td><td>Transmission oil cooler (570MXT + 570NXT)</td><td>Transmission oil cooler. Cross-fits 570MXT and 570NXT Loader Landscapers.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/torque-converter-for-case-580m-series-ii-580n-570mxt-570nxt-87702194r/">87702194R</a></td><td>Torque converter (multi-fit)</td><td>Torque converter for the power shuttle. Cross-fits 580M Series II, 580N, 570MXT, 570NXT.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/rear-differential-ring-pinion-set-for-case-570nxt-580n-87708393/">87708393</a></td><td>Rear differential ring &amp; pinion (570NXT + 580N)</td><td>Rear differential ring and pinion set. Cross-fits 570NXT and 580N.</td></tr><tr><td><a href="https://www.brokentractor.com/p/3-point-hitch-pitch-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982374/">86982374</a></td><td>3-point hitch pitch cylinder seal kit (570 family)</td><td>3-point hitch pitch cylinder seal kit. Cross-fits 570MXT, 570NXT, 570NEP.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/3-point-hitch-tilt-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982384/">86982384</a></td><td>3-point hitch tilt cylinder seal kit (570 family)</td><td>3-point hitch tilt cylinder seal kit. Cross-fits the same family.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/3-point-hitch-lift-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982373/">86982373</a></td><td>3-point hitch lift cylinder seal kit (570 family)</td><td>3-point hitch lift cylinder seal kit. Cross-fits the same family.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/lift-cylinder-seal-kit-for-case-570n-xt-570n-ep-skip-loaders-right-or-left-side-86982375/">86982375</a></td><td>Lift cylinder seal kit (570NXT + 570N EP)</td><td>Lift cylinder seal kit specific to the N-generation Skip Loader. Right or left side.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-powershift-transmission-84152118/">84152118</a></td><td>4WD Power Shuttle transmission with torque converter</td><td>4WD Power Shuttle complete transmission assembly with torque converter. Cross-fits 570NXT and 586H forklift.</td></tr>
+</tbody>
+</table>
+
+<p>For a comprehensive 570NXT parts inventory, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case backhoe loader parts</a> hub. The 580N backhoe loader cross-fits most chassis, hydraulic, and cab items.</p>
+
+<h2>Common issues and what to expect</h2>
+
+<h3>DPF active regeneration faults</h3>
+
+<p>The Tier 4 Interim DPF is the single most common source of service complaints on 570NXT machines. Active regeneration faults, soot-loading-exceeded codes, and ECU-commanded derate situations all show up periodically. Most can be cleared with a service tool reset; persistent faults usually trace to a degraded DPF, NOx sensor, or temperature sensor.</p>
+
+<h3>Fuel cooler service</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/fuel-cooler-for-case-backhoes-570nxt-wheel-loader-84298489/">84298489</a> fuel cooler is 570NXT-specific. Tier 4 Interim machines run fuel coolers to manage injection-system temperatures — failure shows up as elevated fuel temperature codes or in-cab warnings.</p>
+
+<h3>3-point hitch cylinder seal failure</h3>
+
+<p>Same as on the 570MXT — the lift, pitch, and tilt cylinders are the highest-cycle hydraulic components. Use the <a href="https://www.brokentractor.com/p/3-point-hitch-lift-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982373/">86982373</a> lift cylinder kit, <a href="https://www.brokentractor.com/p/3-point-hitch-pitch-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982374/">86982374</a> pitch cylinder kit, and <a href="https://www.brokentractor.com/p/3-point-hitch-tilt-cylinder-seal-kit-for-case-570mxt-570nxt-570nep-86982384/">86982384</a> tilt cylinder kit during 3-point service. The <a href="https://www.brokentractor.com/p/lift-cylinder-seal-kit-for-case-570n-xt-570n-ep-skip-loaders-right-or-left-side-86982375/">86982375</a> Skip Loader lift cylinder seal kit covers the N-generation Skip Loader configuration.</p>
+
+<h3>Power shuttle and torque converter wear</h3>
+
+<p>The 4-speed Power Shuttle is shared with the 580N architecture. The <a href="https://www.brokentractor.com/p/torque-converter-for-case-580m-series-ii-580n-570mxt-570nxt-87702194r/">87702194R</a> torque converter is the verified replacement.</p>
+
+<h3>Differential service</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/rear-differential-ring-pinion-set-for-case-570nxt-580n-87708393/">87708393</a> ring and pinion is the verified replacement when the rear axle has lost teeth or been run with contaminated fluid.</p>
+
+<h3>Cooling system</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/transmission-oil-cooler-for-case-new-holland-backhoe-570mxt-570nxt-87441876/">87441876</a> transmission oil cooler is the cross-fit cooling component shared with the 570MXT.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 570NXT?</h3>
+<p>The 570NXT shares most chassis and drivetrain components with the 580N backhoe loader, with the 3-point hitch and Tier 4 Interim FPT engine as the major distinctions. Our specialists can verify Tier 4 fitment and walk you through the 570 Loader Landscaper family cross-references.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2>Where the 570NXT sits in the Case lineup</h2>
+
+<p>The 570NXT is the N-generation Loader Landscaper that bridged the 570MXT (Case 445T/M Cummins-derived) and the 570N EP (FPT Efficient Power). It runs alongside the 580N / 580 Super N backhoe loaders on the same chassis. The Loader Landscaper line represents Case's continued offering of a Construction King-platform machine configured without a backhoe, for utility, grading, soil-prep, and landscape applications.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 570NXT and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-570mxt-tractor-loader-parts-specs-common-issues-case-570mxt-tractor-loader-parts-specs-common-issues/">Case 570MXT</a> — Case 445T/M Cummins-derived Loader Landscaper</li>
+<li><span class="meta">Sibling N-generation</span><a href="https://www.brokentractor.com/p/case-570n-ep-tractor-loader-parts-specs-common-issues-case-570n-ep-tractor-loader-parts-specs-common-issues/">Case 570N EP</a> — Efficient Power variant</li>
+<li><span class="meta">Backhoe sibling</span><a href="https://www.brokentractor.com/p/case-580n-backhoe-parts-specs/">Case 580N</a> — same chassis with backhoe</li>
+<li><span class="meta">Older predecessor</span><a href="https://www.brokentractor.com/p/case-570lxt-tractor-loader-parts-specs-common-issues-case-570lxt-tractor-loader-parts-specs-common-issues/">Case 570LXT</a> — L-generation Loader Landscaper</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

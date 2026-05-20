@@ -1,0 +1,277 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 780C Construction King Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The engine-architecture watershed of the 780 line. Produced 1981 – 1988, the 780C dropped the 4-cylinder A336BDT used on the 780CK and 780B in favor of the Case 6T-590 — a turbocharged 5.9-liter six-cylinder diesel sharing Cummins B-series block geometry. 124 HP gross, 370 lb-ft of torque, and a switch from 24V to 12V electrical.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 9 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-780c-hero.jpg" alt="Case 780C Construction King — 1981–1988, Case 6T-590 six-cylinder turbo">
+</div>
+</header>
+
+<p>The Case 780C is the engine-architecture watershed of the 780 line. It came to market in 1981, sold alongside the carryover 4-cylinder 780B for the first four years of its run, and continued through 1988 as the primary 780 nameplate. The defining 780C change is the engine: Case retired the Case A336BDT four-cylinder turbo used on the 780CK and 780B, and replaced it with the Case 6T-590 — a turbocharged 5.9-liter six-cylinder diesel sharing the 4.02 × 4.72 in bore-stroke geometry of the Cummins B-series industrial engine.</p>
+
+<p>Output went up: 124 HP gross and 112 HP net vs. the 780B's 120 HP / 111 HP. More importantly, peak torque climbed substantially — from 333 lb-ft at 1,500 rpm on the 780B to 370 lb-ft at 1,200 rpm on the 780C. That's both a 37 lb-ft increase in peak torque and peak arriving 300 rpm earlier in the rev range, which gives the 780C a noticeably stronger working feel during digging cycles.</p>
+
+<div class="bt-callout">
+<strong>The 780C drops from 24V to 12V</strong>
+The 780C also marked an electrical-system change that is easy to overlook: the 24V starting and charging system used on the 780CK / 780B / 680H was replaced with a conventional 12V system. The smaller-displacement, higher-compression Cummins-derived 6T-590 has lower cold-cranking torque requirements than the larger-bore A336BDT, allowing a 12V starter to do the job reliably. This means 780C starters, alternators, and batteries do NOT cross-fit to the 24V 780B or earlier — a critical parts-ordering distinction.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">The 6T-590 engine and Cummins B-series lineage</a></li>
+<li><a href="#section-3">Hydraulics and cab</a></li>
+<li><a href="#section-4">Verified parts in stock</a></li>
+<li><a href="#section-5">Common issues and what to expect</a></li>
+<li><a href="#section-6">Where it sits in the 780 family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 780C — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1981 – 1988</dd>
+<dt>Predecessor</dt><dd>Case 780B / 780CK 4-cylinder generation</dd>
+<dt>Successor</dt><dd>Case 780D (1988 – 1993)</dd>
+<dt>Engine</dt><dd>Case 6T-590 turbocharged 6-cylinder diesel (Cummins B-series block)</dd>
+<dt>Displacement</dt><dd>359 cu in (5.9 L)</dd>
+<dt>Bore × stroke</dt><dd>4.02 in × 4.72 in (102 × 120 mm)</dd>
+<dt>Power (net)</dt><dd>112 HP (83.5 kW) @ 2,200 rpm</dd>
+<dt>Power (gross)</dt><dd>124 HP (92.5 kW)</dd>
+<dt>Peak torque</dt><dd>370 lb-ft (502 Nm) @ 1,200 rpm</dd>
+<dt>Compression ratio</dt><dd>17.5:1</dd>
+<dt>Engine oil capacity</dt><dd>12 qts (11.4 L)</dd>
+<dt>Coolant capacity</dt><dd>27 qts (25.6 L)</dd>
+<dt>Transmission</dt><dd>Power shuttle, 4F / 4R, torque converter</dd>
+<dt>Drive</dt><dd>2WD</dd>
+<dt>Final drives</dt><dd>Outboard planetary</dd>
+<dt>Electrical</dt><dd>12V system (changed from 24V at 780B)</dd>
+<dt>Brakes</dt><dd>Hydraulically actuated dry-disc</dd>
+<dt>Hydraulic system</dt><dd>Open-center, gear pump</dd>
+<dt>Air conditioning option</dt><dd>York-type cab A/C compressor</dd>
+<dt>Cab</dt><dd>ROPS canopy standard; enclosed cab with optional A/C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">The 6T-590 engine and Cummins B-series lineage</h2>
+
+<p>The Case 6T-590 introduced on the 780C is the same engine that arrived on the 680L in 1989 and continued onto the 780D and several other Case industrial machines through the early 1990s. The block shares its bore-stroke geometry (4.02 × 4.72 in) and lower-end architecture with the Cummins 6BT industrial six-cylinder — a B-series engine that powered everything from Dodge Ram pickups to industrial generator sets, and which gives the 780C an unusually wide parts-availability network for a machine of this age.</p>
+
+<ul>
+<li><strong>Substantially more torque</strong> — 370 lb-ft at 1,200 rpm vs. the A336BDT's 333 lb-ft at 1,500. Peak torque arrives 300 rpm sooner and is 11% higher in magnitude.</li>
+<li><strong>Higher compression (17.5:1 vs. 15.8:1)</strong> — better thermal efficiency, slightly improved fuel economy under load.</li>
+<li><strong>Six-cylinder smoothness</strong> — half the power pulse interval of a four-cylinder at the same rpm, producing less engine vibration.</li>
+<li><strong>Cummins B-series parts ecosystem</strong> — pistons, rings, bearings, head gasket sets, water pumps, and many valve train components cross-source through B-series channels.</li>
+</ul>
+
+<p>The 780C's larger-frame chassis and loader iron mean the same 6T-590 engine drives a substantially larger physical machine than the smaller 680L sibling — Case got more working capacity from the same engine by sizing the rest of the machine up.</p>
+
+<h2 id="section-3">Hydraulics and cab</h2>
+
+<p>The 780C's open-center hydraulic system uses the <a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-680k-780c-780d-backhoes-d127917/">D127917</a> main hydraulic pump that crosses to the 680K, 780D, and 780C — a three-machine cross-reference covering the bulk of the 6T-590 backhoe loader lineup. The combined radiator and transmission oil cooler (<a href="https://www.brokentractor.com/p/case-backhoe-radiator-a172141-a172138/">A172138</a>) extends that cross-reference to four machines (680K, 680L, 780C, 780D).</p>
+
+<p>Cab equipment was updated with the York-type A/C compressor (<a href="https://www.brokentractor.com/p/case-loader-backhoe-cab-ac-compressor-york-type-a141060/">A141060</a>) as an option — cross-fits 580D, 680K, 780C, and the W14 through W36 wheel loader family.</p>
+
+<h2 id="section-4">Verified parts in stock</h2>
+
+<p>The 780C is over 35 years old. Parts availability is good — better than most 780-line predecessors because of the Cummins B-series engine lineage and the cross-fit network with the 680K, 680L, and 780D. The items below are confirmed in stock at Broken Tractor with verified 780C fitment.</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-radiator-a172141-a172138/">A172138</a></td><td>Radiator with transmission oil cooler</td><td>Combined cooling radiator and transmission cooler. Cross-fit 680K, 680L, 780C, 780D. One of the most-replaced items on 35-plus-year-old machines as the original cores corrode internally.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-680k-780c-780d-backhoes-d127917/">D127917</a></td><td>Main hydraulic pump</td><td>Open-center gear pump for the backhoe and loader. Cross-fit 680K, 780C, 780D. Symptoms of pump failure: lazy boom, weak stabilizers, longer cycle times.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/boom-or-bucket-cylinder-seal-kit-for-case-780c-780d-backhoes-g109503/">G109503</a></td><td>Boom or bucket cylinder seal kit</td><td>Seal rebuild kit for the boom or bucket cylinder. Cross-fit 780C and 780D. The most common rebuild item on these large backhoe cylinders.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/lift-cylinder-for-case-680l-780b-780c-780d-backhoe-loaders-g103073/">G103073</a></td><td>Loader lift cylinder</td><td>Loader lift cylinder with cross-fit across 680L, 780B, 780C, and 780D — four machines spanning two engine generations.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-loader-backhoe-cab-ac-compressor-york-type-a141060/">A141060</a></td><td>Cab A/C compressor (York type)</td><td>Cab A/C compressor for machines built with the factory A/C option. Cross-fit 580D, 680K, 780C, and the W14 through W36 wheel loader family.</td></tr>
+</tbody>
+</table>
+
+<h2 id="section-5">Common issues and what to expect</h2>
+
+<h3>6T-590 engine wear patterns</h3>
+
+<p>The Cummins B-series block is durable, with good parts availability through both Case sources and Cummins B-series channels. Common items on machines of this age: head gasket failure (typically at the front of the block between cylinders 1-2 or 5-6), valve seat recession on heavy-duty service, turbo bearing wear, and injection pump wear on machines with long fuel-system service intervals.</p>
+
+<h3>Turbocharger wear</h3>
+
+<p>The 6T-590's wastegated turbocharger is a routine replacement item. Symptoms of wear: blue smoke at startup or cold throttle response, oil consumption, audible whine outside the normal range, or visible shaft play. Replace at the first sign of bearing wear — a failed turbo can ingest its own compressor wheel and damage the engine.</p>
+
+<h3>Cooling system corrosion</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/case-backhoe-radiator-a172141-a172138/">A172138</a> combined radiator is the most-replaced item on 780C machines. Internal corrosion in the radiator cores is the most common cause of overheating complaints. The dedicated hydraulic oil cooler should be inspected alongside the radiator.</p>
+
+<h3>12V electrical aging</h3>
+
+<p>The 780C's switch from 24V to 12V did not eliminate electrical-system maintenance — corroded battery cables, marginal connections, and aged starter solenoids are routine on a 35-plus-year-old machine. Inspect at every service.</p>
+
+<h3>Hydraulic cylinder seal failure</h3>
+
+<p>Every cylinder on a 780C has seals that are 35-plus years old. The <a href="https://www.brokentractor.com/p/boom-or-bucket-cylinder-seal-kit-for-case-780c-780d-backhoes-g109503/">G109503</a> seal kit covers the boom and bucket cylinders; the <a href="https://www.brokentractor.com/p/lift-cylinder-for-case-680l-780b-780c-780d-backhoe-loaders-g103073/">G103073</a> lift cylinder is a common starting point. Bores are typically still good — most cylinders only need reseal kits.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 780C?</h3>
+<p>The 780C's parts ecosystem is one of the strongest in the older Case backhoe lineup — Cummins B-series engine parts cross-source widely, and the A172138 / D127917 / G109503 / G103073 fleet of long-fitment items covers most major service. Our specialists can verify fitment by serial number before you order.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/contact-us/">Contact Broken Tractor</a>
+</div>
+
+<h2 id="section-6">Where it sits in the 780 family</h2>
+
+<p>The 780C bridges the 4-cylinder 780CK/780B generation and the 780D that closed out the line. The Cummins B-series 6T-590 introduced at the 780C continued onto the 780D essentially unchanged, so the 780C and 780D share most service parts. Below the 780C in Case's lineup sat the 680K and 680L (smaller-frame Construction Kings on the same 5.9-liter engine block); above and beside it sat the 850-series dozers and W14 wheel loader on related industrial powertrains.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 780C and the verified BigCommerce catalog at brokentractor.com — including our explicitly-labeled Cummins-engine cross-fit parts.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor / 4-cyl sibling</span><a href="https://www.brokentractor.com/p/case-780b-backhoe-loader-parts-specs-case-780b-backhoe-loader-parts-specs/">Case 780B</a> — 4-cylinder A336BDT, 1981–1985</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-780d-backhoe-loader-parts-specs-case-780d-backhoe-loader-parts-specs/">Case 780D</a> — same 6T-590 engine, 1988–1993 closing generation</li>
+<li><span class="meta">Smaller-frame contemporary</span><a href="https://www.brokentractor.com/p/case-680k-backhoe-loader-parts-specs-case-680k-backhoe-loader-parts-specs/">Case 680K</a> — naturally aspirated version of the 5.9L block</li>
+<li><span class="meta">Smaller-frame contemporary</span><a href="https://www.brokentractor.com/p/case-680l-backhoe-loader-parts-specs-case-680l-backhoe-loader-parts-specs/">Case 680L</a> — same 6T-590 turbo engine, smaller frame</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

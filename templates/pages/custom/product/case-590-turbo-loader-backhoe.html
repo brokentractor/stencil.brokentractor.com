@@ -1,0 +1,313 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 590 Turbo Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1990 through 1995 — the larger-frame turbocharged sibling to the 580K / 580 Super K, sharing the same JJG-prefix Phase III integrated transaxle and wet-disc brakes but with a stronger backhoe and loader. Cummins 4T-390 turbo, Carraro 26.18 4WD optional, Extendahoe commonly fitted.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 9 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-590-turbo-hero.jpg" alt="Case 590 Turbo larger-frame K-generation industrial loader backhoe">
+</div>
+</header>
+
+<p>The Case 590 Turbo started Case's 590-line backhoe loader in 1990 as the larger-frame, higher-output sibling to the 580K / 580 Super K. Production ran approximately 1990 through 1995, when the 590 Super L took over the larger-frame slot in the L generation. The 590 Turbo shares the same chassis VIN family (JJG prefix), the same Phase III integrated transaxle introduced on the 580K mid-production, the same wet-disc multi-plate brake architecture, and the same Carraro 26.18 4WD front axle as the 580 Super K. What's bigger on the 590 Turbo is the iron — heavier backhoe, larger loader bucket, and longer reach.</p>
+
+<p>Because the 590 Turbo shares so much architecture with the 580 Super K, most service parts cross between the two. Engine internals, transaxle components, wet-disc brake parts, and front axle assemblies all interchange. The 590-specific parts are the backhoe boom, dipper stick, loader frame, and the larger hydraulic cylinders.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Production years and serial numbers</a></li>
+<li><a href="#section-3">Engine and powertrain</a></li>
+<li><a href="#section-4">Wet-disc brakes</a></li>
+<li><a href="#section-5">Common problems documented by owners</a></li>
+<li><a href="#section-6">Replacement parts</a></li>
+<li><a href="#section-7">Frequently asked questions</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 590 Turbo — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1990 – 1995</dd>
+<dt>Serial prefix</dt><dd>JJG (same family as 580K / 580 Super K)</dd>
+<dt>Engine</dt><dd>Cummins 4T-390 (4BT 3.9L turbocharged)</dd>
+<dt>Cylinders</dt><dd>4, turbocharged direct-injection diesel</dd>
+<dt>Displacement</dt><dd>239 cu in (3.9 L)</dd>
+<dt>Bore × stroke</dt><dd>4.02 in × 4.72 in (102 × 120 mm)</dd>
+<dt>Power</dt><dd>~86 HP net / ~93 HP gross</dd>
+<dt>Torque</dt><dd>351 Nm (~259 lb-ft)</dd>
+<dt>Transmission</dt><dd>Case Phase III integrated transaxle, 4-speed Powershift with power shuttle</dd>
+<dt>Brakes</dt><dd>Wet-disc multi-plate, hydraulically actuated</dd>
+<dt>Front axle</dt><dd>2WD standard; Carraro 26.18 4WD optional</dd>
+<dt>Operating weight</dt><dd>~15,740 lb (7,139 kg)</dd>
+<dt>Transport length</dt><dd>~23 ft 6 in (7.16 m)</dd>
+<dt>Transport width</dt><dd>~7 ft 3 in (2.22 m)</dd>
+<dt>Transport height</dt><dd>~8 ft 8 in (2.64 m)</dd>
+<dt>Hydraulic flow</dt><dd>137 L/min (~36 gpm)</dd>
+<dt>Loader bucket capacity</dt><dd>1.2 m³ (~1.6 cu yd)</dd>
+<dt>Backhoe dig depth (standard)</dt><dd>~15 ft 9 in (4.76 m)</dd>
+<dt>Backhoe dig depth (Extendahoe)</dt><dd>~18 ft (5.5+ m)</dd>
+<dt>Backhoe bucket dig force</dt><dd>~15,430 lb (7,000 kg)</dd>
+<dt>Max travel speed</dt><dd>~25 mph (40 km/h)</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Production years and serial numbers</h2>
+
+<p>The 590 Turbo was produced from 1990 through 1995, with the JJG prefix shared across the 580K / 580 Super K / 590 Turbo K-generation chassis family. Pilot units shipped in late 1990 (only 7 units in the 1990 model year per published serial breaks), with full production from 1991 through early 1995 before the 590 Super L replaced it.</p>
+
+<table>
+<thead><tr><th>Year</th><th>Beginning serial</th><th>Ending serial</th></tr></thead>
+<tbody>
+<tr><td>1990 (pilot)</td><td>JJG0205001</td><td>JJG0205007</td></tr>
+<tr><td>1991</td><td>JJG0205008</td><td>JJG0206405</td></tr>
+<tr><td>1992</td><td>JJG0206406</td><td>JJG0206700</td></tr>
+<tr><td>1993</td><td>JJG0206701</td><td>JJG0207313</td></tr>
+<tr><td>1994 – 1995</td><td>JJG0207314</td><td>—</td></tr>
+</tbody>
+</table>
+
+<div class="bt-callout">
+<strong>The 590 Turbo is the start of the 590 line</strong>
+There is no pre-Turbo 590 backhoe in the K-generation. The 590 Turbo started the 590 line as the larger-frame, turbocharged flagship above the 580 Super K. All 590 Turbo production carries the same Cummins 4T-390 turbocharged engine — there is no naturally aspirated variant.
+</div>
+
+<h2 id="section-3">Engine and powertrain</h2>
+
+<p>The 590 Turbo is powered exclusively by the <strong>Cummins 4T-390</strong> — the turbocharged variant of the 4B 3.9L Cummins engine family that powers most Case construction equipment of the K-generation. 239 cubic inches, four-cylinder, direct-injection diesel with a turbocharger. Approximately 86 HP net / 93 HP gross with 351 Nm of torque. The same engine and turbo assembly cross to the 580 Super K and the Case 450C dozer of the same era.</p>
+
+<p>Transmission is Case's <strong>Phase III integrated transaxle</strong> — the same drivetrain introduced on the 580K mid-production and continued through the entire 580 Super K and 590 Turbo run. 4-speed Powershift with hydraulic forward/reverse shuttle. The integrated transaxle bolts directly to the back of the engine; there is no separate Borg-Warner shuttle assembly like the earlier Phase I 580K. All shifting is hydraulically actuated through the transmission control valve.</p>
+
+<h2 id="section-4">Wet-disc brakes</h2>
+
+<p>The 590 Turbo uses <strong>oil-bath wet-disc multi-plate service brakes</strong>, hydraulically actuated, integrated into the rear transaxle — same as the 580 Super K. Friction plates run in Hy-Tran transmission oil. Use Hy-Tran Plus (or equivalent with wet-brake friction modifier) — generic UTF or gear oil will glaze the discs.</p>
+
+<h2 id="section-5">Common problems documented by owners</h2>
+
+<h3>Shift fork breakage in the Phase III transaxle</h3>
+<p>Documented failure mode on the 590 Turbo and 580 Super K Phase III transaxles. Symptom: transmission locks up when a fork breaks and a gear engages partially. Service requires top-cover removal to identify the broken fork.</p>
+
+<h3>Cummins 4T-390 fuel system priming</h3>
+<p>The 4BT/4T-390 lift pump is fiddly to bleed after a filter change. Cracking the high-pressure injector lines is often required to get fuel up to the injection pump. This is the single most-searched 590 Turbo issue on the forums.</p>
+
+<h3>Turbo wastegate and boost-leak issues</h3>
+<p>Power loss and lugging in higher gears — frequently traced to turbo wastegate failure or boost leaks at the intake plumbing. Replacement turbocharger (J802290) cross-fits 580K, 590 Turbo, and Case 450C.</p>
+
+<h3>Hydraulic pump wear</h3>
+<p>Engine stalls under hydraulic load with system pressure below ~2,800 psi spec. Main relief valve, worn pump, or PRV seat. Combined hydraulic + travel demand exposes the weakness.</p>
+
+<h3>Wet-disc brake drag or contamination</h3>
+<p>Common K-generation issue — brake oil shares the transaxle, so a brake-piston seal failure puts hydraulic oil into the brake packs and contaminates the friction surfaces.</p>
+
+<h3>Carraro 4WD front-axle kingpin wear</h3>
+<p>Documented service item on 4WD-equipped 590 Turbos. Kingpin kits and bushings cross from the 580 Super K Carraro 26.18 axle catalog.</p>
+
+<h3>Parts scarcity on 590-specific castings</h3>
+<p>Case built far more 580-series machines than 590s in the K generation, so 590-specific castings (boom 140505A1, dipper stick, loader frame) get harder to source over time. Used and rebuilt options are stocked.</p>
+
+<h2 id="section-6">Replacement parts</h2>
+
+<table>
+<thead><tr><th>Part</th><th>SKU</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/engine-turbocharger-for-case-580k-590-turbo-450c-cummins-4t390-4ta390-j802290/">Cummins 4T-390 Turbocharger</a></td><td>J802290</td><td>Replacement turbo for 590 Turbo, 580K Super K, and Case 450C — same Cummins 4T/4TA-390 family</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-turbo-backhoe-radiator-a189481-a189481/">Radiator</a></td><td>A189481</td><td>Direct-fit replacement radiator for 590 Turbo</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590-turbo-steel-backhoe-boom-oem-replacement-made-in-usa-d150756/">Steel Backhoe Boom (USA-Made)</a></td><td>D150756</td><td>OEM-style replacement steel backhoe boom — addresses the 590-specific casting scarcity</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-590t-580-super-k-ring-gear-and-pinion-set-a190330-a190330/">Ring Gear &amp; Pinion Set</a></td><td>A190330</td><td>Differential ring and pinion for 590T and 580 Super K — cross-fitment</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/filter-maintenance-kit-for-case-580k-phase-iii-590-turbo-cs-580kiii-fk/">Filter Maintenance Kit (Phase III)</a></td><td>CS-580KIII-FK</td><td>Complete filter service kit for 580K Phase III and 590 Turbo</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-4390-cummins-4b390-non-turbo-engine-overhaul-kit-bekc39/">Cummins 4-390 Overhaul Kit</a></td><td>BEKC39</td><td>Cummins 4B 3.9L engine overhaul — covers the 4T-390 long block internals</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-engine-long-block-broken-tractor/">Cummins 4B / 4BT Long Block</a></td><td>CS-4390-LB-N</td><td>Replacement long-block engine</td></tr>
+</tbody>
+</table>
+
+<h3>Browse by 590 Turbo-fit category</h3>
+
+<ul>
+<li><a href="https://www.brokentractor.com/c/case-backhoe-brake-parts-580K-580SK-590T">Wet-Disc Brakes — 580K, 580 Super K, 590 Turbo</a></li>
+<li><a href="https://www.brokentractor.com/c/case-580k-590T-front-axle-parts/">580K, 580 Super K, 590T Front Axle Parts (4WD)</a></li>
+<li><a href="https://www.brokentractor.com/c/case-backhoe/front-axle-parts-4wd-four-wheel-drive-carraro/580k-580-super-k-590-turbo/">4WD Carraro Front Axle — 580K family</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/case-backhoe-rear-axle-differential-parts/580e-580-super-e-580k-580-super-k-590-turbo/">Rear Axle — 580K Phase III, Super K, 590 Turbo</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/rear-backhoe/case-backhoe-pins-bushings-and-links/590-turbo-590-super-l-590-super-m-590-super-n/">Pins, Bushings &amp; Links — 590 Turbo / Super L / Super M / Super N</a></li>
+<li><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+
+<h2 id="section-7">Frequently asked questions</h2>
+
+<h3>What years was the Case 590 Turbo made?</h3>
+<p>1990 through 1995, with pilot production in late 1990 and full volume production from 1991 onward. The 590 Super L replaced the 590 Turbo in 1995.</p>
+
+<h3>What engine is in a 590 Turbo?</h3>
+<p>The Cummins 4T-390 (4BT 3.9L) — a 239-cubic-inch four-cylinder turbocharged diesel rated ~86 HP net / ~93 HP gross. Same engine as the 580 Super K and the Case 450C dozer.</p>
+
+<h3>What's the difference between the 590 Turbo and the 580 Super K?</h3>
+<p>Both use the same engine, the same Phase III integrated transaxle, the same wet-disc brakes, and the same Carraro 4WD axle. The 590 Turbo has a larger frame, heavier backhoe (with deeper Extendahoe reach), and a 1.6 cu yd loader bucket vs. the Super K's smaller bucket. Most non-backhoe parts cross between the two.</p>
+
+<h3>Does the 590 Turbo have wet-disc brakes?</h3>
+<p>Yes — same wet-disc multi-plate architecture as the 580K and 580 Super K. Use Hy-Tran Plus only.</p>
+
+<h3>Does the 590 Turbo have 4WD?</h3>
+<p>Carraro 26.18 4WD was offered as a factory option. Most North American units shipped with 4WD given the 590's heavier loader and backhoe.</p>
+
+<h3>Where is the serial number on a Case 590 Turbo?</h3>
+<p>Stamped on a data plate inside the cab on the left dashboard, with a secondary stamping on the chassis near the front axle. All 590 Turbo serials carry the JJG prefix.</p>
+
+<div class="bt-cta">
+<h3>Need parts for your Case 590 Turbo?</h3>
+<p>Cummins 4T-390 engine overhaul kits and long blocks, Phase III transaxle components, wet-disc brake parts, Carraro 26.18 4WD axle parts, USA-made replacement backhoe booms, and complete filter maintenance kits — most parts cross from the 580 Super K catalog. Talk to a tech: (800) 909-7060, Mon–Fri 7a–5p CT.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Shop Case Backhoe Parts</a>
+</div>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>Broken Tractor LLC stocks parts for the Case 590 Turbo with broad cross-fitment to the 580K / 580 Super K parts catalog — Cummins 4T-390 engine internals, Phase III transaxle components, wet-disc brake assemblies, Carraro 4WD axle parts, and 590-specific backhoe booms and loader frames. All parts ship from U.S. warehouses with serial-verified fitment.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Keep reading</h3>
+<ul>
+<li><span class="meta">Case 580K</span><a href="https://www.brokentractor.com/p/case-580k-backhoe-specs-580k/">Case 580K / 580 Super K — Sibling Model</a></li>
+<li><span class="meta">Case 590 Super L</span><a href="https://www.brokentractor.com/p/case-590-super-l-backhoe-loader-parts-specs-common-issues-case-590-super-l-backhoe-loader-parts-specs-common-issues/">Case 590 Super L — Successor Generation</a></li>
+<li><span class="meta">Power Shuttle Guide</span><a href="https://www.brokentractor.com/blog/a-quick-guide-to-rebuilding-a-case-backhoe-power-shuttle-transmission/">Case Backhoe Power Shuttle Rebuild Guide</a></li>
+<li><span class="meta">580 Serial Guide</span><a href="https://www.brokentractor.com/blog/case-580-series-loader-backhoe-serial-number-guide-find-your-year-fast-and-order-the-right-parts-the-first-time/">Case 580 Series Serial Number Guide</a></li>
+<li><span class="meta">Case Backhoe Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Serial Number &amp; Owner's Info</a></li>
+<li><span class="meta">Case Backhoe Parts</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-backhoe-parts/">Case Backhoe Parts — full catalog</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

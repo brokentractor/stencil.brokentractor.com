@@ -1,0 +1,283 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 780CK / 780 Construction King Backhoe Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The launch machine of the largest Case backhoe loader nameplate. Produced 1971 – 1981, the 780CK (commonly referenced as simply "780") brought the turbocharged Case A336 BDT engine — 336 cu in, 4-cylinder, 120 HP gross — to the Construction King family. Class-leading breakout and dig depth for the 1970s, on a 24V electrical system and outboard-planetary final drives.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-780ck-hero.jpg" alt="Case 780CK / 780 Construction King — launch of the largest CK-era backhoe">
+</div>
+</header>
+
+<p>The Case 780CK — referenced simply as "780" in much of the factory literature — is the launch machine of the largest Case backhoe loader nameplate. It came to market in 1971 and ran through 1981, sitting above the 680E/G in Case's lineup as the company's biggest industrial backhoe loader of the era. The 780 nameplate inherits the "CK" Construction King designation from the earlier 680CK and 580CK launch machines, though "CK" was largely dropped from common reference once the platform was established.</p>
+
+<p>The defining 780CK detail is the engine: a turbocharged version of the Case 336 cu in four-cylinder diesel — designated A336 BDT — making 111 HP net / 120 HP gross. That's a substantial step up from the contemporary 680E's naturally aspirated 80 HP version of the same 336 block, and it gave the 780CK class-leading breakout force and lift capacity for a backhoe loader in the 1970s. The platform ran for over a decade before the 780B took over in 1981 with refinements but the same core architecture.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">The A336 BDT engine — what "BDT" means and why it matters</a></li>
+<li><a href="#section-3">Power shuttle and outboard-planetary final drives</a></li>
+<li><a href="#section-4">Hydraulic system</a></li>
+<li><a href="#section-5">Verified parts in stock</a></li>
+<li><a href="#section-6">Common issues and what to expect</a></li>
+<li><a href="#section-7">Where it sits in the 780 family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 780 / 780CK — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1971 – 1981</dd>
+<dt>Successor</dt><dd>Case 780B (1981 – 1985)</dd>
+<dt>Engine</dt><dd>Case A336 BDT (turbocharged)</dd>
+<dt>Cylinders</dt><dd>4, turbocharged, liquid-cooled, direct-injection diesel</dd>
+<dt>Displacement</dt><dd>336 cu in (5.5 L)</dd>
+<dt>Bore × stroke</dt><dd>4.625 in × 5.00 in (117 × 127 mm)</dd>
+<dt>Power (net)</dt><dd>111 HP (82.8 kW) @ 2,200 rpm</dd>
+<dt>Power (gross)</dt><dd>120 HP (89.5 kW)</dd>
+<dt>Peak torque</dt><dd>329 lb-ft (446 Nm) @ 1,500 rpm</dd>
+<dt>Compression ratio</dt><dd>16.5:1</dd>
+<dt>Engine oil capacity</dt><dd>11 qts (10.4 L)</dd>
+<dt>Coolant capacity</dt><dd>26 qts (24.6 L)</dd>
+<dt>Transmission</dt><dd>Power shuttle, 4F / 4R</dd>
+<dt>Drive</dt><dd>2WD</dd>
+<dt>Final drives</dt><dd>Outboard planetary</dd>
+<dt>Electrical</dt><dd>24V system, dual battery</dd>
+<dt>Brakes</dt><dd>Hydraulically actuated dry-disc</dd>
+<dt>Hydraulic system</dt><dd>Open-center, gear pump</dd>
+<dt>Hydraulic pressure</dt><dd>~2,000 – 2,500 psi</dd>
+<dt>Operating weight</dt><dd>~16,500 – 18,000 lb (varies with configuration)</dd>
+<dt>Length</dt><dd>~23 ft</dd>
+<dt>Width</dt><dd>~7.5 ft</dd>
+<dt>Height</dt><dd>~11 ft</dd>
+<dt>Cab</dt><dd>Optional enclosed cab</dd>
+</dl>
+</div>
+
+<h2 id="section-2">The A336 BDT engine — what "BDT" means and why it matters</h2>
+
+<p>The Case A336 BDT is the turbocharged version of the Case 336 cu in four-cylinder diesel that powered the 680E (naturally aspirated), 680G (naturally aspirated with higher output), and 680H (naturally aspirated). The "B" in BDT refers to the engine series; the "D" stands for diesel; the "T" stands for turbocharged. The 780CK gets a 4.625-inch bore and the wastegated turbo to feed denser intake air for the increased output.</p>
+
+<ul>
+<li><strong>120 HP gross / 111 HP net</strong> — substantially above the naturally aspirated 336 engines that ran 80–88 HP in the 680 series.</li>
+<li><strong>329 lb-ft peak torque at 1,500 rpm</strong> — strong working torque for digging.</li>
+<li><strong>24V starting</strong> — the same 24V electrical architecture that runs on the 680H, 850 dozer, and W14 wheel loader. Allows the larger starter motor needed to spin a turbocharged engine in cold weather.</li>
+</ul>
+
+<div class="bt-callout">
+<strong>The 780CK as the larger sibling of the 680E/G</strong>
+The 780CK and the 680E/G ran concurrently for much of the 1970s, sharing the same engine block family (Case 336 ci) but with the 780 getting the BDT turbocharged version. That parallel-production relationship explains why several 680E and 680G parts cross-fit to the 780CK in our catalog, and why the F44629 upper rear cab glass covers both 680K and "780 series" in one part number.
+</div>
+
+<h2 id="section-3">Power shuttle and outboard-planetary final drives</h2>
+
+<p>The 780CK uses Case's power shuttle transmission with single-stage torque converter — four forward and four reverse speeds, hydraulically actuated direction changes without a foot clutch, and outboard planetary final drives at the rear axle. The outboard-planetary layout puts the final reduction gearset at the wheel hub rather than at the differential output — a stronger arrangement for heavy industrial applications.</p>
+
+<p>Service items on the power shuttle are predictable: clutch packs wear, the shuttle valve gets sticky, and the torque converter charge pump weakens with age. The Case 780 / 780CK service manual is the authoritative reference for shuttle service procedures.</p>
+
+<h2 id="section-4">Hydraulic system</h2>
+
+<p>Open-center hydraulics driven by a gear pump. Working pressure is in the 2,000–2,500 psi range, sufficient for the larger backhoe and loader cylinders the 780CK carries. The 780CK's hydraulics are not as advanced as the later L-generation load-sensing systems, but they are robust and serviceable with standard Case hydraulic components.</p>
+
+<h2 id="section-5">Verified parts in stock</h2>
+
+<p>The 780CK is over 40 years old. Direct parts availability for the original CK platform is limited compared to later 780B / 780C / 780D machines, but several items cross-fit through the 680-line ecosystem and the broader Case industrial parts network. Items confirmed at Broken Tractor with 780-series fitment include:</p>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/upper-rear-cab-glass-for-case-580d-680k-780-series-f44629/">F44629</a></td><td>Upper rear cab glass</td><td>Long-fitment upper rear glass: 580D, 680K, and "780 series" (covers 780CK, 780B, 780C, 780D cab-equipped machines). One part number for the entire 780 line.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-backhoe-lower-rear-cab-glass-f44630/">F44630</a></td><td>Lower rear cab glass</td><td>Matching lower rear glass: 580D / Super D / Super E / 680H / 780 series. Replace alongside the F44629 when the cab is being re-glazed.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/greaseable-pin-for-case-680e-780-850-w11-w11b-d40037-d40037/">D40037</a></td><td>Greaseable pin</td><td>Greaseable pin with Case industrial cross-fit: 680E, 780, 850 dozer, W11, W11B wheel loaders. Used at common pivot points across the Case industrial line.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-24v-starter-motor-r46156/">A176539 (R46156)</a></td><td>24V starter motor</td><td>The 24V starter that runs on the 680H, 780B, 850C, and W14 family. The 780CK's 24V system uses a closely related starter — confirm exact fitment by serial number before ordering.</td></tr>
+</tbody>
+</table>
+
+<p>For 780CK service literature, the Case 780 / 780CK loader backhoe manual (available through Case parts channels and aftermarket reproduction sources) is the most authoritative reference for diagnosis and repair. Many engine-specific parts cross to the broader Case 336-class engine ecosystem; turbocharger and head gasket components may have separate availability through Case industrial channels.</p>
+
+<h2 id="section-6">Common issues and what to expect</h2>
+
+<h3>A336 BDT engine wear</h3>
+
+<p>The Case A336 BDT is durable but well past expected service life on any original-engine 780CK still in operation. Common issues: head gasket failure (40-plus-year-old gaskets are typically failed or near-failed), turbocharger bearing wear, valve seat recession, and injection pump wear. Plan on a full engine rebuild as a baseline restoration step on any unrestored 780CK.</p>
+
+<h3>Power shuttle clutch wear</h3>
+
+<p>Same wear pattern as the contemporaneous 680E/G. Clutch packs wear with age and use, the shuttle control valve gets sticky, and the torque converter charge pump weakens. Service involves dropping the rear casting.</p>
+
+<h3>24V electrical system</h3>
+
+<p>The 24V starting and charging system on a 40-plus-year-old machine has corroded battery cables, marginal connections, and likely a starter or alternator that has been replaced multiple times. The <a href="https://www.brokentractor.com/p/case-24v-starter-motor-r46156/">R46156 / A176539</a> 24V starter is the verified replacement for closely related machines; confirm fitment for the 780CK specifically before ordering.</p>
+
+<h3>Cab glass and seal aging</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/upper-rear-cab-glass-for-case-580d-680k-780-series-f44629/">F44629</a> and <a href="https://www.brokentractor.com/p/case-backhoe-lower-rear-cab-glass-f44630/">F44630</a> cab glass items are common replacement parts on a 780CK that has been outdoor-stored. 40-plus-year-old rubber seals are typically hard and brittle.</p>
+
+<h3>Hydraulic cylinder seal failure</h3>
+
+<p>Every cylinder on a 780CK has seals that are 40-plus years old. Plan on rebuilding every cylinder as part of any restoration. Bores are typically still good; reseal kits are usually sufficient.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 780CK?</h3>
+<p>The 780CK is a parts-availability challenge — the platform is old, the population is small, and many original-fitment items have to be sourced through cross-references or aftermarket reproductions. Our specialists can help track down the right components by serial number, engine ID, and physical comparison.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/contact-us/">Contact Broken Tractor</a>
+</div>
+
+<h2 id="section-7">Where it sits in the 780 family</h2>
+
+<p>The 780CK is the founding machine of the 780 line. After 1981 the 780B took over with refinements (1981–1985), followed by the 780C in the late 1980s (sharing the Cummins B-series 6T-590 engine with the 680L and 780D), and finally the 780D closing out the line in the 1990s. Across the line, the 780 family was Case's largest standard backhoe loader nameplate — above the 680 line, which itself sat above the 580 family. Today the Case 590 Super N is the largest production backhoe loader in Case's lineup, occupying a slot smaller than the original 780 series.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Smaller-frame contemporary</span><a href="https://www.brokentractor.com/p/case-680e-backhoe-loader-parts-specs-case-680e-backhoe-loader-parts-specs/">Case 680E</a> — same 336 engine, naturally aspirated</li>
+<li><span class="meta">Smaller-frame contemporary</span><a href="https://www.brokentractor.com/p/case-680g-backhoe-loader-parts-specs-case-680g-backhoe-loader-parts-specs/">Case 680G</a> — 1979–1981 sibling</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-780b-backhoe-loader-parts-specs-case-780b-backhoe-loader-parts-specs/">Case 780B</a> — 1981–1985, platform refinement</li>
+<li><span class="meta">Serial Number Hub</span><a href="https://www.brokentractor.com/case-backhoe-serial-number">Case Backhoe Loader Serial Number Guide</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>
