@@ -5,8 +5,13 @@
 .price--rrp,
 .price--discounted {
     text-decoration: line-through;
+    color: #c62828;
 }
 
 .price-section--minor {
     color: color("greys", "light");
+}
+
+.price-section--saving .price {
+    color: #2e7d32;
 }

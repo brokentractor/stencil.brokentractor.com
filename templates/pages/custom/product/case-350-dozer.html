@@ -1,0 +1,361 @@
+﻿---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 350 Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The compact dozer that anchored Case's small-class crawler lineup for two decades. Case 188D 4-cylinder diesel — 188 cu in / 3.1 L, approximately 44 HP gross — paired with a Case power shuttle transmission and outboard final drives. Designed for grading, clearing, foundation work, and finish work on small-to-medium jobsites. Shares major service parts with the Case 310 / 310G predecessor and 350B successor.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-350-hero.jpg" alt="Case 350 Crawler Dozer — Case 188D diesel, power shuttle, small-class workhorse">
+</div>
+</header>
+
+<p>The Case 350 is the compact crawler dozer that anchored Case's small-class lineup from the late 1950s through the early 1970s. Powered by the Case 188D — a 188 cubic inch (3.1 L) four-cylinder diesel rated at approximately 44 HP gross — paired with a Case power shuttle transmission and outboard-planetary final drives, the 350 was sized for small-to-medium grading, clearing, foundation, and finish work. It's the direct successor to the Case 310 / 310G in the small-crawler line and the predecessor to the 350B (which took over the same chassis with refinements through 1979).</p>
+
+<p>For owners maintaining a 350 today, the most useful single fact is that most service parts — undercarriage, final drives, track adjusters, blade hardware, power shuttle internals — cross-fit either to the earlier Case 310 / 310G or to the later 350B. That cross-reference network is broad enough that almost every common wear item on a 350 is currently sourceable through the BigCommerce catalog at Broken Tractor.</p>
+
+<div class="bt-callout bt-warning">
+<strong>Case 350 vs. John Deere 350 — they are different machines</strong>
+The Case 350 Crawler Dozer is a completely different machine than the John Deere 350 Crawler Dozer of the same era. The two manufacturers used the same model number for two unrelated products. Parts do not interchange between them. When ordering service parts, always confirm "Case 350" rather than "350 dozer" — many parts pages list both models separately for that reason.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Case 188D diesel engine</a></li>
+<li><a href="#section-3">Power shuttle transmission</a></li>
+<li><a href="#section-4">Track and undercarriage</a></li>
+<li><a href="#section-5">Final drives</a></li>
+<li><a href="#section-6">Blade and cutting edges</a></li>
+<li><a href="#section-7">Rock guards and protection</a></li>
+<li><a href="#section-8">Parts we carry</a></li>
+<li><a href="#section-9">Common issues and what to expect</a></li>
+<li><a href="#section-10">Where it sits in the Case dozer family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 350 — factory specifications</h4>
+<dl>
+<dt>Era</dt><dd>Late 1950s – early 1970s (350); 350B continues 1971 – 1979</dd>
+<dt>Predecessor</dt><dd>Case 310 / 310G</dd>
+<dt>Successor</dt><dd>Case 350B</dd>
+<dt>Engine</dt><dd>Case 188D 4-cylinder diesel</dd>
+<dt>Displacement</dt><dd>188 cu in (3.1 L)</dd>
+<dt>Cylinders</dt><dd>4, liquid-cooled, direct-injection diesel</dd>
+<dt>Power (gross)</dt><dd>~44 HP</dd>
+<dt>Transmission</dt><dd>Case power shuttle</dd>
+<dt>Drive</dt><dd>Crawler tracks, outboard-planetary final drives</dd>
+<dt>Hydraulic system</dt><dd>Open-center, ~15 gpm</dd>
+<dt>Fuel capacity</dt><dd>~40 gal</dd>
+<dt>Hydraulic reservoir</dt><dd>~15 gal</dd>
+<dt>Operating weight</dt><dd>~17,300 lb (varies with blade configuration)</dd>
+<dt>Blade options</dt><dd>Straight, angle, tilt blades depending on order spec</dd>
+<dt>Steering</dt><dd>Steering clutch / brake control per side</dd>
+<dt>Cab</dt><dd>Open ROPS canopy standard; enclosed cab uncommon</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Case 188D diesel engine</h2>
+
+<p>The Case 188D is a 188 cubic inch (3.1 L) four-cylinder direct-injection diesel that became one of Case's most widely used industrial small-block engines. The same engine family powered the smaller Case loader-backhoes (480CK, 480D, 580CK, 580B), the W3 / W5 wheel loaders, and the 350 / 310 / 310G crawler dozers. Bore &times; stroke is 3.625 &times; 4.50 in (92 &times; 114 mm) with a Bosch in-line injection pump.</p>
+
+<p>Practical implications for the Case 350 owner:</p>
+
+<ul>
+<li><strong>Engine parts ecosystem is broad.</strong> Pistons, rings, bearings, head gasket sets, water pumps, and oil pumps source readily through Case 188D service catalogs — these are not 350-specific parts.</li>
+<li><strong>Injection pump rebuild</strong> at a qualified diesel-pump shop is the standard fix when fuel delivery degrades. Symptoms: hard starting, rough idle, smoking, power loss.</li>
+<li><strong>Head gasket failure</strong> is the most common cylinder-head service item on these engines after 50-plus years. Pre-combustion chamber cracks, gasket failure between cylinders, or warpage from past overheating events are all common items on unrestored engines.</li>
+<li><strong>Cooling system</strong> — the R34163 radiator is a documented 350-specific replacement part. Internal corrosion in the original cores is the most common cause of overheating complaints.</li>
+</ul>
+
+<h2 id="section-3">Power shuttle transmission</h2>
+
+<p>The Case Power Shuttle on the 350 is a hydraulically actuated forward/reverse system with a multi-disc clutch pack on each side of the direction-change assembly. The operator selects direction with a column-mounted shuttle lever rather than working a foot clutch, which makes rapid forward/reverse cycling (essential for dozer work) much faster than a manual transmission would allow.</p>
+
+<p>The Case Power Shuttle is durable but does wear — clutch packs lose grip over time, the shuttle control valve gets sticky, and seal degradation eventually causes pressure drops. Two complete rebuild kits are in the catalog:</p>
+
+<ul>
+<li><strong><a href="https://www.brokentractor.com/p/case-350-dozer-early-shuttle-rebuild-kit-a574020-a574020/">A574020</a> — Case 350 Dozer (Early) Shuttle Rebuild Kit</strong> for early-production 350 power shuttle units</li>
+<li><strong><a href="https://www.brokentractor.com/p/case-dozer-power-shuttle-rebuild-kit-350-350b/">A574008</a> — Case 350 / 350B Power Shuttle Transmission Rebuild Kit</strong> for late-production 350 and the later 350B</li>
+</ul>
+
+<p>Confirm your unit type by serial number before ordering — the early and late shuttle internals differ in several wear components.</p>
+
+<h2 id="section-4">Track and undercarriage</h2>
+
+<p>Track adjusters, recoil springs, and rollers wear over decades of service. The 350's undercarriage is a sealed-and-lubricated chain with grouser plates. The Case 350 shares most undercarriage components with the 310 / 310G predecessor and the 350B successor, which gives the 350 owner a wide service-parts pool.</p>
+
+<ul>
+<li><strong><a href="https://www.brokentractor.com/p/hydraulic-track-tension-adjuster-for-case-310-and-350-dozers-d42202/">D42202</a> — Hydraulic Track Tension Adjuster</strong> for 310 and 350</li>
+<li><strong><a href="https://www.brokentractor.com/p/track-adjuster-tube-for-case-310g-350-350b-dozers-d42199/">D42199</a> — Track Adjuster Tube</strong> for 310G, 350, 350B</li>
+<li><strong><a href="https://www.brokentractor.com/p/track-adjuster-mounting-bracket-for-case-310-350-350b-dozers-d43510/">D43510</a> — Track Adjuster Mounting Bracket</strong> for 310, 350, 350B</li>
+<li><strong><a href="https://www.brokentractor.com/p/track-adjuster-recoil-spring-shield-for-case-310-350-350b-d43513/">D43513</a> — Track Adjuster Recoil Spring Shield</strong></li>
+<li><strong><a href="https://www.brokentractor.com/p/case-350-track-recoil-spring-r46068/">R46068</a> — Track Recoil Spring Assembly</strong> for 350 / 350B</li>
+<li><strong><a href="https://www.brokentractor.com/p/track-adjuster-rod-for-case-310-350-dozers-r48241/">R48241</a> — Track Adjuster Rod</strong> for 310, 350</li>
+<li><strong><a href="https://www.brokentractor.com/p/idler-guide-plate-for-case-310-350-350b-dozers-d43509/">D43509</a> — Idler Guide Plate</strong> for 310, 350, 350B</li>
+<li><strong><a href="https://www.brokentractor.com/p/top-roller-bracket-for-case-310g-350-350b-dozers-fits-1-1-4-shaft-d42198/">D42198</a> — Top Roller Bracket</strong> for 310G, 350, 350B (1-1/4&quot; shaft)</li>
+<li><strong><a href="https://www.brokentractor.com/p/case-10-inch-single-grouser-track-shoe-ca111-10/">CA111/10</a>, <a href="https://www.brokentractor.com/p/case-12-inch-single-grouser-track-shoe-ca111-12/">CA111/12</a>, <a href="https://www.brokentractor.com/p/case-14-inch-single-grouser-track-shoe-ca111-14/">CA111/14</a> — 10&quot;, 12&quot;, and 14&quot; Single Grouser Track Shoes</strong> for Case 310 &amp; 350</li>
+<li><strong><a href="https://www.brokentractor.com/p/ca111-track-shoe-bolt-nut-kit-2b5484-7k1706/">CA111BK</a> — Track Shoe Bolt &amp; Nut Kit</strong> (7/16&quot;)</li>
+<li><strong><a href="https://www.brokentractor.com/p/case-350-track-master-pin-ca312/">CA312</a> — Track Master Pin</strong></li>
+</ul>
+
+<p>That cross-reference list represents one of the broader undercarriage parts inventories available for any Case small crawler of the era. Track work on a 350 does not need to involve searching obscure suppliers — most parts are in stock.</p>
+
+<h2 id="section-5">Final drives</h2>
+
+<p>The Case 350's outboard-planetary final drives are a known wear point on machines with high hours. The major service components are available at Broken Tractor with cross-fit to the 310 / 310G and 350B:</p>
+
+<ul>
+<li><strong><a href="https://www.brokentractor.com/p/case-late-310g-350-350b-final-drive-bearing-and-seal-kit-cs-350-fdk/">CS-350-FDK</a> — Late 310G / 350 / 350B Final Drive Bearing and Seal Kit</strong> — the rebuild kit for the final drive itself</li>
+<li><strong><a href="https://www.brokentractor.com/p/final-drive-sprocket-shaft-for-case-310-350-350b-dozers-11853/">11853</a> — Final Drive Sprocket Shaft</strong> for 310, 350, 350B</li>
+<li><strong><a href="https://www.brokentractor.com/p/case-final-drive-axle-washer-d29125/">D29125</a> — Final Drive Axle Washer</strong> for 310, 350, 350B</li>
+<li><strong><a href="https://www.brokentractor.com/p/case-310-350-dozer-final-drive-pinion-coupler-d32730/">D32730</a> — Final Drive Pinion Coupler (10-spline)</strong> for 310 &amp; 350</li>
+<li><strong><a href="https://www.brokentractor.com/p/final-drive-seal-carrier-for-case-310g-350-and-350b-dozers-d43359/">D43359</a> — Final Drive Seal Carrier</strong> for 310G, 350, 350B</li>
+<li><strong><a href="https://www.brokentractor.com/p/case-left-differential-carrier-310-350-11410/">11410</a> — Left Differential Carrier</strong> for 310 &amp; 350</li>
+</ul>
+
+<p>Symptoms of final drive wear: clicking under load, oil weeps at the hub seal, audible bearing rumble. Service requires pulling the wheel and dropping the planet carrier — significant work but supported by the in-stock rebuild kit.</p>
+
+<h2 id="section-6">Blade and cutting edges</h2>
+
+<p>The 350 was offered with straight, angle, and tilt blade configurations. Cutting edges wear with use — particularly on rocky ground or in heavy clay. The <a href="https://www.brokentractor.com/p/center-blade-cutting-edge-for-case-350-350b-dozers-r24492/">R24492</a> center blade cutting edge is in stock and cross-fits both the 350 and the 350B.</p>
+
+<h2 id="section-7">Rock guards and protection</h2>
+
+<p>Several rock-guard items are available at Broken Tractor for the 350. These are particularly relevant if you operate in rocky or wooded terrain:</p>
+
+<ul>
+<li><strong><a href="https://www.brokentractor.com/p/track-rock-guard-set-for-case-350-310g-dozers-after-s-n-3039619-pv620/">PV620</a> — Track Rock Guard Set</strong> for 350 / 310G (after S/N 3039619)</li>
+<li><strong><a href="https://www.brokentractor.com/p/front-rock-guard-for-case-350-310g-rh-outer-or-lh-inner-r44053/">R44053</a> — Front Rock Guard (RH outer or LH inner)</strong></li>
+<li><strong><a href="https://www.brokentractor.com/p/front-rock-guard-for-case-350-310g-left-outer-or-right-inner-r44054/">R44054</a> — Front Rock Guard (LH outer or RH inner)</strong></li>
+<li><strong><a href="https://www.brokentractor.com/p/left-rear-guard-for-case-350-310g-dozers-after-s-n-3039619-d43598/">D43598</a> — Left Rear Guard</strong> for 350 / 310G after S/N 3039619</li>
+<li><strong><a href="https://www.brokentractor.com/p/right-rear-guard-for-case-350-310g-dozers-after-s-n-3039619-d43599/">D43599</a> — Right Rear Guard</strong> for 350 / 310G after S/N 3039619</li>
+</ul>
+
+<h2 id="section-8">Parts we carry</h2>
+
+<p>The list below is a sample of the Case 350 service parts with confirmed fitment at Broken Tractor. These are the items that have come up most often in service inquiries over the past year.</p>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-track-tension-adjuster-for-case-310-and-350-dozers-d42202/">D42202</a></td><td>Hydraulic track tension adjuster</td><td>Track tension adjuster for Case 310 and 350 dozers. Cross-fit between 310 and 350. Original adjusters wear at the bore and the spring fatigues with age.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-350-track-recoil-spring-r46068/">R46068</a></td><td>Track recoil spring assembly</td><td>The track recoil spring fatigues over time and can crack from age and metal fatigue. Symptoms: track jumps or loses tension under load. Confirmed fit on 350 and 350B.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-late-310g-350-350b-final-drive-bearing-and-seal-kit-cs-350-fdk/">CS-350-FDK</a></td><td>Final drive bearing and seal kit (Late 310G / 350 / 350B)</td><td>Complete rebuild kit for the final drive — bearings and seals. The cost-effective fix when the final drive hub seal starts weeping or the planet bearings develop rumble.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/remanufactured-torque-converter-for-case-350-350b-dozers-r41643r/">R41643R</a></td><td>Remanufactured torque converter</td><td>Reman torque converter for the 350 / 350B drivetrain. Standard fix when the original converter loses efficiency or shows internal damage.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-dozer-power-shuttle-rebuild-kit-350-350b/">A574008</a></td><td>Power shuttle transmission rebuild kit (Late)</td><td>Complete rebuild kit for the late-production Case 350 / 350B power shuttle. Use when forward/reverse engagement is harsh or slipping. Confirm shuttle type by serial number before ordering — early units use the A574020 kit instead.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-350-dozer-early-shuttle-rebuild-kit-a574020-a574020/">A574020</a></td><td>Power shuttle rebuild kit (Early 350)</td><td>The early-production shuttle rebuild kit. Use for 350 machines built before the late-production shuttle revision.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-350-dozer-radiator-r34163/">R34163</a></td><td>Case 350 dozer radiator</td><td>The 350-specific radiator. Original cores corrode internally over decades. Replace when overheating shows up under normal load.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/center-blade-cutting-edge-for-case-350-350b-dozers-r24492/">R24492</a></td><td>Center blade cutting edge</td><td>Center cutting edge for the 350 / 350B blade. Wear item — replace when the edge thins to about half its original thickness or when chunks break off.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-350-track-master-pin-ca312/">CA312</a></td><td>Track master pin</td><td>The master pin used to break and reassemble the track for service. Plan on a new master pin every time the track is split.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-10-inch-single-grouser-track-shoe-ca111-10/">CA111/10</a></td><td>10&quot; single grouser track shoe</td><td>10-inch wide track shoe for Case 310 and 350 crawler dozers. Choose width based on operating conditions: 10&quot; for harder ground, 12&quot; or 14&quot; for softer / muddier terrain.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-12-inch-single-grouser-track-shoe-ca111-12/">CA111/12</a></td><td>12&quot; single grouser track shoe</td><td>Mid-width track shoe. Best general-purpose choice for mixed conditions on the 350.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-14-inch-single-grouser-track-shoe-ca111-14/">CA111/14</a></td><td>14&quot; single grouser track shoe</td><td>Wide-pad track shoe for soft ground or where flotation matters more than penetration. Cross-fits 310 and 350.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/ca111-track-shoe-bolt-nut-kit-2b5484-7k1706/">CA111BK</a></td><td>Track shoe bolt &amp; nut kit (7/16&quot;)</td><td>Bolt and nut kit for installing new track shoes. Includes correct grade-8 hardware in the 7/16&quot; size used on the 310 / 350 platform.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/track-rock-guard-set-for-case-350-310g-dozers-after-s-n-3039619-pv620/">PV620</a></td><td>Track rock guard set</td><td>Rock-guard set for 350 / 310G machines built after S/N 3039619. Recommended for any 350 operated in rocky or wooded ground.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/bottom-seat-cushion-for-case-310g-350-350b-dozers-d44386/">D44386</a></td><td>Bottom seat cushion</td><td>OEM-spec bottom seat cushion. Replaces deteriorated original foam cushions on the operator station.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-310-350-dozer-final-drive-pinion-coupler-d32730/">D32730</a></td><td>Final drive pinion coupler (10 spline)</td><td>10-spline final drive pinion coupler. Connects the drive pinion to the final drive housing.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-final-drive-axle-washer-d29125/">D29125</a></td><td>Final drive axle washer</td><td>Service washer at the final drive axle. Cross-fits 310, 350, 350B.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/final-drive-sprocket-shaft-for-case-310-350-350b-dozers-11853/">11853</a></td><td>Final drive sprocket shaft</td><td>Final drive sprocket shaft for 310, 350, and 350B. The drive shaft that mates the final drive to the sprocket.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For a comprehensive Case 350 parts search, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case Dozer Specs and Information</a> hub or contact our parts team for serial-number-specific verification.</p>
+
+<h2 id="section-9">Common issues and what to expect</h2>
+
+<h3>188D engine wear after 50-plus years</h3>
+
+<p>The Case 188D is durable but well past expected service life on any original-engine machine. Common items: head gasket failure (typically between cylinders or weeping at the deck), pre-combustion chamber cracks, valve seat recession on heavy-duty service, and injection pump wear. Plan on a full top-end rebuild as a baseline restoration step on any unrestored 350.</p>
+
+<h3>Power shuttle slipping or harsh engagement</h3>
+
+<p>The hydraulically actuated power shuttle clutch packs wear with age. Symptoms: harsh forward-to-reverse changes, slow engagement, or full slippage under load. The A574020 (early) or A574008 (late) rebuild kit covers the wear components. Confirm the unit type by serial number before ordering.</p>
+
+<h3>Track and undercarriage wear</h3>
+
+<p>Track adjuster spring fatigue, master pin elongation, idler bushing wear, and final drive sprocket chord wear all develop over decades of service. Every major undercarriage wear item on the 350 is available at Broken Tractor.</p>
+
+<h3>Hydraulic cylinder seal failure</h3>
+
+<p>Every blade hydraulic cylinder on a 350 has seals that are 50-plus years old. Plan on rebuilding every cylinder as part of any restoration. Bores are typically still good; reseal kits are available — contact our parts team for current fitment options.</p>
+
+<h3>Final drive hub seal weeps</h3>
+
+<p>The final drive hub seal is a common service item on high-hour 350s. The CS-350-FDK rebuild kit covers the seal along with the bearings. Symptoms: oil drips from the hub area, declining gear oil level in the final drive, or audible bearing rumble.</p>
+
+<h3>Electrical and ignition aging</h3>
+
+<p>The 350's electrical system is simple — 12V starting, basic gauge cluster, mechanical controls. But the harness is 50-plus years old and corrosion at connectors, switches, and ground points is routine. Most "won't start" complaints on a 350 trace back to electrical rather than mechanical issues.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 350?</h3>
+<p>The Case 350 has one of the deepest small-crawler parts inventories we stock — undercarriage, final drives, power shuttle rebuild kits, cutting edges, rock guards, and engine components all currently available. Our specialists can verify fitment by serial number and walk you through the cross-references to the 310 / 310G and 350B siblings.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-10">Where it sits in the Case dozer family</h2>
+
+<p>The Case 350 anchors the small end of Case's crawler dozer lineup of the 1960s and 1970s. Above it sat the 450, then the 550, 650, 750, 850, and 1150 progressively larger crawlers. Below it was the 310 / 310G — the smaller-frame Case crawler dozer that shared the same engine family and many undercarriage components with the 350. The 350B took over the 350's chassis with refinements through 1979 before the Case 450B replaced the small-class crawler in 1978.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 350 / 350B and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case &amp; IH dozer spotlights</h3>
+<ul>
+<li><span class="meta">Smaller IH contemporary (gas)</span><a href="https://www.brokentractor.com/p/international-t340-crawler-dozer-specs-parts-and-serial-numbers-1959-1965-international-t340-crawler-dozer-parts-specs-serial-number/">International T340 Crawler Dozer</a> — gas-engine IH compact crawler</li>
+<li><span class="meta">Smaller IH contemporary (diesel)</span><a href="https://www.brokentractor.com/p/international-td340-crawler-dozer-specs-parts-and-serial-numbers-1959-1965-international-td340-crawler-dozer-parts-specs-serial-number/">International TD340 Crawler Dozer</a></li>
+<li><span class="meta">Successor (mid-size)</span><a href="https://www.brokentractor.com/p/case-450b-crawler-dozer-case-450b-dozer-specs-parts/">Case 450B Crawler Dozer</a> — Case 207 diesel, 1978–1983</li>
+<li><span class="meta">Hub page</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

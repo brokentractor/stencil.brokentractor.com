@@ -1,0 +1,303 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">International T340 Crawler Dozer: Specs, Parts &amp; Serial Numbers (1959–1965)</h1>
+<p class="bt-deck">The gasoline-engine compact crawler in the International Harvester T-340 / TD-340 sibling pair. Produced 1959 – 1965 at IH's Louisville works, the T340 ran a 134.8 cu in (2.2 L) four-cylinder gas engine — roughly 45 HP gross / 31 HP drawbar — and sat below the larger TD-9 / TD-15 industrial crawlers in IH's mid-century compact-construction lineup.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-t340-hero.jpg" alt="International T340 — IH's gas-engine compact crawler dozer, 1959–1965">
+</div>
+</header>
+
+<p>The International T340 is the gasoline-engine half of IH's T340 / TD340 compact-crawler sibling pair. It came to market in 1959 and ran through 1965, sized for the small-construction and large-farm niche where a TD-9 was too big and full-size industrial crawlers were overkill. The T340 ran a 134.8 cubic inch (2.2 L) four-cylinder gas engine rated at approximately 45 HP gross / 31 HP drawbar, paired with a 5-forward / 1-reverse gear-type transmission and a dry-disc clutch. Total IH production of the T340 family ran to roughly 8,000 units across the seven-year run.</p>
+
+<p>The T340 was built on the same chassis as the diesel TD340, sharing tracks, undercarriage, frame, hydraulics, blade hardware, and most operator-station components. The only meaningful differences between the two siblings are the engine and the cooling system — everything else interchanges. That cross-fit relationship matters when sourcing parts today: a TD340 part will almost always work on a T340 chassis (and vice versa), even if the catalog only lists one of the two model designations.</p>
+
+<nav aria-label="Table of contents">
+<h2>What's in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Serial number location</a></li>
+<li><a href="#section-3">Engine identification: T340 vs. TD340</a></li>
+<li><a href="#section-4">Track and undercarriage</a></li>
+<li><a href="#section-5">Common service items and what to expect</a></li>
+<li><a href="#section-6">Parts availability and cross-references</a></li>
+<li><a href="#section-7">Why the T340 still matters</a></li>
+<li><a href="#section-8">Where it sits in the IH crawler family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>International T340 — factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1959 – 1965</dd>
+<dt>Plant</dt><dd>International Harvester, Louisville Works (USA)</dd>
+<dt>Total production</dt><dd>~8,025 units (T-340 series)</dd>
+<dt>Sibling</dt><dd>International TD340 (diesel)</dd>
+<dt>Engine</dt><dd>IH C-135 gasoline 4-cylinder</dd>
+<dt>Displacement</dt><dd>134.8 cu in (2.2 L)</dd>
+<dt>Bore × stroke</dt><dd>3.27 in × 4.06 in (83 × 103 mm)</dd>
+<dt>Power (gross)</dt><dd>~45 HP</dd>
+<dt>Drawbar HP</dt><dd>~31 HP</dd>
+<dt>Transmission</dt><dd>Gear-type, 5 forward / 1 reverse</dd>
+<dt>Clutch</dt><dd>Dry-disc</dd>
+<dt>Hydraulic system</dt><dd>Open-center</dd>
+<dt>Operating weight</dt><dd>~6,000 – 7,500 lb (varies with blade and equipment)</dd>
+<dt>Track type</dt><dd>Steel grouser, factory or aftermarket pad</dd>
+<dt>Fuel capacity</dt><dd>~15 gal</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Serial number location</h2>
+
+<p>The serial number plate on the T340 is typically:</p>
+
+<ul>
+<li>Stamped on a data plate mounted on the instrument panel, or</li>
+<li>Located on the frame behind the left track near the operator seat</li>
+</ul>
+
+<p>If the dash data plate has been lost, the frame-stamped number on the left rail behind the operator seat is the next place to look. Confirm the serial before ordering any year-specific parts — the T340 had several running production updates over its seven-year run, and some service items differ between early and late builds.</p>
+
+<h2 id="section-3">Engine identification: T340 vs. TD340</h2>
+
+<p>Distinguishing the T340 from its TD340 sibling at a glance is straightforward:</p>
+
+<ul>
+<li><strong>Carburetor and intake plumbing</strong> — the T340's gas engine has an updraft carburetor with an air cleaner running to the intake manifold. The TD340 has fuel injection lines running to an in-line injection pump on the side of the block.</li>
+<li><strong>Spark ignition</strong> — the T340 has a distributor, ignition coil, and spark plug wires running to the four spark plugs on top of the head. The TD340 has none of that — only the injection lines from the pump to the four injectors.</li>
+<li><strong>Stamped block ID</strong> — the IH C-135 gas engine has "C-135" or similar stamped on the block. The TD340's diesel block carries a different stamp.</li>
+<li><strong>Fuel tank fittings</strong> — gas fuel pickup vs. diesel fuel pickup with return line.</li>
+</ul>
+
+<p>If the engine in your T340 has been replaced, the gas-to-diesel swap or vice versa is rare but possible. Confirm by physical inspection before ordering engine-specific parts.</p>
+
+<h2 id="section-4">Track and undercarriage</h2>
+
+<p>The T340 (and TD340) tracks are a sealed-and-lubricated steel chain with grouser plates. Common service items on a 60-plus-year-old machine include:</p>
+
+<ul>
+<li><strong>Track adjuster spring assemblies</strong> — the spring-loaded recoil adjuster keeps track tension consistent under load. The spring fatigues with age and the adjuster body wears at the bore.</li>
+<li><strong>Master pins</strong> — used to break and reassemble the track for service. Multiple replacements typically over the life of a working machine.</li>
+<li><strong>Grouser plates and track pads</strong> — wear with use, especially on hard surfaces or rocky ground.</li>
+<li><strong>Idler and roller wear</strong> — bushings and bearings wear over decades of service.</li>
+<li><strong>Final drive sprocket teeth</strong> — chord wear on the sprocket combined with chain elongation eventually requires sprocket replacement.</li>
+</ul>
+
+<p>Many T340 undercarriage parts cross-fit with other IH compact crawlers of the era. Our parts team can verify cross-references by serial number and physical comparison.</p>
+
+<h2 id="section-5">Common service items and what to expect</h2>
+
+<h3>Carburetor and ignition wear</h3>
+
+<p>The T340's IH C-135 gas engine is mechanically simple but the carburetor, distributor, points, and condenser are all 60-plus-year-old items on any unrestored machine. Common items: stuck float, leaking fuel bowl, worn distributor cap, fouled spark plugs, deteriorated plug wires. Plan on a full ignition refresh as a baseline restoration step.</p>
+
+<h3>Cooling system corrosion</h3>
+
+<p>Original radiator cores are typically corroded internally on any machine that has not been well-maintained. The hose connections at the water pump and thermostat housing are also routine items.</p>
+
+<h3>Hydraulic seal aging</h3>
+
+<p>Every hydraulic cylinder on a T340 — the blade lift, angle, and tilt cylinders — has seals that are 60-plus years old. Plan on a full seal-kit rebuild on every cylinder as part of any restoration. Bores are typically still good; reseal kits are usually sufficient.</p>
+
+<h3>Steering clutch wear</h3>
+
+<p>The T340 uses dry-disc steering clutches at each track. Wear at the clutch discs produces uneven steering response (the machine pulls to one side under power, or one track stops engaging fully). Replacement requires splitting the track-drive housing — a significant job but a straightforward one with the right service literature.</p>
+
+<h3>Engine and transmission oil seals</h3>
+
+<p>Front and rear crankshaft seals, transmission input and output seals, and the steering clutch shaft seals all dry out and weep with age. Inspect every oil leak; track sources back to specific seals.</p>
+
+<h2 id="section-6">Parts availability and cross-references</h2>
+
+<p>Direct parts availability for the T340 is limited — the machine is over 60 years old and total production was modest. However, several parts cross-fit through the broader IH industrial parts ecosystem:</p>
+
+<ul>
+<li><strong>Engine internals (IH C-135 gas)</strong> — the C-135 family was used across several IH industrial machines and certain Farmall agricultural tractors. Pistons, rings, bearings, head gasket sets, water pumps, and oil pumps cross-source through IH C-series engine channels.</li>
+<li><strong>Intake and exhaust manifolds</strong> — the IH gas-engine manifolds for the 130, 140, 200, 230, 240, 330, 340, 404, 424, 444, T340, and 500 Crawler share part numbers in many cases. Our 369645R22 / 388584R21 listing confirms this cross-fit.</li>
+<li><strong>Ignition components</strong> — distributor caps, rotors, points, and coils cross from broader IH C-series ignition catalogs.</li>
+<li><strong>Undercarriage</strong> — many track and roller components cross to the TD340 sibling and other IH compact crawlers of the era.</li>
+</ul>
+
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/intake-exhaust-manifold-gas-for-ih-farmall-130-140-200-230-240-330-340-404-424-444-t340-500-crawler-369645r22-388584r21/">369645R22 / 388584R21</a></td><td>Intake &amp; exhaust manifold (gas)</td><td>The gas-engine manifold for the IH C-series family. Confirmed cross-fit on the T340 and a wide range of IH Farmall tractors and crawlers. One of the most common replacement items as the original cast iron cracks at the runner connections from thermal cycling.</td></tr>
+</tbody>
+</table>
+
+<p>For broader parts work, see the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a> hub. Our parts specialists can locate cross-fit items for the T340 specifically — most IH service-parts work needs serial number confirmation before ordering.</p>
+
+<h2 id="section-7">Why the T340 still matters</h2>
+
+<p>For collectors, hobby farmers, and small-property owners who need a working compact crawler, the T340 occupies a sweet spot: mechanically simple, easily serviced with hand tools and basic shop equipment, light enough to trailer behind a 3/4-ton pickup, and inexpensive to acquire in running condition. The gas-engine simplicity in particular makes the T340 a less intimidating restoration project than its diesel TD340 sibling — no injection pump to rebuild, no injection-line wet-stack issues, simpler cold-weather starting.</p>
+
+<p>The trade-off is fuel cost and engine durability under heavy work — gas engines of this era are less efficient than equivalent diesels and don't tolerate sustained high-load operation as well. Most surviving T340 machines are now in light-duty service or restoration, which suits the design well.</p>
+
+<div class="bt-cta">
+<h3>Restoring or maintaining a T340?</h3>
+<p>The T340's parts ecosystem stretches across the IH C-series engine family and the broader IH industrial parts catalog. Our specialists can locate cross-fit parts by serial number and physical comparison — many items that cross to Farmall, the IH 500 Crawler, and the TD340 sibling are still available.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-8">Where it sits in the IH crawler family</h2>
+
+<p>The T340 sat at the small end of IH's mid-20th-century crawler dozer lineup. Above it were the TD-9, TD-14, TD-15, TD-18, TD-20, and TD-25 — progressively larger industrial crawlers with diesel-only powertrains. The T340 had no smaller crawler sibling at IH; below the T340, IH's offerings were wheel-only tractors rather than crawlers. The T340's direct competitor in the small-crawler market was John Deere's 1010 crawler family.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory International Harvester service literature for the T340 / TD340 and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case &amp; IH dozer spotlights</h3>
+<ul>
+<li><span class="meta">Diesel sibling</span><a href="https://www.brokentractor.com/p/international-td340-crawler-dozer-specs-parts-and-serial-numbers-1959-1965-international-td340-crawler-dozer-parts-specs-serial-number/">International TD340 Crawler Dozer</a> — diesel-engine version of the T340 chassis</li>
+<li><span class="meta">Next size up (Case smaller-frame)</span><a href="https://www.brokentractor.com/p/case-350-crawler-dozer-case-350-dozer-specs-parts/">Case 350 Crawler Dozer</a> — Case 188 4-cylinder diesel, contemporary competitor</li>
+<li><span class="meta">Hub page</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

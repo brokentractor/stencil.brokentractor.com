@@ -1,0 +1,341 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Case 650K Crawler Dozer: Specs, Parts & Common Issues",
+  "description": "Case 650K Crawler Dozer specs (2010–2015), Tier 4 Interim diesel, hydrostatic dual-path transmission, and parts at Broken Tractor.",
+  "author": {"@type": "Organization", "name": "Broken Tractor"},
+  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
+  "dateModified": "2026-05-21",
+  "about": {"@type": "Product", "name": "Case 650K Crawler Dozer", "manufacturer": {"@type": "Organization", "name": "Case"}}
+}
+</script>
+<style>
+:root{
+  --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;
+  --bt-body:#2c3e50;--bt-muted:#5b6b7a;--bt-rule:#e6e9ee;
+  --bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;
+  --bt-callout-border:#f37021;--bt-warning:#fff4f0;--bt-warning-border:#e74c3c;
+  --bt-font-body:"proxima-nova",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --bt-font-display:"Industry","Oswald","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+.productView{display:none !important}
+.bt-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:9999;background:transparent}
+.bt-progress__bar{height:100%;width:0;background:var(--bt-orange);transition:width .15s ease}
+.bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+.bt-wrap{max-width:760px;margin:0 auto;padding:0 32px}
+.bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+.bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;font-family:var(--bt-font-display)}
+h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+.bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+.bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+.bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+.bt-byline strong{color:var(--bt-ink)}.bt-byline .dot{margin:0 6px;color:#ccc}
+.bt-feature{margin:32px 0;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:#1a1a1a}
+.bt-feature img{width:100%;height:100%;object-fit:cover;display:block}
+nav.bt-toc{background:var(--bt-soft);border:1px solid var(--bt-rule);border-radius:6px;padding:20px 24px;margin:32px 0;font-size:15px;font-family:var(--bt-font-body)}
+nav.bt-toc strong{display:block;font-family:var(--bt-font-display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);margin-bottom:10px}
+nav.bt-toc ol{margin:0;padding-left:20px}
+nav.bt-toc li{margin:5px 0}
+nav.bt-toc a{color:var(--bt-orange-dark);border-bottom:none;text-decoration:underline;text-underline-offset:2px}
+nav.bt-toc a:hover{color:var(--bt-orange)}
+h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+p{margin:0 0 18px;font-family:var(--bt-font-body)}
+ul,ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+li{margin:6px 0}
+.bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+.bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+.bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+.bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+.bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}.bt-warning strong{color:var(--bt-warning-border)}
+.bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:14px}
+.bt-spec h4{margin:0 0 10px;font-family:var(--bt-font-display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700}
+.bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+.bt-spec dt{color:var(--bt-muted)}.bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+.bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+.bt-table-scroll table{width:100%;border-collapse:collapse;margin:0;font-size:15px;font-family:var(--bt-font-body)}
+.bt-table-scroll th,.bt-table-scroll td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+.bt-table-scroll th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+.bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+.bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}.bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+.bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none;font-family:var(--bt-font-display)}
+.bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none}
+.bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+.bt-related h3{margin-top:0;font-family:var(--bt-font-display)}.bt-related ul{list-style:none;padding:0}
+.bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}.bt-related li:last-child{border-bottom:none}
+.bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+.bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+.bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+.bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+.bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+.bt-newsletter{background:var(--bt-ink);color:#fff;padding:56px 24px;text-align:center}
+.bt-newsletter h2{color:#fff;margin:0 0 10px;font-size:28px;font-family:var(--bt-font-display)}
+.bt-newsletter p{color:#cfd8e0;max-width:480px;margin:0 auto 24px;font-family:var(--bt-font-body)}
+.bt-newsletter form{display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.bt-newsletter input[type=email]{flex:1;min-width:220px;padding:13px 16px;border-radius:4px;border:none;font-size:15px;font-family:var(--bt-font-body)}
+.bt-newsletter button{background:var(--bt-orange);color:#fff;border:none;padding:13px 22px;border-radius:4px;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.03em;text-transform:uppercase;font-family:var(--bt-font-display)}
+.bt-newsletter button:hover{background:var(--bt-orange-dark)}
+@media(max-width:600px){h1.bt-title{font-size:30px}h2{font-size:24px}h3{font-size:19px}.bt-deck{font-size:17px}body{font-size:17px}.bt-wrap{padding:0 18px}.bt-page-card{margin:0;border-radius:0;box-shadow:none}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+.bt-wrap nav{position:static !important}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+  <span class="bt-tag">Model Spotlight</span>
+  <h1 class="bt-title">Case 650K Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+  <p class="bt-deck">Produced 2010 – 2015, the Case 650K is the K-generation mid-frame Case crawler dozer — Tier 4 Interim emissions, refined Cummins B-series turbocharged four-cylinder diesel, hydrostatic dual-path transmission, and a substantially upgraded operator cab over the 650H predecessor. The K generation introduced cooled exhaust gas recirculation (EGR) and a diesel particulate filter (DPF) to meet Tier 4 Interim — both significant new service items.</p>
+  <div class="bt-byline">
+    <div class="bt-avatar">BT</div>
+    <div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 11 min read</div>
+  </div>
+  <div class="bt-feature">
+    <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-650k-hero.jpg" alt="Case 650K Crawler Dozer" loading="lazy" />
+  </div>
+</header>
+
+<nav class="bt-toc" aria-label="Table of contents">
+  <strong>On this page</strong>
+  <ol>
+    <li><a href="#section-1">At-a-glance specifications</a></li>
+    <li><a href="#section-2">How the 650K differs from the 650H predecessor</a></li>
+    <li><a href="#section-3">Variants: Standard, LT, LGP</a></li>
+    <li><a href="#section-4">Tier 4 Interim emissions system</a></li>
+    <li><a href="#section-5">Cummins B-series engine</a></li>
+    <li><a href="#section-6">Hydrostatic dual-path transmission</a></li>
+    <li><a href="#section-7">Blade-carrier and operator-station cross-fit</a></li>
+    <li><a href="#section-8">Common 650K service issues</a></li>
+    <li><a href="#section-9">Parts we carry</a></li>
+    <li><a href="#section-10">Where the 650K sits in the Case dozer family</a></li>
+  </ol>
+</nav>
+
+<p>The Case 650K Crawler Dozer is the K-generation mid-frame Case crawler dozer, produced from 2010 through 2015. The K generation continues the hydrostatic dual-path drivetrain architecture introduced on the 650H and adds Tier 4 Interim emissions compliance — cooled exhaust gas recirculation (cooled EGR) plus a diesel particulate filter (DPF) that captures and periodically regenerates soot from the exhaust stream. The operator station got a substantial refresh: improved sightlines to the blade corners, electronic instrumentation, and updated joystick control geometry.</p>
+
+<p>The 650K is generally regarded as the most refined version of the hydrostatic mid-frame Case dozer before the Tier 4 Final transition. Service profile is similar to the 650H (hydrostatic drivetrain, Cummins B-series engine, broad mid-class parts cross-fit) with the addition of Tier 4 Interim emissions service points (DPF regeneration, EGR cooler service).</p>
+
+<div class="bt-callout">
+  <strong>Tier 4 Interim added new service items</strong>
+  The biggest service difference between the 650H and 650K is the emissions system. The 650K has cooled EGR and a DPF — both routine service items that didn't exist on the 650H. DPF regeneration is automatic in normal operation but requires periodic ash service. EGR cooler internal leaks can cause coolant loss and intake contamination. Both should be on a maintenance schedule.
+</div>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+  <h4>Case 650K — factory specifications</h4>
+  <dl>
+    <dt>Production years</dt><dd>2010 – 2015</dd>
+    <dt>Predecessor</dt><dd>Case 650H (2001 – 2010)</dd>
+    <dt>Successor</dt><dd>Case 650L (2015 onward)</dd>
+    <dt>Engine</dt><dd>Cummins B-series 4-cyl turbocharged diesel (Tier 4 Interim with cooled EGR + DPF)</dd>
+    <dt>Displacement</dt><dd>~3.9 – 4.5 L (configuration dependent)</dd>
+    <dt>Power</dt><dd>~100 – 110 HP flywheel</dd>
+    <dt>Transmission</dt><dd>Hydrostatic dual-path</dd>
+    <dt>Emissions tier</dt><dd>Tier 4 Interim (Tier 4i)</dd>
+    <dt>Aftertreatment</dt><dd>Cooled EGR + Diesel Particulate Filter (DPF)</dd>
+    <dt>Variants</dt><dd>Standard, LT (Long-Track), LGP (Low Ground Pressure)</dd>
+    <dt>Operating weight</dt><dd>~18,500 – 21,000 lb depending on variant</dd>
+    <dt>Hydraulic system</dt><dd>Load-sensing implement hydraulics, separate hydrostatic drive circuits</dd>
+    <dt>Blade</dt><dd>6-way bulldozer blade — angle, tilt, lift hydraulically actuated</dd>
+    <dt>Serial plate location</dt><dd>Right side of cab platform, near operator entry</dd>
+  </dl>
+</div>
+
+<h2 id="section-2">How the 650K differs from the 650H predecessor</h2>
+
+<ul>
+  <li><strong>Tier 4 Interim emissions</strong> — cooled EGR plus DPF added. The DPF captures soot and regenerates periodically (passive most of the time, with active regeneration cycles when needed). Routine service points are different from the 650H.</li>
+  <li><strong>Refreshed cab and electronics</strong> — improved HVAC, electronic instrumentation cluster, updated joystick control geometry, and better visibility to the blade corners.</li>
+  <li><strong>Updated hydrostatic drivetrain calibration</strong> — same dual-path architecture as the 650H but with refined control software and updated charge pump configuration.</li>
+  <li><strong>Compatible blade-carrier hardware with 650H</strong> — most blade-carrier wear items (slider blocks, wear plates, cutting edge geometry) carry forward from the 650H. Confirm by part number against serial.</li>
+  <li><strong>Suspension seat carries forward</strong> — the <a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 suspension seat</a> fits the 650K (same broad H/K/L Case dozer cross-fit).</li>
+</ul>
+
+<h2 id="section-3">Variants: Standard, LT, LGP</h2>
+
+<p>The 650K shipped in three primary track configurations:</p>
+
+<ul>
+  <li><strong>Standard</strong> — standard-width track, balanced general dozing.</li>
+  <li><strong>LT (Long Track)</strong> — extended-length track frame for additional flotation and stability.</li>
+  <li><strong>LGP (Low Ground Pressure)</strong> — wider grouser pads with extended track frame for soft-ground / wetlands / agricultural-soil work.</li>
+</ul>
+
+<p>Variant affects undercarriage parts (track pads, idlers, frame components). Confirm Standard vs. LT vs. LGP by serial before ordering.</p>
+
+<h2 id="section-4">Tier 4 Interim emissions system</h2>
+
+<p>The Tier 4 Interim emissions package on the 650K combines two main systems:</p>
+
+<h3>Cooled EGR (exhaust gas recirculation)</h3>
+
+<p>A portion of the exhaust is routed back through an EGR cooler, then mixed with the intake air before combustion. This reduces NOx emissions. The EGR cooler itself can develop internal leaks at production-run age — failure mode is coolant loss into the intake or exhaust side. EGR valve fouling and stuck-open / stuck-closed conditions are also routine. EGR system codes are common on aging Tier 4i engines.</p>
+
+<h3>Diesel particulate filter (DPF)</h3>
+
+<p>The DPF captures soot particles from the exhaust. Soot accumulates in the filter substrate during normal operation; periodic regeneration burns the soot off (passive regeneration during heavy-load operation, active regeneration when the engine commands an injection cycle). Ash (non-combustible particulate residue) accumulates over time and eventually requires DPF service / replacement / ash removal at a service interval typically measured in thousands of hours.</p>
+
+<p>Both EGR and DPF service should be on a maintenance schedule for 650K owners — these systems are new service items vs. the 650H and they have associated wear and maintenance cycles.</p>
+
+<h2 id="section-5">Cummins B-series engine</h2>
+
+<p>The 650K continues the Cummins B-series industrial engine lineage from the 650H, with Tier 4 Interim updates. Filters, injectors, water pump, alternator, and turbocharger components remain readily available through both Case dealer and aftermarket Cummins channels. The fundamental engine architecture (4-cylinder, turbocharged, 3.9–4.5 L family) is unchanged; what's new is the emissions calibration and the aftertreatment.</p>
+
+<p>Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 650K-era engine and emissions service kits.</p>
+
+<h2 id="section-6">Hydrostatic dual-path transmission</h2>
+
+<p>The 650K retains the hydrostatic dual-path architecture from the 650H — each track has its own variable-displacement pump and hydraulic motor, controlled by joystick. The K generation refines the control software and updates charge pump configuration but the underlying drivetrain architecture is the same as the 650H.</p>
+
+<p>Hydrostatic service items: charge pump, charge filter, hydraulic motor seals, drive pump bearings, control valve degradation. Hydraulic oil cleanliness is critical — the hydrostatic system is intolerant of contamination, and the filter change interval matters.</p>
+
+<h2 id="section-7">Blade-carrier and operator-station cross-fit</h2>
+
+<p>Many 650K wear items cross-fit with the 650H below and (on a more limited basis) with the 650L above. Notable confirmed cross-fits:</p>
+
+<ul>
+  <li>The <a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 Case / New Holland dozer suspension seat with headrest</a> covers the 650K (and 550H, 650H, 650L, 750K, 750L, 850H, 850K, 850L). One SKU covers nine machines.</li>
+  <li>Several blade-carrier slider blocks and wear plates carry forward from the H generation. Confirm by part number against your serial.</li>
+</ul>
+
+<h2 id="section-8">Common 650K service issues</h2>
+
+<h3>DPF regeneration and ash service</h3>
+
+<p>Active regeneration cycles consume fuel and require a clear exhaust path. If the operator interrupts regeneration cycles frequently, soot accumulates faster than it can burn off — eventually triggering forced regeneration warnings or DPF service codes. Ash service intervals depend on operation hours and idle profile.</p>
+
+<h3>EGR cooler internal leaks</h3>
+
+<p>Internal EGR cooler leaks are a routine production-run-age failure mode. Symptoms: coolant loss with no external leak, increased coolant in the intake, or white smoke under load. EGR cooler replacement is a defined service procedure.</p>
+
+<h3>Hydrostatic transmission service</h3>
+
+<p>Same hydrostatic-system service profile as the 650H — charge pump, control valve, motor seal, oil contamination. Hydrostatic diagnosis usually requires dealer service tools for pressure testing.</p>
+
+<h3>Blade carrier wear plate replacement</h3>
+
+<p>Blade carrier slider blocks and wear plates are routine sacrificial service items. Replace as the blade carrier shows play or visible wear. Many components cross-fit with the 650H.</p>
+
+<h3>Cutting edge wear</h3>
+
+<p>Cutting edge replacement is the most frequent blade-related service item. End bits wear faster than the center cutting edge due to corner load concentration during dozing.</p>
+
+<h3>Cab electronics</h3>
+
+<p>The K-generation electronic instrumentation and joystick electronics are more sophisticated than the 650H — they can develop intermittent fault codes from connector corrosion or harness wear at production-run age.</p>
+
+<h2 id="section-9">Parts we carry</h2>
+
+<div class="bt-table-scroll">
+<table>
+  <thead>
+    <tr><th>Part</th><th>Cross-fit</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 suspension seat</a></td><td>550H + 650H + 650K + 650L + 750K + 750L + 850H + 850K + 850L</td><td>Single SKU covering nine Case dozers across H/K/L generations.</td></tr>
+    <tr><td>Filter service kits</td><td>650K-specific (Tier 4i engine + aftertreatment)</td><td>Engine oil, fuel, air, hydraulic filters. Some filters are Tier 4i-specific.</td></tr>
+    <tr><td>Blade cutting edges &amp; end bits</td><td>Mid-class dozer cross-fit (verify by serial)</td><td>Standard or severe-duty cutting edges; end bits wear faster than center.</td></tr>
+    <tr><td>Blade cylinder seal kits</td><td>650K-specific (verify cylinder dimensions)</td><td>Lift, angle, tilt cylinder seal kits.</td></tr>
+    <tr><td>Track undercarriage components</td><td>650K-specific by variant (Std / LT / LGP)</td><td>Track pads, idlers, rollers, master pins by variant.</td></tr>
+    <tr><td>EGR + DPF service parts</td><td>650K-specific Tier 4i aftertreatment</td><td>EGR cooler, EGR valve, DPF service items.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>For the complete 650K parts inventory, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub or contact the parts desk for serial-specific fitment confirmation.</p>
+
+<div class="bt-cta">
+  <h3>Working on a Case 650K?</h3>
+  <p>The 650K shares operator-station components with the broader H/K/L Case dozer family but adds Tier 4 Interim aftertreatment service items not present on the 650H. Our specialists can verify Standard vs. LT vs. LGP fitment by serial and walk you through cross-fit alternatives.</p>
+  <p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+  <a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-10">Where the 650K sits in the Case dozer family</h2>
+
+<p>The 650K is the K-generation mid-frame Case crawler dozer, sitting between the Case 550K and the Case 850K. Its predecessor is the <a href="https://www.brokentractor.com/p/case-650h-crawler-dozer-parts-specs-common-issues-case-650h-crawler-dozer-parts-specs-common-issues/">Case 650H</a> (hydrostatic, pre-Tier 4i) and its successor is the <a href="https://www.brokentractor.com/p/case-650l-crawler-dozer-parts-specs-common-issues-case-650l-crawler-dozer-parts-specs-common-issues/">Case 650L</a> — which steps up to Tier 4 Final emissions with SCR + DEF aftertreatment.</p>
+
+<div class="bt-author">
+  <div class="bt-avatar">BT</div>
+  <div>
+    <strong>Broken Tractor Editorial Team</strong>
+    <p>This spotlight was compiled from factory Case service literature for the 650K, CNH parts catalogs, Cummins B-series Tier 4 Interim engine documentation, and the verified BigCommerce catalog at brokentractor.com — including the broad H/K/L Case dozer cross-fit for the 359121A1 suspension seat.</p>
+  </div>
+</div>
+
+<section class="bt-related">
+  <h3>Related Case dozer spotlights</h3>
+  <ul>
+    <li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-650h-crawler-dozer-parts-specs-common-issues-case-650h-crawler-dozer-parts-specs-common-issues/">Case 650H Crawler Dozer</a></li>
+    <li><span class="meta">Successor (Tier 4 Final)</span><a href="https://www.brokentractor.com/p/case-650l-crawler-dozer-parts-specs-common-issues-case-650l-crawler-dozer-parts-specs-common-issues/">Case 650L Crawler Dozer</a></li>
+    <li><span class="meta">G-generation precursor</span><a href="https://www.brokentractor.com/p/case-650g-crawler-dozer-parts-specs-common-issues-case-650g-crawler-dozer-parts-specs-common-issues/">Case 650G Crawler Dozer</a></li>
+    <li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+  </ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){
+  var bar=document.getElementById('btProgressBar');
+  if(!bar)return;
+  function upd(){
+    var s=document.documentElement,b=document.body;
+    var t=s.scrollTop||b.scrollTop;
+    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
+    bar.style.width=h>0?(t/h*100)+'%':'0%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
+(function(){
+  document.querySelectorAll('.bt-table-scroll').forEach(function(w){
+    if(w.scrollWidth>w.clientWidth){
+      var h=document.createElement('div');
+      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
+      h.textContent='← scroll →';
+      w.parentNode.insertBefore(h,w);
+    }
+  });
+})();
+</script>

@@ -1,0 +1,310 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 650 Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The Case 650 Crawler Dozer ran a 14-year production window from 1974 through 1988, sitting one size class above the Case 550 and one below the Case 850 in the original Case dozer line. Mid-frame chassis, Case 4-cylinder diesel power, mechanical or power shift transmission depending on year and option package, and a parts ecosystem that broadly cross-fits with the 550 family below and the 750-class above on many undercarriage and blade-carrier components.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-650-hero.jpg" alt="Case 650 Crawler Dozer &mdash; 1974&ndash;1988 production, Case 4-cyl diesel, mid-frame mechanical/power-shift dozer">
+</div>
+</header>
+
+<p>The Case 650 Crawler Dozer is the mid-frame dozer in the original Case construction line &mdash; one size up from the Case 550, one size down from the Case 850. It shares its 14-year production window with the 550 (1974&ndash;1988) and is part of the same original Case dozer family that includes the 350 (small), 450 / 450B / 450C (small-mid), 550 (mid-small), 650 (mid), 850 (mid-large), 1150 (large), and 1450 (largest). Production spans multiple sub-generations, and undercarriage and blade-carrier components evolved over the run.</p>
+
+<div class="bt-callout">
+<strong>The 650 sits between two well-known Case dozers</strong>
+The Case 650 is roughly bracketed between the Case 550 (mid-small) and the Case 850 (mid-large). When sourcing parts, it&rsquo;s worth confirming whether the component you need is 650-specific or whether it cross-fits the 550 family (idlers, sprockets, certain wear plates) or the 750/850 family (some blade-carrier components and operator-station hardware). Many Case dozer parts have surprisingly broad cross-fit, and ordering from the cross-fit pool can shorten lead time.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Production run, generations, and what changed</a></li>
+<li><a href="#section-3">Engine and powertrain</a></li>
+<li><a href="#section-4">Undercarriage</a></li>
+<li><a href="#section-5">Blade system and hydraulics</a></li>
+<li><a href="#section-6">Common issues and what to expect</a></li>
+<li><a href="#section-7">Where the 650 sits in the Case dozer family</a></li>
+<li><a href="#section-8">Parts and cross-fit components</a></li>
+<li><a href="#section-9">Why the Case 650 is still in service</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 650 &mdash; factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1974 &ndash; 1988</dd>
+<dt>Predecessor</dt><dd>Case 600 / earlier mid-frame models</dd>
+<dt>Successor</dt><dd>Case 650G (1996 &ndash; 2001)</dd>
+<dt>Engine</dt><dd>Case 4-cylinder diesel (configuration varies by year)</dd>
+<dt>Power class</dt><dd>~70 &ndash; 80 horsepower flywheel</dd>
+<dt>Transmission</dt><dd>Mechanical or power shift (option / year dependent)</dd>
+<dt>Hydraulics</dt><dd>Open-center implement circuit</dd>
+<dt>Variants</dt><dd>Standard, LGP (Low Ground Pressure)</dd>
+<dt>Operating weight</dt><dd>~16,000 &ndash; 18,000 lb depending on configuration</dd>
+<dt>Blade</dt><dd>6-way bulldozer blade options; angle and tilt-blade configurations</dd>
+<dt>Serial plate location</dt><dd>Right side of operator&rsquo;s platform / chassis frame near operator entry</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Production run, generations, and what changed</h2>
+
+<p>A 14-year production window means the Case 650 is not a single static machine &mdash; it evolved across multiple sub-generations between 1974 and 1988. Mid-production changes to the engine accessory layout, the operator station (ROPS canopy was added during the run as ROPS regulations evolved), transmission options, and select undercarriage components mean two 650s built ten years apart can have visible differences. When ordering parts, always confirm the serial number &mdash; the wrong-year part may look identical but not fit correctly.</p>
+
+<p>The 650 line was discontinued in 1988, and Case re-introduced a mid-frame dozer in this size class as the <a href="https://www.brokentractor.com/p/case-650g-crawler-dozer-parts-specs-common-issues-case-650g-crawler-dozer-parts-specs-common-issues/">Case 650G</a> in 1996 &mdash; a substantially redesigned machine built on the same chassis architecture as the 550G, with a Cummins-derived 4BTA-3.9 turbocharged engine and a more modern operator station. The 650G is documented in its own spotlight.</p>
+
+<h2 id="section-3">Engine and powertrain</h2>
+
+<p>The original Case 650 used a Case 4-cylinder diesel engine &mdash; naturally aspirated configuration sized appropriately for the mid-frame chassis. Exact engine designation and displacement varied across the 14-year production run as Case rolled in updates and component changes. Always confirm the engine plate before ordering engine-specific parts.</p>
+
+<p>Transmission options on the 650 ranged from mechanical gear-driven setups in early production to power shift configurations on later units, depending on option package. Power shift made the 650 more responsive in dozing operations where direction changes are frequent.</p>
+
+<h2 id="section-4">Undercarriage</h2>
+
+<p>Many 650 undercarriage components share heritage with the broader Case crawler family. Sprocket, idler, roller, and master pin parts often cross-fit between the 650 and the 550 or 750 family &mdash; especially on the 6-way grouser pad pattern and master pin geometry. The <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> catalog at Broken Tractor lists current cross-fit options when you search by 650-era serial.</p>
+
+<p>Track adjustment, recoil, and idler hardware are routine wear items. The 14-year-old-plus machines in the field today have generally seen the original idlers and rollers replaced at least once. Wear strips on the track frame and blade-carrier slider blocks are also routine service items.</p>
+
+<h2 id="section-5">Blade system and hydraulics</h2>
+
+<p>The 650 ships with a 6-way bulldozer blade &mdash; angle and tilt control hydraulically actuated. Blade cylinders, blade-carrier slider blocks, and cutting edges are all routine service items. Cutting edge replacement is generally needed every few hundred to few thousand hours of dozing depending on material and operator habit.</p>
+
+<p>Hydraulic implement-circuit pressure is moderate by modern standards &mdash; open-center hydraulic systems were standard in this era. Seal kit availability and pump rebuilds are practical service paths.</p>
+
+<h2 id="section-6">Common issues and what to expect</h2>
+
+<h3>Engine accessory wear</h3>
+
+<p>Water pumps, alternators, starters, and injection pumps on 30-plus-year-old Case 4-cyl diesels generally need at least one rebuild or replacement in their service life. Cooling system service (radiator core flushes or replacement, fan belts, hose replacement) is a routine maintenance milestone.</p>
+
+<h3>Hydraulic seal failure</h3>
+
+<p>Blade cylinder seal failures are common at this age. Cylinder rod chrome corrosion and seal weep are typical symptoms &mdash; both addressable with seal kit rebuilds.</p>
+
+<h3>Undercarriage replacement cycles</h3>
+
+<p>Track chains, rollers, idlers, and sprockets all have measurable wear lives. A 650 still in field service has almost certainly had at least one full undercarriage rebuild; some have had two or three. Modern aftermarket undercarriage in the Case Dozer Parts catalog cross-fits the 650 family.</p>
+
+<h3>Operator station and ROPS</h3>
+
+<p>Cab and canopy hardware, seat cushion replacement, and floorboard wear are typical aging-machine issues. ROPS structural integrity should be verified before resale.</p>
+
+<h3>Wiring and electrical</h3>
+
+<p>40-plus-year-old wiring harnesses are routinely brittle. Hard starts, intermittent gauges, and dim lights are often traced to harness corrosion or insulation failure rather than the underlying component.</p>
+
+<h2 id="section-7">Where the 650 sits in the Case dozer family</h2>
+
+<p>The original Case 650 is the mid-frame entry in the Case dozer family of the 1970s and 1980s. Below it sits the <a href="https://www.brokentractor.com/p/case-550-crawler-dozer-parts-specs-common-issues-case-550-crawler-dozer-parts-specs-common-issues/">Case 550</a>; above it sit the Case 850 / 1150 / 1450 (larger size classes). The 650&rsquo;s successor is the <a href="https://www.brokentractor.com/p/case-650g-crawler-dozer-parts-specs-common-issues-case-650g-crawler-dozer-parts-specs-common-issues/">Case 650G</a> (1996&ndash;2001), built on a substantially refreshed chassis with a Cummins-derived turbocharged engine and modernized operator station. The 650G was followed by the <a href="https://www.brokentractor.com/p/case-650h-crawler-dozer-parts-specs-common-issues-case-650h-crawler-dozer-parts-specs-common-issues/">Case 650H</a> with hydrostatic dual-path transmission.</p>
+
+<h2 id="section-8">Parts and cross-fit components</h2>
+
+<p>The Case 650 family draws on a broad parts cross-fit network with the 550, 750, and 850 mid-frame dozers. The parts catalog at brokentractor.com lists current 650-era cross-fit components for undercarriage, blade carrier, hydraulics, and engine accessories. Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub or search by your 650 serial to confirm current availability.</p>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Component area</th><th>What to look for</th><th>Cross-fit notes</th></tr></thead>
+<tbody>
+<tr><td>Sprockets &amp; segments</td><td>Track sprocket assemblies and bolt-on segments</td><td>Many 650-era sprockets cross-fit the 550 / 750 family on shared bolt pattern.</td></tr>
+<tr><td>Idlers &amp; rollers</td><td>Front idler assemblies, top and bottom roller sets</td><td>Roller and idler bushings see broad mid-class crawler cross-fit.</td></tr>
+<tr><td>Track recoil &amp; adjusters</td><td>Recoil spring, track adjuster yoke, chrome rod</td><td>Confirm by serial &mdash; early vs. late 650 production differs on some adjuster hardware.</td></tr>
+<tr><td>Master pins</td><td>Track master pin and bushing</td><td>Master pins frequently share geometry across the small-to-mid Case dozer family.</td></tr>
+<tr><td>Cutting edges &amp; end bits</td><td>Standard and severe-duty cutting edges, end bits</td><td>Aftermarket cutting edges and end bits are widely available for 6-way blade configurations.</td></tr>
+<tr><td>Blade cylinder seal kits</td><td>Angle, tilt, and lift cylinder seal kits</td><td>Confirm cylinder dimensions by part number before ordering.</td></tr>
+<tr><td>Engine accessory parts</td><td>Water pump, alternator, starter, fuel injection components</td><td>Case 4-cyl diesel accessories share parts with other Case industrial 4-cyl applications of the era.</td></tr>
+<tr><td>Radiators &amp; cooling</td><td>Radiator cores, fan belts, hose sets</td><td>Aftermarket radiator and cooling cross-fit available.</td></tr>
+<tr><td>Filter service kits</td><td>Engine oil, fuel, air, hydraulic filter sets</td><td>Filter kits packaged by application speed routine service.</td></tr>
+<tr><td>Operator seat</td><td>Suspension seat with headrest</td><td>Universal Case industrial seats fit the 650 operator station with standard mount kits.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For a current 650-era parts inventory and cross-fit confirmation, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub or contact our parts desk directly.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 650?</h3>
+<p>The 650 is a 14-year-production-run machine &mdash; the year and serial dictate which parts fit. Our specialists can verify fitment by serial and walk you through the 650 family&rsquo;s cross-fit options with the 550, 750, and 850 lines.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-9">Why the Case 650 is still in service</h2>
+
+<p>The 650 fills a sweet spot in mid-frame dozer work &mdash; bigger than a 550 (more pushing power, larger blade) but smaller and less expensive to operate than an 850 or 1150. For agricultural site prep, smaller commercial dirt work, private road maintenance, and rural land-clearing, a 650 in good mechanical condition remains a productive machine. The mechanical and power shift drivetrains are also simpler to troubleshoot in the field than the hydrostatic systems on the later 650H and 650K &mdash; a real advantage for owner-operators and rural mechanics.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 650 production family, CNH parts catalogs, and the verified BigCommerce catalog at brokentractor.com. Serial-specific fitment is always best confirmed by phone before ordering &mdash; the 14-year production window means small changes between years.</p>
+</div>
+</div>
+
+<section class="bt-related">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">Smaller-class contemporary</span><a href="https://www.brokentractor.com/p/case-550-crawler-dozer-parts-specs-common-issues-case-550-crawler-dozer-parts-specs-common-issues/">Case 550 Crawler Dozer</a></li>
+<li><span class="meta">Successor (G-generation)</span><a href="https://www.brokentractor.com/p/case-650g-crawler-dozer-parts-specs-common-issues-case-650g-crawler-dozer-parts-specs-common-issues/">Case 650G Crawler Dozer</a></li>
+<li><span class="meta">H-generation (hydrostatic)</span><a href="https://www.brokentractor.com/p/case-650h-crawler-dozer-parts-specs-common-issues-case-650h-crawler-dozer-parts-specs-common-issues/">Case 650H Crawler Dozer</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+<script>
+(function(){
+  var bar=document.getElementById('btProgressBar');
+  if(!bar)return;
+  function upd(){
+    var s=document.documentElement,b=document.body;
+    var tot=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
+    var pct=tot>0?Math.min(100,Math.round(s.scrollTop/tot*100)):0;
+    bar.style.width=pct+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
+(function(){
+  document.querySelectorAll('.bt-table-scroll table').forEach(function(t){
+    if(t.parentElement.classList.contains('bt-table-scroll'))return;
+    var w=document.createElement('div');
+    w.className='bt-table-scroll';
+    t.parentNode.insertBefore(w,t);
+    w.appendChild(t);
+  });
+})();
+</script>

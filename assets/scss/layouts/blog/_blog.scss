@@ -2129,8 +2129,7 @@
 
 // TOC left rail
 .bt-toc {
-    position: sticky;
-    top: 130px;
+    position: static;
     font-size: 13px;
 
     &__heading {

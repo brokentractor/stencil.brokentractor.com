@@ -1,0 +1,344 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Case 650H Crawler Dozer: Specs, Parts & Common Issues",
+  "description": "Case 650H Crawler Dozer specs (2001–2010), Cummins 4TA-3.9 turbo diesel, hydrostatic dual-path transmission, and parts at Broken Tractor.",
+  "author": {"@type": "Organization", "name": "Broken Tractor"},
+  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
+  "dateModified": "2026-05-21",
+  "about": {"@type": "Product", "name": "Case 650H Crawler Dozer", "manufacturer": {"@type": "Organization", "name": "Case"}}
+}
+</script>
+<style>
+:root{
+  --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;
+  --bt-body:#2c3e50;--bt-muted:#5b6b7a;--bt-rule:#e6e9ee;
+  --bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;
+  --bt-callout-border:#f37021;--bt-warning:#fff4f0;--bt-warning-border:#e74c3c;
+  --bt-font-body:"proxima-nova",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --bt-font-display:"Industry","Oswald","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+.productView{display:none !important}
+.bt-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:9999;background:transparent}
+.bt-progress__bar{height:100%;width:0;background:var(--bt-orange);transition:width .15s ease}
+.bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+.bt-wrap{max-width:760px;margin:0 auto;padding:0 32px}
+.bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+.bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;font-family:var(--bt-font-display)}
+h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+.bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+.bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+.bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+.bt-byline strong{color:var(--bt-ink)}.bt-byline .dot{margin:0 6px;color:#ccc}
+.bt-feature{margin:32px 0;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:#1a1a1a}
+.bt-feature img{width:100%;height:100%;object-fit:cover;display:block}
+nav.bt-toc{background:var(--bt-soft);border:1px solid var(--bt-rule);border-radius:6px;padding:20px 24px;margin:32px 0;font-size:15px;font-family:var(--bt-font-body)}
+nav.bt-toc strong{display:block;font-family:var(--bt-font-display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);margin-bottom:10px}
+nav.bt-toc ol{margin:0;padding-left:20px}
+nav.bt-toc li{margin:5px 0}
+nav.bt-toc a{color:var(--bt-orange-dark);border-bottom:none;text-decoration:underline;text-underline-offset:2px}
+nav.bt-toc a:hover{color:var(--bt-orange)}
+h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+p{margin:0 0 18px;font-family:var(--bt-font-body)}
+ul,ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+li{margin:6px 0}
+.bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+.bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+.bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+.bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+.bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}.bt-warning strong{color:var(--bt-warning-border)}
+.bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:14px}
+.bt-spec h4{margin:0 0 10px;font-family:var(--bt-font-display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700}
+.bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+.bt-spec dt{color:var(--bt-muted)}.bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+.bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+.bt-table-scroll table{width:100%;border-collapse:collapse;margin:0;font-size:15px;font-family:var(--bt-font-body)}
+.bt-table-scroll th,.bt-table-scroll td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+.bt-table-scroll th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+.bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+.bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}.bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+.bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none;font-family:var(--bt-font-display)}
+.bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none}
+.bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+.bt-related h3{margin-top:0;font-family:var(--bt-font-display)}.bt-related ul{list-style:none;padding:0}
+.bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}.bt-related li:last-child{border-bottom:none}
+.bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+.bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+.bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+.bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+.bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+.bt-newsletter{background:var(--bt-ink);color:#fff;padding:56px 24px;text-align:center}
+.bt-newsletter h2{color:#fff;margin:0 0 10px;font-size:28px;font-family:var(--bt-font-display)}
+.bt-newsletter p{color:#cfd8e0;max-width:480px;margin:0 auto 24px;font-family:var(--bt-font-body)}
+.bt-newsletter form{display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.bt-newsletter input[type=email]{flex:1;min-width:220px;padding:13px 16px;border-radius:4px;border:none;font-size:15px;font-family:var(--bt-font-body)}
+.bt-newsletter button{background:var(--bt-orange);color:#fff;border:none;padding:13px 22px;border-radius:4px;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.03em;text-transform:uppercase;font-family:var(--bt-font-display)}
+.bt-newsletter button:hover{background:var(--bt-orange-dark)}
+@media(max-width:600px){h1.bt-title{font-size:30px}h2{font-size:24px}h3{font-size:19px}.bt-deck{font-size:17px}body{font-size:17px}.bt-wrap{padding:0 18px}.bt-page-card{margin:0;border-radius:0;box-shadow:none}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+.bt-wrap nav{position:static !important}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+  <span class="bt-tag">Model Spotlight</span>
+  <h1 class="bt-title">Case 650H Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+  <p class="bt-deck">Produced 2001 – 2010, the Case 650H is the H-generation mid-frame Case crawler dozer — Cummins 4TA-3.9 turbocharged four-cylinder diesel and hydrostatic dual-path transmission. The H-generation introduced hydrostatic drivetrain across Case's mid-class dozer line, replacing the power shift architecture used on the 650G predecessor. Three primary variants: Standard, LT (Long-Track), and LGP (Low Ground Pressure).</p>
+  <div class="bt-byline">
+    <div class="bt-avatar">BT</div>
+    <div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 11 min read</div>
+  </div>
+  <div class="bt-feature">
+    <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-650h-hero.jpg" alt="Case 650H Crawler Dozer" loading="lazy" />
+  </div>
+</header>
+
+<nav class="bt-toc" aria-label="Table of contents">
+  <strong>On this page</strong>
+  <ol>
+    <li><a href="#section-1">At-a-glance specifications</a></li>
+    <li><a href="#section-2">How the 650H differs from the 650G predecessor</a></li>
+    <li><a href="#section-3">Variants: Standard, LT, LGP</a></li>
+    <li><a href="#section-4">Cummins 4TA-3.9 turbocharged-and-aftercooled engine</a></li>
+    <li><a href="#section-5">Hydrostatic dual-path transmission</a></li>
+    <li><a href="#section-6">Blade system</a></li>
+    <li><a href="#section-7">Undercarriage</a></li>
+    <li><a href="#section-8">Operator station and seat</a></li>
+    <li><a href="#section-9">Blade-carrier hardware cross-fit</a></li>
+    <li><a href="#section-10">Common 650H service issues</a></li>
+    <li><a href="#section-11">Parts we carry</a></li>
+    <li><a href="#section-12">Where the 650H sits in the Case dozer family</a></li>
+  </ol>
+</nav>
+
+<p>The Case 650H Crawler Dozer is the H-generation mid-frame Case crawler dozer, produced from 2001 through 2010. The H generation marked the most significant drivetrain change in the modern Case dozer line: hydrostatic dual-path transmission replaced the power shift used on the 650G. Each track is now driven by its own variable-displacement hydraulic pump and motor — direction and speed are controlled by joystick rather than gear shifting. The same hydrostatic shift happened simultaneously on the 550H and 850H, defining the H-generation across all mid-class Case dozers.</p>
+
+<p>The 650H retains the Cummins B-series engine lineage from the 650G but moves to the 4TA-3.9 — the turbocharged-and-aftercooled four-cylinder. The combination of the 4TA-3.9 with hydrostatic drivetrain gives the 650H smooth, infinitely-variable speed control and crisp direction changes, well suited to finish grading and detail dozing work.</p>
+
+<div class="bt-callout">
+  <strong>The H generation is the hydrostatic generation</strong>
+  The single biggest service difference between the 650G and 650H is the transmission. The 650G is a mechanical power shift machine with discrete gears and a torque converter. The 650H is a hydrostatic dual-path machine with variable-displacement pumps and motors. Hydrostatic service items (charge pumps, control valves, motor seals) are entirely different parts from power-shift service items. Confirm your generation before ordering drivetrain components — the 650G and 650H share a name but not a transmission.
+</div>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+  <h4>Case 650H — factory specifications</h4>
+  <dl>
+    <dt>Production years</dt><dd>2001 – 2010</dd>
+    <dt>Predecessor</dt><dd>Case 650G (1996 – 2001)</dd>
+    <dt>Successor</dt><dd>Case 650K (2010 – 2015)</dd>
+    <dt>Engine</dt><dd>Cummins 4TA-3.9 turbocharged 4-cyl diesel</dd>
+    <dt>Displacement</dt><dd>239 cu in (3.9 L)</dd>
+    <dt>Power</dt><dd>~95 – 105 HP flywheel (configuration dependent)</dd>
+    <dt>Transmission</dt><dd>Hydrostatic dual-path</dd>
+    <dt>Variants</dt><dd>Standard, LT (Long-Track), LGP (Low Ground Pressure)</dd>
+    <dt>Serial prefix</dt><dd>JJG (most production)</dd>
+    <dt>Operating weight</dt><dd>~18,000 – 20,500 lb (varies by variant)</dd>
+    <dt>Hydraulic system</dt><dd>Load-sensing implement hydraulics, separate hydrostatic drive circuits</dd>
+    <dt>Blade</dt><dd>6-way bulldozer blade, ~104-inch typical Standard blade width</dd>
+    <dt>Serial plate location</dt><dd>Right side of operator's platform, near cab entrance</dd>
+  </dl>
+</div>
+
+<h2 id="section-2">How the 650H differs from the 650G predecessor</h2>
+
+<p>The 650H is a substantial platform refresh over the 650G:</p>
+
+<ul>
+  <li><strong>Hydrostatic dual-path transmission replaces power shift</strong> — the most significant drivetrain change in the H-generation. Each track has its own hydraulic motor driven by a variable-displacement pump. Operator controls direction and speed via joystick rather than gear shifting. Smoother control, faster and more responsive direction changes, but new service items (hydrostatic motors, pumps, charge pumps, control valves).</li>
+  <li><strong>Cummins 4TA-3.9 (turbo + aftercooled)</strong> — the 650H steps up from the 650G's 4BTA-3.9 to the more refined 4TA-3.9, with revised emissions and accessory layout for the early-2000s production era.</li>
+  <li><strong>Refined cab and electronics</strong> — H-generation cab is more refined with improved HVAC, electronic gauge cluster, updated controls, and improved sightlines to the blade corners.</li>
+  <li><strong>Updated undercarriage</strong> — several track and roller components updated, though several blade-carrier wear items cross-fit with the 650G via the <a href="https://www.brokentractor.com/p/case-slider-block-for-case-dozers-117835a1/">117835A1 slider block</a> and <a href="https://www.brokentractor.com/p/blade-wear-plate-block-for-case-dozers-117836a1/">117836A1 wear plate</a>.</li>
+  <li><strong>Three variant offering: Standard, LT, LGP</strong> — the H generation formalized the Long-Track variant as a distinct production option.</li>
+</ul>
+
+<h2 id="section-3">Variants: Standard, LT, LGP</h2>
+
+<p>The 650H shipped in three primary configurations:</p>
+
+<ul>
+  <li><strong>Standard</strong> — standard-width track, balanced general-purpose dozer. Most common configuration.</li>
+  <li><strong>LT (Long Track)</strong> — extended track frame for additional ground contact area. Improves flotation on soft ground and stability during dozing operations. Wider grouser pads available as option.</li>
+  <li><strong>LGP (Low Ground Pressure)</strong> — wider grouser pads and extended track frame, the lowest ground pressure configuration. Designed for soft-ground work (wetlands, agricultural soil, fine-soil grading) where flotation is the priority.</li>
+</ul>
+
+<p>Track configuration affects undercarriage and frame parts — confirm Standard vs. LT vs. LGP by serial before ordering track pads, idlers, and frame components.</p>
+
+<h2 id="section-4">Cummins 4TA-3.9 turbocharged-and-aftercooled engine</h2>
+
+<p>The 4TA-3.9 is the turbocharged-and-aftercooled four-cylinder Cummins B-series industrial engine — a refinement of the 4BTA-3.9 used on the 650G. Same 3.9-liter displacement and basic bore-stroke geometry, with revised emissions calibration, updated turbocharger sizing, and aftercooling for early-2000s production. The Cummins B-series industrial engine ecosystem is one of the deepest in the world — filters, injectors, water pumps, turbochargers, and complete rebuild components source readily from both Case dealer and aftermarket Cummins channels.</p>
+
+<p>Engine fan belt, alternator drive, and water pump are routine service items. Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 650H engine service kits and filter sets.</p>
+
+<h2 id="section-5">Hydrostatic dual-path transmission</h2>
+
+<p>The hydrostatic dual-path transmission is the defining technical change on the 650H. Each track has its own dedicated hydraulic drive motor. Flow to each motor is controlled by a variable-displacement hydraulic pump. The operator controls direction, speed, and turning radius through joystick inputs that proportionally adjust pump displacement.</p>
+
+<p>Hydrostatic drivetrain advantages: infinitely-variable speed (no discrete gears), instantaneous direction changes without clutch operation, fine-control responsiveness for grading and detail work, and dynamic braking from the hydraulic system itself.</p>
+
+<p>Hydrostatic service items: charge pumps, charge filters, hydraulic motor seals, drive pump bearings, control valve degradation, and contamination from internal wear. Hydraulic oil quality is critical — hydrostatic systems are intolerant of contamination, and the filter change interval matters. Hydrostatic diagnosis typically requires dealer service tools for pressure testing.</p>
+
+<h2 id="section-6">Blade system</h2>
+
+<p>The 650H standard blade is approximately 104 inches wide (varies by configuration). Cutting edge replacement and blade cylinder seal service are the most routine blade-related service items. End bits wear faster than the center cutting edge due to load concentration at the corners during dozing.</p>
+
+<p>Blade hydraulic cylinders (lift, angle, tilt) are routine seal-replacement candidates at production-run age. Cylinder rod chrome corrosion is also typical. Rod replacement is required when corrosion is severe enough to damage seal surfaces.</p>
+
+<h2 id="section-7">Undercarriage</h2>
+
+<p>The 650H undercarriage shares several wear-item components with the 650G and the 550H below. Track recoil hardware, certain idler bushings, and master pin geometry cross-fit across the mid-class H-generation family on several components. Variant (Standard, LT, LGP) affects track pad width, frame length, and roller spacing — confirm variant before ordering.</p>
+
+<p>Track chain elongation, sprocket tooth wear, and idler bearing service are all routine on field-service-age 650Hs. The H generation's undercarriage is generally regarded as more durable than the 650G's, though both share design lineage.</p>
+
+<h2 id="section-8">Operator station and seat</h2>
+
+<p>The <a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 Case / New Holland dozer suspension seat with headrest</a> is the verified seat replacement for the 650H. The 359121A1 has extremely broad cross-fit — it fits 550H, 650H, 650K, 650L, 750K, 750L, 850H, 850K, and 850L (and several additional H/K/L-generation Case dozers). When the original seat cushion wears or the suspension fails, this single SKU is the replacement.</p>
+
+<h2 id="section-9">Blade-carrier hardware cross-fit</h2>
+
+<p>The <a href="https://www.brokentractor.com/p/case-slider-block-for-case-dozers-117835a1/">117835A1 slider block</a> and <a href="https://www.brokentractor.com/p/blade-wear-plate-block-for-case-dozers-117836a1/">117836A1 wear plate</a> are documented cross-fit for the 550H, 650G, 650H, 750H, 850G, and 850H — that's an unusually broad mid-class Case dozer parts cross-fit. Blade-carrier wear is a routine 650H service item (the slider block and wear plate are sacrificial wear components designed to wear before the underlying blade-carrier frame), and the broad cross-fit makes sourcing straightforward.</p>
+
+<h2 id="section-10">Common 650H service issues</h2>
+
+<h3>Hydrostatic transmission service</h3>
+
+<p>The hydrostatic dual-path drivetrain introduces service items not present on earlier 650-series dozers. Charge pump wear, control valve degradation, hydraulic motor seal failure, and contamination of the hydraulic oil from internal wear are routine. Hydrostatic systems require clean oil — filter change intervals matter. Hydrostatic diagnosis usually requires dealer service tools for pressure testing.</p>
+
+<h3>Cummins 4TA-3.9 turbocharger wear</h3>
+
+<p>The 4TA-3.9 turbocharger is a routine wear item on 15-plus-year-old engines. Symptoms: blue smoke at startup or under load, oil consumption climbing, audible whine outside the normal range, or visible shaft play. Replace at the first sign of bearing wear — running a degraded turbo compounds engine wear.</p>
+
+<h3>Blade carrier wear plate replacement</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/case-slider-block-for-case-dozers-117835a1/">117835A1 slider block</a> and <a href="https://www.brokentractor.com/p/blade-wear-plate-block-for-case-dozers-117836a1/">117836A1 wear plate</a> are routine blade-carrier service items. Replace when the blade carrier shows play or visible wear.</p>
+
+<h3>Blade cylinder seal failure</h3>
+
+<p>Blade cylinder seal weep is normal at production-run age. Seal kit rebuilds address most weep issues. Severe rod corrosion requires rod replacement.</p>
+
+<h3>Cutting edge wear</h3>
+
+<p>Cutting edge replacement is the most frequent blade-related service item on a 650H in active service. End bits wear faster than the center section due to corner load concentration during dozing. Both are replaceable as part of routine blade service.</p>
+
+<h3>Filter service interval</h3>
+
+<p>The hydrostatic drivetrain is intolerant of contamination. Stick to the manufacturer-recommended hydraulic filter and oil change intervals — many high-hour 650Hs run shorter intervals than the original Case service manual specified, particularly on machines in dusty or abrasive conditions.</p>
+
+<h3>Seat replacement</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 suspension seat</a> is the verified replacement when the original cushion or suspension fails — broad H/K/L cross-fit makes sourcing straightforward.</p>
+
+<h2 id="section-11">Parts we carry</h2>
+
+<div class="bt-table-scroll">
+<table>
+  <thead>
+    <tr><th>Part #</th><th>Part</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><a href="https://www.brokentractor.com/p/case-slider-block-for-case-dozers-117835a1/">117835A1</a></td><td>Slider block</td><td>Blade carrier slider block. <strong>Cross-fits 550H, 650G, 650H, 750H, 850G, 850H</strong> — broad mid-class Case dozer cross-fit.</td></tr>
+    <tr><td><a href="https://www.brokentractor.com/p/blade-wear-plate-block-for-case-dozers-117836a1/">117836A1</a></td><td>Wear plate (blade carrier)</td><td>Blade carrier wear plate. Same broad mid-class cross-fit as the 117835A1.</td></tr>
+    <tr><td><a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1</a></td><td>Suspension seat with headrest</td><td>Case / New Holland universal-mount dozer suspension seat. <strong>Cross-fits 550H, 650H, 650K, 650L, 750K, 750L, 850H, 850K, 850L</strong> — extremely broad H/K/L-generation Case dozer cross-fit.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>For the complete 650H parts inventory, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub or contact the parts desk for serial-specific fitment confirmation.</p>
+
+<div class="bt-cta">
+  <h3>Working on a Case 650H?</h3>
+  <p>The 650H shares blade-carrier and operator-station components with a wide H/K/L Case dozer cross-fit pool — but hydrostatic drivetrain and engine parts are 650H-specific. Our specialists can verify Standard vs. LT vs. LGP fitment by serial and walk you through cross-fit alternatives.</p>
+  <p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+  <a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-12">Where the 650H sits in the Case dozer family</h2>
+
+<p>The 650H is the H-generation mid-frame Case crawler dozer, sitting between the <a href="https://www.brokentractor.com/p/case-550h-lt-dozer-specs-serial-numbers-replacement-parts-case-550h-dozer-specs-parts/">Case 550H / 550H LT</a> (mid-small, hydrostatic) and the Case 850H (mid-large, hydrostatic). Its predecessor was the <a href="https://www.brokentractor.com/p/case-650g-crawler-dozer-parts-specs-common-issues-case-650g-crawler-dozer-parts-specs-common-issues/">Case 650G</a> (power shift), and its successor is the Case 650K — the K-generation continued the hydrostatic drivetrain and brought Tier 3 / Tier 4 Interim emissions compliance and additional operator-station refinements.</p>
+
+<div class="bt-author">
+  <div class="bt-avatar">BT</div>
+  <div>
+    <strong>Broken Tractor Editorial Team</strong>
+    <p>This spotlight was compiled from factory Case service literature for the 650H production family, CNH parts catalogs, Cummins 4TA-3.9 industrial engine documentation, and the verified BigCommerce catalog at brokentractor.com — including the documented cross-fit data for the 117835A1 / 117836A1 blade-carrier hardware and the 359121A1 suspension seat shared across the H/K/L Case dozer family.</p>
+  </div>
+</div>
+
+<section class="bt-related">
+  <h3>Related Case dozer spotlights</h3>
+  <ul>
+    <li><span class="meta">Predecessor (power shift)</span><a href="https://www.brokentractor.com/p/case-650g-crawler-dozer-parts-specs-common-issues-case-650g-crawler-dozer-parts-specs-common-issues/">Case 650G Crawler Dozer</a></li>
+    <li><span class="meta">Original (1974–1988)</span><a href="https://www.brokentractor.com/p/case-650-crawler-dozer-parts-specs-common-issues-case-650-crawler-dozer-parts-specs-common-issues/">Case 650 Crawler Dozer</a></li>
+    <li><span class="meta">Smaller-class H contemporary</span><a href="https://www.brokentractor.com/p/case-550h-lt-dozer-specs-serial-numbers-replacement-parts-case-550h-dozer-specs-parts/">Case 550H LT Crawler Dozer</a></li>
+    <li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+  </ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){
+  var bar=document.getElementById('btProgressBar');
+  if(!bar)return;
+  function upd(){
+    var s=document.documentElement,b=document.body;
+    var t=s.scrollTop||b.scrollTop;
+    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
+    bar.style.width=h>0?(t/h*100)+'%':'0%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
+(function(){
+  document.querySelectorAll('.bt-table-scroll').forEach(function(w){
+    if(w.scrollWidth>w.clientWidth){
+      var h=document.createElement('div');
+      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
+      h.textContent='← scroll →';
+      w.parentNode.insertBefore(h,w);
+    }
+  });
+})();
+</script>

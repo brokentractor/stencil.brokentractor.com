@@ -1,0 +1,301 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 850G Long Track Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The Case 850G Long Track Crawler Dozer is the extended-track-frame variant of the G-generation mid-large frame Case crawler dozer — Cummins 6BT-derived inline six-cylinder diesel (Case 6-590 / 6T-590), power shift transmission with torque converter, and an extended track frame that delivers improved flotation and stability over the standard 850G. The G-generation continued the modernization of the 850 line in the 1990s following the 14-year 850D production run.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-850g-lt-hero.jpg" alt="Case 850G Long Track Crawler Dozer" loading="lazy">
+</div>
+</header>
+
+<nav class="bt-toc" aria-label="Table of contents">
+<strong>On this page</strong>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 850G LT differs from the standard 850G</a></li>
+<li><a href="#section-3">Case 6-590 / Cummins 6BT engine</a></li>
+<li><a href="#section-4">Power shift transmission with torque converter</a></li>
+<li><a href="#section-5">Long-track undercarriage</a></li>
+<li><a href="#section-6">Blade system and hydraulics</a></li>
+<li><a href="#section-7">Common 850G LT service items</a></li>
+<li><a href="#section-8">Parts we carry</a></li>
+<li><a href="#section-9">Where the 850G LT sits in the Case dozer family</a></li>
+</ol>
+</nav>
+
+<p>The Case 850G Long Track Crawler Dozer is the extended-length-track variant of the G-generation mid-large frame Case crawler dozer. The 850G generation continued the 850 line through the 1990s following the long-running 850D and short-run 850E, and introduced a refreshed chassis with the Case 6-590 / Cummins 6BT-derived inline six-cylinder engine as the standard powerplant. The Long Track (LT) variant extends the track frame for additional ground contact, improving flotation on soft ground and providing better stability during dozing operations.</p>
+
+<p>The 850G LT sits between the older Case 6-cylinder / power shift architecture of the 850D and 850E and the modern hydrostatic architecture of the 850H that arrived in 2000. It's a fully modernized 1990s Case dozer with the broad Cummins 6BT parts ecosystem and the proven power shift drivetrain.</p>
+
+<div class="bt-callout">
+<strong>Long Track variant — what "LT" means</strong>
+The "Long Track" designation refers to the extended-length track frame — longer ground contact patch and wider track stance compared to the standard 850G. The benefits are improved flotation on soft ground (wetlands work, agricultural site prep, forestry applications) and increased stability during dozing operations. The trade-offs are slightly slower turning response and slightly higher drivetrain wear from the longer track length. LT-specific undercarriage parts differ from standard 850G undercarriage parts — confirm Standard vs. LT by serial before ordering.
+</div>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 850G LT — factory specifications</h4>
+<dl>
+<dt>Production era</dt><dd>1990s G-generation</dd>
+<dt>Predecessor</dt><dd>Case 850E (1987 – 1990) and 850D (1980 – 1994)</dd>
+<dt>Successor</dt><dd>Case 850H (2000 – 2003, hydrostatic dual-path)</dd>
+<dt>Engine</dt><dd>Case 6-590 / 6T-590 inline 6-cylinder diesel (Cummins 6BT-derived, 5.9 L)</dd>
+<dt>Power</dt><dd>~110 – 120 horsepower flywheel (configuration dependent)</dd>
+<dt>Transmission</dt><dd>Power shift with torque converter</dd>
+<dt>Hydraulics</dt><dd>Open-center implement circuit with refined valving</dd>
+<dt>Variant</dt><dd>LT (Long-Track) — extended-length track frame</dd>
+<dt>Operating weight</dt><dd>~26,000 – 29,000 lb (LT variant runs heavier than Standard)</dd>
+<dt>Blade</dt><dd>6-way bulldozer blade — angle and tilt blade options</dd>
+<dt>Serial plate location</dt><dd>Right side of operator's platform / chassis frame</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 850G LT differs from the standard 850G</h2>
+
+<ul>
+<li><strong>Extended track frame</strong> — the LT variant uses an extended-length track frame for more ground contact. This is the defining feature.</li>
+<li><strong>Wider track pads typically</strong> — LT configurations often ship with wider grouser pads for additional flotation.</li>
+<li><strong>Higher operating weight</strong> — the longer track frame and wider pads add 2,000+ lb to the operating weight relative to a standard 850G.</li>
+<li><strong>Same engine, transmission, and hydraulics</strong> — the LT shares engine, drivetrain, and implement hydraulics with the standard 850G. Only undercarriage and frame parts are LT-specific.</li>
+</ul>
+
+<h2 id="section-3">Case 6-590 / Cummins 6BT engine</h2>
+
+<p>The 850G LT uses the Case 6-590 inline six-cylinder diesel — the Case-branded version of the Cummins 6BT, 5.9 L displacement. Turbocharged variants (6T-590) were available on higher-output configurations. The Cummins 6BT family is one of the most widely produced industrial / commercial diesel engines in history, used across Case construction equipment, Cummins industrial applications, medium-duty trucks (Dodge Ram), and agricultural machinery.</p>
+
+<p>The 6BT parts ecosystem is enormous — filters, injectors, water pumps, turbochargers, gaskets, and complete rebuild components are widely available through both Case dealer and aftermarket Cummins channels. This is one of the strongest practical advantages of the 850G LT for owners and rebuilders.</p>
+
+<p>Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 850G engine service kits.</p>
+
+<h2 id="section-4">Power shift transmission with torque converter</h2>
+
+<p>The 850G LT continues the power shift with torque converter architecture used across the 850D, 850E, and 850G family. Clutchless gear changes under load, multiple forward and reverse speeds, torque converter providing smooth power transfer. Routine service items: shift solenoids and pressure switches, clutch packs, torque converter, transmission oil cooler, transmission filter.</p>
+
+<h2 id="section-5">Long-track undercarriage</h2>
+
+<p>The LT undercarriage is the defining hardware of the variant. The extended-length track frame uses additional rollers and a longer track chain than the standard 850G. Track pads are typically wider grouser configurations. Track frame mounting hardware, frame structural components, and certain hydraulic line routings are LT-specific.</p>
+
+<p>When ordering LT undercarriage parts, always confirm by serial. LT and Standard 850Gs are visually similar but use different track chain lengths, different roller counts, and (typically) different track pad widths.</p>
+
+<h2 id="section-6">Blade system and hydraulics</h2>
+
+<p>The 850G LT ships with a 6-way bulldozer blade — angle and tilt control hydraulically actuated. Blade cylinders, blade-carrier slider blocks, and cutting edges are routine service items. Cutting edge replacement is generally needed every few hundred to few thousand hours of dozing depending on material and operator habit.</p>
+
+<p>The 850G generation introduced refined hydraulic valving and improved cylinder seal designs relative to the 850D / 850E. Seal kit availability for the blade cylinders is generally good, with aftermarket kits supporting most 850G-era cylinder dimensions.</p>
+
+<h2 id="section-7">Common 850G LT service items</h2>
+
+<h3>Engine accessory aging</h3>
+
+<p>Water pump, alternator, starter, injection pump, and (on turbocharged 6T-590 configurations) turbocharger are routinely rebuilt or replaced over the engine's service life. The Cummins 6BT parts ecosystem makes service economical.</p>
+
+<h3>Power shift / torque converter service</h3>
+
+<p>Shift solenoid failure, clutch pack wear, torque converter degradation, transmission oil cooler service. Transmission filter and fluid on a scheduled service interval.</p>
+
+<h3>Hydraulic seal failure</h3>
+
+<p>Blade cylinder seal failures are routine at production-run age. Cylinder rod chrome corrosion and seal weep are typical symptoms. Seal kit rebuilds address most cases; severe rod corrosion requires rod replacement.</p>
+
+<h3>LT undercarriage wear</h3>
+
+<p>The longer track configuration on the LT sees particular wear on idler bushings and roller bearings due to the additional track length. Track chain elongation is a routine measurement on field-service-age LTs.</p>
+
+<h3>Operator station and ROPS</h3>
+
+<p>Cab and canopy hardware, seat cushion replacement, and floorboard wear are typical aging-machine issues. ROPS structural integrity should be verified before resale.</p>
+
+<h3>Wiring and electrical</h3>
+
+<p>25-plus-year-old wiring harnesses can develop intermittent issues from connector corrosion and insulation aging.</p>
+
+<h2 id="section-8">Parts we carry</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Component area</th><th>What to look for</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>LT track sprockets</td><td>Long-track sprocket assemblies</td><td>LT-specific — different from standard 850G sprockets.</td></tr>
+<tr><td>LT idlers &amp; rollers</td><td>Front idler assemblies, top and bottom roller sets</td><td>LT-specific roller counts and bushing dimensions.</td></tr>
+<tr><td>Track recoil &amp; adjusters</td><td>Recoil spring, adjuster yoke, chrome rod</td><td>Some cross-fit with standard 850G; some LT-specific.</td></tr>
+<tr><td>Master pins</td><td>Track master pin and bushing</td><td>Master pins share geometry across the 850G family (Standard and LT).</td></tr>
+<tr><td>Cutting edges &amp; end bits</td><td>Standard and severe-duty cutting edges, end bits</td><td>Cross-fit with standard 850G blade.</td></tr>
+<tr><td>Blade cylinder seal kits</td><td>Angle, tilt, lift cylinder seal kits</td><td>Cross-fit with standard 850G — same cylinder dimensions.</td></tr>
+<tr><td>Engine accessory parts (Cummins 6BT family)</td><td>Water pump, alternator, starter, fuel injection</td><td>Enormous parts ecosystem from Cummins industrial / commercial / automotive applications.</td></tr>
+<tr><td>Turbocharger (6T-590 variants)</td><td>Cummins turbocharger</td><td>Aftermarket Cummins 6BT turbocharger replacement is widely available.</td></tr>
+<tr><td>Radiators &amp; cooling</td><td>Radiator cores, fan belts, hose sets</td><td>Cross-fit with 850G family cooling system.</td></tr>
+<tr><td>Filter service kits</td><td>Engine oil, fuel, air, hydraulic filter sets</td><td>Cummins 6BT-spec filter sets.</td></tr>
+<tr><td>Power shift transmission parts</td><td>Shift solenoids, clutch packs, oil cooler, torque converter</td><td>Cross-fit with 850D / 850E / 850G power shift family.</td></tr>
+<tr><td>Operator seat</td><td>Universal industrial seat with mount kit</td><td>Universal Case industrial seats fit the 850G LT operator station.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For 850G LT parts inventory and cross-fit confirmation, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub or contact our parts desk directly.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 850G LT?</h3>
+<p>The 850G LT shares engine, transmission, and most hydraulics with the standard 850G but uses LT-specific undercarriage. Our specialists can verify Standard vs. LT fitment by serial and walk you through the 850G family's cross-fit options.</p>
+<p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-9">Where the 850G LT sits in the Case dozer family</h2>
+
+<p>The 850G LT is the extended-track variant of the G-generation mid-large frame Case crawler dozer. The G-generation is the last 850 to use power shift transmission — the H-generation in 2000 introduced hydrostatic dual-path drivetrain. Predecessor to the G is the <a href="https://www.brokentractor.com/p/case-850e-dozer-parts-specs-case-850e-dozer-parts-specs/">Case 850E</a> (1987–1990, short E-generation run) and the long-running <a href="https://www.brokentractor.com/p/case-850d-dozer-specs-parts-and-serial-numbers-1980-1994-case-850d-dozer-specs/">Case 850D</a> (1980–1994). Successor is the Case 850H (2000–2003, hydrostatic).</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 850G LT, CNH parts catalogs, Cummins 6BT (Case 6-590 / 6T-590) engine documentation, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">E-generation precursor</span><a href="https://www.brokentractor.com/p/case-850e-dozer-parts-specs-case-850e-dozer-parts-specs/">Case 850E Crawler Dozer</a></li>
+<li><span class="meta">Long-run D-generation</span><a href="https://www.brokentractor.com/p/case-850d-dozer-specs-parts-and-serial-numbers-1980-1994-case-850d-dozer-specs/">Case 850D Crawler Dozer</a></li>
+<li><span class="meta">Sibling crawler loader</span><a href="https://www.brokentractor.com/p/case-855d-crawler-loader-specs-parts-serial-numbers-1980-1994-case-855d-crawlerloader-specs/">Case 855D Crawler Loader</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

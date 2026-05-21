@@ -1,0 +1,345 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 550G Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1996 &ndash; 2001, the Case 550G is the G-generation mid-class crawler dozer offered with two factory engine options &mdash; the naturally aspirated Cummins 4B-390 OR the turbocharged 4T-390. Power shuttle drivetrain, refined operator station, and a clean continuation of the 550E chassis with the engine choice being the defining ordering decision. The 550G was Case&rsquo;s last G-generation dozer before the H-generation arrived in 2001.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-550g-hero.jpg" alt="Case 550G Crawler Dozer &mdash; Cummins 4B-390 NA or 4T-390 turbo, 1996&ndash;2001">
+</div>
+</header>
+
+<p>The Case 550G Crawler Dozer is the G-generation successor to the 550E in Case&rsquo;s mid-class dozer line. It came to market in 1996, replacing the 550E directly, and ran through 2001 before the 550H arrived. The 550G&rsquo;s defining order-spec feature is the engine choice: <strong>naturally aspirated Cummins 4B-390</strong> for owners who prioritized fuel economy and simplicity, or <strong>turbocharged Cummins 4T-390</strong> for owners who needed extra power under heavy loads. Both engines share the same 239 cubic inch (3.9&nbsp;L) four-cylinder block, paired with the same power shuttle transmission, and shared all chassis and undercarriage components.</p>
+
+<p>For owners maintaining a 550G today, the most important parts-ordering distinction is whether your machine has the turbo or non-turbo engine. The <a href="https://www.brokentractor.com/p/filter-kit-for-case-550g-dozer-with-non-turbo-4b390-cummins-engine-cs-550g-nt-fk/">CS-550G-NT-FK</a> filter kit is for non-turbo machines and the <a href="https://www.brokentractor.com/p/filter-kit-for-case-550g-dozer-with-turbocharged-4t390-engine-cs-550g-fk/">CS-550G-FK</a> filter kit is for turbo machines &mdash; confirm engine configuration before ordering.</p>
+
+<div class="bt-callout bt-warning">
+<strong>Two engine options &mdash; confirm yours before ordering filters and engine parts</strong>
+The Case 550G was factory-built with two distinct engines. Look for the turbocharger on the side of the engine to identify yours: present = 4T-390 turbo, absent = 4B-390 naturally aspirated. Filter kits and many engine-system parts differ between the two. The <a href="https://www.brokentractor.com/p/filter-kit-for-case-550g-dozer-with-non-turbo-4b390-cummins-engine-cs-550g-nt-fk/">CS-550G-NT-FK non-turbo filter kit</a> and <a href="https://www.brokentractor.com/p/filter-kit-for-case-550g-dozer-with-turbocharged-4t390-engine-cs-550g-fk/">CS-550G-FK turbo filter kit</a> are explicitly engine-specific.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 550G differs from the 550E</a></li>
+<li><a href="#section-3">The Cummins 4B-390 and 4T-390 engines</a></li>
+<li><a href="#section-4">Power shuttle drivetrain</a></li>
+<li><a href="#section-5">Undercarriage</a></li>
+<li><a href="#section-6">Hydraulic system</a></li>
+<li><a href="#section-7">Cooling and exhaust</a></li>
+<li><a href="#section-8">Parts we carry</a></li>
+<li><a href="#section-9">Common issues and what to expect</a></li>
+<li><a href="#section-10">Where the 550G sits in the Case dozer family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 550G &mdash; factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1996 &ndash; 2001</dd>
+<dt>Predecessor</dt><dd>Case 550E (1988 &ndash; 1996)</dd>
+<dt>Successor</dt><dd>Case 550H (2001 &ndash; 2010)</dd>
+<dt>Engine (NA)</dt><dd>Cummins 4B-390, 3.9 L, 4-cyl diesel</dd>
+<dt>Engine (turbo)</dt><dd>Cummins 4T-390, 3.9 L, 4-cyl turbocharged</dd>
+<dt>Power (NA)</dt><dd>~75 HP</dd>
+<dt>Power (turbo)</dt><dd>~85 HP</dd>
+<dt>Transmission</dt><dd>4-speed power shuttle with torque converter</dd>
+<dt>Operating weight</dt><dd>~14,500 &ndash; 17,000 lb (varies with track configuration)</dd>
+<dt>Track configurations</dt><dd>Standard, LGP, LT (Long Track)</dd>
+<dt>Blade options</dt><dd>Straight, 6-way, angle/tilt; 96-inch typical</dd>
+<dt>Hydraulic pressure</dt><dd>~2,500 psi</dd>
+<dt>Serial plate location</dt><dd>Left side of machine frame near front, or beneath operator&rsquo;s platform</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 550G differs from the 550E</h2>
+
+<p>The 550G is an engine and refinement update over the 550E rather than a clean-sheet redesign. The notable changes:</p>
+
+<ul>
+<li><strong>Turbo option introduced</strong> &mdash; the 550E was naturally aspirated only. The 550G added the optional 4T-390 turbocharged engine for owners needing more power, expanding the model&rsquo;s capability range.</li>
+<li><strong>Refined cab and controls</strong> &mdash; updated operator station compared to the 550E.</li>
+<li><strong>Most chassis parts cross-fit</strong> &mdash; sprocket, track adjuster, blade hydraulics, and many other components share between 550E and 550G. The <a href="https://www.brokentractor.com/p/long-track-dozer-sprocket-for-case-550-series-r57298/">R57298 sprocket</a>, <a href="https://www.brokentractor.com/p/angle-cylinder-to-leveling-beam-pin-for-case-550e-550g-dozers-d44881/">D44881 angle cylinder pin</a>, and <a href="https://www.brokentractor.com/p/track-adjuster-chrome-rod-for-case-550e-550g-550h-dozers-r58450/">R58450 chrome adjuster rod</a> all cross-fit the entire 550E / 550G / 550H family.</li>
+<li><strong>Same Cummins 4-390 engine family</strong> &mdash; the engine block is shared between 550E (NA only) and 550G (NA or turbo). Engine internals interchange between NA configurations.</li>
+</ul>
+
+<h2 id="section-3">The Cummins 4B-390 and 4T-390 engines</h2>
+
+<p>Both 550G engine options are part of the Cummins B-series industrial engine family &mdash; 239 cubic inch (3.9&nbsp;L) four-cylinder direct-injection diesels with the same 4.02 &times; 4.72 inch bore and stroke geometry. The 4B-390 is naturally aspirated; the 4T-390 adds a wastegated turbocharger and uses heavier-duty pistons and connecting rods to handle the increased boost pressure.</p>
+
+<p>Both engines benefit from the broad Cummins B-series parts ecosystem. Pistons, rings, bearings, head gasket sets, water pumps, and oil pumps source readily through Case-branded and Cummins B-series industrial channels. The two engine configurations DO differ in filter requirements, fuel system components, exhaust hardware, and some cooling-system items &mdash; confirm engine before ordering anything engine-specific.</p>
+
+<h2 id="section-4">Power shuttle drivetrain</h2>
+
+<p>Same Case 4-speed power shuttle as the 550E &mdash; hydraulically actuated forward/reverse with torque converter. The shuttle&rsquo;s clutch packs are the main wear item; the torque converter charge pump and shuttle valve also wear over time. For owners doing power-shuttle service work, the verified replacement components are the same as on the 550E.</p>
+
+<h2 id="section-5">Undercarriage</h2>
+
+<p>The 550G undercarriage shares the long-track sprocket (<a href="https://www.brokentractor.com/p/long-track-dozer-sprocket-for-case-550-series-r57298/">R57298</a>) with the 550E, 550H, and post-JAK0013968 550 machines. Track adjustment uses the <a href="https://www.brokentractor.com/p/track-adjuster-chrome-rod-for-case-550e-550g-550h-dozers-r58450/">R58450 chrome adjuster rod</a> and <a href="https://www.brokentractor.com/p/track-adjuster-assembly-for-case-550e-550g-550h-dozers-r58480/">R58480 adjuster assembly</a>. The <a href="https://www.brokentractor.com/p/track-master-pin-for-case-550-550e-550g-550h-dozers-r57366/">R57366 track master pin</a> is a consumable on every track split.</p>
+
+<p>For undercarriage wear protection, the <a href="https://www.brokentractor.com/p/case-dozer-track-rock-guard-set-pv641/">PV641 track rock guard set</a> covers 6-roller 550G machines (and cross-fits 550E). The <a href="https://www.brokentractor.com/p/left-hand-recoil-spring-assembly-for-case-450-550g-dozers-187916a2/">187916A2 left-hand recoil spring assembly</a> covers 450 through 550G &mdash; wide cross-fit.</p>
+
+<h2 id="section-6">Hydraulic system</h2>
+
+<p>Blade and ripper hydraulics carry forward from the 550E. The <a href="https://www.brokentractor.com/p/case-550e-550g-dozer-blade-hydraulic-cylinder-rebuild-kit-package/">CS-550E-SK blade hydraulic cylinder rebuild kit package</a> covers 6-way blade configurations on both 550E and 550G. Individual cylinder service items: <a href="https://www.brokentractor.com/p/blade-hydraulic-tilt-cylinder-for-case-550e-550g-dozers-1542717c1/">1542717C1 blade tilt cylinder</a>, <a href="https://www.brokentractor.com/p/case-550e-550g-dozer-lift-cylinder-seal-kit-1542764c2-1542764c1/">1542764C1 lift cylinder seal kit</a>.</p>
+
+<p>The <a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-dozer-and-skid-steer-loaders-r43429/">R43429 hydraulic pump</a> covers 550G dozers (and cross-fits certain Case skid steer loaders).</p>
+
+<h2 id="section-7">Cooling and exhaust</h2>
+
+<p>The <a href="https://www.brokentractor.com/p/case-450c-550-550e-550g-550h-dozer-radiator-a172867-a172867/">A172867 radiator</a> cross-fits the entire 450C / 550 / 550E / 550G / 550H family. The <a href="https://www.brokentractor.com/p/radiator-fan-shroud-for-case-580k-450c-550g-backhoes-and-dozers-a173459/">A173459 radiator fan shroud</a> is shared with 580K backhoes and 450C dozers.</p>
+
+<p>For non-turbo 550G machines, the <a href="https://www.brokentractor.com/p/muffler-for-case-450c-550g-dozers-non-turbo-spark-arrester-a172489/">A172489 muffler with spark arrester</a> is the verified non-turbo exhaust component. Turbo 550G machines use a different turbo-spec exhaust configuration.</p>
+
+<h2 id="section-8">Parts we carry</h2>
+
+<p>The parts table below covers the top routine-service and cross-fit parts for this model.</p>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Part #</th><th>Part</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/p/case-550g-dozer-decal-set-c550g/">C550G</a></td><td>550G decal set</td><td>Complete decal set for cosmetic restoration.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/long-track-dozer-sprocket-for-case-550-series-r57298/">R57298</a></td><td>Long-track sprocket (550 family)</td><td>Cross-fits 550 (post-JAK0013968), 550E, 550G, and 550H.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/angle-cylinder-to-leveling-beam-pin-for-case-550e-550g-dozers-d44881/">D44881</a></td><td>Angle cylinder pin (550E + 550G)</td><td>Pin connecting blade angle cylinder to leveling beam.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/track-adjuster-chrome-rod-for-case-550e-550g-550h-dozers-r58450/">R58450</a></td><td>Track adjuster chrome rod (550E / 550G / 550H)</td><td>Chrome-rod track adjuster.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/muffler-for-case-450c-550g-dozers-non-turbo-spark-arrester-a172489/">A172489</a></td><td>Non-turbo muffler with spark arrester</td><td><strong>Non-turbo machines only.</strong> Required for fire-restricted areas.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/filter-kit-for-case-550g-dozer-with-non-turbo-4b390-cummins-engine-cs-550g-nt-fk/">CS-550G-NT-FK</a></td><td>Filter kit (non-turbo 4B-390)</td><td><strong>Non-turbo 550G only.</strong> Air, fuel, oil, hydraulic filters.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/filter-kit-for-case-550g-dozer-with-turbocharged-4t390-engine-cs-550g-fk/">CS-550G-FK</a></td><td>Filter kit (turbo 4T-390)</td><td><strong>Turbo 550G only.</strong> Use only on turbocharged machines.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/engine-side-shield-l-h-for-case-450c-550-550g-dozers-455c-crawler-loader-r48058/">R48058</a></td><td>Engine side shield LH (450C / 550 / 550G)</td><td>Left-hand engine compartment side shield. Cross-fits 450C, 550, 550G dozers and 455C crawler loader.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-pump-for-case-dozer-and-skid-steer-loaders-r43429/">R43429</a></td><td>Hydraulic pump (550G)</td><td>Hydraulic pump for 550G dozers (and certain Case skid steer loaders).</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-450c-550-550e-550g-550h-dozer-radiator-a172867-a172867/">A172867</a></td><td>Radiator (450C &ndash; 550H)</td><td>Broad cross-fit radiator covering 450C, 550, 550E, 550G, 550H.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/radiator-fan-shroud-for-case-580k-450c-550g-backhoes-and-dozers-a173459/">A173459</a></td><td>Radiator fan shroud (580K / 450C / 550G)</td><td>Radiator fan shroud. Cross-fits 580K backhoe, 450C dozer, 550G dozer.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-550e-550g-dozer-blade-hydraulic-cylinder-rebuild-kit-package/">CS-550E-SK</a></td><td>Blade hydraulic cylinder rebuild kit (550E + 550G)</td><td>Multi-cylinder blade hydraulic rebuild kit. Cross-fits 550E and 550G 6-way blade configurations.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/blade-hydraulic-tilt-cylinder-for-case-550e-550g-dozers-1542717c1/">1542717C1</a></td><td>Blade tilt cylinder (550E + 550G)</td><td>Blade hydraulic tilt cylinder. Cross-fits 550E and 550G.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-550e-550g-dozer-lift-cylinder-seal-kit-1542764c2-1542764c1/">1542764C1</a></td><td>Lift cylinder seal kit (550E + 550G)</td><td>Lift cylinder seal rebuild kit.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-dozer-blade-cutting-edge-kit-for-450-450c-550-550g-with-96-blade-cs-550e-cek/">CS-550E-CEK</a></td><td>Cutting edge kit (96&rdquo; blade &mdash; 450 / 450C / 550 / 550G)</td><td>Complete cutting edge kit for the 96-inch blade configuration.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/track-master-pin-for-case-550-550e-550g-550h-dozers-r57366/">R57366</a></td><td>Track master pin (550 family)</td><td>Track master pin &mdash; cross-fits 550, 550E, 550G, 550H. One-time-use consumable on every track split.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/track-adjuster-assembly-for-case-550e-550g-550h-dozers-r58480/">R58480</a></td><td>Track adjuster assembly (550E / 550G / 550H)</td><td>Complete track adjuster assembly. Cross-fits 550E, 550G, 550H.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-dozer-track-rock-guard-set-pv641/">PV641</a></td><td>Track rock guard set (550E + 550G, 6-roller)</td><td>Track rock guard set for 6-roller configurations.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/hydraulic-ripper-cylinder-for-case-dozers-450b-to-550h-g101230/">G101230</a></td><td>Hydraulic ripper cylinder (450B &ndash; 550H)</td><td>Rear ripper hydraulic cylinder. Long cross-fit.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-dozer-rear-screen-for-450c-455c-550-550e-550g-heavy-duty-steel-panel-r48279/">R48279</a></td><td>Rear screen (450C / 455C / 550 / 550E / 550G)</td><td>Heavy-duty steel rear screen panel.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/left-hand-recoil-spring-assembly-for-case-450-550g-dozers-187916a2/">187916A2</a></td><td>Track recoil spring (450 &ndash; 550G)</td><td>Left-hand track recoil spring assembly. Wide cross-fit.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For a comprehensive Case 550G parts inventory, browse the <a href="https://www.brokentractor.com/c/case-dozer-parts/">Case Dozer Parts</a> hub.</p>
+
+<h2 id="section-9">Common issues and what to expect</h2>
+
+<h3>Wrong filter kit for engine configuration</h3>
+
+<p>The single most common parts-ordering mistake on a 550G is ordering the wrong filter kit. Confirm turbo vs. non-turbo before ordering &mdash; the <a href="https://www.brokentractor.com/p/filter-kit-for-case-550g-dozer-with-non-turbo-4b390-cummins-engine-cs-550g-nt-fk/">CS-550G-NT-FK non-turbo kit</a> will NOT work on turbo machines, and vice versa.</p>
+
+<h3>Cummins 4B-390 / 4T-390 engine wear</h3>
+
+<p>Both engine configurations share the Cummins 4BT block architecture. Common items on 25-plus-year-old engines: head gasket failure, injector wear, water pump shaft bearing wear, lift pump diaphragm aging. Turbo engines add turbocharger bearing wear, oil supply line failure, and wastegate fault as additional service points.</p>
+
+<h3>Power shuttle wear</h3>
+
+<p>Same wear pattern as the 550E. Hydraulically actuated clutch packs wear with age; check shuttle hydraulic pressure first when diagnosing harsh shifts.</p>
+
+<h3>Track adjuster and undercarriage wear</h3>
+
+<p>The chrome-rod track adjuster has a known wear pattern. The <a href="https://www.brokentractor.com/p/track-adjuster-chrome-rod-for-case-550e-550g-550h-dozers-r58450/">R58450 chrome rod</a> and <a href="https://www.brokentractor.com/p/track-adjuster-assembly-for-case-550e-550g-550h-dozers-r58480/">R58480 complete assembly</a> are the standard rebuilds.</p>
+
+<h3>Blade cylinder seal failure</h3>
+
+<p>Blade angle, tilt, and lift cylinders develop seal weeps over time. The <a href="https://www.brokentractor.com/p/case-550e-550g-dozer-blade-hydraulic-cylinder-rebuild-kit-package/">CS-550E-SK kit package</a> bundles the major seal kits.</p>
+
+<h3>Cooling system service</h3>
+
+<p>25-plus-year-old radiator cores corrode internally. The <a href="https://www.brokentractor.com/p/case-450c-550-550e-550g-550h-dozer-radiator-a172867-a172867/">A172867 radiator</a> is the verified replacement.</p>
+
+<h3>Cutting edge wear</h3>
+
+<p>The <a href="https://www.brokentractor.com/p/case-dozer-blade-cutting-edge-kit-for-450-450c-550-550g-with-96-blade-cs-550e-cek/">CS-550E-CEK cutting edge kit</a> covers the 96-inch blade configuration.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 550G?</h3>
+<p>The 550G shares most chassis and blade-system parts with the 550E predecessor and 550H successor. Engine and filter parts differ by turbo vs. non-turbo configuration. Our specialists can verify engine type and walk you through cross-references.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-10">Where the 550G sits in the Case dozer family</h2>
+
+<p>The 550G is the G-generation mid-class Case crawler dozer. Above it sits the 650G; below it sits the <a href="https://www.brokentractor.com/p/case-450c-crawler-dozer-parts-specs-common-issues-case-450c-crawler-dozer-parts-specs-common-issues/">Case 450C</a>. Before the 550G came the <a href="https://www.brokentractor.com/p/case-550e-crawler-dozer-parts-specs-common-issues-case-550e-crawler-dozer-parts-specs-common-issues/">550E</a> (naturally aspirated only). After the 550G came the <a href="https://www.brokentractor.com/p/case-550h-lt-dozer-specs-serial-numbers-replacement-parts-case-550h-dozer-specs-parts/">550H</a> (2001&ndash;2010), which standardized on the Cummins 4T-390 turbo. The 550G represents the bridge between the simpler 550E and the modern 550H &mdash; and is unique in offering owners the engine choice.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 550G and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-550e-crawler-dozer-parts-specs-common-issues-case-550e-crawler-dozer-parts-specs-common-issues/">Case 550E Crawler Dozer</a> &mdash; naturally aspirated only</li>
+<li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-550h-lt-dozer-specs-serial-numbers-replacement-parts-case-550h-dozer-specs-parts/">Case 550H LT Crawler Dozer</a> &mdash; Cummins 4T-390 turbo standard, Long-Track</li>
+<li><span class="meta">Smaller-class contemporary</span><a href="https://www.brokentractor.com/p/case-450c-crawler-dozer-parts-specs-common-issues-case-450c-crawler-dozer-parts-specs-common-issues/">Case 450C Crawler Dozer</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+<script>
+(function(){
+  var bar=document.getElementById('btProgressBar');
+  if(!bar)return;
+  function upd(){
+    var s=document.documentElement,b=document.body;
+    var tot=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
+    var pct=tot>0?Math.min(100,Math.round(s.scrollTop/tot*100)):0;
+    bar.style.width=pct+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
+(function(){
+  document.querySelectorAll('.bt-table-scroll table').forEach(function(t){
+    if(t.parentElement.classList.contains('bt-table-scroll'))return;
+    var w=document.createElement('div');
+    w.className='bt-table-scroll';
+    t.parentNode.insertBefore(w,t);
+    w.appendChild(t);
+  });
+})();
+</script>

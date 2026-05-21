@@ -1,0 +1,356 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Case 650L Crawler Dozer: Specs, Parts & Common Issues",
+  "description": "Case 650L Crawler Dozer specs, Tier 4 Final FPT diesel with SCR/DEF, hydrostatic dual-path transmission, and parts at Broken Tractor.",
+  "author": {"@type": "Organization", "name": "Broken Tractor"},
+  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
+  "dateModified": "2026-05-21",
+  "about": {"@type": "Product", "name": "Case 650L Crawler Dozer", "manufacturer": {"@type": "Organization", "name": "Case"}}
+}
+</script>
+<style>
+:root{
+  --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;
+  --bt-body:#2c3e50;--bt-muted:#5b6b7a;--bt-rule:#e6e9ee;
+  --bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;
+  --bt-callout-border:#f37021;--bt-warning:#fff4f0;--bt-warning-border:#e74c3c;
+  --bt-font-body:"proxima-nova",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --bt-font-display:"Industry","Oswald","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+.productView{display:none !important}
+.bt-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:9999;background:transparent}
+.bt-progress__bar{height:100%;width:0;background:var(--bt-orange);transition:width .15s ease}
+.bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+.bt-wrap{max-width:760px;margin:0 auto;padding:0 32px}
+.bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+.bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;font-family:var(--bt-font-display)}
+h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+.bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+.bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+.bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+.bt-byline strong{color:var(--bt-ink)}.bt-byline .dot{margin:0 6px;color:#ccc}
+.bt-feature{margin:32px 0;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:#1a1a1a}
+.bt-feature img{width:100%;height:100%;object-fit:cover;display:block}
+nav.bt-toc{background:var(--bt-soft);border:1px solid var(--bt-rule);border-radius:6px;padding:20px 24px;margin:32px 0;font-size:15px;font-family:var(--bt-font-body)}
+nav.bt-toc strong{display:block;font-family:var(--bt-font-display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);margin-bottom:10px}
+nav.bt-toc ol{margin:0;padding-left:20px}
+nav.bt-toc li{margin:5px 0}
+nav.bt-toc a{color:var(--bt-orange-dark);border-bottom:none;text-decoration:underline;text-underline-offset:2px}
+nav.bt-toc a:hover{color:var(--bt-orange)}
+h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+p{margin:0 0 18px;font-family:var(--bt-font-body)}
+ul,ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+li{margin:6px 0}
+.bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+.bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+.bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+.bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+.bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:14px}
+.bt-spec h4{margin:0 0 10px;font-family:var(--bt-font-display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700}
+.bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+.bt-spec dt{color:var(--bt-muted)}.bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+.bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+.bt-table-scroll table{width:100%;border-collapse:collapse;margin:0;font-size:15px;font-family:var(--bt-font-body)}
+.bt-table-scroll th,.bt-table-scroll td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+.bt-table-scroll th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+.bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+.bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}.bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+.bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none;font-family:var(--bt-font-display)}
+.bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none}
+.bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+.bt-related h3{margin-top:0;font-family:var(--bt-font-display)}.bt-related ul{list-style:none;padding:0}
+.bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}.bt-related li:last-child{border-bottom:none}
+.bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+.bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+.bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+.bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+.bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+.bt-newsletter{background:var(--bt-ink);color:#fff;padding:56px 24px;text-align:center}
+.bt-newsletter h2{color:#fff;margin:0 0 10px;font-size:28px;font-family:var(--bt-font-display)}
+.bt-newsletter p{color:#cfd8e0;max-width:480px;margin:0 auto 24px;font-family:var(--bt-font-body)}
+.bt-newsletter form{display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.bt-newsletter input[type=email]{flex:1;min-width:220px;padding:13px 16px;border-radius:4px;border:none;font-size:15px;font-family:var(--bt-font-body)}
+.bt-newsletter button{background:var(--bt-orange);color:#fff;border:none;padding:13px 22px;border-radius:4px;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.03em;text-transform:uppercase;font-family:var(--bt-font-display)}
+.bt-newsletter button:hover{background:var(--bt-orange-dark)}
+@media(max-width:600px){h1.bt-title{font-size:30px}h2{font-size:24px}h3{font-size:19px}.bt-deck{font-size:17px}body{font-size:17px}.bt-wrap{padding:0 18px}.bt-page-card{margin:0;border-radius:0;box-shadow:none}}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+.bt-wrap nav{position:static !important}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+  <span class="bt-tag">Model Spotlight</span>
+  <h1 class="bt-title">Case 650L Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+  <p class="bt-deck">Produced from approximately 2015 onward, the Case 650L is the L-generation mid-frame Case crawler dozer — Tier 4 Final emissions compliance with SCR (selective catalytic reduction) + DEF (diesel exhaust fluid) aftertreatment, FPT-built Cummins-derived four-cylinder turbocharged diesel, and a continued hydrostatic dual-path drivetrain. The L generation eliminated the DPF used on the 650K Tier 4 Interim engine in favor of SCR — a substantial emissions-system architecture change.</p>
+  <div class="bt-byline">
+    <div class="bt-avatar">BT</div>
+    <div><strong>Broken Tractor Editorial Team</strong><span class="dot">•</span> Updated May 2026<span class="dot">•</span> 11 min read</div>
+  </div>
+  <div class="bt-feature">
+    <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-650l-hero.jpg" alt="Case 650L Crawler Dozer" loading="lazy" />
+  </div>
+</header>
+
+<nav class="bt-toc" aria-label="Table of contents">
+  <strong>On this page</strong>
+  <ol>
+    <li><a href="#section-1">At-a-glance specifications</a></li>
+    <li><a href="#section-2">How the 650L differs from the 650K predecessor</a></li>
+    <li><a href="#section-3">FPT NEF engine family</a></li>
+    <li><a href="#section-4">Tier 4 Final SCR + DEF aftertreatment</a></li>
+    <li><a href="#section-5">Hydrostatic dual-path transmission</a></li>
+    <li><a href="#section-6">Variants: Standard, LT, LGP</a></li>
+    <li><a href="#section-7">Cross-fit with the H/K Case dozer family</a></li>
+    <li><a href="#section-8">Common 650L service issues</a></li>
+    <li><a href="#section-9">Parts we carry</a></li>
+    <li><a href="#section-10">Where the 650L sits in the Case dozer family</a></li>
+  </ol>
+</nav>
+
+<p>The Case 650L Crawler Dozer is the L-generation mid-frame Case crawler dozer, in production from approximately 2015 onward. The L generation continues the hydrostatic dual-path drivetrain architecture from the 650H and 650K and adds Tier 4 Final emissions compliance via SCR + DEF aftertreatment. SCR (selective catalytic reduction) uses diesel exhaust fluid (DEF, a urea-water solution) injected into the exhaust stream to break NOx into harmless nitrogen and water. The 650L's emissions architecture is a significant change from the 650K's Tier 4 Interim cooled-EGR-plus-DPF setup.</p>
+
+<p>Operator station and electronics got another refresh on the L: improved LiveLink telematics, electronic instrumentation, and joystick controls with on-throttle proportional behavior. Hydrostatic drivetrain calibration was refined for smoother low-speed grading performance.</p>
+
+<div class="bt-callout">
+  <strong>Tier 4 Final means SCR + DEF — not DPF</strong>
+  The 650L's emissions architecture is fundamentally different from the 650K's. Tier 4 Final uses SCR + DEF instead of a DPF. The two systems have completely different service profiles: DEF tank refills replace DPF ash service; SCR catalyst service replaces DPF regeneration management; DEF quality and storage become routine operator concerns. Confirm your generation before ordering emissions-system parts — the 650K and 650L share a chassis but not an aftertreatment system.
+</div>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+  <h4>Case 650L — factory specifications</h4>
+  <dl>
+    <dt>Production years</dt><dd>2015 onward</dd>
+    <dt>Predecessor</dt><dd>Case 650K (2010 – 2015)</dd>
+    <dt>Successor</dt><dd>Case 650M (2021 onward)</dd>
+    <dt>Engine</dt><dd>FPT (Fiat Powertrain Technologies) NEF 4-cyl turbocharged diesel, Tier 4 Final</dd>
+    <dt>Displacement</dt><dd>~4.5 L (configuration dependent)</dd>
+    <dt>Power</dt><dd>~100 – 110 HP flywheel</dd>
+    <dt>Transmission</dt><dd>Hydrostatic dual-path</dd>
+    <dt>Emissions tier</dt><dd>Tier 4 Final</dd>
+    <dt>Aftertreatment</dt><dd>SCR (Selective Catalytic Reduction) + DEF (Diesel Exhaust Fluid)</dd>
+    <dt>Variants</dt><dd>Standard, LT (Long-Track), LGP (Low Ground Pressure)</dd>
+    <dt>Operating weight</dt><dd>~19,000 – 21,500 lb depending on variant</dd>
+    <dt>Hydraulic system</dt><dd>Load-sensing implement hydraulics</dd>
+    <dt>Telematics</dt><dd>Case SiteWatch / LiveLink</dd>
+    <dt>Blade</dt><dd>6-way bulldozer blade</dd>
+    <dt>Serial plate location</dt><dd>Right side of cab platform, near operator entry</dd>
+  </dl>
+</div>
+
+<h2 id="section-2">How the 650L differs from the 650K predecessor</h2>
+
+<ul>
+  <li><strong>Tier 4 Final SCR + DEF aftertreatment</strong> — replaces the 650K's cooled EGR + DPF. SCR uses urea (DEF) injection into the exhaust to break down NOx. Eliminates DPF ash service; adds DEF tank refill and DEF quality concerns.</li>
+  <li><strong>FPT NEF engine</strong> — the 650L moves to the FPT (Fiat Powertrain Technologies) NEF four-cylinder family, replacing the Cummins B-series used on prior generations. FPT NEF engines share architecture with the Iveco / Case IH agricultural lineup.</li>
+  <li><strong>LiveLink telematics</strong> — the 650L integrates Case SiteWatch / LiveLink remote monitoring as standard or option, depending on configuration.</li>
+  <li><strong>Updated hydrostatic drivetrain calibration</strong> — refined control for low-speed precision grading.</li>
+  <li><strong>Suspension seat unchanged</strong> — the <a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 suspension seat</a> fits the 650L (same broad H/K/L Case dozer cross-fit).</li>
+</ul>
+
+<h2 id="section-3">FPT NEF engine family</h2>
+
+<p>The FPT (Fiat Powertrain Technologies) NEF four-cylinder engine family is built by the Fiat industrial powertrain group. NEF engines are shared with the Iveco / Case IH / New Holland agricultural and industrial lineup, and parts service is supported through the FPT and Case dealer networks.</p>
+
+<p>Routine engine service items: filters (engine oil, fuel, air, DEF supply filter), water pump, alternator, turbocharger. The DEF supply filter is a new service item not present on the 650K — it filters the DEF before injection into the SCR catalyst.</p>
+
+<p>Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 650L-era engine and emissions service kits.</p>
+
+<h2 id="section-4">Tier 4 Final SCR + DEF aftertreatment</h2>
+
+<p>The SCR + DEF aftertreatment system has several routine service points:</p>
+
+<h3>DEF tank and DEF quality</h3>
+
+<p>The DEF tank is separate from the diesel fuel tank. Operators refill DEF on a separate schedule — DEF consumption rate is typically 3–5% of diesel consumption depending on duty cycle. DEF freezes below approximately 12°F (-11°C) and degrades when stored for extended periods or at high temperatures. Contaminated or degraded DEF causes SCR-system fault codes and reduced power.</p>
+
+<h3>DEF supply pump and DEF lines</h3>
+
+<p>The DEF supply pump pulls DEF from the tank, filters it, and pressurizes it for injection into the exhaust stream. Pump failure is a routine service item at production-run age, as is DEF line wear (especially the heated lines that prevent DEF freezing in cold operation).</p>
+
+<h3>DEF injector and SCR catalyst</h3>
+
+<p>The DEF injector atomizes DEF into the exhaust upstream of the SCR catalyst. Injector clogging from DEF deposits is a routine fault. The SCR catalyst itself has a long service life (10,000+ hours in typical service) but does need eventual replacement.</p>
+
+<h3>NOx sensors</h3>
+
+<p>Two NOx sensors monitor exhaust before and after the SCR catalyst — they verify that SCR is performing correctly. Sensor failure is routine production-run-age wear.</p>
+
+<h2 id="section-5">Hydrostatic dual-path transmission</h2>
+
+<p>The 650L retains the hydrostatic dual-path architecture used since the 650H. Each track has its own variable-displacement pump and hydraulic motor. The L generation refines the calibration for smoother low-speed grading and finer joystick proportional control.</p>
+
+<p>Hydrostatic service items remain consistent across H/K/L generations: charge pump, charge filter, hydraulic motor seals, drive pump bearings, control valve degradation. Hydraulic oil cleanliness is critical — the hydrostatic system is intolerant of contamination.</p>
+
+<h2 id="section-6">Variants: Standard, LT, LGP</h2>
+
+<p>The 650L shipped in three primary track configurations:</p>
+
+<ul>
+  <li><strong>Standard</strong> — standard-width track, balanced general-purpose dozing.</li>
+  <li><strong>LT (Long Track)</strong> — extended-length track frame for additional flotation and stability.</li>
+  <li><strong>LGP (Low Ground Pressure)</strong> — wider grouser pads and extended track frame for soft-ground / wetlands / agricultural-soil work.</li>
+</ul>
+
+<p>Variant affects undercarriage parts. Confirm Standard vs. LT vs. LGP by serial before ordering.</p>
+
+<h2 id="section-7">Cross-fit with the H/K Case dozer family</h2>
+
+<p>Several 650L components carry forward from the 650K and 650H — particularly operator-station and blade-carrier hardware. Notable confirmed cross-fits:</p>
+
+<ul>
+  <li>The <a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 Case / New Holland dozer suspension seat with headrest</a> covers the 650L (along with 550H, 650H, 650K, 750K, 750L, 850H, 850K, 850L).</li>
+  <li>Many blade-carrier slider blocks and wear plates share part numbers across H/K/L generations. Confirm by part number against your serial.</li>
+</ul>
+
+<p>Engine and emissions-system parts are 650L-specific (FPT NEF + Tier 4 Final SCR architecture).</p>
+
+<h2 id="section-8">Common 650L service issues</h2>
+
+<h3>DEF system service</h3>
+
+<p>DEF quality, DEF tank ventilation, DEF supply pump, DEF injector, and the heated DEF lines are all routine production-run-age service items. Use only ISO 22241-compliant DEF and confirm storage conditions. Many 650L SCR-system fault codes trace back to DEF quality or DEF supply problems rather than the SCR catalyst itself.</p>
+
+<h3>NOx sensor failure</h3>
+
+<p>Both upstream and downstream NOx sensors are routine wear items. Sensor replacement is a defined service procedure. Aftermarket sensor availability is generally good.</p>
+
+<h3>FPT NEF engine service</h3>
+
+<p>Routine engine service items (filters, water pump, alternator, turbocharger) are supported through both Case dealer and FPT parts channels.</p>
+
+<h3>Hydrostatic transmission service</h3>
+
+<p>Same hydrostatic-system service profile as the H and K generations — charge pump, control valve, motor seal, oil contamination. Hydrostatic diagnosis usually requires dealer service tools for pressure testing.</p>
+
+<h3>Blade carrier wear plate replacement</h3>
+
+<p>Routine sacrificial service item. Replace as the blade carrier shows play or visible wear.</p>
+
+<h3>Cutting edge wear</h3>
+
+<p>Cutting edge replacement is the most frequent blade-related service item. End bits wear faster than the center cutting edge.</p>
+
+<h3>LiveLink and electronic faults</h3>
+
+<p>LiveLink and electronic instrumentation can develop intermittent faults from connector corrosion at production-run age. Most diagnostic codes resolve with a connector clean or replacement; some require dealer-level diagnostics.</p>
+
+<h2 id="section-9">Parts we carry</h2>
+
+<div class="bt-table-scroll">
+<table>
+  <thead>
+    <tr><th>Part</th><th>Cross-fit</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 suspension seat</a></td><td>550H + 650H + 650K + 650L + 750K + 750L + 850H + 850K + 850L</td><td>Single SKU covering nine Case dozers across H/K/L generations.</td></tr>
+    <tr><td>Engine filter service kit</td><td>650L-specific (FPT NEF Tier 4 Final)</td><td>Engine oil, fuel, air filters.</td></tr>
+    <tr><td>DEF supply filter</td><td>650L-specific (SCR system)</td><td>Filters DEF before injection — new service item vs. 650K.</td></tr>
+    <tr><td>NOx sensors (upstream + downstream)</td><td>650L-specific Tier 4 Final emissions</td><td>Routine wear items at production-run age.</td></tr>
+    <tr><td>Blade cutting edges &amp; end bits</td><td>Mid-class dozer cross-fit (verify by serial)</td><td>Standard or severe-duty cutting edges.</td></tr>
+    <tr><td>Blade cylinder seal kits</td><td>650L-specific (verify cylinder dimensions)</td><td>Lift, angle, tilt cylinder seal kits.</td></tr>
+    <tr><td>Track undercarriage</td><td>650L-specific by variant (Std / LT / LGP)</td><td>Track pads, idlers, rollers, master pins by variant.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>For the complete 650L parts inventory, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub.</p>
+
+<div class="bt-cta">
+  <h3>Working on a Case 650L?</h3>
+  <p>The 650L runs Tier 4 Final emissions and the FPT NEF engine — emissions-system parts and engine parts are different from the 650K and earlier generations. Operator-station components still cross-fit broadly. Our specialists can verify fitment by serial and walk you through the SCR / DEF service profile.</p>
+  <p>Mon – Fri, 7:00 AM – 5:00 PM CT</p>
+  <a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-10">Where the 650L sits in the Case dozer family</h2>
+
+<p>The 650L is the L-generation mid-frame Case crawler dozer, sitting between the Case 550L and the Case 850L. Its predecessor is the <a href="https://www.brokentractor.com/p/case-650k-crawler-dozer-parts-specs-common-issues-case-650k-crawler-dozer-parts-specs-common-issues/">Case 650K</a> (Tier 4 Interim, EGR + DPF) and its successor is the <a href="https://www.brokentractor.com/p/case-650m-crawler-dozer-parts-specs-case-650m-crawler-dozer-parts-specs/">Case 650M</a> — which continues Tier 4 Final SCR with additional cab and electronics updates.</p>
+
+<div class="bt-author">
+  <div class="bt-avatar">BT</div>
+  <div>
+    <strong>Broken Tractor Editorial Team</strong>
+    <p>This spotlight was compiled from factory Case service literature for the 650L, CNH parts catalogs, FPT NEF Tier 4 Final engine documentation, and the verified BigCommerce catalog at brokentractor.com — including the broad H/K/L Case dozer cross-fit for the 359121A1 suspension seat.</p>
+  </div>
+</div>
+
+<section class="bt-related">
+  <h3>Related Case dozer spotlights</h3>
+  <ul>
+    <li><span class="meta">Predecessor (Tier 4 Interim)</span><a href="https://www.brokentractor.com/p/case-650k-crawler-dozer-parts-specs-common-issues-case-650k-crawler-dozer-parts-specs-common-issues/">Case 650K Crawler Dozer</a></li>
+    <li><span class="meta">Successor</span><a href="https://www.brokentractor.com/p/case-650m-crawler-dozer-parts-specs-case-650m-crawler-dozer-parts-specs/">Case 650M Crawler Dozer</a></li>
+    <li><span class="meta">H-generation precursor</span><a href="https://www.brokentractor.com/p/case-650h-crawler-dozer-parts-specs-common-issues-case-650h-crawler-dozer-parts-specs-common-issues/">Case 650H Crawler Dozer</a></li>
+    <li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+  </ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){
+  var bar=document.getElementById('btProgressBar');
+  if(!bar)return;
+  function upd(){
+    var s=document.documentElement,b=document.body;
+    var t=s.scrollTop||b.scrollTop;
+    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
+    bar.style.width=h>0?(t/h*100)+'%':'0%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
+(function(){
+  document.querySelectorAll('.bt-table-scroll').forEach(function(w){
+    if(w.scrollWidth>w.clientWidth){
+      var h=document.createElement('div');
+      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
+      h.textContent='← scroll →';
+      w.parentNode.insertBefore(h,w);
+    }
+  });
+})();
+</script>
