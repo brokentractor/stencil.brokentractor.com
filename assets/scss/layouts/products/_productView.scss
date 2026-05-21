@@ -147,6 +147,46 @@ div#fitsmodels {
     }
 }
 
+.product-blurb {
+    text-align: left;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 700;
+    color: #444;
+    margin: 0;
+    padding: 12px 15px;
+    background: #fffbf0;
+    border-left: 3px solid #ffbe00;
+    line-height: 1.55;
+
+    &::before {
+        content: '\201C';
+        font-size: 28px;
+        font-weight: 900;
+        font-style: normal;
+        color: #ffbe00;
+        line-height: 0;
+        vertical-align: -6px;
+        margin-right: 5px;
+    }
+
+    &::after {
+        content: '\201D';
+        font-size: 28px;
+        font-weight: 900;
+        font-style: normal;
+        color: #ffbe00;
+        line-height: 0;
+        vertical-align: -6px;
+        margin-left: 5px;
+    }
+
+    @include breakpoint("large") {
+        padding: 12px 30px;
+        font-size: 15px;
+    }
+}
+
 .pv-infobox {
     text-align: left;
     padding: 15px 15px;

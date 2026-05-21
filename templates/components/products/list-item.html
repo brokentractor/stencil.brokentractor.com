@@ -15,7 +15,9 @@
     </td>
     {{#each custom_fields}}
     {{#if name '!=' 'REFID'}}
+    {{#if name '!=' 'blurb'}}
     <td class="pvcol {{{name}}}">{{{value}}}</td>
+    {{/if}}
     {{/if}}
     {{/each}}
     <td class="pvcol sku"><a href="{{url}}">{{{sku}}}</a></td>

@@ -134,8 +134,10 @@
                 {{/if}}
                 <div id="otherdets">
                 {{#each product.custom_fields}}
+                {{#if name '!=' 'blurb'}}
                     <dt class="productView-info-name">{{name}}:</dt>
                     <dd class="productView-info-value {{name}}">{{{value}}}</dd>
+                {{/if}}
                 {{/each}}
                 </div>
             </dl>
@@ -183,6 +185,14 @@
                 <div id="fitsmodels">
                     <strong>Part #</strong> <span id="partnum-text">{{product.sku}}</span><span id="pv-fits-badge"></span>
                 </div>
+
+                {{#each product.custom_fields}}
+                    {{#if name '===' 'blurb'}}
+                        {{#if value}}
+                            <p class="product-blurb">{{value}}</p>
+                        {{/if}}
+                    {{/if}}
+                {{/each}}
 
                 <!-- <div class="productView-rating"{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}>
                     {{#if settings.show_product_rating}}
