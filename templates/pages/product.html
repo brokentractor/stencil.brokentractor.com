@@ -35,5 +35,43 @@ product:
                 klaviyo.track("Added to Cart", item);
             });
     </script>
+    <script>
+    (function(){
+      var qtyInput   = document.querySelector('.form-input--incrementTotal');
+      var subtotalEl = document.getElementById('bt-qty-subtotal');
+      var subtotalTx = document.getElementById('bt-qty-subtotal-text');
+      if (!qtyInput || !subtotalEl || !subtotalTx) return;
+
+      function getUnitPrice() {
+        var el = document.querySelector('[data-product-price-with-tax]') ||
+                 document.querySelector('[data-product-price-without-tax]');
+        if (!el) return null;
+        // strip everything except digits and decimal point
+        var raw = el.textContent.replace(/[^0-9.]/g, '');
+        var val = parseFloat(raw);
+        return isNaN(val) ? null : val;
+      }
+
+      function fmt(n) {
+        return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+
+      function update() {
+        var qty    = parseInt(qtyInput.value, 10);
+        var unit   = getUnitPrice();
+        var eaEl   = document.getElementById('bt-price-ea');
+        var show   = unit && !isNaN(qty) && qty > 1;
+        if (eaEl) eaEl.style.display = show ? 'inline' : 'none';
+        if (!show) { subtotalEl.style.display = 'none'; return; }
+        subtotalTx.textContent = qty + ' × ' + fmt(unit) + ' = ' + fmt(unit * qty) + ' Total';
+        subtotalEl.style.display = 'block';
+      }
+
+      qtyInput.addEventListener('change', update);
+      qtyInput.addEventListener('input',  update);
+      var wrap = document.querySelector('[data-quantity-change]');
+      if (wrap) wrap.addEventListener('click', function(){ setTimeout(update, 50); });
+    })();
+    </script>
 {{/partial}}
 {{> layout/base}}
