@@ -1,0 +1,322 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 1150G Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 1995 &ndash; 2004, the Case 1150G is the G-generation large-frame Case crawler dozer &mdash; Cummins 6BT-derived Case 6T-590 turbocharged inline six-cylinder diesel, power shift transmission with torque converter, and a substantially refreshed operator station and electronics over the 1150D / 1150E predecessors. The 1150G&#39;s nine-year production run made it the workhorse large-frame Case dozer of the late 1990s and early 2000s before the hydrostatic 1150H took over.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-1150g-hero.jpg" alt="Case 1150G Crawler Dozer">
+</div>
+</header>
+
+<p>The Case 1150G Crawler Dozer is the G-generation large-frame Case crawler dozer, produced from 1995 through 2004. The 1150G is the mid-1990s refresh of the 1150 platform: substantially modernized chassis, refreshed operator station, electronic instrumentation, and the standardized Case 6T-590 turbocharged inline six-cylinder (the Case-branded version of the Cummins 6BT-T 5.9 L turbo) across the line. The 1150G ran concurrently with the introduction of the hydrostatic 1150H starting around 2000.</p>
+
+<p>For owners and operators today, the 1150G is one of the most refined power shift 1150s. The Cummins 6BT-derived turbo six-cylinder, the well-developed power shift drivetrain, and broad parts cross-fit with the <a href="https://www.brokentractor.com/p/case-1150e-long-track-dozer-case-1150e-longtrackdozer-specs/">1150E LT</a> below and the 1150H hydrostatic above make the 1150G a popular used-market choice for buyers who want a modern operator experience without the hydrostatic-system service complexity.</p>
+
+<div class="bt-callout">
+<strong>The 1150G is the most refined power shift large-frame Case dozer</strong>
+The 1150G combines a modern (mid-1990s) operator station with the Cummins 6BT-T turbo six-cylinder and the proven power shift drivetrain. For owners who want the modernized chassis and engine but prefer the simpler power shift drivetrain over the hydrostatic system on the later 1150H/K/L/M generations, the 1150G is the sweet spot.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What&#39;s in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 1150G differs from the 1150E predecessor</a></li>
+<li><a href="#section-3">Case 6T-590 / Cummins 6BT-T turbocharged engine</a></li>
+<li><a href="#section-4">Power shift transmission with torque converter</a></li>
+<li><a href="#section-5">Undercarriage</a></li>
+<li><a href="#section-6">Blade system and hydraulics</a></li>
+<li><a href="#section-7">Variants: Standard, LGP</a></li>
+<li><a href="#section-8">Common 1150G service items</a></li>
+<li><a href="#section-9">Parts and cross-fit components for the Case 1150G</a></li>
+<li><a href="#section-10">Why the 1150G is still in service</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 1150G &mdash; factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>1995 &ndash; 2004</dd>
+<dt>Predecessor</dt><dd>Case 1150E (late 1980s &ndash; early 1990s)</dd>
+<dt>Successor</dt><dd>Case 1150H (introduced ~2000, hydrostatic)</dd>
+<dt>Engine</dt><dd>Case 6T-590 inline 6-cylinder turbocharged diesel (Cummins 6BT-T derived, 5.9 L)</dd>
+<dt>Displacement</dt><dd>359 cu in (5.9 L)</dd>
+<dt>Power</dt><dd>~145 &ndash; 160 horsepower flywheel (configuration dependent)</dd>
+<dt>Transmission</dt><dd>Power shift with torque converter</dd>
+<dt>Hydraulics</dt><dd>Open-center implement circuit with refined valving</dd>
+<dt>Variants</dt><dd>Standard, LGP (Low Ground Pressure)</dd>
+<dt>Operating weight</dt><dd>~30,500 &ndash; 34,000 lb depending on configuration</dd>
+<dt>Blade</dt><dd>6-way bulldozer blade &mdash; angle and tilt blade options</dd>
+<dt>Serial plate location</dt><dd>Right side of operator&#39;s platform / chassis frame</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 1150G differs from the 1150E predecessor</h2>
+
+<ul>
+<li><strong>Refreshed operator station</strong> &mdash; substantially modernized ROPS cab, electronic instrumentation cluster, refined joystick controls, improved seat suspension, and better visibility to the blade corners.</li>
+<li><strong>Standardized Cummins 6BT-T turbo engine</strong> &mdash; the 1150G standardized on the turbocharged Case 6T-590 (Cummins 6BT-T-derived) across production, replacing the mixed A451 / 6-590 engine offerings of the 1150D.</li>
+<li><strong>Updated hydraulic system</strong> &mdash; refined open-center implement hydraulics with improved valve response.</li>
+<li><strong>Same power shift drivetrain</strong> &mdash; power shift with torque converter unchanged in architecture from the 1150E for parts continuity.</li>
+<li><strong>Improved accessory packaging</strong> &mdash; alternator, starter, and accessory belt routing refined for the standardized 6T-590 engine.</li>
+</ul>
+
+<h2 id="section-3">Case 6T-590 / Cummins 6BT-T turbocharged engine</h2>
+
+<p>The 1150G uses the Case 6T-590 inline six-cylinder turbocharged diesel &mdash; the Case-branded version of the Cummins 6BT-T, 5.9 L displacement with turbocharging for higher output. The Cummins 6BT family is one of the most widely produced industrial / commercial diesel engines in history, used across Case construction equipment, Cummins industrial applications, medium-duty trucks (Dodge Ram), and agricultural machinery. The turbocharged 6BT-T variant adds substantial power and torque over the naturally aspirated 6BT.</p>
+
+<p>The 6BT-T parts ecosystem is enormous &mdash; filters, injectors, water pumps, turbochargers, gaskets, and complete rebuild components are widely available through both Case dealer and aftermarket Cummins channels. Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 1150G engine service kits.</p>
+
+<h2 id="section-4">Power shift transmission with torque converter</h2>
+
+<p>The 1150G uses the same power shift with torque converter as the 1150E and earlier 1150 generations. Clutchless gear changes under load, multiple forward and reverse speeds, torque converter providing smooth power transfer. Routine service items: shift solenoids and pressure switches, clutch packs, torque converter, transmission oil cooler, transmission filter.</p>
+
+<p>The torque converter is a routine rebuild item on high-hour 1150Gs and is often paired with a transmission filter change at the same service interval. Symptoms of transmission service needs include shift hesitation, slipping under load, or harsh engagement.</p>
+
+<h2 id="section-5">Undercarriage</h2>
+
+<p>The 1150G undercarriage shares cross-fit with the 1150E and (on some components) the 1150H. Sprocket bolt patterns, idler geometries, and master pin dimensions cross-fit on multiple components &mdash; confirm by part number against your serial. Track chain, roller, idler, and sprocket are all routine wear items at production-run age.</p>
+
+<p>Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 1150G-era undercarriage availability.</p>
+
+<h2 id="section-6">Blade system and hydraulics</h2>
+
+<p>The 1150G ships with a 6-way bulldozer blade &mdash; angle and tilt control hydraulically actuated. Blade cylinders, blade-carrier slider blocks, and cutting edges are routine service items. Cutting edge replacement is generally needed every few hundred to few thousand hours of dozing depending on material and operator habit.</p>
+
+<p>The 1150G introduced refined hydraulic valving relative to the 1150E. Seal kit availability for the blade cylinders is generally good, with aftermarket kits supporting most 1150G-era cylinder dimensions.</p>
+
+<h2 id="section-7">Variants: Standard, LGP</h2>
+
+<p>The 1150G shipped in two primary track configurations:</p>
+
+<ul>
+<li><strong>Standard</strong> &mdash; standard-width track, balanced general dozing.</li>
+<li><strong>LGP (Low Ground Pressure)</strong> &mdash; wider grouser pads and extended track frame for soft-ground / wetlands / agricultural-soil work.</li>
+</ul>
+
+<p>Track configuration affects undercarriage and frame parts. Confirm Standard vs. LGP by serial before ordering.</p>
+
+<h2 id="section-8">Common 1150G service items</h2>
+
+<h3>Engine accessory aging</h3>
+
+<p>Water pump, alternator, starter, injection pump, and turbocharger on the 6T-590 are routinely rebuilt or replaced over the engine&#39;s service life. The Cummins 6BT-T parts ecosystem makes service economical.</p>
+
+<h3>Turbocharger wear</h3>
+
+<p>The Cummins 6BT-T turbocharger is a routine wear item on 20-plus-year-old engines. Symptoms: blue smoke at startup, oil consumption, audible whine outside the normal range, visible shaft play.</p>
+
+<h3>Power shift / torque converter service</h3>
+
+<p>Shift solenoid failure, clutch pack wear, torque converter degradation, transmission oil cooler service. The transmission filter and fluid should be on a scheduled service interval.</p>
+
+<h3>Hydraulic seal failure</h3>
+
+<p>Blade cylinder seal failures are common at this age. Cylinder rod chrome corrosion and seal weep are typical symptoms. Seal kit rebuilds address most cases; severe rod corrosion requires rod replacement.</p>
+
+<h3>Undercarriage replacement cycles</h3>
+
+<p>Track chains, rollers, idlers, and sprockets all have measurable wear lives. Modern aftermarket undercarriage is available for the 1150 family.</p>
+
+<h3>Operator station and ROPS</h3>
+
+<p>Cab and canopy hardware, seat cushion replacement, and floorboard wear are typical aging-machine issues. ROPS structural integrity should be verified before resale.</p>
+
+<h3>Cab electronics</h3>
+
+<p>The G-generation electronic instrumentation can develop intermittent fault codes from connector corrosion at production-run age.</p>
+
+<h2 id="section-9">Parts and cross-fit components for the Case 1150G</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Component area</th><th>What to look for</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Sprockets &amp; segments</a></td><td>Track sprocket assemblies, bolt-on segments</td><td>Cross-fits 1150E / 1150H family on shared bolt patterns.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Idlers &amp; rollers</a></td><td>Front idler assemblies, top and bottom roller sets</td><td>Cross-fits the 1150 large-class undercarriage.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Track recoil &amp; adjusters</a></td><td>Recoil spring, adjuster yoke, chrome rod</td><td>Confirm by serial &mdash; production-run changes apply.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Master pins</a></td><td>Track master pin and bushing</td><td>Master pins share geometry across the 1150 family.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Cutting edges &amp; end bits</a></td><td>Standard and severe-duty cutting edges, end bits</td><td>Aftermarket cutting edges widely available for the 1150&#39;s large blade.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Blade cylinder seal kits</a></td><td>Angle, tilt, lift cylinder seal kits</td><td>Confirm cylinder dimensions before ordering.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Engine accessory parts (Cummins 6BT-T family)</a></td><td>Water pump, alternator, starter, fuel injection</td><td>Enormous parts ecosystem from Cummins industrial / commercial / automotive applications.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Turbocharger (6T-590)</a></td><td>Cummins turbocharger</td><td>Aftermarket Cummins 6BT-T turbocharger replacement is widely available.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Radiators &amp; cooling</a></td><td>Radiator cores, fan belts, hose sets</td><td>Cross-fit with the 1150 family cooling system.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Filter service kits</a></td><td>Engine oil, fuel, air, hydraulic filter sets</td><td>Cummins 6BT-T spec filter kits.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Power shift transmission parts</a></td><td>Shift solenoids, clutch packs, oil cooler, torque converter</td><td>Cross-fit with 1150D / 1150E power shift family.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Operator seat</a></td><td>Universal industrial seat with mount kit</td><td>Universal Case industrial seats fit the 1150G operator station.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For 1150G-era parts inventory and cross-fit confirmation, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub or contact our parts desk directly.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 1150G?</h3>
+<p>The 1150G combines a refined mid-1990s operator station with the proven Cummins 6BT-T-derived 6T-590 engine and the simpler power shift drivetrain. Our specialists can verify Standard vs. LGP fitment by serial.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-10">Why the 1150G is still in service</h2>
+
+<p>The 1150G hits a sweet spot for many large-frame Case dozer buyers: modernized chassis and operator station compared to the 1150D/E, broad-ecosystem Cummins 6BT-T turbo engine, and the simpler power shift drivetrain that&#39;s easier to troubleshoot in the field than the hydrostatic systems on the later 1150H/K/L/M generations. For owner-operators and rural mechanics, a 1150G in good mechanical condition remains a productive and supportable machine.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 1150G production family, CNH parts catalogs, Cummins 6BT-T (Case 6T-590) engine documentation, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-1150e-long-track-dozer-case-1150e-longtrackdozer-specs/">Case 1150E Long Track Crawler Dozer</a></li>
+<li><span class="meta">Hydrostatic successor</span><a href="https://www.brokentractor.com/p/case-1150h-crawler-dozer-parts-specs-serial-numbers-case-1150h-crawler-dozer-parts-specs-serial-numbers/">Case 1150H Crawler Dozer</a></li>
+<li><span class="meta">D-generation</span><a href="https://www.brokentractor.com/p/case-1150d-crawler-dozer-parts-specs-serial-numbers-case-1150d-crawler-dozer-parts-specs-serial-numbers/">Case 1150D Crawler Dozer</a></li>
+<li><span class="meta">Smaller-class G contemporary</span><a href="https://www.brokentractor.com/p/case-850g-long-track-dozer-specs-serial-number-guide/">Case 850G LT Crawler Dozer</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

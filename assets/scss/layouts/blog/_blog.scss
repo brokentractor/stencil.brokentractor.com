@@ -1425,7 +1425,7 @@
 
     &__img {
         position: relative;
-        background: #001212;
+        background: #fff;
         border-radius: 4px;
         overflow: hidden;
         flex: none;
@@ -1434,8 +1434,9 @@
 
         img {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
+            object-fit: cover;
         }
     }
 

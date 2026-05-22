@@ -1,0 +1,325 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 850M Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">Produced 2014 onward, the Case 850M is the current-production mid-large frame Case crawler dozer &mdash; FPT-built Tier 4 Final / Stage V six-cylinder turbocharged diesel with SCR + DEF aftertreatment, hydrostatic dual-path transmission, and the most refined cab and electronics in the 850 line. The M-generation builds on the L-generation Tier 4 Interim platform with the SCR + DEF emissions transition, LiveLink Pro telematics, and improved operator ergonomics.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-850m-hero.jpg" alt="Case 850M Crawler Dozer">
+</div>
+</header>
+
+<p>The Case 850M Crawler Dozer is the current-production mid-large frame Case crawler dozer, in production from approximately 2014 onward. The M-generation continues the hydrostatic dual-path drivetrain architecture used since the 850H and moves to Tier 4 Final emissions compliance via SCR (selective catalytic reduction) + DEF (diesel exhaust fluid) aftertreatment. The 850M&#39;s engine is built by FPT (Fiat Powertrain Technologies) &mdash; the Iveco / Case IH / New Holland industrial engine group &mdash; replacing the Cummins-derived engines used on prior 850 generations.</p>
+
+<p>SCR + DEF is fundamentally different from the Tier 4 Interim DPF used on the 850L. The 850M has no DPF &mdash; it uses DEF (a urea-water solution) injected into the exhaust to break down NOx instead. The trade-off is a new set of service items: DEF tank, DEF supply pump, DEF injector, NOx sensors. Cab, controls, and telematics see substantial refreshes on the M generation.</p>
+
+<div class="bt-callout">
+<strong>The 850M is the current-production machine</strong>
+The 850M is in active production. Parts are mostly available as new OEM, with aftermarket and reconditioned options developing as the field service population grows. Service literature is the most recent edition of Case&#39;s mid-large dozer documentation. For Tier 4 Final SCR / DEF service references, the 850M&#39;s documentation supersedes the 850L&#39;s.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What&#39;s in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 850M differs from the 850L</a></li>
+<li><a href="#section-3">FPT NEF six-cylinder engine (Tier 4 Final / Stage V)</a></li>
+<li><a href="#section-4">Tier 4 Final SCR + DEF aftertreatment</a></li>
+<li><a href="#section-5">Hydrostatic dual-path transmission</a></li>
+<li><a href="#section-6">Variants: Standard, LT, LGP</a></li>
+<li><a href="#section-7">LiveLink Pro telematics</a></li>
+<li><a href="#section-8">Common 850M service items</a></li>
+<li><a href="#section-9">Parts we carry for the Case 850M</a></li>
+<li><a href="#section-10">Where the 850M sits in the Case dozer family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 850M &mdash; factory specifications</h4>
+<dl>
+<dt>Production years</dt><dd>2014 onward (current production)</dd>
+<dt>Predecessor</dt><dd>Case 850L (Tier 4 Interim with DPF)</dd>
+<dt>Engine</dt><dd>FPT (Fiat Powertrain Technologies) NEF 6-cyl turbocharged diesel, Tier 4 Final</dd>
+<dt>Displacement</dt><dd>~6.7 L (configuration dependent)</dd>
+<dt>Power</dt><dd>~155 &ndash; 175 HP flywheel (configuration dependent)</dd>
+<dt>Transmission</dt><dd>Hydrostatic dual-path</dd>
+<dt>Emissions tier</dt><dd>Tier 4 Final (North America) / Stage V (Europe markets)</dd>
+<dt>Aftertreatment</dt><dd>SCR (Selective Catalytic Reduction) + DEF (Diesel Exhaust Fluid)</dd>
+<dt>Variants</dt><dd>Standard, LT (Long-Track), LGP (Low Ground Pressure)</dd>
+<dt>Operating weight</dt><dd>~29,000 &ndash; 33,000 lb depending on variant</dd>
+<dt>Hydraulic system</dt><dd>Load-sensing implement hydraulics</dd>
+<dt>Telematics</dt><dd>Case SiteWatch / LiveLink Pro</dd>
+<dt>Blade</dt><dd>6-way bulldozer blade with refined geometry</dd>
+<dt>Serial plate location</dt><dd>Right side of cab platform, near operator entry</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 850M differs from the 850L predecessor</h2>
+
+<ul>
+<li><strong>Tier 4 Final SCR + DEF aftertreatment</strong> &mdash; replaces the 850L&#39;s cooled EGR + DPF. SCR uses urea (DEF) injection into the exhaust to break down NOx. Eliminates DPF ash service; adds DEF tank refill and DEF quality concerns.</li>
+<li><strong>FPT NEF six-cylinder engine</strong> &mdash; the 850M moves to the FPT NEF six-cylinder family, replacing the Cummins-derived engines used on prior generations. FPT NEF engines share architecture with the Iveco / Case IH / New Holland industrial lineup.</li>
+<li><strong>LiveLink Pro telematics</strong> &mdash; the 850M integrates Case SiteWatch / LiveLink Pro remote monitoring standard or available depending on configuration.</li>
+<li><strong>Cab refresh</strong> &mdash; improved visibility, refined HVAC, updated instrumentation panel, improved operator ergonomics.</li>
+<li><strong>Suspension seat</strong> &mdash; the <a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 Case / New Holland dozer suspension seat</a> covers the broader H/K/L Case dozer family; confirm fitment by serial.</li>
+</ul>
+
+<h2 id="section-3">FPT NEF six-cylinder engine (Tier 4 Final / Stage V)</h2>
+
+<p>The 850M uses the FPT (Fiat Powertrain Technologies) NEF six-cylinder turbocharged diesel &mdash; the same engine family used on other current Case Construction machines. FPT NEF engines share architecture with the Iveco / Case IH / New Holland agricultural and industrial lineup, and parts service is supported through the FPT and Case dealer networks.</p>
+
+<p>Routine engine service items: filters (engine oil, fuel, air, DEF supply filter), water pump, alternator, turbocharger. The DEF supply filter is a new service item not present on the 850L.</p>
+
+<p>Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 850M-era engine and emissions service kits.</p>
+
+<h2 id="section-4">Tier 4 Final SCR + DEF aftertreatment</h2>
+
+<p>The SCR + DEF aftertreatment system has several routine service points:</p>
+
+<h3>DEF tank and DEF quality</h3>
+
+<p>The DEF tank is separate from the diesel fuel tank. Operators refill DEF on a separate schedule &mdash; DEF consumption rate is typically 3&ndash;5% of diesel consumption. DEF freezes below approximately 12&deg;F (-11&deg;C) and degrades when stored for extended periods or at high temperatures. Contaminated or degraded DEF causes SCR-system fault codes and reduced engine power.</p>
+
+<h3>DEF supply pump and DEF lines</h3>
+
+<p>The DEF supply pump pulls DEF from the tank, filters it, and pressurizes it for injection into the exhaust stream. Pump failure is a routine service item at production-run age, as is DEF line wear (especially the heated lines that prevent DEF freezing in cold operation).</p>
+
+<h3>DEF injector and SCR catalyst</h3>
+
+<p>The DEF injector atomizes DEF into the exhaust upstream of the SCR catalyst. Injector clogging from DEF deposits is a routine fault. The SCR catalyst itself has a long service life but does need eventual replacement.</p>
+
+<h3>NOx sensors</h3>
+
+<p>Two NOx sensors monitor exhaust before and after the SCR catalyst &mdash; they verify SCR is performing correctly. Sensor failure is routine production-run-age wear.</p>
+
+<h2 id="section-5">Hydrostatic dual-path transmission</h2>
+
+<p>The 850M retains the hydrostatic dual-path architecture used since the 850H. Each track has its own variable-displacement pump and hydraulic motor controlled by joystick. The M generation refines the calibration further with LiveLink telematics integration for fault reporting.</p>
+
+<p>Hydrostatic service items remain consistent across H/K/L/M generations: charge pump, charge filter, hydraulic motor seals, drive pump bearings, control valve degradation.</p>
+
+<h2 id="section-6">Variants: Standard, LT, LGP</h2>
+
+<p>The 850M shipped in three primary track configurations:</p>
+
+<ul>
+<li><strong>Standard</strong> &mdash; standard-width track, balanced general-purpose dozing.</li>
+<li><strong>LT (Long Track)</strong> &mdash; extended-length track frame for additional flotation and stability.</li>
+<li><strong>LGP (Low Ground Pressure)</strong> &mdash; wider grouser pads and extended track frame for soft-ground / wetlands / agricultural-soil work.</li>
+</ul>
+
+<p>Variant affects undercarriage parts. Confirm Standard vs. LT vs. LGP by serial before ordering.</p>
+
+<h2 id="section-7">LiveLink Pro telematics</h2>
+
+<p>Case SiteWatch / LiveLink Pro provides remote monitoring of the 850M&#39;s operational data &mdash; engine hours, fuel and DEF consumption, fault codes, location tracking, and operational analytics. For fleet operators, LiveLink turns the 850M into a connected machine: proactive maintenance scheduling becomes practical, fault codes are visible remotely before the operator notices a warning.</p>
+
+<h2 id="section-8">Common 850M service items</h2>
+
+<h3>DEF system service</h3>
+
+<p>DEF quality, DEF tank ventilation, DEF supply pump, DEF injector, and the heated DEF lines are all routine production-run-age service items. Many SCR-system fault codes trace back to DEF quality or supply problems rather than the SCR catalyst itself.</p>
+
+<h3>Routine filter changes</h3>
+
+<p>Engine oil, fuel, air, DEF supply, and hydraulic filter changes on schedule. The hydrostatic system in particular is intolerant of contamination.</p>
+
+<h3>NOx sensor service</h3>
+
+<p>NOx sensors are routine wear items.</p>
+
+<h3>Cab and electronics</h3>
+
+<p>The 850M&#39;s electronic instrumentation, joystick electronics, and LiveLink telematics modules are sophisticated and integrated. Most diagnostic codes resolve with software updates or connector service; some require dealer-level diagnostics.</p>
+
+<h3>Blade cutting edge wear</h3>
+
+<p>Routine blade-related service item. End bits wear faster than the center cutting edge.</p>
+
+<h2 id="section-9">Parts we carry for the Case 850M</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Part</th><th>Cross-fit</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Engine filter service kit</td><td>850M-specific (FPT NEF Tier 4 Final)</td><td>Engine oil, fuel, air filters.</td></tr>
+<tr><td>DEF supply filter</td><td>850M-specific (SCR system)</td><td>Filters DEF before injection.</td></tr>
+<tr><td>NOx sensors (upstream + downstream)</td><td>850M-specific Tier 4 Final emissions</td><td>Routine wear items.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/p/case-new-holland-dozer-suspension-seat-with-headrest-broken-tractor-359121a1/">359121A1 suspension seat</a></td><td>Case / New Holland dozer suspension seat</td><td>Cross-fits the H/K/L Case dozer family (550H + 650H + 650K + 650L + 750K + 750L + 850H + 850K + 850L). Confirm fitment by serial.</td></tr>
+<tr><td>Blade cutting edges &amp; end bits</td><td>Mid-class dozer cross-fit</td><td>Standard or severe-duty cutting edges.</td></tr>
+<tr><td>Blade cylinder seal kits</td><td>850M-specific</td><td>Lift, angle, tilt cylinder seal kits.</td></tr>
+<tr><td>Track undercarriage</td><td>850M-specific by variant (Std / LT / LGP)</td><td>Track pads, idlers, rollers, master pins by variant.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For the complete 850M parts inventory, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 850M?</h3>
+<p>The 850M is current-production &mdash; OEM parts are the primary source and our specialists can verify Standard vs. LT vs. LGP fitment by serial. We can also walk you through the SCR / DEF service profile and LiveLink fault diagnostics.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-10">Where the 850M sits in the Case dozer family</h2>
+
+<p>The 850M is the current-production mid-large frame Case crawler dozer, sitting between the Case 750M and the larger 1150M. Its predecessor is the <a href="https://www.brokentractor.com/p/case-850l-dozer-parts-specs-case-850l-dozer-parts-specs/">Case 850L</a> (Tier 4 Interim, EGR + DPF). The M continues the hydrostatic dual-path drivetrain architecture introduced on the 850H in 2000 and moves to Tier 4 Final SCR + DEF emissions architecture.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 850M, CNH parts catalogs, current FPT NEF Tier 4 Final / Stage V engine documentation, and the verified BigCommerce catalog at brokentractor.com. As a current-production machine, the 850M&#39;s documentation supersedes earlier-generation references for the M&#39;s specific service procedures.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor (Tier 4 Interim)</span><a href="https://www.brokentractor.com/p/case-850l-dozer-parts-specs-case-850l-dozer-parts-specs/">Case 850L Crawler Dozer</a></li>
+<li><span class="meta">Tier 2/3 precursor</span><a href="https://www.brokentractor.com/p/case-850k-dozer-parts-specs-case-850k-dozer-parts-specs/">Case 850K Crawler Dozer</a></li>
+<li><span class="meta">Original hydrostatic 850</span><a href="https://www.brokentractor.com/p/case-850h-dozer-parts-specs-case-850h-dozer-parts-specs/">Case 850H Crawler Dozer</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

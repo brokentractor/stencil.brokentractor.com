@@ -1,0 +1,343 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 1455B Crawler Loader: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The Case 1455B Crawler Loader is the heavy-class crawler-loader sibling to the Case 1450B dozer &mdash; same chassis, same Case A504BDT inline six-cylinder turbocharged diesel engine, same power shift transmission with torque converter. The 1455B substitutes a heavy-duty hydraulic loader bucket and loader arms for the 1450B&#39;s dozer blade and pushframe, delivering large-capacity material handling on a crawler tractor chassis where wheel loaders can&#39;t go.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 10 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-1455b-hero.jpg" alt="Case 1455B Crawler Loader">
+</div>
+</header>
+
+<p>The Case 1455B Crawler Loader is the heavy-class crawler-loader sibling to the <a href="https://www.brokentractor.com/p/case-1450b-crawler-dozer-parts-specs-serial-numbers-case-1450b-crawler-dozer-parts-specs-serial-numbers/">Case 1450B dozer</a>. The 1455B shares chassis, engine, transmission, and undercarriage with the 1450B &mdash; but where the 1450B mounts a dozer blade and pushframe, the 1455B mounts a heavy-duty hydraulic loader bucket on lifting arms. Crawler loaders are the heavy-class material-handling machine for sites where wheel loader traction is inadequate (loose ground, rough terrain, snow, soft soil, mine sites). The 1455B combines crawler tractor stability and traction with loader-quick heavy-class material handling.</p>
+
+<p>The 1455B uses the proven Case A504BDT turbocharged inline six-cylinder diesel &mdash; 504 cubic inches of displacement (approximately 8.3 liters), with turbocharging for the heavy-class output needed for loader work. Power shift transmission with torque converter, like the 1450B.</p>
+
+<div class="bt-callout">
+<strong>1455B = 1450B chassis + heavy-class hydraulic loader</strong>
+The 1455B and 1450B share chassis, drivetrain, engine, undercarriage, operator station, and cab. The difference is on the front: dozer blade and pushframe (1450B) vs. hydraulic loader bucket and loader arms (1455B). When ordering parts, dozer-side hardware (blade cylinders, blade carrier, cutting edges) is 1450B-specific; loader-side hardware (bucket cylinders, bucket linkage, bucket teeth) is 1455B-specific. Chassis, engine, transmission, and undercarriage parts are common between the two machines.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What&#39;s in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Crawler loader vs. crawler dozer</a></li>
+<li><a href="#section-3">Multi-purpose (4-in-1) bucket</a></li>
+<li><a href="#section-4">Case A504BDT inline 6-cylinder turbocharged engine</a></li>
+<li><a href="#section-5">Power shift transmission with torque converter</a></li>
+<li><a href="#section-6">Loader hydraulic system</a></li>
+<li><a href="#section-7">Variants: Standard, LGP</a></li>
+<li><a href="#section-8">Undercarriage</a></li>
+<li><a href="#section-9">Common 1455B service items</a></li>
+<li><a href="#section-10">Parts and cross-fit components for the Case 1455B</a></li>
+<li><a href="#section-11">Where the 1455B sits in the Case crawler line</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 1455B &mdash; factory specifications</h4>
+<dl>
+<dt>Production era</dt><dd>Mid-1980s onward (B-generation contemporary)</dd>
+<dt>Sibling machine</dt><dd>Case 1450B Crawler Dozer (same chassis)</dd>
+<dt>Engine</dt><dd>Case A504BDT inline 6-cylinder turbocharged diesel</dd>
+<dt>Displacement</dt><dd>504 cu in (~8.3 L)</dd>
+<dt>Power</dt><dd>~165 &ndash; 175 horsepower flywheel (configuration dependent)</dd>
+<dt>Transmission</dt><dd>Power shift with torque converter</dd>
+<dt>Hydraulics</dt><dd>Open-center implement circuit, heavy-class loader hydraulics</dd>
+<dt>Bucket capacity</dt><dd>Approximately 3.0 &ndash; 3.5 cubic yards (configuration dependent)</dd>
+<dt>Bucket options</dt><dd>General-purpose bucket, multi-purpose (4-in-1) bucket</dd>
+<dt>Track variants</dt><dd>Standard, LGP (Low Ground Pressure)</dd>
+<dt>Operating weight</dt><dd>~38,000 &ndash; 42,000 lb depending on configuration</dd>
+<dt>Serial plate location</dt><dd>Right side of operator&#39;s platform / chassis frame</dd>
+</dl>
+</div>
+
+<h2 id="section-2">Crawler loader vs. crawler dozer</h2>
+
+<p>The crawler loader configuration uses a front-mounted hydraulic bucket on lifting arms, similar in concept to a wheel loader but mounted on a crawler tractor chassis. The advantages over a wheel loader in heavy applications:</p>
+
+<ul>
+<li><strong>Traction and stability</strong> &mdash; crawler tracks provide superior traction on loose, muddy, or slippery surfaces compared to rubber tires.</li>
+<li><strong>Soft-ground capability</strong> &mdash; wider track footprint reduces ground pressure, allowing operation on soft soil or wetlands where a wheel loader would sink.</li>
+<li><strong>Heavy-class load handling</strong> &mdash; the 1455B&#39;s heavy chassis and turbocharged engine handle large bucket loads of dense material (rock, ore, frozen soil).</li>
+<li><strong>Multi-task versatility</strong> &mdash; load, push, grade, and (with the right bucket options) clamp and dump.</li>
+</ul>
+
+<p>The trade-offs vs. a wheel loader are operating speed (crawlers are slower over distance) and transport (crawlers require a lowboy trailer; wheel loaders can typically drive between job sites).</p>
+
+<h2 id="section-3">Multi-purpose (4-in-1) bucket</h2>
+
+<p>The 1455B was commonly ordered with a multi-purpose (4-in-1) bucket. The 4-in-1 bucket is a hinged bucket &mdash; the floor can be opened hydraulically, turning a standard loader bucket into a clam-shell, grading blade, or dozer-style pushing tool. 4-in-1 bucket cylinders, hinges, and seal kits are routine service items on machines that use the bucket regularly. Confirm bucket type when ordering parts &mdash; standard bucket vs. 4-in-1 bucket service kits are different.</p>
+
+<h2 id="section-4">Case A504BDT inline 6-cylinder turbocharged engine</h2>
+
+<p>The 1455B uses the Case A504BDT inline six-cylinder turbocharged diesel &mdash; same engine as the 1450B dozer. 504 cubic inches of displacement (approximately 8.3 liters), with turbocharging for heavy-class output. Approximately 165&ndash;175 horsepower flywheel.</p>
+
+<p>The A504 engine ecosystem is broad &mdash; accessory parts (water pump, alternator, starter, oil pump) share with other heavy Case industrial 6-cyl applications of the era. Injection pump and injector service is well-documented. Turbocharger service is a routine wear item. Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 1455B engine service kits.</p>
+
+<h2 id="section-5">Power shift transmission with torque converter</h2>
+
+<p>The 1455B uses the same power shift with torque converter transmission as the 1450B. Clutchless gear changes under load, multiple forward and reverse speeds, torque converter providing smooth power transfer. Routine service items: shift solenoids and pressure switches, clutch packs, torque converter, transmission oil cooler, transmission filter.</p>
+
+<h2 id="section-6">Loader hydraulic system</h2>
+
+<p>The 1455B loader uses heavy-duty hydraulic cylinders for boom lift, bucket curl/dump, and (on 4-in-1 buckets) bucket floor open/close. Standard service items at production-run age:</p>
+
+<ul>
+<li>Boom cylinder seal kits &mdash; routine seal-replacement candidate.</li>
+<li>Bucket cylinder seal kits &mdash; routine seal-replacement candidate.</li>
+<li>4-in-1 bucket clam cylinder seal kits &mdash; routine on machines that use the 4-in-1 function frequently.</li>
+<li>Cylinder rod chrome service &mdash; corrosion on rods causes premature seal wear.</li>
+<li>Loader valve seal kits &mdash; control valve seals can develop weep at production-run age.</li>
+</ul>
+
+<h2 id="section-7">Variants: Standard, LGP</h2>
+
+<p>The 1455B shipped in two primary track configurations:</p>
+
+<ul>
+<li><strong>Standard</strong> &mdash; standard-width track, balanced general loader work.</li>
+<li><strong>LGP (Low Ground Pressure)</strong> &mdash; wider grouser pads and extended track frame for soft-ground / wetlands / agricultural-soil work where flotation is the priority.</li>
+</ul>
+
+<p>Track configuration affects undercarriage and frame parts. Confirm Standard vs. LGP by serial before ordering.</p>
+
+<h2 id="section-8">Undercarriage</h2>
+
+<p>The 1455B undercarriage is the same as the 1450B undercarriage &mdash; heavy-class components shared across the 1450 family. Sprocket bolt patterns, idler geometries, master pin dimensions, roller designs all cross-fit with the 1450B. Confirm by part number against your serial. Track chain, roller, idler, and sprocket are all routine wear items at production-run age.</p>
+
+<p>Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 1455B / 1450B-era undercarriage availability.</p>
+
+<h2 id="section-9">Common 1455B service items</h2>
+
+<h3>Engine accessory aging</h3>
+
+<p>Water pump, alternator, starter, injection pump, and turbocharger on the A504BDT are routinely rebuilt or replaced over the engine&#39;s service life. Cooling system service is a routine maintenance milestone on 30-plus-year-old machines.</p>
+
+<h3>Turbocharger wear</h3>
+
+<p>The A504BDT turbocharger is a routine wear item. Symptoms: blue smoke at startup or under load, oil consumption, audible whine outside the normal range, visible shaft play.</p>
+
+<h3>Power shift / torque converter service</h3>
+
+<p>Shift solenoid failure, clutch pack wear, torque converter degradation. The transmission filter and fluid should be on a scheduled service interval.</p>
+
+<h3>Loader hydraulic seal failure</h3>
+
+<p>Boom, bucket, and 4-in-1 clam cylinder seals are routine seal-replacement candidates at production-run age. Cylinder rod chrome corrosion is also typical.</p>
+
+<h3>Bucket teeth and edge wear</h3>
+
+<p>Bucket teeth and edge wear are the most frequent service items on a working 1455B. Replacement teeth and edges are widely available aftermarket.</p>
+
+<h3>4-in-1 bucket hinge and seal service</h3>
+
+<p>The 4-in-1 bucket hinge mechanism and clam cylinder are routine service items on machines that use the 4-in-1 function regularly. Hinge pin and bushing wear can develop play in the bucket floor.</p>
+
+<h3>Undercarriage replacement cycles</h3>
+
+<p>Same heavy-class undercarriage as the 1450B. Track chains, rollers, idlers, and sprockets all have measurable wear lives.</p>
+
+<h3>Operator station and ROPS</h3>
+
+<p>Cab and canopy hardware, seat cushion replacement, and floorboard wear are typical aging-machine issues. ROPS structural integrity should be verified before resale.</p>
+
+<h3>Wiring and electrical</h3>
+
+<p>30-plus-year-old wiring harnesses are routinely brittle.</p>
+
+<h2 id="section-10">Parts and cross-fit components for the Case 1455B</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Component area</th><th>What to look for</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Sprockets &amp; segments</a></td><td>Heavy-class track sprocket assemblies, bolt-on segments</td><td>Cross-fits 1450 / 1450B family on shared bolt patterns.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Idlers &amp; rollers</a></td><td>Heavy-class front idler assemblies, top and bottom roller sets</td><td>Cross-fits the 1450 family undercarriage.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Track recoil &amp; adjusters</a></td><td>Recoil spring, adjuster yoke, chrome rod</td><td>Confirm by serial &mdash; production-run changes apply.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Master pins</a></td><td>Heavy-class track master pin and bushing</td><td>Master pins share geometry across the 1450 / 1455 family.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Bucket teeth &amp; cutting edges</a></td><td>Standard and severe-duty bucket teeth, edges</td><td>Loader-specific &mdash; different from 1450B dozer blade hardware.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Boom &amp; bucket cylinder seal kits</a></td><td>Boom cylinder, bucket cylinder seal kits</td><td>Loader-specific cylinder dimensions. Confirm before ordering.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">4-in-1 bucket clam cylinder kits</a></td><td>Clam cylinder seal kits</td><td>For 4-in-1 multi-purpose buckets only.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Bucket pins &amp; bushings</a></td><td>Pivot pins and bushings</td><td>Routine wear items on the bucket pivot.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Engine accessory parts</a></td><td>Water pump, alternator, starter, fuel injection</td><td>Case A504BDT accessories share parts with other heavy Case industrial 6-cyl applications.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Turbocharger (A504BDT)</a></td><td>Heavy-class turbocharger</td><td>Routine wear item &mdash; aftermarket rebuild and replacement available.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Radiators &amp; cooling</a></td><td>Radiator cores, fan belts, hose sets</td><td>Cross-fit with 1450B cooling system.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Filter service kits</a></td><td>Engine oil, fuel, air, hydraulic filter sets</td><td>Filter kits packaged by application speed routine service.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Power shift transmission parts</a></td><td>Shift solenoids, clutch packs, oil cooler, torque converter</td><td>Same transmission as 1450B &mdash; broad parts cross-fit.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Operator seat</a></td><td>Universal industrial seat with mount kit</td><td>Universal Case industrial seats fit the 1455B operator station.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For 1455B parts inventory and cross-fit confirmation, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub or contact our parts desk directly.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 1455B?</h3>
+<p>The 1455B shares chassis with the 1450B dozer but uses loader-specific bucket and hydraulic hardware on the front. Our specialists can verify dozer vs. loader fitment by serial and walk you through the 1450 family&#39;s cross-fit options.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-11">Where the 1455B sits in the Case crawler line</h2>
+
+<p>The 1455B is the heavy-class crawler loader sibling to the <a href="https://www.brokentractor.com/p/case-1450b-crawler-dozer-parts-specs-serial-numbers-case-1450b-crawler-dozer-parts-specs-serial-numbers/">Case 1450B dozer</a>. Both share chassis, drivetrain, engine, and undercarriage &mdash; the 1455B substitutes a heavy-duty hydraulic loader bucket on lifting arms for the 1450B&#39;s dozer blade and pushframe. For heavy-class material handling on soft ground or in environments where wheel loaders struggle, the 1455B fills a specific and durable niche.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 1455B production family, CNH parts catalogs, Case A504BDT engine documentation, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">Sibling dozer</span><a href="https://www.brokentractor.com/p/case-1450b-crawler-dozer-parts-specs-serial-numbers-case-1450b-crawler-dozer-parts-specs-serial-numbers/">Case 1450B Crawler Dozer</a></li>
+<li><span class="meta">Original 1450</span><a href="https://www.brokentractor.com/p/case-1450-crawler-dozer-parts-specs-serial-numbers-case-1450-crawler-dozer-parts-specs-serial-numbers/">Case 1450 Crawler Dozer</a></li>
+<li><span class="meta">Smaller-class crawler loader</span><a href="https://www.brokentractor.com/p/case-855d-crawler-loader-specs-parts-serial-numbers-1980-1994-case-855d-crawlerloader-specs/">Case 855D Crawler Loader</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

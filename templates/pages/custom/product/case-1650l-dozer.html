@@ -1,0 +1,327 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 1650L Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The Case 1650L is the L-generation heavy-class Case crawler dozer &mdash; Tier 4 Interim emissions, Cummins-derived inline six-cylinder turbocharged diesel with cooled EGR and a diesel particulate filter (DPF), and continued hydrostatic dual-path transmission. The L-generation refined the 1650K&rsquo;s hydrostatic chassis with substantial cab and electronics updates and the full Tier 4 Interim aftertreatment package.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 11 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-1650l-hero.jpg" alt="Case 1650L Crawler Dozer">
+</div>
+</header>
+
+<p>The Case 1650L Crawler Dozer is the L-generation heavy-class Case crawler dozer. The 1650L continues the hydrostatic dual-path drivetrain architecture introduced on the 1150H / <a href="https://www.brokentractor.com/p/case-1650k-crawler-dozer-parts-specs-serial-numbers-case-1650k-crawler-dozer-parts-specs-serial-numbers/">1650K</a> and adds full Tier 4 Interim emissions compliance &mdash; cooled exhaust gas recirculation (cooled EGR) plus a diesel particulate filter (DPF) aftertreatment to the Cummins-derived QSB-family engine. The 1650L&rsquo;s cab and electronics see another refresh: improved instrumentation, refined joystick control geometry, updated HVAC, and integration with Case SiteWatch telematics.</p>
+
+<p>The 1650L bridges the <a href="https://www.brokentractor.com/p/case-1650k-crawler-dozer-parts-specs-serial-numbers-case-1650k-crawler-dozer-parts-specs-serial-numbers/">1650K</a> (which spanned the Tier 3 to Tier 4 Interim transition) and the current-production <a href="https://www.brokentractor.com/p/case-1650m-crawler-dozer-parts-specs-serial-numbers-case-1650m-crawler-dozer-parts-specs-serial-numbers/">1650M</a> (Tier 4 Final SCR + DEF). For owners and operators today, the 1650L is a modern hydrostatic heavy-class Case dozer with the DPF service profile but without the SCR / DEF complexity of the M-generation.</p>
+
+<div class="bt-callout">
+<strong>The 1650L is the full-DPF Tier 4 Interim heavy-class hydrostatic dozer</strong>
+The 1650L runs the complete Tier 4 Interim aftertreatment package &mdash; cooled EGR and DPF together &mdash; and uses the Cummins QSB-family engine architecture from the 1650K. The 1650M successor moves to Tier 4 Final SCR + DEF, which eliminates the DPF but adds the DEF tank, supply pump, injector, and NOx sensor service items.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">How the 1650L differs from the 1650K predecessor</a></li>
+<li><a href="#section-3">Variants: Standard, LT, LGP</a></li>
+<li><a href="#section-4">Cummins QSB-family Tier 4 Interim engine</a></li>
+<li><a href="#section-5">Tier 4 Interim emissions system</a></li>
+<li><a href="#section-6">Hydrostatic dual-path transmission</a></li>
+<li><a href="#section-7">Common 1650L service issues</a></li>
+<li><a href="#section-8">Parts and cross-fit components for the Case 1650L</a></li>
+<li><a href="#section-9">Where the 1650L sits in the Case dozer family</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 1650L &mdash; factory specifications</h4>
+<dl>
+<dt>Production era</dt><dd>Late 2010s L-generation</dd>
+<dt>Predecessor</dt><dd>Case 1650K (Tier 3 / Tier 4 Interim)</dd>
+<dt>Successor</dt><dd>Case 1650M (2013 onward, Tier 4 Final SCR + DEF)</dd>
+<dt>Engine</dt><dd>Cummins QSB-family inline 6-cyl turbocharged diesel, Tier 4 Interim with cooled EGR + DPF</dd>
+<dt>Displacement</dt><dd>~6.7 L (configuration dependent)</dd>
+<dt>Power</dt><dd>~205 &ndash; 225 horsepower flywheel (configuration dependent)</dd>
+<dt>Transmission</dt><dd>Hydrostatic dual-path</dd>
+<dt>Emissions tier</dt><dd>Tier 4 Interim (Tier 4i)</dd>
+<dt>Aftertreatment</dt><dd>Cooled EGR + Diesel Particulate Filter (DPF)</dd>
+<dt>Variants</dt><dd>Standard, LT (Long-Track), LGP (Low Ground Pressure)</dd>
+<dt>Operating weight</dt><dd>~45,500 &ndash; 49,500 lb depending on variant</dd>
+<dt>Hydraulic system</dt><dd>Load-sensing implement hydraulics, separate hydrostatic drive circuits</dd>
+<dt>Telematics</dt><dd>Case SiteWatch (later production)</dd>
+<dt>Blade</dt><dd>6-way bulldozer blade &mdash; angle, tilt, lift hydraulically actuated</dd>
+<dt>Serial plate location</dt><dd>Right side of cab platform, near operator entry</dd>
+</dl>
+</div>
+
+<h2 id="section-2">How the 1650L differs from the 1650K predecessor</h2>
+
+<ul>
+<li><strong>Full Tier 4 Interim aftertreatment standard</strong> &mdash; where the 1650K spanned Tier 3 (early production, no DPF) and Tier 4 Interim (late production, EGR + DPF), the 1650L is Tier 4 Interim across the line.</li>
+<li><strong>Refreshed cab and electronics</strong> &mdash; improved HVAC, electronic instrumentation cluster, updated joystick control geometry, better visibility to the blade corners.</li>
+<li><strong>Refined hydrostatic drivetrain calibration</strong> &mdash; same dual-path architecture, refined control software.</li>
+<li><strong>Case SiteWatch telematics</strong> &mdash; remote monitoring integration on later production.</li>
+<li><strong>Compatible blade-carrier and chassis hardware with 1650K</strong> &mdash; most non-emissions service items carry forward from the 1650K.</li>
+</ul>
+
+<h2 id="section-3">Variants: Standard, LT, LGP</h2>
+
+<p>The 1650L shipped in three primary track configurations:</p>
+
+<ul>
+<li><strong>Standard</strong> &mdash; standard-width track, balanced general dozing.</li>
+<li><strong>LT (Long Track)</strong> &mdash; extended-length track frame for additional flotation and stability.</li>
+<li><strong>LGP (Low Ground Pressure)</strong> &mdash; wider grouser pads with extended track frame for soft-ground / wetlands / agricultural-soil work.</li>
+</ul>
+
+<p>Variant affects undercarriage parts. Confirm Standard vs. LT vs. LGP by serial before ordering.</p>
+
+<h2 id="section-4">Cummins QSB-family Tier 4 Interim engine</h2>
+
+<p>The 1650L uses the Cummins QSB-family inline six-cylinder turbocharged diesel &mdash; the Tier 4 Interim evolution of the engine used on the 1650K. Approximately 6.7 L displacement. The QSB Tier 4 Interim configuration combines turbocharging with cooled exhaust gas recirculation (cooled EGR) and a diesel particulate filter (DPF) aftertreatment.</p>
+
+<p>The Cummins QSB family parts ecosystem is broad &mdash; filters, injectors, water pumps, turbochargers, and complete rebuild components are widely available through both Case dealer and aftermarket Cummins channels. Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for current 1650L engine service kits.</p>
+
+<h2 id="section-5">Tier 4 Interim emissions system</h2>
+
+<p>The Tier 4 Interim emissions package on the 1650L combines two main systems:</p>
+
+<h3>Cooled EGR (exhaust gas recirculation)</h3>
+
+<p>A portion of the exhaust is routed back through an EGR cooler, then mixed with the intake air before combustion. This reduces NOx emissions. The EGR cooler can develop internal leaks at production-run age &mdash; failure mode is coolant loss into the intake or exhaust side. EGR valve fouling and stuck conditions are also routine. EGR system codes are common on aging Tier 4i engines.</p>
+
+<h3>Diesel particulate filter (DPF)</h3>
+
+<p>The DPF captures soot particles from the exhaust. Soot accumulates in the filter substrate during normal operation; periodic regeneration burns the soot off (passive regeneration during heavy-load operation, active regeneration when the engine commands an injection cycle). Ash accumulates over time and requires DPF service / replacement / ash removal at a service interval typically measured in thousands of hours.</p>
+
+<p>Both EGR and DPF service should be on a maintenance schedule for 1650L owners.</p>
+
+<h2 id="section-6">Hydrostatic dual-path transmission</h2>
+
+<p>The 1650L uses the hydrostatic dual-path architecture introduced on the 1150H / 1650K &mdash; each track has its own variable-displacement pump and hydraulic motor, controlled by joystick. The L generation refines the control software for smoother low-speed grading and finer joystick proportional response.</p>
+
+<p>Hydrostatic service items: charge pump, charge filter, hydraulic motor seals, drive pump bearings, control valve degradation. Hydraulic oil cleanliness is critical &mdash; the hydrostatic system is intolerant of contamination.</p>
+
+<h2 id="section-7">Common 1650L service issues</h2>
+
+<h3>DPF regeneration and ash service</h3>
+
+<p>Active regeneration cycles consume fuel and require a clear exhaust path. If the operator interrupts regeneration cycles frequently, soot accumulates faster than it can burn off &mdash; eventually triggering forced regeneration warnings or DPF service codes. Ash service intervals depend on operation hours and idle profile.</p>
+
+<h3>EGR cooler internal leaks</h3>
+
+<p>Internal EGR cooler leaks are a routine production-run-age failure mode. Symptoms: coolant loss with no external leak, increased coolant in the intake, or white smoke under load.</p>
+
+<h3>Hydrostatic transmission service</h3>
+
+<p>Same hydrostatic-system service profile as the 1650K and 1150H &mdash; charge pump, control valve, motor seal, oil contamination. Hydrostatic diagnosis usually requires dealer service tools for pressure testing.</p>
+
+<h3>Cummins QSB turbocharger wear</h3>
+
+<p>The turbocharger is a routine wear item on 10-plus-year-old engines. Symptoms: blue smoke at startup or under load, oil consumption climbing, audible whine outside the normal range, or visible shaft play.</p>
+
+<h3>Blade cylinder seal failure</h3>
+
+<p>Blade cylinder seal weep is normal at production-run age. Seal kit rebuilds address most cases.</p>
+
+<h3>Cutting edge wear</h3>
+
+<p>Cutting edge replacement is the most frequent blade-related service item. End bits wear faster than the center cutting edge.</p>
+
+<h3>Cab electronics and SiteWatch</h3>
+
+<p>The L-generation electronic instrumentation, joystick electronics, and SiteWatch telematics modules are sophisticated and integrated. Most diagnostic codes resolve with connector service; some require dealer-level diagnostics.</p>
+
+<h2 id="section-8">Parts and cross-fit components for the Case 1650L</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Component area</th><th>What to look for</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Sprockets &amp; segments</a></td><td>Heavy-class track sprocket assemblies, bolt-on segments</td><td>Variant-specific (Standard / LT / LGP) &mdash; confirm by serial.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Idlers &amp; rollers</a></td><td>Heavy-class front idler assemblies, top and bottom roller sets</td><td>Variant-specific roller counts and bushing dimensions.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Track recoil &amp; adjusters</a></td><td>Recoil spring, adjuster yoke, chrome rod</td><td>L-generation hardware specific.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Master pins</a></td><td>Heavy-class track master pin and bushing</td><td>Master pins share geometry across the 1650L family.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Cutting edges &amp; end bits</a></td><td>Standard and severe-duty cutting edges, end bits</td><td>Aftermarket cutting edges widely available for the 1650L&rsquo;s heavy-class blade.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Blade cylinder seal kits</a></td><td>Angle, tilt, lift cylinder seal kits</td><td>Confirm cylinder dimensions before ordering.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Hydrostatic system service parts</a></td><td>Charge pump, charge filter, drive pump components</td><td>Hydrostatic-specific service items.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Engine accessory parts (Cummins QSB family)</a></td><td>Water pump, alternator, starter, fuel injection</td><td>Cummins QSB parts ecosystem.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Turbocharger (Cummins QSB)</a></td><td>Cummins QSB turbocharger</td><td>Aftermarket Cummins QSB turbocharger replacement available.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">EGR + DPF service parts</a></td><td>EGR cooler, EGR valve, DPF service items</td><td>1650L-specific Tier 4 Interim aftertreatment.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">NOx sensors</a></td><td>Exhaust NOx monitoring sensors</td><td>Routine wear items at production-run age.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Filter service kits</a></td><td>Engine oil, fuel, air, hydraulic filter sets</td><td>Tier 4 Interim-spec filter kits.</td></tr>
+<tr><td><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Operator seat</a></td><td>Universal industrial seat with mount kit</td><td>Universal Case industrial seats fit the 1650L operator station.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For the complete 1650L parts inventory, browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub.</p>
+
+<div class="bt-cta">
+<h3>Working on a Case 1650L?</h3>
+<p>The 1650L is the full-DPF Tier 4 Interim heavy-class hydrostatic Case dozer. Our specialists can verify Standard vs. LT vs. LGP fitment by serial and walk you through the EGR / DPF service profile.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-9">Where the 1650L sits in the Case dozer family</h2>
+
+<p>The 1650L is the L-generation heavy-class Case crawler dozer, sitting between the <a href="https://www.brokentractor.com/p/case-1150k-crawler-dozer-parts-specs-serial-numbers-case-1150k-crawler-dozer-parts-specs-serial-numbers/">Case 1150K</a>/M family and the larger 1850-class machines. Its predecessor is the <a href="https://www.brokentractor.com/p/case-1650k-crawler-dozer-parts-specs-serial-numbers-case-1650k-crawler-dozer-parts-specs-serial-numbers/">Case 1650K</a> (Tier 3 / Tier 4 Interim transition) and its successor is the <a href="https://www.brokentractor.com/p/case-1650m-crawler-dozer-parts-specs-serial-numbers-case-1650m-crawler-dozer-parts-specs-serial-numbers/">Case 1650M</a> (Tier 4 Final SCR + DEF).</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature for the 1650L production family, CNH parts catalogs, Cummins QSB-family Tier 4 Interim engine documentation, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">Predecessor</span><a href="https://www.brokentractor.com/p/case-1650k-crawler-dozer-parts-specs-serial-numbers-case-1650k-crawler-dozer-parts-specs-serial-numbers/">Case 1650K Crawler Dozer</a></li>
+<li><span class="meta">Successor (Tier 4 Final)</span><a href="https://www.brokentractor.com/p/case-1650m-crawler-dozer-parts-specs-serial-numbers-case-1650m-crawler-dozer-parts-specs-serial-numbers/">Case 1650M Crawler Dozer</a></li>
+<li><span class="meta">Smaller-class L contemporary</span><a href="https://www.brokentractor.com/p/case-1150k-crawler-dozer-parts-specs-serial-numbers-case-1150k-crawler-dozer-parts-specs-serial-numbers/">Case 1150K Crawler Dozer</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>
