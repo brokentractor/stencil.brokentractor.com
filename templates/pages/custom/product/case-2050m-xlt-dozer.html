@@ -1,0 +1,281 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">Case 2050M XLT Crawler Dozer: Specs, Parts &amp; Common Issues</h1>
+<p class="bt-deck">The Case 2050M XLT is the heaviest crawler dozer Case Construction Equipment has ever offered &mdash; flagship of the M-series line, Extended Long Track undercarriage, Cummins QSL Tier 4 Final diesel, and a hydrostatic dual-path drivetrain scaled to handle large-acreage land-clearing, major commercial work, and mining-class push tasks.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 11 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-2050m-xlt-hero.jpg" alt="Case 2050M XLT Crawler Dozer">
+</div>
+</header>
+
+<p>The Case 2050M XLT is the largest crawler dozer Case produces &mdash; flagship of the M-series, Tier 4 Final emissions, Cummins QSL inline six-cylinder turbocharged diesel, and a hydrostatic dual-path transmission sized to match the chassis. The XLT designation marks the Extended Long Track undercarriage variant &mdash; longer track on the ground than the standard 2050M, lower ground pressure, more stability in the cut, more push-down force translated into productive blade work on heavy material.</p>
+
+<p>Above the 1850M and outside the production envelope of the <a href="https://www.brokentractor.com/p/case-1650m-crawler-dozer-parts-specs-serial-numbers-case-1650m-crawler-dozer-parts-specs-serial-numbers/">1650M</a>, the 2050M XLT targets applications that the smaller M-series machines run out of capacity for: large-scale land-clearing, major road and highway construction, mining and quarry work, large landfill operations, and heavy site prep where pushing power and undercarriage flotation both matter.</p>
+
+<div class="bt-callout">
+<strong>The 2050M XLT is the flagship Case crawler dozer</strong>
+The 2050M XLT is the heaviest, most powerful crawler dozer Case Construction offers in current production. Cummins QSL 8.9L engine, Tier 4 Final emissions with DPF + SCR + DEF, hydrostatic dual-path drivetrain, Extended Long Track undercarriage, factory SmartGrade-compatible cab options. Transport is heavy-duty lowboy with over-size permitting; operating cost reflects the size and the modern emissions service envelope.
+</div>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">At-a-glance specifications</a></li>
+<li><a href="#section-2">Engine, hydraulics, and drivetrain</a></li>
+<li><a href="#section-3">Common service items on the 2050M XLT</a></li>
+<li><a href="#section-4">Parts we carry for the Case 2050M XLT</a></li>
+<li><a href="#section-5">What to verify before ordering</a></li>
+<li><a href="#section-6">Why the 2050M XLT is the flagship</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">At-a-glance specifications</h2>
+
+<div class="bt-spec">
+<h4>Case 2050M XLT &mdash; factory specifications</h4>
+<dl>
+<dt>Class</dt><dd>Flagship Crawler Dozer</dd>
+<dt>Generation</dt><dd>M-Series</dd>
+<dt>Engine</dt><dd>Cummins QSL inline 6-cylinder turbocharged diesel</dd>
+<dt>Displacement</dt><dd>8.9 L</dd>
+<dt>Emissions tier</dt><dd>Tier 4 Final (DPF + SCR + DEF)</dd>
+<dt>Transmission</dt><dd>Hydrostatic dual-path</dd>
+<dt>Undercarriage</dt><dd>Extended Long Track (XLT)</dd>
+<dt>Blade</dt><dd>Heavy-duty 6-way (angle, tilt, lift)</dd>
+<dt>SmartGrade-compatible</dt><dd>Yes (factory or aftermarket integration)</dd>
+<dt>Serial plate location</dt><dd>Right side of cab platform, near operator entry</dd>
+<dt>Smaller sibling</dt><dd>Case 1850M</dd>
+<dt>Compact sibling</dt><dd>Case 1650M</dd>
+</dl>
+</div>
+
+<div class="bt-callout">
+<strong>Locating your serial number</strong>
+On the Case 2050M XLT the serial number plate is on the right side of the cab platform near the operator entry. There is also a duplicate ID plate inside the cab. The Cummins QSL engine has its own engine serial &mdash; confirm both before ordering year-specific or emissions-revision parts.
+</div>
+
+<h2 id="section-2">Engine, hydraulics, and drivetrain</h2>
+
+<p>The 2050M XLT runs the Cummins QSL inline six-cylinder turbocharged diesel &mdash; 8.9 liters of displacement, common-rail high-pressure fuel injection, electronic engine control, and Tier 4 Final emissions aftertreatment (DPF, DEF tank with SCR catalyst). The QSL is a heavy-class industrial Cummins with broad parts availability through Cummins service literature and industrial channels.</p>
+
+<p>Drivetrain is hydrostatic dual-path: two closed-loop hydrostatic circuits &mdash; one per track &mdash; driven from the engine through a charge pump, controlled electrohydraulically through the operator&rsquo;s joysticks. There is no torque converter and no power-shift transmission in the traditional sense; the hydrostatic dual-path layout is what gives modern Case dozers their counter-rotation and infinitely variable travel speed. Implement hydraulics are load-sensing on a separate circuit, sized for the heavy 6-way blade and rear ripper attachment options.</p>
+
+<p>The XLT undercarriage extends track length on the ground versus the standard 2050M &mdash; translates to lower ground pressure (better flotation on soft material) and more stable blade work in undulating terrain. Final drives are planetary, sized for the engine output and undercarriage loads.</p>
+
+<h2 id="section-3">Common service items on the 2050M XLT</h2>
+
+<ul>
+<li><strong>Engine internals:</strong> Cummins QSL pistons, rings, sleeves, bearings, head gaskets, full overhaul kits. Cummins industrial parts ecosystem applies.</li>
+<li><strong>Tier 4 Final aftertreatment:</strong> DPF service intervals and regeneration behavior, DEF tank and dosing module, SCR catalyst, EGR cooler service.</li>
+<li><strong>Fuel system:</strong> Cummins common-rail high-pressure pump, electronic injectors, lift pump, very tight water-separator filtration &mdash; water in fuel is the fastest way to damage common-rail injectors.</li>
+<li><strong>Cooling system:</strong> Radiator, water pump, thermostat, fan, charge-air cooler, hoses, belts. <a href="https://www.brokentractor.com/p/case-dozer-cab-heater-hose-valve-301803r91/">Cab heater hose shut-off valve (301803R91)</a> fits Case dozers from the 1150B era through the 2050M &mdash; a recurring service item.</li>
+<li><strong>Hydrostatic drive:</strong> Closed-loop hydrostatic pumps (two), track drive motors, charge pump, filters &mdash; keep this oil clean and at temperature.</li>
+<li><strong>Implement hydraulics:</strong> Blade lift, tilt, and angle cylinder seal kits, control valves, hoses, rear ripper cylinder service.</li>
+<li><strong>Undercarriage (XLT):</strong> Track chains, shoes, rollers, idlers, sprockets, recoil springs &mdash; heavy-duty XLT-spec components. Front idlers and bottom rollers run on tight tolerances under heavy ground pressure.</li>
+<li><strong>Drivetrain:</strong> Planetary final drive service, seals, bearings.</li>
+<li><strong>Brakes:</strong> Multi-disc wet brake service integrated with the hydrostatic deceleration logic.</li>
+<li><strong>Electrical / ECU:</strong> Cummins engine ECU, machine controller, instrument cluster, sensors, wiring harness, telematics module.</li>
+<li><strong>Operator station:</strong> Cab HVAC (heater valve 301803R91 cross-fits the dozer family), seat, gauges, joystick controls.</li>
+</ul>
+
+<h2 id="section-4">Parts we carry for the Case 2050M XLT</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Category</th><th>Common parts</th><th>Browse</th></tr></thead>
+<tbody>
+<tr><td>Engine</td><td>Cummins QSL 8.9L internals, manifolds, mounts</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+engine">Browse engine parts</a></td></tr>
+<tr><td>Aftertreatment</td><td>DPF, DEF dosing, SCR, EGR components</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+dpf">Browse aftertreatment</a></td></tr>
+<tr><td>Fuel system</td><td>Common-rail injectors, high-pressure pump, lift pump, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+fuel">Browse fuel system</a></td></tr>
+<tr><td>Cooling</td><td>Radiator, water pump, charge-air cooler, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+cooling">Browse cooling parts</a></td></tr>
+<tr><td>Cab HVAC</td><td>Cab heater hose shut-off valve (301803R91, cross-fit through Case dozer line)</td><td><a href="https://www.brokentractor.com/p/case-dozer-cab-heater-hose-valve-301803r91/">301803R91 heater valve</a></td></tr>
+<tr><td>Hydrostatic drive</td><td>Closed-loop pumps, track drive motors, charge pump, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+hydrostatic">Browse hydrostatic</a></td></tr>
+<tr><td>Implement hydraulics</td><td>Blade and ripper cylinders, seal kits, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+hydraulic">Browse hydraulics</a></td></tr>
+<tr><td>Undercarriage (XLT)</td><td>Track chains, shoes, rollers, idlers, sprockets</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+undercarriage">Browse undercarriage</a></td></tr>
+<tr><td>Final drive</td><td>Planetary components, seals, bearings</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+final+drive">Browse final drive</a></td></tr>
+<tr><td>Operator station</td><td>Cab parts, seat, gauges, joysticks</td><td><a href="https://www.brokentractor.com/search.php?search_query=case+2050M+cab">Browse operator station</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bt-cta">
+<h3>Need a part for your Case 2050M XLT?</h3>
+<p>Call our parts team with your serial number and engine number &mdash; we&rsquo;ll match the right component to your machine.</p>
+<p>Mon &ndash; Fri, 7:00 AM &ndash; 5:00 PM CT</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-5">What to verify before ordering</h2>
+
+<ul>
+<li><strong>Serial number.</strong> Confirm the serial on the right side of the cab platform before ordering year-specific parts. The 2050M has seen Tier 4 Final emissions revisions during production.</li>
+<li><strong>Engine serial.</strong> Cummins QSL internal and aftertreatment parts must match the engine serial. The QSL has multiple emissions and calibration revisions.</li>
+<li><strong>XLT vs. standard 2050M.</strong> Extended Long Track undercarriage uses different track chain length, idler and roller counts, and sprocket geometry than the standard 2050M.</li>
+<li><strong>SmartGrade configuration.</strong> SmartGrade-equipped machines have additional GNSS antennas, mast hardware, and control electronics &mdash; confirm by configuration before ordering grade-control components.</li>
+<li><strong>Tier 4 Final emissions revision.</strong> DPF, DEF dosing, SCR catalyst, and ECU calibration can vary by build year &mdash; confirm by serial.</li>
+<li><strong>Blade configuration.</strong> 6-way blade hydraulic geometry and rear ripper configuration vary &mdash; confirm by serial before ordering attachment hydraulics.</li>
+</ul>
+
+<h2 id="section-6">Why the 2050M XLT is the flagship</h2>
+
+<p>The 2050M XLT is the heaviest crawler dozer Case Construction offers &mdash; the machine that customers reach for when the 1850M runs out of pushing power or the application demands the flotation and stability of an Extended Long Track undercarriage. Major land-clearing, large-acreage site prep, mining and quarry push work, landfill operations, and heavy commercial road construction are the bread and butter applications.</p>
+
+<p>Maintenance priorities on a 2050M XLT: clean fuel with tight water separation (common-rail injection demands it), DPF regen behavior and DEF quality tracking, hydrostatic charge pressure and filtration, undercarriage wear monitoring (XLT undercarriage components are sized for heavy ground pressure but track and roller life is still the largest single recurring cost on a dozer this size), and engine overhaul intervals tracked against Cummins QSL guidance.</p>
+
+<p>Browse the <a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/">Case Dozer Parts</a> hub for 2050M XLT parts coverage across the full service envelope &mdash; from routine filters through engine overhaul and undercarriage replacement.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory Case service literature, Case operator&rsquo;s manuals, Cummins QSL engine service literature, and the CNH/Case parts catalog for the 2050M XLT production family.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related Case dozer spotlights</h3>
+<ul>
+<li><span class="meta">Smaller M-series sibling</span><a href="https://www.brokentractor.com/p/case-1650m-crawler-dozer-parts-specs-serial-numbers-case-1650m-crawler-dozer-parts-specs-serial-numbers/">Case 1650M Crawler Dozer</a></li>
+<li><span class="meta">K-generation flagship predecessor</span><a href="https://www.brokentractor.com/p/case-1850k-dozer-specs-parts-and-serial-numbers-2002-2011-case-1850k-dozer-specs-parts-and-serial-information/">Case 1850K Crawler Dozer</a></li>
+<li><span class="meta">Dozer hub</span><a href="https://www.brokentractor.com/c/case-construction-parts/case-dozer-parts/case-dozer-specs-and-information/">Case &amp; IH Dozer Specs and Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>
