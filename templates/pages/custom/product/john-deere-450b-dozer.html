@@ -1,0 +1,281 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0}
+  .bt-feature img{width:100%;height:auto;display:block;border-radius:8px}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">John Deere 450B Crawler Dozer: The B-Generation Refresh of the Mid-Class JD Crawler</h1>
+<p class="bt-deck">Built from 1970 through 1976, the 450B refined the original 450 with running-change engine improvements, upgraded hydraulics, and a more refined operator station &mdash; while keeping the mechanical drivetrain that made the 450 line easy to service and easy to keep running.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 9 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/john-deere-450b-hero.jpg" alt="John Deere 450B Crawler Dozer">
+</div>
+</header>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">Where the 450B fits in the JD crawler family</a></li>
+<li><a href="#section-2">What changed from the original 450 to the 450B</a></li>
+<li><a href="#section-3">Engine, drivetrain, and steering</a></li>
+<li><a href="#section-4">Common service items on the 450B</a></li>
+<li><a href="#section-5">Parts and cross-fit components for the John Deere 450B</a></li>
+<li><a href="#section-6">What to verify before ordering</a></li>
+<li><a href="#section-7">Why the 450B remains a working machine</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">Where the 450B fits in the JD crawler family</h2>
+
+<p>By 1970 the original <a href="https://www.brokentractor.com/p/john-deere-450-dozer-crawler-tractor-johndeere-450-dozer-specs/">450 Crawler Dozer</a> had been on the market five years and JD had collected enough field data to know exactly what needed improving. The result was the 450B &mdash; same mid-class chassis and proven mechanical drivetrain, refined where it mattered.</p>
+
+<p>The B refresh delivered an upgraded JD 4-cylinder diesel with running engine changes through the production run, refined implement hydraulics, an updated operator station with reorganized controls and improved seat design, and a strengthened undercarriage. Steering remained clutch-and-brake mechanical, and the multi-speed mechanical transmission carried over from the original 450 with continued refinement.</p>
+
+<p>The 450B ran from 1970 through 1976 alongside its loader sibling and was succeeded by the wet-steering 450C in late 1974 &mdash; there was production overlap as JD phased the C generation in.</p>
+
+<div class="bt-spec">
+<h4>JD 450B Crawler Dozer &mdash; Quick Specs</h4>
+<dl>
+<dt>Production</dt><dd>1970&ndash;1976</dd>
+<dt>Class</dt><dd>Mid-Size Crawler Dozer</dd>
+<dt>Engine</dt><dd>JD 4-Cylinder Diesel</dd>
+<dt>Drivetrain</dt><dd>Mechanical, Multi-Speed</dd>
+<dt>Steering</dt><dd>Clutch &amp; Brake (Dry)</dd>
+<dt>Predecessor</dt><dd>JD 450 (Original)</dd>
+<dt>Successor</dt><dd>JD 450C (Wet Steering)</dd>
+</dl>
+</div>
+
+<h2 id="section-2">What changed from the original 450 to the 450B</h2>
+
+<p>The B generation was a refinement program rather than a clean-sheet redesign. Key changes:</p>
+
+<ul>
+<li><strong>Engine:</strong> Running improvements to the JD 4-cylinder diesel including refined injection, cooling, and lubrication systems. Power output stepped up modestly over the original 450.</li>
+<li><strong>Hydraulics:</strong> Upgraded implement hydraulic pump and revised control valve package for more responsive blade control.</li>
+<li><strong>Operator station:</strong> Reorganized control layout, improved seat, refined gauges and switches. Visibility forward to the blade was improved.</li>
+<li><strong>Undercarriage:</strong> Strengthened roller frames and updated track chain design. Sealed-and-lubricated chain refinements extended service intervals.</li>
+<li><strong>Final drives:</strong> Strengthened planetary final drive components &mdash; a common service item on heavily-worked crawler dozers.</li>
+</ul>
+
+<h2 id="section-3">Engine, drivetrain, and steering</h2>
+
+<p>The 450B ran a JD 4-cylinder diesel through a dry clutch into a multi-speed mechanical transmission with planetary final drives. Steering was managed through dry steering clutches and brake bands &mdash; pull the steering lever to disengage drive to one side, feather the brake pedal on that side to swing the machine.</p>
+
+<p>This mechanical-clutch-and-brake steering is the defining difference between the 450B and the later 450C (which moved to wet steering clutches running in oil). The 450B&rsquo;s dry clutches are simpler and cheaper to replace, but they wear faster and require more careful operator technique to extend service life. Most 450Bs still working today have had multiple steering clutch rebuilds.</p>
+
+<div class="bt-callout">
+<strong>Dry vs. wet steering clutches</strong>
+The 450B uses dry steering clutches &mdash; the defining characteristic that separates it from the 450C generation. Dry clutches are straightforward to rebuild with standard hand tools and no special tooling, but they wear faster under hard use than the wet clutches JD introduced on the 450C. If you&rsquo;re sourcing steering clutch parts, confirm dry-clutch fitment before ordering.
+</div>
+
+<h2 id="section-4">Common service items on the 450B</h2>
+
+<p>With 50+ years on the oldest 450Bs, every working machine has had major service. The components customers ask for most often:</p>
+
+<ul>
+<li><strong>Steering clutches and brake bands:</strong> The single highest-wear assembly on a 450B. Clutch packs, brake bands, control linkage, and adjustment hardware.</li>
+<li><strong>Undercarriage:</strong> Track chains, track shoes (grouser plates), rollers (top and bottom), idlers, sprockets, front idler springs.</li>
+<li><strong>Engine internals:</strong> JD 4-cylinder diesel rebuild kits &mdash; pistons, rings, sleeves, bearings, gaskets, oil pump.</li>
+<li><strong>Fuel system:</strong> Injection pump rebuilds, injectors, fuel filters, lift pump, fuel lines, fuel tank cleaning.</li>
+<li><strong>Cooling system:</strong> Radiator, water pump, thermostat, hoses, fan belt.</li>
+<li><strong>Hydraulics:</strong> Pump rebuilds, dozer cylinder seal kits, hoses, control valves, suction screens.</li>
+<li><strong>Final drives:</strong> Sprockets, planetary gears, seals, bearings, drain plugs.</li>
+<li><strong>Electrical:</strong> Starter, alternator, wiring harness, switches, gauges, instrument panel.</li>
+</ul>
+
+<h2 id="section-5">Parts and cross-fit components for the John Deere 450B</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Category</th><th>Common Parts</th><th>Browse</th></tr></thead>
+<tbody>
+<tr><td>Undercarriage</td><td>Track chains, shoes, rollers, idlers, sprockets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+undercarriage&section=content">Browse Undercarriage</a></td></tr>
+<tr><td>Engine</td><td>Pistons, rings, sleeves, bearings, gaskets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+engine&section=content">Browse Engine Parts</a></td></tr>
+<tr><td>Fuel System</td><td>Injection pumps, injectors, lift pumps, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+fuel&section=content">Browse Fuel System</a></td></tr>
+<tr><td>Cooling</td><td>Radiators, water pumps, thermostats, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+cooling&section=content">Browse Cooling Parts</a></td></tr>
+<tr><td>Steering &amp; Brakes</td><td>Steering clutch packs, brake bands, linkage</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+steering+clutch&section=content">Browse Steering &amp; Brakes</a></td></tr>
+<tr><td>Hydraulics</td><td>Cylinders, seal kits, pumps, valves, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+hydraulic&section=content">Browse Hydraulics</a></td></tr>
+<tr><td>Final Drives</td><td>Sprockets, planetary gears, seals, bearings</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+final+drive&section=content">Browse Final Drives</a></td></tr>
+<tr><td>Electrical</td><td>Starters, alternators, harnesses, switches</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+electrical&section=content">Browse Electrical</a></td></tr>
+<tr><td>Operator Station</td><td>Seats, gauges, controls, decals</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+450B+seat&section=content">Browse Operator Station</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bt-cta">
+<h3>Need a part for your John Deere 450B Crawler Dozer?</h3>
+<p>Call our parts team with your serial number &mdash; we&rsquo;ll match the right component to your machine.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-6">What to verify before ordering</h2>
+
+<p>The 450B&rsquo;s six-year production run included running engineering changes. Confirm the serial number on your machine and watch for these variation points:</p>
+
+<ul>
+<li><strong>Engine serial.</strong> JD made running changes to the 4-cylinder diesel through the 450B production run. Confirm the engine serial number when ordering internal engine parts.</li>
+<li><strong>Steering clutch revision.</strong> Steering clutch pack design saw mid-run revisions. Match parts to your machine&rsquo;s serial range.</li>
+<li><strong>Undercarriage variant.</strong> Standard, narrow, and wider-track configurations existed. Track shoe width and roller arrangement affect parts fitment.</li>
+<li><strong>Hydraulic configuration.</strong> Some 450B units shipped with auxiliary hydraulics for attachments. Cylinder bore and stroke can vary.</li>
+<li><strong>Cab vs. ROPS canopy.</strong> Operator station equipment varied. Confirm cab or canopy parts to the right configuration.</li>
+</ul>
+
+<h2 id="section-7">Why the 450B remains a working machine</h2>
+
+<p>Fifty years on, the 450B continues to earn its keep on small construction sites, farms, ranches, and rural property maintenance jobs. Its appeal is the same as the <a href="https://www.brokentractor.com/p/john-deere-450-dozer-crawler-tractor-johndeere-450-dozer-specs/">original 450</a>: a stout JD 4-cylinder diesel, a fully mechanical drivetrain with no electronics to fail, planetary final drives, and parts availability that has stayed strong because the 450 family is one of the most-produced mid-class crawlers in industry history.</p>
+
+<p>For customers running a 450B today, the maintenance cycle is straightforward: keep up with steering clutch service, replace undercarriage as it wears, rebuild the engine on a sensible interval, and the machine will outlast equipment two generations newer. Broken Tractor maintains the inventory to support that maintenance cycle on every 450 generation.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory John Deere service literature for the 450B Crawler Dozer, JD operator&rsquo;s manuals, CNH/Deere parts catalogs, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related John Deere dozer spotlights</h3>
+<ul>
+<li><span class="meta">Model Spotlight &middot; Predecessor</span><a href="https://www.brokentractor.com/p/john-deere-450-dozer-crawler-tractor-johndeere-450-dozer-specs/">John Deere 450 Crawler Dozer: The Original Mid-Class JD Crawler</a></li>
+<li><span class="meta">Model Spotlight &middot; Successor</span><a href="https://www.brokentractor.com/p/john-deere-450c-dozer-parts-specs/">John Deere 450C Crawler Dozer: C-Generation 450 with Wet Steering Clutches</a></li>
+<li><span class="meta">Model Spotlight &middot; Smaller Sibling</span><a href="https://www.brokentractor.com/p/john-deere-350b-dozer-parts-specs/">John Deere 350B Crawler Dozer: B-Generation Compact JD Crawler</a></li>
+<li><span class="meta">Hub</span><a href="https://www.brokentractor.com/c/john-deere-parts/john-deere-dozer/john-deere-dozer-specs-and-information/">All John Deere Dozer Model Specs &amp; Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>
