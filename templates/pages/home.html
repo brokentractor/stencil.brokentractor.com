@@ -204,28 +204,61 @@ blog:
         </div>
     </div>
     <div id="hp-quote">
-        <div class="hp-inner">
-            <div class="bigq">&ldquo;</div>
-                {{> components/common/footer-testimonials}}
+        <div class="hp-quote-inner">
+            <div class="marquee-row">
+                <div class="marquee-fade marquee-fade--left"></div>
+                <div class="marquee-track" id="tm-row1"></div>
+                <div class="marquee-fade marquee-fade--right"></div>
+            </div>
         </div>
-     </div>
+    </div>
+    <script>
+    (function () {
+        var row1 = [
+            { q: "We checked everywhere for used parts on our Case 580 Super L. Broken Tractor really came through! Great price, fast shipping, and friendly salesman!", name: "John F.", loc: "Mississippi" },
+            { q: "Broken Tractor is amazing! We get our orders so fast and accurate every time. Living on a small island we have a hard time getting things we need but you guys always come through. Even calling to confirm our order. Mahalo!", name: "Lori N.", loc: "Hawaii" },
+            { q: "I'm always skeptical ordering from companies I don't know on the internet. Broken Tractor is legit and I got the part very quickly. I also had to call and speak to someone who was very helpful. I will definitely use them again.", name: "Melanie P." },
+            { q: "I have ordered a few parts from Broken Tractor and have never been disappointed by the price or quality. A great business to deal with. Keep up the good work!", name: "Wanda H." },
+            { q: "The sensor looked just like it came from the dealer. Works great and passed calibration just like it should. I own my own equipment field service company and it is nice to get parts at a reasonable price that perform just like OEM.", name: "Kevin M." },
+            { q: "Broken Tractor has the most customer friendly site I have ever used - they make it so easy to make sure you're ordering the right parts.", name: "William S." },
+            { q: "Awesome people to do business with. In a world where customer service is lacking, these guys are the Chick-fil-A of the parts industry.", name: "Donald C." }
+        ];
+function createCard(item) {
+            return '<div class="tm-card">' +
+                '<div class="tm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>' +
+                '<p class="tm-quote">' + item.q + '</p>' +
+                '<span class="tm-name">' + item.name + (item.loc ? ' <span class="tm-loc">/ ' + item.loc + '</span>' : '') + '</span>' +
+                '</div>';
+        }
+
+        function renderRow(id, data) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            var html = '';
+            data.concat(data).forEach(function (item) { html += createCard(item); });
+            el.innerHTML = html;
+        }
+
+        renderRow('tm-row1', row1);
+    })();
+    </script>
      <div id="hp-readmore">
         <div class="hp-inner">
             <div class="rmbox">
                 <strong>New, Used, and Rebuilt Tractor & Heavy Equipment Parts</strong>
-                <p>Welcome to Broken Tractor—your dependable online source for new, used, and rebuilt parts for tractors, backhoes, dozers, excavators, and other heavy equipment. We proudly supply top-quality replacement parts for trusted brands like <a href="/c/case-construction-parts/">Case</a>, <a href="/c/john-deere-parts/">John Deere</a>, <a href="/c/ford-new-holland-parts/">Ford / New Holland</a>, <a href="/c/caterpillar/">Caterpillar</a>, <a href="/c/kubota/">Kubota</a>, <a href="/c/komatsu-parts/">Komatsu</a>, <a href="/c/dresser/">Dresser</a>, <a href="/c/king-kutter-parts/">King Kutter</a>, <a href="/c/long/">Long</a>, and more.</p>
+                <p>Welcome to Broken Tractor - your dependable online source for new, used, and rebuilt parts for tractors, backhoes, dozers, excavators, and other heavy equipment. We proudly supply top-quality replacement parts for trusted brands like <a href="/c/case-construction-parts/">Case</a>, <a href="/c/john-deere-parts/">John Deere</a>, <a href="/c/ford-new-holland-parts/">Ford / New Holland</a>, <a href="/c/caterpillar/">Caterpillar</a>, <a href="/c/kubota/">Kubota</a>, <a href="/c/komatsu-parts/">Komatsu</a>, <a href="/c/dresser/">Dresser</a>, <a href="/c/king-kutter-parts/">King Kutter</a>, <a href="/c/long/">Long</a>, and more.</p>
                 <p>Customers across the United States and around the world rely on us for new aftermarket, OEM, rebuilt, and used parts. Through our strong relationships with a wide range of trusted suppliers, salvage yards, and rebuilders, we can quickly source the parts you need to keep your equipment running. Most orders ship directly from North America, offering you fast delivery and significant savings compared to dealer prices. Count on Broken Tractor for reliable parts, expert guidance, and honest, friendly service.</p>
             </div>
             <div class="rmbox">
                 <strong>Your Trusted Source for Quality Parts</strong>
                 <p>At Broken Tractor, we specialize in supplying tractor and heavy equipment parts to help you repair and maintain your machinery with confidence. Our wide selection includes new aftermarket, OEM, rebuilt, and used parts such as engines, transmissions, hydraulic cylinders, axles, pins, bushings, final drives, and more.</p>
-                <p>All salvaged and rebuilt parts are carefully inspected and tested by our trusted partners to meet our high standards for quality and performance. Can’t find a specific part listed online? <a href="/pages/parts-request/">Submit a Parts Request</a> or <a href="/pages/contact-us/">contact us</a> directly—our experienced team will help you locate rare or discontinued components for virtually any make or model. We are committed to delivering the right part, at the right price, with unmatched customer service for customers worldwide.</p>
+                <p>All salvaged and rebuilt parts are carefully inspected and tested by our trusted partners to meet our high standards for quality and performance. Can’t find a specific part listed online? <a href="/pages/parts-request/">Submit a Parts Request</a> or <a href="/pages/contact-us/">contact us</a> directly - our experienced team will help you locate rare or discontinued components for virtually any make or model. We are committed to delivering the right part, at the right price, with unmatched customer service for customers worldwide.</p>
             </div>
             <div class="rmbox">
                 <strong>Fast Global Shipping & Hassle-Free Returns</strong>
-                <p>Broken Tractor offers fast, dependable shipping to customers worldwide. With warehouses across North America and a streamlined logistics network, most orders ship the same day, ensuring your parts arrive quickly—no matter where you are located.</p>
+                <p>Broken Tractor offers fast, dependable shipping to customers worldwide. With warehouses across North America and a streamlined logistics network, most orders ship the same day, ensuring your parts arrive quickly - no matter where you are located.</p>
                 <p>Need to return or exchange a part? Our easy returns process and knowledgeable support team make it simple to get the correct replacement. Simply fill out our <a href="/pages/return-exchange-request/">Return Request form</a> and we will contact you in a timely manner.</p>
-                <p>Call us at (800) 909-7060 or browse our online parts catalog to get started. Broken Tractor—your global source for heavy equipment and tractor parts!</p>
+                <p>Call us at (800) 909-7060 or browse our online parts catalog to get started. Broken Tractor - your global source for heavy equipment and tractor parts!</p>
             </div>
             <div style="clear:both;"></div>
         </div>

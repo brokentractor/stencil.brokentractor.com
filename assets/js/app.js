@@ -62,9 +62,7 @@ $('.navPages-action.has-subMenu').click( function() {
 
 $('body').on('contextmenu', 'img', function(e){ return false; });
 
-// Randomize Testimonials
-var whichToShow = Math.floor(Math.random() * $('.quote-wrap').length);
-$('.quote-wrap').hide().eq(whichToShow).fadeIn(1000);
+// Testimonials - now handled by marquee JS inline in home.html
 /**
  * This function gets added to the global window and then called
  * on page load with the current template loaded and JS Context passed in

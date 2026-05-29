@@ -343,10 +343,7 @@ div#heroinner * {
     }
 }
 
-#hp-quote .hp-inner {
-    max-width: 728px;
-    padding: 0px;
-}
+/* #hp-quote inner sizing now handled by .hp-quote-inner */
 .hp-inner h2 {
     font-family: $industry;
     text-align: center;
@@ -810,44 +807,157 @@ div#hp-shopby {
 			color: #001212 !important;
 		}
 	}
+@keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
 div#hp-quote {
-    background: #4a4a4a;
-    color: #fff;
-    // margin-top: 20px;
+    background-color: #1a1a1a;
+    position: relative;
+    overflow: hidden;
     margin-bottom: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+
     @include breakpoint("medium") {
-	    padding-bottom: 20px;
-        // margin-top: 40px;
         margin-bottom: 40px;
-	}
-    p {
-    font-family: arial, sans-serif;
-    font-style: italic;
-    padding: 0px 20px;
-    font-size: 18px;
+    }
+}
+
+.hp-quote-inner {
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hp-quote-header {
+    text-align: center;
+    padding: 0 20px 32px;
+
+    .hp-quote-eyebrow {
+        display: inline-block;
+        font-family: "Industry", "Oswald", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        color: #ffbe00;
+        margin-bottom: 12px;
+
+        @include breakpoint("medium") {
+            font-size: 13px;
+        }
+    }
+
+    .hp-quote-title {
+        font-family: "Industry", "Oswald", sans-serif;
+        font-size: 28px;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 0 0 16px;
+        letter-spacing: .03em;
+
+        @include breakpoint("medium") {
+            font-size: 38px;
+        }
+    }
+
+    .hp-quote-bar {
+        width: 48px;
+        height: 3px;
+        background: #ffbe00;
+        margin: 0 auto 16px;
+    }
+
+    .hp-quote-sub {
+        font-family: "proxima-nova", arial, sans-serif;
+        font-size: 15px;
+        color: #888;
+        margin: 0;
+        line-height: 1.5;
+
+        @include breakpoint("medium") {
+            font-size: 17px;
+        }
+    }
+}
+
+.marquee-row {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+
+    &:hover .marquee-track {
+        animation-play-state: paused;
+    }
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll 90s linear infinite;
+
+    &--reverse {
+        animation-direction: reverse;
+    }
+}
+
+.marquee-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+
     @include breakpoint("medium") {
-        font-size: 24px;
-        margin-bottom: 20px;
-        padding: 0px;
-    }
-    }
-    .quote-author {
-    font-size: 16px;
-    font-style: normal;
-    color: #cccccc;
-    font-weight: bold;
-
+        width: 140px;
     }
 
+    &--left  { left: 0;  background: linear-gradient(to right, #1a1a1a, transparent); }
+    &--right { right: 0; background: linear-gradient(to left,  #1a1a1a, transparent); }
 }
-.bigq {
-    font-family: $industry;
-    font-size: 80px;
-    color: #ffbe00;
-    margin-bottom: -50px;
+
+.tm-card {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 20px 22px;
+    width: 300px;
+    flex-shrink: 0;
+    margin: 0 10px;
+
+    .tm-stars {
+        color: #ffbe00;
+        font-size: 15px;
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+    }
+
+    .tm-quote {
+        font-family: "proxima-nova", arial, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        line-height: 1.65;
+        color: #d0d0d0;
+        margin: 0 0 14px;
+        padding: 0;
+    }
+
+    .tm-name {
+        font-family: "Industry", "Oswald", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: #777;
+
+        .tm-loc {
+            color: #555;
+        }
+    }
 }
+
 .bigq-text {
     font-style: italic;
     font-family: arial;
@@ -906,13 +1016,6 @@ div#hp-quote {
     margin-top: 10px;
     margin-bottom: 20px;
 }
-// .rmbox a {
-//     background: #ffbe00;
-//     text-decoration: none;
-//     display: inline-block;
-//     padding: 11px 20px 8px 20px;
-//     font-weight: 900;
-// }
 .merch-ad {
     margin-top: 30px;
     position: relative;
