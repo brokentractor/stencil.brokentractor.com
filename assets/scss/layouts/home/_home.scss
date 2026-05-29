@@ -914,7 +914,102 @@ div#hp-quote {
 //     font-weight: 900;
 // }
 .merch-ad {
-	padding-top: 30px;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        display: block;
+        max-height: 380px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px 48px;
+        z-index: 2;
+    }
+
+    &__title {
+        color: #fff;
+        font-family: "Industry", "Oswald", sans-serif;
+        font-size: 42px;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1.1;
+        margin: 0 0 24px;
+        text-align: left;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    &__btn {
+        display: inline-block;
+        background: #ffbe00;
+        color: #1a1a1a;
+        font-family: "Industry", "Oswald", sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        padding: 14px 32px;
+        text-decoration: none;
+        border: none;
+
+        &:hover {
+            background: #e6ab00;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__overlay {
+            width: 60%;
+            padding: 20px 24px;
+        }
+
+        &__title {
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+
+        &__btn {
+            font-size: 13px;
+            padding: 10px 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        &__overlay {
+            width: 70%;
+            padding: 16px 18px;
+        }
+
+        &__title {
+            font-size: 20px;
+        }
+    }
 }
 div#hp-hth {
     background: #ffbe00;
