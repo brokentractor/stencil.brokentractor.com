@@ -107,6 +107,8 @@ body .cart-page {
 }
 
 #hp-hero {
+    position: relative;
+    overflow: hidden;
     background-image: url(../img/mobilestore.jpg);
     background-position: top center;
     height: auto;
@@ -116,14 +118,66 @@ body .cart-page {
     padding-bottom: 15px;
 
 	@include breakpoint("medium") {
-		background: url(../img/deskhero.jpg);
-		height: 360px;
-		background-position: -360px 0px;
+		background: #000;
+		height: 460px;
         padding-bottom: 0px;
-}
-		@media screen and (min-width: 1240px) {
-		background-position: left center;
 	}
+}
+
+.hp-hero-video {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hp-hero-overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    // Mobile: uniform dark overlay since text is centered
+    background: rgba(0, 0, 0, 0.65);
+
+    @include breakpoint("medium") {
+        // Desktop: dark left, transparent right (text is left-aligned)
+        background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0) 100%);
+    }
+}
+
+#hp-hero #heroinner {
+    position: relative;
+    z-index: 2;
+
+    @include breakpoint("medium") {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+#hp-hero h3 {
+    @include breakpoint("medium") {
+        padding-top: 0;
+    }
+}
+
+.hero-eyebrow-bar {
+    width: 48px;
+    height: 3px;
+    background: #ffbe00;
+    margin: 10px auto 14px;
+
+    @include breakpoint("medium") {
+        margin: 12px 0 16px;
+    }
 }
 
 
@@ -559,7 +613,7 @@ div#heroinner * {
 
 .return-btn-wrap {
     text-align: center;
-    padding: 20px 16px;
+    padding: 20px 0;
 }
 
 .return-btn {
@@ -876,32 +930,34 @@ div#hp-quote {
 }
 
 .hp-quote-header {
-    text-align: center;
-    padding: 0 20px 32px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px 24px;
+    text-align: left;
 
-    .hp-quote-eyebrow {
-        display: inline-block;
-        font-family: "Industry", "Oswald", sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: .12em;
-        color: #ffbe00;
-        margin-bottom: 12px;
-
-        @include breakpoint("medium") {
-            font-size: 13px;
-        }
+    @include breakpoint("medium") {
+        padding: 0 30px 28px;
     }
 
     .hp-quote-title {
-        font-family: "Industry", "Oswald", sans-serif;
+        font-family: $industry, sans-serif;
         font-size: 28px;
         font-weight: 900;
         text-transform: uppercase;
         color: #fff;
-        margin: 0 0 16px;
-        letter-spacing: .03em;
+        margin: 0 0 14px;
+        line-height: 1.05;
+        letter-spacing: .02em;
+        padding: 0;
+        text-align: left;
+
+        .hp-quote-accent {
+            color: #ffbe00;
+        }
+
+        .hp-quote-period {
+            color: #fff;
+        }
 
         @include breakpoint("medium") {
             font-size: 38px;
@@ -912,19 +968,7 @@ div#hp-quote {
         width: 48px;
         height: 3px;
         background: #ffbe00;
-        margin: 0 auto 16px;
-    }
-
-    .hp-quote-sub {
-        font-family: "proxima-nova", arial, sans-serif;
-        font-size: 15px;
-        color: #888;
         margin: 0;
-        line-height: 1.5;
-
-        @include breakpoint("medium") {
-            font-size: 17px;
-        }
     }
 }
 
@@ -1095,11 +1139,52 @@ div#hp-quote {
     }
 }
 
-#hp-readmore .hp-inner {
+#hp-readmore .rm-grid {
     @media screen and (min-width: 1024px) {
         display: flex;
         align-items: stretch;
         gap: 20px;
+    }
+}
+
+.rm-header {
+    padding: 0 10px 24px;
+    text-align: left;
+
+    @include breakpoint("medium") {
+        padding: 0 20px 28px;
+    }
+
+    .rm-title {
+        font-family: $industry, sans-serif;
+        font-size: 28px;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 0 0 14px;
+        line-height: 1.05;
+        letter-spacing: .02em;
+        padding: 0;
+        text-align: left;
+
+        .rm-accent {
+            color: #ffbe00;
+        }
+
+        .rm-period {
+            color: #fff;
+        }
+
+        @include breakpoint("medium") {
+            font-size: 38px;
+        }
+    }
+
+    .rm-bar {
+        width: 48px;
+        height: 3px;
+        background: #ffbe00;
+        margin: 0;
     }
 }
 
