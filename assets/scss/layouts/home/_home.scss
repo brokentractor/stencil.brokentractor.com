@@ -5,6 +5,122 @@
 .homepage .banners {
 	display: none;
 }
+
+// Compact home hero — matches the blog hero language (self-contained dark block)
+.bt-home-hero {
+    position: relative;
+    overflow: hidden;
+    background: #1a1a1a;
+    color: #fff;
+    margin: -1px -10px 0;
+
+    @include breakpoint("medium") {
+        margin: 15px 0;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 56px 56px;
+        pointer-events: none;
+    }
+
+    &__inner {
+        position: relative;
+        padding: 24px 16px;
+
+        @include breakpoint("medium") {
+            padding: 15px 24px;
+        }
+    }
+
+    &__crumb {
+        font-family: $industry, "Oswald", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 11px;
+        font-weight: 700;
+        color: #ffbe00;
+        margin-bottom: 12px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+
+        @include breakpoint("medium") {
+            justify-content: flex-start;
+            font-size: 12px;
+            margin-bottom: 14px;
+        }
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 2px;
+            background: #ffbe00;
+            flex-shrink: 0;
+        }
+    }
+
+    &__title {
+        font-family: $industry, "Oswald", sans-serif;
+        font-weight: 900;
+        font-size: clamp(26px, 4vw, 44px);
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 0 0 14px;
+        text-align: center;
+
+        @include breakpoint("medium") {
+            text-align: left;
+            margin: 0 0 12px;
+        }
+
+        em {
+            font-style: italic;
+            color: #ffbe00;
+        }
+    }
+
+    &__trust {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        justify-content: center;
+        font-family: $industry, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: #ccc;
+
+        @include breakpoint("medium") {
+            justify-content: flex-start;
+            font-size: 13px;
+            gap: 8px 26px;
+        }
+
+        span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        i, .fa, .svg-inline--fa {
+            color: #ffbe00 !important;
+            font-size: 13px;
+        }
+    }
+}
+
 .welcome-fast {
     color: #ffbe00;
     -webkit-text-stroke: 1.5px #001212;
@@ -473,7 +589,7 @@ div#heroinner * {
 }
 
 .pf-header {
-    background: #001212;
+    background: #1a1a1a;
     color: #ffbe00;
     font-family: $industry;
     font-size: 18px;
@@ -702,7 +818,7 @@ div#heroinner * {
 }
 
 .brand-hero-card {
-    background: #001212;
+    background: #1a1a1a;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -724,12 +840,12 @@ div#heroinner * {
 
     &:hover, &:focus {
         background: #ffbe00;
-        border-bottom-color: #001212;
+        border-bottom-color: #1a1a1a;
         transform: scale(1.02);
 
         .brand-hero-icon,
         .brand-hero-name,
-        .brand-hero-cta { color: #001212; }
+        .brand-hero-cta { color: #1a1a1a; }
 
         .brand-hero-label { color: #333; }
     }
@@ -777,7 +893,7 @@ div#heroinner * {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background: #001212;
+    background: #1a1a1a;
     border: 1px solid #ddd;
     border-top: 3px solid #ffbe00;
     padding: 14px 18px;
@@ -818,83 +934,71 @@ div#hp-shopby {
 }
 
 #hp-shopby a {
-    background: #fff;
-    display: block;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     margin-bottom: 10px;
-    text-align: left;
-    font-family: "proxima-nova", sans-serif;
+    font-family: $industry;
     text-decoration: none;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-    padding: 15px 15px 12px 15px;
-    text-transform: capitalize;
-    font-weight: 700;
-    font-size: 18px;
-	position:relative;
+    box-shadow: none;
+    padding: 16px 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #ffbe00;
+    border-bottom: 4px solid #ffbe00;
+    position: relative;
+    min-height: 60px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
 
-        @include breakpoint("medium") {
-            margin-bottom: 20px;
-
-}
+    @include breakpoint("medium") {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
 
     &:hover, &:active, &:focus {
-        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-        background: #001212;
-        color: #ffbe00;
+        box-shadow: none;
+        background: #ffbe00;
+        color: #1a1a1a;
+        border-bottom-color: #1a1a1a;
+        transform: scale(1.02);
+
+        .fa, .svg-inline--fa { color: #1a1a1a; }
     }
 
     @include breakpoint("medium") {
-		&:nth-child(even) {
-			margin-left: 20px;
-		}
+        &:nth-child(even) {
+            margin-left: 20px;
+        }
 
-		width: calc(50% - 20px);
-		float: left;
-		line-height: 20px;
-		min-height: 70px;
-        position: relative;
-	}
+        width: calc(50% - 20px);
+        float: left;
+        line-height: 1.15;
+    }
     @include breakpoint("large") {
-		width: calc(25% - 20px);
-		float: left;
-		line-height: 20px;
-		min-height: 70px;
-	    margin-left: 20px;
-	}
-
+        width: calc(25% - 20px);
+        float: left;
+        line-height: 1.15;
+        margin-left: 20px;
+    }
 }
 
 #hp-shopby a span {
-    @include breakpoint("medium") {
-        position: absolute;
-        width: calc(100% - 60px);
-        top: 50%;
-        transform: translateY(-50%);
-    }
+    position: static;
+    width: auto;
+    transform: none;
+    display: inline;
 }
-#hp-shopby a img {
-    width: 13px;
-    position: absolute;
-    right: 15px;
-    top: 18px;
-    @include breakpoint("medium") {
-	    top: 26px;
-	}
-}
-#hp-shopby .svg-inline--fa.fa-angle-right.fa-w-8, .navList-action svg {
-    float: right;
-    display: inline-block;
-    position: relative;
-    top: 2px;
-    right: 0px;
-    font-size: 24px;
-    color: #fdb913;
-    clear: both;
-        @include breakpoint("medium") {
-        top: 10px;
-        right: 10px;
 
-        }
-    }
+#hp-shopby a img,
+#hp-shopby a .fa,
+#hp-shopby a .svg-inline--fa,
+#hp-shopby a svg {
+    display: none !important;
+}
 	.alt-cat-button {
 		background: #ffbe00 !important;
 		color: #001212;
@@ -1447,6 +1551,7 @@ div#hp-contact {
     width: 48px;
     height: 3px;
     background: #ffbe00;
+    margin: 0 0 18px;
 }
 
 .hp-contact-right {
