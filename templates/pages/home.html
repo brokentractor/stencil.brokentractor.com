@@ -205,10 +205,20 @@ blog:
     </div>
     <div id="hp-quote">
         <div class="hp-quote-inner">
-            <div class="marquee-row">
-                <div class="marquee-fade marquee-fade--left"></div>
-                <div class="marquee-track" id="tm-row1"></div>
-                <div class="marquee-fade marquee-fade--right"></div>
+            <div class="tm-carousel">
+                <div class="marquee-row" id="tm-row-wrap">
+                    <div class="marquee-fade marquee-fade--left"></div>
+                    <div class="marquee-track" id="tm-row1"></div>
+                    <div class="marquee-fade marquee-fade--right"></div>
+                </div>
+                <div class="tm-arrows">
+                    <button class="tm-arrow tm-arrow--prev" aria-label="Previous review" type="button">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="tm-arrow tm-arrow--next" aria-label="Next review" type="button">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -240,6 +250,20 @@ function createCard(item) {
         }
 
         renderRow('tm-row1', row1);
+
+        // Arrow nav for mobile snap carousel
+        var wrap = document.getElementById('tm-row-wrap');
+        var prev = document.querySelector('.tm-arrow--prev');
+        var next = document.querySelector('.tm-arrow--next');
+        function scrollByCard(dir) {
+            if (!wrap) return;
+            var card = wrap.querySelector('.tm-card');
+            if (!card) return;
+            var step = card.getBoundingClientRect().width + 20; // card + gap
+            wrap.scrollBy({ left: dir * step, behavior: 'smooth' });
+        }
+        if (prev) prev.addEventListener('click', function () { scrollByCard(-1); });
+        if (next) next.addEventListener('click', function () { scrollByCard(1); });
     })();
     </script>
      <div id="hp-readmore">

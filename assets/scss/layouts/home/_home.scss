@@ -882,36 +882,91 @@ div#hp-quote {
     }
 }
 
+.tm-carousel {
+    position: relative;
+}
+
+.tm-carousel {
+    position: relative;
+}
+
+.tm-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+
+    @include breakpoint("medium") {
+        display: none;
+    }
+}
+
+.tm-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffbe00;
+    color: #1a1a1a;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    transition: background .15s, transform .1s;
+
+    &:hover, &:focus { background: #e6ab00; outline: none; }
+    &:active { transform: scale(0.92); }
+}
+
 .marquee-row {
     position: relative;
     overflow: hidden;
     padding: 10px 0;
 
-    &:hover .marquee-track {
-        animation-play-state: paused;
+    // Mobile: swipe-snap carousel
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    @include breakpoint("medium") {
+        overflow-x: hidden;
+
+        &:hover .marquee-track {
+            animation-play-state: paused;
+        }
     }
 }
 
 .marquee-track {
     display: flex;
-    width: max-content;
-    animation: marqueeScroll 90s linear infinite;
+
+    @include breakpoint("medium") {
+        width: max-content;
+        animation: marqueeScroll 90s linear infinite;
+    }
 
     &--reverse {
-        animation-direction: reverse;
+        @include breakpoint("medium") {
+            animation-direction: reverse;
+        }
     }
 }
 
 .marquee-fade {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 80px;
-    z-index: 2;
-    pointer-events: none;
+    display: none;
 
     @include breakpoint("medium") {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
         width: 140px;
+        z-index: 2;
+        pointer-events: none;
     }
 
     &--left  { left: 0;  background: linear-gradient(to right, #1a1a1a, transparent); }
@@ -923,9 +978,24 @@ div#hp-quote {
     border: 1px solid #3a3a3a;
     border-radius: 8px;
     padding: 20px 22px;
-    width: 300px;
+    // Mobile: one card per viewport, snap-to-start
+    width: calc(100vw - 40px);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
     flex-shrink: 0;
-    margin: 0 10px;
+    margin: 0 20px 0 0;
+    box-sizing: border-box;
+
+    &:first-child { margin-left: 20px; }
+
+    @include breakpoint("medium") {
+        width: 300px;
+        scroll-snap-align: unset;
+        margin: 0 10px;
+        box-sizing: content-box;
+
+        &:first-child { margin-left: 10px; }
+    }
 
     .tm-stars {
         color: #ffbe00;
