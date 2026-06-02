@@ -1,0 +1,275 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0;border-radius:8px;overflow:hidden}
+  .bt-feature img{width:100%;height:auto;display:block}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">John Deere 510B Backhoe Loader: Turbo Power and Optional 4WD</h1>
+<p class="bt-deck">Produced from the early to mid-1980s, the 510B was a significant upgrade from the original 510 - featuring a stronger turbocharged engine, a more powerful hydraulic system, and an optional four-wheel-drive configuration. Designed for the heaviest commercial backhoe work the era required.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="{{getImage product.main_image 'grande'}}" alt="John Deere 510B Backhoe Loader">
+</div>
+</header>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">Where the 510B fits in the JD backhoe line</a></li>
+<li><a href="#section-2">What changed from the original 510 to the 510B</a></li>
+<li><a href="#section-3">Engine, hydraulics, and drivetrain</a></li>
+<li><a href="#section-4">Common service items on the 510B</a></li>
+<li><a href="#section-5">Parts and cross-fit components for the John Deere 510B</a></li>
+<li><a href="#section-6">What to verify before ordering</a></li>
+<li><a href="#section-7">Why the 510B remains a working machine</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">Where the 510B fits in the JD backhoe line</h2>
+
+<p>The 510B succeeded the <a href="https://www.brokentractor.com/p/john-deere-510-backhoe-loader-parts-specs-serial-numbers-johndeere-510-backhoeloader-specs/">original 510</a> as the full-size industrial backhoe loader in JD's lineup. The B refresh introduced two significant changes: the first turbocharged engine in the 510 line and the first factory 4WD option in the series. For commercial contractors and pipeline crews, the 510B brought meaningful productivity and tractive-effort improvements over the original.</p>
+
+<div class="bt-spec">
+<h4>JD 510B Backhoe Loader - Quick Specs</h4>
+<dl>
+<dt>Production</dt><dd>Early-Mid 1980s</dd>
+<dt>Class</dt><dd>Full-Size Industrial Backhoe Loader</dd>
+<dt>Engine</dt><dd>JD Turbocharged Diesel</dd>
+<dt>Drivetrain</dt><dd>Mechanical, Optional 4WD</dd>
+<dt>Front Tool</dt><dd>Hydraulic Loader (Stronger System)</dd>
+<dt>Rear Tool</dt><dd>Center-Pivot Hydraulic Backhoe</dd>
+<dt>Predecessor</dt><dd>JD 510 (Original)</dd>
+<dt>Successor</dt><dd>JD 510C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">What changed from the original 510 to the 510B</h2>
+
+<ul>
+<li><strong>Turbocharged engine.</strong> First turbo in the 510 line. More power, faster cycle times, better lugging response in compacted material.</li>
+<li><strong>Stronger hydraulic system.</strong> Upgraded pump and control valve package - higher operating pressure, more breakout force at both loader and backhoe.</li>
+<li><strong>Optional 4WD.</strong> First factory 4WD option in the 510 line. Better tractive effort in soft soil, on slopes, and in mud/snow conditions.</li>
+<li><strong>Refined transmission.</strong> Updated mechanical transmission with smoother gear engagement.</li>
+<li><strong>Operator station.</strong> Improved seat, refined gauges, updated controls.</li>
+</ul>
+
+<div class="bt-callout">
+<strong>Pre-emissions, pre-electronics turbo</strong>
+The 510B's turbocharged JD diesel is mechanical-injection - no ECU, no aftertreatment, no electronic engine controls. Clean fuel and intact turbo oil supply lines are the two service priorities that keep a 510B working. Owners running these in the field today appreciate the simplicity.
+</div>
+
+<h2 id="section-3">Engine, hydraulics, and drivetrain</h2>
+
+<p>The 510B's turbocharged JD diesel drives a mechanical transmission through a heavy clutch pack into planetary final drives. Optional MFWD (mechanical front-wheel-drive) adds a powered front axle for 4WD operation. The hydraulic system runs higher pressure than the original 510 - measurably more breakout force at the full-size loader and backhoe buckets.</p>
+
+<p>The center-pivot hydraulic backhoe carries the full-size industrial reach and digging force the 510 line was known for. Standard reach and extended-reach configurations were available, with different cylinder bore and stroke depending on the configuration.</p>
+
+<h2 id="section-4">Common service items on the 510B</h2>
+
+<ul>
+<li><strong>Turbocharger:</strong> Turbo rebuilds, oil supply and drain lines, charge-air piping, turbo bearings.</li>
+<li><strong>Full-size hydraulics:</strong> Pump rebuilds, loader cylinder seal kits, backhoe boom/stick/bucket cylinder seal kits, control valves, hoses.</li>
+<li><strong>Engine internals:</strong> JD turbocharged diesel rebuild kits - pistons (turbo-specific), rings, sleeves, bearings, gaskets.</li>
+<li><strong>Fuel system:</strong> Injection pump rebuilds, injectors, lift pump, fuel filters.</li>
+<li><strong>Cooling system:</strong> Radiator, water pump, thermostat, hoses, fan belt. Cooling is more critical on a turbocharged machine.</li>
+<li><strong>4WD components (where equipped):</strong> Front axle assemblies, transfer case parts, drive shaft U-joints.</li>
+<li><strong>Loader components:</strong> Bucket teeth, cutting edges, pins, bushings.</li>
+<li><strong>Backhoe components:</strong> Bucket teeth, side cutters, swing tower pin kits, stabilizer leg cylinders.</li>
+<li><strong>Drivetrain:</strong> Clutch packs, transmission components, axle seals, final drive gears.</li>
+<li><strong>Electrical:</strong> Starter, alternator, harnesses, switches, gauges.</li>
+</ul>
+
+<h2 id="section-5">Parts and cross-fit components for the John Deere 510B</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Category</th><th>Common Parts</th><th>Browse</th></tr></thead>
+<tbody>
+<tr><td>Turbocharger</td><td>Turbo assemblies, oil lines, charge-air piping</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+turbo&section=content">Browse Turbo Components</a></td></tr>
+<tr><td>Full-Size Hydraulics</td><td>Cylinders, seal kits, pumps, valves, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+hydraulic&section=content">Browse Hydraulics</a></td></tr>
+<tr><td>Engine</td><td>Pistons, rings, sleeves, bearings, gaskets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+engine&section=content">Browse Engine Parts</a></td></tr>
+<tr><td>Fuel System</td><td>Injection pumps, injectors, lift pumps, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+fuel&section=content">Browse Fuel System</a></td></tr>
+<tr><td>Cooling</td><td>Radiators, water pumps, thermostats, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+cooling&section=content">Browse Cooling Parts</a></td></tr>
+<tr><td>4WD Components</td><td>Front axles, transfer cases, U-joints</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+4WD&section=content">Browse 4WD Components</a></td></tr>
+<tr><td>Loader</td><td>Bucket teeth, cutting edges, pins, bushings</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+loader&section=content">Browse Loader Components</a></td></tr>
+<tr><td>Backhoe</td><td>Teeth, side cutters, swing tower, stabilizers</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+backhoe&section=content">Browse Backhoe Components</a></td></tr>
+<tr><td>Drivetrain</td><td>Clutch, transmission, axles, final drives</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+drivetrain&section=content">Browse Drivetrain</a></td></tr>
+<tr><td>Electrical</td><td>Starters, alternators, harnesses, switches</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+510B+electrical&section=content">Browse Electrical</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bt-cta">
+<h3>Need a part for your John Deere 510B Backhoe Loader?</h3>
+<p>Turbo components, full-size hydraulic seal kits, and (where equipped) 4WD front axle components are the most common service requests on the 510B. Call our parts team with your serial number.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-6">What to verify before ordering</h2>
+
+<ul>
+<li><strong>Serial number.</strong> The 510B had running changes through its production. Match parts to the machine serial.</li>
+<li><strong>Engine serial.</strong> JD turbocharged diesel internal parts must match the engine serial number.</li>
+<li><strong>Turbocharger variant.</strong> Turbo part numbers can vary across the production run.</li>
+<li><strong>2WD vs. 4WD configuration.</strong> Critical to confirm before ordering front axle or drive components - 2WD and 4WD configurations have different front axle assemblies, transfer cases, and drive shafts.</li>
+<li><strong>Loader configuration.</strong> Standard and specialty bucket configurations had different cylinder and mounting specs.</li>
+<li><strong>Backhoe configuration.</strong> Standard reach vs. extended-reach configurations differ in cylinder bore and stroke.</li>
+<li><strong>Cab vs. ROPS canopy.</strong> Operator station equipment varied.</li>
+</ul>
+
+<h2 id="section-7">Why the 510B remains a working machine</h2>
+
+<p>The 510B is the desirable used full-size 510 of the 1980s - turbo power, optional 4WD, stronger hydraulic system, mechanical fuel injection. Pre-electronics, pre-emissions, pre-aftertreatment. For commercial contractors who want the digging power of a full-size industrial backhoe without electronic-engine-control complexity, the 510B is a strong used pick.</p>
+
+<p>Maintenance priorities on a 510B: turbo oil supply integrity, clean fuel, hydraulic seal replacement, 4WD front axle service (where equipped), swing tower pin service, and engine rebuilds when wear demands. Broken Tractor maintains parts coverage across the full 510 family.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory John Deere service literature for the 510B Backhoe Loader, JD operator&rsquo;s manuals, CNH/Deere parts catalogs, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading"><h3>Related John Deere backhoe spotlights</h3>
+<ul>
+<li><span class="meta">Model Spotlight &middot; Predecessor</span><a href="https://www.brokentractor.com/p/john-deere-510-backhoe-loader-parts-specs-serial-numbers-johndeere-510-backhoeloader-specs/">John Deere 510 Backhoe Loader (Original): Full-Size Industrial Origin</a></li>
+<li><span class="meta">Model Spotlight &middot; Successor</span><a href="https://www.brokentractor.com/p/john-deere-510c-backhoe-loader-parts-specs-serial-numbers-johndeere-510c-backhoeloader-specs/">John Deere 510C Backhoe Loader: C-Generation Full-Size</a></li>
+<li><span class="meta">Hub</span><a href="https://www.brokentractor.com/c/john-deere-parts/john-deere-backhoe/john-deere-backhoe-model-specs/">All John Deere Backhoe Model Specs &amp; Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

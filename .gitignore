@@ -16,6 +16,7 @@ node_modules/
 reports/
 ngrok.exe
 _spotlight-inbox/
+apply-spotlight-templates.js
 .idea/
 yarn.lock
 package-lock.json
