@@ -61,3 +61,6 @@ assets/dist/theme-bundle.chunk.11.js
 assets/dist/theme-bundle.chunk.10.js
 assets/dist/theme-bundle.chunk.1.js
 assets/dist/theme-bundle.chunk.0.js
+
+# Stencil-CLI dev cache (should be in .stencil/ not root)
+parsed/
