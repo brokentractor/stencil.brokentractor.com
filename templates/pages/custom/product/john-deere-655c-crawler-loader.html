@@ -1,0 +1,281 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0;border-radius:8px;overflow:hidden}
+  .bt-feature img{width:100%;height:auto;display:block}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">John Deere 655C Crawler Loader: 115 HP Production Track Loader</h1>
+<p class="bt-deck">Produced in the mid-2000s, the 655C stepped JD's crawler loader line up to roughly 115 HP from a turbocharged PowerTech 4045 diesel - a larger machine than the mid-class 555G with the bucket capacity, cycle speed, and breakout force needed for production load-and-carry work.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="{{getImage product.main_image 'grande'}}" alt="John Deere 655C Crawler Loader">
+</div>
+</header>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">Where the 655C fits in the JD crawler loader family</a></li>
+<li><a href="#section-2">What sets the 655C apart from the 555G</a></li>
+<li><a href="#section-3">Engine, hydraulics, and undercarriage</a></li>
+<li><a href="#section-4">Common service items on the 655C</a></li>
+<li><a href="#section-5">Parts we carry for the John Deere 655C</a></li>
+<li><a href="#section-6">What to verify before ordering</a></li>
+<li><a href="#section-7">Why the 655C is a productive used pick</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">Where the 655C fits in the JD crawler loader family</h2>
+
+<p>JD's crawler loader line stepped through compact (450/455-series at roughly 80 HP) and mid-size (<a href="https://www.brokentractor.com/p/john-deere-555g-crawler-loader-parts-specs/">555G</a>) classes before reaching the production-class 655. The 655C is the larger production track loader - built on a heavier chassis than the 555G, with more bucket capacity, more breakout force, and the JD PowerTech 4045 turbo diesel making roughly 115 HP.</p>
+
+<p>The 655C carries the hydrostatic dual-path drive established across JD's crawler loader line: two independent pump-and-motor circuits, one per track, with operator joystick or T-bar control. Counter-rotation, infinitely variable speed, and the operator workflow that defines a modern track loader.</p>
+
+<div class="bt-spec">
+<h4>JD 655C Crawler Loader - Quick Specs</h4>
+<dl>
+<dt>Production</dt><dd>Mid-2000s</dd>
+<dt>Class</dt><dd>Production Crawler Loader</dd>
+<dt>Engine</dt><dd>JD PowerTech 4045 Turbo Diesel</dd>
+<dt>Net Power</dt><dd>~115 HP</dd>
+<dt>Drivetrain</dt><dd>Hydrostatic Dual-Path</dd>
+<dt>Steering</dt><dd>Independent Track Control</dd>
+<dt>Class Position</dt><dd>Above 555G, Below 755 Series</dd>
+<dt>Successor</dt><dd>JD 655K</dd>
+</dl>
+</div>
+
+<h2 id="section-2">What sets the 655C apart from the 555G</h2>
+
+<ul>
+<li><strong>Power class.</strong> The 655C's turbocharged PowerTech 4045 makes roughly 115 HP - a meaningful step up over the mid-class 555G for production load-and-carry work.</li>
+<li><strong>Chassis.</strong> Heavier frame, larger undercarriage footprint, and bucket capacities sized for production cycles rather than mid-class utility work.</li>
+<li><strong>Hydraulics.</strong> Larger implement circuit feeds bigger bucket cylinders and supports 4-in-1 multi-purpose configurations with clamshell operation.</li>
+<li><strong>Pre-Tier 4 emissions.</strong> The 655C runs without DPF or SCR - no DEF, no regeneration cycles, simpler aftertreatment service compared with the K-generation successor.</li>
+<li><strong>Engine commonality.</strong> The PowerTech 4045 platform is shared with the 650H / 650J crawler dozers, which keeps internal engine parts well-stocked across the dealer and aftermarket networks.</li>
+</ul>
+
+<h2 id="section-3">Engine, hydraulics, and undercarriage</h2>
+
+<p>The 655C's turbocharged JD PowerTech 4045 diesel powers the hydrostatic dual-path drive system, the implement hydraulic circuit (bucket lift, tilt, and clamshell on 4-in-1 configurations), and the auxiliary hydraulics. The PowerTech 4045 platform is one of the most widely produced JD engine families - broad dealer support, well-stocked aftermarket parts, and parts commonality with the 650H / 650J crawler dozers built on similar engine architecture.</p>
+
+<p>Bucket configurations included standard production buckets in multiple capacities, 4-in-1 multi-purpose buckets with clamshell operation, and specialty buckets for forestry, demolition, and material handling. Cylinder bore and stroke vary with bucket configuration. The undercarriage carries the JD-pattern sealed-and-lubricated track chain, planetary final drives, and JD-pattern rollers and idlers in standard, narrow, and LGP variants.</p>
+
+<h2 id="section-4">Common service items on the 655C</h2>
+
+<ul>
+<li><strong>Hydrostatic pumps and motors:</strong> Drive pump rebuilds, drive motor rebuilds, charge pump, filter housings, case drain hoses.</li>
+<li><strong>Turbocharger:</strong> Turbo rebuilds, oil supply and drain lines, charge-air piping, intercooler on equipped configurations.</li>
+<li><strong>Hydraulic filtration:</strong> Suction strainers, return filters, charge filter, hydraulic oil.</li>
+<li><strong>Undercarriage:</strong> Track chains, track shoes, rollers, idlers, sprockets, idler springs.</li>
+<li><strong>Engine internals:</strong> JD PowerTech 4045 turbo rebuild kits - pistons (turbo-specific), rings, sleeves, bearings, gaskets.</li>
+<li><strong>Fuel system:</strong> Common-rail injectors, high-pressure fuel pump, lift pump, fuel filters, water separator.</li>
+<li><strong>Cooling system:</strong> Radiator, hydraulic oil cooler, water pump, thermostat, hoses, fan belt.</li>
+<li><strong>Bucket components:</strong> Bucket teeth, cutting edges, side cutters, pins, bushings.</li>
+<li><strong>Implement hydraulics:</strong> Bucket cylinders, seal kits, control valves, hoses.</li>
+<li><strong>Final drives:</strong> Sprockets, planetary gears, seals, bearings.</li>
+<li><strong>Electrical:</strong> Starter, alternator, harnesses, switches, gauges, control modules.</li>
+<li><strong>Cab:</strong> Cab glass, weather seals, door parts, seat, A/C components.</li>
+</ul>
+
+<div class="bt-callout">
+<strong>Pre-Tier 4 simplicity</strong>
+The 655C runs without DPF, SCR, or DEF dosing. That removes a meaningful service burden compared with the K-generation successor and is one reason these machines remain attractive in production fleets a decade later.
+</div>
+
+<h2 id="section-5">Parts we carry for the John Deere 655C</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Category</th><th>Common Parts</th><th>Browse</th></tr></thead>
+<tbody>
+<tr><td>Hydrostatic Drive</td><td>Drive pumps, motors, charge pumps, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+hydrostatic&section=content">Browse Hydrostatic Drive</a></td></tr>
+<tr><td>Turbocharger</td><td>Turbo assemblies, oil lines, charge-air piping</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+turbo&section=content">Browse Turbo Components</a></td></tr>
+<tr><td>Undercarriage</td><td>Track chains, shoes, rollers, idlers, sprockets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+undercarriage&section=content">Browse Undercarriage</a></td></tr>
+<tr><td>Engine</td><td>PowerTech 4045 pistons, rings, sleeves, gaskets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+engine&section=content">Browse Engine Parts</a></td></tr>
+<tr><td>Fuel System</td><td>Common-rail injectors, HP pumps, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+fuel&section=content">Browse Fuel System</a></td></tr>
+<tr><td>Cooling</td><td>Radiators, oil coolers, water pumps, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+cooling&section=content">Browse Cooling Parts</a></td></tr>
+<tr><td>Implement Hydraulics</td><td>Bucket cylinders, seal kits, valves, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+hydraulic&section=content">Browse Implement Hydraulics</a></td></tr>
+<tr><td>Loader Buckets</td><td>Buckets, teeth, cutting edges, pins</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+bucket&section=content">Browse Bucket Components</a></td></tr>
+<tr><td>Final Drives</td><td>Sprockets, planetary gears, seals, bearings</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+final+drive&section=content">Browse Final Drives</a></td></tr>
+<tr><td>Electrical</td><td>Starters, alternators, harnesses, switches</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+electrical&section=content">Browse Electrical</a></td></tr>
+<tr><td>Cab</td><td>Glass, weather seals, doors, A/C, seat</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+655C+cab&section=content">Browse Cab Components</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bt-cta">
+<h3>Need a part for your John Deere 655C Crawler Loader?</h3>
+<p>Hydrostatic pumps, motors, and PowerTech 4045 turbo components are the highest-value parts on a 655C. Call our parts team with your serial number.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-6">What to verify before ordering</h2>
+
+<ul>
+<li><strong>Serial number.</strong> Match parts to the machine serial - running changes occurred through the production run.</li>
+<li><strong>Engine serial.</strong> PowerTech 4045 turbo diesel internal parts must match the engine serial.</li>
+<li><strong>Turbocharger variant.</strong> Turbo part numbers can vary across the production run.</li>
+<li><strong>Hydrostatic pump/motor variant.</strong> Drive pump and motor part numbers can vary.</li>
+<li><strong>Bucket configuration.</strong> Standard, 4-in-1, and specialty buckets have different cylinder configurations and tooth patterns.</li>
+<li><strong>Undercarriage configuration.</strong> Standard, narrow, and LGP variants existed.</li>
+<li><strong>Cab vs. ROPS canopy.</strong> Glass, A/C, and door parts differ.</li>
+</ul>
+
+<h2 id="section-7">Why the 655C is a productive used pick</h2>
+
+<p>The 655C hits a production-class sweet spot in the JD crawler loader line: PowerTech 4045 turbo power for breakout force and fast cycle times, hydrostatic dual-path drive for maneuverability, and pre-Tier 4 emissions simplicity (no DPF, no SCR, no DEF). Parts availability is strong because the 4045 engine family and the JD-pattern undercarriage are shared across high-volume dozer and loader machines.</p>
+
+<p>Maintenance priorities on a 655C: clean cool hydraulic oil, on-schedule filter changes, turbocharger oil supply integrity, undercarriage replacement as it wears, and engine rebuilds when wear demands. Broken Tractor maintains parts coverage across the 655 family.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory John Deere service literature for the 655C Crawler Loader, JD operator&rsquo;s manuals, CNH/Deere parts catalogs, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related John Deere crawler spotlights</h3>
+<ul>
+<li><span class="meta">Model Spotlight &middot; Successor</span><a href="https://www.brokentractor.com/p/john-deere-655k-crawler-loader-parts-specs/">John Deere 655K Crawler Loader: Tier 4 Final Production Track Loader</a></li>
+<li><span class="meta">Model Spotlight &middot; Smaller Sibling</span><a href="https://www.brokentractor.com/p/john-deere-555g-crawler-loader-parts-specs/">John Deere 555G Crawler Loader: 80 HP Mid-Size Track Loader</a></li>
+<li><span class="meta">Hub</span><a href="https://www.brokentractor.com/c/john-deere-parts/john-deere-dozer/john-deere-dozer-specs-and-information/">All John Deere Dozer Model Specs &amp; Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

@@ -1,0 +1,274 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0;border-radius:8px;overflow:hidden}
+  .bt-feature img{width:100%;height:auto;display:block}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">John Deere 750B Crawler Dozer: B-Generation Heavy-Class JD Crawler</h1>
+<p class="bt-deck">Built from the late 1980s into the early 1990s, the 750B carried JD's heavy-class crawler dozer line forward with a refined 6-cylinder diesel, wet steering clutches, an updated operator station, and continued undercarriage refinements - while keeping the mechanical drivetrain that made the 750 line dependable in production work.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="{{getImage product.main_image 'grande'}}" alt="John Deere 750B Crawler Dozer">
+</div>
+</header>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">Where the 750B fits in the JD crawler family</a></li>
+<li><a href="#section-2">What changed from the original 750 to the 750B</a></li>
+<li><a href="#section-3">Engine, drivetrain, and steering</a></li>
+<li><a href="#section-4">Common service items on the 750B</a></li>
+<li><a href="#section-5">Parts and cross-fit components for the John Deere 750B</a></li>
+<li><a href="#section-6">What to verify before ordering</a></li>
+<li><a href="#section-7">Why the 750B remains a dependable heavy-class pick</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">Where the 750B fits in the JD crawler family</h2>
+
+<p>The 750B succeeded the <a href="https://www.brokentractor.com/p/john-deere-750-dozer-parts-specs/">original 750</a> as JD's heavy-class crawler dozer. The B refresh was a refinement pass - upgraded 6-cylinder diesel, wet steering clutches replacing the original 750's dry clutches and brake bands, improved hydraulics, and a redesigned operator station.</p>
+
+<p>The B-gen 750 kept the mechanical multi-speed transmission with planetary final drives. Wet steering clutches - running in oil rather than dry - extended service intervals and improved tolerance for production-pace operation. Customers running 750B machines in mining, quarry, and heavy-grading work saw materially longer time between steering clutch overhauls than on the original 750.</p>
+
+<div class="bt-spec">
+<h4>JD 750B Crawler Dozer - Quick Specs</h4>
+<dl>
+<dt>Production</dt><dd>Late 1980s - Early 1990s</dd>
+<dt>Class</dt><dd>Heavy-Class Crawler Dozer</dd>
+<dt>Engine</dt><dd>JD 6-Cylinder Diesel</dd>
+<dt>Drivetrain</dt><dd>Mechanical, Multi-Speed</dd>
+<dt>Steering</dt><dd>Wet Steering Clutches</dd>
+<dt>Predecessor</dt><dd>JD 750 (Original)</dd>
+<dt>Successor</dt><dd>JD 750C</dd>
+</dl>
+</div>
+
+<h2 id="section-2">What changed from the original 750 to the 750B</h2>
+
+<ul>
+<li><strong>Wet steering clutches.</strong> The defining mechanical change - steering clutches now run in oil rather than dry. Longer service life under heavy production work, smoother engagement.</li>
+<li><strong>Engine.</strong> Upgraded JD 6-cylinder diesel with refined injection, improved cooling, and updated emissions controls for late-1980s regulations.</li>
+<li><strong>Hydraulics.</strong> Updated implement hydraulic pump, revised control valves, improved cylinder seal designs.</li>
+<li><strong>Operator station.</strong> Reorganized controls, improved seat, refined gauges, revised cab and ROPS canopy options. Better forward visibility to blade corners.</li>
+<li><strong>Heavy-class undercarriage.</strong> Continued refinement of the sealed-and-lubricated track chain, roller frames, idler designs.</li>
+</ul>
+
+<div class="bt-callout">
+<strong>Wet steering clutches - the B-gen identifier</strong>
+The fastest way to confirm a 750B vs. an original 750 is the steering clutch arrangement. Wet clutches require steering clutch case oil maintenance (drain and refill on a service interval). Dry-clutch original 750 machines don't. The 750B operator's manual specifies the steering clutch case fluid type and capacity.
+</div>
+
+<h2 id="section-3">Engine, drivetrain, and steering</h2>
+
+<p>The 750B ran a JD 6-cylinder diesel through a multi-speed mechanical transmission with planetary final drives. Steering was managed through wet steering clutches running in oil - the heavy-class equivalent of the 450C / 550B steering architecture, scaled up for the 750's larger chassis and higher operating loads.</p>
+
+<p>The implement hydraulic circuit drives a 6-way blade on most configurations, with cylinder bore and stroke matched to the heavy-class blade dimensions. Undercarriage carries the heavy-class JD sealed-and-lubricated track chain with proportionally larger links, rollers, and idlers.</p>
+
+<h2 id="section-4">Common service items on the 750B</h2>
+
+<ul>
+<li><strong>Wet steering clutch components:</strong> Clutch plates, separator plates, seals, springs, hydraulic actuation components.</li>
+<li><strong>Heavy-class undercarriage:</strong> Track chains, track shoes, rollers, idlers, sprockets, idler springs.</li>
+<li><strong>Engine internals:</strong> JD 6-cylinder diesel rebuild kits - pistons, rings, sleeves, bearings, gaskets.</li>
+<li><strong>Fuel system:</strong> Injection pump rebuilds, injectors, lift pump, fuel filters.</li>
+<li><strong>Cooling:</strong> Radiator, water pump, thermostat, hoses, fan belt.</li>
+<li><strong>Hydraulics:</strong> Pump rebuilds, blade cylinder seal kits, control valves, hoses.</li>
+<li><strong>Final drives:</strong> Sprockets, planetary gears, seals, bearings.</li>
+<li><strong>Electrical:</strong> Starter, alternator, harnesses, gauges.</li>
+<li><strong>Cab and operator station:</strong> Cab glass, weather seals, door parts, seat, A/C parts.</li>
+</ul>
+
+<h2 id="section-5">Parts and cross-fit components for the John Deere 750B</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Category</th><th>Common Parts</th><th>Browse</th></tr></thead>
+<tbody>
+<tr><td>Heavy-Class Undercarriage</td><td>Track chains, shoes, rollers, idlers, sprockets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+undercarriage&section=content">Browse Undercarriage</a></td></tr>
+<tr><td>Engine</td><td>Pistons, rings, sleeves, bearings, gaskets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+engine&section=content">Browse Engine Parts</a></td></tr>
+<tr><td>Fuel System</td><td>Injection pumps, injectors, lift pumps, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+fuel&section=content">Browse Fuel System</a></td></tr>
+<tr><td>Cooling</td><td>Radiators, water pumps, thermostats, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+cooling&section=content">Browse Cooling Parts</a></td></tr>
+<tr><td>Wet Steering Clutches</td><td>Clutch plates, seals, springs, actuation components</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+steering+clutch&section=content">Browse Steering Clutches</a></td></tr>
+<tr><td>Hydraulics</td><td>Cylinders, seal kits, pumps, valves, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+hydraulic&section=content">Browse Hydraulics</a></td></tr>
+<tr><td>Final Drives</td><td>Sprockets, planetary gears, seals, bearings</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+final+drive&section=content">Browse Final Drives</a></td></tr>
+<tr><td>Electrical</td><td>Starters, alternators, harnesses, switches</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+electrical&section=content">Browse Electrical</a></td></tr>
+<tr><td>Cab</td><td>Glass, weather seals, doors, A/C parts, seat</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+750B+cab&section=content">Browse Cab Components</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bt-cta">
+<h3>Need a part for your John Deere 750B Crawler Dozer?</h3>
+<p>Call our parts team with your serial number - we'll match wet-steering or dry-steering parts to the right machine.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-6">What to verify before ordering</h2>
+
+<ul>
+<li><strong>Serial number.</strong> The 750B had running changes through its production. Match parts to the machine serial.</li>
+<li><strong>Engine serial.</strong> JD 6-cylinder diesel internal parts must match the engine serial number.</li>
+<li><strong>Steering clutch generation.</strong> All 750Bs use wet steering clutches, but clutch pack and seal designs saw mid-run revisions.</li>
+<li><strong>Heavy-class undercarriage variant.</strong> Track shoe width, roller count, and chain pitch all need to match the existing installation.</li>
+<li><strong>Blade configuration.</strong> Straight, angle, and 6-way blade configurations had different cylinder specs.</li>
+<li><strong>Cab vs. ROPS canopy.</strong> Operator station parts differ between configurations.</li>
+</ul>
+
+<h2 id="section-7">Why the 750B remains a dependable heavy-class pick</h2>
+
+<p>The 750B is a desirable used JD heavy-class crawler - wet steering clutches for production durability, fully mechanical drivetrain with no electronics to fail, planetary final drives, and a stout JD 6-cylinder diesel. Parts availability remains strong across the 750 family.</p>
+
+<p>Maintenance priorities on a 750B: monitor steering clutch case oil, keep up with heavy-class undercarriage (the highest expense on any heavy-class crawler), rebuild the engine on a sensible interval, and replace hydraulic seals as they age. Broken Tractor maintains parts coverage across the 750 family.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory John Deere service literature for the 750B Crawler Dozer, JD operator&rsquo;s manuals, CNH/Deere parts catalogs, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading">
+<h3>Related John Deere dozer spotlights</h3>
+<ul>
+<li><span class="meta">Model Spotlight &middot; Predecessor</span><a href="https://www.brokentractor.com/p/john-deere-750-dozer-parts-specs/">John Deere 750 Crawler Dozer (Original): Heavy-Class JD Crawler Line Begins</a></li>
+<li><span class="meta">Model Spotlight &middot; Successor</span><a href="https://www.brokentractor.com/p/john-deere-750c-dozer-parts-specs/">John Deere 750C Crawler Dozer: Hydrostatic C-Generation Heavy-Class</a></li>
+<li><span class="meta">Hub</span><a href="https://www.brokentractor.com/c/john-deere-parts/john-deere-dozer/john-deere-dozer-specs-and-information/">All John Deere Dozer Model Specs &amp; Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

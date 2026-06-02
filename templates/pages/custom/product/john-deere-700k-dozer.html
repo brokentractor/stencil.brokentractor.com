@@ -1,0 +1,279 @@
+---
+product:
+    videos:
+        limit: 0
+    reviews:
+        limit: 0
+    related_products:
+        limit: 0
+    similar_by_views:
+        limit: 0
+---
+{{#partial "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{product.name}}",
+  "url": "{{product.url}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{product.url}}"
+  }
+}
+</script>
+<style>
+  :root{
+    --bt-orange:#f37021;--bt-orange-dark:#d65d12;--bt-ink:#1a1a1a;--bt-body:#2c3e50;--bt-muted:#5b6b7a;
+    --bt-rule:#e6e9ee;--bt-bg:#ffffff;--bt-soft:#f7f9fb;--bt-callout:#fff8ef;--bt-callout-border:#f37021;
+    --bt-warning:#fff4f0;--bt-warning-border:#e74c3c;--bt-success:#f1faf3;--bt-success-border:#2ecc71;
+    --bt-font-body:"proxima-nova",arial,sans-serif;--bt-font-display:"Industry","Oswald",sans-serif;
+  }
+  .bt-wrap{max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--bt-font-body)}
+  .bt-hero{padding:56px 0 32px;border-bottom:1px solid var(--bt-rule)}
+  .bt-tag{display:inline-block;background:var(--bt-orange);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:700;margin-bottom:18px;border-bottom:none;font-family:var(--bt-font-display)}
+  .bt-tag:hover{color:#fff;border-bottom:none}
+  h1.bt-title{font-size:44px;line-height:1.15;color:var(--bt-ink);margin:0 0 18px;font-weight:800;letter-spacing:-.01em;font-family:var(--bt-font-display)}
+  .bt-deck{font-size:20px;color:var(--bt-muted);margin:0 0 24px;line-height:1.55;font-family:var(--bt-font-body)}
+  .bt-byline{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--bt-muted);border-top:1px solid var(--bt-rule);border-bottom:1px solid var(--bt-rule);padding:14px 0;font-family:var(--bt-font-body)}
+  .bt-avatar{width:42px;height:42px;border-radius:50%;background:var(--bt-orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--bt-font-display)}
+  .bt-byline strong{color:var(--bt-ink)}
+  .bt-byline .dot{margin:0 6px;color:#ccc}
+  .bt-feature{margin:32px 0;border-radius:8px;overflow:hidden}
+  .bt-feature img{width:100%;height:auto;display:block}
+  .bt-wrap nav{position:static !important}
+  .bt-wrap h2{font-size:30px;color:var(--bt-ink);margin:48px 0 14px;font-weight:800;letter-spacing:-.005em;line-height:1.25;font-family:var(--bt-font-display)}
+  .bt-wrap h3{font-size:22px;color:var(--bt-ink);margin:32px 0 10px;font-weight:700;line-height:1.3;font-family:var(--bt-font-display)}
+  .bt-wrap p{margin:0 0 18px;font-family:var(--bt-font-body)}
+  .bt-wrap ul,.bt-wrap ol{margin:0 0 22px;padding-left:24px;font-family:var(--bt-font-body)}
+  .bt-wrap li{margin:6px 0}
+  .bt-wrap a{color:var(--bt-orange-dark);text-decoration:none;border-bottom:1px solid rgba(214,93,18,.35)}
+  .bt-wrap a:hover{color:var(--bt-orange);border-bottom-color:var(--bt-orange)}
+  .bt-callout{background:var(--bt-callout);border-left:4px solid var(--bt-callout-border);padding:18px 22px;margin:24px 0;border-radius:0 6px 6px 0;font-family:var(--bt-font-body)}
+  .bt-callout strong{color:var(--bt-orange-dark);display:block;margin-bottom:6px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--bt-font-display)}
+  .bt-warning{background:var(--bt-warning);border-left:4px solid var(--bt-warning-border)}
+  .bt-warning strong{color:var(--bt-warning-border)}
+  .bt-wrap table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;font-family:var(--bt-font-body)}
+  .bt-wrap th,.bt-wrap td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bt-rule);vertical-align:top}
+  .bt-wrap th{background:var(--bt-soft);color:var(--bt-ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-family:var(--bt-font-display)}
+  .bt-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+  .bt-table-scroll table{margin:0}
+  .bt-cta{background:var(--bt-ink);color:#fff;padding:32px;border-radius:8px;margin:36px 0;text-align:center}
+  .bt-cta h3{color:#fff;margin:0 0 8px;font-size:22px;font-family:var(--bt-font-display)}
+  .bt-cta p{color:#cfd8e0;margin:0 0 20px;font-size:16px;font-family:var(--bt-font-body)}
+  .bt-btn{display:inline-block;background:var(--bt-orange);color:#fff !important;padding:14px 28px;border-radius:4px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:14px;border-bottom:none !important;font-family:var(--bt-font-display)}
+  .bt-btn:hover{background:var(--bt-orange-dark);border-bottom:none !important}
+  .bt-related{border-top:2px solid var(--bt-rule);margin-top:56px;padding:32px 0 56px}
+  .bt-related h3{margin-top:0;font-family:var(--bt-font-display)}
+  .bt-related ul{list-style:none;padding:0}
+  .bt-related li{padding:14px 0;border-bottom:1px solid var(--bt-rule);font-family:var(--bt-font-body)}
+  .bt-related li:last-child{border-bottom:none}
+  .bt-related .meta{display:block;font-size:13px;color:var(--bt-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-author{background:var(--bt-soft);padding:28px;border-radius:8px;margin:32px 0;display:flex;gap:18px;align-items:flex-start}
+  .bt-author .bt-avatar{width:56px;height:56px;font-size:18px}
+  .bt-author p{margin:0;font-size:15px;color:var(--bt-muted);font-family:var(--bt-font-body)}
+  .bt-author strong{display:block;color:var(--bt-ink);font-size:16px;margin-bottom:4px;font-family:var(--bt-font-display)}
+  .bt-spec{background:var(--bt-soft);border-radius:6px;padding:20px 24px;margin:24px 0;font-family:var(--bt-font-body);font-size:14px}
+  .bt-spec h4{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bt-ink);font-weight:700;font-family:var(--bt-font-display)}
+  .bt-spec dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+  .bt-spec dt{color:var(--bt-muted)}
+  .bt-spec dd{margin:0;color:var(--bt-ink);font-weight:600;text-align:right}
+  .productView-details,.productView-rating,.productView-price,.productView-options,.form-action,
+  #form-action-addToCart,.productView-stock,.productView-warranties,.productView-images,
+  .productView-thumbnails,#pv-back,.productView .productView-description{display:none !important}
+  .bt-page-card{background:#fff;box-shadow:0px 0px 8px #ccc;max-width:960px;margin:32px auto;padding:24px 32px}
+  .bt-newsletter{background:#f5f3ee;border-top:1px solid #e7e7e7}
+  .bt-newsletter__inner{max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .bt-newsletter__title{font-family:var(--bt-font-display,"Industry","Oswald",sans-serif);font-weight:900;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:#001212;margin:0 0 12px}
+  .bt-newsletter__title em{font-style:normal;color:#c69400}
+  .bt-newsletter__sub{font-size:15px;color:#6b6b6b;max-width:50ch;line-height:1.5;margin:0}
+  @media(max-width:900px){.bt-newsletter__inner{grid-template-columns:1fr}}
+  @media (max-width:600px){.bt-page-card{padding:16px;margin:0}h1.bt-title{font-size:30px}.bt-wrap h2{font-size:24px}.bt-wrap h3{font-size:19px}.bt-deck{font-size:17px}}
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="bt-progress"><div class="bt-progress__bar" id="btProgressBar"></div></div>
+
+<div class="bt-page-card">
+<article class="bt-wrap">
+
+<header class="bt-hero">
+<span class="bt-tag">Model Spotlight</span>
+<h1 class="bt-title">John Deere 700K Crawler Dozer: Tier 4 Final Mid-to-Large Hydrostatic</h1>
+<p class="bt-deck">Built from the mid-2010s forward, the 700K brought the JD mid-to-large crawler dozer line to EPA Tier 4 Final emissions with a refined PowerTech 6068 6-cylinder diesel, DPF and SCR aftertreatment, a modernized sealed cab, and SmartGrade-ready electronics. The K-gen platform set the stage for the JD 700 P-Tier.</p>
+<div class="bt-byline">
+<div class="bt-avatar">BT</div>
+<div><strong>Broken Tractor Editorial Team</strong><span class="dot">&bull;</span> Updated May 2026<span class="dot">&bull;</span> 8 min read</div>
+</div>
+<div class="bt-feature">
+  <img src="{{getImage product.main_image 'grande'}}" alt="John Deere 700K Crawler Dozer">
+</div>
+</header>
+
+<nav aria-label="Table of contents">
+<h2>What&rsquo;s in this guide</h2>
+<ol>
+<li><a href="#section-1">Where the 700K fits in the JD crawler family</a></li>
+<li><a href="#section-2">What changed from the 700J to the 700K</a></li>
+<li><a href="#section-3">Engine, hydraulics, and undercarriage</a></li>
+<li><a href="#section-4">Common service items on the 700K</a></li>
+<li><a href="#section-5">Parts we carry for the John Deere 700K</a></li>
+<li><a href="#section-6">What to verify before ordering</a></li>
+<li><a href="#section-7">Why the 700K remains a production-grade pick</a></li>
+</ol>
+</nav>
+
+<h2 id="section-1">Where the 700K fits in the JD crawler family</h2>
+
+<p>The 700K succeeded the <a href="https://www.brokentractor.com/p/john-deere-700j-dozer-parts-specs/">700J</a> as JD&rsquo;s EPA Tier 4 Final mid-to-large hydrostatic crawler dozer. The K-gen platform took the 700 line to the strictest current emissions tier with a Tier 4 Final PowerTech 6068 6-cylinder engine paired with diesel particulate filter (DPF) and selective catalytic reduction (SCR) aftertreatment.</p>
+
+<p>Hydrostatic dual-path drive carried forward - refined but unchanged in concept. The 700K cab was modernized further with a larger sealed-and-pressurized operator station, refined joystick controls, a full-color monitor display, and integrated grade-control compatibility. Standard, LGP, and LT configurations were factory options.</p>
+
+<div class="bt-spec">
+<h4>JD 700K Crawler Dozer - Quick Specs</h4>
+<dl>
+<dt>Production</dt><dd>Mid-2010s+</dd>
+<dt>Class</dt><dd>Mid-to-Large Crawler Dozer</dd>
+<dt>Engine</dt><dd>JD PowerTech 6068 (Tier 4 Final)</dd>
+<dt>Cylinder Count</dt><dd>6-Cylinder</dd>
+<dt>Aftertreatment</dt><dd>DPF + SCR (DEF)</dd>
+<dt>Drivetrain</dt><dd>Hydrostatic Dual-Path</dd>
+<dt>Steering</dt><dd>Independent Track Control</dd>
+<dt>Variants</dt><dd>Standard, LGP, LT</dd>
+<dt>Predecessor</dt><dd>JD 700J</dd>
+</dl>
+</div>
+
+<h2 id="section-2">What changed from the 700J to the 700K</h2>
+
+<ul>
+<li><strong>Engine.</strong> EPA Tier 4 Final JD PowerTech 6068. Refined fuel system, electronic engine control with closed-loop feedback, cooled EGR, DPF for particulate control, and SCR catalyst with DEF dosing for NOx control.</li>
+<li><strong>Aftertreatment.</strong> DPF and SCR add service requirements not present on the Tier 3 700J - periodic DPF cleaning, DEF tank refills, NOx sensor service, and DPF differential pressure sensor monitoring.</li>
+<li><strong>Operator station.</strong> Larger sealed cab with improved climate control, refined joystick controls, full-color monitor display, integrated grade-control compatibility.</li>
+<li><strong>Hydrostatic drive.</strong> Refined pump and motor controls with smoother modulation and improved low-speed response.</li>
+<li><strong>Lighting.</strong> Standard LED lighting on most configurations.</li>
+</ul>
+
+<div class="bt-callout">
+<strong>Tier 4 Final aftertreatment - service implications</strong>
+The 700K&rsquo;s DPF and SCR systems are reliable when fed clean fuel and quality DEF, but they require attention. DEF tank must stay topped up. DPF will request periodic high-temperature regenerations. NOx sensors fail occasionally and trigger derate conditions. Factor aftertreatment service into the maintenance budget on K-gen machines.
+</div>
+
+<h2 id="section-3">Engine, hydraulics, and undercarriage</h2>
+
+<p>The 700K&rsquo;s PowerTech 6068 Tier 4 Final engine powers the dual-path drive system, the implement hydraulic circuit, and the steering hydraulics. The 6068 platform is JD&rsquo;s mid-large 6-cylinder workhorse - shared across construction, forestry, and agricultural equipment, and well-supported by the dealer network and aftermarket.</p>
+
+<p>The implement hydraulic circuit drives a 6-way blade on most configurations. Cylinder bore and stroke vary with blade configuration. The undercarriage carries the JD-pattern sealed-and-lubricated track chain, planetary final drives, and JD-pattern rollers and idlers. Standard, LGP, and LT (long-track) configurations are factory options.</p>
+
+<h2 id="section-4">Common service items on the 700K</h2>
+
+<ul>
+<li><strong>Aftertreatment:</strong> DPF cleaning service, DEF dosing units, NOx sensors, DPF pressure sensors, SCR catalyst service.</li>
+<li><strong>Hydrostatic pumps and motors:</strong> Drive pump rebuilds, charge pump components, drive motor rebuilds, case drain hoses, filter housings.</li>
+<li><strong>Hydraulic filtration:</strong> Suction strainers, return filters, charge filter, hydraulic oil.</li>
+<li><strong>Undercarriage:</strong> Track chains, track shoes, rollers, idlers, sprockets, idler springs.</li>
+<li><strong>Engine internals:</strong> JD PowerTech 6068 Tier 4 Final rebuild kits - pistons, rings, sleeves, bearings, gaskets.</li>
+<li><strong>Fuel system:</strong> Common-rail injectors, high-pressure fuel pump, lift pump, fuel filters, water separator.</li>
+<li><strong>Cooling system:</strong> Radiator, hydraulic oil cooler, EGR cooler, water pump, thermostat, hoses.</li>
+<li><strong>Implement hydraulics:</strong> Blade cylinders, seal kits, control valves, hoses.</li>
+<li><strong>Final drives:</strong> Sprockets, planetary gears, seals, bearings.</li>
+<li><strong>Electrical:</strong> Starter, alternator, harnesses, ECU, monitor display, switches, sensors.</li>
+<li><strong>Cab:</strong> Glass, weather seals, door parts, seat, A/C compressor and components.</li>
+</ul>
+
+<h2 id="section-5">Parts we carry for the John Deere 700K</h2>
+
+<div class="bt-table-scroll">
+<table>
+<thead><tr><th>Category</th><th>Common Parts</th><th>Browse</th></tr></thead>
+<tbody>
+<tr><td>Aftertreatment</td><td>DPF, SCR, NOx sensors, DEF dosing units</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+DPF&section=content">Browse Aftertreatment</a></td></tr>
+<tr><td>Hydrostatic Drive</td><td>Drive pumps, motors, charge pumps, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+hydrostatic&section=content">Browse Hydrostatic Drive</a></td></tr>
+<tr><td>Undercarriage</td><td>Track chains, shoes, rollers, idlers, sprockets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+undercarriage&section=content">Browse Undercarriage</a></td></tr>
+<tr><td>Engine</td><td>PowerTech 6068 pistons, rings, sleeves, gaskets</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+engine&section=content">Browse Engine Parts</a></td></tr>
+<tr><td>Fuel System</td><td>Common-rail injectors, HP pumps, filters</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+fuel&section=content">Browse Fuel System</a></td></tr>
+<tr><td>Cooling</td><td>Radiators, EGR coolers, water pumps, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+cooling&section=content">Browse Cooling Parts</a></td></tr>
+<tr><td>Implement Hydraulics</td><td>Blade cylinders, seal kits, valves, hoses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+hydraulic&section=content">Browse Implement Hydraulics</a></td></tr>
+<tr><td>Final Drives</td><td>Sprockets, planetary gears, seals, bearings</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+final+drive&section=content">Browse Final Drives</a></td></tr>
+<tr><td>Electrical</td><td>Starters, alternators, ECUs, monitors, harnesses</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+electrical&section=content">Browse Electrical</a></td></tr>
+<tr><td>Cab</td><td>Glass, weather seals, doors, A/C, seat</td><td><a href="https://www.brokentractor.com/search.php?search_query=john+deere+700K+cab&section=content">Browse Cab Components</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bt-cta">
+<h3>Need a part for your John Deere 700K Crawler Dozer?</h3>
+<p>Aftertreatment components, PowerTech 6068 engine parts, and hydrostatic drives are the highest-value items on a 700K. Call our parts team with your serial number.</p>
+<a class="bt-btn" href="https://www.brokentractor.com/pages/parts-request/">Request a Part</a>
+</div>
+
+<h2 id="section-6">What to verify before ordering</h2>
+
+<ul>
+<li><strong>Serial number.</strong> The 700K had running changes through its production. Match parts to the machine serial.</li>
+<li><strong>Engine serial.</strong> PowerTech 6068 Tier 4 Final internal parts must match the engine serial.</li>
+<li><strong>Aftertreatment configuration.</strong> DPF and SCR part numbers can vary across the production run. Confirm against existing aftertreatment serial tags.</li>
+<li><strong>Hydrostatic pump/motor variant.</strong> Drive pump and motor part numbers can vary.</li>
+<li><strong>Blade configuration.</strong> 6-way, angle-only, and straight-blade configurations have different cylinder specifications.</li>
+<li><strong>Undercarriage configuration.</strong> Standard, LGP, and LT (long-track) variants existed.</li>
+<li><strong>Grade-control package.</strong> Equipped vs. non-equipped configurations affect cab harnesses and hydraulic control valves.</li>
+</ul>
+
+<h2 id="section-7">Why the 700K remains a production-grade pick</h2>
+
+<p>The 700K is the modern, full-emissions JD mid-to-large hydrostatic crawler dozer that customers in current production fleets are running. It runs the proven PowerTech 6068 6-cylinder engine family, a refined hydrostatic dual-path drive, and a cab that meets the operator-experience expectations of any modern crawler.</p>
+
+<p>For customers running a 700K, maintenance priorities are: clean fuel (Tier 4 Final common-rail injectors don&rsquo;t tolerate contamination), DEF quality (poor DEF damages SCR catalysts), DPF service intervals, clean cool hydraulic oil, undercarriage replacement on schedule, and engine rebuilds when wear demands. Broken Tractor maintains parts coverage for the 700K and the broader 700 family.</p>
+
+<div class="bt-author">
+<div class="bt-avatar">BT</div>
+<div>
+<strong>Broken Tractor Editorial Team</strong>
+<p>This spotlight was compiled from factory John Deere service literature for the 700K Crawler Dozer, JD operator&rsquo;s manuals, CNH/Deere parts catalogs, and the verified BigCommerce catalog at brokentractor.com.</p>
+</div>
+</div>
+
+<section class="bt-related" aria-label="Related reading"><h3>Related John Deere dozer spotlights</h3>
+<ul>
+<li><span class="meta">Model Spotlight &middot; Predecessor</span><a href="https://www.brokentractor.com/p/john-deere-700j-dozer-parts-specs/">John Deere 700J Crawler Dozer: J-Gen Tier 3 Mid-to-Large</a></li>
+<li><span class="meta">Model Spotlight &middot; Smaller Sibling</span><a href="https://www.brokentractor.com/p/john-deere-650k-dozer-parts-specs/">John Deere 650K Crawler Dozer: Tier 4 Final 650</a></li>
+<li><span class="meta">Hub</span><a href="https://www.brokentractor.com/c/john-deere-parts/john-deere-dozer/john-deere-dozer-specs-and-information/">All John Deere Dozer Model Specs &amp; Information</a></li>
+</ul>
+</section>
+
+</article>
+</div>
+
+<section class="bt-newsletter">
+  <div class="bt-newsletter__inner">
+    <div>
+      <h2 class="bt-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
+      <p class="bt-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
+    </div>
+    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
+  </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.bt-wrap table').forEach(function(t){if(t.parentNode.classList.contains('bt-table-scroll'))return;var w=document.createElement('div');w.className='bt-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>
