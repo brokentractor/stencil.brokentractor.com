@@ -10,37 +10,12 @@ product:
         limit: 0
 ---
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "{{product.name}}",
-  "url": "{{product.url}}",
-  "author": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{product.url}}"
-  }
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
 
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -167,14 +142,6 @@ product:
 
 <p>The 680E opens the second-generation 680 platform - the post-CK-suffix era where Case dropped the Construction King "CK" nomenclature from the model name. It established the 336 cu in engine and Borg-Warner T19 transmission that defined the 680E and 680G. After 1978 the 680G took over with the same engine but higher output rating; then the 680H in 1982 with further refinements; then the 680K and 680L closing out the line in the 1980s and 1990s.</p>
 
-<div class="spotlight-author">
-<div class="spotlight-avatar">BT</div>
-<div>
-<strong>Broken Tractor Editorial Team</strong>
-<p>This spotlight was compiled from the verified BigCommerce catalog at brokentractor.com.</p>
-</div>
-</div>
-
 <section class="spotlight-related" aria-label="Related reading">
 <h3>Related Case backhoe spotlights</h3>
 <ul>
@@ -189,20 +156,9 @@ product:
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
-(function(){document.querySelectorAll('.spotlight-wrap table').forEach(function(t){if(t.parentNode.classList.contains('spotlight-table-scroll'))return;var w=document.createElement('div');w.className='spotlight-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
-</script>
+{{> components/spotlight/scripts}}

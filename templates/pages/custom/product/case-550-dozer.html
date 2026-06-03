@@ -10,37 +10,12 @@ product:
         limit: 0
 ---
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "{{product.name}}",
-  "url": "{{product.url}}",
-  "author": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{product.url}}"
-  }
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
 
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -225,14 +200,6 @@ The Case 550 production split at serial number JAK0013968. Pre-break machines us
 
 <p>The Case 550 is the mid-class crawler dozer for the mid-1970s through the late 1980s, sitting between the smaller <a href="https://www.brokentractor.com/p/case-450b-crawler-dozer-case-450b-dozer-specs-parts/">Case 450B</a> and the larger 650 in the Case lineup. The 550 launched a long-running nameplate that continued through the 550E (1988-1996), 550G (1996-2001), 550H, and 550H LT (Long Track) variants. Most non-engine service parts in our catalog cross-fit across multiple 550-generation machines - particularly track and undercarriage components.</p>
 
-<div class="spotlight-author">
-<div class="spotlight-avatar">BT</div>
-<div>
-<strong>Broken Tractor Editorial Team</strong>
-<p>This spotlight was compiled from factory Case service literature for the 550 and the verified BigCommerce catalog at brokentractor.com, including the documented JAK0013968 serial break in factory parts records.</p>
-</div>
-</div>
-
 <section class="spotlight-related">
 <h3>Related Case dozer spotlights</h3>
 <ul>
@@ -248,38 +215,9 @@ The Case 550 production split at serial number JAK0013968. Pre-break machines us
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
-<script>
-(function(){
-  var bar=document.getElementById('btProgressBar');
-  if(!bar)return;
-  function upd(){
-    var s=document.documentElement,b=document.body;
-    var tot=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
-    var pct=tot>0?Math.min(100,Math.round(s.scrollTop/tot*100)):0;
-    bar.style.width=pct+'%';
-  }
-  window.addEventListener('scroll',upd,{passive:true});
-  upd();
-})();
-(function(){
-  document.querySelectorAll('.spotlight-table-scroll table').forEach(function(t){
-    if(t.parentElement.classList.contains('spotlight-table-scroll'))return;
-    var w=document.createElement('div');
-    w.className='spotlight-table-scroll';
-    t.parentNode.insertBefore(w,t);
-    w.appendChild(t);
-  });
-})();
-</script>
+
+{{> components/spotlight/scripts}}

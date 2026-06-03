@@ -11,22 +11,11 @@ product:
 ---
 
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Case 850 Crawler Dozer: Specs, Parts & Common Issues",
-  "description": "Case 850 Crawler Dozer specs, Case A336BD 6-cylinder diesel, original 850 era predecessor to 850B, 850C, 850D, and modern 850 generations - parts available at Broken Tractor.",
-  "author": {"@type": "Organization", "name": "Broken Tractor"},
-  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
-  "dateModified": "2026-05-21",
-  "about": {"@type": "Product", "name": "Case 850 Crawler Dozer", "manufacturer": {"@type": "Organization", "name": "Case"}}
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -177,14 +166,6 @@ product:
 
 <p>The 850 sits in a sweet spot for mid-large dozer work - bigger than a 750 for serious pushing power but smaller and easier to transport than a 1150 or 1450. For commercial dirt work, larger agricultural site prep, private road maintenance, and major land-clearing, an 850 in good mechanical condition remains a productive machine. The Case A336 six-cylinder diesel is a known, well-supported engine, and the mechanical and power shift drivetrains are simpler to troubleshoot in the field than the hydrostatic systems on the later 850H / K / L / M.</p>
 
-<div class="spotlight-author">
-  <div class="spotlight-avatar">BT</div>
-  <div>
-    <strong>Broken Tractor Editorial Team</strong>
-    <p>This spotlight was compiled from factory Case service literature for the original 850 production family, CNH parts catalogs, Case A336BD engine documentation, and the verified BigCommerce catalog at brokentractor.com. Serial-specific fitment is best confirmed by phone before ordering - the multi-decade production window of the 850 family means small changes between years.</p>
-  </div>
-</div>
-
 <section class="spotlight-related">
   <h3>Related Case dozer spotlights</h3>
   <ul>
@@ -199,40 +180,9 @@ product:
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){
-  var bar=document.getElementById('btProgressBar');
-  if(!bar)return;
-  function upd(){
-    var s=document.documentElement,b=document.body;
-    var t=s.scrollTop||b.scrollTop;
-    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
-    bar.style.width=h>0?(t/h*100)+'%':'0%';
-  }
-  window.addEventListener('scroll',upd,{passive:true});
-  upd();
-})();
-(function(){
-  document.querySelectorAll('.spotlight-table-scroll').forEach(function(w){
-    if(w.scrollWidth>w.clientWidth){
-      var h=document.createElement('div');
-      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
-      h.textContent='&larr; scroll &rarr;';
-      w.parentNode.insertBefore(h,w);
-    }
-  });
-})();
-</script>
+{{> components/spotlight/scripts}}

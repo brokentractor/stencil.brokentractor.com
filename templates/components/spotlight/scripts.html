@@ -1,0 +1,4 @@
+<script>
+(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
+(function(){document.querySelectorAll('.spotlight-wrap table').forEach(function(t){if(t.parentNode.classList.contains('spotlight-table-scroll'))return;var w=document.createElement('div');w.className='spotlight-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
+</script>

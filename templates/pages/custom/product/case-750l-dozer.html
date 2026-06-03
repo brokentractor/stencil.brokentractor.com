@@ -11,22 +11,11 @@ product:
 ---
 
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Case 750L Crawler Dozer: Specs, Parts & Common Issues",
-  "description": "Case 750L Crawler Dozer specs (2005-2011), Tier 3 Cummins B-series diesel, hydrostatic dual-path drivetrain, and parts at Broken Tractor.",
-  "author": {"@type": "Organization", "name": "Broken Tractor"},
-  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
-  "dateModified": "2026-05-21",
-  "about": {"@type": "Product", "name": "Case 750L Crawler Dozer", "manufacturer": {"@type": "Organization", "name": "Case"}}
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -194,14 +183,6 @@ product:
 
 <p>The 750L is the Tier 3 L-generation mid-large frame Case crawler dozer, between the <a href="https://www.brokentractor.com/p/case-650h-crawler-dozer-parts-specs-common-issues-case-650h-crawler-dozer-parts-specs-common-issues/">Case 650H/L</a> and the 850H/L. Its predecessor is the <a href="https://www.brokentractor.com/p/case-750h-dozer-specs-parts-and-serial-numbers-2000-2003-case-750h-dozer-specs-parts-and-serial-information/">Case 750H</a> (Tier 1/2) and its successor in the chronological emissions progression is the <a href="https://www.brokentractor.com/p/case-750k-dozer-parts-specs-case-750k-dozer-parts-specs/">Case 750K</a> (Tier 4 Interim with DPF). After the 750K came the <a href="https://www.brokentractor.com/p/case-750m-dozer-parts-specs-case-750m-dozer-parts-specs/">Case 750M</a> (Tier 4 Final / Stage V).</p>
 
-<div class="spotlight-author">
-  <div class="spotlight-avatar">BT</div>
-  <div>
-    <strong>Broken Tractor Editorial Team</strong>
-    <p>This spotlight was compiled from factory Case service literature for the 750L, CNH parts catalogs, Cummins B-series Tier 3 engine documentation, and the verified BigCommerce catalog at brokentractor.com - including the broad H/K/L Case dozer cross-fit for the 359121A1 suspension seat and the 117835A1 / 117836A1 blade-carrier hardware.</p>
-  </div>
-</div>
-
 <section class="spotlight-related">
   <h3>Related Case dozer spotlights</h3>
   <ul>
@@ -215,40 +196,9 @@ product:
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){
-  var bar=document.getElementById('btProgressBar');
-  if(!bar)return;
-  function upd(){
-    var s=document.documentElement,b=document.body;
-    var t=s.scrollTop||b.scrollTop;
-    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
-    bar.style.width=h>0?(t/h*100)+'%':'0%';
-  }
-  window.addEventListener('scroll',upd,{passive:true});
-  upd();
-})();
-(function(){
-  document.querySelectorAll('.spotlight-table-scroll').forEach(function(w){
-    if(w.scrollWidth>w.clientWidth){
-      var h=document.createElement('div');
-      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
-      h.textContent='&larr; scroll &rarr;';
-      w.parentNode.insertBefore(h,w);
-    }
-  });
-})();
-</script>
+{{> components/spotlight/scripts}}

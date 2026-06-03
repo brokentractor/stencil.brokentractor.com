@@ -10,37 +10,12 @@ product:
         limit: 0
 ---
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "{{product.name}}",
-  "url": "{{product.url}}",
-  "author": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{product.url}}"
-  }
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
 
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -214,14 +189,6 @@ The 1450B&#39;s eight-year production run gives it the broadest used-market pres
 
 <p>The 1450B fills a productive niche for heavy-class dozer work - substantial pushing power and stability for major dirt work, road maintenance, and large-acreage land-clearing. The Case A504BDT turbocharged six-cylinder is well-documented and well-supported. The power shift drivetrain with torque converter is simpler to troubleshoot in the field than modern hydrostatic systems. For commercial dirt work, large agricultural site prep, and major land-clearing operations, a 1450B in good mechanical condition remains a productive machine.</p>
 
-<div class="spotlight-author">
-<div class="spotlight-avatar">BT</div>
-<div>
-<strong>Broken Tractor Editorial Team</strong>
-<p>This spotlight was compiled from factory Case service literature for the 1450B production family, CNH parts catalogs, Case A504BDT engine documentation, and the verified BigCommerce catalog at brokentractor.com.</p>
-</div>
-</div>
-
 <section class="spotlight-related" aria-label="Related reading">
 <h3>Related Case dozer spotlights</h3>
 <ul>
@@ -235,20 +202,9 @@ The 1450B&#39;s eight-year production run gives it the broadest used-market pres
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
-(function(){document.querySelectorAll('.spotlight-wrap table').forEach(function(t){if(t.parentNode.classList.contains('spotlight-table-scroll'))return;var w=document.createElement('div');w.className='spotlight-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
-</script>
+{{> components/spotlight/scripts}}

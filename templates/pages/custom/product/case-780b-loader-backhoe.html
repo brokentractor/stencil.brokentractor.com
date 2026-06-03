@@ -10,37 +10,12 @@ product:
         limit: 0
 ---
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "{{product.name}}",
-  "url": "{{product.url}}",
-  "author": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Broken Tractor",
-    "url": "https://www.brokentractor.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.brokentractor.com/content/bt-logo-schema.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{product.url}}"
-  }
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
 
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -179,14 +154,6 @@ product:
 
 <p>The 780B is the second generation of the 780 line - a Series B refinement of the original 780CK platform. It ran concurrently with the 780C from 1981 onward, with the 780B continuing as the 4-cylinder option and the 780C representing the 6-cylinder upgrade. After 1985 the 780B was discontinued and Case consolidated the 780 line around the 6T-590-powered 780C, which continued through 1988 before the 780D closed out the line in 1993.</p>
 
-<div class="spotlight-author">
-<div class="spotlight-avatar">BT</div>
-<div>
-<strong>Broken Tractor Editorial Team</strong>
-<p>This spotlight was compiled from factory Case service literature for the 780 / 780B and the verified BigCommerce catalog at brokentractor.com.</p>
-</div>
-</div>
-
 <section class="spotlight-related" aria-label="Related reading">
 <h3>Related Case backhoe spotlights</h3>
 <ul>
@@ -201,20 +168,9 @@ product:
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){var bar=document.getElementById('btProgressBar');if(!bar)return;function u(){var r=document.documentElement,m=r.scrollHeight-window.innerHeight,p=m>0?Math.min(100,Math.max(0,(window.scrollY/m)*100)):0;bar.style.width=p+'%'}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u)})();
-(function(){document.querySelectorAll('.spotlight-wrap table').forEach(function(t){if(t.parentNode.classList.contains('spotlight-table-scroll'))return;var w=document.createElement('div');w.className='spotlight-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})})();
-</script>
+{{> components/spotlight/scripts}}

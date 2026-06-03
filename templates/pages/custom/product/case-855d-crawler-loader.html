@@ -11,22 +11,11 @@ product:
 ---
 
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Case 855D Crawler Loader: Specs, Parts & Common Issues",
-  "description": "Case 855D Crawler Loader specs (1980-1994), sibling to 850D dozer. Case 6-cyl diesel, power shift, hydraulic loader bucket - parts available at Broken Tractor.",
-  "author": {"@type": "Organization", "name": "Broken Tractor"},
-  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
-  "dateModified": "2026-05-21",
-  "about": {"@type": "Product", "name": "Case 855D Crawler Loader", "manufacturer": {"@type": "Organization", "name": "Case"}}
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -228,14 +217,6 @@ product:
 
 <p>The 855D is the crawler loader sibling to the <a href="https://www.brokentractor.com/p/case-850d-dozer-specs-parts-and-serial-numbers-1980-1994-case-850d-dozer-specs/">Case 850D dozer</a>. Both share chassis, drivetrain, engine, and undercarriage - the 855D substitutes a hydraulic loader bucket on lifting arms for the 850D's dozer blade and pushframe. The 855D is positioned between the smaller crawler loaders in the Case line and the larger 1150D / 1155D-class machines. For mid-class material handling on soft ground or in environments where wheel loaders struggle, the 855D fills a specific and durable niche.</p>
 
-<div class="spotlight-author">
-  <div class="spotlight-avatar">BT</div>
-  <div>
-    <strong>Broken Tractor Editorial Team</strong>
-    <p>This spotlight was compiled from factory Case service literature for the 855D production family, CNH parts catalogs, Case A336 and Case 6-590 (Cummins 6BT-derived) engine documentation, and the verified BigCommerce catalog at brokentractor.com.</p>
-  </div>
-</div>
-
 <section class="spotlight-related">
   <h3>Related Case dozer spotlights</h3>
   <ul>
@@ -249,40 +230,9 @@ product:
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){
-  var bar=document.getElementById('btProgressBar');
-  if(!bar)return;
-  function upd(){
-    var s=document.documentElement,b=document.body;
-    var t=s.scrollTop||b.scrollTop;
-    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
-    bar.style.width=h>0?(t/h*100)+'%':'0%';
-  }
-  window.addEventListener('scroll',upd,{passive:true});
-  upd();
-})();
-(function(){
-  document.querySelectorAll('.spotlight-table-scroll').forEach(function(w){
-    if(w.scrollWidth>w.clientWidth){
-      var h=document.createElement('div');
-      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
-      h.textContent='&larr; scroll &rarr;';
-      w.parentNode.insertBefore(h,w);
-    }
-  });
-})();
-</script>
+{{> components/spotlight/scripts}}

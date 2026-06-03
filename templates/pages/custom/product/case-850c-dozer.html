@@ -11,22 +11,11 @@ product:
 ---
 
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Case 850C Crawler Dozer: Specs, Parts & Common Issues",
-  "description": "Case 850C Crawler Dozer specs (1981-1987), Case 6-cyl diesel, power shift transmission, dozer and crawler loader variants, undercarriage and blade parts available at Broken Tractor.",
-  "author": {"@type": "Organization", "name": "Broken Tractor"},
-  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
-  "dateModified": "2026-05-21",
-  "about": {"@type": "Product", "name": "Case 850C Crawler Dozer", "manufacturer": {"@type": "Organization", "name": "Case"}}
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -201,14 +190,6 @@ product:
 
 <p>The 850C is a refined mid-large frame Case crawler dozer (or loader) - bigger than a 750 for serious pushing or loading work but smaller and easier to transport than a 1150. The Case 6-cylinder diesel is well-documented and well-supported. The power shift with torque converter is simpler to troubleshoot than the hydrostatic systems on later 850H / K / L / M machines. For commercial dirt work, agricultural site prep, private road maintenance, and major land-clearing, an 850C in good mechanical condition remains a productive machine.</p>
 
-<div class="spotlight-author">
-  <div class="spotlight-avatar">BT</div>
-  <div>
-    <strong>Broken Tractor Editorial Team</strong>
-    <p>This spotlight was compiled from factory Case service literature for the 850C production family (both dozer and crawler loader configurations), CNH parts catalogs, and the verified BigCommerce catalog at brokentractor.com.</p>
-  </div>
-</div>
-
 <section class="spotlight-related">
   <h3>Related Case dozer spotlights</h3>
   <ul>
@@ -222,40 +203,9 @@ product:
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){
-  var bar=document.getElementById('btProgressBar');
-  if(!bar)return;
-  function upd(){
-    var s=document.documentElement,b=document.body;
-    var t=s.scrollTop||b.scrollTop;
-    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
-    bar.style.width=h>0?(t/h*100)+'%':'0%';
-  }
-  window.addEventListener('scroll',upd,{passive:true});
-  upd();
-})();
-(function(){
-  document.querySelectorAll('.spotlight-table-scroll').forEach(function(w){
-    if(w.scrollWidth>w.clientWidth){
-      var h=document.createElement('div');
-      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
-      h.textContent='&larr; scroll &rarr;';
-      w.parentNode.insertBefore(h,w);
-    }
-  });
-})();
-</script>
+{{> components/spotlight/scripts}}

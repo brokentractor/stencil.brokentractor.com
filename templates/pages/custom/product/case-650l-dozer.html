@@ -11,22 +11,11 @@ product:
 ---
 
 {{#partial "head"}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Case 650L Crawler Dozer: Specs, Parts & Common Issues",
-  "description": "Case 650L Crawler Dozer specs, Tier 4 Final FPT diesel with SCR/DEF, hydrostatic dual-path transmission, and parts at Broken Tractor.",
-  "author": {"@type": "Organization", "name": "Broken Tractor"},
-  "publisher": {"@type": "Organization", "name": "Broken Tractor", "url": "https://www.brokentractor.com"},
-  "dateModified": "2026-05-21",
-  "about": {"@type": "Product", "name": "Case 650L Crawler Dozer", "manufacturer": {"@type": "Organization", "name": "Case"}}
-}
-</script>
+{{> components/spotlight/schema-jsonld}}
 {{/partial}}
 
 {{#partial "page"}}
-<div class="spotlight-progress"><div class="spotlight-progress__bar" id="btProgressBar"></div></div>
+{{> components/spotlight/progress-bar}}
 
 <div class="spotlight-card">
 <article class="spotlight-wrap">
@@ -221,14 +210,6 @@ product:
 
 <p>The 650L is the L-generation mid-frame Case crawler dozer, sitting between the Case 550L and the Case 850L. Its predecessor is the <a href="https://www.brokentractor.com/p/case-650k-crawler-dozer-parts-specs-common-issues-case-650k-crawler-dozer-parts-specs-common-issues/">Case 650K</a> (Tier 4 Interim, EGR + DPF) and its successor is the <a href="https://www.brokentractor.com/p/case-650m-crawler-dozer-parts-specs-case-650m-crawler-dozer-parts-specs/">Case 650M</a> - which continues Tier 4 Final SCR with additional cab and electronics updates.</p>
 
-<div class="spotlight-author">
-  <div class="spotlight-avatar">BT</div>
-  <div>
-    <strong>Broken Tractor Editorial Team</strong>
-    <p>This spotlight was compiled from factory Case service literature for the 650L, CNH parts catalogs, FPT NEF Tier 4 Final engine documentation, and the verified BigCommerce catalog at brokentractor.com - including the broad H/K/L Case dozer cross-fit for the 359121A1 suspension seat.</p>
-  </div>
-</div>
-
 <section class="spotlight-related">
   <h3>Related Case dozer spotlights</h3>
   <ul>
@@ -242,40 +223,9 @@ product:
 </article>
 </div>
 
-<section class="spotlight-newsletter">
-  <div class="spotlight-newsletter__inner">
-    <div>
-      <h2 class="spotlight-newsletter__title">PARTS TIPS<br>IN YOUR <em>INBOX</em>.</h2>
-      <p class="spotlight-newsletter__sub">Repair guides and heads-up on hard-to-find parts we just got in. No catalogs, no fluff.</p>
-    </div>
-    <div><div class="klaviyo-form-Vc3CTQ"></div></div>
-  </div>
-</section>
+{{> components/spotlight/newsletter}}
 
 {{/partial}}
 {{> layout/base}}
 
-<script>
-(function(){
-  var bar=document.getElementById('btProgressBar');
-  if(!bar)return;
-  function upd(){
-    var s=document.documentElement,b=document.body;
-    var t=s.scrollTop||b.scrollTop;
-    var h=(s.scrollHeight||b.scrollHeight)-s.clientHeight;
-    bar.style.width=h>0?(t/h*100)+'%':'0%';
-  }
-  window.addEventListener('scroll',upd,{passive:true});
-  upd();
-})();
-(function(){
-  document.querySelectorAll('.spotlight-table-scroll').forEach(function(w){
-    if(w.scrollWidth>w.clientWidth){
-      var h=document.createElement('div');
-      h.style.cssText='text-align:right;font-size:12px;color:#5b6b7a;margin-bottom:4px;font-family:var(--bt-font-body)';
-      h.textContent='&larr; scroll &rarr;';
-      w.parentNode.insertBefore(h,w);
-    }
-  });
-})();
-</script>
+{{> components/spotlight/scripts}}
