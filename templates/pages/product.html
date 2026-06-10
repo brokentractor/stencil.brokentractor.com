@@ -12,9 +12,6 @@ product:
 {{#partial "pagename"}}pvwrap{{/partial}}
 
 {{#partial "page"}}
-    <div id="pv-back" onclick="window.history.go(-1); return false;">
-    <span id="backarrow"></span> Back
-    </div>
     {{#each product.shipping_messages}}
         {{> components/common/alert-info message}}
     {{/each}}

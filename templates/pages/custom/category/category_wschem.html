@@ -29,17 +29,22 @@ category:
         {{#if category.products}}
             <div id="slidetableouter">
                 <table id="slidetable">
+                    <caption class="is-srOnly">{{category.name}} parts list</caption>
+                    <thead>
                     <tr id="tableheaders">
-                        <th class="thcell pn static ref" data-sort-col="REFID">REF #</th>
-                        <th class="thcell pn static sku" data-sort-col="sku">Part #</th>
-                        <td class="thcell pn image">Image</td>
-                        <td class="thcell pn FitsModel" data-sort-col="FitsModel">Fits Model</td>
-                        <td class="thcell pn ListDescription" data-sort-col="ListDescription">Description</td>
-                        <td class="thcell pn price" data-sort-col="price">Price</td>
-                        <td class="thcell pn vd">Product Details</td>
-                        <!-- <td class="thcell pn atc">Add to Cart</td> -->
+                        <th scope="col" class="thcell pn static ref" data-sort-col="REFID" aria-sort="none">REF #</th>
+                        <th scope="col" class="thcell pn static sku" data-sort-col="sku" aria-sort="none">Part #</th>
+                        <th scope="col" class="thcell pn image">Image</th>
+                        <th scope="col" class="thcell pn FitsModel" data-sort-col="FitsModel" aria-sort="none">Fits Model</th>
+                        <th scope="col" class="thcell pn ListDescription" data-sort-col="ListDescription" aria-sort="none">Description</th>
+                        <th scope="col" class="thcell pn price" data-sort-col="price" aria-sort="none">Price</th>
+                        <th scope="col" class="thcell pn vd">Product Details</th>
+                        <!-- <th scope="col" class="thcell pn atc">Add to Cart</th> -->
                     </tr>
+                    </thead>
+                    <tbody>
                 {{> components/category/product-listing}}
+                    </tbody>
                 </table>
             </div>
         {{else}}
@@ -76,6 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
           span.style.cssText = 'font-size:10px;margin-left:4px;';
           span.textContent = dir === 'asc' ? ' ▲' : ' ▼';
           h.appendChild(span);
+          h.setAttribute('aria-sort', dir === 'asc' ? 'ascending' : 'descending');
+        } else if (h.hasAttribute('aria-sort')) {
+          h.setAttribute('aria-sort', 'none');
         }
       });
       var rows = Array.from(table.querySelectorAll('tr.productrow'));
@@ -92,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
         return dir === 'asc' ? cmp : -cmp;
       });
-      rows.forEach(function (row) { table.appendChild(row); });
+      var tbody = table.tBodies.length ? table.tBodies[0] : table;
+      rows.forEach(function (row) { tbody.appendChild(row); });
     });
   });
 });

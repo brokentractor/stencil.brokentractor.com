@@ -381,26 +381,6 @@ div#pv-topbox {
     }
 }
 
-div#pv-back {
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 22px;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: block;
-    @include breakpoint("medium") {
-        display: none;
-    }
-}
-#backarrow {
-    border-top: 3px #000 solid;
-    border-right: 3px #000 solid;
-    transform: rotate(-135deg);
-    display: inline-block;
-    height: 8px;
-    width: 8px;
-    margin-top: 24px;
-}
 div#refImg {
     text-align: center;
     padding: 20px;
@@ -501,10 +481,6 @@ div#ymalwrap1 {
 }
 
 #facetedSearch-content--category li .navList-action--checkbox::before {
-    display: none;
-}
-
-div#pv-back {
     display: none;
 }
 
