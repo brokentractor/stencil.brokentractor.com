@@ -31,9 +31,12 @@ product:
         <script text="text/javascript">
             //Added to Cart
             var klaviyo = window.klaviyo || [];
-            document.getElementById("form-action-addToCart").addEventListener('click',function (){
-                klaviyo.track("Added to Cart", item);
-            });
+            var atcBtn = document.getElementById("form-action-addToCart");
+            if (atcBtn) {
+                atcBtn.addEventListener('click', function () {
+                    klaviyo.track("Added to Cart", item);
+                });
+            }
     </script>
     <script>
     (function(){
