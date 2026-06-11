@@ -327,8 +327,13 @@ a#mphonelink {
     font-size: 22px;
     line-height: 1;
     display: block;
-    -webkit-animation: phone-ring 3s ease-in-out infinite;
-    animation: phone-ring 3s ease-in-out infinite;
+
+    // Animation only during business hours (class set by JS in header.html,
+    // 7am-5pm America/Chicago)
+    &.bt-phone-live {
+        -webkit-animation: phone-ring 3s ease-in-out infinite;
+        animation: phone-ring 3s ease-in-out infinite;
+    }
 
     @include breakpoint("medium") {
         display: none !important;

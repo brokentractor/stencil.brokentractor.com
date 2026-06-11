@@ -93,6 +93,30 @@
         <a href="tel:8009097060" id="mphonelink" aria-label="Call us at (800) 909-7060">
             <i class="fa fa-phone"></i>
         </a>
+        <script>
+        // Ring animation only while phones are answered: Mon-Fri 7am-5pm America/Chicago.
+        (function () {
+            var el = document.getElementById('mphonelink');
+            if (!el) return;
+            function update() {
+                var hour, day;
+                try {
+                    var parts = new Intl.DateTimeFormat('en-US', {
+                        timeZone: 'America/Chicago', hour: 'numeric', hourCycle: 'h23', weekday: 'short'
+                    }).formatToParts(new Date());
+                    for (var i = 0; i < parts.length; i++) {
+                        if (parts[i].type === 'hour') hour = parseInt(parts[i].value, 10);
+                        if (parts[i].type === 'weekday') day = parts[i].value;
+                    }
+                } catch (e) { return; } // ancient browser: no animation, link still works
+                var open = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].indexOf(day) !== -1
+                        && hour >= 7 && hour < 17;
+                el.classList.toggle('bt-phone-live', open);
+            }
+            update();
+            setInterval(update, 60000); // flips live if the page stays open across open/close
+        })();
+        </script>
 
         <a href="/cart.php" id="mcartlink">
             <i class="fa fa-shopping-cart"></i>
