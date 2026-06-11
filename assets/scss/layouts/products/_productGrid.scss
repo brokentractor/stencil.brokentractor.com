@@ -750,7 +750,9 @@ th.thcell.pn.vd {
         content: "REF #";
         font-weight: bold;
     }
-    tbody {
+    // Scoped to the category parts table only — a bare `tbody` here broke
+    // header/body column alignment on every other table sitewide (spotlights, blog).
+    table#slidetable tbody {
         display: block;
     }
     div#slidetableouter {

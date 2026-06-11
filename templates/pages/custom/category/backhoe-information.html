@@ -16,7 +16,9 @@ category:
         .bt-model-index .bt-card { background: #1a1a1a; border-bottom: none; }
         .bt-model-index .bt-card__body { background: #1a1a1a; }
         .bt-model-index .bt-card__title { color: #fff; }
-        .bt-model-index .bt-card__excerpt { color: rgba(255,255,255,0.75); -webkit-line-clamp: 4; }
+        .bt-model-index .bt-card__cta { display: inline-block; margin-top: auto; padding-top: 10px; color: #ffbe00; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+        .bt-model-index .bt-card__cta-arrow { transition: transform 0.2s ease; font-size: 16px; }
+        .bt-model-index .bt-card:hover .bt-card__cta-arrow { transform: translateX(4px); }
         .bt-model-index .bt-card__img { border-radius: 0; background: #fff; aspect-ratio: 1/1 !important; overflow: hidden; }
         .bt-model-index .bt-card__img img { width: 100%; height: 100%; object-fit: contain; }
         .bt-model-index .bt-card:hover .bt-card__title { color: #fff; }
@@ -65,9 +67,7 @@ category:
                 </div>
                 <div class="bt-card__body">
                     <h3 class="bt-card__title">{{name}}</h3>
-                    {{#if summary}}
-                    <p class="bt-card__excerpt">{{summary}}</p>
-                    {{/if}}
+                    <span class="bt-card__cta">Read More <span class="bt-card__cta-arrow" aria-hidden="true">&rarr;</span></span>
                 </div>
             </a>
             {{/each}}
