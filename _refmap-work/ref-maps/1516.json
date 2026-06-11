@@ -1,0 +1,232 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/ford-front-axle-differential.png",
+ "category": "New Holland Backhoe Front Axle Differential",
+ "template": "ford-front-axle-diff-4wd.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 8.75,
+   "y": 62.12,
+   "r": 1.17,
+   "label": "Differential Carrier",
+   "href": "/p/new-holland-backhoe-front-axle-differential-carrier-85827068-85827068/",
+   "kind": "product"
+  },
+  {
+   "ref": "1",
+   "x": 33.67,
+   "y": 29.44,
+   "r": 1.25,
+   "label": "Differential Carrier",
+   "href": "/p/new-holland-backhoe-front-axle-differential-carrier-85827068-85827068/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 24.42,
+   "y": 56.06,
+   "r": 1.08,
+   "label": "Differential Gear Kit",
+   "href": "/p/new-holland-backhoe-front-axle-differential-gear-kit-1930969-1930969/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 16.75,
+   "y": 67.1,
+   "r": 1.33,
+   "label": "Differential Gear Kit",
+   "href": "/p/new-holland-backhoe-front-axle-differential-gear-kit-1930969-1930969/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 18.58,
+   "y": 31.39,
+   "r": 1.17,
+   "label": "Differential Gear Kit",
+   "href": "/p/new-holland-backhoe-front-axle-differential-gear-kit-1930969-1930969/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 29.25,
+   "y": 56.28,
+   "r": 1.17,
+   "label": "Thrust Washer",
+   "href": "/p/new-holland-front-axle-differential-thrust-washer-5194183-5194183/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 14.42,
+   "y": 30.3,
+   "r": 1.17,
+   "label": "Thrust Washer",
+   "href": "/p/new-holland-front-axle-differential-thrust-washer-5194183-5194183/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 5.58,
+   "y": 18.4,
+   "r": 1.25,
+   "label": "Bolt",
+   "href": "/p/new-holland-backhoe-front-axle-ring-gear-bolt-86624979-86624979/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 39.75,
+   "y": 29.44,
+   "r": 1.17,
+   "label": "Carrier Bearing",
+   "href": "/p/new-holland-backhoe-front-axle-carrier-bearing-561201-561201/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 3.83,
+   "y": 57.58,
+   "r": 1.17,
+   "label": "Carrier Bearing",
+   "href": "/p/new-holland-backhoe-front-axle-carrier-bearing-561201-561201/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 21.25,
+   "y": 54.33,
+   "r": 1.17,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "7",
+   "x": 80.58,
+   "y": 57.36,
+   "r": 1.17,
+   "label": "Ring and Pinion",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 50.0,
+   "y": 39.61,
+   "r": 1.25,
+   "label": "Flange",
+   "href": "/p/new-holland-backhoe-front-axle-flange-9968049-9968049/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 55.33,
+   "y": 43.72,
+   "r": 1.17,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "10",
+   "x": 54.08,
+   "y": 8.66,
+   "r": 1.33,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "11",
+   "x": 61.17,
+   "y": 13.64,
+   "r": 1.17,
+   "label": "Seal Retainer",
+   "href": "/p/new-holland-backhoe-front-axle-differential-seal-retainer-9968051-9968051/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 66.67,
+   "y": 13.64,
+   "r": 1.17,
+   "label": "Retainer O Ring",
+   "href": "/p/new-holland-backhoe-front-axle-differential-o-ring-9968052-9968052/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 71.08,
+   "y": 13.64,
+   "r": 1.08,
+   "label": "Pinion Seal",
+   "href": "/p/new-holland-backhoe-front-axle-differential-seal-85824346-85824346/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 75.42,
+   "y": 13.64,
+   "r": 1.08,
+   "label": "Pinion Nut",
+   "href": "/p/new-holland-backhoe-front-axle-differential-pinion-nut-9968032-9968032/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 79.5,
+   "y": 13.85,
+   "r": 1.17,
+   "label": "Lock Washer",
+   "href": "/p/new-holland-backhoe-front-axle-differential-pinion-washer-9968031-9968031/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 58.83,
+   "y": 61.9,
+   "r": 1.17,
+   "label": "Pinion Bearing",
+   "href": "/p/new-holland-backhoe-front-axle-differential-pinion-bearing-28042230-28042230/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 55.33,
+   "y": 91.56,
+   "r": 1.08,
+   "label": "Spacer",
+   "href": "/p/new-holland-backhoe-front-axle-differential-spacer-9968033-9968033/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 63.5,
+   "y": 91.56,
+   "r": 1.08,
+   "label": "Spacer",
+   "href": "/p/new-holland-backhoe-front-axle-differential-spacer-9968033-9968033/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 59.67,
+   "y": 91.34,
+   "r": 1.17,
+   "label": "Collapsible Spacer",
+   "href": "/p/new-holland-backhoe-collapsible-front-axle-differential-spacer-1349058c1-1349058c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 71.75,
+   "y": 92.86,
+   "r": 1.08,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  }
+ ]
+}

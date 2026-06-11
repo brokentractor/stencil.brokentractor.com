@@ -1,0 +1,322 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/rear-center-ring-pinion-2-resize.png",
+ "category": "Rear Center Differential and Ring & Pinion",
+ "template": "Case-Backhoe-Rear-Center-diff-pinion-580l.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 73.42,
+   "y": 90.39,
+   "r": 1.25,
+   "label": null,
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 65.83,
+   "y": 42.13,
+   "r": 1.08,
+   "label": null,
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 44.83,
+   "y": 27.61,
+   "r": 1.25,
+   "label": null,
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 47.67,
+   "y": 61.15,
+   "r": 1.33,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 59.42,
+   "y": 20.45,
+   "r": 1.17,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 57.25,
+   "y": 26.38,
+   "r": 1.25,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 49.67,
+   "y": 55.01,
+   "r": 1.25,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 61.0,
+   "y": 40.9,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 63.33,
+   "y": 44.17,
+   "r": 1.17,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 45.83,
+   "y": 39.67,
+   "r": 1.25,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 78.25,
+   "y": 63.19,
+   "r": 1.08,
+   "label": "Bearing and Race, Rear Differential",
+   "href": "/p/case-backhoe-rear-differential-bearing-and-race-e135785-e135785/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 27.25,
+   "y": 32.52,
+   "r": 1.0,
+   "label": "Bearing and Race, Rear Differential",
+   "href": "/p/case-backhoe-rear-differential-bearing-and-race-e135785-e135785/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 80.25,
+   "y": 66.87,
+   "r": 1.0,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 25.33,
+   "y": 29.45,
+   "r": 0.92,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 41.42,
+   "y": 9.82,
+   "r": 1.17,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 33.67,
+   "y": 44.99,
+   "r": 0.92,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 40.83,
+   "y": 16.77,
+   "r": 0.92,
+   "label": "Needle Bearing Set",
+   "href": "/p/case-rear-axle-needle-bearing-set-247550a1-247550a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 35.75,
+   "y": 38.65,
+   "r": 0.92,
+   "label": "Needle Bearing Set",
+   "href": "/p/case-rear-axle-needle-bearing-set-247550a1-247550a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 72.25,
+   "y": 38.85,
+   "r": 1.0,
+   "label": "Bushing, Rear Axle Planetary Carrier Housing",
+   "href": "/p/case-bushing-rear-axle-planetary-carrier-housing-190452a1-190452a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 31.92,
+   "y": 39.88,
+   "r": 1.0,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "16",
+   "x": 51.08,
+   "y": 49.69,
+   "r": 1.08,
+   "label": "Spider Gear Cross Pin, Rear Axle Differential",
+   "href": "/p/case-backhoe-rear-axle-differential-spider-gear-pin-190468a1-190468a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 48.25,
+   "y": 27.81,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "18",
+   "x": 60.58,
+   "y": 64.62,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "19",
+   "x": 29.58,
+   "y": 35.99,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "20",
+   "x": 20.08,
+   "y": 65.44,
+   "r": 1.0,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "21",
+   "x": 23.42,
+   "y": 65.85,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "22",
+   "x": 27.25,
+   "y": 65.44,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "23",
+   "x": 30.17,
+   "y": 65.64,
+   "r": 1.17,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "24",
+   "x": 33.75,
+   "y": 65.64,
+   "r": 1.25,
+   "label": "Special Lock Washer",
+   "href": "/p/case-differential-pinion-special-lock-washer-k261065-k261065/",
+   "kind": "product"
+  },
+  {
+   "ref": "25",
+   "x": 38.33,
+   "y": 65.64,
+   "r": 1.17,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "26",
+   "x": 41.08,
+   "y": 88.14,
+   "r": 1.17,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "27",
+   "x": 44.42,
+   "y": 88.14,
+   "r": 1.0,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "28",
+   "x": 47.67,
+   "y": 88.14,
+   "r": 1.17,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "29",
+   "x": 50.92,
+   "y": 87.93,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  },
+  {
+   "ref": "30",
+   "x": 54.17,
+   "y": 88.14,
+   "r": 1.08,
+   "label": null,
+   "href": "#",
+   "kind": "anchor"
+  }
+ ]
+}

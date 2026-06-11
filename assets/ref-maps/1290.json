@@ -1,0 +1,241 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-bucket-parts-580l.png",
+ "category": "Backhoe Bucket Parts - 580L to 580SM",
+ "template": "Case-Bucket-Parts-580L.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 15.92,
+   "y": 42.93,
+   "r": 1.33,
+   "label": "Bucket Parts",
+   "href": "/c/case-construction-parts/case-backhoe-parts/rear-backhoe/backhoe-bucket-and-bucket-parts/",
+   "kind": "category"
+  },
+  {
+   "ref": "1A",
+   "x": 39.25,
+   "y": 66.19,
+   "r": 1.5,
+   "label": "Bucket Parts",
+   "href": "/c/case-construction-parts/case-backhoe-parts/rear-backhoe/backhoe-bucket-and-bucket-parts/",
+   "kind": "category"
+  },
+  {
+   "ref": "2",
+   "x": 39.17,
+   "y": 82.49,
+   "r": 1.42,
+   "label": "Tooth Shank (Weld On)",
+   "href": "/p/case-backhoe-weld-on-bucket-shank-adapter-for-tooth-d48212-230010/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 35.67,
+   "y": 91.61,
+   "r": 1.58,
+   "label": "Bucket Tooth Retainer Pin",
+   "href": "/p/case-backhoe-bucket-tooth-retainer-pin-245466a1-23p/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 22.42,
+   "y": 87.53,
+   "r": 1.58,
+   "label": "Standard Bucket Tooth",
+   "href": "/p/case-backhoe-bucket-tooth-d51750-230/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 34.25,
+   "y": 57.55,
+   "r": 1.5,
+   "label": "Bushing, Bucket (Large Pin Holes)",
+   "href": "/p/case-backhoe-bucket-bushing-with-large-pin-holes-d37495-d37495/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 36.58,
+   "y": 33.09,
+   "r": 1.5,
+   "label": "Bushing, Bucket (Small Pin Holes)",
+   "href": "/p/case-backhoe-small-bucket-bushing-d30933-d30933/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 40.83,
+   "y": 36.69,
+   "r": 1.58,
+   "label": "Pin, Bucket to Link or Coupler",
+   "href": "/p/case-backhoe-bucket-pin-bucket-to-link-or-coupler-d37614-d37614/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 43.75,
+   "y": 55.16,
+   "r": 1.5,
+   "label": "Pin, Bucket to Dipper (Fits Buckets Wider than 12&quot;)",
+   "href": "/p/case-backhoe-pin-bucket-to-dipper-for-buckets-wider-than-12-d150619-d150619/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 60.33,
+   "y": 17.27,
+   "r": 1.5,
+   "label": "Pin, Dipper to Bucket (12&quot; Buckets Only)",
+   "href": "#8",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 69.5,
+   "y": 9.11,
+   "r": 1.42,
+   "label": "Bushing, Y Link - Open End",
+   "href": "/p/case-backhoe-y-link-bushing-open-end-d138047-d138047-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 67.5,
+   "y": 23.5,
+   "r": 1.5,
+   "label": "Y Link Bushing (Closed End)",
+   "href": "/p/case-backhoe-y-link-bushing-closed-end-107124a1-107124a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 54.0,
+   "y": 15.11,
+   "r": 1.5,
+   "label": "Bushing, Dipper at Coupler",
+   "href": "/p/case-backhoe-bushing-dipper-at-coupler-d140029-d140029/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 74.5,
+   "y": 14.87,
+   "r": 1.5,
+   "label": "Link (1-3/8&quot; Thick at Pin Holes)",
+   "href": "#12",
+   "kind": "anchor"
+  },
+  {
+   "ref": "14",
+   "x": 72.25,
+   "y": 35.97,
+   "r": 1.58,
+   "label": "Bushing, Link (1-3/8&quot; Long)",
+   "href": "/p/case-backhoe-bucket-link-bushing-d149079-d149079/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 80.0,
+   "y": 23.5,
+   "r": 1.5,
+   "label": "Pin, Link to Dipper Stile &amp; Link to Cylinder",
+   "href": "/p/case-backhoe-pin-link-to-dipper-arm-link-to-cylinder-d141142-d141142/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 72.5,
+   "y": 61.87,
+   "r": 1.58,
+   "label": "Pin, Link to Dipper Stile &amp; Link to Cylinder",
+   "href": "/p/case-backhoe-pin-link-to-dipper-arm-link-to-cylinder-d141142-d141142/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 81.08,
+   "y": 59.71,
+   "r": 1.5,
+   "label": "Bucket Link (New w/Bushings)",
+   "href": "/p/case-backhoe-new-bucket-link-244790a1-244790a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 79.17,
+   "y": 50.12,
+   "r": 1.42,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/case-backhoe-bucket-link-bushing-d138047-d138047/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 79.25,
+   "y": 74.58,
+   "r": 1.5,
+   "label": "Bushing, Link",
+   "href": "/p/case-backhoe-link-bushing-d31140-d31140/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 57.33,
+   "y": 36.93,
+   "r": 1.67,
+   "label": "Bushing, Dipper at Quick Coupler",
+   "href": "/p/case-backhoe-dipper-bushing-at-quick-coupler-307186a1-307186a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 63.5,
+   "y": 49.16,
+   "r": 1.5,
+   "label": "Quick Coupler",
+   "href": "#19",
+   "kind": "anchor"
+  },
+  {
+   "ref": "21",
+   "x": 53.42,
+   "y": 47.72,
+   "r": 1.5,
+   "label": "Bushing, Quick Coupler Open Ends",
+   "href": "/p/case-backhoe-bushing-quick-coupler-open-ends-107124a1-107124a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 65.25,
+   "y": 68.35,
+   "r": 1.42,
+   "label": "Bushing, Quick Coupler Open Ends",
+   "href": "/p/case-backhoe-bushing-quick-coupler-open-ends-107124a1-107124a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 51.42,
+   "y": 79.86,
+   "r": 1.33,
+   "label": "Bushing, Quick Coupler Closed End",
+   "href": "/p/case-backhoe-quick-coupler-bushing-d127167-d127167-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 68.08,
+   "y": 74.58,
+   "r": 1.42,
+   "label": "Pin, Link to Quick Coupler",
+   "href": "/p/case-backhoe-pin-link-to-coupler-d146288-d146288/",
+   "kind": "product"
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-rear-axle-housing-resize.png",
+ "category": "Case Backhoe Rear Axle Housing",
+ "template": "Case-rear-axle-housing-580l.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 30.67,
+   "y": 23.55,
+   "r": 1.5,
+   "label": "Brake Housing (Right Hand)",
+   "href": "/p/case-backhoe-right-hand-brake-housing-190457a1-190457a1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 50.83,
+   "y": 21.09,
+   "r": 1.58,
+   "label": "Brake Housing (Left Hand)",
+   "href": "/p/case-left-hand-brake-housing-190458a1-190458a1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 42.92,
+   "y": 85.06,
+   "r": 1.58,
+   "label": "Axle Drain Plug",
+   "href": "/p/case-backhoe-axle-drain-plug-85806012-85806012/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 30.58,
+   "y": 64.85,
+   "r": 1.5,
+   "label": "O Ring (Axle Housing)",
+   "href": "/p/case-backhoe-axle-housing-o-ring-86625104-86625104/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 52.33,
+   "y": 64.67,
+   "r": 1.58,
+   "label": "O Ring (Axle Housing)",
+   "href": "/p/case-backhoe-axle-housing-o-ring-86625104-86625104/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 61.5,
+   "y": 64.85,
+   "r": 1.42,
+   "label": "O Ring (Axle Housing)",
+   "href": "/p/case-backhoe-axle-housing-o-ring-86625104-86625104/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 70.08,
+   "y": 64.85,
+   "r": 1.58,
+   "label": "O Ring (Axle Housing)",
+   "href": "/p/case-backhoe-axle-housing-o-ring-86625104-86625104/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 22.83,
+   "y": 65.03,
+   "r": 1.58,
+   "label": "O Ring (Axle Housing)",
+   "href": "/p/case-backhoe-axle-housing-o-ring-86625104-86625104/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 47.92,
+   "y": 77.5,
+   "r": 1.42,
+   "label": "O-Ring, Drain Plug",
+   "href": "/p/case-backhoe-axle-drain-plug-o-ring-511524-511524/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 16.92,
+   "y": 71.35,
+   "r": 1.5,
+   "label": "O-Ring, Drain Plug",
+   "href": "/p/case-backhoe-axle-drain-plug-o-ring-511524-511524/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 37.5,
+   "y": 26.71,
+   "r": 1.67,
+   "label": "O Ring (Axle Housing)",
+   "href": "/p/case-backhoe-axle-housing-o-ring-86625104-86625104/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 11.83,
+   "y": 76.27,
+   "r": 1.42,
+   "label": "Axle Drain Plug",
+   "href": "/p/case-backhoe-axle-drain-plug-85806012-85806012/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 20.83,
+   "y": 24.08,
+   "r": 1.67,
+   "label": "Rear Axle Flange",
+   "href": "/p/case-backhoe-rear-axle-flange-190459a1-190459a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 60.0,
+   "y": 21.09,
+   "r": 1.5,
+   "label": "Rear Axle Flange",
+   "href": "/p/case-backhoe-rear-axle-flange-190459a1-190459a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 81.75,
+   "y": 17.75,
+   "r": 1.5,
+   "label": "M14 x 2 x 140mm Bolt",
+   "href": "/p/case-backhoe-axle-housing-bolt-86624982-86624982/",
+   "kind": "product"
+  }
+ ]
+}

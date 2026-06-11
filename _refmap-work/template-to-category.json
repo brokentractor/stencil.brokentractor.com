@@ -1,0 +1,874 @@
+{
+  "Case-Front-Axle-2wd-580C.html": [
+    {
+      "category_id": 169,
+      "name": "480C, 480D, 480E, 480F, 580C, 580D, 580E, 580SE",
+      "url": "/c/case-480c-480d-480e-580c-580d-580e-2wd-front-axle/",
+      "layout_file": "Case-Front-Axle-2wd-580C"
+    }
+  ],
+  "case-backhoe-front-axle-580k.html": [
+    {
+      "category_id": 170,
+      "name": "580K, 580SK, 580L, 580SL, 580M, 580SM, 590, 590SL",
+      "url": "/c/case-580k-580l-580m-590-2wd-front-axle-parts/",
+      "layout_file": "case-backhoe-front-axle-580k"
+    }
+  ],
+  "Case-front-loader-pins-580k.html": [
+    {
+      "category_id": 193,
+      "name": "Case 580K and 580 Super K Loader Parts",
+      "url": "/c/case-580k-580-super-k-loader-pins-bushings/",
+      "layout_file": "Case-front-loader-pins-580k"
+    }
+  ],
+  "case-input-shaft-580l.html": [
+    {
+      "category_id": 216,
+      "name": "Case 580L, 580M Carraro Transmission Input Shaft",
+      "url": "/c/case-580l-580m-carraro-transmission-input-shaft/",
+      "layout_file": "case-input-shaft-580l"
+    }
+  ],
+  "case-trans-idler-shaft-580l.html": [
+    {
+      "category_id": 217,
+      "name": "Case Backhoe Idler and Primary Shaft",
+      "url": "/c/case-backhoe/carraro-transmission-parts-580l-580m-580-super-l-m/carraro-transmission-primary-idler-shaft-rebuild-kit-580l-580-super-l-570lxt/",
+      "layout_file": "case-trans-idler-shaft-580l"
+    }
+  ],
+  "case-trans-secondary-shaft-580l.html": [
+    {
+      "category_id": 218,
+      "name": "Case Backhoe Secondary Shaft",
+      "url": "/c/case-backhoe/carraro-transmission-parts-580l-580m-580-super-l-m/carraro-transmission-secondary-shaft-rebuild-kit-580l-580-super-l-570lxt/",
+      "layout_file": "case-trans-secondary-shaft-580l"
+    }
+  ],
+  "Case-trans-4wd-output-shaft.html": [
+    {
+      "category_id": 219,
+      "name": "Case Backhoe 4WD Output Shaft Assembly",
+      "url": "/c/case-backhoe/carraro-transmission-parts-580l-580m-580-super-l-m/carraro-transmission-4wd-output-shaft-rebuild-kit-580l-580-super-l-570lxt/",
+      "layout_file": "Case-trans-4wd-output-shaft"
+    }
+  ],
+  "Case-rear-frame-580B.html": [
+    {
+      "category_id": 335,
+      "name": "Frame & Stabilizer Parts - 580B to 580SE",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580b-580c-580d-580-super-e/frame-stabilizer-parts-580b-to-580se/",
+      "layout_file": "Case-rear-frame-580B"
+    }
+  ],
+  "JD-dozer-finaldrive-1010.html": [
+    {
+      "category_id": 454,
+      "name": "1010, 350 Dozer Final Drive Parts",
+      "url": "/c/john-deere-dozer/final-drive-parts/1010-350-350b-final-drive-parts-shaft-gear-bearings/",
+      "layout_file": "JD-dozer-finaldrive-1010"
+    }
+  ],
+  "JD-dozer-finaldrive-450.html": [
+    {
+      "category_id": 455,
+      "name": "450, 450B, 450C, 550, 550B, 650 Final Drive Parts",
+      "url": "/c/john-deere-dozer/final-drive-parts/450-450b-450c-450d-450e-450g-final-drive-parts-shaft-gear-bearings/",
+      "layout_file": "JD-dozer-finaldrive-450"
+    }
+  ],
+  "JD-dozer-finaldrive-700H.html": [
+    {
+      "category_id": 457,
+      "name": "700H, 700J, 700K Final Drive Parts",
+      "url": "/c/john-deere-dozer/final-drive-parts/700h-700j-final-drive-parts/",
+      "layout_file": "JD-dozer-finaldrive-700H"
+    }
+  ],
+  "JD-dozer-crossbar-700H.html": [
+    {
+      "category_id": 480,
+      "name": "700H, 700J, 700K Dozer Crossbar",
+      "url": "/c/john-deere-dozer/crossbar/suspension-700h-700j-700k/",
+      "layout_file": "JD-dozer-crossbar-700H"
+    }
+  ],
+  "JD-dozer-crossbar-750J.html": [
+    {
+      "category_id": 481,
+      "name": "750J, 750K, 850J, 850K Dozer Crossbar",
+      "url": "/c/john-deere-dozer/crossbar/suspension-750j-750k-850j-850k/",
+      "layout_file": "JD-dozer-crossbar-750J"
+    }
+  ],
+  "JD-dozer-track-450.html": [
+    {
+      "category_id": 487,
+      "name": "450, 450B, 450C, 450D, 450E, 550, 550B",
+      "url": "/c/john-deere-dozer/track-adjuster-recoil-spring/450-450b-450c-450e-550-550b-track-adjuster-parts/",
+      "layout_file": "JD-dozer-track-450"
+    }
+  ],
+  "JD-dozer-track-450H-550H.html": [
+    {
+      "category_id": 488,
+      "name": "450H, 450J, 550H, 550K, 650H, 650J, 650K",
+      "url": "/c/john-deere-dozer/track-adjuster-recoil-spring/track-adjuster-recoil-spring-parts-450h-450j-550h-550k-650h-650k-650j/",
+      "layout_file": "JD-dozer-track-450H-550H"
+    }
+  ],
+  "JD-dozer-track-750.html": [
+    {
+      "category_id": 489,
+      "name": "750, 750B, 750C, 850, 850B, 850C",
+      "url": "/c/john-deere-dozer/track-adjuster-recoil-spring/650-750-850-850b-850c-850d-track-tensioner-adjuster-parts/",
+      "layout_file": "JD-dozer-track-750"
+    }
+  ],
+  "JD-dozer-track-700H.html": [
+    {
+      "category_id": 492,
+      "name": "700H, 700J, 700K",
+      "url": "/c/john-deere-dozer/track-adjuster-recoil-spring/700h-700j-track-parts/",
+      "layout_file": "JD-dozer-track-700H"
+    }
+  ],
+  "JD-dozer-track-750J.html": [
+    {
+      "category_id": 494,
+      "name": "750J, 750K, 850J, 850K",
+      "url": "/c/john-deere-dozer/track-adjuster-recoil-spring/track-adjuster-recoil-spring-parts-750k-750j-850k-850j/",
+      "layout_file": "JD-dozer-track-750J"
+    }
+  ],
+  "JD-dozer-blade-450g-550g.html": [
+    {
+      "category_id": 497,
+      "name": "450G, 550G, 650G Blade Parts",
+      "url": "/c/john-deere-parts/john-deere-dozer/john-deere-dozer-blade-parts/blade-parts-pins-bushings/450g-550g-650g-blade-parts/",
+      "layout_file": "JD-dozer-blade-450g-550g"
+    }
+  ],
+  "JD-dozer-blade-450h.html": [
+    {
+      "category_id": 499,
+      "name": "450H to P, 550H to P,  650H to P-Tier Blade Parts",
+      "url": "/c/john-deere-parts/john-deere-dozer/john-deere-dozer-blade-parts/blade-parts-pins-bushings/450h-to-p-550h-to-p-650h-to-p-tier-blade-parts/",
+      "layout_file": "JD-dozer-blade-450h"
+    }
+  ],
+  "JD-dozer-blade-750J.html": [
+    {
+      "category_id": 503,
+      "name": "750J, 750K, 850J, & 850K Blade Parts",
+      "url": "/c/john-deere-parts/john-deere-dozer/john-deere-dozer-blade-parts/blade-parts-pins-bushings/750j-750k-850j-850k-blade-parts/",
+      "layout_file": "JD-dozer-blade-750J"
+    }
+  ],
+  "JD-dozer-blade-700H.html": [
+    {
+      "category_id": 505,
+      "name": "700H, 700J, 700K Blade Parts",
+      "url": "/c/john-deere-parts/john-deere-dozer/john-deere-dozer-blade-parts/blade-parts-pins-bushings/700h-700j-700k-blade-parts/",
+      "layout_file": "JD-dozer-blade-700H"
+    }
+  ],
+  "JD-backhoe-bucket-pin-310.html": [
+    {
+      "category_id": 556,
+      "name": "Backhoe Bucket Pins, Links & Bushings",
+      "url": "/c/jd-backhoe/310-bucket-pins-links-bushings",
+      "layout_file": "JD-backhoe-bucket-pin-310"
+    }
+  ],
+  "JD-backhoe-stab-pad-310.html": [
+    {
+      "category_id": 560,
+      "name": "Stabilizer Pins and Pads",
+      "url": "/c/jd-backhoe/stabilizer-pins-bushings-pads",
+      "layout_file": "JD-backhoe-stab-pad-310"
+    }
+  ],
+  "ford-steering-gearbox-3000.html": [
+    {
+      "category_id": 844,
+      "name": "2000, 3000, 2600, 3600, 2610, 3610, 3910 Power",
+      "url": "/c/ford-new-holland-tractor/power-steering-gearbox-parts/shaft-rebuild-kit-2000-3000-2600-3600-4000su/",
+      "layout_file": "ford-steering-gearbox-3000"
+    }
+  ],
+  "dresser-dozer-blade-TD8G.html": [
+    {
+      "category_id": 1155,
+      "name": "Dresser TD8G Dozer Blade Parts",
+      "url": "/c/dresser-td8g-dozer-blade-parts/",
+      "layout_file": "dresser-dozer-blade-TD8G"
+    }
+  ],
+  "dresser-finaldrive-TD7.html": [
+    {
+      "category_id": 1162,
+      "name": "Dresser Dozer Final Drive TD7, TD8, TD9, TD340",
+      "url": "/c/dresser-dozer-final-drive-td7-td8-td9-td340/",
+      "layout_file": "dresser-finaldrive-TD7"
+    }
+  ],
+  "case-swing-tower-580K.html": [
+    {
+      "category_id": 1286,
+      "name": "Case 580K & 580 Super K Swing Tower Parts",
+      "url": "/p/case-580k-580-super-k-swing-tower-parts/",
+      "layout_file": "case-swing-tower-580K"
+    }
+  ],
+  "case-boom-580k.html": [
+    {
+      "category_id": 1287,
+      "name": "Case 580K & 580 Super K Boom Parts",
+      "url": "/p/case-580k-580-super-k-boom-parts/",
+      "layout_file": "case-boom-580k"
+    }
+  ],
+  "Case-bucket-580K.html": [
+    {
+      "category_id": 1288,
+      "name": "Case 580K & 580 Super K Bucket Parts",
+      "url": "/c/case-580k-580-super-k-bucket-parts/",
+      "layout_file": "Case-bucket-580K"
+    }
+  ],
+  "Case-Bucket-Parts-580L.html": [
+    {
+      "category_id": 1290,
+      "name": "Backhoe Bucket Parts - 580L to 580SM",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580l-580-super-l-580m-580-super-m/backhoe-bucket-parts-580l-to-580sm/",
+      "layout_file": "Case-Bucket-Parts-580L"
+    }
+  ],
+  "Case-ext-dipper-580L.html": [
+    {
+      "category_id": 1304,
+      "name": "Extendahoe Dipper Arm Parts - 580L to 580SM",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580l-580-super-l-580m-580-super-m/extendahoe-dipper-arm-parts-580l-to-580sm/",
+      "layout_file": "Case-ext-dipper-580L"
+    }
+  ],
+  "case-swing-tower-580L.html": [
+    {
+      "category_id": 1305,
+      "name": "Case 580L, 580M Backhoe Swing Tower Parts",
+      "url": "/c/case-580l-580m-swing-tower-parts/",
+      "layout_file": "case-swing-tower-580L"
+    }
+  ],
+  "Case-rear-boom-parts-580L.html": [
+    {
+      "category_id": 1309,
+      "name": "Backhoe Boom Parts - 580L to 580SM",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580l-580-super-l-580m-580-super-m/backhoe-boom-parts-580l-to-580sm/",
+      "layout_file": "Case-rear-boom-parts-580L"
+    }
+  ],
+  "case-boom-590sl.html": [
+    {
+      "category_id": 1311,
+      "name": "Case 590 Super L, 590 Super M Backhoe Boom Parts",
+      "url": "/c/case-590-super-l-590-super-m-boom-parts/",
+      "layout_file": "case-boom-590sl"
+    }
+  ],
+  "Case-rear-frame-stab-590SL.html": [
+    {
+      "category_id": 1313,
+      "name": "Frame and Stabilizer Parts - 590SL, 590SM",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/590-turbo-590-super-l-590-super-m-590-super-n/frame-and-stabilizer-parts-590sl-590sm/",
+      "layout_file": "Case-rear-frame-stab-590SL"
+    }
+  ],
+  "Case-Rear-boom-swing-580B.html": [
+    {
+      "category_id": 1314,
+      "name": "Case 580B, 580C, 580D, 580 Super E Boom & Tower",
+      "url": "/c/case-580b-580c-580d-580-super-e-boom-tower/",
+      "layout_file": "Case-Rear-boom-swing-580B"
+    }
+  ],
+  "Case-ext-dipper-580k.html": [
+    {
+      "category_id": 1315,
+      "name": "Case 580K & 580 Super K Extendahoe Dipper Stick",
+      "url": "/p/case-580k-580-super-k-extendahoe-dipper-stick-parts/",
+      "layout_file": "Case-ext-dipper-580k"
+    }
+  ],
+  "case-rear-extend-dip-590sl.html": [
+    {
+      "category_id": 1316,
+      "name": "Extendahoe Dipper Arm Parts",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-rear-backhoe-parts/case-backhoe-pins-bushings-and-links/590-turbo-590-super-l-590-super-m-590-super-n/extendahoe-dipper-arm-parts/",
+      "layout_file": "case-rear-extend-dip-590sl"
+    }
+  ],
+  "Case-rear-frame-580K.html": [
+    {
+      "category_id": 1317,
+      "name": "Case 580K & 580 Super K Frame Stabilizer Parts",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-parts/case-backhoe-pins-bushings-links/580k-580-super-k/case-580k-580-super-k-frame-stabilizer-parts/",
+      "layout_file": "Case-rear-frame-580K"
+    }
+  ],
+  "Case-rear-frame-stab-580L.html": [
+    {
+      "category_id": 1318,
+      "name": "Frame & Stabilizer Parts - 580L to 580SM",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580l-580-super-l-580m-580-super-m/frame-stabilizer-parts-580l-to-580sm/",
+      "layout_file": "Case-rear-frame-stab-580L"
+    }
+  ],
+  "JD-excavator-450CLC.html": [
+    {
+      "category_id": 1325,
+      "name": "Deere 450CLC, 450DLC, 470GLC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-450clc-450dlc-470glc/",
+      "layout_file": "JD-excavator-450CLC"
+    }
+  ],
+  "JD-excavator-992ELC.html": [
+    {
+      "category_id": 1326,
+      "name": "Deere 992ELC, 400LC, 450LC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-992elc-400lc-450lc/",
+      "layout_file": "JD-excavator-992ELC"
+    }
+  ],
+  "JD-excavator-590D.html": [
+    {
+      "category_id": 1338,
+      "name": "Deere 590D, 595D, 160LC, 160CLC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-590d-595d-160lc-160clc/",
+      "layout_file": "JD-excavator-590D"
+    }
+  ],
+  "JD-excavator-270CLC.html": [
+    {
+      "category_id": 1339,
+      "name": "Deere 270CLC, 270DLC, 290GLC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-270clc-270dlc-290glc/",
+      "layout_file": "JD-excavator-270CLC"
+    }
+  ],
+  "JD-excavator-792DLC.html": [
+    {
+      "category_id": 1340,
+      "name": "Deere 792DLC, 270LC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-792dlc-270lc/",
+      "layout_file": "JD-excavator-792DLC"
+    }
+  ],
+  "JD-excavator-180GLC.html": [
+    {
+      "category_id": 1341,
+      "name": "Deere 180GLC, 200CLC, 200DLC, 225CLC, 225DLC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-180glc-200clc-200dlc-225clc-225dlc/",
+      "layout_file": "JD-excavator-180GLC"
+    }
+  ],
+  "JD-excavator-160DLC.html": [
+    {
+      "category_id": 1342,
+      "name": "Deere 160DLC, 160GLC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-160dlc-160glc/",
+      "layout_file": "JD-excavator-160DLC"
+    }
+  ],
+  "Case-rear-boom-580N.html": [
+    {
+      "category_id": 1349,
+      "name": "Case 580N, 580 Super N Boom & Dipper Parts",
+      "url": "/c/case-580n-580-super-n-boom-dipper-parts/",
+      "layout_file": "Case-rear-boom-580N"
+    }
+  ],
+  "case-swing-tower-590N.html": [
+    {
+      "category_id": 1350,
+      "name": "Swing Tower Parts - 580N, 580SN",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580n-580-super-n/swing-tower-parts-580n-580sn/",
+      "layout_file": "case-swing-tower-590N"
+    }
+  ],
+  "Case-rear-frame-580N.html": [
+    {
+      "category_id": 1351,
+      "name": "Frame & Stabilizer Parts - 580N, 580SN",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580n-580-super-n/frame-stabilizer-parts-580n-580sn/",
+      "layout_file": "Case-rear-frame-580N"
+    }
+  ],
+  "JD-excavator-120C.html": [
+    {
+      "category_id": 1362,
+      "name": "Deere 120C, 120D, 130G, 135C RTS, 135D, 135G",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-120c-120d-130g-135c-rts-135d-135g/",
+      "layout_file": "JD-excavator-120C"
+    }
+  ],
+  "JD-loader-pin-bushing-544E-544G.html": [
+    {
+      "category_id": 1375,
+      "name": "Deere 544E, 544G Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-544e-544g-loader-pins-bushings/",
+      "layout_file": "JD-loader-pin-bushing-544E-544G"
+    }
+  ],
+  "JD-loader-pin-bushing-624J.html": [
+    {
+      "category_id": 1376,
+      "name": "Deere 624J, 624K Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-624j-loader-pins--bushings/",
+      "layout_file": "JD-loader-pin-bushing-624J"
+    }
+  ],
+  "JD-loader-pin-bushing-644E-644G.html": [
+    {
+      "category_id": 1377,
+      "name": "Deere 644E, 644G Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-644e-644g-loader-pins--bushings/",
+      "layout_file": "JD-loader-pin-bushing-644E-644G"
+    }
+  ],
+  "JD-loader-pin-bushing-624E-624G.html": [
+    {
+      "category_id": 1378,
+      "name": "Deere 624E, 624G Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-624e-624g-loader-pins-and-bushings/",
+      "layout_file": "JD-loader-pin-bushing-624E-624G"
+    }
+  ],
+  "JD-loader-pin-bushing-344E.html": [
+    {
+      "category_id": 1379,
+      "name": "Deere 344E, 344G, 444E, 444G Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-344e-344g-444e-444g-pins-bushings/",
+      "layout_file": "JD-loader-pin-bushing-344E"
+    }
+  ],
+  "JD-excavator-690DLC.html": [
+    {
+      "category_id": 1380,
+      "name": "Deere 690DLC, 690ELC, 200LC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-690dlc-690elc-200lc/",
+      "layout_file": "JD-excavator-690DLC"
+    }
+  ],
+  "JD-excavator-490D.html": [
+    {
+      "category_id": 1381,
+      "name": "Deere 490D, 490E, 110, 120",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-490d-490e-110-120/",
+      "layout_file": "JD-excavator-490D"
+    }
+  ],
+  "JD-excavator-230CLC.html": [
+    {
+      "category_id": 1382,
+      "name": "Deere 230CLC, 240DLC, 250GLC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-230clc-240dlc-250glc/",
+      "layout_file": "JD-excavator-230CLC"
+    }
+  ],
+  "JD-excavator-790DLC.html": [
+    {
+      "category_id": 1383,
+      "name": "Deere 790DLC, 790ELC, 230LC",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-790dlc-790elc-230lc/",
+      "layout_file": "JD-excavator-790DLC"
+    }
+  ],
+  "JD-excavator-330CLC.html": [
+    {
+      "category_id": 1384,
+      "name": "Deere 330CLC, 350DLC, 350GLC, 370C",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-330clc-350dlc-350glc-370c/",
+      "layout_file": "JD-excavator-330CLC"
+    }
+  ],
+  "JD-excavator-892DLC.html": [
+    {
+      "category_id": 1385,
+      "name": "Deere 892DLC, 892ELC, 330LC, 370",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-892dlc-892elc-330lc-370/",
+      "layout_file": "JD-excavator-892DLC"
+    }
+  ],
+  "JD-excavator-50G.html": [
+    {
+      "category_id": 1386,
+      "name": "Deere 50, 70D, 190E Pins, Bushings, and H-links",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-50-70d-190e-pins-bushings-and-h-links/",
+      "layout_file": "JD-excavator-50G"
+    }
+  ],
+  "JD-loader-pin-bushing-744H-744J.html": [
+    {
+      "category_id": 1388,
+      "name": "Deere 744H, 744J Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-744h-744j-loader-pins--bushings/",
+      "layout_file": "JD-loader-pin-bushing-744H-744J"
+    }
+  ],
+  "JD-loader-pin-bushing-444H.html": [
+    {
+      "category_id": 1389,
+      "name": "Deere 444H, 444J, 444K Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-444h-444j-loader-pins-bushings/",
+      "layout_file": "JD-loader-pin-bushing-444H"
+    }
+  ],
+  "JD-loader-pin-bushing-544H-544J.html": [
+    {
+      "category_id": 1390,
+      "name": "544H, 544J, 544K, 544 P-Tier Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-544h-544j-544k-loader-pins-and-bushings/",
+      "layout_file": "JD-loader-pin-bushing-544H-544J"
+    }
+  ],
+  "JD-loader-pin-bushing-624H.html": [
+    {
+      "category_id": 1391,
+      "name": "Deere 624H Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-624h-loader-pins--bushings/",
+      "layout_file": "JD-loader-pin-bushing-624H"
+    }
+  ],
+  "JD-excavator-690.html": [
+    {
+      "category_id": 1393,
+      "name": "Deere 690, 690A, 690B, 690C",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-690-690a-690b-690c/",
+      "layout_file": "JD-excavator-690"
+    }
+  ],
+  "Case-Bucket-Parts-480D.html": [
+    {
+      "category_id": 1402,
+      "name": "Case 480D, 480E Backhoe Bucket Parts",
+      "url": "/c/case-480d-480e-backhoe-bucket-parts/",
+      "layout_file": "Case-Bucket-Parts-480D"
+    }
+  ],
+  "case-backhoe-dipper-and-bucket-parts-580B.html": [
+    {
+      "category_id": 1403,
+      "name": "Dipper & Bucket Parts - 580B to 580SE",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580b-580c-580d-580-super-e/dipper-bucket-parts-580b-to-580se/",
+      "layout_file": "case-backhoe-dipper-and-bucket-parts-580B"
+    }
+  ],
+  "case-dipper-arm-580k.html": [
+    {
+      "category_id": 1404,
+      "name": "Case 580K & 580 Super K Standard Dipper Stick",
+      "url": "/p/case-580k-580-super-k-standard-dipper-stick-parts/",
+      "layout_file": "case-dipper-arm-580k"
+    }
+  ],
+  "case-swing-tower-590sl.html": [
+    {
+      "category_id": 1405,
+      "name": "Case 590 Super L, 590 Super M Swing Tower Parts",
+      "url": "/c/case-590-super-l-590-super-m-swing-tower-parts/",
+      "layout_file": "case-swing-tower-590sl"
+    }
+  ],
+  "case-rear-dipper-590sl.html": [
+    {
+      "category_id": 1407,
+      "name": "Standard Dipper Arm Parts",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-rear-backhoe-parts/case-backhoe-pins-bushings-and-links/590-turbo-590-super-l-590-super-m-590-super-n/dipper-arm-parts/",
+      "layout_file": "case-rear-dipper-590sl"
+    }
+  ],
+  "JD-excavator-75D.html": [
+    {
+      "category_id": 1418,
+      "name": "Deere 75D, 80C, 85D, 85G ",
+      "url": "/c/john-deere-parts/john-deere-hitachi-excavator-parts/deere-hitachi-excavator-pins-bushings-links/deere-75d-80c-85d-85g-/",
+      "layout_file": "JD-excavator-75D"
+    }
+  ],
+  "JD-loader-pin-bushing-644H-644J.html": [
+    {
+      "category_id": 1432,
+      "name": "Deere 644H, 644J Loader Pins & Bushings",
+      "url": "/c/john-deere-parts/john-deere-wheel-loader-skidder/jd-loader-bellcrank-boom-pins-and-bushings/deere-644h-644j-loader-pins--bushings/",
+      "layout_file": "JD-loader-pin-bushing-644H-644J"
+    }
+  ],
+  "Case-glass-580k.html": [
+    {
+      "category_id": 1439,
+      "name": "Case 580K, 580 Super K, 580L, 580 Super L Glass",
+      "url": "/c/case-580k-580-super-k-580l-580-super-l-glass/",
+      "layout_file": "Case-glass-580k"
+    }
+  ],
+  "Case-standard-dipper-580L.html": [
+    {
+      "category_id": 1456,
+      "name": "Standard Dipper Stick Parts - 580L to 580SM",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-loader-backhoe-parts/pins-bushings-and-links/580l-580-super-l-580m-580-super-m/standard-dipper-stick-parts-580l-to-580sm/",
+      "layout_file": "Case-standard-dipper-580L"
+    }
+  ],
+  "Case-Front-diff-4wd-580L.html": [
+    {
+      "category_id": 1499,
+      "name": "Case Front Axle Differential",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-front-axle-parts/four-wheel-drive-4wd/580l-580m-580-super-l-580-super-m-580n-580sn/case-front-axle-differential/",
+      "layout_file": "Case-Front-diff-4wd-580L"
+    }
+  ],
+  "case-front-axle-housing-580l.html": [
+    {
+      "category_id": 1500,
+      "name": "Case Front Axle Housing and Swivel Housings",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-front-axle-parts/four-wheel-drive-4wd/580l-580m-580-super-l-580-super-m-580n-580sn/case-front-axle-housing-and-swivel-housings/",
+      "layout_file": "case-front-axle-housing-580l"
+    }
+  ],
+  "Case-front-axle-4wd-580l.html": [
+    {
+      "category_id": 1501,
+      "name": "Case Front Axle Hub and Planetary",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-front-axle-parts/four-wheel-drive-4wd/580l-580m-580-super-l-580-super-m-580n-580sn/case-front-axle-hub-and-planetary/",
+      "layout_file": "Case-front-axle-4wd-580l"
+    }
+  ],
+  "Case-front-axle-steering-580L.html": [
+    {
+      "category_id": 1502,
+      "name": "Case Front Axle Steering Cylinder and Axle Shaft",
+      "url": "/c/case-backhoe-front-axle-steering-cylinders-shafts/",
+      "layout_file": "Case-front-axle-steering-580L"
+    }
+  ],
+  "case-bucket-pins-580n.html": [
+    {
+      "category_id": 1504,
+      "name": "Case 580N, 580 Super N Bucket Pins & Bushings",
+      "url": "/c/case-580n-580-super-n-bucket-pins-bushings/",
+      "layout_file": "case-bucket-pins-580n"
+    }
+  ],
+  "ford-front-axle-tophat-4wd.html": [
+    {
+      "category_id": 1514,
+      "name": "New Holland Backhoe Top Hat Planetary (4WD)",
+      "url": "/c/new-holland-backhoe-top-hat-planetary-4wd/",
+      "layout_file": "ford-front-axle-tophat-4wd"
+    }
+  ],
+  "ford-front-axle-diff-4wd.html": [
+    {
+      "category_id": 1516,
+      "name": "New Holland Backhoe Front Axle Differential",
+      "url": "/c/new-holland-backhoe-front-axle-differential/",
+      "layout_file": "ford-front-axle-diff-4wd"
+    }
+  ],
+  "case-front-axle-housing-580k.html": [
+    {
+      "category_id": 1518,
+      "name": "Case Backhoe Front Axle Housing Parts",
+      "url": "/c/case-backhoe-front-axle-housing/",
+      "layout_file": "case-front-axle-housing-580k"
+    }
+  ],
+  "Case-Front-swivel-4wd-580k.html": [
+    {
+      "category_id": 1519,
+      "name": "Case Backhoe Front Axle Swivel Parts",
+      "url": "/c/case-580k-580-super-k-front-axle-swivel-parts/",
+      "layout_file": "Case-Front-swivel-4wd-580k"
+    }
+  ],
+  "ford-front-shaft-4wd.html": [
+    {
+      "category_id": 1520,
+      "name": "Ford/New Holland Backhoe Front Axle Shafts (4WD)",
+      "url": "/c/ford-new-holland-backhoe-front-axle-shafts-4wd/",
+      "layout_file": "ford-front-shaft-4wd"
+    }
+  ],
+  "ford-flat-cover-4wd.html": [
+    {
+      "category_id": 1521,
+      "name": "New Holland Flat Cover Planetary Assembly (4WD)",
+      "url": "/c/new-holland-backhoe-flat-cover-planetary-assembly-4wd/",
+      "layout_file": "ford-flat-cover-4wd"
+    }
+  ],
+  "ford-front-axle-swivel-4wd.html": [
+    {
+      "category_id": 1534,
+      "name": "Ford/NH Backhoe Swivel Housing & Steering",
+      "url": "/c/ford-new-holland-backhoe-swivel-housing-steering/",
+      "layout_file": "ford-front-axle-swivel-4wd"
+    }
+  ],
+  "ford-front-axle-swivel-housing-4wd.html": [
+    {
+      "category_id": 1535,
+      "name": "Ford New Holland Backhoe Swivel Housing & Steering",
+      "url": "/c/ford-new-holland-parts/ford-new-holland-backhoe-and-industrial-parts/new-holland-front-axle-parts-four-wheel-drive/ford-swivel-housing-and-steering-flat-cover/",
+      "layout_file": "ford-front-axle-swivel-housing-4wd"
+    }
+  ],
+  "JD-excavator-EX150.html": [
+    {
+      "category_id": 1548,
+      "name": "Hitachi EX150, EX160 Excavator Pins & Bushings",
+      "url": "/c/hitachi-ex150-ex160-excavator-pins-bushings/",
+      "layout_file": "JD-excavator-EX150"
+    }
+  ],
+  "JD-excavator-EX100.html": [
+    {
+      "category_id": 1551,
+      "name": "Hitachi EX100, EX120 Excavator Pins & Bushings",
+      "url": "/c/hitachi-ex100-ex120-excavator-pins-bushings/",
+      "layout_file": "JD-excavator-EX100"
+    }
+  ],
+  "Case-Backhoe-Rear-axle-Differential-580C.html": [
+    {
+      "category_id": 1553,
+      "name": "Case 480C, 480D, 580C, 580D Rear Axle Parts",
+      "url": "/c/case-480c-480d-580c-580d-rear-axle-parts/",
+      "layout_file": "Case-Backhoe-Rear-axle-Differential-580C"
+    }
+  ],
+  "JD-dozer-track-450G.html": [
+    {
+      "category_id": 1556,
+      "name": "John Deere 450G 550G 650G Dozer Track Adjuster",
+      "url": "/c/john-deere-450g-550g-650g-dozer-track-adjuster/",
+      "layout_file": "JD-dozer-track-450G"
+    }
+  ],
+  "Case-Front-planetary-4wd-580k.html": [
+    {
+      "category_id": 1558,
+      "name": "Case Backhoe Front Axle Planetary Parts",
+      "url": "/c/case-backhoe-front-axle-planetary-parts/",
+      "layout_file": "Case-Front-planetary-4wd-580k"
+    }
+  ],
+  "Case-Front-steering-4wd-580k.html": [
+    {
+      "category_id": 1559,
+      "name": "Case Backhoe Axle Drive Shaft & Steering Cylinder",
+      "url": "/c/case-backhoe-axle-drive-shaft-steering/",
+      "layout_file": "Case-Front-steering-4wd-580k"
+    }
+  ],
+  "Case-rear-axle-housing-580l.html": [
+    {
+      "category_id": 1560,
+      "name": "Case Backhoe Rear Axle Housing",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-rear-axle-and-differential-parts/580l-580sl-580m-580sm-570lxt-570mxt-rear-end/case-backhoe-rear-axle-housing/",
+      "layout_file": "Case-rear-axle-housing-580l"
+    }
+  ],
+  "case-trans-shuttle-forward.html": [
+    {
+      "category_id": 1589,
+      "name": "Case Backhoe Shuttle Forward Clutch",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-shuttle-and-transmission/case-backhoe-power-shuttle-and-parts/case-backhoe-shuttle-forward-clutch/",
+      "layout_file": "case-trans-shuttle-forward"
+    }
+  ],
+  "JD-backhoe-trans-revfor.html": [
+    {
+      "category_id": 1594,
+      "name": "John Deere Backhoe Forward Clutch",
+      "url": "/c/john-deere-parts/john-deere-backhoe/john-deere-backhoe-reverser-transmission-parts/john-deere-backhoe-forward-clutch/",
+      "layout_file": "JD-backhoe-trans-revfor"
+    }
+  ],
+  "Case-Front-Axle-housing-590SL.html": [
+    {
+      "category_id": 1598,
+      "name": "Case Backhoe Housing and Swivel Housing ",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-front-axle-parts/four-wheel-drive-4wd/case-front-axle---590-super-l-590-super-m/case-backhoe-housing-and-swivel-housing-/",
+      "layout_file": "Case-Front-Axle-housing-590SL"
+    }
+  ],
+  "Case-Front-planetary-4wd-590sl.html": [
+    {
+      "category_id": 1599,
+      "name": "Case 590SL, 590SM, 590SM II Front Axle Planetary",
+      "url": "/c/case-590sl-590sm-front-axle-planetary/",
+      "layout_file": "Case-Front-planetary-4wd-590sl"
+    }
+  ],
+  "Case-Front-steering-4wd-590SL.html": [
+    {
+      "category_id": 1600,
+      "name": "Case Front Axle Steering Cylinder and Axle Shaft",
+      "url": "/c/case-front-axle-steering-cylinder-and-axle-shaft/",
+      "layout_file": "Case-Front-steering-4wd-590SL"
+    }
+  ],
+  "Case-Backhoe-Rear-Center-diff-pinion-580l.html": [
+    {
+      "category_id": 1627,
+      "name": "Rear Center Differential and Ring & Pinion",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-rear-axle-and-differential-parts/580l-580sl-580m-580sm-570lxt-570mxt-rear-end/rear-center-differential-ring-pinion/",
+      "layout_file": "Case-Backhoe-Rear-Center-diff-pinion-580l"
+    }
+  ],
+  "Case-Backhoe-Breaks-570NXT.html": [
+    {
+      "category_id": 2392,
+      "name": "Case 580M Series 3, 580N, 580SN, 590SN Brakes",
+      "url": "/c/case-580m-series-3-580n-580sn-590sn-brakes/",
+      "layout_file": "Case-Backhoe-Breaks-570NXT"
+    }
+  ],
+  "Case-rear-diff-580CK.html": [
+    {
+      "category_id": 2511,
+      "name": "Case 480CK, 480B, 580CK, 580B Rear Axle Parts",
+      "url": "/c/case-480ck-480b-580ck-580b-rear-axle-parts/",
+      "layout_file": "Case-rear-diff-580CK"
+    }
+  ],
+  "Case-Backhoe-Rear-axle-Differential-580E.html": [
+    {
+      "category_id": 2515,
+      "name": "Case 580E, 580 Super E, 580K Early Rear Axle",
+      "url": "/c/case-580e-580-super-e-580k-early-rear-axle/",
+      "layout_file": "Case-Backhoe-Rear-axle-Differential-580E"
+    }
+  ],
+  "Case-Backhoe-Rear-Axle-Outer-Planetary-hub-580l.html": [
+    {
+      "category_id": 2516,
+      "name": "Rear Axle Outer Planetary and Hub",
+      "url": "/c/case-construction-parts/case-backhoe-parts/case-backhoe-rear-axle-and-differential-parts/580l-580sl-580m-580sm-570lxt-570mxt-rear-end/rear-axle-outer-planetary-and-hub/",
+      "layout_file": "Case-Backhoe-Rear-Axle-Outer-Planetary-hub-580l"
+    }
+  ],
+  "Case-Front-axle-2wd-580.html": [
+    {
+      "category_id": 2528,
+      "name": "430CK, 480CK, 480B, 530CK, 580, 580CK, 580B",
+      "url": "/c/case-430ck-480-580-580b-2wd-front-axle-parts/",
+      "layout_file": "Case-Front-axle-2wd-580"
+    }
+  ]
+}

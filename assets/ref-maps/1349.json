@@ -1,0 +1,142 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-boom-dipper-580n.png",
+ "category": "Case 580N, 580 Super N Boom & Dipper Parts",
+ "template": "Case-rear-boom-580N.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 21.83,
+   "y": 87.35,
+   "r": 1.42,
+   "label": "Bushing, Boom at Swing Tower",
+   "href": "/p/case-backhoe-bushing-boom-at-swing-tower-84246051-84246051/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 32.75,
+   "y": 75.91,
+   "r": 1.58,
+   "label": "Pin, Boom at Boom Cylinder and Dipper Cylinder",
+   "href": "/p/case-backhoe-pin-boom-at-boom-and-dipper-cylinder-84248656-84248656/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 35.58,
+   "y": 14.6,
+   "r": 1.42,
+   "label": "Bushing, Boom at Dipper",
+   "href": "/p/case-backhoe-bushing-boom-at-dipper-stick-84240578-84240578/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 37.92,
+   "y": 62.04,
+   "r": 1.58,
+   "label": "Pin, Boom to Dipper Stick",
+   "href": "/p/case-580n-580sn-backhoe-pin-boom-to-dipper-84520512-84520512/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 77.67,
+   "y": 60.1,
+   "r": 1.42,
+   "label": "Bushing, Dipper Stick",
+   "href": "/p/case-backhoe-bushing-dipper-stick-84170645-84170645/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 45.33,
+   "y": 30.41,
+   "r": 1.5,
+   "label": "Bushing, Standard Dipper at Boom",
+   "href": "/p/case-backhoe-bushing-standard-dipper-at-boom-84223633-84223633/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 53.67,
+   "y": 60.34,
+   "r": 1.5,
+   "label": "Bushing, Inner Dipper",
+   "href": "/p/case-backhoe-bushing-inner-dipper-d137218-d137218/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 62.0,
+   "y": 34.06,
+   "r": 1.42,
+   "label": "Bushing, Inner Dipper",
+   "href": "/p/case-backhoe-bushing-inner-dipper-d137218-d137218/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 68.17,
+   "y": 5.11,
+   "r": 1.58,
+   "label": "Bushing, Inner Dipper",
+   "href": "/p/case-backhoe-bushing-inner-dipper-d137218-d137218/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 59.08,
+   "y": 9.0,
+   "r": 1.5,
+   "label": "Bushing, Inner Dipper at Boom",
+   "href": "/p/case-backhoe-bushing-inner-dipper-at-boom-84229925-84229925/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 48.67,
+   "y": 19.22,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/parts/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "1",
+   "x": 13.83,
+   "y": 60.58,
+   "r": 1.42,
+   "label": "Bushing, Boom at Swing Tower",
+   "href": "/p/case-backhoe-bushing-boom-at-swing-tower-84246051-84246051/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 45.33,
+   "y": 49.64,
+   "r": 1.5,
+   "label": "Bushing, Boom at Dipper",
+   "href": "/p/case-backhoe-bushing-boom-at-dipper-stick-84240578-84240578/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 56.33,
+   "y": 19.22,
+   "r": 1.58,
+   "label": "Bushing, Standard Dipper at Boom",
+   "href": "/p/case-backhoe-bushing-standard-dipper-at-boom-84223633-84223633/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 70.25,
+   "y": 80.29,
+   "r": 1.42,
+   "label": "Bushing, Dipper Stick",
+   "href": "/p/case-backhoe-bushing-dipper-stick-84170645-84170645/",
+   "kind": "product"
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-crossbar-750j.png",
+ "category": "750J, 750K, 850J, 850K Dozer Crossbar",
+ "template": "JD-dozer-crossbar-750J.html",
+ "hotspots": [
+  {
+   "ref": "2",
+   "x": 43.08,
+   "y": 75.5,
+   "r": 1.42,
+   "label": "Crossbar End Bushing",
+   "href": "/p/john-deere-dozer-crossbar-end-bushing-at128774-at128774/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 44.92,
+   "y": 85.5,
+   "r": 1.33,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 47.25,
+   "y": 47.25,
+   "r": 1.42,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 55.08,
+   "y": 8.0,
+   "r": 1.42,
+   "label": "Center Crossbar Pin",
+   "href": "/p/john-deere-center-crossbar-pin-to-replace-4-order-this-pin-and-t267854-bushing-t268301-t268301/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 70.67,
+   "y": 75.75,
+   "r": 1.42,
+   "label": "Crossbar End Bushing",
+   "href": "/p/john-deere-dozer-crossbar-end-bushing-at128774-at128774/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 72.5,
+   "y": 85.25,
+   "r": 1.42,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 65.67,
+   "y": 49.5,
+   "r": 1.5,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 69.08,
+   "y": 26.25,
+   "r": 1.42,
+   "label": "Greasable Pin (Crossbar End)",
+   "href": "/p/john-deere-dozer-greasable-crossbar-end-pin-at387824-at387824/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 40.58,
+   "y": 16.75,
+   "r": 1.42,
+   "label": "Greasable Pin (Crossbar End)",
+   "href": "/p/john-deere-dozer-greasable-crossbar-end-pin-at387824-at387824/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 25.83,
+   "y": 41.0,
+   "r": 1.42,
+   "label": "Bushing, Cross Pin Boss",
+   "href": "/p/john-deere-750j-750k-850j-850k-dozer-bushing-cross-pin-boss-t267854-t267854/",
+   "kind": "product"
+  }
+ ]
+}

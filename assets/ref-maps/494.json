@@ -1,0 +1,97 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-track-adj-750j.png",
+ "category": "750J, 750K, 850J, 850K",
+ "template": "JD-dozer-track-750J.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 42.17,
+   "y": 8.93,
+   "r": 1.5,
+   "label": "Track Adjuster &amp; Recoil Spring",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 35.5,
+   "y": 29.85,
+   "r": 1.5,
+   "label": "Recoil Spring",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 58.75,
+   "y": 22.96,
+   "r": 1.5,
+   "label": "Recoil Spring Cover",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 40.67,
+   "y": 55.36,
+   "r": 1.33,
+   "label": "Track Adjuster Seal Kit",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 47.75,
+   "y": 88.01,
+   "r": 1.42,
+   "label": "Wear Plate",
+   "href": "/p/john-deere-dozer-wear-plate-at277938-at277938/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 57.0,
+   "y": 78.06,
+   "r": 1.42,
+   "label": "Wear Plate",
+   "href": "/p/john-deere-dozer-wear-plate-t250445-t250445/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 56.67,
+   "y": 89.54,
+   "r": 1.42,
+   "label": "Shim",
+   "href": "/p/john-deere-750j-750k-850j-850k-shim-t204101-t204101/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 61.42,
+   "y": 90.82,
+   "r": 1.42,
+   "label": "Wear Plate",
+   "href": "/p/john-deere-dozer-wear-plate-at226968-at226968/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 51.92,
+   "y": 66.84,
+   "r": 1.5,
+   "label": "Washer",
+   "href": "/p/john-deere-dozer-washer-t204320-t204320/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 47.58,
+   "y": 78.06,
+   "r": 1.25,
+   "label": "Bushing, Spring",
+   "href": "/p/john-deere-dozer-bushing-spring-at274298-at274298/",
+   "kind": "product"
+  }
+ ]
+}

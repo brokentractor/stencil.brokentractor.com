@@ -1,0 +1,277 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-blade-parts-700h.png",
+ "category": "700H, 700J, 700K Blade Parts",
+ "template": "JD-dozer-blade-700H.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 35.0,
+   "y": 68.26,
+   "r": 1.5,
+   "label": "Blade Pivot Ball",
+   "href": "/p/john-deere-dozer-blade-pivot-ball-t179350-t179350/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 41.67,
+   "y": 51.09,
+   "r": 1.42,
+   "label": "Bolt, Blade Socket",
+   "href": "/p/john-deere-dozer-blade-socket-bolt-19m8639-19m8639/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 49.25,
+   "y": 77.39,
+   "r": 1.33,
+   "label": "Bolt, Blade Socket",
+   "href": "/p/john-deere-dozer-blade-socket-bolt-19m8639-19m8639/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 54.0,
+   "y": 71.3,
+   "r": 1.5,
+   "label": "3 Bolt Retainer Bracket",
+   "href": "/p/john-deere-dozer-blade-ball-half-retainer-bracket-t177108-t177108/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 47.33,
+   "y": 43.48,
+   "r": 1.58,
+   "label": "3 Bolt Retainer Bracket",
+   "href": "/p/john-deere-dozer-blade-ball-half-retainer-bracket-t177108-t177108/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 57.5,
+   "y": 65.43,
+   "r": 1.5,
+   "label": "Shim, Ball Retainer Bracket",
+   "href": "/p/john-deere-dozer-blade-ball-retainer-bracket-shim-t177209-t177209/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 51.17,
+   "y": 40.22,
+   "r": 1.33,
+   "label": "Shim, Ball Retainer Bracket",
+   "href": "/p/john-deere-dozer-blade-ball-retainer-bracket-shim-t177209-t177209/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 63.33,
+   "y": 46.3,
+   "r": 1.5,
+   "label": "Socket, 6 Bolt Blade Ball",
+   "href": "/p/john-deere-dozer-blade-ball-socket-t177111-t177111/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 4.92,
+   "y": 61.52,
+   "r": 1.42,
+   "label": "Bushing, Rear C-Frame",
+   "href": "/p/john-deere-700h-700j-700k-dozer-rear-blade-c-frame-bushing-t177029-t177029/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 5.83,
+   "y": 84.78,
+   "r": 1.42,
+   "label": "Pin, Rear C-Frame",
+   "href": "/p/john-deere-dozer-rear-c-frame-pin-t177030-t177030/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 2.42,
+   "y": 66.96,
+   "r": 1.5,
+   "label": "Strap, Rear C-Frame Pin",
+   "href": "/p/john-deere-rear-c-frame-pin-strap-t177028-t177028/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 9.5,
+   "y": 86.74,
+   "r": 1.5,
+   "label": "Pin, Lift Cylinder (Fits Both Ends)",
+   "href": "/p/john-deere-dozer-blade-lift-cylinder-pin-at221145-at221145/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 16.75,
+   "y": 82.83,
+   "r": 1.33,
+   "label": "Pin, Front C-Frame",
+   "href": "/p/john-deere-dozer-blade-front-c-frame-pin-jd-700h-700j-700k-t176360-t176360/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 82.0,
+   "y": 13.26,
+   "r": 1.42,
+   "label": "Pin, Front C-Frame",
+   "href": "/p/john-deere-dozer-blade-front-c-frame-pin-jd-700h-700j-700k-t176360-t176360/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 70.17,
+   "y": 60.65,
+   "r": 1.42,
+   "label": "Pin, Front C-Frame",
+   "href": "/p/john-deere-dozer-blade-front-c-frame-pin-jd-700h-700j-700k-t176360-t176360/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 46.58,
+   "y": 23.04,
+   "r": 1.58,
+   "label": "Pin, Front C-Frame",
+   "href": "/p/john-deere-dozer-blade-front-c-frame-pin-jd-700h-700j-700k-t176360-t176360/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 69.75,
+   "y": 10.65,
+   "r": 1.58,
+   "label": "Strap",
+   "href": "/p/john-deere-dozer-front-c-frame-pin-strap-t177000-t177000/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 66.58,
+   "y": 75.87,
+   "r": 1.42,
+   "label": "Strap",
+   "href": "/p/john-deere-dozer-front-c-frame-pin-strap-t177000-t177000/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 90.08,
+   "y": 11.74,
+   "r": 1.58,
+   "label": "Strap",
+   "href": "/p/john-deere-dozer-front-c-frame-pin-strap-t177000-t177000/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 41.67,
+   "y": 16.96,
+   "r": 1.5,
+   "label": "Strap",
+   "href": "/p/john-deere-dozer-front-c-frame-pin-strap-t177000-t177000/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 15.58,
+   "y": 90.87,
+   "r": 1.33,
+   "label": "Strap",
+   "href": "/p/john-deere-dozer-front-c-frame-pin-strap-t177000-t177000/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 18.33,
+   "y": 75.87,
+   "r": 1.33,
+   "label": "Spacer Bushing, C-Frame",
+   "href": "/p/john-deere-dozer-c-frame-blade-spacer-bushing-t176988-t176988/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 48.17,
+   "y": 31.52,
+   "r": 1.33,
+   "label": "Spacer Bushing, C-Frame",
+   "href": "/p/john-deere-dozer-c-frame-blade-spacer-bushing-t176988-t176988/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 77.75,
+   "y": 13.04,
+   "r": 1.5,
+   "label": "Pin, Tilt Cylinder to Blade",
+   "href": "/p/john-deere-dozer-tilt-cylinder-to-blade-pin-t180374-t180374/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 94.75,
+   "y": 18.04,
+   "r": 1.42,
+   "label": "Blade Face (2-Piece) (67&quot; x 38&quot; x 1/4&quot;)",
+   "href": "/p/john-deere-700h-700j-700k-dozer-blade-face-two-piece-pv513-pv513/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 15.08,
+   "y": 8.04,
+   "r": 1.42,
+   "label": "Blade Lift Cylinder",
+   "href": "/p/john-deere-dozer-blade-lift-cylinder-ah215878-ah215878/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 15.0,
+   "y": 33.26,
+   "r": 1.5,
+   "label": "Bushing, Lift Cylinder Rod",
+   "href": "/p/john-deere-lift-cylinder-rod-bushing-r81971-r81971/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 9.58,
+   "y": 29.57,
+   "r": 1.17,
+   "label": "Bushing, Lift Cylinder Tube",
+   "href": "/p/john-deere-dozer-lift-cylinder-tube-bushing-r81968-r81968/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 32.67,
+   "y": 18.04,
+   "r": 1.25,
+   "label": "Angle Cylinder",
+   "href": "/p/john-deere-dozer-blade-angle-cylinder-with-bushings-ah211335-ah211335/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 31.92,
+   "y": 37.17,
+   "r": 1.25,
+   "label": "Bushing, Angle/Tilt Cylinder Rod/Tube End",
+   "href": "/p/john-deere-angle-tilt-cylinder-rod-or-tube-bushing-ah150341-ah150341/",
+   "kind": "product"
+  }
+ ]
+}

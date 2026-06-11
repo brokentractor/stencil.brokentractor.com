@@ -1,0 +1,187 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-frame-and-stabilizer-parts-case-580b.png",
+ "category": "Frame & Stabilizer Parts - 580B to 580SE",
+ "template": "Case-rear-frame-580B.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 68.58,
+   "y": 43.67,
+   "r": 1.58,
+   "label": "Stabilizer Plate, Metal Cleat",
+   "href": "/p/case-backhoe-stabilizer-plate-for-cleat-d88427-d88427/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 78.5,
+   "y": 17.55,
+   "r": 1.5,
+   "label": "Pin, Stabilizer Plate to Leg (Metal Cleat)",
+   "href": "/p/case-backhoe-pin-stabilizer-plate-to-leg-cleat-d28648-d28648/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 79.5,
+   "y": 71.22,
+   "r": 1.58,
+   "label": "Stabilizer Plate, Single Rubber Pad Style",
+   "href": "/p/case-backhoe-stabilizer-street-pad-plate-style-with-single-rubber-pad-d142519-d142519/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 78.5,
+   "y": 79.39,
+   "r": 1.5,
+   "label": "Stabilizer Pad (Single-Pad Plate)",
+   "href": "/p/case-backhoe-rubber-stabilizer-pad-d61368-d61368/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 72.5,
+   "y": 52.65,
+   "r": 1.58,
+   "label": "Pin, Stabilizer Plate to Leg - (Rubber Pads) ( 8 3/4&quot; Long)",
+   "href": "/p/case-backhoe-pin-stabilizer-plate-to-leg-rubber-pads-d50696-d50696/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 44.17,
+   "y": 66.73,
+   "r": 1.5,
+   "label": "Stabilizer Leg",
+   "href": "/p/case-backhoe-stabilizer-leg-new-446222a1-446222a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 36.33,
+   "y": 54.49,
+   "r": 1.42,
+   "label": "Bushing, Upper Stabilizer Leg",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 47.33,
+   "y": 47.76,
+   "r": 1.33,
+   "label": "Bushing, Upper Stabilizer Leg",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 50.17,
+   "y": 78.16,
+   "r": 1.5,
+   "label": "Pin, Cylinder to Leg",
+   "href": "#8",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 31.17,
+   "y": 58.78,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Leg to Frame",
+   "href": "#9",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 50.5,
+   "y": 36.53,
+   "r": 1.58,
+   "label": "Bushing, Frame at Stabilizer Leg",
+   "href": "#9",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 41.83,
+   "y": 13.88,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Cylinder to Frame",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 22.0,
+   "y": 58.78,
+   "r": 1.58,
+   "label": "Bushing, Frame to Swing Tower (Lower)",
+   "href": "/p/case-580b-580c-bushing-lower-frame-to-swing-tower-d31142-d31142/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 24.92,
+   "y": 19.39,
+   "r": 1.33,
+   "label": "Bushing, Frame to Swing Tower (Upper)",
+   "href": "/p/case-580b-580c-backhoe-bushing-frame-at-upper-swing-tower-d30756-d30756/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 21.25,
+   "y": 46.94,
+   "r": 1.42,
+   "label": "Bushing, Swing Cylinder Mount",
+   "href": "/p/case-backhoe-bushing-swing-cylinder-mount-d60159-d60159/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 47.33,
+   "y": 13.88,
+   "r": 1.42,
+   "label": "Bushing, Swing Cylinder Mount",
+   "href": "/p/case-backhoe-bushing-swing-cylinder-mount-d60159-d60159/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 32.58,
+   "y": 9.18,
+   "r": 1.33,
+   "label": "Pin, Backhoe Mount to Machine",
+   "href": "/p/case-backhoe-pin-backhoe-mount-to-machine-d49812-d49812/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 40.33,
+   "y": 79.59,
+   "r": 1.5,
+   "label": "Stabilizer Cylinder (Left Hand)",
+   "href": "#15",
+   "kind": "anchor"
+  },
+  {
+   "ref": "17",
+   "x": 43.67,
+   "y": 91.43,
+   "r": 1.42,
+   "label": "Bushing, Stabilizer Cylinder Rod",
+   "href": "/p/case-backhoe-stabilizer-cylinder-bushing-rod-end-d32865-d32865/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 36.92,
+   "y": 71.22,
+   "r": 1.5,
+   "label": "Swivel Bushing, Stabilizer Cylinder Tube End",
+   "href": "#17",
+   "kind": "anchor"
+  }
+ ]
+}

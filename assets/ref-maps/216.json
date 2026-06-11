@@ -1,0 +1,385 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-carraro-transmission-input-shaft-related-parts-resize.png",
+ "category": "Case 580L, 580M Carraro Transmission Input Shaft",
+ "template": "case-input-shaft-580l.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 22.25,
+   "y": 10.13,
+   "r": 1.42,
+   "label": "Oil seal",
+   "href": "/p/case-backhoe-transmission-oil-sealing-ring-181152a3-181152a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 23.75,
+   "y": 25.63,
+   "r": 1.5,
+   "label": "Circle Clip",
+   "href": "/p/case-backhoe-transmission-circle-clip-a48041-a48041/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 26.67,
+   "y": 9.99,
+   "r": 1.5,
+   "label": "Ball Bearing",
+   "href": "/p/case-backhoe-ball-bearing-181128a1-181128a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 30.08,
+   "y": 25.63,
+   "r": 1.58,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "5",
+   "x": 32.42,
+   "y": 10.13,
+   "r": 1.42,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "6",
+   "x": 36.5,
+   "y": 10.28,
+   "r": 1.42,
+   "label": "Needle Bearing",
+   "href": "/p/case-backhoe-needle-bearing-181135a1-181135a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 40.5,
+   "y": 10.28,
+   "r": 1.33,
+   "label": "Input Shaft Gear",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 44.5,
+   "y": 7.45,
+   "r": 1.58,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "9",
+   "x": 48.75,
+   "y": 7.6,
+   "r": 1.42,
+   "label": "Lock Ring",
+   "href": "/p/case-backhoe-lock-ring-181116a1-181116a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 52.08,
+   "y": 9.99,
+   "r": 1.5,
+   "label": "Thrust Washer",
+   "href": "/p/case-backhoe-transmission-thrust-washer-181163a1-181163a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 55.5,
+   "y": 7.3,
+   "r": 1.5,
+   "label": "Steel Disc",
+   "href": "/p/case-backhoe-transmission-steel-disc-181159a1-181159a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 59.92,
+   "y": 6.26,
+   "r": 1.5,
+   "label": "Metallic Transmission Disc",
+   "href": "/p/case-backhoe-transmission-metallic-disc-181158a1-181158a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 67.5,
+   "y": 6.41,
+   "r": 1.5,
+   "label": "Steel Disc",
+   "href": "/p/case-backhoe-transmission-steel-disc-181159a1-181159a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 68.25,
+   "y": 31.0,
+   "r": 1.42,
+   "label": "Metallic Transmission Disc",
+   "href": "/p/case-backhoe-transmission-metallic-disc-181158a1-181158a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 23.08,
+   "y": 43.67,
+   "r": 1.42,
+   "label": "Locking Ring",
+   "href": "/p/case-backhoe-locking-ring-181111a1-181111a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 29.0,
+   "y": 43.96,
+   "r": 1.42,
+   "label": "Spring",
+   "href": "/p/case-backhoe-transmission-spring-181160a2-181160a1-181160a2-181160a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 32.25,
+   "y": 60.06,
+   "r": 1.58,
+   "label": "Transmission Piston",
+   "href": "/p/case-backhoe-carraro-transmission-piston-181155a2-181155a2/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 35.58,
+   "y": 41.88,
+   "r": 1.5,
+   "label": "Seal Ring",
+   "href": "/p/case-backhoe-seal-ring-181157a3-181157a2-181157a1-181157a3-181157a2-181157a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 38.0,
+   "y": 58.12,
+   "r": 1.5,
+   "label": "Sealing Ring",
+   "href": "/p/case-backhoe-transmission-sealing-ring-181156a3-181156a2-181156a3-181156a2/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 43.67,
+   "y": 63.34,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "20",
+   "x": 47.25,
+   "y": 39.2,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "21",
+   "x": 53.83,
+   "y": 44.86,
+   "r": 1.42,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "18",
+   "x": 56.92,
+   "y": 42.32,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "17",
+   "x": 60.25,
+   "y": 40.98,
+   "r": 1.5,
+   "label": "Seal Ring",
+   "href": "/p/case-backhoe-seal-ring-181157a3-181157a2-181157a1-181157a3-181157a2-181157a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 63.67,
+   "y": 40.69,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "15",
+   "x": 67.33,
+   "y": 41.88,
+   "r": 1.33,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "14",
+   "x": 70.83,
+   "y": 42.92,
+   "r": 1.58,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "13",
+   "x": 74.0,
+   "y": 46.5,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "11",
+   "x": 19.25,
+   "y": 66.17,
+   "r": 1.58,
+   "label": "Steel Disc",
+   "href": "/p/case-backhoe-transmission-steel-disc-181159a1-181159a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 28.25,
+   "y": 91.36,
+   "r": 1.5,
+   "label": "Steel Disc",
+   "href": "/p/case-backhoe-transmission-steel-disc-181159a1-181159a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 22.25,
+   "y": 92.1,
+   "r": 1.5,
+   "label": "Metallic Transmission Disc",
+   "href": "/p/case-backhoe-transmission-metallic-disc-181158a1-181158a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 26.17,
+   "y": 67.51,
+   "r": 1.58,
+   "label": "Metallic Transmission Disc",
+   "href": "/p/case-backhoe-transmission-metallic-disc-181158a1-181158a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 38.0,
+   "y": 91.21,
+   "r": 1.5,
+   "label": "Lock Ring",
+   "href": "/p/case-backhoe-lock-ring-181116a1-181116a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 42.08,
+   "y": 91.21,
+   "r": 1.58,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "10",
+   "x": 46.08,
+   "y": 88.52,
+   "r": 1.5,
+   "label": "Thrust Washer",
+   "href": "/p/case-backhoe-transmission-thrust-washer-181163a1-181163a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 49.67,
+   "y": 89.42,
+   "r": 1.58,
+   "label": "Gear Shaft",
+   "href": "/p/case-backhoe-gear-shaft-29-tooth-181227a2-181227a1-181227a2-181227a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 55.5,
+   "y": 70.04,
+   "r": 1.42,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "23",
+   "x": 54.83,
+   "y": 87.78,
+   "r": 1.33,
+   "label": "Spacer",
+   "href": "/p/case-backhoe-transmission-spacer-181164a1-181164a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 58.58,
+   "y": 85.84,
+   "r": 1.67,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "24",
+   "x": 62.0,
+   "y": 86.89,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "2",
+   "x": 65.75,
+   "y": 87.18,
+   "r": 1.42,
+   "label": "Circle Clip",
+   "href": "/p/case-backhoe-transmission-circle-clip-a48041-a48041/",
+   "kind": "product"
+  },
+  {
+   "ref": "1",
+   "x": 68.92,
+   "y": 68.85,
+   "r": 1.5,
+   "label": "Oil seal",
+   "href": "/p/case-backhoe-transmission-oil-sealing-ring-181152a3-181152a3/",
+   "kind": "product"
+  }
+ ]
+}

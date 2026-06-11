@@ -1,0 +1,56 @@
+{
+ "category_id": 1479,
+ "name": "580M III, 580SM III, 580N, 580SN, 570NXT",
+ "url": "/c/case-580m-iii-580n-580sn-570nxt-2wd-front-axle/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/image-4-.png?t=1739382218",
+ "img_w": 1082,
+ "img_h": 402,
+ "style": "red-text",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 234.5,
+   "y_px": 94.0,
+   "r_px": 16.5,
+   "x": 21.67,
+   "y": 23.38,
+   "r": 1.52
+  },
+  {
+   "i": 1,
+   "x_px": 254.5,
+   "y_px": 207.0,
+   "r_px": 16.5,
+   "x": 23.52,
+   "y": 51.49,
+   "r": 1.52
+  },
+  {
+   "i": 2,
+   "x_px": 289.5,
+   "y_px": 224.0,
+   "r_px": 16.5,
+   "x": 26.76,
+   "y": 55.72,
+   "r": 1.52
+  },
+  {
+   "i": 3,
+   "x_px": 332.0,
+   "y_px": 278.5,
+   "r_px": 16.0,
+   "x": 30.68,
+   "y": 69.28,
+   "r": 1.48
+  },
+  {
+   "i": 4,
+   "x_px": 488.0,
+   "y_px": 283.0,
+   "r_px": 22.0,
+   "x": 45.1,
+   "y": 70.4,
+   "r": 2.03
+  }
+ ]
+}

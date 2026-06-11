@@ -1,0 +1,151 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-backhoe-clutch.png",
+ "category": "John Deere Backhoe Forward Clutch",
+ "template": "JD-backhoe-trans-revfor.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 21.58,
+   "y": 18.44,
+   "r": 1.42,
+   "label": "Drive Shaft",
+   "href": "/p/john-deere-backhoe-reverser-drive-shaft-at101449-at101449/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 34.17,
+   "y": 20.22,
+   "r": 1.58,
+   "label": "Seal Ring",
+   "href": "/p/john-deere-backhoe-reverser-drive-shaft-seal-ring-d50080-d50080/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 49.5,
+   "y": 7.11,
+   "r": 1.5,
+   "label": "Forward Clutch Ring Gear",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-ring-gear-t140929-t140929/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 57.67,
+   "y": 13.56,
+   "r": 1.42,
+   "label": "Forward Clutch Hub",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-hub-t101002-t101002/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 61.83,
+   "y": 18.22,
+   "r": 1.33,
+   "label": "Snap Ring",
+   "href": "/p/john-deere-backhoe-reverser-drive-shaft-snap-ring-t101041-t101041/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 7.42,
+   "y": 92.22,
+   "r": 1.5,
+   "label": "End Plate",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-end-plate-t101003-t101003/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 35.0,
+   "y": 91.11,
+   "r": 1.42,
+   "label": "Clutch Steel Disc",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-disc-t140926-t140926/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 38.08,
+   "y": 88.67,
+   "r": 1.42,
+   "label": "Clutch Friction Disc",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-drive-disc-at101001-at101001/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 45.17,
+   "y": 89.56,
+   "r": 1.33,
+   "label": "Forward Clutch Pressure Plate",
+   "href": "/p/john-deere-reverser-forward-clutch-pressure-plate-t101004-t101004/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 52.17,
+   "y": 89.11,
+   "r": 1.5,
+   "label": "Bellville Washer",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-bellville-washer-t101005-t101005/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 56.5,
+   "y": 82.22,
+   "r": 1.42,
+   "label": "Steel Piston Ring",
+   "href": "/p/john-deere-backhoe-reverser-steel-piston-ring-d50078-d50078/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 61.17,
+   "y": 85.33,
+   "r": 1.42,
+   "label": "Outer Piston Sealing Ring",
+   "href": "/p/john-deere-backhoe-reverser-forward-outer-piston-sealing-ring-d50077-d50077/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 66.67,
+   "y": 85.33,
+   "r": 1.5,
+   "label": "Forward Clutch Piston",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-piston-t101008-t101008/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 70.25,
+   "y": 78.22,
+   "r": 1.33,
+   "label": "Inner Piston Sealing",
+   "href": "/p/john-deere-backhoe-reverser-forward-inner-piston-sealing-ring-d50079-d50079/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 75.33,
+   "y": 88.89,
+   "r": 1.5,
+   "label": "Forward Clutch Piston Housing",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-piston-housing-t101010-t101010/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 90.17,
+   "y": 79.78,
+   "r": 1.42,
+   "label": "Bearing",
+   "href": "/p/john-deere-backhoe-reverser-forward-clutch-bearing-jd8514-jd8514/",
+   "kind": "product"
+  }
+ ]
+}

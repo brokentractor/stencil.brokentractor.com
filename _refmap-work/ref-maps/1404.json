@@ -1,0 +1,178 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-dipper-arm-parts-case-580k-resize.png",
+ "category": "Case 580K & 580 Super K Standard Dipper Stick",
+ "template": "case-dipper-arm-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 43.75,
+   "y": 63.05,
+   "r": 1.75,
+   "label": "Standard Dipper Stick (New)",
+   "href": "/p/case-backhoe-standard-dipper-stick-steel-new-made-in-usa-403353a1-403353a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 59.58,
+   "y": 43.42,
+   "r": 1.67,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-d132494-d132494-4/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 55.58,
+   "y": 37.37,
+   "r": 1.67,
+   "label": "Bushing Dipper at Boom (Without Groove)",
+   "href": "/p/case-backhoe-bushing-without-groove-d150121-d150121/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 39.17,
+   "y": 58.04,
+   "r": 1.58,
+   "label": "Pin, Dipper (With Bolt Hole)",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 35.0,
+   "y": 53.86,
+   "r": 1.67,
+   "label": "Not Available, Part Request",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "5",
+   "x": 32.25,
+   "y": 20.67,
+   "r": 1.67,
+   "label": "Not Available, Part Request",
+   "href": "/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "6",
+   "x": 53.5,
+   "y": 26.72,
+   "r": 1.83,
+   "label": "Pin, Dipper (With Bolt Hole)",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 60.0,
+   "y": 63.05,
+   "r": 1.58,
+   "label": "Bushing, Dipper",
+   "href": "#4 / 6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 64.0,
+   "y": 67.85,
+   "r": 1.67,
+   "label": "Pin, Link to Dipper Arm &amp; Link to Cylinder",
+   "href": "/p/case-backhoe-pin-link-to-dipper-arm-link-to-cylinder-d141142-d141142-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 56.58,
+   "y": 86.22,
+   "r": 1.83,
+   "label": "Bushing, Dipper Stick at Bucket",
+   "href": "/p/case-backhoe-bushing-dipper-at-bucket-307186a1-307186a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 61.25,
+   "y": 91.65,
+   "r": 1.83,
+   "label": "Pin, Bucket to Coupler",
+   "href": "/p/case-backhoe-pin-bucket-to-coupler-fits-12-buckets-d135690-d135690/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 47.83,
+   "y": 18.58,
+   "r": 1.75,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-dipper-bushing-d136565-d136565/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 35.0,
+   "y": 62.0,
+   "r": 1.67,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-dipper-bushing-d136565-d136565/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 30.33,
+   "y": 28.18,
+   "r": 1.67,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-dipper-bushing-70mm-od-d137217-d137217/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 43.08,
+   "y": 11.06,
+   "r": 1.75,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-dipper-bushing-70mm-od-d137217-d137217/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 50.67,
+   "y": 13.36,
+   "r": 1.58,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-dipper-bushing-70mm-od-d137217-d137217/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 35.0,
+   "y": 70.35,
+   "r": 1.67,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-dipper-bushing-70mm-od-d137217-d137217/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 35.0,
+   "y": 78.91,
+   "r": 1.67,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-bushing-60mm-od-d138047-d138047/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 28.67,
+   "y": 36.12,
+   "r": 1.58,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-bushing-60mm-od-d138047-d138047/",
+   "kind": "product"
+  }
+ ]
+}

@@ -1,0 +1,196 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580m-580-super-m-pin-bushing-kits.jpg?t=1748533600",
+ "category": "Case 580M Pin Kits",
+ "template": "cv-pipeline",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 17.72,
+   "y": 10.97,
+   "r": 0.99,
+   "label": "Case 580M Pin Kit, Dipper Cylinder to Dipper",
+   "href": "/p/case-580m-pin-kit-dipper-cylinder-to-dipper-129041a1k-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 15.61,
+   "y": 18.17,
+   "r": 0.99,
+   "label": "2 matching parts",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 15.45,
+   "y": 37.78,
+   "r": 0.99,
+   "label": "Case 580M, 580 Super M Pin Kit, Boom to Dipper",
+   "href": "/p/case-580m-580-super-m-pin-kit-boom-to-dipper-d132494k/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 29.16,
+   "y": 55.91,
+   "r": 1.0,
+   "label": "Case 580M Pin Kit, Boom Cylinder to Boom",
+   "href": "/p/case-580m-pin-kit-boom-cylinder-to-boom-129040a1k/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 11.87,
+   "y": 48.5,
+   "r": 1.02,
+   "label": "2 matching parts",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 9.19,
+   "y": 54.85,
+   "r": 1.0,
+   "label": "2 matching parts",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 26.0,
+   "y": 67.05,
+   "r": 1.0,
+   "label": "Case 580M, 580 Super M Pin Kit, Backhoe Bucket to Dipper",
+   "href": "/p/case-580m-580-super-m-pin-kit-backhoe-bucket-to-dipper-d150619k/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 9.83,
+   "y": 74.74,
+   "r": 1.05,
+   "label": "Case 580 Super K, 580M, Super M Backhoe Coupler to Bucket Pin Kit",
+   "href": "/p/case-580-super-k-580m-super-m-backhoe-coupler-to-bucket-pin-kit-d37614k/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 31.65,
+   "y": 74.81,
+   "r": 0.99,
+   "label": "Case 580M, 580 Super M Pin Kit, Boom to Swing Tower",
+   "href": "/p/case-580m-580-super-m-pin-kit-boom-to-swing-tower-87326813k/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 37.34,
+   "y": 38.48,
+   "r": 0.99,
+   "label": "Case 580L, 580M Pin Kit, Boom Cylinder to Swing Tower",
+   "href": "/p/case-580l-580m-pin-kit-boom-cylinder-to-swing-tower-142842a1k/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 39.13,
+   "y": 46.31,
+   "r": 1.03,
+   "label": "Case 580M, 580 Super M Pin Kit, Swing Cylinder To Swing Frame (Rod End)",
+   "href": "/p/case-580m-580-super-m-pin-kit-swing-cylinder-to-swing-frame-rod-end-386092a1k/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 36.88,
+   "y": 84.19,
+   "r": 1.07,
+   "label": "3 matching parts",
+   "href": "#15",
+   "kind": "anchor"
+  },
+  {
+   "ref": "17",
+   "x": 37.79,
+   "y": 89.21,
+   "r": 0.99,
+   "label": "Case 580L–Super M Stabilizer Leg to Chassis Pin Kit",
+   "href": "/p/case-580l-super-m-stabilizer-leg-to-chassis-pin-kit-121665a1k/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 43.99,
+   "y": 95.18,
+   "r": 1.07,
+   "label": "Pin Kit, Stabilizer Cylinder to Leg for Case 580L, 580 Super L, 580M, 580 Super M",
+   "href": "/p/pin-kit-stabilizer-cylinder-to-leg-for-case-580l-580-super-l-580m-580-super-m-d26002k/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 62.21,
+   "y": 27.9,
+   "r": 1.0,
+   "label": "Case 580 Super M Pin Kit, Loader Frame to Chassis",
+   "href": "/p/case-580-super-m-pin-kit-loader-frame-to-chassis-d145767k-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 70.0,
+   "y": 38.48,
+   "r": 1.05,
+   "label": "Case 580M, 580 Super M Pin Kit, Loader Lift Cylinder to Loader Frame",
+   "href": "/p/case-580m-580-super-m-pin-kit-loader-lift-cylinder-to-loader-frame-87623771k/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 75.24,
+   "y": 33.83,
+   "r": 0.99,
+   "label": "Case 580K, 580 Super K, 580L, 580 Super L Pin Kit, 590 Series Bucket Cylinder Link to Drag Link",
+   "href": "/p/case-580k-580-super-k-580l-580-super-l-pin-kit-590-series-bucket-cylinder-link-to-drag-link-d132076k-2/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 79.27,
+   "y": 47.65,
+   "r": 1.04,
+   "label": "Case 580L–Super M Loader Bucket Drag Link to Bucket Pin Kit",
+   "href": "/p/case-580l-super-m-loader-bucket-drag-link-to-bucket-pin-kit-118901a1k/",
+   "kind": "product"
+  },
+  {
+   "ref": "24",
+   "x": 73.39,
+   "y": 88.85,
+   "r": 1.0,
+   "label": "Bushing & Hardware Kit for Case 590 Series Bucket Cylinder Link to Loader Frame",
+   "href": "/p/case-590-series-bucket-cylinder-link-to-loader-frame-kit-d132076k-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "25",
+   "x": 76.27,
+   "y": 88.92,
+   "r": 1.04,
+   "label": "2 matching parts",
+   "href": "#25",
+   "kind": "anchor"
+  },
+  {
+   "ref": "27",
+   "x": 42.01,
+   "y": 94.43,
+   "r": 1.04,
+   "label": "2 matching parts",
+   "href": "#27",
+   "kind": "anchor"
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-wheel-loader-pins-and-bushings-resize.png",
+ "category": "Deere 544E, 544G Loader Pins & Bushings",
+ "template": "JD-loader-pin-bushing-544E-544G.html",
+ "hotspots": [
+  {
+   "ref": "3",
+   "x": 66.08,
+   "y": 63.5,
+   "r": 1.42,
+   "label": "Bellcrank",
+   "href": "/p/john-deere-544e-544g-wheel-loader-bellcrank-at103584-at103584/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 72.83,
+   "y": 48.75,
+   "r": 1.33,
+   "label": "Link to Bucket",
+   "href": "/p/john-deere-wheel-loader-link-with-bushings-at102223-at102223/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 58.33,
+   "y": 9.0,
+   "r": 1.42,
+   "label": "Pin, Cylinder To Bellcrank",
+   "href": "/p/john-deere-wheel-loader-cylinder-to-bellcrank-pin-at102228-at102228/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 70.5,
+   "y": 22.5,
+   "r": 1.33,
+   "label": "Pin, Bellcrank Center",
+   "href": "/p/john-deere-544e-544g-wheel-loader-bellcrank-center-pin-at102356-at102356/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 69.42,
+   "y": 45.5,
+   "r": 1.58,
+   "label": "Pin, Link to Bellcrank",
+   "href": "/p/john-deere-wheel-loader-link-to-bellcrank-pin-at102224-at102224/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 77.0,
+   "y": 45.5,
+   "r": 1.42,
+   "label": "Pin, Link to Bucket",
+   "href": "/p/john-deere-wheel-loader-link-to-bucket-pin-at102224-at102224/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 49.42,
+   "y": 92.0,
+   "r": 1.33,
+   "label": "Pin, Bucket",
+   "href": "/p/john-deere-wheel-loader-lower-bucket-pin-at115976-at115976/",
+   "kind": "product"
+  }
+ ]
+}

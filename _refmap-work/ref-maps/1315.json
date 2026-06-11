@@ -1,0 +1,160 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-ext-dipper-580l.png",
+ "category": "Case 580K & 580 Super K Extendahoe Dipper Stick",
+ "template": "Case-ext-dipper-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 21.08,
+   "y": 10.5,
+   "r": 1.42,
+   "label": "Inner Dipper Stick",
+   "href": "/p/case-backhoe-inner-dipper-stick-new-244536a1-244536a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 17.58,
+   "y": 21.75,
+   "r": 1.67,
+   "label": "Bushing, Inner Dipper at Dipper Cylinder",
+   "href": "/p/case-backhoe-bushing-inner-dipper-at-dipper-cylinder-d149079-d149079/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 25.42,
+   "y": 11.5,
+   "r": 1.5,
+   "label": "Bushing, Inner Dipper at Dipper Cylinder",
+   "href": "/p/case-backhoe-bushing-inner-dipper-at-dipper-cylinder-d149079-d149079/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 26.33,
+   "y": 56.0,
+   "r": 1.5,
+   "label": "Bushing",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 35.83,
+   "y": 36.5,
+   "r": 1.42,
+   "label": "Bushing",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 32.83,
+   "y": 18.25,
+   "r": 1.42,
+   "label": "Pin, Inner Dipper to Dipper Cylinder",
+   "href": "/p/case-backhoe-pin-inner-dipper-to-dipper-cylinder-d141666-d141666/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 20.42,
+   "y": 68.75,
+   "r": 1.5,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-d132494-d132494/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 38.83,
+   "y": 23.75,
+   "r": 1.67,
+   "label": "Nut, Boom to Dipper Pin",
+   "href": "/p/case-backhoe-nut-boom-to-dipper-pin-181042a1-181042a1-8/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 48.5,
+   "y": 40.0,
+   "r": 1.42,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "8",
+   "x": 29.08,
+   "y": 68.5,
+   "r": 1.42,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "9",
+   "x": 53.5,
+   "y": 64.75,
+   "r": 1.42,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "10",
+   "x": 32.92,
+   "y": 87.25,
+   "r": 1.5,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "11",
+   "x": 50.5,
+   "y": 86.0,
+   "r": 1.5,
+   "label": "Not Available",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "12",
+   "x": 68.0,
+   "y": 30.5,
+   "r": 1.5,
+   "label": "Outer Dipper Stick",
+   "href": "/p/case-backhoe-outer-dipper-stick-new-made-in-usa-87600242-87600242/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 65.25,
+   "y": 22.5,
+   "r": 1.5,
+   "label": "Pin, Inner Dipper and Dipper Cylinder",
+   "href": "/p/case-backhoe-pin-outer-dipper-to-dipper-cylinder-d141666-d141666/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 77.5,
+   "y": 48.75,
+   "r": 1.58,
+   "label": "Bushing, Dipper at Bucket",
+   "href": "/p/case-backhoe-bushing-dipper-at-bucket-307186a1-307186a1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 65.17,
+   "y": 75.75,
+   "r": 1.5,
+   "label": "Bushing, Dipper at Bucket",
+   "href": "/p/case-backhoe-bushing-dipper-at-bucket-307186a1-307186a1-1/",
+   "kind": "product"
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-front-axle-parts-two-wheel-drive.png",
+ "category": "580K, 580SK, 580L, 580SL, 580M, 580SM, 590, 590SL",
+ "template": "case-backhoe-front-axle-580k.html",
+ "hotspots": [
+  {
+   "ref": "2",
+   "x": 62.58,
+   "y": 45.02,
+   "r": 1.25,
+   "label": "King Pin Kit",
+   "href": "/p/case-backhoe-front-axle-king-pin-kit-two-wheel-drive-d103626-d103626/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 51.08,
+   "y": 93.73,
+   "r": 1.25,
+   "label": "Spindle",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 57.58,
+   "y": 6.83,
+   "r": 1.17,
+   "label": "Front Axle Pivot Pin",
+   "href": "/p/case-backhoe-front-axle-pivot-pin-d127445-d127445/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 49.92,
+   "y": 14.21,
+   "r": 1.17,
+   "label": "Front Axle Pivot Bushing (Rear)",
+   "href": "/p/case-backhoe-front-axle-pivot-bushing-rear-d137345-d137345/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 49.67,
+   "y": 29.89,
+   "r": 1.25,
+   "label": "Front Axle Pivot Bushing (Front)",
+   "href": "/p/case-backhoe-front-axle-pivot-bushing-front-d138047-d138047/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 38.58,
+   "y": 46.31,
+   "r": 1.17,
+   "label": "Power Steering Cylinder (2WD)",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 42.08,
+   "y": 69.93,
+   "r": 1.25,
+   "label": "Steering Link (From Cylinder to Spindle)",
+   "href": "/p/case-backhoe-steering-link-from-cylinder-to-spindle-d123806-d123806/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 55.42,
+   "y": 76.57,
+   "r": 1.08,
+   "label": "Steering Link Pin",
+   "href": "/p/case-backhoe-front-axle-steering-link-pin-d150155-d150155/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 51.58,
+   "y": 52.21,
+   "r": 1.17,
+   "label": "Steering Link Pin",
+   "href": "/p/case-backhoe-front-axle-steering-link-pin-d150155-d150155/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 50.17,
+   "y": 88.01,
+   "r": 1.17,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-steering-pin-snap-ring-643522-643522/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 49.92,
+   "y": 82.47,
+   "r": 1.17,
+   "label": "Steering Pin Washer",
+   "href": "/p/case-backhoe-steering-pin-washer-87366-87366/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 33.0,
+   "y": 30.81,
+   "r": 1.33,
+   "label": "Power Steering Cylinder Eyelet (Left Hand Thread) (2WD)",
+   "href": "/p/case-power-steering-cylinder-eyelet-left-hand-thread-2wd-g106832-g106832/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 43.25,
+   "y": 49.63,
+   "r": 1.17,
+   "label": "Power Steering Cylinder Eyelet (Right Hand Thread)(2WD)",
+   "href": "/p/case-backhoe-power-steering-cylinder-eyelet-right-hand-thread-2wd-g106813-g106813/",
+   "kind": "product"
+  }
+ ]
+}

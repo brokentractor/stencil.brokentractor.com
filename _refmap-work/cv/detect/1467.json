@@ -1,0 +1,38 @@
+{
+ "category_id": 1467,
+ "name": "Case 580K, 580 Super K Hydraulic Seal Kits",
+ "url": "/c/case-580k-580-super-k-seal-kits/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/580k-case.jpg?t=1712257905",
+ "img_w": 1350,
+ "img_h": 485,
+ "style": "red-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 982.0,
+   "y_px": 226.5,
+   "r_px": 16.2,
+   "x": 72.74,
+   "y": 46.7,
+   "r": 1.2
+  },
+  {
+   "i": 1,
+   "x_px": 843.4,
+   "y_px": 345.8,
+   "r_px": 30.0,
+   "x": 62.48,
+   "y": 71.31,
+   "r": 2.22
+  },
+  {
+   "i": 2,
+   "x_px": 1014.5,
+   "y_px": 360.8,
+   "r_px": 36.2,
+   "x": 75.15,
+   "y": 74.4,
+   "r": 2.68
+  }
+ ]
+}

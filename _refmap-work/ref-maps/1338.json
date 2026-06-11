@@ -1,0 +1,259 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-hitachi-excavator-chart.png",
+ "category": "Deere 590D, 595D, 160LC, 160CLC",
+ "template": "JD-excavator-590D.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 96.92,
+   "y": 77.72,
+   "r": 1.58,
+   "label": "Pin, Bucket to Dipper Arm",
+   "href": "/p/john-deere-excavator-bucket-to-dipper-arm-pin-t144756-t144756/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 95.25,
+   "y": 62.07,
+   "r": 1.5,
+   "label": "Pin, Bucket to H-Link",
+   "href": "/p/john-deere-excavator-bucket-to-h-link-pin-t144757-t144757/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 95.5,
+   "y": 34.75,
+   "r": 1.5,
+   "label": "Pin, Link to Dipper",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 92.0,
+   "y": 8.49,
+   "r": 1.58,
+   "label": "Pin, Link to Cylinder",
+   "href": "/p/john-deere-excavator-link-to-cylinder-pin-t144755-t144755/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 11.17,
+   "y": 93.37,
+   "r": 1.58,
+   "label": "Bucket H-Link",
+   "href": "/p/john-deere-excavator-h-link-9726946-94-9726946-94/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 17.92,
+   "y": 88.33,
+   "r": 1.5,
+   "label": "Bushing, H-Link Closed End",
+   "href": "/p/john-deere-excavator-h-link-closed-end-bushing-t139496-t139496/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 8.25,
+   "y": 84.62,
+   "r": 1.5,
+   "label": "Bushing, H-Link Closed End",
+   "href": "/p/john-deere-excavator-h-link-closed-end-bushing-t139496-t139496/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 23.92,
+   "y": 19.36,
+   "r": 2.83,
+   "label": "Bushing, H-Link Open End",
+   "href": "/p/john-deere-excavator-bushing-at126136-at126136/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 7.0,
+   "y": 18.83,
+   "r": 2.75,
+   "label": "Bushing, H-Link Open End",
+   "href": "/p/john-deere-excavator-bushing-at126136-at126136/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 15.75,
+   "y": 10.34,
+   "r": 1.75,
+   "label": "Seal",
+   "href": "/p/john-deere-excavator-seal-th104472-th104472/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 29.25,
+   "y": 19.36,
+   "r": 1.58,
+   "label": "Seal",
+   "href": "/p/john-deere-excavator-seal-th104472-th104472/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 2.33,
+   "y": 19.1,
+   "r": 1.58,
+   "label": "Seal",
+   "href": "/p/john-deere-excavator-seal-th104472-th104472/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 3.92,
+   "y": 82.49,
+   "r": 1.42,
+   "label": "Seal",
+   "href": "/p/john-deere-excavator-seal-th102446-th102446/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 24.58,
+   "y": 86.74,
+   "r": 1.58,
+   "label": "Seal",
+   "href": "/p/john-deere-excavator-seal-th102446-th102446/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 33.58,
+   "y": 59.15,
+   "r": 1.58,
+   "label": "Dipper Link Left Hand (With Bolt Holes)",
+   "href": "/p/john-deere-excavator-bucket-link-left-hand-w-bolt-holes-ap34756-ap34756/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 78.42,
+   "y": 46.15,
+   "r": 1.58,
+   "label": "Dipper Link Right Hand",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 48.42,
+   "y": 43.77,
+   "r": 1.67,
+   "label": "Bushing, Dipper At Link",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 64.25,
+   "y": 47.48,
+   "r": 1.58,
+   "label": "Bushing, Dipper At Link",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 44.67,
+   "y": 43.77,
+   "r": 1.58,
+   "label": "Seal",
+   "href": "#12",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 68.08,
+   "y": 46.95,
+   "r": 1.67,
+   "label": "Seal",
+   "href": "#12",
+   "kind": "anchor"
+  },
+  {
+   "ref": "14",
+   "x": 46.58,
+   "y": 74.01,
+   "r": 1.5,
+   "label": "Bushing, Dipper To Bucket",
+   "href": "/p/john-deere-excavator-dipper-to-bucket-bushing-t139507-t139507/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 62.08,
+   "y": 74.54,
+   "r": 1.5,
+   "label": "Bushing, Dipper To Bucket",
+   "href": "/p/john-deere-excavator-dipper-to-bucket-bushing-t139507-t139507/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 43.0,
+   "y": 72.68,
+   "r": 1.58,
+   "label": "Seal",
+   "href": "/p/john-deere-excavator-seal-th102446-th102446-11/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 65.92,
+   "y": 72.68,
+   "r": 1.58,
+   "label": "Seal",
+   "href": "/p/john-deere-excavator-seal-th102446-th102446-11/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 2.33,
+   "y": 91.51,
+   "r": 1.33,
+   "label": "O - Ring",
+   "href": "/p/john-deere-excavator-590d-595d-160lc-160clc-o-ring-th102444-th102444/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 35.17,
+   "y": 84.88,
+   "r": 1.58,
+   "label": "O - Ring",
+   "href": "/p/john-deere-excavator-590d-595d-160lc-160clc-o-ring-th102444-th102444/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 28.08,
+   "y": 87.0,
+   "r": 1.67,
+   "label": "O - Ring",
+   "href": "/p/john-deere-excavator-590d-595d-160lc-160clc-o-ring-th102444-th102444/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 71.58,
+   "y": 74.27,
+   "r": 1.58,
+   "label": "O - Ring",
+   "href": "/p/john-deere-excavator-590d-595d-160lc-160clc-o-ring-th102444-th102444/",
+   "kind": "product"
+  }
+ ]
+}

@@ -1,0 +1,133 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/frame-and-stabilizer-590-turbo-resize.png",
+ "category": "Frame and Stabilizer Parts - 590SL, 590SM",
+ "template": "Case-rear-frame-stab-590SL.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 10.58,
+   "y": 93.0,
+   "r": 1.33,
+   "label": "Stabilizer Plate, Metal Cleat",
+   "href": "/p/case-backhoe-stabilizer-plate-for-cleat-d88427-d88427/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 20.92,
+   "y": 71.43,
+   "r": 1.33,
+   "label": "Pin, Stabilizer Plate to Leg (Metal Cleat)",
+   "href": "/p/case-backhoe-pin-stabilizer-plate-to-leg-cleat-d28648-d28648/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 43.75,
+   "y": 78.14,
+   "r": 1.42,
+   "label": "Stabilizer Plate, Single Rubber Pad Style",
+   "href": "/p/case-backhoe-stabilizer-street-pad-plate-style-with-single-rubber-pad-d142519-d142519/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 42.25,
+   "y": 86.14,
+   "r": 1.33,
+   "label": "Stabilizer Pad (Single-Pad Plate)",
+   "href": "/p/case-backhoe-rubber-stabilizer-pad-d61368-d61368/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 35.25,
+   "y": 61.71,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Plate to Leg (Single Rubber Pad)",
+   "href": "/p/case-backhoe-pin-stabilizer-plate-to-leg-single-rubber-pad-d39256-d39256/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 47.17,
+   "y": 93.14,
+   "r": 1.5,
+   "label": "Rubber Pad",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 69.42,
+   "y": 71.57,
+   "r": 1.33,
+   "label": "Pin, Flip Pad to Stabilizer Leg",
+   "href": "/p/case-backhoe-pin-stabilizer-plate-to-leg-d149033-d149033/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 61.42,
+   "y": 54.43,
+   "r": 1.5,
+   "label": "Bushing, Upper Stabilizer Leg at Frame",
+   "href": "/p/case-backhoe-upper-stabilizer-leg-bushing-d50146-d50146-2/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 76.08,
+   "y": 47.57,
+   "r": 1.5,
+   "label": "Bushing, Upper Stabilizer Leg at Frame",
+   "href": "/p/case-backhoe-upper-stabilizer-leg-bushing-d50146-d50146-2/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 81.42,
+   "y": 78.86,
+   "r": 1.5,
+   "label": "Pin, Stabilizer Cylinder to Leg",
+   "href": "/p/case-backhoe-pin-stabilizer-cylinder-to-leg-r26725-r26725/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 53.5,
+   "y": 57.0,
+   "r": 1.25,
+   "label": "Pin, Stabilizer Leg to Frame",
+   "href": "/p/case-backhoe-pin-stabilizer-leg-to-frame-121665a1-121665a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 69.25,
+   "y": 14.14,
+   "r": 1.25,
+   "label": "Pin, Stabilizer Cylinder Tube to Frame",
+   "href": "/p/case-backhoe-pin-stabilizer-cylinder-tube-to-frame-d38907-d38907-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 90.75,
+   "y": 48.57,
+   "r": 1.33,
+   "label": "Stabilizer Cylinder",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "18",
+   "x": 73.67,
+   "y": 69.0,
+   "r": 1.25,
+   "label": "Stabilizer Leg",
+   "href": "#12",
+   "kind": "anchor"
+  }
+ ]
+}

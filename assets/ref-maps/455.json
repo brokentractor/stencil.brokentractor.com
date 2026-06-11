@@ -1,0 +1,70 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-final-drive-450.png",
+ "category": "450, 450B, 450C, 550, 550B, 650 Final Drive Parts",
+ "template": "JD-dozer-finaldrive-450.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 29.83,
+   "y": 63.2,
+   "r": 1.42,
+   "label": "Axle Shaft",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 59.83,
+   "y": 27.36,
+   "r": 1.42,
+   "label": "Pinion Shaft",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 65.5,
+   "y": 70.94,
+   "r": 1.42,
+   "label": "Bull Gear",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 52.67,
+   "y": 75.06,
+   "r": 1.58,
+   "label": "Bull Gear Spacer",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 34.92,
+   "y": 18.89,
+   "r": 1.42,
+   "label": "Final Drive Input Gear",
+   "href": "/p/john-deere-dozer-final-drive-input-gear-t214597-t214597/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 62.67,
+   "y": 18.89,
+   "r": 1.42,
+   "label": "Hydrostat Motor Shaft",
+   "href": "/p/john-deere-dozer-hydrostat-motor-shaft-t176423-t176423/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 41.67,
+   "y": 87.89,
+   "r": 1.42,
+   "label": "Final Drive Axle Seal",
+   "href": "/p/john-deere-dozer-final-drive-axle-seal-at72157-at72157/",
+   "kind": "product"
+  }
+ ]
+}

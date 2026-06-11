@@ -1,0 +1,61 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-wheel-loader-pins-and-bushings-resize.png",
+ "category": "Deere 624J, 624K Loader Pins & Bushings",
+ "template": "JD-loader-pin-bushing-624J.html",
+ "hotspots": [
+  {
+   "ref": "5",
+   "x": 72.83,
+   "y": 48.75,
+   "r": 1.33,
+   "label": "Standard Link",
+   "href": "/p/john-deere-624j-624k-wheel-loader-link-bellcrank-to-bucket-at307538-at307538/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 72.42,
+   "y": 65.25,
+   "r": 1.33,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/john-deere-624j-bushing-bucket-link-t102950-t102950/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 58.33,
+   "y": 9.0,
+   "r": 1.42,
+   "label": "Pin, Cylinder To Bellcrank",
+   "href": "/p/john-deere-wheel-loader-cylinder-to-bellcrank-pin-at207718-at207718-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 69.42,
+   "y": 45.5,
+   "r": 1.58,
+   "label": "Pin, Link to Bellcrank",
+   "href": "/p/john-deere-wheel-loader-link-to-bellcrank-pin-at102752-at102752/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 77.0,
+   "y": 45.5,
+   "r": 1.42,
+   "label": "Pin, Link to Bucket",
+   "href": "/p/john-deere-624j-624k-loader-pin-link-to-bucket-at308025-at308025/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 49.42,
+   "y": 92.0,
+   "r": 1.33,
+   "label": "Pin, Bucket",
+   "href": "/p/john-deere-624j-624k-wheel-loader-bucket-pin-at308032-at308032/",
+   "kind": "product"
+  }
+ ]
+}

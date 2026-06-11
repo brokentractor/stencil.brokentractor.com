@@ -1,0 +1,38 @@
+{
+ "category_id": 1541,
+ "name": "Case 580B, Early 580C Split-Piston Seal Kits",
+ "url": "/c/case-580b-early-580c-split-piston-seal-kits/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580b-580c-backhoe-cylinder-seal-kit-usa-bulldog-broken-tractor.jpg?t=1712259853",
+ "img_w": 1337,
+ "img_h": 549,
+ "style": "black-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 564.6,
+   "y_px": 431.4,
+   "r_px": 19.3,
+   "x": 42.23,
+   "y": 78.58,
+   "r": 1.44
+  },
+  {
+   "i": 1,
+   "x_px": 881.4,
+   "y_px": 449.4,
+   "r_px": 15.4,
+   "x": 65.92,
+   "y": 81.86,
+   "r": 1.15
+  },
+  {
+   "i": 2,
+   "x_px": 792.6,
+   "y_px": 493.8,
+   "r_px": 24.4,
+   "x": 59.28,
+   "y": 89.95,
+   "r": 1.83
+  }
+ ]
+}

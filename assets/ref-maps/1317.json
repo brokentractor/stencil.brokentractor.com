@@ -1,0 +1,205 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-frame-and-stabilizer-parts-case-580k.png",
+ "category": "Case 580K & 580 Super K Frame Stabilizer Parts",
+ "template": "Case-rear-frame-580K.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 32.5,
+   "y": 37.69,
+   "r": 1.42,
+   "label": "Stabilizer Plate, Metal Cleat",
+   "href": "/p/case-backhoe-stabilizer-plate-for-cleat-d88427-d88427/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 40.0,
+   "y": 13.92,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Plate to Leg (Metal Cleat)",
+   "href": "/p/case-backhoe-pin-stabilizer-plate-to-leg-cleat-d28648-d28648/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 43.0,
+   "y": 71.73,
+   "r": 1.42,
+   "label": "Stabilizer Plate, Single Rubber Pad Style",
+   "href": "/p/case-backhoe-stabilizer-street-pad-plate-style-with-single-rubber-pad-d142519-d142519/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 42.17,
+   "y": 80.3,
+   "r": 1.42,
+   "label": "Stabilizer Pad (Single-Pad Plate)",
+   "href": "/p/case-backhoe-rubber-stabilizer-pad-d61368-d61368/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 36.33,
+   "y": 53.32,
+   "r": 1.5,
+   "label": "Pin",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 13.33,
+   "y": 46.25,
+   "r": 1.42,
+   "label": "Flip-Style Stabilizer Plate (3-Pad Style)",
+   "href": "/p/case-backhoe-flip-over-stabilizer-plate-189955a1-189955a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 30.42,
+   "y": 51.39,
+   "r": 1.42,
+   "label": "Rubber Pad (Flip-Pad Style)",
+   "href": "/p/case-backhoe-rubber-stabilizer-pad-flip-style-plate-d142314-d142314/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 15.33,
+   "y": 63.6,
+   "r": 1.5,
+   "label": "Rubber Pad (Flip-Pad Style)",
+   "href": "/p/case-backhoe-rubber-stabilizer-pad-flip-style-plate-d142314-d142314/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 73.75,
+   "y": 72.59,
+   "r": 1.58,
+   "label": "Stabilizer Leg",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 64.83,
+   "y": 57.17,
+   "r": 1.42,
+   "label": "Bushing, Upper Stabilizer Leg at Frame",
+   "href": "/p/case-backhoe-upper-stabilizer-leg-bushing-d50146-d50146-3/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 75.42,
+   "y": 51.39,
+   "r": 1.58,
+   "label": "Bushing, Upper Stabilizer Leg at Frame",
+   "href": "/p/case-backhoe-upper-stabilizer-leg-bushing-d50146-d50146-3/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 78.83,
+   "y": 83.3,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Cylinder to Leg",
+   "href": "/p/case-backhoe-pin-outrigger-cylinder-to-leg-d26002-d26002/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 59.67,
+   "y": 60.81,
+   "r": 1.33,
+   "label": "Pin, Stabilizer Leg to Frame",
+   "href": "/p/case-580k-backhoe-pin-stabilizer-leg-to-frame-d134723-d134723/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 78.58,
+   "y": 36.4,
+   "r": 1.5,
+   "label": "Bushing, Frame at Stabilizer Leg",
+   "href": "/p/case-backhoe-bushing-frame-at-stabilizer-leg-d43940-d43940-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 70.08,
+   "y": 14.35,
+   "r": 1.58,
+   "label": "Pin, Stabilizer Cylinder Tube to Frame",
+   "href": "#14",
+   "kind": "anchor"
+  },
+  {
+   "ref": "15",
+   "x": 50.42,
+   "y": 60.39,
+   "r": 1.5,
+   "label": "Bushing, Frame at Swing Tower (Lower)",
+   "href": "/p/case-backhoe-bushing-frame-at-lower-swing-tower-d135556-d135556/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 53.0,
+   "y": 17.99,
+   "r": 1.33,
+   "label": "Bushing, Frame at Swing Tower(Upper)",
+   "href": "/p/case-bushing-frame-at-upper-swing-tower-d135555-d135555/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 85.58,
+   "y": 50.96,
+   "r": 1.58,
+   "label": "Stabilizer Cylinder",
+   "href": "/p/case-580-super-k-backhoe-stabilizer-cylinder-199720a1-199720a1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 66.25,
+   "y": 79.87,
+   "r": 1.33,
+   "label": "Stabilizer Cylinder",
+   "href": "/p/case-backhoe-stabilizer-cylinder-g110673-g110673/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 70.92,
+   "y": 65.74,
+   "r": 1.67,
+   "label": "Bushing, Stabilizer Cylinder Tube",
+   "href": "/p/case-bushing-stabilizer-cylinder-tube-d30932-d30932/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 61.92,
+   "y": 79.44,
+   "r": 1.5,
+   "label": "Bushing, Stabilizer Cylinder Tube",
+   "href": "/p/case-bushing-stabilizer-cylinder-tube-d30932-d30932/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 19.83,
+   "y": 31.05,
+   "r": 1.58,
+   "label": "Flip-Pad Assembly",
+   "href": "/p/case-backhoe-flip-style-stabilizer-pad-assembly-cs-580k-fopa/",
+   "kind": "product"
+  }
+ ]
+}

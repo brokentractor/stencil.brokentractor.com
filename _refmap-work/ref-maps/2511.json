@@ -1,0 +1,124 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-rear-differential-580ck.png",
+ "category": "Case 480CK, 480B, 580CK, 580B Rear Axle Parts",
+ "template": "Case-rear-diff-580CK.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 83.17,
+   "y": 60.71,
+   "r": 1.5,
+   "label": "Differential Side Gear",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 81.42,
+   "y": 25.84,
+   "r": 1.5,
+   "label": "Ring Gear and Pinion Set",
+   "href": "/p/case-backhoe-ring-gear-and-pinion-set-a50997-a50997/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 66.0,
+   "y": 37.7,
+   "r": 1.33,
+   "label": "Spider Gear",
+   "href": "/p/case-backhoe-differential-spider-gear-a38933-a38933/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 67.33,
+   "y": 45.84,
+   "r": 1.42,
+   "label": "Spider Gear Pin",
+   "href": "/p/case-backhoe-spider-gear-pin-a39024-a39024/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 40.0,
+   "y": 50.44,
+   "r": 1.5,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "6",
+   "x": 45.17,
+   "y": 22.65,
+   "r": 1.5,
+   "label": "Bull Gear",
+   "href": "/p/case-backhoe-differential-bull-gear-a168925-a168925/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 84.33,
+   "y": 14.51,
+   "r": 1.5,
+   "label": "Differential Shaft",
+   "href": "/p/case-backhoe-differential-shaft-a144266-a144266/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 80.0,
+   "y": 84.25,
+   "r": 1.58,
+   "label": "Backing Plate Bearing and Seal Kit",
+   "href": "/p/case-brake-backing-plate-bearing-and-seal-kit-cs-580-bpk/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 49.25,
+   "y": 89.73,
+   "r": 1.42,
+   "label": "Backing Plate Bearing and Seal Kit",
+   "href": "/p/case-brake-backing-plate-bearing-and-seal-kit-cs-580-bpk/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 12.5,
+   "y": 75.4,
+   "r": 1.5,
+   "label": "Wheel Lug Bolt",
+   "href": "/p/case-backhoe-wheel-lug-bolt-a38208-a38208/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 79.75,
+   "y": 65.13,
+   "r": 1.5,
+   "label": "Seal, Right Hand Side Gear",
+   "href": "/p/case-backhoe-right-diff-side-gear-seal-a49795-a49795/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 64.92,
+   "y": 18.76,
+   "r": 1.42,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "13",
+   "x": 53.83,
+   "y": 66.55,
+   "r": 1.42,
+   "label": "Bearing Carrier",
+   "href": "#12",
+   "kind": "anchor"
+  }
+ ]
+}

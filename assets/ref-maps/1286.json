@@ -1,0 +1,133 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-swing-tower-parts-case-580k-resize.png",
+ "category": "Case 580K & 580 Super K Swing Tower Parts",
+ "template": "case-swing-tower-580K.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 63.0,
+   "y": 7.67,
+   "r": 1.5,
+   "label": "Bushing, Swing Tower at Boom Cylinder",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 66.67,
+   "y": 18.67,
+   "r": 1.5,
+   "label": "Bushing, Inner Boom Pivot",
+   "href": "/p/case-backhoe-swing-tower-bushing-inner-boom-pivot-d135742-d135742/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 64.83,
+   "y": 40.92,
+   "r": 1.33,
+   "label": "Bushing, Outer Boom Pivot",
+   "href": "/p/case-swing-tower-bushing-outer-boom-pivot-d135741-d135741/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 33.42,
+   "y": 55.75,
+   "r": 1.33,
+   "label": "Pin, Swing Tower to Frame (Upper)",
+   "href": "/p/case-backhoe-pin-upper-swing-tower-to-frame-105749a1-105749a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 38.92,
+   "y": 23.79,
+   "r": 1.67,
+   "label": "Bushing, Upper Swing Tower Pivot (Top)",
+   "href": "/p/case-backhoe-bushing-top-upper-swing-tower-pivot-d135557-d135557/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 33.5,
+   "y": 45.27,
+   "r": 1.33,
+   "label": "Bushing, Upper Swing Tower Pivot (Bottom)",
+   "href": "/p/case-backhoe-bushing-upper-swing-tower-pivot-bottom-d135559-d135559/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 53.08,
+   "y": 89.26,
+   "r": 1.42,
+   "label": "Pin, Swing Tower to Frame (Lower)",
+   "href": "/p/case-backhoe-pin-swing-tower-to-frame-lower-d151065-d151065/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 41.33,
+   "y": 70.08,
+   "r": 1.42,
+   "label": "Bushing, Lower Swing Tower Pivot (Top) (Slotted)",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 53.25,
+   "y": 73.4,
+   "r": 1.5,
+   "label": "Bushing, Lower Swing Tower Pivot (Bottom)",
+   "href": "/p/case-backhoe-bushing-lower-swing-tower-pivot-d135559-d135559/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 43.33,
+   "y": 6.14,
+   "r": 1.5,
+   "label": "Pin, Boom Cylinder to Swing Tower",
+   "href": "#9",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 58.25,
+   "y": 60.61,
+   "r": 1.42,
+   "label": "Pin, Swing Tower to Boom",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 60.5,
+   "y": 71.61,
+   "r": 1.5,
+   "label": "Pin, Swing Cylinder to Tower",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 61.0,
+   "y": 84.91,
+   "r": 1.58,
+   "label": "Bushing, Swing Cylinder Pivot",
+   "href": "/p/case-backhoe-bushing-swing-cylinder-pivot-inner-d136570-d136570/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 61.17,
+   "y": 94.88,
+   "r": 1.33,
+   "label": "Bushing, Swing Cylinder Pivot",
+   "href": "/p/case-backhoe-bushing-swing-cylinder-pivot-outer-d136571-d136571/",
+   "kind": "product"
+  }
+ ]
+}

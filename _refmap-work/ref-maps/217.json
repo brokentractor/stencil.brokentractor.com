@@ -1,0 +1,79 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/idler-and-primary-shaft-case-580l-resize.png",
+ "category": "Case Backhoe Idler and Primary Shaft",
+ "template": "case-trans-idler-shaft-580l.html",
+ "hotspots": [
+  {
+   "ref": "2",
+   "x": 37.07,
+   "y": 7.65,
+   "r": 1.47,
+   "label": "Circle Clip",
+   "href": "/p/case-backhoe-transmission-circle-clip-a48041-a48041/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 41.98,
+   "y": 7.65,
+   "r": 1.47,
+   "label": "Pinion Idler Gear, 27 Teeth",
+   "href": "/p/case-backhoe-pinion-idler-gear-27-teeth-181186a1-181186a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 54.58,
+   "y": 7.48,
+   "r": 1.39,
+   "label": "Reverse Idler Shaft",
+   "href": "/p/case-backhoe-reverse-idler-shaft-181181a1-181181a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 64.81,
+   "y": 7.65,
+   "r": 1.55,
+   "label": "Pinion Idler Gear, 27 Teeth",
+   "href": "/p/case-backhoe-pinion-idler-gear-27-teeth-181186a1-181186a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 71.36,
+   "y": 7.48,
+   "r": 1.55,
+   "label": "Circle Clip",
+   "href": "/p/case-backhoe-transmission-circle-clip-a48041-a48041/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 55.89,
+   "y": 57.74,
+   "r": 1.55,
+   "label": "Third Gear 28 tooth",
+   "href": "/p/case-backhoe-third-gear-28-tooth-181188a1-181188a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 49.75,
+   "y": 57.74,
+   "r": 1.47,
+   "label": "Fourth Gear, 39 Teeth",
+   "href": "/p/case-backhoe-fourth-gear-39-teeth-181187a1-181187a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 35.6,
+   "y": 57.91,
+   "r": 1.55,
+   "label": "Primary Shaft",
+   "href": "#10",
+   "kind": "anchor"
+  }
+ ]
+}

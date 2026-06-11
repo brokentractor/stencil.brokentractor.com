@@ -1,0 +1,241 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-front-axle-housing-and-swivel.png",
+ "category": "Case Front Axle Housing and Swivel Housings",
+ "template": "case-front-axle-housing-580l.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 35.83,
+   "y": 40.99,
+   "r": 1.33,
+   "label": "4WD Bare Front Axle Housing",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 21.75,
+   "y": 4.55,
+   "r": 1.5,
+   "label": "Rear Pivot Bushing",
+   "href": "/p/case-backhoe-front-axle-housing-rear-pivot-bushing-d149725-d149725/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 18.67,
+   "y": 9.3,
+   "r": 1.33,
+   "label": "Seal",
+   "href": "/p/case-backhoe-front-axle-housing-pivot-pin-seal-d123655-d123655/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 31.08,
+   "y": 18.98,
+   "r": 1.25,
+   "label": "Front Housing Front Pivot Bushing",
+   "href": "/p/case-backhoe-front-axle-housing-front-pivot-bushing-d149726-d149726/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 19.08,
+   "y": 21.82,
+   "r": 1.42,
+   "label": "Breather",
+   "href": "/p/case-backhoe-front-axle-breather-5194153-5194153/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 34.25,
+   "y": 15.37,
+   "r": 1.42,
+   "label": "Seal",
+   "href": "/p/case-backhoe-front-axle-housing-pivot-pin-seal-d123655-d123655/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 12.92,
+   "y": 48.77,
+   "r": 1.42,
+   "label": "Drain Plug",
+   "href": "/p/case-backhoe-front-axle-drain-plug-5801848363-5801848363/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 4.33,
+   "y": 54.27,
+   "r": 1.42,
+   "label": "Bolt",
+   "href": "/p/case-backhoe-front-differential-bolt-5194169-5194169/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 5.75,
+   "y": 88.24,
+   "r": 1.5,
+   "label": "Drain Plug",
+   "href": "/p/case-backhoe-front-axle-drain-plug-5801848363-5801848363/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 46.83,
+   "y": 49.91,
+   "r": 1.5,
+   "label": "Upper Bellville Washer",
+   "href": "/p/case-backhoe-front-axle-upper-bellville-washer-5194157-5194157/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 47.92,
+   "y": 60.91,
+   "r": 1.42,
+   "label": "Upper Bushing",
+   "href": "/p/case-backhoe-front-axle-upper-king-pin-bushing-84529088-84529088/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 48.25,
+   "y": 70.4,
+   "r": 1.33,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-front-axle-bushing-5194160-5194160/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 48.17,
+   "y": 91.08,
+   "r": 1.5,
+   "label": "Axle Housing Seal",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 40.67,
+   "y": 83.49,
+   "r": 1.42,
+   "label": "Lower King Pin Bushing",
+   "href": "/p/case-backhoe-front-axle-lower-king-pin-bushing-100520a1-100520a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 40.67,
+   "y": 92.03,
+   "r": 1.42,
+   "label": "Lower Bellville Washer",
+   "href": "/p/case-backhoe-front-axle-lower-bellville-washer-5194164-5194164/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 18.83,
+   "y": 60.72,
+   "r": 1.33,
+   "label": "Dowel",
+   "href": "/p/case-backhoe-front-axle-dowel-1966138c1-1966138c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 71.83,
+   "y": 9.49,
+   "r": 1.42,
+   "label": "Swivel Housing (Left Hand)",
+   "href": "/p/case-backhoe-front-axle-swivel-housing-left-hand-144455a1-397653a1-144455a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 94.0,
+   "y": 31.5,
+   "r": 1.5,
+   "label": "Swivel Housing (Right Hand)",
+   "href": "/p/case-4wd-backhoe-front-axle-swivel-housing-right-hand-47573503-144456a1-144456a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 72.58,
+   "y": 18.98,
+   "r": 1.42,
+   "label": "Bushing, Swivel Housing",
+   "href": "/p/case-backhoe-4wd-swivel-housing-bushing-100532a1-100532a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 76.58,
+   "y": 19.17,
+   "r": 1.5,
+   "label": "Swivel Housing Seal (65 MM OD)",
+   "href": "#17",
+   "kind": "anchor"
+  },
+  {
+   "ref": "19",
+   "x": 90.17,
+   "y": 4.74,
+   "r": 1.58,
+   "label": "Bolt",
+   "href": "/p/case-backhoe-king-pin-bolt-85805979-85805979/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 93.92,
+   "y": 17.65,
+   "r": NaN,
+   "label": "Upper King Pin",
+   "href": "/p/case-front-axle-upper-king-pin-85805980-85805980/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 82.17,
+   "y": 85.39,
+   "r": 1.42,
+   "label": "Lower King Pin",
+   "href": "/p/case-backhoe-front-axle-lower-king-pin-85805983-85805983/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 94.0,
+   "y": 17.65,
+   "r": 1.58,
+   "label": "Upper King Pin",
+   "href": "/p/case-front-axle-upper-king-pin-85805980-85805980/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 60.5,
+   "y": 71.54,
+   "r": 1.33,
+   "label": "Jam Nut",
+   "href": "/p/case-backhoe-spindle-jam-nut-85805986-85805986/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 65.17,
+   "y": 77.61,
+   "r": 1.42,
+   "label": "Stop Bolt",
+   "href": "/p/case-backhoe-swivel-housing-stop-bolt-1537664c1-1537664c1/",
+   "kind": "product"
+  }
+ ]
+}

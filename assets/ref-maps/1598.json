@@ -1,0 +1,241 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-housing-and-swivel-housing-590-super-l-resize.png",
+ "category": "Case Backhoe Housing and Swivel Housing ",
+ "template": "Case-Front-Axle-housing-590SL.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 31.08,
+   "y": 40.21,
+   "r": 1.5,
+   "label": "Axle Housing",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 17.17,
+   "y": 8.49,
+   "r": 1.42,
+   "label": "Rear Pivot Bushing",
+   "href": "/p/case-590-super-l-590-super-m-backhoe-front-axle-rear-pivot-bushing-housing-d149725-d149725/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 14.58,
+   "y": 14.21,
+   "r": 1.42,
+   "label": "Seal",
+   "href": "/p/case-backhoe-front-axle-housing-pivot-pin-seal-d123655-d123655-4/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 26.42,
+   "y": 21.14,
+   "r": 1.5,
+   "label": "Front Pivot Bushing &amp; Pin",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 14.75,
+   "y": 23.92,
+   "r": 1.42,
+   "label": "Breather",
+   "href": "/p/case-backhoe-front-axle-breather-1966149c2-1966149c2/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 7.83,
+   "y": 46.79,
+   "r": 1.58,
+   "label": "Drain Plug",
+   "href": "/p/case-backhoe-front-axle-drain-plug-a156873-a156873/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 38.42,
+   "y": 45.23,
+   "r": 1.42,
+   "label": "Upper Bellville Washer",
+   "href": "/p/case-backhoe-front-axle-upper-bellville-washer-122262a1-122262a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 42.17,
+   "y": 52.17,
+   "r": 1.5,
+   "label": "Request Part",
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "9",
+   "x": 43.08,
+   "y": 59.27,
+   "r": 1.5,
+   "label": "Upper King Pin Bushing",
+   "href": "/p/case-backhoe-front-axle-upper-king-pin-bushing-87417600-87417600/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 43.17,
+   "y": 66.9,
+   "r": 1.5,
+   "label": "Bushing",
+   "href": "#9",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 43.25,
+   "y": 85.62,
+   "r": 1.5,
+   "label": "Shaft Seal",
+   "href": "/p/case-backhoe-front-axle-housing-shaft-seal-1966164c1-1966164c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 35.67,
+   "y": 79.2,
+   "r": 1.58,
+   "label": "Lower King Pin Bushing",
+   "href": "/p/case-backhoe-front-axle-lower-king-pin-bushing-n14373-n14373/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 35.83,
+   "y": 87.0,
+   "r": 1.5,
+   "label": "Lower Bellville Washer",
+   "href": "/p/case-backhoe-front-axle-lower-bellville-washer-122261a1-122261a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 68.0,
+   "y": 11.09,
+   "r": 1.5,
+   "label": "Swivel Housing (Left Hand)",
+   "href": "/p/case-backhoe-left-hand-swivel-housing-295576a1-295576a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 94.83,
+   "y": 21.84,
+   "r": 1.5,
+   "label": "Swivel Housing (Right Hand)",
+   "href": "/p/case-590-super-l-590-super-m-backhoe-right-hand-swivel-housing-front-axle-295575a1-295575a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 69.42,
+   "y": 19.41,
+   "r": 1.5,
+   "label": "Swivel Housing Bushing",
+   "href": "/p/case-backhoe-swivel-housing-bushing-1967535c1-1967535c1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 73.08,
+   "y": 20.97,
+   "r": 1.42,
+   "label": "Seal",
+   "href": "/p/case-backhoe-swivel-housing-seal-295151a1-295151a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 95.25,
+   "y": 9.01,
+   "r": 1.5,
+   "label": "Upper King Pin",
+   "href": "/p/case-backhoe-axle-housing-upper-king-pin-122260a1-122260a1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 82.83,
+   "y": 76.08,
+   "r": 1.5,
+   "label": "Lower King Pin",
+   "href": "/p/case-backhoe-axle-housing-lower-king-pin-122259a1-122259a1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 81.42,
+   "y": 88.21,
+   "r": 1.5,
+   "label": "Bolt",
+   "href": "/p/case-backhoe-front-axle-king-pin-bolt-d150214-d150214-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 81.25,
+   "y": 5.03,
+   "r": 1.5,
+   "label": "Grease Fitting",
+   "href": "/p/case-backhoe-axle-grease-fitting-321204-321204-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 95.5,
+   "y": 90.12,
+   "r": 1.5,
+   "label": "Grease Fitting",
+   "href": "/p/case-backhoe-4wd-front-axle-grease-fitting-n13505-n13505/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 29.67,
+   "y": 18.02,
+   "r": 1.42,
+   "label": "Seal",
+   "href": "/p/case-backhoe-front-axle-housing-pivot-pin-seal-d123655-d123655-4/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 85.83,
+   "y": 7.11,
+   "r": 1.33,
+   "label": "Bolt",
+   "href": "/p/case-backhoe-front-axle-king-pin-bolt-d150214-d150214-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 54.67,
+   "y": 72.96,
+   "r": 1.5,
+   "label": "Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "24",
+   "x": 60.67,
+   "y": 78.16,
+   "r": 1.25,
+   "label": "Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  }
+ ]
+}

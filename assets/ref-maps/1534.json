@@ -1,0 +1,268 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/swivel-housing-and-steering-.png",
+ "category": "Ford/NH Backhoe Swivel Housing & Steering",
+ "template": "ford-front-axle-swivel-4wd.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 34.83,
+   "y": 27.81,
+   "r": 1.17,
+   "label": "LH Swivel Housing",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 71.08,
+   "y": 55.62,
+   "r": 1.17,
+   "label": "RH Swivel Housing",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 64.75,
+   "y": 54.24,
+   "r": 1.0,
+   "label": "Bolt",
+   "href": "/p/new-holland-backhoe-axle-stop-bolt-85805987-8585987/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 44.5,
+   "y": 93.29,
+   "r": 1.25,
+   "label": "Power Steering Cylinder Kit (4WD)",
+   "href": "/p/new-holland-4wd-backhoe-power-steering-cylinder-seal-kit-85805990-85805990/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 73.42,
+   "y": 23.47,
+   "r": 1.25,
+   "label": "Tie Rod End",
+   "href": "/p/new-holland-backhoe-tie-rod-end-85805977-85805977/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 45.25,
+   "y": 17.36,
+   "r": 1.17,
+   "label": "Tie Rod End",
+   "href": "/p/new-holland-backhoe-tie-rod-end-85805977-85805977/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 48.17,
+   "y": 19.53,
+   "r": 1.17,
+   "label": "Jam Nut",
+   "href": "/p/new-holland-backhoe-tie-rod-jam-nut-85805976-85805976/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 70.17,
+   "y": 23.27,
+   "r": 1.17,
+   "label": "Jam Nut",
+   "href": "/p/new-holland-backhoe-tie-rod-jam-nut-85805976-85805976/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 67.33,
+   "y": 24.26,
+   "r": 1.08,
+   "label": "Ball Joint",
+   "href": "/p/new-holland-backhoe-front-axle-ball-joint-85805975-85805975/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 51.17,
+   "y": 17.16,
+   "r": 1.17,
+   "label": "Ball Joint",
+   "href": "/p/new-holland-backhoe-front-axle-ball-joint-85805975-85805975/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 62.08,
+   "y": 56.21,
+   "r": 1.08,
+   "label": "Swivel Housing Bushing",
+   "href": "/p/new-holland-backhoe-swivel-housing-bushing-85805988-85805988/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 60.33,
+   "y": 50.3,
+   "r": 1.17,
+   "label": "Seal (45mm ID x 65mm OD x 12 mm Thick)",
+   "href": "/p/new-holland-backhoe-swivel-housing-seal-85805991-85805991/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 42.25,
+   "y": 23.47,
+   "r": 1.25,
+   "label": "Upper Grease Fitting",
+   "href": "/p/new-holland-front-axle-king-pin-grease-fitting-321204-321204/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 39.67,
+   "y": 19.33,
+   "r": 1.08,
+   "label": "King Pin Bolt",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 36.83,
+   "y": 61.74,
+   "r": 1.17,
+   "label": "King Pin Bolt",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 37.08,
+   "y": 22.88,
+   "r": 1.17,
+   "label": "4 Bolt King Pin",
+   "href": "/p/new-holland-4wd-backhoe-front-axle-upper-king-pin-85805980-85805980/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 67.92,
+   "y": 57.2,
+   "r": 1.08,
+   "label": "Jam Nut",
+   "href": "/p/new-holland-backhoe-swivel-housing-jam-nut-87313789-87313789/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 38.67,
+   "y": 55.82,
+   "r": 1.17,
+   "label": "4 Bolt King Pin",
+   "href": "/p/new-holland-4wd-backhoe-front-axle-lower-king-pin-85805983-85805983/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 42.5,
+   "y": 56.21,
+   "r": 1.25,
+   "label": "Tie Rod Nut",
+   "href": "/p/new-holland-backhoe-tie-rod-nut-85805982-85805982/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 74.33,
+   "y": 53.06,
+   "r": 1.17,
+   "label": "Tie Rod Nut",
+   "href": "/p/new-holland-backhoe-tie-rod-nut-85805982-85805982/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 56.42,
+   "y": 52.27,
+   "r": 1.17,
+   "label": "4wd Steering Cylinder",
+   "href": "/p/new-holland-backhoe-steering-cylinder-85805978-85805978/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 50.58,
+   "y": 39.05,
+   "r": 1.25,
+   "label": "Bolt",
+   "href": "/p/new-holland-4wd-backhoe-steering-cylinder-bolt-9968028-9968028/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 21.58,
+   "y": 32.35,
+   "r": 1.17,
+   "label": "LH Swivel Housing (3 Bolt King Pin)",
+   "href": "/p/new-holland-backhoe-left-hand-swivel-housing-85827740-85827740/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 40.25,
+   "y": 61.93,
+   "r": 1.08,
+   "label": "Grease Fitting",
+   "href": "/p/new-holland-4wd-backhoe-front-axle-lower-grease-fitting-85805984-85805984/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 47.17,
+   "y": 8.88,
+   "r": 1.08,
+   "label": "Tie Rod Assy (4 Bolt King Pin)",
+   "href": "/p/new-holland-4wd-backhoe-front-axle-tie-rod-assembly-85805974-85805974/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 70.0,
+   "y": 11.83,
+   "r": 1.08,
+   "label": "Tie Rod Assy (3 Bolt King Pin)",
+   "href": "/p/new-holland-4wd-backhoe-front-axle-tie-rod-assembly-87306934-87306934/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 77.92,
+   "y": 21.7,
+   "r": 1.25,
+   "label": "RH Swivel Housing",
+   "href": "/p/new-holland-backhoe-right-hand-front-axle-swivel-housing-85827739-85827739/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 24.92,
+   "y": 19.53,
+   "r": 1.25,
+   "label": "3 Bolt Upper King Pin",
+   "href": "/p/new-holland-4wd-backhoe-3-bolt-upper-king-pin-9968023-9968023/",
+   "kind": "product"
+  },
+  {
+   "ref": "24",
+   "x": 20.42,
+   "y": 45.96,
+   "r": 1.25,
+   "label": "3 Bolt Lower King Pin",
+   "href": "/p/new-holland-4wd-backhoe-3-bolt-lower-king-pin-9968025-9968025/",
+   "kind": "product"
+  }
+ ]
+}

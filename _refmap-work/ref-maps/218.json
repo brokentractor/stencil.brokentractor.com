@@ -1,0 +1,403 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580l-transmission-assembly-secondary-shaft.png",
+ "category": "Case Backhoe Secondary Shaft",
+ "template": "case-trans-secondary-shaft-580l.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 13.33,
+   "y": 21.02,
+   "r": 1.17,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 18.67,
+   "y": 7.82,
+   "r": 0.92,
+   "label": "Bearing",
+   "href": "/p/case-backhoe-transmission-bearing-181132a1-181132a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 21.5,
+   "y": 6.74,
+   "r": 1.0,
+   "label": "Thrust Washer (64x40 mm)",
+   "href": "/p/case-backhoe-transmission-thrust-washer-64-x-40-mm-181193a1-181193a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 25.08,
+   "y": 6.47,
+   "r": 1.17,
+   "label": "Second Gear",
+   "href": "/p/case-backhoe-second-gear-43-teeth-181190a1-181190a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 28.33,
+   "y": 13.48,
+   "r": 0.92,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-snap-ring-181114a1-181114a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 3.25,
+   "y": 58.22,
+   "r": 1.17,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 6.0,
+   "y": 58.22,
+   "r": 1.17,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 8.67,
+   "y": 58.76,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 11.5,
+   "y": 58.76,
+   "r": 1.0,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 14.25,
+   "y": 58.49,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 17.33,
+   "y": 58.76,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 17.92,
+   "y": 50.4,
+   "r": 1.0,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 19.0,
+   "y": 41.24,
+   "r": 1.17,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "14",
+   "x": 23.0,
+   "y": 41.51,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 23.0,
+   "y": 61.99,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 25.5,
+   "y": 60.11,
+   "r": 0.92,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "15",
+   "x": 27.67,
+   "y": 56.06,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 30.5,
+   "y": 60.11,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 33.58,
+   "y": 59.84,
+   "r": 1.08,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 36.42,
+   "y": 60.65,
+   "r": 1.17,
+   "label": "Synchronizer",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 35.83,
+   "y": 49.6,
+   "r": 1.17,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-snap-ring-181114a1-181114a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 40.75,
+   "y": 74.93,
+   "r": 0.92,
+   "label": "First Gear",
+   "href": "/p/case-backhoe-first-gear-49-teeth-181189a1-181189a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 48.25,
+   "y": 40.7,
+   "r": 0.92,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-snap-ring-181114a1-181114a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 46.42,
+   "y": 74.93,
+   "r": 0.92,
+   "label": "Drive Gear",
+   "href": "/p/case-backhoe-drive-gear-four-wheel-drive-33-teeth-181224a1-181224a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 56.67,
+   "y": 22.37,
+   "r": 1.25,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-snap-ring-181114a1-181114a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 59.75,
+   "y": 22.37,
+   "r": 1.33,
+   "label": "Flange Synchronizer",
+   "href": "/p/case-backhoe-flange-synchronizer-241957a1-241957a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 62.92,
+   "y": 20.22,
+   "r": 1.17,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 66.75,
+   "y": 18.6,
+   "r": 1.33,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 70.5,
+   "y": 20.22,
+   "r": 1.17,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 62.92,
+   "y": 60.11,
+   "r": 1.17,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "24",
+   "x": 68.58,
+   "y": 66.31,
+   "r": 1.33,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 74.0,
+   "y": 22.1,
+   "r": 1.17,
+   "label": "Flange Synchronizer",
+   "href": "/p/case-backhoe-flange-synchronizer-241957a1-241957a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "25",
+   "x": 77.25,
+   "y": 19.68,
+   "r": 1.42,
+   "label": "Shift Fork Sleeve",
+   "href": "/p/case-backhoe-shift-fork-sleeve-1967537c1-1967537c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 80.67,
+   "y": 22.1,
+   "r": 1.25,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-snap-ring-181114a1-181114a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "26",
+   "x": 82.42,
+   "y": 55.26,
+   "r": 1.33,
+   "label": "Split Pin",
+   "href": "/p/case-backhoe-split-pin-181108a1-181108a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "27",
+   "x": 86.5,
+   "y": 24.26,
+   "r": 1.17,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  },
+  {
+   "ref": "28",
+   "x": 95.08,
+   "y": 18.06,
+   "r": 1.33,
+   "label": "Third Gear",
+   "href": "/p/case-backhoe-third-gear-33-teeth-181191a1-181191a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "29",
+   "x": 76.92,
+   "y": 85.98,
+   "r": 1.17,
+   "label": "Thrust Washer (65x45 mm)",
+   "href": "/p/case-backhoe-thrust-washer-65x45-mm-181154a1-181154a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "30",
+   "x": 80.33,
+   "y": 88.41,
+   "r": 1.25,
+   "label": "Bearing",
+   "href": "/p/case-backhoe-transmission-bearing-181130a1-181130a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "31",
+   "x": 83.75,
+   "y": 87.87,
+   "r": 1.17,
+   "label": "Oil Seal",
+   "href": "/p/case-backhoe-transmission-oil-seal-181123a1-181123a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "32",
+   "x": 87.67,
+   "y": 89.76,
+   "r": 1.25,
+   "label": "Shaft Flange",
+   "href": "/p/case-backhoe-transmission-shaft-flange-181231a1-181231a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "33",
+   "x": 90.75,
+   "y": 87.06,
+   "r": 1.25,
+   "label": "O-Ring",
+   "href": "/p/case-backhoe-transmission-o-ring-181144a1-181144a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "34",
+   "x": 94.42,
+   "y": 84.91,
+   "r": 1.17,
+   "label": "Washer (52x12.5x5 mm)",
+   "href": "/p/case-backhoe-washer-52x12-5x5-mm-181165a1-181165a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "35",
+   "x": 97.17,
+   "y": 70.35,
+   "r": 1.25,
+   "label": null,
+   "href": "/p/synchronizer-kit-256888a3-256888a3/",
+   "kind": "product"
+  }
+ ]
+}

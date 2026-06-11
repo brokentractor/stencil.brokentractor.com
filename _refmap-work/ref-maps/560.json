@@ -1,0 +1,79 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-stabilizer-pins-and-pads-resize.png",
+ "category": "Stabilizer Pins and Pads",
+ "template": "JD-backhoe-stab-pad-310.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 14.58,
+   "y": 49.78,
+   "r": 1.33,
+   "label": "Stabilizer Pad (Cleat)",
+   "href": "/p/john-deere-backhoe-metal-cleat-stabilizer-pad-t126867-t126867/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 43.67,
+   "y": 72.99,
+   "r": 1.33,
+   "label": "Stabilizer Pad (Reversible)",
+   "href": "/p/john-deere-backhoe-reversible-stabilizer-pad-t166258-t166258/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 43.0,
+   "y": 86.61,
+   "r": 1.42,
+   "label": "Rubber Pad, Fits Reversible Cleat",
+   "href": "/p/john-deere-backhoe-rubber-reversible-stabilizer-pad-at195669-at195669/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 28.92,
+   "y": 28.35,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Pad to Leg",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 51.33,
+   "y": 66.74,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Cylinder Rod to Leg",
+   "href": "/p/john-deere-backhoe-stabilizer-cylinder-rod-to-leg-pin-t127437-t127437/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 78.92,
+   "y": 56.25,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Cylinder Tube to Frame",
+   "href": "/p/john-deere-backhoe-stabilizer-cylinder-tube-to-frame-pin-t68296-t68296/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 78.92,
+   "y": 76.34,
+   "r": 1.42,
+   "label": "Pin, Stabilizer Leg to Frame",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 53.25,
+   "y": 10.49,
+   "r": 1.42,
+   "label": "Stabilizer Cylinder(Left Hand When Operating Backhoe)",
+   "href": "#7",
+   "kind": "anchor"
+  }
+ ]
+}

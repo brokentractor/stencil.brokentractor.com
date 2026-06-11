@@ -1,0 +1,178 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-boom-and-swing-tower-parts-case-580b.png",
+ "category": "Case 580B, 580C, 580D, 580 Super E Boom & Tower",
+ "template": "Case-Rear-boom-swing-580B.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 47.33,
+   "y": 17.78,
+   "r": 1.42,
+   "label": "Pin, Dipper to Dipper Cylinder Rod",
+   "href": "/p/case-backhoe-pin-dipper-to-dipper-cylinder-rod-d52522-d52522/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 52.67,
+   "y": 24.04,
+   "r": 1.58,
+   "label": "Bushing, Dipper at Dipper Cylinder Rod",
+   "href": "/p/case-580b-580c-backhoe-bushing-dipper-at-dipper-cylinder-rod-d52434-d52434/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 71.92,
+   "y": 46.46,
+   "r": 1.5,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-d45523-d45523/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 68.0,
+   "y": 42.42,
+   "r": 1.5,
+   "label": "Bushing, Dipper and Boom",
+   "href": "/p/case-backhoe-bushing-dipper-at-boom-d31142-d31142/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 67.25,
+   "y": 60.0,
+   "r": 1.33,
+   "label": "Pin, Boom to Boom Cylinder Rod",
+   "href": "/p/case-backhoe-pin-boom-to-boom-cylinder-rod-d49865-d49865/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 63.92,
+   "y": 53.94,
+   "r": 1.5,
+   "label": "Bushing, Boom at Boom Cylinder",
+   "href": "/p/case-backhoe-bushing-boom-at-boom-cylinder-d95362-d95362/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 55.5,
+   "y": 45.05,
+   "r": 1.42,
+   "label": "Bushing, Boom at Boom Cylinder",
+   "href": "/p/case-backhoe-bushing-boom-at-boom-cylinder-d95362-d95362/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 65.42,
+   "y": 35.35,
+   "r": 1.42,
+   "label": "Bushing, Dipper and Boom",
+   "href": "/p/case-backhoe-bushing-dipper-at-boom-d31142-d31142/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 69.5,
+   "y": 77.58,
+   "r": 1.42,
+   "label": "Pin, Boom to Dipper Cylinder Tube End",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-cylinder-tube-end-d72359-d72359/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 68.5,
+   "y": 87.27,
+   "r": 1.42,
+   "label": "Bushing, Boom at Swing Tower",
+   "href": "/p/case-backhoe-bushing-boom-at-swing-tower-d50698-d50698/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 43.92,
+   "y": 53.33,
+   "r": 1.42,
+   "label": "Pin, Boom Cylinder Tube to Swing Tower",
+   "href": "/p/case-backhoe-pin-boom-cylinder-tube-to-swing-tower-d49866-d49866/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 38.75,
+   "y": 62.02,
+   "r": 1.42,
+   "label": "Bushing, Swing Tower at Boom Cylinder",
+   "href": "/p/case-backhoe-bushing-swing-tower-at-boom-cylinder-d49429-d49429/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 44.33,
+   "y": 70.71,
+   "r": 1.5,
+   "label": "Pin, Swing Tower to Boom (1 Pin Style)",
+   "href": "/p/case-backhoe-pin-swing-tower-to-boom-1-pin-style-d91240-d91240/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 41.67,
+   "y": 65.25,
+   "r": 1.42,
+   "label": "Bushing, Swing Tower to Boom (1 Pin Style)",
+   "href": "/p/case-backhoe-bushing-swing-tower-to-boom-1-pin-style-d91241-d91241/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 33.25,
+   "y": 39.6,
+   "r": 1.5,
+   "label": "Pin, Upper - Swing Tower to Frame",
+   "href": "#13",
+   "kind": "anchor"
+  },
+  {
+   "ref": "15",
+   "x": 29.75,
+   "y": 86.46,
+   "r": 1.58,
+   "label": "Pin, Lower -Swing Tower to Frame",
+   "href": "/p/case-backhoe-pin-lower-swing-tower-to-frame-d123653-d123653/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 27.75,
+   "y": 74.14,
+   "r": 1.58,
+   "label": "Nut, Lower Swing Tower to Frame Pin",
+   "href": "/p/case-backhoe-nut-lower-swing-tower-to-frame-pin-181042a1-181042a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 36.08,
+   "y": 85.45,
+   "r": 1.5,
+   "label": "Pin, Swing Cylinder to Swing Tower",
+   "href": "#16",
+   "kind": "anchor"
+  },
+  {
+   "ref": "18",
+   "x": 36.67,
+   "y": 74.75,
+   "r": 1.42,
+   "label": "Bushing, In Swing Tower at Swing Cylinder",
+   "href": "/p/case-backhoe-bushing-swing-tower-at-swing-cylinder-d94018-d94018/",
+   "kind": "product"
+  }
+ ]
+}

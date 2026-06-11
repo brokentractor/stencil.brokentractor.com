@@ -1,0 +1,205 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/flat-cover-planetary-assembly-4wd-resize.png",
+ "category": "New Holland Flat Cover Planetary Assembly (4WD)",
+ "template": "ford-flat-cover-4wd.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 65.25,
+   "y": 17.27,
+   "r": 1.33,
+   "label": "4x4 Front Hub Seal",
+   "href": "/p/new-holland-backhoe-front-hub-seal-9968085-9968085/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 58.67,
+   "y": 14.47,
+   "r": 1.5,
+   "label": "Front Hub Bearing",
+   "href": "/p/new-holland-backhoe-4wd-front-hub-bearing-47724311-47724311/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 48.42,
+   "y": 6.58,
+   "r": 1.5,
+   "label": "4x4 Front Hub",
+   "href": "/p/new-holland-backhoe-4x4-front-hub-9968063-9968063/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 38.67,
+   "y": 12.83,
+   "r": 1.5,
+   "label": "Front Hub Bearing",
+   "href": "/p/new-holland-backhoe-4wd-front-hub-bearing-47724311-47724311/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 32.0,
+   "y": 11.51,
+   "r": 1.42,
+   "label": "Snap Ring",
+   "href": "/p/new-holland-backhoe-4x4-front-hub-snap-ring-9968064-9968064/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 27.25,
+   "y": 12.01,
+   "r": 1.33,
+   "label": "Hub Gear",
+   "href": "/p/new-holland-backhoe-4x4-front-hub-gear-9968065-9968065/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 22.42,
+   "y": 17.76,
+   "r": 1.42,
+   "label": "24mm Bushing",
+   "href": "/p/new-holland-backhoe-4wd-drive-hub-24mm-bushing-9968066-9968066/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 22.5,
+   "y": 12.17,
+   "r": 1.33,
+   "label": "Hub 20mm Bushing",
+   "href": "/p/new-holland-backhoe-4x4-front-drive-hub-20mm-bushing-9968067-9968067/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 18.5,
+   "y": 17.11,
+   "r": 1.33,
+   "label": "Carrier Bolt",
+   "href": "/p/new-holland-backhoe-4wd-hub-bolt-9968068-9968068/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 12.67,
+   "y": 9.7,
+   "r": 1.42,
+   "label": "4WD Front Axle Hub Ring Gear",
+   "href": "/p/new-holland-backhoe-front-axle-planetary-ring-gear-9968069-9968069/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 89.67,
+   "y": 62.99,
+   "r": 1.5,
+   "label": "Spacer",
+   "href": "/p/new-holland-backhoe-front-axle-shaft-spacer-9968062-9968062/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 88.08,
+   "y": 77.3,
+   "r": 1.33,
+   "label": "Planetary Sun Gear, Front Axle",
+   "href": "/p/new-holland-backhoe-4x4-front-drive-sun-gear-9968080-9968080/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 85.0,
+   "y": 76.81,
+   "r": 1.33,
+   "label": "Snap Ring",
+   "href": "/p/new-holland-backhoe-4x4-sun-gear-snap-ring-9968081-9968081/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 67.83,
+   "y": 93.59,
+   "r": 1.33,
+   "label": "Planetary Cover Assy",
+   "href": "/p/new-holland-backhoe-4x4-planetary-cover-9968073-9968073/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 54.5,
+   "y": 69.74,
+   "r": 1.42,
+   "label": "Cover Screw",
+   "href": "/p/new-holland-backhoe-4x4-planetary-cover-screw-9968077-9968077/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 62.58,
+   "y": 95.39,
+   "r": 1.25,
+   "label": "Planetary Cover Stud",
+   "href": "/p/new-holland-backhoe-4x4-planetary-cover-stud-9968070-9968070/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 83.5,
+   "y": 56.09,
+   "r": 1.5,
+   "label": "Retaining Plate",
+   "href": "/p/new-holland-backhoe-4x4-planetary-retaining-plate-9968082-9968082/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 56.0,
+   "y": 77.14,
+   "r": 1.42,
+   "label": "Drain Plug",
+   "href": "/p/new-holland-backhoe-4x4-planetary-drain-plug-9968005-9968005/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 79.17,
+   "y": 54.93,
+   "r": 1.33,
+   "label": "Planetary Gear (26mm Thick)",
+   "href": "/p/new-holland-backhoe-4wd-hub-planetary-gear-9968076-9968076/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 75.17,
+   "y": 54.77,
+   "r": 1.17,
+   "label": "10 Pack Needle Bearings",
+   "href": "/p/new-holland-backhoe-4wd-front-hub-planetary-needle-bearing-set-9968075-9968075/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 71.75,
+   "y": 55.26,
+   "r": 1.33,
+   "label": "Thrust Washer",
+   "href": "/p/new-holland-backhoe-4x4-planetary-thrust-washer-9968084-9968084/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 62.0,
+   "y": 89.47,
+   "r": 1.42,
+   "label": "Planetary Cover Stud with Collar",
+   "href": "/p/new-holland-backhoe-4x4-planetary-cover-stud-with-collar-9968079-9968079/",
+   "kind": "product"
+  }
+ ]
+}

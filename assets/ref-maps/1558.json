@@ -1,0 +1,349 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/front-axle-planetary-resize.png",
+ "category": "Case Backhoe Front Axle Planetary Parts",
+ "template": "Case-Front-planetary-4wd-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 48.33,
+   "y": 5.85,
+   "r": 1.33,
+   "label": "Oil Seal",
+   "href": "/p/case-backhoe-4wd-front-axle-hub-oil-seal-1349265c1-1349265c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 42.75,
+   "y": 10.6,
+   "r": 1.17,
+   "label": "Front Hub Bearing",
+   "href": "/p/case-backhoe-front-hub-bearing-4wd-k395101-k395101/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 26.42,
+   "y": 29.25,
+   "r": 1.42,
+   "label": "Front Hub Bearing",
+   "href": "/p/case-backhoe-front-hub-bearing-4wd-k395101-k395101/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 33.0,
+   "y": 13.35,
+   "r": 1.25,
+   "label": "Wheel Hub",
+   "href": "/p/case-backhoe-4wd-front-axle-front-wheel-hub-k395123-k395123/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 20.83,
+   "y": 33.46,
+   "r": 1.25,
+   "label": "Lock Ring",
+   "href": "/p/case-backhoe-ring-gear-lock-ring-h437679-h437679/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 17.25,
+   "y": 39.49,
+   "r": 1.42,
+   "label": "Hub Gear",
+   "href": "/p/case-backhoe-front-axle-hub-gear-h437678-h437678/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 14.33,
+   "y": 50.09,
+   "r": 1.0,
+   "label": "24mm Bushing",
+   "href": "/p/case-backhoe-four-wheel-drive-24mm-hub-bushing-107072a1-107072a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 13.42,
+   "y": 44.61,
+   "r": 1.25,
+   "label": "20mm Drive Hub Bushing",
+   "href": "/p/case-backhoe-four-wheel-drive-20mm-hub-bushing-107071a1-107071a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 10.83,
+   "y": 52.65,
+   "r": 1.17,
+   "label": "Drive Hub Bolt",
+   "href": "/p/case-backhoe-front-drive-hub-bolt-11227031-k395131/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 4.83,
+   "y": 52.65,
+   "r": 1.42,
+   "label": "Front Axle Ring Gear",
+   "href": "/p/case-backhoe-front-axle-ring-gear-9968069-9968069/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 73.17,
+   "y": 29.07,
+   "r": 1.33,
+   "label": "Wheel Lug Bolt",
+   "href": "#9",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 75.83,
+   "y": 42.05,
+   "r": 1.42,
+   "label": "Front Axle Sun Gear",
+   "href": "/p/case-backhoe-front-axle-planetary-sun-gear-k395114-k395114/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 72.75,
+   "y": 46.62,
+   "r": 1.33,
+   "label": "Pinion Snap Ring",
+   "href": "/p/case-backhoe-front-axle-pinion-snap-ring-k261897-k261897/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 62.75,
+   "y": 77.33,
+   "r": 1.42,
+   "label": "Planetary Cover Assy",
+   "href": "/p/case-backhoe-planetary-cover-assembly-k262251-k262251/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 46.92,
+   "y": 70.38,
+   "r": 1.33,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "15",
+   "x": 90.58,
+   "y": 88.12,
+   "r": 1.33,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "16",
+   "x": 67.08,
+   "y": 29.8,
+   "r": 1.33,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "17",
+   "x": 49.58,
+   "y": 75.32,
+   "r": 1.33,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "18",
+   "x": 62.75,
+   "y": 32.54,
+   "r": 1.33,
+   "label": "4WD Front Axle Planetary Gear (29 Teeth, 30 mm Wide)",
+   "href": "/p/case-backhoe-4wd-front-axle-planetary-gear-n13513-n13513/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 93.75,
+   "y": 35.28,
+   "r": 1.33,
+   "label": "4WD Front Axle Planetary Gear (29 Teeth, 30 mm Wide)",
+   "href": "/p/case-backhoe-4wd-front-axle-planetary-gear-n13513-n13513/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 90.42,
+   "y": 39.31,
+   "r": 1.33,
+   "label": "Pack Needles",
+   "href": "#18",
+   "kind": "anchor"
+  },
+  {
+   "ref": "19",
+   "x": 59.67,
+   "y": 36.38,
+   "r": 1.33,
+   "label": "Pack Needles",
+   "href": "#18",
+   "kind": "anchor"
+  },
+  {
+   "ref": "20",
+   "x": 56.92,
+   "y": 40.22,
+   "r": 1.42,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "20",
+   "x": 87.67,
+   "y": 43.33,
+   "r": 1.17,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "21",
+   "x": 89.17,
+   "y": 83.36,
+   "r": 1.17,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "21",
+   "x": 58.33,
+   "y": 83.0,
+   "r": 1.17,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "22",
+   "x": 85.75,
+   "y": 86.47,
+   "r": 1.17,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "23",
+   "x": 83.17,
+   "y": 91.77,
+   "r": 1.17,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "24",
+   "x": 73.58,
+   "y": 64.53,
+   "r": 1.17,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "25",
+   "x": 76.17,
+   "y": 59.96,
+   "r": 1.08,
+   "label": "Planetary Gear Shaft, Front Axle Hub",
+   "href": "/p/case-front-axle-hub-planetary-pinion-gear-shaft-pin-4wd-n13517-n13517/",
+   "kind": "product"
+  },
+  {
+   "ref": "26",
+   "x": 78.0,
+   "y": 54.11,
+   "r": 1.33,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "27",
+   "x": 81.92,
+   "y": 48.26,
+   "r": 1.25,
+   "label": "Screw",
+   "href": "/p/case-backhoe-planetary-cover-screw-k395029-k395029/",
+   "kind": "product"
+  },
+  {
+   "ref": "28",
+   "x": 94.42,
+   "y": 62.71,
+   "r": 1.25,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "29",
+   "x": 97.17,
+   "y": 34.55,
+   "r": 1.42,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "14",
+   "x": 79.08,
+   "y": 71.85,
+   "r": 1.42,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "13",
+   "x": 93.67,
+   "y": 78.79,
+   "r": 1.25,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "17",
+   "x": 81.0,
+   "y": 77.7,
+   "r": 1.25,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "15",
+   "x": 59.67,
+   "y": 87.75,
+   "r": 1.0,
+   "label": "Not Available, Request Part Here",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  }
+ ]
+}

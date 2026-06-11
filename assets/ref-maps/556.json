@@ -1,0 +1,115 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/john-deere-backhoe-bucket-pins-bushings-and-links-resize.png",
+ "category": "Backhoe Bucket Pins, Links & Bushings",
+ "template": "JD-backhoe-bucket-pin-310.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 11.42,
+   "y": 51.36,
+   "r": 1.33,
+   "label": "Pin, Dipper to Bucket (Large)",
+   "href": "/p/john-deere-backhoe-dipper-to-bucket-pin-t125926-t125926/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 12.75,
+   "y": 81.34,
+   "r": 1.33,
+   "label": "Pin, Bucket to Linkage (Small)",
+   "href": "/p/john-deere-backhoe-bucket-to-linkage-pin-t125931-t125931/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 47.58,
+   "y": 82.39,
+   "r": 1.25,
+   "label": "Pin, Cylinder to Bucket Link",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 38.08,
+   "y": 22.43,
+   "r": 1.25,
+   "label": "Pin, Dipper to H-Link",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 58.58,
+   "y": 7.55,
+   "r": 1.33,
+   "label": "H-Link",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 77.08,
+   "y": 13.84,
+   "r": 1.42,
+   "label": "Bushing, H-Link",
+   "href": "/p/john-deere-backhoe-h-link-bushing-r72579-r72579/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 59.67,
+   "y": 37.32,
+   "r": 1.25,
+   "label": "Bushing, H-Link",
+   "href": "/p/john-deere-310c-310d-410c-410d-510c-510d-bushing-h-link-t101084-t101084/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 86.17,
+   "y": 76.94,
+   "r": 1.42,
+   "label": "Backhoe Bucket Link",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 67.83,
+   "y": 88.89,
+   "r": 1.33,
+   "label": "Backhoe Bucket Link",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 76.17,
+   "y": 85.32,
+   "r": 1.33,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/john-deere-backhoe-bucket-link-bushing-t101084-t101084/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 58.0,
+   "y": 50.31,
+   "r": 1.33,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/john-deere-backhoe-bucket-link-bushing-t101148-t101148/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 78.42,
+   "y": 32.29,
+   "r": 1.42,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/john-deere-backhoe-bucket-link-bushing-t101148-t101148/",
+   "kind": "product"
+  }
+ ]
+}

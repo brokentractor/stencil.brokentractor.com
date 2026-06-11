@@ -1,0 +1,115 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-track-parts-450h.png",
+ "category": "450H, 450J, 550H, 550K, 650H, 650J, 650K",
+ "template": "JD-dozer-track-450H-550H.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 58.0,
+   "y": 29.56,
+   "r": 1.5,
+   "label": "Track Adjuster Assembly",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 40.33,
+   "y": 33.11,
+   "r": 1.5,
+   "label": "Recoil Spring",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 24.33,
+   "y": 50.22,
+   "r": 1.58,
+   "label": "Recoil Spring Threaded Cap, Rear",
+   "href": "/p/john-deere-dozer-rear-recoil-spring-threaded-cap-t32049-t32049/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 21.58,
+   "y": 38.89,
+   "r": 1.58,
+   "label": "Recoil Spring Bolt",
+   "href": "/p/john-deere-dozer-recoil-spring-bolt-pv3682-pv3682/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 76.42,
+   "y": 71.78,
+   "r": 1.42,
+   "label": "Guide Plate",
+   "href": "/p/john-deere-dozer-idler-guide-plate-t172899-t172899/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 69.0,
+   "y": 69.33,
+   "r": 1.42,
+   "label": "Wear Strip",
+   "href": "/p/john-deere-dozer-track-wear-strip-t105530-t105530/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 83.42,
+   "y": 61.11,
+   "r": 1.58,
+   "label": "Threaded Plate",
+   "href": "/p/john-deere-dozer-threaded-plate-t20696-t20696-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 59.5,
+   "y": 9.56,
+   "r": 1.58,
+   "label": "Cover",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 35.58,
+   "y": 6.44,
+   "r": 1.58,
+   "label": "Rear Cover",
+   "href": "#9",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 48.92,
+   "y": 33.11,
+   "r": 1.5,
+   "label": "Recoil Spring Cap, Front",
+   "href": "/p/john-deere-dozer-front-recoil-spring-cap-t106909-t106909-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 68.67,
+   "y": 93.11,
+   "r": 1.5,
+   "label": "Front Chain Guide Slide Plate",
+   "href": "/p/jd-dozer-front-chain-guide-slide-plate-t204192-t204192/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 81.92,
+   "y": 35.11,
+   "r": 1.5,
+   "label": "Shim",
+   "href": "/p/john-deere-dozer-shim-t173517-t173517/",
+   "kind": "product"
+  }
+ ]
+}

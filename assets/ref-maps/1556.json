@@ -1,0 +1,97 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-track-adj-450g-resize.png",
+ "category": "John Deere 450G 550G 650G Dozer Track Adjuster",
+ "template": "JD-dozer-track-450G.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 56.17,
+   "y": 61.11,
+   "r": 1.33,
+   "label": "Complete Track Adjuster",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 28.83,
+   "y": 53.11,
+   "r": 1.58,
+   "label": "Recoil Spring",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 17.0,
+   "y": 64.67,
+   "r": 1.17,
+   "label": "Rear Recoil Spring Threaded Cap",
+   "href": "/p/john-deere-dozer-rear-recoil-spring-threaded-cap-t32049-t32049-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 58.5,
+   "y": 22.44,
+   "r": 1.42,
+   "label": "Top Roller Bracket",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 19.67,
+   "y": 6.89,
+   "r": 1.5,
+   "label": "Recoil Spring Cover",
+   "href": "/p/john-deere-dozer-track-recoil-spring-cover-t121455-t121455/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 37.33,
+   "y": 26.22,
+   "r": 1.33,
+   "label": "Step",
+   "href": "/p/john-deere-450g-550g-650g-dozer-step-at172539-at172539/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 70.42,
+   "y": 22.44,
+   "r": 1.42,
+   "label": "Idler Shaft",
+   "href": "/p/john-deere-dozer-idler-shaft-t40826-t40826/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 80.08,
+   "y": 53.11,
+   "r": 1.42,
+   "label": "Idler Shaft Seal",
+   "href": "/p/john-deere-dozer-idler-shaft-seal-at135802-at135802/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 65.83,
+   "y": 66.44,
+   "r": 1.33,
+   "label": "Plate",
+   "href": "/p/john-deere-dozer-plate-t144187-t144187/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 66.67,
+   "y": 58.22,
+   "r": 1.42,
+   "label": "Shim",
+   "href": "/p/john-deere-dozer-shim-t144186-t144186/",
+   "kind": "product"
+  }
+ ]
+}

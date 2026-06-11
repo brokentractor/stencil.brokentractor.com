@@ -1,0 +1,74 @@
+{
+ "category_id": 1491,
+ "name": "Cat 318C 320C 321C Excavator Pins Bushings Links",
+ "url": "/c/cat-318c-320c-321c-excavator-pins-bushings-links/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/cat-excavator-bucket-links-and-pins.png?t=1684254495",
+ "img_w": 1355,
+ "img_h": 403,
+ "style": "black-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 147.0,
+   "y_px": 76.2,
+   "r_px": 15.9,
+   "x": 10.85,
+   "y": 18.91,
+   "r": 1.17
+  },
+  {
+   "i": 1,
+   "x_px": 417.0,
+   "y_px": 78.6,
+   "r_px": 15.8,
+   "x": 30.77,
+   "y": 19.5,
+   "r": 1.17
+  },
+  {
+   "i": 2,
+   "x_px": 475.8,
+   "y_px": 148.2,
+   "r_px": 15.3,
+   "x": 35.11,
+   "y": 36.77,
+   "r": 1.13
+  },
+  {
+   "i": 3,
+   "x_px": 915.0,
+   "y_px": 198.6,
+   "r_px": 15.8,
+   "x": 67.53,
+   "y": 49.28,
+   "r": 1.17
+  },
+  {
+   "i": 4,
+   "x_px": 678.6,
+   "y_px": 251.4,
+   "r_px": 15.2,
+   "x": 50.08,
+   "y": 62.38,
+   "r": 1.12
+  },
+  {
+   "i": 5,
+   "x_px": 857.4,
+   "y_px": 251.4,
+   "r_px": 15.2,
+   "x": 63.28,
+   "y": 62.38,
+   "r": 1.12
+  },
+  {
+   "i": 6,
+   "x_px": 828.6,
+   "y_px": 347.4,
+   "r_px": 15.0,
+   "x": 61.15,
+   "y": 86.2,
+   "r": 1.1
+  }
+ ]
+}

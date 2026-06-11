@@ -1,0 +1,205 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/dresser-dozer-blade-parts-main.png",
+ "category": "Dresser TD8G Dozer Blade Parts",
+ "template": "dresser-dozer-blade-TD8G.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 57.0,
+   "y": 11.56,
+   "r": 1.33,
+   "label": "Main Center Mounting Pin",
+   "href": "/p/dresser-td8g-dozer-main-center-mounting-pin-1209088h1-1209088h1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 37.08,
+   "y": 55.33,
+   "r": 1.33,
+   "label": "Main Blade Pin",
+   "href": "/p/dresser-dozer-main-blade-pin-620693c2-620693c2/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 35.0,
+   "y": 73.33,
+   "r": 1.42,
+   "label": "Main Blade Bushing",
+   "href": "/p/dresser-dozer-main-blade-bushing-705734c1-705734c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 68.25,
+   "y": 25.11,
+   "r": 1.33,
+   "label": "Blade Bushing",
+   "href": "/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 65.58,
+   "y": 21.11,
+   "r": 1.25,
+   "label": "U-Frame Bushing",
+   "href": "/p/dresser-dozer-u-frame-bushing-620665c1-620665c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 74.92,
+   "y": 31.11,
+   "r": 1.33,
+   "label": "Cylinder Mount Pin",
+   "href": "/p/dresser-dozer-cylinder-mount-pin-645351c1-645351c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 48.08,
+   "y": 14.22,
+   "r": 1.42,
+   "label": "Angle Cylinder Pin",
+   "href": "/p/dresser-dozer-angle-cylinder-pin-734761c1-734761c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 62.25,
+   "y": 51.78,
+   "r": 1.42,
+   "label": "Angle Cylinder Pin",
+   "href": "/p/dresser-dozer-angle-cylinder-pin-734761c1-734761c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 65.75,
+   "y": 7.78,
+   "r": 1.42,
+   "label": "Cylinder Mount Pin",
+   "href": "/p/dresser-dozer-cylinder-mount-pin-645351c1-645351c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 73.67,
+   "y": 38.67,
+   "r": 1.25,
+   "label": "U-Frame Bushing",
+   "href": "/p/dresser-dozer-u-frame-bushing-620665c1-620665c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 71.5,
+   "y": 77.56,
+   "r": 1.33,
+   "label": "Blade Mount Pin",
+   "href": "/p/dresser-dozer-blade-mount-pin-620873c2-620873c2/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 63.0,
+   "y": 72.44,
+   "r": 1.33,
+   "label": "Blade Mount Pin",
+   "href": "/p/dresser-dozer-blade-mount-pin-620873c2-620873c2/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 41.33,
+   "y": 68.67,
+   "r": 1.25,
+   "label": "Lower Retainer",
+   "href": "/p/dresser-dozer-lower-retainer-646670c1-646670c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 28.42,
+   "y": 73.56,
+   "r": 1.42,
+   "label": "Upper Retainer",
+   "href": "/p/dresser-dozer-upper-blade-retainer-705760c1-705760c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 44.67,
+   "y": 56.67,
+   "r": 1.42,
+   "label": "Upper Retainer",
+   "href": "/p/dresser-dozer-upper-blade-retainer-705760c1-705760c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 63.42,
+   "y": 64.44,
+   "r": 1.33,
+   "label": "Blade Angle Cylinder",
+   "href": "/p/dresser-dozer-blade-angle-cylinder-620630c92-620630c92/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 49.5,
+   "y": 28.0,
+   "r": 1.25,
+   "label": "Blade Angle Cylinder",
+   "href": "/p/dresser-dozer-blade-angle-cylinder-620630c92-620630c92/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 75.92,
+   "y": 75.78,
+   "r": 1.42,
+   "label": "Blade Bushing",
+   "href": "/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 53.75,
+   "y": 84.44,
+   "r": 1.25,
+   "label": "Blade Bushing",
+   "href": "/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 46.33,
+   "y": 64.22,
+   "r": 1.33,
+   "label": "Blade Bushing",
+   "href": "/p/dresser-dozer-blade-pivot-frame-bushing-618962c1-618962c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 44.67,
+   "y": 93.33,
+   "r": 1.33,
+   "label": "Main Blade Bushing",
+   "href": "/p/dresser-dozer-main-blade-bushing-705734c1-705734c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 53.25,
+   "y": 69.78,
+   "r": 1.25,
+   "label": "Cylinder Mount Pin",
+   "href": "/p/dresser-dozer-cylinder-mount-pin-645351c1-645351c1/",
+   "kind": "product"
+  }
+ ]
+}

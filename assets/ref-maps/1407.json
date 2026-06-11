@@ -1,0 +1,133 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-standard-dipper-stick.png",
+ "category": "Standard Dipper Arm Parts",
+ "template": "case-rear-dipper-590sl.html",
+ "hotspots": [
+  {
+   "ref": "2",
+   "x": 55.0,
+   "y": 10.22,
+   "r": 1.42,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-175313a1-175313a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 50.5,
+   "y": 13.56,
+   "r": 1.5,
+   "label": "Bushing, Dipper at Boom Pivot",
+   "href": "/p/case-backhoe-bushing-dipper-at-boom-pivot-d151059-d151059/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 41.42,
+   "y": 82.67,
+   "r": 1.5,
+   "label": "Pin, Dipper Cylinder to Dipper",
+   "href": "/p/case-backhoe-pin-dipper-cylinder-to-dipper-175581a1-175581a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 36.58,
+   "y": 86.22,
+   "r": 1.33,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 19.0,
+   "y": 57.78,
+   "r": 1.25,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 35.67,
+   "y": 15.11,
+   "r": 1.33,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 37.75,
+   "y": 9.33,
+   "r": 1.33,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 26.08,
+   "y": 21.78,
+   "r": 1.42,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 39.0,
+   "y": 91.33,
+   "r": 1.33,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 42.0,
+   "y": 92.89,
+   "r": 1.33,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 44.75,
+   "y": 92.67,
+   "r": 1.5,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 21.0,
+   "y": 63.78,
+   "r": 1.42,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 23.25,
+   "y": 69.11,
+   "r": 1.33,
+   "label": "Bushing, Dipper at Dipper Cylinder &amp; Dipper at Bucket Cylinder",
+   "href": "/p/case-backhoe-dipper-bushing-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 42.75,
+   "y": 7.56,
+   "r": 1.42,
+   "label": "Pin, Dipper to Bucket Cylinder",
+   "href": "/p/case-backhoe-pin-dipper-to-bucket-cylinder-175316a1-175316a1-1/",
+   "kind": "product"
+  }
+ ]
+}

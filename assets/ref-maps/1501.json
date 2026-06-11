@@ -1,0 +1,223 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-front-axle-hub-and-planetary-resize.png",
+ "category": "Case Front Axle Hub and Planetary",
+ "template": "Case-front-axle-4wd-580l.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 30.5,
+   "y": 4.44,
+   "r": 1.33,
+   "label": "Hub Seal",
+   "href": "/p/case-4wd-backhoe-front-axle-hub-seal-311569a1-1984938c1-311569a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 10.25,
+   "y": 13.53,
+   "r": 1.58,
+   "label": "Hub Bearing and Race",
+   "href": "/p/case-backhoe-front-axle-hub-bearing-and-race-1966169c1-1966169c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 9.92,
+   "y": 61.31,
+   "r": 1.5,
+   "label": "Planetary Hub with Lugs",
+   "href": "/p/case-4wd-backhoe-front-axle-outer-planetary-hub-with-lug-bolts-144466a1-144466a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 20.33,
+   "y": 64.69,
+   "r": 1.58,
+   "label": "Hub Bearing and Race",
+   "href": "/p/case-backhoe-front-axle-hub-bearing-and-race-1966169c1-1966169c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 27.58,
+   "y": 31.71,
+   "r": 1.5,
+   "label": "Front Axle Wheel Stud (4WD)",
+   "href": "/p/case-4wd-backhoe-front-axle-stud-87313746-100556a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 69.75,
+   "y": 76.32,
+   "r": 1.42,
+   "label": "O-Ring",
+   "href": "/p/case-backhoe-front-hub-o-ring-100552a1-100552a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 32.67,
+   "y": 44.19,
+   "r": 1.42,
+   "label": "Retaining Ring, Front Hub (4WD)",
+   "href": "/p/case-backhoe-front-axle-hub-retaining-ring-85806006-100559a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 27.58,
+   "y": 90.91,
+   "r": 1.25,
+   "label": "Carrier Bushing",
+   "href": "/p/case-backhoe-carrier-bushing-87313756-116426a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 37.58,
+   "y": 51.16,
+   "r": 1.33,
+   "label": "Hub Ring Gear",
+   "href": "/p/case-4wd-backhoe-front-axle-drive-hub-ring-gear-85806007-85806007/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 46.08,
+   "y": 27.91,
+   "r": 1.42,
+   "label": "Thrust Washer",
+   "href": "/p/case-backhoe-planetary-thrust-washer-81877045-190684a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 55.0,
+   "y": 6.55,
+   "r": 1.67,
+   "label": "Thrust Washer",
+   "href": "/p/case-new-holland-backhoe-front-axle-hub-planetary-thrust-washer-85805999-190682a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 59.75,
+   "y": 13.74,
+   "r": 1.5,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-planetary-snap-ring-85806000-85806000/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 31.25,
+   "y": 95.35,
+   "r": 1.58,
+   "label": "Bolt",
+   "href": "/p/case-4wd-backhoe-carrier-bolt-87313757-116425a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 44.92,
+   "y": 61.52,
+   "r": 1.5,
+   "label": "Planetary Ring Gear, Front Axle",
+   "href": "/p/case-backhoe-front-axle-planetary-ring-gear-100561a1-100561a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 80.08,
+   "y": 89.01,
+   "r": 1.5,
+   "label": "Planetary Carrier, Front Axle Hub",
+   "href": "/p/case-backhoe-front-axle-planetary-carrier-85806011-85806011/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 88.17,
+   "y": 88.16,
+   "r": 1.5,
+   "label": "Planetary Carrier, Front Axle Hub",
+   "href": "/p/case-backhoe-front-axle-planetary-carrier-85806011-85806011/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 78.08,
+   "y": 48.84,
+   "r": 1.58,
+   "label": "O-Ring",
+   "href": "/p/case-backhoe-planetary-plug-o-ring-238-6121-238-6121/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 53.0,
+   "y": 38.27,
+   "r": 1.42,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-4wd-front-axle-planetary-gear-snap-ring-800-1134-800-1134/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 58.42,
+   "y": 50.11,
+   "r": 1.25,
+   "label": "Planetary Plate",
+   "href": "/p/case-backhoe-front-axle-planetary-plate-85806016-85806016/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 62.42,
+   "y": 55.6,
+   "r": 1.42,
+   "label": "Planetary Gear",
+   "href": "/p/case-backhoe-front-axle-planetary-gear-100562a1-100562a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 67.5,
+   "y": 59.62,
+   "r": 1.67,
+   "label": "Needle Bearing Set (10) (Planetary Hub Gear)",
+   "href": "/p/case-4wd-10-needle-bearing-set-for-front-axle-planetary-gears-114295a1-114295a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 74.83,
+   "y": 47.36,
+   "r": 1.42,
+   "label": "Thrust Washer",
+   "href": "/p/case-backhoe-front-axle-planetary-thrust-washer-9968084-9968084/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 96.42,
+   "y": 81.18,
+   "r": 1.42,
+   "label": "Drain Plug",
+   "href": "/p/case-backhoe-front-axle-planetary-drain-plug-85806012-85806012/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 75.83,
+   "y": 78.86,
+   "r": 1.33,
+   "label": "Screw",
+   "href": "/p/case-backhoe-front-axle-planetary-hub-screw-87313767-87313767/",
+   "kind": "product"
+  }
+ ]
+}

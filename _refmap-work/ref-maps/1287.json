@@ -1,0 +1,133 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-boom-pins-and-bushings-case-580k.png",
+ "category": "Case 580K & 580 Super K Boom Parts",
+ "template": "case-boom-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 51.08,
+   "y": 19.68,
+   "r": 1.5,
+   "label": "Bushing, Boom at Dipper Stick",
+   "href": "/p/case-backhoe-bushing-boom-at-dipper-stick-d137218-d137218/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 61.33,
+   "y": 10.3,
+   "r": 1.42,
+   "label": "Bushing, Boom to Dipper Stick (Right)",
+   "href": "/p/case-backhoe-bushing-boom-to-dipper-stick-right-hand-d135739-d135739/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 64.17,
+   "y": 15.56,
+   "r": 1.5,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-d132494-d132494-5/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 47.5,
+   "y": 10.98,
+   "r": 1.42,
+   "label": "Nut, Boom to Dipper Pin",
+   "href": "/p/case-backhoe-nut-boom-to-dipper-pin-181042a1-181042a1-7/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 48.92,
+   "y": 28.15,
+   "r": 1.5,
+   "label": "Bushing, Boom",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 49.75,
+   "y": 59.04,
+   "r": 1.42,
+   "label": "Bushing, Boom",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 61.33,
+   "y": 38.9,
+   "r": 1.42,
+   "label": "Bushing, Boom",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 60.17,
+   "y": 67.28,
+   "r": 1.5,
+   "label": "Bushing, Boom",
+   "href": "#5 &amp; 7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 60.33,
+   "y": 80.78,
+   "r": 1.42,
+   "label": "Bushing, Boom at Swing Tower",
+   "href": "/p/case-backhoe-bushing-boom-at-swing-tower-d136569-d136569/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 64.92,
+   "y": 44.39,
+   "r": 1.5,
+   "label": "Pin, Boom at Dipper Cylinder Tube",
+   "href": "/p/case-backhoe-pin-boom-at-dipper-cylinder-tube-d138023-d138023/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 66.25,
+   "y": 55.61,
+   "r": 1.5,
+   "label": "Pin, Boom to Boom Cylinder Rod",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 42.08,
+   "y": 14.65,
+   "r": 1.5,
+   "label": "Pin, Boom to Boom Cylinder Rod",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 46.58,
+   "y": 77.8,
+   "r": 1.42,
+   "label": "Pin, Swing Tower to Boom",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 38.0,
+   "y": 54.92,
+   "r": 1.5,
+   "label": "Pin, Swing Tower to Boom Cylinder",
+   "href": "#12",
+   "kind": "anchor"
+  }
+ ]
+}

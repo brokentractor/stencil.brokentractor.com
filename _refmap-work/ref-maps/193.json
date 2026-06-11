@@ -1,0 +1,151 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580k-loader-pins-bushings-and-links.png",
+ "category": "Case 580K and 580 Super K Loader Parts",
+ "template": "Case-front-loader-pins-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 42.25,
+   "y": 62.22,
+   "r": 1.5,
+   "label": "Loader Lift Cylinder (New)",
+   "href": "/p/case-backhoe-loader-lift-cylinder-new-110303a1-110303a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 70.17,
+   "y": 45.78,
+   "r": 1.58,
+   "label": "Pin, Lower Bucket",
+   "href": "/p/case-backhoe-lower-loader-bucket-pin-d129256-d129256/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 71.0,
+   "y": 22.22,
+   "r": 1.42,
+   "label": "Pin, Upper Loader Bucket",
+   "href": "/p/case-580k-580sk-backhoe-upper-loader-bucket-pin-d129257-d129257/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 65.0,
+   "y": 58.67,
+   "r": 1.42,
+   "label": "Pin, Tilt Cylinder Rod",
+   "href": "/p/case-backhoe-pin-loader-bucket-tilt-cylinder-rod-d129279-d129279/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 54.33,
+   "y": 5.56,
+   "r": 1.67,
+   "label": "Bushing, Loader Bucket",
+   "href": "/p/case-backhoe-loader-bucket-bushing-d129264-d129264/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 47.58,
+   "y": 12.67,
+   "r": 1.5,
+   "label": "Bushing, Loader Frame and Link",
+   "href": "/p/case-backhoe-loader-frame-bushing-d129240-d129240/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 62.92,
+   "y": 49.11,
+   "r": 1.58,
+   "label": "Bushing, Loader Frame and Link",
+   "href": "/p/case-backhoe-loader-frame-bushing-d129240-d129240/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 33.08,
+   "y": 31.56,
+   "r": 1.5,
+   "label": "Bushing, Bucket Link Pivot",
+   "href": "/p/case-backhoe-bushing-loader-bucket-link-pivot-d132076-d132076/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 59.92,
+   "y": 71.11,
+   "r": 1.58,
+   "label": "Bushing, Bucket Link Pivot",
+   "href": "/p/case-backhoe-bushing-loader-bucket-link-pivot-d132076-d132076/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 38.33,
+   "y": 6.89,
+   "r": 1.5,
+   "label": "Bushing, Bucket Link Pivot",
+   "href": "/p/case-backhoe-bushing-loader-bucket-link-pivot-d132076-d132076/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 45.25,
+   "y": 53.78,
+   "r": 1.58,
+   "label": "Bushing, Loader Frame",
+   "href": "/p/case-backhoe-bushing-loader-frame-100696a1-100696a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 56.25,
+   "y": 83.11,
+   "r": 1.5,
+   "label": "Bushing, Loader Frame",
+   "href": "/p/case-backhoe-bushing-loader-frame-100696a1-100696a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 28.42,
+   "y": 66.89,
+   "r": 1.58,
+   "label": "Bushing, Loader Frame",
+   "href": "/p/case-backhoe-bushing-rear-loader-frame-d37392-d37392/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 38.58,
+   "y": 94.89,
+   "r": 1.58,
+   "label": "Bushing, Loader Frame",
+   "href": "/p/case-backhoe-bushing-rear-loader-frame-d37392-d37392/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 37.67,
+   "y": 76.89,
+   "r": 1.58,
+   "label": "Shaft, Main Frame",
+   "href": "/p/case-backhoe-cross-shaft-main-loader-frame-182650a1-182650a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 61.17,
+   "y": 22.22,
+   "r": 1.42,
+   "label": "Bushing, Loader Frame and Link",
+   "href": "/p/case-backhoe-loader-frame-bushing-d129240-d129240/",
+   "kind": "product"
+  }
+ ]
+}

@@ -1,0 +1,205 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-4wd-transmission-output-shaft-assembly-resize.png",
+ "category": "Case Backhoe 4WD Output Shaft Assembly",
+ "template": "Case-trans-4wd-output-shaft.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 44.17,
+   "y": 7.98,
+   "r": 1.25,
+   "label": "Shaft Flange",
+   "href": "/p/case-backhoe-shaft-flange-181230a1-181230a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 48.17,
+   "y": 14.52,
+   "r": 1.08,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "3",
+   "x": 51.08,
+   "y": 13.5,
+   "r": 1.0,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "4",
+   "x": 55.0,
+   "y": 13.7,
+   "r": 1.08,
+   "label": "O-Ring",
+   "href": "/p/case-backhoe-o-ring-112517a1-112517a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 58.08,
+   "y": 13.29,
+   "r": 1.17,
+   "label": "Oil Seal 60x75x8 mm",
+   "href": "/p/case-backhoe-oil-seal-60x75x8-mm-181122a1-181122a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 61.25,
+   "y": 13.7,
+   "r": 1.17,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "7",
+   "x": 66.08,
+   "y": 13.5,
+   "r": 1.17,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "8",
+   "x": 67.0,
+   "y": 20.45,
+   "r": 1.08,
+   "label": "Grooved Bushing",
+   "href": "/p/case-backhoe-grooved-bushing-181194a1-181194a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 64.5,
+   "y": 89.98,
+   "r": 1.17,
+   "label": "Bearing",
+   "href": "/p/case-backhoe-transmission-bearing-181126a1-181126a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 61.67,
+   "y": 89.78,
+   "r": 1.17,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "11",
+   "x": 58.25,
+   "y": 89.57,
+   "r": 1.25,
+   "label": "Drive Gear 36 Teeth",
+   "href": "/p/case-backhoe-drive-gear-36-teeth-181223a1-181223a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 54.75,
+   "y": 89.37,
+   "r": 1.08,
+   "label": "O-Ring",
+   "href": "/p/case-backhoe-o-ring-100747a1-100747a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 50.5,
+   "y": 89.37,
+   "r": 1.25,
+   "label": "Output Shaft Update",
+   "href": "/p/case-backhoe-output-shaft-update-includes-369470a1-369471a1-and-369472a1-cs-580l-osu-cs-580l-osu/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 39.58,
+   "y": 88.75,
+   "r": 1.17,
+   "label": "O-Ring",
+   "href": "/p/case-backhoe-o-ring-100748a1-100748a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 36.0,
+   "y": 88.55,
+   "r": 1.08,
+   "label": "Sleeve",
+   "href": "/p/case-backhoe-sleeve-4-notches-181248a1-181248a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 43.67,
+   "y": 89.98,
+   "r": 1.08,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "17",
+   "x": 31.58,
+   "y": 88.55,
+   "r": 1.17,
+   "label": "Spring",
+   "href": "/p/case-backhoe-spring-100753a1-100753a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 28.17,
+   "y": 88.34,
+   "r": 1.08,
+   "label": "Flat Washer",
+   "href": "/p/case-backhoe-flat-washer-181276a1-181276a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 24.75,
+   "y": 88.55,
+   "r": 1.17,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-snap-ring-181120a1-181120a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 33.25,
+   "y": 17.18,
+   "r": 1.25,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "21",
+   "x": 36.92,
+   "y": 16.36,
+   "r": 1.17,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "22",
+   "x": 40.75,
+   "y": 14.11,
+   "r": 1.08,
+   "label": null,
+   "href": "/pages/parts-request",
+   "kind": "parts-request"
+  }
+ ]
+}

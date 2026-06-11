@@ -1,0 +1,56 @@
+{
+ "category_id": 1465,
+ "name": "Case 480C, 480D, 480E, 480F Backhoe Seal Kits",
+ "url": "/c/case-480c-480d-480e-480f-backhoe-seal-kits/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/480d-case-cylinder-seal-kit-made-in-usa-bulldog-broken-tractor.jpg?t=1712258815",
+ "img_w": 1346,
+ "img_h": 438,
+ "style": "red-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 80.5,
+   "y_px": 40.5,
+   "r_px": 25.5,
+   "x": 5.98,
+   "y": 9.25,
+   "r": 1.89
+  },
+  {
+   "i": 1,
+   "x_px": 779.7,
+   "y_px": 185.3,
+   "r_px": 22.7,
+   "x": 57.93,
+   "y": 42.32,
+   "r": 1.69
+  },
+  {
+   "i": 2,
+   "x_px": 1002.5,
+   "y_px": 199.1,
+   "r_px": 14.3,
+   "x": 74.48,
+   "y": 45.46,
+   "r": 1.06
+  },
+  {
+   "i": 3,
+   "x_px": 687.0,
+   "y_px": 273.0,
+   "r_px": 35.0,
+   "x": 51.04,
+   "y": 62.33,
+   "r": 2.6
+  },
+  {
+   "i": 4,
+   "x_px": 333.3,
+   "y_px": 361.9,
+   "r_px": 26.6,
+   "x": 24.76,
+   "y": 82.62,
+   "r": 1.98
+  }
+ ]
+}

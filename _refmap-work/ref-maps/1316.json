@@ -1,0 +1,115 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-extendahoe-dipper-arm-parts-case-590sl.png",
+ "category": "Extendahoe Dipper Arm Parts",
+ "template": "case-rear-extend-dip-590sl.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 17.08,
+   "y": 9.66,
+   "r": 1.17,
+   "label": "Inner Dipper Stick",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 12.75,
+   "y": 23.22,
+   "r": 1.25,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-bushing-dipper-at-boom-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 22.17,
+   "y": 8.28,
+   "r": 1.17,
+   "label": "Bushing",
+   "href": "/p/case-backhoe-bushing-dipper-at-boom-d144161-d144161/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 30.5,
+   "y": 12.87,
+   "r": 1.25,
+   "label": "Pin, Dipper Cylinder to Dipper",
+   "href": "/p/case-backhoe-pin-dipper-cylinder-to-dipper-arm-175581a1-175581a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 15.92,
+   "y": 64.6,
+   "r": 1.42,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-175313a1-175313a1-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 38.08,
+   "y": 19.77,
+   "r": 1.33,
+   "label": "Nut, Boom to Dipper Pin",
+   "href": "/p/case-backhoe-nut-boom-to-dipper-pin-181042a1-181042a1-9/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 41.92,
+   "y": 38.62,
+   "r": 1.17,
+   "label": "Wear Plate (Extendible Dipper)",
+   "href": "/p/case-backhoe-extendahoe-wear-plate-363321a1-363321a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 50.83,
+   "y": 38.85,
+   "r": 1.17,
+   "label": "Wear Plate (Extendible Dipper)",
+   "href": "/p/case-backhoe-extendahoe-wear-plate-363321a1-363321a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 33.67,
+   "y": 72.87,
+   "r": 1.17,
+   "label": "Wear Plate (Extendible Dipper)",
+   "href": "/p/case-backhoe-extendahoe-wear-plate-363321a1-363321a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 51.92,
+   "y": 76.55,
+   "r": 1.25,
+   "label": "Wear Plate (Extendible Dipper)",
+   "href": "/p/case-backhoe-extendahoe-wear-plate-363321a1-363321a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 73.83,
+   "y": 31.49,
+   "r": 1.25,
+   "label": "Outer Dipper Stick",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 69.42,
+   "y": 17.7,
+   "r": 1.33,
+   "label": "Pin, Extendahoe Cylinder Tube End",
+   "href": "#12",
+   "kind": "anchor"
+  }
+ ]
+}

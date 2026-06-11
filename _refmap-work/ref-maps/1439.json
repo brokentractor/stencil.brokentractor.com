@@ -1,0 +1,106 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-glass-580k.png",
+ "category": "Case 580K, 580 Super K, 580L, 580 Super L Glass",
+ "template": "Case-glass-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 63.17,
+   "y": 19.44,
+   "r": 1.33,
+   "label": "Windshield",
+   "href": "/p/case-backhoe-front-windshield-97290c1-97290c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 46.42,
+   "y": 10.37,
+   "r": 1.5,
+   "label": "Lower Windshield, Right",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 46.42,
+   "y": 74.81,
+   "r": 1.42,
+   "label": "Rear Quarter Panel (Right Hand)",
+   "href": "/p/case-backhoe-cab-glass-rear-right-hand-quarter-panel-d126204-d126204/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 33.0,
+   "y": 18.89,
+   "r": 1.5,
+   "label": "Rear Quarter Panel (Left Hand)",
+   "href": "/p/case-backhoe-cab-rear-left-hand-quarter-panel-d126205-d126205/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 68.75,
+   "y": 21.3,
+   "r": 1.5,
+   "label": "Front Door Window (Right Hand)",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 60.25,
+   "y": 36.85,
+   "r": 1.42,
+   "label": "Swing Out Window",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 73.17,
+   "y": 84.63,
+   "r": 1.33,
+   "label": "Door Lower Window",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 24.75,
+   "y": 57.59,
+   "r": 1.42,
+   "label": "Upper Rear Window",
+   "href": "/p/case-backhoe-upper-rear-window-d129967-d129967/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 23.58,
+   "y": 66.48,
+   "r": 1.58,
+   "label": "Center Rear Window",
+   "href": "/p/case-backhoe-center-rear-window-d129968-d129968/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 22.75,
+   "y": 78.89,
+   "r": 1.42,
+   "label": "Lower Rear Window",
+   "href": "/p/case-backhoe-lower-rear-window-d129969-d129969/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 67.83,
+   "y": 80.37,
+   "r": 1.5,
+   "label": "Cab Door Compression Spring",
+   "href": "/p/case-backhoe-cab-door-piston-f44881-f44881/",
+   "kind": "product"
+  }
+ ]
+}

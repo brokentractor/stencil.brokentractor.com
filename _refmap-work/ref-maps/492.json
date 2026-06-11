@@ -1,0 +1,124 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/john-deere-dozer-track-adj-700h.png",
+ "category": "700H, 700J, 700K",
+ "template": "JD-dozer-track-700H.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 33.33,
+   "y": 7.63,
+   "r": 1.5,
+   "label": "Complete Track Adjuster",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 9.08,
+   "y": 7.89,
+   "r": 1.5,
+   "label": "Complete Track Adjuster",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 13.75,
+   "y": 9.74,
+   "r": 1.5,
+   "label": "Complete Track Adjuster",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 20.42,
+   "y": 12.37,
+   "r": 1.42,
+   "label": "Complete Track Adjuster",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 24.33,
+   "y": 13.95,
+   "r": 1.33,
+   "label": "Complete Track Adjuster",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 9.83,
+   "y": 47.11,
+   "r": 1.5,
+   "label": "Plate",
+   "href": "/p/john-deere-dozer-plate-t177313-t177313/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 11.17,
+   "y": 62.63,
+   "r": 1.5,
+   "label": "Wear Plate",
+   "href": "/p/john-deere-dozer-wear-plate-t177308-t177308/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 35.5,
+   "y": 68.68,
+   "r": 1.5,
+   "label": "Wear Bar",
+   "href": "/p/john-deere-dozer-wear-bar-t177309-t177309/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 24.33,
+   "y": 77.37,
+   "r": 1.42,
+   "label": "Shim (20 Gauge Thick)",
+   "href": "/p/john-deere-dozer-shim-t178085-t178085/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 19.58,
+   "y": 82.11,
+   "r": 1.42,
+   "label": "Shim (16 Gauge Thick)",
+   "href": "/p/john-deere-dozer-shim-t177876-t177876/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 93.08,
+   "y": 25.53,
+   "r": 1.58,
+   "label": "Front Recoil Spring Cover",
+   "href": "/p/john-deere-dozer-front-recoil-spring-cover-t178297-t178297/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 93.08,
+   "y": 72.11,
+   "r": 1.5,
+   "label": "Front Recoil Spring Cover",
+   "href": "/p/john-deere-dozer-front-recoil-spring-cover-t178297-t178297/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 81.25,
+   "y": 9.21,
+   "r": 1.5,
+   "label": "Center Cover - Left Hand",
+   "href": "/p/john-deere-left-hand-center-track-tensioner-cover-with-door-at341407-at341407/",
+   "kind": "product"
+  }
+ ]
+}

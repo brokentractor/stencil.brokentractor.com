@@ -1,0 +1,106 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/international-dresser-dozer-final-drive-resize.png",
+ "category": "Dresser Dozer Final Drive TD7, TD8, TD9, TD340",
+ "template": "dresser-finaldrive-TD7.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 19.42,
+   "y": 20.73,
+   "r": 1.58,
+   "label": "Pinion Seal",
+   "href": "/p/dresser-dozer-top-pinion-seal-621113c93-621113c93/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 23.75,
+   "y": 18.9,
+   "r": 1.42,
+   "label": "Cup",
+   "href": "/p/dresser-dozer-final-drive-bearing-cup-13390d-13390d/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 27.33,
+   "y": 17.68,
+   "r": 1.42,
+   "label": "Cone",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 42.58,
+   "y": 9.55,
+   "r": 1.5,
+   "label": "Cone",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 46.0,
+   "y": 7.52,
+   "r": 1.42,
+   "label": "Cup",
+   "href": "#6, 23",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 66.33,
+   "y": 10.57,
+   "r": 1.42,
+   "label": "Cup",
+   "href": "/p/dresser-final-drive-bearing-cup-race-622337c1-622337c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 69.67,
+   "y": 8.13,
+   "r": 1.42,
+   "label": "Cone",
+   "href": "/p/dresser-dozer-bearing-cone-67190r91-67190r91/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 75.33,
+   "y": 4.67,
+   "r": 1.5,
+   "label": "Seal",
+   "href": "/p/dresser-dozer-final-drive-seal-716720c91-716720c91/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 40.17,
+   "y": 43.09,
+   "r": 1.42,
+   "label": "Cup",
+   "href": "/p/dresser-dozer-bearing-cup-622224c1-622224c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 38.75,
+   "y": 65.45,
+   "r": 1.5,
+   "label": "Cone",
+   "href": "/p/dresser-dozer-final-drive-bearing-cone-622204c91-622204c91/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 56.5,
+   "y": 77.64,
+   "r": 1.42,
+   "label": "Bull Gear",
+   "href": "#14",
+   "kind": "anchor"
+  }
+ ]
+}

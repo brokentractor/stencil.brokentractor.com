@@ -1,0 +1,151 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-boom-pins-and-bushings-case-580l.png",
+ "category": "Backhoe Boom Parts - 580L to 580SM",
+ "template": "Case-rear-boom-parts-580L.html",
+ "hotspots": [
+  {
+   "ref": "2",
+   "x": 52.5,
+   "y": 13.97,
+   "r": 1.17,
+   "label": "Bushing, Boom at Dipper Stick (Left)",
+   "href": "/p/case-backhoe-left-bushing-boom-at-dipper-stick-d137218-d137218/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 65.33,
+   "y": 8.01,
+   "r": 1.42,
+   "label": "Bushing, Boom to Dipper Stick (Right)",
+   "href": "/p/case-backhoe-right-bushing-boom-to-dipper-stick-d135739-d135739/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 49.17,
+   "y": 25.04,
+   "r": 1.42,
+   "label": "Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "4",
+   "x": 65.33,
+   "y": 36.97,
+   "r": 1.42,
+   "label": "Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "4",
+   "x": 49.67,
+   "y": 52.64,
+   "r": 1.42,
+   "label": "Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "4",
+   "x": 63.92,
+   "y": 60.65,
+   "r": 1.42,
+   "label": "Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "5",
+   "x": 64.25,
+   "y": 77.17,
+   "r": 1.33,
+   "label": "Bushing, Boom at Swing Tower",
+   "href": "/p/case-backhoe-bushing-boom-at-swing-tower-d151071-d151071/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 68.92,
+   "y": 12.1,
+   "r": 1.42,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-d132494-d132494-6/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 71.17,
+   "y": 51.96,
+   "r": 1.42,
+   "label": "Pin, Boom to Dipper Cylinder and Boom Cylinder",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 69.67,
+   "y": 39.86,
+   "r": 1.5,
+   "label": "Pin, Boom Cylinder to Boom",
+   "href": "/p/case-backhoe-pin-boom-cylinder-to-boom-123168a2-123168a2/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 43.33,
+   "y": 13.46,
+   "r": 1.67,
+   "label": "Pin, Dipper Cylinder Rod to Dipper",
+   "href": "#8",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 34.58,
+   "y": 59.45,
+   "r": 1.5,
+   "label": "Pin, Boom Cylinder to Swing Tower",
+   "href": "#9",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 46.25,
+   "y": 81.94,
+   "r": 1.42,
+   "label": "Pin, Boom to Swing Tower",
+   "href": "/p/case-backhoe-pin-boom-to-swing-tower-with-brackets-121779a1-121779a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 51.17,
+   "y": 82.62,
+   "r": 1.42,
+   "label": "Pin, Boom to Swing Tower",
+   "href": "/p/case-backhoe-pin-boom-to-swing-tower-250663a1-250663a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 43.58,
+   "y": 94.04,
+   "r": 1.58,
+   "label": "Bracket, Pin Retainer, Boom to Swing Tower",
+   "href": "/p/case-backhoe-bracket-pin-retainer-boom-to-swing-tower-303646a1-303646a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 49.67,
+   "y": 10.73,
+   "r": 1.58,
+   "label": "Nut, Boom to Dipper Pin",
+   "href": "#13",
+   "kind": "anchor"
+  }
+ ]
+}

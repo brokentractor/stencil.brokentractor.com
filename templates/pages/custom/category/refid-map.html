@@ -1,0 +1,127 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "pagename"}}listpage{{/partial}}
+
+{{#partial "page"}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+{{{snippet 'categories'}}}
+
+<div class="page">
+  <div id="refImg" data-category-id="{{category.id}}" data-refmap-cdn="{{cdn 'ref-maps/'}}">
+
+    </div>
+
+  <div class="ref-info" style="padding: 20px; display: flex; background-color: #f4f4f4; align-items: center; font-size: 16px;">
+    <i class="fa fa-info" style="margin-right: 20px;"></i> Each number on the image is a "Ref #" that can be matched on the table below. <span class="refmap-hint" style="display:none;">&nbsp;<b>Click a number to jump to that part.</b></span>
+  </div>
+  {{> components/custom/category-table-body hideRefInfo=true}}
+{{/partial}}
+{{> layout/base}}
+
+<script>
+(function () {
+  var container = document.getElementById('refImg');
+  if (!container) return;
+  var catId = container.getAttribute('data-category-id');
+  var cdnBase = container.getAttribute('data-refmap-cdn');
+  if (!catId) return;
+
+  function fetchJson(url) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error('miss');
+      return r.json();
+    });
+  }
+
+  // /content/ref-maps/ (WebDAV, no-deploy updates) wins; theme asset copy is the fallback.
+  fetchJson('/content/ref-maps/' + catId + '.json')
+    .catch(function () { return fetchJson(cdnBase + catId + '.json'); })
+    .then(function (map) {
+      if (!map || !map.image || !map.hotspots || !map.hotspots.length) return;
+      render(map);
+    })
+    .catch(function () { /* no map for this category — keep default behavior */ });
+
+  function render(map) {
+    var stage = document.createElement('div');
+    stage.className = 'refmap-stage';
+    var img = document.createElement('img');
+    img.src = map.image;
+    img.alt = (map.category || document.title) + ' parts diagram';
+    stage.appendChild(img);
+
+    map.hotspots.forEach(function (h) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'refmap-spot refmap-spot--' + (h.kind || 'other');
+      b.style.left = h.x + '%';
+      b.style.top = h.y + '%';
+      if (h.r) b.style.width = (h.r * 2) + '%';
+      var name = (h.ref ? 'Ref ' + h.ref : 'Part') + (h.label ? ' — ' + h.label : '');
+      b.setAttribute('aria-label', name + (h.kind === 'anchor' ? ' (jump to table row)' : ''));
+      b.title = name;
+      b.dataset.href = h.href || '';
+      b.dataset.kind = h.kind || '';
+      b.dataset.ref = h.ref || '';
+      stage.appendChild(b);
+    });
+
+    container.innerHTML = '';
+    container.appendChild(stage);
+    container.classList.add('refmap');
+    var hint = document.querySelector('.refmap-hint');
+    if (hint) hint.style.display = 'inline';
+
+    stage.addEventListener('click', function (e) {
+      var b = e.target.closest('.refmap-spot');
+      if (!b) return;
+      var kind = b.dataset.kind;
+      var href = b.dataset.href;
+      if (kind === 'anchor') {
+        // Prefer the hotspot's own ref number. The hand-authored anchor hrefs often
+        // target the row ABOVE the real one (an old workaround for native anchor
+        // jumps hiding the row under the sticky header) — obsolete now that we
+        // scroll to center.
+        var ref = b.dataset.ref;
+        var target = ref ? document.getElementById(ref) : null;
+        if (!target && ref) {
+          // Combo REFID rows like id="6, 23" — match if the ref is in the list
+          var spans = document.querySelectorAll('td.REFID span[id]');
+          for (var i = 0; i < spans.length; i++) {
+            var parts = spans[i].id.split(/\s*,\s*/);
+            if (parts.indexOf(ref) !== -1) { target = spans[i]; break; }
+          }
+        }
+        if (!target && href) {
+          target = document.getElementById(href.replace(/^#/, ''));
+        }
+        var row = target ? target.closest('tr') : null;
+        if (row) {
+          row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          row.classList.remove('refmap-row-flash');
+          void row.offsetWidth; // restart animation
+          row.classList.add('refmap-row-flash');
+        }
+      } else if (href) {
+        window.location.href = href;
+      }
+    });
+  }
+})();
+</script>

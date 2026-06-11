@@ -1,0 +1,65 @@
+{
+ "category_id": 2509,
+ "name": "King Kutter Post Hole Digger",
+ "url": "/c/king-kutter-parts/king-kutter-post-hole-digger/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/0000469-6-in-post-hole-digger-phd-06-sc-parts-diagram-550.png?t=1682102462",
+ "img_w": 679,
+ "img_h": 827,
+ "style": "black-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 214.2,
+   "y_px": 25.8,
+   "r_px": 22.0,
+   "x": 31.55,
+   "y": 3.12,
+   "r": 3.25
+  },
+  {
+   "i": 1,
+   "x_px": 63.0,
+   "y_px": 169.8,
+   "r_px": 22.0,
+   "x": 9.28,
+   "y": 20.53,
+   "r": 3.25
+  },
+  {
+   "i": 2,
+   "x_px": 540.6,
+   "y_px": 211.8,
+   "r_px": 22.0,
+   "x": 79.62,
+   "y": 25.61,
+   "r": 3.25
+  },
+  {
+   "i": 3,
+   "x_px": 346.2,
+   "y_px": 243.0,
+   "r_px": 23.7,
+   "x": 50.99,
+   "y": 29.38,
+   "r": 3.49
+  },
+  {
+   "i": 4,
+   "x_px": 70.2,
+   "y_px": 417.0,
+   "r_px": 23.7,
+   "x": 10.34,
+   "y": 50.42,
+   "r": 3.49
+  },
+  {
+   "i": 5,
+   "x_px": 162.6,
+   "y_px": 798.6,
+   "r_px": 24.1,
+   "x": 23.95,
+   "y": 96.57,
+   "r": 3.55
+  }
+ ]
+}

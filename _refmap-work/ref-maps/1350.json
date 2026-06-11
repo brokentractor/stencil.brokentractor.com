@@ -1,0 +1,106 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-swing-tower-parts.png",
+ "category": "Swing Tower Parts - 580N, 580SN",
+ "template": "case-swing-tower-590N.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 43.58,
+   "y": 6.22,
+   "r": 1.5,
+   "label": "Pin, Upper Swing Tower to Frame",
+   "href": "/p/case-backhoe-pin-upper-swing-tower-to-frame-84249275-84249275/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 61.08,
+   "y": 29.33,
+   "r": 1.5,
+   "label": "Pin, Swing Tower to Boom Cylinder",
+   "href": "/p/case-backhoe-pin-swing-tower-to-boom-cylinder-84217317-84217317/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 51.33,
+   "y": 17.33,
+   "r": 1.5,
+   "label": "Bushing, Swing Tower at Boom Cylinder",
+   "href": "/p/case-backhoe-bushing-swing-tower-at-boom-cylinder-84230813-84230813/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 58.0,
+   "y": 44.44,
+   "r": 1.58,
+   "label": "Bushing, Swing Tower at Boom",
+   "href": "/p/case-backhoe-bushing-swing-tower-at-boom-84326988-84326988/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 35.5,
+   "y": 71.11,
+   "r": 1.5,
+   "label": "Bushing, Swing Tower at Frame",
+   "href": "/p/case-backhoe-bushing-swing-tower-at-frame-84235607-84235607/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 57.25,
+   "y": 64.44,
+   "r": 1.67,
+   "label": "Bushing, Swing Tower at Boom",
+   "href": "/p/case-backhoe-bushing-swing-tower-at-boom-84326988-84326988/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 36.5,
+   "y": 14.67,
+   "r": 1.58,
+   "label": "Bushing, Swing Tower at Frame",
+   "href": "/p/case-backhoe-bushing-swing-tower-at-frame-84235607-84235607/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 55.17,
+   "y": 86.44,
+   "r": 1.58,
+   "label": "Pin, Swing Tower to Swing Cylinder",
+   "href": "/p/case-backhoe-pin-swing-tower-to-swing-cylinder-84261887-84261887/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 40.08,
+   "y": 87.78,
+   "r": 1.5,
+   "label": "Pin, Lower Swing Tower to Frame",
+   "href": "/p/case-backhoe-pin-lower-swing-tower-to-frame-84249274-84249274/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 61.0,
+   "y": 70.89,
+   "r": 1.58,
+   "label": "Pin, Swing Tower to Boom",
+   "href": "/p/case-backhoe-pin-swing-tower-to-boom-84248744-84248744/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 62.92,
+   "y": 47.11,
+   "r": 1.58,
+   "label": "Retainer",
+   "href": "/p/case-backhoe-retainer-84246323-84246323/",
+   "kind": "product"
+  }
+ ]
+}

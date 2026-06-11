@@ -1,0 +1,232 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-blade-parts-750j.png",
+ "category": "750J, 750K, 850J, & 850K Blade Parts",
+ "template": "JD-dozer-blade-750J.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 20.83,
+   "y": 12.83,
+   "r": 1.42,
+   "label": "Blade Lift Cylinder",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "1",
+   "x": 34.75,
+   "y": 13.7,
+   "r": 1.5,
+   "label": "Blade Lift Cylinder",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 13.5,
+   "y": 64.78,
+   "r": 1.5,
+   "label": "Blade Angle Cylinder",
+   "href": "/p/john-deere-750j-750k-dozer-blade-angle-cylinder-ah217118-ah217118/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 30.42,
+   "y": 81.74,
+   "r": 1.42,
+   "label": "Blade Ball",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 12.08,
+   "y": 20.22,
+   "r": 1.33,
+   "label": "Pin (Lift Cylinder Rod End) (Angle Cylinder Tube End)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-or-angle-cylinder-tube-end-pin-t209133-t209133/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 9.67,
+   "y": 59.13,
+   "r": 1.42,
+   "label": "Pin (Lift Cylinder Rod End) (Angle Cylinder Tube End)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-or-angle-cylinder-tube-end-pin-t209133-t209133/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 44.67,
+   "y": 38.04,
+   "r": 1.33,
+   "label": "Pin (Lift Cylinder Rod End) (Angle Cylinder Tube End)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-or-angle-cylinder-tube-end-pin-t209133-t209133/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 44.42,
+   "y": 29.13,
+   "r": 1.33,
+   "label": "Pin (Lift Cylinder Rod End) (Angle Cylinder Tube End)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-or-angle-cylinder-tube-end-pin-t209133-t209133/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 44.67,
+   "y": 47.17,
+   "r": 1.5,
+   "label": "Pin, Tilt Cylinder Rod",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 43.58,
+   "y": 10.0,
+   "r": 1.58,
+   "label": "Pin, C-Frame Pivot",
+   "href": "/p/john-deere-dozer-c-frame-pivot-pin-t202854-t202854/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 4.58,
+   "y": 42.39,
+   "r": 1.42,
+   "label": "Pin, C-Frame Pivot",
+   "href": "/p/john-deere-dozer-c-frame-pivot-pin-t202854-t202854/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 24.92,
+   "y": 10.22,
+   "r": 1.42,
+   "label": "Pin",
+   "href": "/p/john-deere-dozer-pin-t217646-t217646/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 42.92,
+   "y": 73.91,
+   "r": 1.42,
+   "label": "Bushing, Self-Aligning (Blade Link)",
+   "href": "/p/john-deere-dozer-self-aligning-blade-link-bushing-at359620-at359620/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 45.17,
+   "y": 80.22,
+   "r": 1.33,
+   "label": "Bushing, Self-Aligning (Blade Link)",
+   "href": "/p/john-deere-dozer-self-aligning-blade-link-bushing-at359620-at359620/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 10.58,
+   "y": 9.35,
+   "r": 1.58,
+   "label": "Pin, Blade Lift Cylinder Tube End",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 35.67,
+   "y": 5.22,
+   "r": 1.42,
+   "label": "Pin, Blade Lift Cylinder Tube End",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 59.75,
+   "y": 42.61,
+   "r": 1.58,
+   "label": "Blade Ball Socket",
+   "href": "#12",
+   "kind": "anchor"
+  },
+  {
+   "ref": "14",
+   "x": 64.92,
+   "y": 19.13,
+   "r": 1.42,
+   "label": "Shim",
+   "href": "#13",
+   "kind": "anchor"
+  },
+  {
+   "ref": "15",
+   "x": 62.67,
+   "y": 12.39,
+   "r": 1.42,
+   "label": "Retainer(Blade Ball)",
+   "href": "#14",
+   "kind": "anchor"
+  },
+  {
+   "ref": "16",
+   "x": 60.25,
+   "y": 6.09,
+   "r": 1.42,
+   "label": "Bolt (Blade Socket)",
+   "href": "/p/john-deere-dozer-blade-socket-bolt-19h3255-19h3255/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 70.75,
+   "y": 42.17,
+   "r": 1.5,
+   "label": "Plate (Pin Retainer)",
+   "href": "/p/john-deere-dozer-pin-retainer-plate-t202755-t202755/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 76.67,
+   "y": 33.04,
+   "r": 1.42,
+   "label": "Plate (Pin Retainer)",
+   "href": "/p/john-deere-dozer-pin-retainer-plate-t202755-t202755/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 83.25,
+   "y": 12.61,
+   "r": 1.42,
+   "label": "Plate (Pin Retainer)",
+   "href": "/p/john-deere-dozer-pin-retainer-plate-t202755-t202755/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 92.75,
+   "y": 10.43,
+   "r": 1.5,
+   "label": "Plate (Pin Retainer)",
+   "href": "/p/john-deere-dozer-pin-retainer-plate-t202755-t202755/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 87.75,
+   "y": 23.7,
+   "r": 1.42,
+   "label": "Bushing, Spacer",
+   "href": "/p/john-deere-dozer-spacer-bushing-t126814-t126814/",
+   "kind": "product"
+  }
+ ]
+}

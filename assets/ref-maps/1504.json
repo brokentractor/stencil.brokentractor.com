@@ -1,0 +1,187 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/bucket-pins.-bushings-and-links.png",
+ "category": "Case 580N, 580 Super N Bucket Pins & Bushings",
+ "template": "case-bucket-pins-580n.html",
+ "hotspots": [
+  {
+   "ref": "3",
+   "x": 2.0,
+   "y": 41.18,
+   "r": 1.5,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/case-backhoe-bucket-link-bushing-84170645-84170645/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 38.83,
+   "y": 13.1,
+   "r": 1.42,
+   "label": "Bushing, Link",
+   "href": "/p/case-580n-580sn-backhoe-link-bushing-84229922-84229922/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 33.17,
+   "y": 11.5,
+   "r": 1.42,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/case-backhoe-bucket-link-bushing-84170645-84170645/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 5.58,
+   "y": 69.79,
+   "r": 1.58,
+   "label": "Bushing, Link",
+   "href": "/p/case-580n-580sn-backhoe-link-bushing-84229922-84229922/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 3.5,
+   "y": 84.49,
+   "r": 1.58,
+   "label": "Bushing, Link",
+   "href": "/p/case-backhoe-link-bushing-84170654-84170654/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 41.42,
+   "y": 25.4,
+   "r": 1.58,
+   "label": "Bushing, Link",
+   "href": "/p/case-backhoe-link-bushing-84170654-84170654/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 12.75,
+   "y": 20.32,
+   "r": 1.5,
+   "label": "Pin, Bucket Link",
+   "href": "/p/case-backhoe-bucket-link-pin-84171343-84171343/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 21.67,
+   "y": 48.93,
+   "r": 1.58,
+   "label": "Pin, Link",
+   "href": "/p/case-backhoe-link-pin-84171217-84171217/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 49.17,
+   "y": 33.42,
+   "r": 1.67,
+   "label": "Y-Link (Used OEM)",
+   "href": "/p/case-backhoe-bucket-y-link-used-oem-84530015-u-84530015-u/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 53.75,
+   "y": 24.87,
+   "r": 1.5,
+   "label": "Bushing, Link",
+   "href": "/p/case-580n-580sn-backhoe-link-bushing-84229922-84229922/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 44.33,
+   "y": 47.06,
+   "r": 1.67,
+   "label": "Bushing, Link",
+   "href": "/p/case-580n-580sn-backhoe-link-bushing-84229922-84229922/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 58.33,
+   "y": 63.64,
+   "r": 1.5,
+   "label": "Bushing, Y-Link",
+   "href": "/p/case-backhoe-y-link-bushing-closed-end-84227018-84227018/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 47.67,
+   "y": 72.99,
+   "r": 1.67,
+   "label": "Bushing, Y-Link",
+   "href": "/p/case-backhoe-y-link-bushing-closed-end-84227018-84227018/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 59.83,
+   "y": 13.37,
+   "r": 1.58,
+   "label": "Pin, Y-Link (Open End)",
+   "href": "/p/case-backhoe-pin-y-link-open-end-84231908-84231908/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 63.67,
+   "y": 42.78,
+   "r": 1.58,
+   "label": "Pin, Dump Link To Coupler",
+   "href": "/p/case-backhoe-dump-link-to-coupler-pin-84223652-84223652/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 84.83,
+   "y": 15.78,
+   "r": 1.58,
+   "label": "Quick Coupler (Used)",
+   "href": "/p/case-backhoe-used-bucket-quick-coupler-84229979-84229979/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 81.0,
+   "y": 27.01,
+   "r": 1.42,
+   "label": "Bushing, Quick Coupler (Closed End)",
+   "href": "/p/case-backhoe-bushing-quick-coupler-closed-end-84227018-84227018/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 89.42,
+   "y": 11.23,
+   "r": 1.5,
+   "label": "Bushing, Quick Coupler (Closed End)",
+   "href": "/p/case-backhoe-bushing-quick-coupler-closed-end-84227018-84227018/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 71.67,
+   "y": 44.92,
+   "r": 1.42,
+   "label": "Pin, Quick Coupler (Closed End)",
+   "href": "/p/case-backhoe-pin-quick-coupler-closed-end-84223654-84223654/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 98.08,
+   "y": 22.46,
+   "r": 1.67,
+   "label": "Pin, Quick Coupler",
+   "href": "/p/case-backhoe-quick-coupler-pin-84223653-84223653/",
+   "kind": "product"
+  }
+ ]
+}

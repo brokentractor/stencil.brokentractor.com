@@ -1,0 +1,38 @@
+{
+ "category_id": 1447,
+ "name": "Case 821, 821B, 821C, 921, 921B, 921C Loader Parts",
+ "url": "/c/case-construction-parts/case-wheel-loader-parts/case-loader-bellcrank-and-related-parts/case-821-821b-821c-921-921b-921c-loader-parts/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-bellcrank-621.png?t=1683659647",
+ "img_w": 1834,
+ "img_h": 1044,
+ "style": "black-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 151.8,
+   "y_px": 417.0,
+   "r_px": 11.1,
+   "x": 8.28,
+   "y": 39.94,
+   "r": 0.61
+  },
+  {
+   "i": 1,
+   "x_px": 1363.8,
+   "y_px": 649.8,
+   "r_px": 36.8,
+   "x": 74.36,
+   "y": 62.24,
+   "r": 2.01
+  },
+  {
+   "i": 2,
+   "x_px": 963.0,
+   "y_px": 967.8,
+   "r_px": 9.4,
+   "x": 52.51,
+   "y": 92.7,
+   "r": 0.51
+  }
+ ]
+}

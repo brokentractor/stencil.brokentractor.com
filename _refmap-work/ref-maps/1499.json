@@ -1,0 +1,232 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-front-axle-diff-580l-resize.png",
+ "category": "Case Front Axle Differential",
+ "template": "Case-Front-diff-4wd-580L.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 8.17,
+   "y": 44.22,
+   "r": 1.33,
+   "label": "Ring Gear and Pinion Set (Front Axle)",
+   "href": "/p/case-backhoe-front-axle-ring-and-pinion-kit-144460a1-144460a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 20.08,
+   "y": 31.77,
+   "r": 1.33,
+   "label": "Bearing",
+   "href": "/p/case-backhoe-pinion-bearing-28042230-28042230/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 25.42,
+   "y": 31.19,
+   "r": 1.25,
+   "label": "Collapsible Spacer",
+   "href": "/p/case-backhoe-front-axle-collapsible-spacer-1349058c1-1349058c1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 29.75,
+   "y": 45.97,
+   "r": 1.25,
+   "label": "Spacer",
+   "href": "/p/case-backhoe-front-axle-spacer-9968033-9968033/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 36.08,
+   "y": 15.23,
+   "r": 1.33,
+   "label": "Lock Washer",
+   "href": "/p/case-backhoe-front-axle-lock-washer-9968031-9968031/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 39.83,
+   "y": 12.15,
+   "r": 1.25,
+   "label": "Pinion Nut",
+   "href": "/p/case-backhoe-front-axle-pinion-nut-9968032-9968032/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 43.58,
+   "y": 12.3,
+   "r": 1.33,
+   "label": "Seal",
+   "href": "/p/case-backhoe-front-axle-differential-seal-295151a1-295151a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 46.58,
+   "y": 7.76,
+   "r": 1.33,
+   "label": "O Ring",
+   "href": "/p/case-backhoe-front-axle-differential-o-ring-14461080-14461080/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 51.75,
+   "y": 3.07,
+   "r": 1.25,
+   "label": "Cover",
+   "href": "/p/case-backhoe-front-axle-differential-cover-9968051-9968051/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 55.17,
+   "y": 30.31,
+   "r": 1.33,
+   "label": "Front Differential Housing",
+   "href": "/p/case-backhoe-front-differential-housing-294933a1-294933a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 90.58,
+   "y": 5.42,
+   "r": 1.25,
+   "label": "Front Differential Housing",
+   "href": "/p/case-backhoe-front-differential-housing-294933a1-294933a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 54.5,
+   "y": 72.18,
+   "r": 1.25,
+   "label": "Bolt",
+   "href": "/p/case-backhoe-front-differential-housing-bolt-86624979-86624979/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 54.0,
+   "y": 96.78,
+   "r": 1.25,
+   "label": "Bearing",
+   "href": "/p/case-backhoe-front-differential-bearing-561201-561201/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 87.5,
+   "y": 76.72,
+   "r": 1.33,
+   "label": "Bearing",
+   "href": "/p/case-backhoe-front-differential-bearing-561201-561201/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 61.17,
+   "y": 28.26,
+   "r": 1.25,
+   "label": "Thrust Washer",
+   "href": "/p/case-backhoe-front-differential-thrust-washer-5194183-5194183/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 68.17,
+   "y": 44.51,
+   "r": 1.33,
+   "label": "Gear Kit (Includes Ref # 14, 15, 16, 17)",
+   "href": "/p/case-backhoe-front-differential-gear-kit-1930969-193969/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 77.17,
+   "y": 52.27,
+   "r": 1.33,
+   "label": "Gear Kit (Includes Ref # 14, 15, 16, 17)",
+   "href": "/p/case-backhoe-front-differential-gear-kit-1930969-193969/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 77.17,
+   "y": 46.27,
+   "r": 1.33,
+   "label": "Gear Kit (Includes Ref # 14, 15, 16, 17)",
+   "href": "/p/case-backhoe-front-differential-gear-kit-1930969-193969/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 70.67,
+   "y": 18.59,
+   "r": 1.33,
+   "label": "Gear Kit (Includes Ref # 14, 15, 16, 17)",
+   "href": "/p/case-backhoe-front-differential-gear-kit-1930969-193969/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 76.42,
+   "y": 40.56,
+   "r": 1.33,
+   "label": "Gear Kit (Includes Ref # 14, 15, 16, 17)",
+   "href": "/p/case-backhoe-front-differential-gear-kit-1930969-193969/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 68.58,
+   "y": 12.01,
+   "r": 1.25,
+   "label": "Gear Kit (Includes Ref # 14, 15, 16, 17)",
+   "href": "/p/case-backhoe-front-differential-gear-kit-1930969-193969/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 79.33,
+   "y": 17.72,
+   "r": 1.17,
+   "label": "Gear Kit (Includes Ref # 14, 15, 16, 17)",
+   "href": "/p/case-backhoe-front-differential-gear-kit-1930969-193969/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 83.67,
+   "y": 14.93,
+   "r": 1.25,
+   "label": "Thrust Washer",
+   "href": "/p/case-backhoe-front-differential-thrust-washer-5194183-5194183/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 31.0,
+   "y": 24.6,
+   "r": 1.25,
+   "label": "Bearing",
+   "href": "/p/case-backhoe-pinion-bearing-28042230-28042230/",
+   "kind": "product"
+  },
+  {
+   "ref": "1",
+   "x": 22.42,
+   "y": 80.53,
+   "r": 1.42,
+   "label": "Ring Gear and Pinion Set (Front Axle)",
+   "href": "/p/case-backhoe-front-axle-ring-and-pinion-kit-144460a1-144460a1/",
+   "kind": "product"
+  }
+ ]
+}

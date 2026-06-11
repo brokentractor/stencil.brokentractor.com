@@ -1,0 +1,187 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580k.jpg?t=1748541884",
+ "category": "Case 580K Pin Kits",
+ "template": "cv-pipeline",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 16.99,
+   "y": 13.16,
+   "r": 1.05,
+   "label": "Case 580K Backhoe Dipper Cylinder to Dipper Stick Pin Kit",
+   "href": "/p/case-580k-backhoe-dipper-cylinder-to-dipper-stick-pin-kit-d138022k-6/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 14.91,
+   "y": 21.55,
+   "r": 1.02,
+   "label": "Case 580K Backhoe Bucket Cylinder to Dipper Stick Pin Kit",
+   "href": "/p/case-580k-backhoe-bucket-cylinder-to-dipper-stick-pin-kit-d138022k-5/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 12.86,
+   "y": 32.63,
+   "r": 1.0,
+   "label": "Backhoe Boom to Dipper Pin Kit for Case 580K",
+   "href": "/p/backhoe-boom-to-dipper-pin-kit-for-case-580k-d137218k-4/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 26.76,
+   "y": 44.27,
+   "r": 1.05,
+   "label": "Case 580K Pin Kit, Boom Cylinder to Boom",
+   "href": "/p/case-580k-pin-kit-boom-cylinder-to-boom-d136518k/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 12.77,
+   "y": 45.04,
+   "r": 1.05,
+   "label": "Case 580K Backhoe Dipper Link to Dipper Stick Pin Kit",
+   "href": "/p/case-580k-backhoe-dipper-link-to-dipper-stick-pin-kit-d138047k-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 9.28,
+   "y": 48.99,
+   "r": 1.05,
+   "label": "Case 580K Pin Kit, Y Link to Bucket Link & Bucket Cylinder Rod",
+   "href": "/p/case-580k-pin-kit-y-link-to-bucket-link-bucket-cylinder-rod-d138047k/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 25.49,
+   "y": 58.31,
+   "r": 0.98,
+   "label": "2 matching parts",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 33.06,
+   "y": 72.98,
+   "r": 0.98,
+   "label": "2 matching parts",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 38.75,
+   "y": 82.72,
+   "r": 1.0,
+   "label": "2 matching parts",
+   "href": "#12",
+   "kind": "anchor"
+  },
+  {
+   "ref": "15",
+   "x": 42.46,
+   "y": 32.63,
+   "r": 1.0,
+   "label": "Case 580K, 580 Super K Backhoe Swing Tower to Chassis Top Pin Kit",
+   "href": "/p/case-580k-580-super-k-backhoe-swing-tower-to-chassis-top-pin-kit-105749a1k/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 40.95,
+   "y": 90.83,
+   "r": 1.05,
+   "label": "Case 580K Pin Kit, Stabilizer Cylinder to Chassis",
+   "href": "/p/case-580k-pin-kit-stabilizer-cylinder-to-chassis-d133509k/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 48.92,
+   "y": 93.0,
+   "r": 1.07,
+   "label": "Stabilizer Cylinder to Leg Pin Kit for Case 580 Super E, 580K",
+   "href": "/p/stabilizer-cylinder-to-leg-pin-kit-for-case-580-super-e-580k-d26002k-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 63.54,
+   "y": 80.36,
+   "r": 0.99,
+   "label": "Case 580K, 580 Super K Pin Kit, Loader Lift Cylinder to Loader Frame",
+   "href": "/p/case-580k-580-super-k-pin-kit-loader-lift-cylinder-to-loader-frame-d135604k/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 63.99,
+   "y": 17.32,
+   "r": 0.99,
+   "label": "Case 580K, Super K Loader Frame to Chassis Pin Kit",
+   "href": "/p/case-580k-super-k-loader-frame-to-chassis-pin-kit-d136526k/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 74.83,
+   "y": 30.65,
+   "r": 1.05,
+   "label": "Case 580K, 580 Super K, 580L, 580 Super L Pin Kit, 590 Series Bucket Cylinder Link to Drag Link",
+   "href": "/p/case-580k-580-super-k-580l-580-super-l-pin-kit-590-series-bucket-cylinder-link-to-drag-link-d132076k-2/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 79.72,
+   "y": 34.96,
+   "r": 1.04,
+   "label": "Case 580K, Super K Backhoe Loader Bucket Drag Link Pin Kit",
+   "href": "/p/case-580k-super-k-backhoe-loader-bucket-drag-link-pin-kit-d129257k/",
+   "kind": "product"
+  },
+  {
+   "ref": "24",
+   "x": 74.8,
+   "y": 84.27,
+   "r": 0.99,
+   "label": "Bucket Cylinder Link to Frame Bushing Kit for Case Backhoe 580K, 580 Super K",
+   "href": "/p/case-bucket-cylinder-link-frame-bushing-kit-d132076k-3/",
+   "kind": "product"
+  },
+  {
+   "ref": "25",
+   "x": 78.18,
+   "y": 84.2,
+   "r": 1.02,
+   "label": "Case 580K, Super K Backhoe Bucket Cylinder to Loader Frame Pin Kit",
+   "href": "/p/case-580k-super-k-backhoe-bucket-cylinder-to-loader-frame-pin-kit-d129279k/",
+   "kind": "product"
+  },
+  {
+   "ref": "26",
+   "x": 80.48,
+   "y": 80.39,
+   "r": 1.04,
+   "label": "Case 580K, 580 Super K Pin Kit, Loader Frame to Bucket",
+   "href": "/p/case-580k-580-super-k-pin-kit-loader-frame-to-bucket-d129256k/",
+   "kind": "product"
+  },
+  {
+   "ref": "27",
+   "x": 44.02,
+   "y": 93.09,
+   "r": 1.05,
+   "label": "3 matching parts",
+   "href": "#27",
+   "kind": "anchor"
+  }
+ ]
+}

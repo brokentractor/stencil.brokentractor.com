@@ -1,0 +1,88 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-crossbar-700h.png",
+ "category": "700H, 700J, 700K Dozer Crossbar",
+ "template": "JD-dozer-crossbar-700H.html",
+ "hotspots": [
+  {
+   "ref": "2",
+   "x": 70.83,
+   "y": 75.75,
+   "r": 1.42,
+   "label": "Crossbar End Bushing",
+   "href": "/p/john-deere-dozer-crossbar-end-bushing-at128774-at128774/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 72.58,
+   "y": 85.5,
+   "r": 1.25,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 47.25,
+   "y": 30.75,
+   "r": 1.42,
+   "label": "Pin (Crossbar Center)",
+   "href": "/p/john-deere-dozer-crossbar-center-pin-at221426-at221426/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 40.67,
+   "y": 16.75,
+   "r": 1.33,
+   "label": "Greasable Pin (Crossbar End)",
+   "href": "/p/john-deere-dozer-greasable-crossbar-end-pin-at387824-at387824/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 43.08,
+   "y": 75.75,
+   "r": 1.42,
+   "label": "Crossbar End Bushing",
+   "href": "/p/john-deere-dozer-crossbar-end-bushing-at128774-at128774/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 47.17,
+   "y": 47.25,
+   "r": 1.5,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 65.67,
+   "y": 49.75,
+   "r": 1.5,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 44.75,
+   "y": 85.25,
+   "r": 1.42,
+   "label": "Internal Snap Ring",
+   "href": "/p/john-deere-dozer-internal-snap-ring-40m1873-40m1873/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 69.0,
+   "y": 26.5,
+   "r": 1.33,
+   "label": "Greasable Pin (Crossbar End)",
+   "href": "/p/john-deere-dozer-greasable-crossbar-end-pin-at387824-at387824/",
+   "kind": "product"
+  }
+ ]
+}

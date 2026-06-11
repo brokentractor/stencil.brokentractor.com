@@ -1,0 +1,88 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-brake-570nxt.png",
+ "category": "Case 580M Series 3, 580N, 580SN, 590SN Brakes",
+ "template": "Case-Backhoe-Breaks-570NXT.html",
+ "hotspots": [
+  {
+   "ref": null,
+   "x": 30.58,
+   "y": 73.51,
+   "r": 2.33,
+   "label": "Inner Brake",
+   "href": "/p/case-backhoe-inner-brake-disc-plate-5-mm-thick-87708433-87708433/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 37.0,
+   "y": 73.51,
+   "r": 2.17,
+   "label": "Brake Friction Disc",
+   "href": "/p/case-backhoe-brake-friction-disc-87708434-87708434/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 43.67,
+   "y": 73.18,
+   "r": 2.17,
+   "label": "Disc Plate",
+   "href": "/p/brake-disc-8mm-87708435-87708435/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 50.75,
+   "y": 73.18,
+   "r": 2.08,
+   "label": "Brake Friction Disc",
+   "href": "/p/case-backhoe-brake-friction-disc-87708434-87708434/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 58.0,
+   "y": 73.18,
+   "r": 2.08,
+   "label": "Cylinder Piston Plate",
+   "href": "/p/case-backhoe-brake-cylinder-piston-plate-87708436-87708436/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 64.5,
+   "y": 73.51,
+   "r": 1.92,
+   "label": "Brake O-Ring",
+   "href": "/p/case-backhoe-brake-o-ring-87708438-87708438/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 70.25,
+   "y": 73.51,
+   "r": 2.0,
+   "label": "O-Ring, Brake Piston - External",
+   "href": "/p/case-backhoe-o-ring-brake-piston-external-371144a1-371144a1/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 76.0,
+   "y": 73.51,
+   "r": 2.0,
+   "label": "Outer Brake Piston",
+   "href": "/p/case-backhoe-outer-brake-piston-87708440-87708440/",
+   "kind": "product"
+  },
+  {
+   "ref": null,
+   "x": 82.58,
+   "y": 73.18,
+   "r": 2.08,
+   "label": "O-Ring, Brake Piston Carrier",
+   "href": "/p/case-o-ring-brake-piston-carrier-371145a1-371145a1/",
+   "kind": "product"
+  }
+ ]
+}

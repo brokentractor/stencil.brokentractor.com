@@ -1,0 +1,43 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-final-drive-1010.png",
+ "category": "1010, 350 Dozer Final Drive Parts",
+ "template": "JD-dozer-finaldrive-1010.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 80.75,
+   "y": 8.52,
+   "r": 1.42,
+   "label": "Top Pinion",
+   "href": "/p/john-deere-dozer-final-drive-top-pinion-t24861-t24861/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 66.33,
+   "y": 78.95,
+   "r": 1.42,
+   "label": "Bull Gear",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 40.25,
+   "y": 18.8,
+   "r": 1.42,
+   "label": "Pinion Gear",
+   "href": "/p/john-deere-dozer-final-drive-pinion-gear-t23707-t14510-t23707-t14510/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 34.83,
+   "y": 94.99,
+   "r": 1.33,
+   "label": "Final Drive Seal",
+   "href": "/p/john-deere-dozer-final-drive-axle-seal-at36097-at36097/",
+   "kind": "product"
+  }
+ ]
+}

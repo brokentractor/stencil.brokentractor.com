@@ -1,0 +1,151 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-rear-axle-differential-parts-580l-resize.png",
+ "category": "Rear Axle Outer Planetary and Hub",
+ "template": "Case-Backhoe-Rear-Axle-Outer-Planetary-hub-580l.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 47.0,
+   "y": 25.46,
+   "r": 1.42,
+   "label": "Rear Axle Hub",
+   "href": "/p/case-backhoe-rear-axle-hub-175974a1-175974a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 53.33,
+   "y": 14.85,
+   "r": 1.67,
+   "label": "Rear Axle Lug Stud",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 55.83,
+   "y": 27.85,
+   "r": 1.33,
+   "label": "O-Ring, Rear Axle Hub",
+   "href": "/p/case-backhoe-rear-axle-hub-o-ring-p2930467-85808262/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 59.0,
+   "y": 27.85,
+   "r": 1.25,
+   "label": "Rear Axle Planetary Ring Gear",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 89.17,
+   "y": 71.88,
+   "r": 1.08,
+   "label": "Rear Planetary Carrier",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 97.33,
+   "y": 47.48,
+   "r": 1.25,
+   "label": "Planetary Hub",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 80.75,
+   "y": 31.83,
+   "r": 1.42,
+   "label": "Rear Axle Planetary Gear",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "14",
+   "x": 72.25,
+   "y": 63.93,
+   "r": 1.33,
+   "label": "Bolt, Self-Locking Planetary",
+   "href": "/p/case-rear-axle-self-locking-planetary-bolt-175982a1-175982a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 75.42,
+   "y": 37.67,
+   "r": 1.33,
+   "label": "Special Bolt, Drive Hub",
+   "href": "/p/case-backhoe-axle-hub-bolt-k395131-k395131/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 72.33,
+   "y": 37.67,
+   "r": 1.08,
+   "label": "Rear Axle Planetary Drive Bushing",
+   "href": "/p/case-backhoe-rear-axle-planetary-drive-bushing-20-mm-od-107071a1-107071a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 65.58,
+   "y": 67.9,
+   "r": 1.25,
+   "label": "Rear Axle Gear",
+   "href": "#16",
+   "kind": "anchor"
+  },
+  {
+   "ref": "21",
+   "x": 29.58,
+   "y": 36.34,
+   "r": 1.08,
+   "label": "Drive Bushing, Rear Axle Housing",
+   "href": "/p/case-backhoe-rear-axle-housing-drive-bushing-196065a1-196065a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 32.08,
+   "y": 32.63,
+   "r": 1.33,
+   "label": "Rear Axle Seal",
+   "href": "/p/case-backhoe-rear-axle-seal-196066a1-196066a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 34.75,
+   "y": 35.54,
+   "r": 1.33,
+   "label": "Rear Axle Planetary Drive Shaft",
+   "href": "#22",
+   "kind": "anchor"
+  },
+  {
+   "ref": "24",
+   "x": 37.42,
+   "y": 33.42,
+   "r": 1.25,
+   "label": "Oil Seal",
+   "href": "/p/case-rear-axle-oil-seal-1349265c1-k395102/",
+   "kind": "product"
+  },
+  {
+   "ref": "25",
+   "x": 43.5,
+   "y": 33.42,
+   "r": 1.33,
+   "label": "Bearing and Race",
+   "href": "/p/case-axle-bearing-and-race-47724311-47724311/",
+   "kind": "product"
+  }
+ ]
+}

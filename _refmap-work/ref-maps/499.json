@@ -1,0 +1,214 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-blade-450h-resize.png",
+ "category": "450H to P, 550H to P,  650H to P-Tier Blade Parts",
+ "template": "JD-dozer-blade-450h.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 51.58,
+   "y": 89.28,
+   "r": 1.33,
+   "label": "Angle Cylinder",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 37.08,
+   "y": 70.4,
+   "r": 1.42,
+   "label": "Blade Lift Cylinder (Includes Bushings)",
+   "href": "/p/john-deere-dozer-blade-lift-cylinder-with-bushings-ah163865-ah211370-ah163865-ah211370/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 31.42,
+   "y": 68.96,
+   "r": 1.5,
+   "label": "Pin, Lift Cylinder Tube End",
+   "href": "/p/john-deer-dozer-lift-cylinder-tube-end-pin-at211297-at211297/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 40.5,
+   "y": 71.84,
+   "r": 1.5,
+   "label": "Pin, Lift Cylinder Rod End",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 43.83,
+   "y": 90.4,
+   "r": 1.5,
+   "label": "Pin, Lift Cylinder Rod End",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 61.25,
+   "y": 91.84,
+   "r": 1.5,
+   "label": "Pin, (Lift Cylinder Rod End)(Tilt Cylinder- Rod or Tube End) (Pitch Jack)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-tilt-cylinder-pitch-jack-pin-t170879-t170879/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 65.75,
+   "y": 59.36,
+   "r": 1.5,
+   "label": "Pin, (Lift Cylinder Rod End)(Tilt Cylinder- Rod or Tube End) (Pitch Jack)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-tilt-cylinder-pitch-jack-pin-t170879-t170879/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 47.5,
+   "y": 41.6,
+   "r": 1.42,
+   "label": "Pin, (Lift Cylinder Rod End)(Tilt Cylinder- Rod or Tube End) (Pitch Jack)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-tilt-cylinder-pitch-jack-pin-t170879-t170879/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 58.58,
+   "y": 3.68,
+   "r": 1.58,
+   "label": "Pin, (Lift Cylinder Rod End)(Tilt Cylinder- Rod or Tube End) (Pitch Jack)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-tilt-cylinder-pitch-jack-pin-t170879-t170879/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 48.42,
+   "y": 6.88,
+   "r": 1.58,
+   "label": "Pin, (Lift Cylinder Rod End)(Tilt Cylinder- Rod or Tube End) (Pitch Jack)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-tilt-cylinder-pitch-jack-pin-t170879-t170879/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 41.33,
+   "y": 4.48,
+   "r": 1.5,
+   "label": "Pin, (Lift Cylinder Rod End)(Tilt Cylinder- Rod or Tube End) (Pitch Jack)",
+   "href": "/p/john-deere-dozer-lift-cylinder-rod-end-tilt-cylinder-pitch-jack-pin-t170879-t170879/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 38.5,
+   "y": 93.28,
+   "r": 1.5,
+   "label": "Pin, Rear C-Frame",
+   "href": "/p/john-deere-dozer-rear-c-frame-pin-t122628-t122628/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 34.92,
+   "y": 82.72,
+   "r": 1.33,
+   "label": "Bushing, Rear C-Frame",
+   "href": "/p/john-deere-dozer-rear-c-frame-bushing-t122720-t122720-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 65.67,
+   "y": 52.96,
+   "r": 1.5,
+   "label": "Bushing, Pitch Jack to Blade, Tilt Cyl Rod, Angle Cyl Rod",
+   "href": "/p/john-deere-dozer-self-aligning-bushing-at157173-at157173/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 60.58,
+   "y": 44.16,
+   "r": 1.42,
+   "label": "Bushing, Pitch Jack to C-Frame",
+   "href": "/p/john-deere-dozer-pitch-jack-to-c-frame-blade-swivel-bushing-at209365-at209365/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 65.75,
+   "y": 84.8,
+   "r": 1.5,
+   "label": "Blade C-Frame (With Step) (Also Order AT310824 For Machines With Adjustable Pitch Link)",
+   "href": "/p/john-deere-dozer-blade-c-frame-at302874-at302874/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 68.58,
+   "y": 80.64,
+   "r": 1.42,
+   "label": "Blade Ball",
+   "href": "/p/john-deere-dozer-blade-pivot-ball-t196072-t196072/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 51.08,
+   "y": 35.52,
+   "r": 1.42,
+   "label": "Blade Socket",
+   "href": "/p/john-deere-dozer-blade-socket-t181021-t181021/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 59.0,
+   "y": 35.84,
+   "r": 1.5,
+   "label": "Blade Ball Retainer Cap (Sold Individually)",
+   "href": "/p/john-deere-dozer-blade-ball-retainer-cap-t196073-t196073/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 51.5,
+   "y": 44.0,
+   "r": 1.5,
+   "label": "Blade Ball Retainer Cap (Sold Individually)",
+   "href": "/p/john-deere-dozer-blade-ball-retainer-cap-t196073-t196073/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 29.58,
+   "y": 52.48,
+   "r": 1.5,
+   "label": "Pivot",
+   "href": "/p/john-deere-dozer-pivot-at310824-at310824/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 41.33,
+   "y": 44.16,
+   "r": 1.42,
+   "label": "Bushing, Pitch Jack to Blade, Tilt Cyl Rod, Angle Cyl Rod",
+   "href": "/p/john-deere-dozer-self-aligning-bushing-at157173-at157173/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 34.92,
+   "y": 43.68,
+   "r": 1.5,
+   "label": "Bushing, Pitch Jack to C-Frame",
+   "href": "/p/john-deere-dozer-pitch-jack-to-c-frame-bushing-at128773-at128773/",
+   "kind": "product"
+  }
+ ]
+}

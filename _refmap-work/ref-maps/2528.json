@@ -1,0 +1,142 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-front-axle-2wd-580-resize.png",
+ "category": "430CK, 480CK, 480B, 530CK, 580, 580CK, 580B",
+ "template": "Case-Front-axle-2wd-580.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 84.5,
+   "y": 70.79,
+   "r": 1.42,
+   "label": "Weld-on Axle End",
+   "href": "/p/case-backhoe-weld-on-front-axle-end-a38382-a38382/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 34.75,
+   "y": 70.34,
+   "r": 1.42,
+   "label": "Wheel Hub",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 60.58,
+   "y": 57.75,
+   "r": 1.42,
+   "label": "Power Steering Cylinder",
+   "href": "/p/case-backhoe-power-steering-cylinder-234447a1-234447a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 81.42,
+   "y": 39.33,
+   "r": 1.58,
+   "label": "Steering Arm",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 46.17,
+   "y": 72.81,
+   "r": 1.42,
+   "label": "Spindle",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 69.75,
+   "y": 86.52,
+   "r": 1.33,
+   "label": "Spindle",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 54.0,
+   "y": 39.1,
+   "r": 1.33,
+   "label": "Steering Arm",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 56.08,
+   "y": 65.17,
+   "r": 1.33,
+   "label": "Spindle Kit",
+   "href": "/p/case-backhoe-spindle-parts-kit-two-wheel-drive-cs-2wd-sk/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 34.25,
+   "y": 40.67,
+   "r": 1.42,
+   "label": "Power Steering Pump",
+   "href": "/p/case-480ck-480b-580ck-580b-power-steering-pump-a137187-a137187/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 34.67,
+   "y": 93.26,
+   "r": 1.58,
+   "label": "Wheel Bearing Kit",
+   "href": "/p/case-backhoe-front-wheel-bearing-rebuild-kit-wbkca2/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 25.83,
+   "y": 10.34,
+   "r": 1.5,
+   "label": "Steering Wheel",
+   "href": "/p/case-backhoe-steering-wheel-a65544-a65544/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 60.92,
+   "y": 44.72,
+   "r": 1.5,
+   "label": "Tie Rod End",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 73.17,
+   "y": 44.04,
+   "r": 1.33,
+   "label": "Tie Rod End",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 66.67,
+   "y": 44.27,
+   "r": 1.42,
+   "label": "Tie Rod Tube",
+   "href": "/p/case-backhoe-tie-rod-tube-a35567-a35567/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 66.17,
+   "y": 66.97,
+   "r": 1.42,
+   "label": "Steering Cylinder",
+   "href": "#13",
+   "kind": "anchor"
+  }
+ ]
+}

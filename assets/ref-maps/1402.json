@@ -1,0 +1,79 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-bucket-parts-case-480d.png",
+ "category": "Case 480D, 480E Backhoe Bucket Parts",
+ "template": "Case-Bucket-Parts-480D.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 50.25,
+   "y": 42.4,
+   "r": 1.5,
+   "label": "Link, Backhoe Bucket",
+   "href": "/p/case-480d-480e-480f-backhoe-bucket-link-d99731-d99731/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 49.5,
+   "y": 4.4,
+   "r": 1.5,
+   "label": "Link, Left Hand",
+   "href": "/p/case-480d-480e-backhoe-link-left-hand-d84167-d84167/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 56.17,
+   "y": 4.4,
+   "r": 1.5,
+   "label": "Link, Right Hand",
+   "href": "/p/case-480d-480e-backhoe-link-right-hand-d84166-d84166/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 56.08,
+   "y": 21.0,
+   "r": 1.58,
+   "label": "Bushing, Link",
+   "href": "/p/case-480d-480e-backhoe-bucket-link-bushing-d32789-d32789/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 60.42,
+   "y": 41.6,
+   "r": 1.5,
+   "label": "Bushing, Bucket Link",
+   "href": "/p/case-backhoe-bucket-link-bushing-d30933-bushing-d30933-bushing/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 42.33,
+   "y": 38.0,
+   "r": 1.58,
+   "label": "Pin, Bucket to Dipper",
+   "href": "/p/case-backhoe-pin-bucket-to-dipper-d64799-d64799-4/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 38.0,
+   "y": 55.0,
+   "r": 1.42,
+   "label": "Pin, Bucket to Dipper (12&quot; Bucket)",
+   "href": "/p/case-backhoe-bucket-pin-bucket-to-dipper-d55584-d55584-pin/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 56.0,
+   "y": 63.4,
+   "r": 1.67,
+   "label": "Pin, Bucket to Link",
+   "href": "/p/case-backhoe-bucket-pin-link-to-bucket-d37614-d37614/",
+   "kind": "product"
+  }
+ ]
+}

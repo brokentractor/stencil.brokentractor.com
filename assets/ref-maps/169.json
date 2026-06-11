@@ -1,0 +1,133 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-front-axle-2wd-new.png",
+ "category": "480C, 480D, 480E, 480F, 580C, 580D, 580E, 580SE",
+ "template": "Case-Front-Axle-2wd-580C.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 63.0,
+   "y": 45.35,
+   "r": 1.42,
+   "label": "Weld-on Axle End",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 64.67,
+   "y": 62.79,
+   "r": 1.5,
+   "label": "8-Lug Wheel Hub",
+   "href": "/p/case-backhoe-8-lug-wheel-hub-a66759-a66759/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 32.92,
+   "y": 68.37,
+   "r": 1.58,
+   "label": "Power Steering Cylinder",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 50.83,
+   "y": 30.7,
+   "r": 1.42,
+   "label": "King Pin Kit",
+   "href": "/p/case-backhoe-front-axle-king-pin-kit-d103156-d103156/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 48.92,
+   "y": 64.88,
+   "r": 1.42,
+   "label": "Spindle",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 35.5,
+   "y": 55.81,
+   "r": 1.58,
+   "label": "Front Axle Pivot Pin",
+   "href": "/p/case-backhoe-front-axle-pivot-pin-d64171-d64171/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 62.42,
+   "y": 93.49,
+   "r": 1.42,
+   "label": "Wheel Bearing Kit",
+   "href": "/p/case-backhoe-wheel-bearing-kit-two-wheel-drive-b93222-b93222/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 29.5,
+   "y": 26.74,
+   "r": 1.5,
+   "label": "Center Front Axle Bushing",
+   "href": "/p/case-backhoe-center-front-axle-bushing-d61241-d61241/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 35.5,
+   "y": 17.21,
+   "r": 1.5,
+   "label": "Bushing, Center Front Axle",
+   "href": "/p/case-backhoe-center-front-axle-bushing-d43940-d43940/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 48.5,
+   "y": 91.86,
+   "r": 1.42,
+   "label": "Tie Rod End",
+   "href": "#11",
+   "kind": "anchor"
+  },
+  {
+   "ref": "13",
+   "x": 35.33,
+   "y": 86.28,
+   "r": 1.42,
+   "label": "Tie Rod Tube",
+   "href": "/p/case-backhoe-tie-rod-tube-d73397-d73397/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 26.75,
+   "y": 89.07,
+   "r": 1.5,
+   "label": "Steering Cylinder End",
+   "href": "#13",
+   "kind": "anchor"
+  },
+  {
+   "ref": "27",
+   "x": 70.33,
+   "y": 62.33,
+   "r": 1.42,
+   "label": "Wheel Lug Bolt",
+   "href": "/p/case-backhoe-wheel-lug-bolt-a38208-a38208/",
+   "kind": "product"
+  },
+  {
+   "ref": "30",
+   "x": 76.0,
+   "y": 65.35,
+   "r": 1.33,
+   "label": "Hub Cap",
+   "href": "/p/case-backhoe-hub-cap-two-wheel-drive-137395-137395-1/",
+   "kind": "product"
+  }
+ ]
+}

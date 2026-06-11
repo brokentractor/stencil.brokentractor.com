@@ -1,0 +1,106 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-backhoe-frame-580n-resize.png",
+ "category": "Frame & Stabilizer Parts - 580N, 580SN",
+ "template": "Case-rear-frame-580N.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 50.5,
+   "y": 41.94,
+   "r": 1.25,
+   "label": "Pin, Stabilizer Leg to Frame",
+   "href": "/p/case-backhoe-pin-stabilizer-leg-to-frame-84243665-84243665/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 47.33,
+   "y": 45.01,
+   "r": 1.33,
+   "label": "Bushing, Frame at Stabilizer Leg",
+   "href": "/p/case-backhoe-bushing-frame-at-stabilizer-leg-84326305-84326305/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 63.08,
+   "y": 57.54,
+   "r": 1.33,
+   "label": "Pin, Stabilizer Leg to Cylinder",
+   "href": "/p/case-backhoe-pin-stabilizer-leg-to-cylinder-84243668-84243668/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 54.25,
+   "y": 54.22,
+   "r": 1.33,
+   "label": "Bushing, Stabilizer Leg at Frame",
+   "href": "/p/case-backhoe-bushing-stabilizer-leg-at-frame-84229922-84229922/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 44.42,
+   "y": 54.99,
+   "r": 1.33,
+   "label": "Bushing, Stabilizer Leg at Frame",
+   "href": "/p/case-backhoe-bushing-stabilizer-leg-at-frame-84229922-84229922/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 42.08,
+   "y": 47.57,
+   "r": 1.25,
+   "label": "Bushing, Frame at Stabilizer Leg",
+   "href": "/p/case-backhoe-bushing-frame-at-stabilizer-leg-84326305-84326305/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 39.08,
+   "y": 52.69,
+   "r": 1.83,
+   "label": "Bushing, Frame at Swing Cylinder",
+   "href": "/p/case-backhoe-bushing-frame-at-swing-cylinder-114318a1-114318a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 34.75,
+   "y": 46.04,
+   "r": 1.25,
+   "label": "Bushing, Frame at Tower",
+   "href": "/p/case-backhoe-bushing-frame-at-swing-tower-84226810-84226810/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 52.5,
+   "y": 29.16,
+   "r": 1.25,
+   "label": "Pin, Stabilizer Cylinder to Frame",
+   "href": "/p/case-backhoe-pin-stabilizer-cylinder-to-frame-84243667-84243667/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 55.75,
+   "y": 81.59,
+   "r": 1.33,
+   "label": "Off-Road Stabilizer Plate (Metal Cleat)",
+   "href": "/p/case-backhoe-stabilizer-pad-cleat-87456199-87456199/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 51.33,
+   "y": 91.56,
+   "r": 1.33,
+   "label": "Pin, Stabilizer Plate to Leg (Metal Cleat)",
+   "href": "/p/case-backhoe-pin-stabilizer-plate-to-leg-metal-cleat-d28648-d28648/",
+   "kind": "product"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "category_id": 1471,
+ "name": "Case 680E, 680G, 680H, 680K, 680L Seal Kits",
+ "url": "/c/case-680e-680g-680h-680k-680l-seal-kits/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-680k-backhoe-cylinder-seal-kit.jpg?t=1712258889",
+ "img_w": 1337,
+ "img_h": 549,
+ "style": "black-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 564.6,
+   "y_px": 431.4,
+   "r_px": 19.3,
+   "x": 42.23,
+   "y": 78.58,
+   "r": 1.44
+  },
+  {
+   "i": 1,
+   "x_px": 881.4,
+   "y_px": 449.4,
+   "r_px": 15.4,
+   "x": 65.92,
+   "y": 81.86,
+   "r": 1.15
+  },
+  {
+   "i": 2,
+   "x_px": 792.6,
+   "y_px": 493.8,
+   "r_px": 24.4,
+   "x": 59.28,
+   "y": 89.95,
+   "r": 1.83
+  }
+ ]
+}

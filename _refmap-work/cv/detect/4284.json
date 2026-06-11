@@ -1,0 +1,74 @@
+{
+ "category_id": 4284,
+ "name": "Case Loader Axles, Front and Rear",
+ "url": "/c/case-construction-parts/case-wheel-loader-parts/case-loader-axles-front-and-rear/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/21-axle.jpg?t=1769564024",
+ "img_w": 764,
+ "img_h": 605,
+ "style": "red-text",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 258.0,
+   "y_px": 82.0,
+   "r_px": 18.0,
+   "x": 33.77,
+   "y": 13.55,
+   "r": 2.36
+  },
+  {
+   "i": 1,
+   "x_px": 564.5,
+   "y_px": 62.5,
+   "r_px": 19.5,
+   "x": 73.89,
+   "y": 10.33,
+   "r": 2.55
+  },
+  {
+   "i": 2,
+   "x_px": 535.5,
+   "y_px": 111.5,
+   "r_px": 22.5,
+   "x": 70.09,
+   "y": 18.43,
+   "r": 2.95
+  },
+  {
+   "i": 3,
+   "x_px": 91.5,
+   "y_px": 174.5,
+   "r_px": 20.5,
+   "x": 11.98,
+   "y": 28.84,
+   "r": 2.68
+  },
+  {
+   "i": 4,
+   "x_px": 357.0,
+   "y_px": 235.0,
+   "r_px": 23.0,
+   "x": 46.73,
+   "y": 38.84,
+   "r": 3.01
+  },
+  {
+   "i": 5,
+   "x_px": 646.0,
+   "y_px": 406.5,
+   "r_px": 22.5,
+   "x": 84.55,
+   "y": 67.19,
+   "r": 2.95
+  },
+  {
+   "i": 6,
+   "x_px": 608.0,
+   "y_px": 424.5,
+   "r_px": 22.5,
+   "x": 79.58,
+   "y": 70.17,
+   "r": 2.95
+  }
+ ]
+}

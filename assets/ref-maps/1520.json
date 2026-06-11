@@ -1,0 +1,79 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/ford-front-axle-shaft-4wd-.png",
+ "category": "Ford/New Holland Backhoe Front Axle Shafts (4WD)",
+ "template": "ford-front-shaft-4wd.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 45.92,
+   "y": 36.1,
+   "r": 1.5,
+   "label": "Front Axle Shaft Assy",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 69.92,
+   "y": 9.39,
+   "r": 1.67,
+   "label": "Spacer",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 38.17,
+   "y": 87.73,
+   "r": 1.42,
+   "label": "Inner Axle Shaft",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 45.83,
+   "y": 87.91,
+   "r": 1.42,
+   "label": "Knuckle",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 56.33,
+   "y": 89.35,
+   "r": 1.67,
+   "label": "4WD Front Axle U-Joint",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 62.67,
+   "y": 87.55,
+   "r": 1.5,
+   "label": "Short Shaft",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 67.58,
+   "y": 34.3,
+   "r": 1.58,
+   "label": "Washer",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 72.67,
+   "y": 34.3,
+   "r": 1.67,
+   "label": "Snap Ring",
+   "href": "#7",
+   "kind": "anchor"
+  }
+ ]
+}

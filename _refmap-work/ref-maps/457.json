@@ -1,0 +1,61 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-final-drive-700h.png",
+ "category": "700H, 700J, 700K Final Drive Parts",
+ "template": "JD-dozer-finaldrive-700H.html",
+ "hotspots": [
+  {
+   "ref": "12",
+   "x": 40.58,
+   "y": 16.75,
+   "r": 1.5,
+   "label": "Cluster Gear",
+   "href": "/p/john-deere-dozer-final-drive-spur-cluster-gear-t180549-t180549/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 60.42,
+   "y": 27.75,
+   "r": 1.42,
+   "label": "Bull Gear",
+   "href": "/p/john-deere-dozer-final-drive-bull-gear-t174326-t174326/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 29.08,
+   "y": 6.75,
+   "r": 1.42,
+   "label": "Pinion Spur Gear",
+   "href": "/p/john-deere-dozer-final-drive-spur-gear-pinion-t179675-t179675/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 37.0,
+   "y": 71.5,
+   "r": 1.5,
+   "label": "Spur Gear",
+   "href": "/p/john-deere-dozer-final-drive-spur-gear-t180548-t180548/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 44.33,
+   "y": 83.75,
+   "r": 1.42,
+   "label": "Pinion",
+   "href": "/p/john-deere-dozer-final-drive-pinion-t174327-t174327/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 76.92,
+   "y": 66.0,
+   "r": 1.5,
+   "label": "Sprocket Shaft",
+   "href": "/p/john-deere-dozer-final-drive-sprocket-shaft-t174975-t174975/",
+   "kind": "product"
+  }
+ ]
+}

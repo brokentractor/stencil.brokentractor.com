@@ -1,0 +1,205 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/swivel-housing-and-steering-flat-cover-resize.png",
+ "category": "Ford New Holland Backhoe Swivel Housing & Steering",
+ "template": "ford-front-axle-swivel-housing-4wd.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 19.58,
+   "y": 20.74,
+   "r": 1.58,
+   "label": "LH Swivel Housing",
+   "href": "/p/ford-new-holland-backhoe-4wd-left-hand-swivel-housing-9968012-9968012/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 24.75,
+   "y": 32.53,
+   "r": 1.5,
+   "label": "Jam Nut",
+   "href": "/p/ford-new-holland-backhoe-4wd-jam-nut-9968013-9968013/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 27.83,
+   "y": 40.61,
+   "r": 1.42,
+   "label": "Bolt",
+   "href": "/p/ford-new-holland-backhoe-4wd-stop-bolt-9968014-9968014/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 25.33,
+   "y": 53.28,
+   "r": 1.5,
+   "label": "Tie Rod End",
+   "href": "/p/ford-new-holland-front-axle-tie-rod-end-9968016-126145a1-9968016/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 29.42,
+   "y": 54.15,
+   "r": 1.75,
+   "label": "Tie Rod Jam Nut",
+   "href": "/p/ford-new-holland-backhoe-4wd-tie-rod-nut-9968017-9968017/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 33.33,
+   "y": 56.33,
+   "r": 1.5,
+   "label": "4WD Swivel Joint Assembly",
+   "href": "/p/ford-new-holland-backhoe-4wd-ball-joint-assembly-9968018-9968018/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 53.33,
+   "y": 65.94,
+   "r": 1.5,
+   "label": "4WD Swivel Joint Assembly",
+   "href": "/p/ford-new-holland-backhoe-4wd-ball-joint-assembly-9968018-9968018/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 58.0,
+   "y": 67.47,
+   "r": 1.33,
+   "label": "Tie Rod Jam Nut",
+   "href": "/p/ford-new-holland-backhoe-4wd-tie-rod-nut-9968017-9968017/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 62.67,
+   "y": 68.78,
+   "r": 1.67,
+   "label": "Tie Rod End",
+   "href": "/p/ford-new-holland-front-axle-tie-rod-end-9968016-126145a1-9968016/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 63.58,
+   "y": 10.48,
+   "r": 1.58,
+   "label": "Swivel Housing Seal",
+   "href": "/p/ford-new-holland-backhoe-swivel-housing-seal-85824346-85824346/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 68.5,
+   "y": 14.19,
+   "r": 1.58,
+   "label": "Swivel Housing Bushing",
+   "href": "/p/ford-new-holland-backhoe-front-axle-swivel-housing-bushing-5194292-5194292/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 73.25,
+   "y": 19.87,
+   "r": 1.58,
+   "label": "Grease Fitting",
+   "href": "/p/ford-new-holland-backhoe-swivel-housing-grease-fitting-321204-321204/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 77.5,
+   "y": 25.11,
+   "r": 1.67,
+   "label": "King Pin Bolt",
+   "href": "/p/ford-new-holland-backhoe-king-pin-bolt-280854-280854/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 80.58,
+   "y": 31.22,
+   "r": 1.42,
+   "label": "Upper King Pin",
+   "href": "/p/ford-new-holland-backhoe-upper-king-pin-9968023-9968023/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 80.0,
+   "y": 40.83,
+   "r": 1.5,
+   "label": "RH Swivel Housing",
+   "href": "/p/ford-new-holland-backhoe-4wd-right-hand-swivel-housing-9968024-9968024/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 79.08,
+   "y": 65.28,
+   "r": 1.5,
+   "label": "Lower King Pin",
+   "href": "/p/ford-new-holland-backhoe-lower-king-pin-9968025-9968025/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 79.0,
+   "y": 75.11,
+   "r": 1.58,
+   "label": "Grease Fitting",
+   "href": "/p/ford-new-holland-backhoe-swivel-housing-grease-fitting-321204-321204/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 76.42,
+   "y": 90.61,
+   "r": 1.58,
+   "label": "King Pin Bolt",
+   "href": "/p/ford-new-holland-backhoe-king-pin-bolt-280854-280854/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 25.33,
+   "y": 80.79,
+   "r": 1.67,
+   "label": "Tie Rod Nut",
+   "href": "/p/ford-new-holland-backhoe-tie-rod-nut-9968026-9968026/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 37.17,
+   "y": 81.0,
+   "r": 1.42,
+   "label": "Bolt",
+   "href": "/p/ford-new-holland-backhoe-4wd-steering-cylinder-bolt-9968028-9968028/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 42.75,
+   "y": 80.57,
+   "r": 1.5,
+   "label": "Steering Cylinder",
+   "href": "/p/new-holland-backhoe-4wd-steering-cylinder-9968027-9968027/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 66.33,
+   "y": 86.03,
+   "r": 1.58,
+   "label": "Tie Rod Nut",
+   "href": "/p/ford-new-holland-backhoe-tie-rod-nut-9968026-9968026/",
+   "kind": "product"
+  }
+ ]
+}

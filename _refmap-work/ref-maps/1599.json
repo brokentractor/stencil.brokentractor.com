@@ -1,0 +1,205 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-590sl-front-axle-planetary-resize-new.png",
+ "category": "Case 590SL, 590SM, 590SM II Front Axle Planetary",
+ "template": "Case-Front-planetary-4wd-590sl.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 93.17,
+   "y": 30.46,
+   "r": 1.58,
+   "label": "Hub Seal",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 84.25,
+   "y": 33.94,
+   "r": 1.67,
+   "label": "Front Hub Bearing",
+   "href": "/p/case-590sl-590sm-backhoe-front-hub-bearing-four-wheel-drive-k395101-k395101/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 76.92,
+   "y": 32.62,
+   "r": 1.83,
+   "label": "Wheel Hub",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 51.83,
+   "y": 3.97,
+   "r": 1.67,
+   "label": "Lock Ring",
+   "href": "/p/case-backhoe-ring-gear-lock-ring-h437679-h437679/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 57.25,
+   "y": 5.13,
+   "r": 1.67,
+   "label": "Front Hub Bearing",
+   "href": "/p/case-590sl-590sm-backhoe-front-hub-bearing-four-wheel-drive-k395101-k395101/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 35.25,
+   "y": 31.95,
+   "r": 1.5,
+   "label": "Hub Gear",
+   "href": "#4",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 35.25,
+   "y": 12.75,
+   "r": 1.67,
+   "label": "24mm Bushing",
+   "href": "/p/case-backhoe-four-wheel-drive-24mm-hub-bushing-107072a1-107072a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 35.33,
+   "y": 5.79,
+   "r": 1.67,
+   "label": "20mm Drive Hub Bushing",
+   "href": "/p/case-backhoe-four-wheel-drive-20mm-hub-bushing-107071a1-107071a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 26.25,
+   "y": 17.38,
+   "r": 1.75,
+   "label": "Drive Hub Bolt",
+   "href": "/p/case-backhoe-front-drive-hub-bolt-11227031-k395131/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 26.17,
+   "y": 31.29,
+   "r": 1.58,
+   "label": "Ring Gear, Front Axle Hub",
+   "href": "/p/case-backhoe-front-axle-ring-gear-h437677-h437677/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 78.17,
+   "y": 59.44,
+   "r": 1.75,
+   "label": "Front Axle Shaft Spacer",
+   "href": "/p/case-backhoe-front-axle-shaft-spacer-107073a1-107073a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 75.25,
+   "y": 78.31,
+   "r": 1.67,
+   "label": "Front Axle Sun Gear",
+   "href": "/p/case-backhoe-front-axle-planetary-sun-gear-k395114-k395114/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 71.75,
+   "y": 78.48,
+   "r": 1.58,
+   "label": "Pinion Snap Ring",
+   "href": "/p/case-backhoe-front-axle-pinion-snap-ring-k261897-k261897/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 51.0,
+   "y": 86.92,
+   "r": 1.58,
+   "label": "Planetary Cover Assy",
+   "href": "/p/case-backhoe-planetary-cover-assembly-k262251-k262251/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 69.67,
+   "y": 51.16,
+   "r": 1.67,
+   "label": "Thrust Plate",
+   "href": "/p/case-backhoe-front-axle-thrust-plate-k395122-k395122/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 74.83,
+   "y": 55.3,
+   "r": 1.67,
+   "label": "Snap Ring",
+   "href": "/p/case-backhoe-front-axle-planetary-snap-ring-800-1134-800-1134/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 63.58,
+   "y": 48.18,
+   "r": 1.75,
+   "label": "Planetary Gear (26mm Thick)",
+   "href": "/p/case-backhoe-4wd-front-axle-planetary-gear-k395110-k395110/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 58.5,
+   "y": 48.18,
+   "r": 1.67,
+   "label": "10 Needle Bearings (26mm long)",
+   "href": "/p/case-front-axle-planetary-gear-needle-bearings-119685a1-119685a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 53.83,
+   "y": 48.68,
+   "r": 1.67,
+   "label": "Thrust Washer",
+   "href": "/p/case-front-axle-planetary-gear-thrust-washer-k395091-k395091/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 32.75,
+   "y": 77.48,
+   "r": 1.58,
+   "label": "Drain Plug",
+   "href": "/p/case-backhoe-front-axle-drain-plug-a156873-a156873-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 40.83,
+   "y": 94.54,
+   "r": 1.5,
+   "label": "Stud without Collar",
+   "href": "/p/case-backhoe-front-axle-stud-without-collar-k260218-k260218/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 43.92,
+   "y": 91.89,
+   "r": 1.42,
+   "label": "Stud with Collar",
+   "href": "/p/case-backhoe-front-axle-stud-n13515-n13515/",
+   "kind": "product"
+  }
+ ]
+}

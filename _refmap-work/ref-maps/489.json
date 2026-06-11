@@ -1,0 +1,43 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-track-adjuster-and-recoil-springs.png",
+ "category": "750, 750B, 750C, 850, 850B, 850C",
+ "template": "JD-dozer-track-750.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 65.67,
+   "y": 71.27,
+   "r": 1.42,
+   "label": "Track Adjuster Head Assembly",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 45.33,
+   "y": 25.82,
+   "r": 1.5,
+   "label": "Track Adjuster Piston",
+   "href": "/p/john-deere-dozer-track-adjuster-piston-t73206-t73206/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 22.58,
+   "y": 25.45,
+   "r": 1.42,
+   "label": "Recoil Spring",
+   "href": "/p/john-deere-dozer-track-recoil-spring-t184203-t184203/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 29.92,
+   "y": 25.82,
+   "r": 1.33,
+   "label": "Track Adjuster Housing",
+   "href": "/p/john-deere-dozer-track-adjuster-housing-t82455-t82455/",
+   "kind": "product"
+  }
+ ]
+}

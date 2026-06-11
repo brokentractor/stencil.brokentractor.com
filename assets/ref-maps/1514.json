@@ -1,0 +1,196 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/top-hat-planetary-assembly-4wd-resize.png",
+ "category": "New Holland Backhoe Top Hat Planetary (4WD)",
+ "template": "ford-front-axle-tophat-4wd.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 77.42,
+   "y": 18.8,
+   "r": 1.17,
+   "label": "Planetary Hub with Studs",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-planetary-hub-with-studs-85806003-85806003/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 89.5,
+   "y": 71.02,
+   "r": 1.33,
+   "label": "Front Axle Hub Bearing",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-hub-bearing-47539809-47539809/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 75.0,
+   "y": 71.54,
+   "r": 1.17,
+   "label": "Front Axle Hub Bearing",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-hub-bearing-47539809-47539809/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 71.58,
+   "y": 35.25,
+   "r": 1.33,
+   "label": "Hub O Ring",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-hub-o-ring-84262831-84262831/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 55.5,
+   "y": 34.46,
+   "r": 1.17,
+   "label": "Front Axle Hub Gear",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 66.0,
+   "y": 93.99,
+   "r": 1.33,
+   "label": "Front Axle Hub Gear",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 58.58,
+   "y": 16.19,
+   "r": 1.25,
+   "label": "Gear Bushing",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-gear-bushing-87313756-87313756/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 55.5,
+   "y": 14.62,
+   "r": 1.33,
+   "label": "Front Axle Gear Bolt",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-gear-bolt-87313757-87313757/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 50.67,
+   "y": 31.07,
+   "r": 1.25,
+   "label": "Front Axle Ring Gear",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-ring-gear-85806008-85806008/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 94.08,
+   "y": 68.41,
+   "r": 1.33,
+   "label": "Front Axle Hub Seal",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-hub-seal-47123727-47123727/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 80.75,
+   "y": 27.94,
+   "r": 1.25,
+   "label": "Front Axle Stud",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-stud-9968070-9968070/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 73.67,
+   "y": 25.33,
+   "r": 1.42,
+   "label": "Front Axle Lug Nut (4WD)",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-lug-nut-9968071-9968071/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 64.67,
+   "y": 29.24,
+   "r": 1.42,
+   "label": "Retaining Ring",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-hub-retaining-ring-85806006-85806006/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 21.42,
+   "y": 82.25,
+   "r": 1.33,
+   "label": "Front Axle Planetary Carrier",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-planetary-carrier-85806011-85806011/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 6.33,
+   "y": 89.3,
+   "r": 1.25,
+   "label": "Planetary Screw",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-planetary-screw-87313767-87313767/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 2.5,
+   "y": 89.03,
+   "r": 1.25,
+   "label": "Planetary Plug",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-planetary-plug-85806012-85806012/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 27.75,
+   "y": 39.43,
+   "r": 1.25,
+   "label": "23 Tooth Planetary Gear",
+   "href": "/p/new-holland-backhoe-front-axle-planetary-gear-85806014-85806014/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 24.67,
+   "y": 38.38,
+   "r": 1.25,
+   "label": "10 Pack of Needle Bearings",
+   "href": "/p/new-holland-backhoe-front-axle-planetary-needle-bearings-85806015-85806015/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 20.75,
+   "y": 35.51,
+   "r": 1.33,
+   "label": "Planetary Thrust Washer",
+   "href": "/p/new-holland-backhoe-front-axle-planetary-thrust-washer-9968084-9968084/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 35.33,
+   "y": 39.95,
+   "r": 1.25,
+   "label": "Snap Ring",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-planetary-snap-ring-87580391-87580391/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 32.08,
+   "y": 36.29,
+   "r": 1.25,
+   "label": "Front Axle Planetary Plate",
+   "href": "/p/new-holland-backhoe-4wd-front-axle-planetary-plate-85806016-85806016/",
+   "kind": "product"
+  }
+ ]
+}

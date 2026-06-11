@@ -1,0 +1,106 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-standard-dipper-stick.png",
+ "category": "Standard Dipper Stick Parts - 580L to 580SM",
+ "template": "Case-standard-dipper-580L.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 51.33,
+   "y": 71.11,
+   "r": 1.33,
+   "label": "Standard Dipper Stick",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 55.0,
+   "y": 9.78,
+   "r": 1.33,
+   "label": "Pin, Boom to Dipper",
+   "href": "/p/case-backhoe-pin-boom-to-dipper-d132494-d132494-4/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 50.42,
+   "y": 13.78,
+   "r": 1.5,
+   "label": "Bushing Dipper at Boom (Without Groove)",
+   "href": "/p/case-backhoe-bushing-without-groove-d150121-d150121/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 41.25,
+   "y": 82.67,
+   "r": 1.42,
+   "label": "Pin, Dipper Cyl to Dipper, Bucket Cyl to Dipper",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 18.92,
+   "y": 58.22,
+   "r": 1.42,
+   "label": "Bushing, Dipper Stick at Dipper Cylinder",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 42.67,
+   "y": 7.56,
+   "r": 1.33,
+   "label": "Pin, Dipper Cyl to Dipper, Bucket Cyl to Dipper",
+   "href": "#3",
+   "kind": "anchor"
+  },
+  {
+   "ref": "5",
+   "x": 36.58,
+   "y": 86.44,
+   "r": 1.42,
+   "label": "Bushing, Dipper Stick at Dipper Cylinder",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 68.17,
+   "y": 26.22,
+   "r": 1.42,
+   "label": "Bushing, Dipper at Link (60MM OD, 1&quot; Length)",
+   "href": "/p/case-backhoe-dipper-bushing-60mm-od-1-length-d140029-d140029/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 74.17,
+   "y": 21.33,
+   "r": 1.5,
+   "label": "Pin, Link to Dipper Arm &amp; Link to Cylinder",
+   "href": "/p/case-backhoe-pin-link-to-dipper-arm-link-to-cylinder-d141142-d141142-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 74.17,
+   "y": 57.33,
+   "r": 1.5,
+   "label": "Bushing, Dipper Stick at Bucket",
+   "href": "/p/case-backhoe-bushing-dipper-at-bucket-307186a1-307186a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 81.42,
+   "y": 49.78,
+   "r": 1.42,
+   "label": "Pin, Bucket to Dipper (Fits Buckets Wider than 12&quot;)",
+   "href": "/p/case-backhoe-pin-dipper-to-bucket-d150619-d150619/",
+   "kind": "product"
+  }
+ ]
+}

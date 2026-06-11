@@ -1,0 +1,66 @@
+// =============================================================================
+// REF MAP (clickable parts-diagram hotspots on refid category pages)
+// Diagram images have the numbered red circles baked in; .refmap-spot buttons
+// are transparent interaction overlays positioned by percentage coordinates
+// from /content/ref-maps/<category-id>.json (theme-asset fallback).
+// =============================================================================
+
+#refImg.refmap {
+    text-align: center;
+}
+
+.refmap-stage {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.refmap-spot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1;
+    width: 3%;              // overridden inline from the hotspot's real radius
+    min-width: 28px;        // WCAG 2.5.8 target size regardless of image scale
+    min-height: 28px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid transparent;
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
+
+    &:hover {
+        border-color: #ffbe00;
+        box-shadow: 0 0 0 3px rgba(255, 190, 0, 0.35);
+        background: rgba(255, 190, 0, 0.12);
+    }
+
+    &:focus-visible {
+        outline: 3px solid #001212;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 5px #ffbe00;
+    }
+}
+
+// Row flash when a diagram number jumps to its table row
+@keyframes refmapRowFlash {
+    0%   { background-color: #ffbe00; }
+    100% { background-color: transparent; }
+}
+
+tr.refmap-row-flash > td {
+    animation: refmapRowFlash 1.6s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    tr.refmap-row-flash > td {
+        animation: none;
+        background-color: #fff3c4;
+    }
+}

@@ -1,0 +1,187 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/front-axle-swivel-4wd-580k.png",
+ "category": "Case Backhoe Front Axle Swivel Parts",
+ "template": "Case-Front-swivel-4wd-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 64.0,
+   "y": 36.09,
+   "r": 1.17,
+   "label": "Right Hand Swivel Housing",
+   "href": "/p/case-backhoe-right-swivel-housing-d150204-d150204/",
+   "kind": "product"
+  },
+  {
+   "ref": "2",
+   "x": 42.83,
+   "y": 19.53,
+   "r": 1.08,
+   "label": "Left Hand Swivel Housing",
+   "href": "/p/case-backhoe-left-swivel-housing-d150203-d150203/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 51.83,
+   "y": 38.07,
+   "r": 1.25,
+   "label": "Swivel Housing Bushing",
+   "href": "/p/case-backhoe-swivel-housing-bushing-k395033-k395033/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 49.25,
+   "y": 35.5,
+   "r": 1.0,
+   "label": "Swivel Housing Seal",
+   "href": "/p/case-backhoe-swivel-housing-seal-k262143-k262143/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 45.67,
+   "y": 27.42,
+   "r": 1.17,
+   "label": "Axle Housing Upper Bushing",
+   "href": "/p/case-backhoe-axle-housing-upper-bushing-n14372-n14372/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 62.92,
+   "y": 65.29,
+   "r": 1.0,
+   "label": "Axle Housing Lower Bushing",
+   "href": "/p/case-backhoe-axle-housing-lower-bushing-n14373-n14373/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 63.08,
+   "y": 71.4,
+   "r": 1.17,
+   "label": "Axle Housing Seal",
+   "href": "/p/case-backhoe-axle-housing-seal-k395039-k395039/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 64.08,
+   "y": 76.92,
+   "r": 1.08,
+   "label": "Axle Housing Shim",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "11",
+   "x": 61.67,
+   "y": 22.88,
+   "r": 1.08,
+   "label": "Axle Housing Shim",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "10",
+   "x": 61.0,
+   "y": 28.6,
+   "r": 1.08,
+   "label": "Axle Housing Seal",
+   "href": "/p/case-backhoe-axle-housing-seal-k395039-k395039/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 62.08,
+   "y": 15.98,
+   "r": 1.08,
+   "label": "Axle Housing Upper King Pin",
+   "href": "/p/case-backhoe-axle-housing-upper-king-pin-n14376-n14376/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 65.17,
+   "y": 85.8,
+   "r": 1.08,
+   "label": "Axle Housing Lower King Pin",
+   "href": "/p/case-backhoe-axle-housing-lower-king-pin-n13504-n13504/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 62.67,
+   "y": 93.49,
+   "r": 1.17,
+   "label": "Grease Fitting",
+   "href": "/p/case-backhoe-axle-grease-fitting-321204-321204/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 54.83,
+   "y": 6.9,
+   "r": 1.08,
+   "label": "Grease Fitting",
+   "href": "/p/case-backhoe-axle-grease-fitting-321204-321204/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 56.33,
+   "y": 95.66,
+   "r": 1.17,
+   "label": "King Pin Bolt",
+   "href": "/p/case-backhoe-front-axle-king-pin-bolt-d150214-d150214/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 62.92,
+   "y": 4.14,
+   "r": 1.08,
+   "label": "King Pin Bolt",
+   "href": "/p/case-backhoe-front-axle-king-pin-bolt-d150214-d150214/",
+   "kind": "product"
+  },
+  {
+   "ref": "19",
+   "x": 45.08,
+   "y": 15.38,
+   "r": 1.08,
+   "label": "Upper King Bellville Washer",
+   "href": "/p/case-backhoe-axle-housing-upper-king-bellville-washer-122262a1-122262a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "21",
+   "x": 45.42,
+   "y": 73.18,
+   "r": 1.08,
+   "label": "Lower King Bellville Washer",
+   "href": "/p/case-backhoe-axle-housing-lower-king-bellville-washer-122261a1-122261a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "22",
+   "x": 45.0,
+   "y": 80.47,
+   "r": 1.17,
+   "label": "Axle Housing Lower King Pin",
+   "href": "/p/case-backhoe-axle-housing-lower-king-pin-122259a1-122259a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 43.42,
+   "y": 9.47,
+   "r": 1.0,
+   "label": "Upper King Pin",
+   "href": "/p/case-backhoe-axle-housing-upper-king-pin-122260a1-122260a1/",
+   "kind": "product"
+  }
+ ]
+}

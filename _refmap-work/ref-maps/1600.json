@@ -1,0 +1,169 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-front-axle-steering-cylinder-and-axle-shaft-590sl.png",
+ "category": "Case Front Axle Steering Cylinder and Axle Shaft",
+ "template": "Case-Front-steering-4wd-590SL.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 23.08,
+   "y": 7.39,
+   "r": 1.17,
+   "label": "Tie Rod End",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 26.17,
+   "y": 10.04,
+   "r": 1.25,
+   "label": "Tie Rod Jam Nut",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 27.33,
+   "y": 23.67,
+   "r": 1.17,
+   "label": "Ball Joint",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 22.42,
+   "y": 21.78,
+   "r": 1.33,
+   "label": "Nut",
+   "href": "/p/case-backhoe-tie-rod-nut-9968026-9968026/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 40.92,
+   "y": 17.99,
+   "r": 1.25,
+   "label": "Steering Cylinder",
+   "href": "/p/case-backhoe-power-steering-cylinder-4wd-d149729-d149729/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 23.08,
+   "y": 70.64,
+   "r": 1.17,
+   "label": "Power Steering Cylinder Seal Kit (4WD)",
+   "href": "/p/case-backhoe-4-wheel-drive-power-steering-cylinder-seal-kit-d149739-d149739/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 58.0,
+   "y": 8.9,
+   "r": 1.25,
+   "label": "Long Axle Shaft",
+   "href": "#7",
+   "kind": "anchor"
+  },
+  {
+   "ref": "9",
+   "x": 70.17,
+   "y": 15.53,
+   "r": 1.17,
+   "label": "U-Joint, Internal Drive Shaft",
+   "href": "/p/case-backhoe-front-axle-u-joint-195215a1-195215a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 76.92,
+   "y": 18.18,
+   "r": 1.33,
+   "label": "Connector, Internal Drive Shaft",
+   "href": "/p/case-backhoe-front-axle-shaft-connector-390029a1-390029a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 70.17,
+   "y": 87.69,
+   "r": 1.33,
+   "label": "Short Shaft (Front Axle)",
+   "href": "/p/case-backhoe-front-axle-outer-short-shaft-n14409-n14409-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 53.92,
+   "y": 80.49,
+   "r": 1.17,
+   "label": "U-Joint, Internal Drive Shaft",
+   "href": "/p/case-backhoe-front-axle-u-joint-195215a1-195215a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 63.0,
+   "y": 84.47,
+   "r": 1.08,
+   "label": "U-Joint, Internal Drive Shaft",
+   "href": "/p/case-backhoe-front-axle-u-joint-195215a1-195215a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 66.83,
+   "y": 55.87,
+   "r": 1.25,
+   "label": "U-Joint, Internal Drive Shaft",
+   "href": "/p/case-backhoe-front-axle-u-joint-195215a1-195215a1/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 32.83,
+   "y": 86.93,
+   "r": 1.33,
+   "label": "Power Steering Cylinder Seal Kit (4WD)",
+   "href": "/p/case-backhoe-4-wheel-drive-power-steering-cylinder-seal-kit-d149739-d149739/",
+   "kind": "product"
+  },
+  {
+   "ref": "1",
+   "x": 44.75,
+   "y": 43.37,
+   "r": 1.33,
+   "label": "Tie Rod End",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 39.58,
+   "y": 52.65,
+   "r": 1.17,
+   "label": "Tie Rod Jam Nut",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 38.17,
+   "y": 38.45,
+   "r": 1.17,
+   "label": "Ball Joint",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 48.67,
+   "y": 61.55,
+   "r": 1.08,
+   "label": "Nut",
+   "href": "/p/case-backhoe-tie-rod-nut-9968026-9968026/",
+   "kind": "product"
+  }
+ ]
+}

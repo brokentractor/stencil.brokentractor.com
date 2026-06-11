@@ -1,0 +1,47 @@
+{
+ "category_id": 829,
+ "name": "Cat 416, 416B, 416C Backhoe Pins & Bushings",
+ "url": "/c/cat-416-backhoe-pins-bushings/",
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/john-deere-backhoe-bucket-pins-bushings-and-links-resize.png",
+ "img_w": 1200,
+ "img_h": 477,
+ "style": "black-circle",
+ "circles": [
+  {
+   "i": 0,
+   "x_px": 853.8,
+   "y_px": 190.2,
+   "r_px": 20.7,
+   "x": 71.15,
+   "y": 39.87,
+   "r": 1.73
+  },
+  {
+   "i": 1,
+   "x_px": 876.6,
+   "y_px": 245.4,
+   "r_px": 11.2,
+   "x": 73.05,
+   "y": 51.45,
+   "r": 0.94
+  },
+  {
+   "i": 2,
+   "x_px": 1007.4,
+   "y_px": 312.6,
+   "r_px": 19.3,
+   "x": 83.95,
+   "y": 65.53,
+   "r": 1.61
+  },
+  {
+   "i": 3,
+   "x_px": 834.6,
+   "y_px": 359.4,
+   "r_px": 13.9,
+   "x": 69.55,
+   "y": 75.35,
+   "r": 1.16
+  }
+ ]
+}

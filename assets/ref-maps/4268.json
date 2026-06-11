@@ -1,0 +1,187 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-580d-pin-bushing-kits.png?t=1748532740",
+ "category": "Case 580D Backhoe Pin Kits",
+ "template": "cv-pipeline",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 12.58,
+   "y": 15.84,
+   "r": 1.04,
+   "label": "2 matching parts",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 10.63,
+   "y": 28.89,
+   "r": 1.05,
+   "label": "2 matching parts",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "3",
+   "x": 11.55,
+   "y": 41.8,
+   "r": 1.0,
+   "label": "Case 580C, 580D, 580 Super E Backhoe Pin Kit, Dipper Stick to Boom",
+   "href": "/p/case-580c-580d-580-super-e-backhoe-pin-kit-dipper-stick-to-boom-d45523-kit-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 24.69,
+   "y": 47.65,
+   "r": 1.05,
+   "label": "Case 580C, 580D, 580 Super E Backhoe Pin Kit, Boom Cylinder to Boom",
+   "href": "/p/case-580c-580d-580-super-e-backhoe-pin-kit-boom-cylinder-to-boom-d49865-kit-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 11.52,
+   "y": 60.85,
+   "r": 1.05,
+   "label": "2 matching parts",
+   "href": "#5",
+   "kind": "anchor"
+  },
+  {
+   "ref": "6",
+   "x": 8.77,
+   "y": 69.1,
+   "r": 1.0,
+   "label": "2 matching parts",
+   "href": "#6",
+   "kind": "anchor"
+  },
+  {
+   "ref": "7",
+   "x": 26.22,
+   "y": 62.82,
+   "r": 1.05,
+   "label": "2 matching parts",
+   "href": "#7A",
+   "kind": "anchor"
+  },
+  {
+   "ref": "8",
+   "x": 12.57,
+   "y": 82.77,
+   "r": 0.99,
+   "label": "Case 580C, 580D, 580 Super E Backhoe Pin Kit, Bucket Link to Bucket",
+   "href": "/p/case-580c-580d-580-super-e-backhoe-pin-kit-bucket-link-to-bucket-d37614-kit-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 35.62,
+   "y": 87.8,
+   "r": 1.05,
+   "label": "Case 580D, 580SE Backhoe Pin Kit, Boom to Swing Tower",
+   "href": "/p/case-580d-580se-backhoe-pin-kit-boom-to-swing-tower-d91240k/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 41.46,
+   "y": 90.05,
+   "r": 0.99,
+   "label": "Case 580D, 580SE Backhoe Pin Kit, Bottom Swing Tower to Frame",
+   "href": "/p/case-580d-580se-backhoe-pin-kit-bottom-swing-tower-to-frame-d120495-kit/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 35.81,
+   "y": 41.94,
+   "r": 1.05,
+   "label": "Case 580C, 580D, 580 Super E Backhoe Pin Kit, Boom Cylinder to Swing Tower",
+   "href": "/p/case-580c-580d-580-super-e-backhoe-pin-kit-boom-cylinder-to-swing-tower-d49866-kit-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 40.7,
+   "y": 44.13,
+   "r": 1.05,
+   "label": "2 matching parts",
+   "href": "#14",
+   "kind": "anchor"
+  },
+  {
+   "ref": "15",
+   "x": 43.73,
+   "y": 41.8,
+   "r": 1.05,
+   "label": "Top Swing Tower to Frame Pin & Bushing Kit for Case 580D, 580 Super E Backhoes",
+   "href": "/p/top-swing-tower-to-frame-pin-bushing-kit-for-case-580d-580-super-e-backhoes-d90727k-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "18",
+   "x": 51.02,
+   "y": 93.3,
+   "r": 1.05,
+   "label": "Case 580C Backhoe Pin Kit, Stabilizer Cylinder Rod End to Leg",
+   "href": "/p/case-580c-backhoe-pin-kit-stabilizer-cylinder-rod-end-to-leg-d50695-kit-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "20",
+   "x": 64.76,
+   "y": 29.81,
+   "r": 1.05,
+   "label": "Case 580C, 580D, 580 Super E Loader Pin Kit, Loader Frame to Chassis",
+   "href": "/p/case-580c-580d-580-super-e-loader-pin-kit-loader-frame-to-chassis-d62192k/",
+   "kind": "product"
+  },
+  {
+   "ref": "23",
+   "x": 81.38,
+   "y": 39.54,
+   "r": 1.04,
+   "label": "Loader Drag Link to Bucket Pin & Bushing Kit for Case 580D, 580 Super E Backhoes",
+   "href": "/p/loader-drag-link-to-bucket-pin-bushing-kit-for-case-580d-580-super-e-backhoes-d126718k/",
+   "kind": "product"
+  },
+  {
+   "ref": "24",
+   "x": 74.44,
+   "y": 85.47,
+   "r": 1.06,
+   "label": "2 matching parts",
+   "href": "#24",
+   "kind": "anchor"
+  },
+  {
+   "ref": "26",
+   "x": 79.24,
+   "y": 88.78,
+   "r": 1.04,
+   "label": "Case 580C, 580D, 580 Super E Loader Pin Kit – Loader Frame to Bucket Connection",
+   "href": "/p/case-580c-580d-580-super-e-loader-pin-kit-loader-frame-to-bucket-connection-d126717k/",
+   "kind": "product"
+  },
+  {
+   "ref": "27",
+   "x": 48.24,
+   "y": 92.31,
+   "r": 1.0,
+   "label": "Case 580C, 580D, 580 Super E Backhoe Pin Kit, Stabilizer Pad to Leg",
+   "href": "/p/case-580c-580d-580-super-e-backhoe-pin-kit-stabilizer-pad-to-leg-d50696-kit-1/",
+   "kind": "product"
+  },
+  {
+   "ref": "16",
+   "x": 43.73,
+   "y": 85.89,
+   "r": 1.04,
+   "label": "Stabilizer Leg to Frame Pin & Bushing Kit for Case 580D, 580 Super E Backhoes",
+   "href": "/p/stabilizer-leg-to-frame-pin-bushing-kit-for-case-580d-580-super-e-backhoes-d89838k-1/",
+   "kind": "product"
+  }
+ ]
+}

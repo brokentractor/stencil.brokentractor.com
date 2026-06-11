@@ -1,0 +1,142 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/case-axle-shaft-and-steering-resize.png",
+ "category": "Case Backhoe Axle Drive Shaft & Steering Cylinder",
+ "template": "Case-Front-steering-4wd-580k.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 29.58,
+   "y": 30.22,
+   "r": 1.25,
+   "label": null,
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "2",
+   "x": 17.58,
+   "y": 92.67,
+   "r": 1.33,
+   "label": "U Joint",
+   "href": "/p/case-backhoe-front-axle-shaft-u-joint-9968059-9968059/",
+   "kind": "product"
+  },
+  {
+   "ref": "3",
+   "x": 19.17,
+   "y": 75.11,
+   "r": 1.17,
+   "label": "Inner Long Axle Shaft",
+   "href": "#2",
+   "kind": "anchor"
+  },
+  {
+   "ref": "4",
+   "x": 23.25,
+   "y": 80.67,
+   "r": 1.33,
+   "label": "Connecting Body",
+   "href": "/p/case-backhoe-front-axle-connecting-body-n14412-n14412/",
+   "kind": "product"
+  },
+  {
+   "ref": "5",
+   "x": 35.58,
+   "y": 91.11,
+   "r": 1.25,
+   "label": "Outer Axle Shaft",
+   "href": "/p/case-backhoe-front-axle-outer-short-shaft-n14409-n14409/",
+   "kind": "product"
+  },
+  {
+   "ref": "6",
+   "x": 59.5,
+   "y": 32.0,
+   "r": 1.25,
+   "label": "Tie Rod",
+   "href": "/p/case-backhoe-4wd-front-axle-left-hand-tie-rod-ball-joint-n14402-n14402/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 61.33,
+   "y": 40.0,
+   "r": 1.08,
+   "label": "LH Thread Jam Nut",
+   "href": "/p/case-backhoe-left-hand-tie-rod-jam-nut-81878551-81878551/",
+   "kind": "product"
+  },
+  {
+   "ref": "8",
+   "x": 63.17,
+   "y": 32.67,
+   "r": 1.33,
+   "label": "Steering Ball Joint- Left Hand",
+   "href": "/p/case-backhoe-steering-ball-joint-left-hand-4wd-n14388-n14388/",
+   "kind": "product"
+  },
+  {
+   "ref": "9",
+   "x": 78.58,
+   "y": 23.11,
+   "r": 1.42,
+   "label": "Steering Ball Joint - Right Hand",
+   "href": "/p/case-backhoe-front-axle-steering-swivel-ball-joint-right-hand-threads-n14377-n14377/",
+   "kind": "product"
+  },
+  {
+   "ref": "10",
+   "x": 82.67,
+   "y": 16.44,
+   "r": 1.25,
+   "label": "RH Thread Jam Nut",
+   "href": "/p/case-backhoe-right-hand-tie-rod-jam-nut-100033-100033/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 85.08,
+   "y": 24.0,
+   "r": 1.25,
+   "label": "RH Ball Joint End",
+   "href": "#10",
+   "kind": "anchor"
+  },
+  {
+   "ref": "12",
+   "x": 90.83,
+   "y": 41.33,
+   "r": 1.25,
+   "label": "Lock Nut",
+   "href": "/p/case-backhoe-tie-rod-end-lock-nut-12577021-12577021/",
+   "kind": "product"
+  },
+  {
+   "ref": "13",
+   "x": 71.75,
+   "y": 36.67,
+   "r": 1.33,
+   "label": "Power Steering Cylinder (4WD)",
+   "href": "/p/case-4wd-backhoe-new-power-steering-cylinder-d149729-d149729/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 66.42,
+   "y": 72.67,
+   "r": 1.17,
+   "label": "Steering Cylinder Kit",
+   "href": "/p/case-backhoe-steering-cylinder-kit-n14622-n14622/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 55.33,
+   "y": 28.0,
+   "r": 1.17,
+   "label": "Lock Nut",
+   "href": "/p/case-backhoe-tie-rod-end-lock-nut-12577021-12577021/",
+   "kind": "product"
+  }
+ ]
+}

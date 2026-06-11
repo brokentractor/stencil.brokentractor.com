@@ -1,0 +1,160 @@
+{
+ "image": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/jd-dozer-trac-adj-450-resize.png",
+ "category": "450, 450B, 450C, 450D, 450E, 550, 550B",
+ "template": "JD-dozer-track-450.html",
+ "hotspots": [
+  {
+   "ref": "1",
+   "x": 55.75,
+   "y": 30.58,
+   "r": 1.33,
+   "label": "Complete Track Adjuster",
+   "href": "#1",
+   "kind": "anchor"
+  },
+  {
+   "ref": "2",
+   "x": 50.75,
+   "y": 4.14,
+   "r": 1.25,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "3",
+   "x": 25.25,
+   "y": 17.09,
+   "r": 1.33,
+   "label": "Recoil Spring Cover",
+   "href": "/p/john-deere-dozer-recoil-spring-cover-at84806-at84806/",
+   "kind": "product"
+  },
+  {
+   "ref": "4",
+   "x": 75.17,
+   "y": 29.14,
+   "r": 1.25,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "5",
+   "x": 75.17,
+   "y": 22.84,
+   "r": 1.33,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "6",
+   "x": 58.17,
+   "y": 41.37,
+   "r": 1.17,
+   "label": "Front Idler Shaft",
+   "href": "/p/john-deere-dozer-front-idler-shaft-t40826-t40826/",
+   "kind": "product"
+  },
+  {
+   "ref": "7",
+   "x": 75.17,
+   "y": 16.37,
+   "r": 1.25,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "8",
+   "x": 64.0,
+   "y": 23.92,
+   "r": 1.25,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "9",
+   "x": 61.58,
+   "y": 54.5,
+   "r": 1.33,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "10",
+   "x": 25.08,
+   "y": 83.45,
+   "r": 1.25,
+   "label": "Top Roller Bracket",
+   "href": "/p/john-deere-dozer-track-top-roller-bracket-at31128-at31128/",
+   "kind": "product"
+  },
+  {
+   "ref": "11",
+   "x": 57.83,
+   "y": 67.45,
+   "r": 1.08,
+   "label": "Recoil Spring",
+   "href": "/p/john-deere-dozer-track-tension-recoil-spring-t20872-t20872/",
+   "kind": "product"
+  },
+  {
+   "ref": "12",
+   "x": 63.08,
+   "y": 89.39,
+   "r": 1.17,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "13",
+   "x": 72.0,
+   "y": 80.94,
+   "r": 1.25,
+   "label": "Idler Guide Plate",
+   "href": "/p/john-deere-dozer-idler-guide-plate-t112813-t112813/",
+   "kind": "product"
+  },
+  {
+   "ref": "14",
+   "x": 68.67,
+   "y": 64.93,
+   "r": 1.08,
+   "label": "Threaded Plate",
+   "href": "/p/john-deere-dozer-threaded-plate-t20696-t20696/",
+   "kind": "product"
+  },
+  {
+   "ref": "15",
+   "x": 66.42,
+   "y": 61.33,
+   "r": 1.17,
+   "label": "Not Available, Request Part",
+   "href": "/pages/parts-request/",
+   "kind": "parts-request"
+  },
+  {
+   "ref": "16",
+   "x": 33.33,
+   "y": 58.63,
+   "r": 1.08,
+   "label": "Front Recoil Spring Cap",
+   "href": "/p/john-deere-dozer-front-recoil-spring-cap-t106909-t106909/",
+   "kind": "product"
+  },
+  {
+   "ref": "17",
+   "x": 35.0,
+   "y": 78.6,
+   "r": 1.33,
+   "label": "Recoil Spring Bolt",
+   "href": "/p/john-deere-dozer-recoil-spring-bolt-pv3682-pv3682-1/",
+   "kind": "product"
+  }
+ ]
+}
