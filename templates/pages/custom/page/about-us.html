@@ -143,6 +143,21 @@
     background: #1a1a1a;
   }
 
+  /* Circle avatar with zoomed-in framing (wrapper clips, inner image scales) */
+  .bt-av--zoomwrap {
+    overflow: hidden;
+    display: block;
+  }
+  .bt-av--zoomwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transform: scale(1.35);
+    transform-origin: 50% 18%;
+    display: block;
+  }
+
   /* Group header */
   .bt-group-hdr {
     display: flex;
@@ -530,7 +545,7 @@
 
           <a href="/meet-ashleigh-harris-operations-support-specialist-at-broken-tractor/" class="bt-card">
             <div class="bt-card__left">
-              <img class="bt-av" src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/ashleigh-harris.png" alt="Ashleigh Harris">
+              <span class="bt-av bt-av--zoomwrap"><img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/ashleigh-harris-full.jpg" alt="Ashleigh Harris"></span>
               <div class="bt-card__city">Prairie</div>
             </div>
             <div>
@@ -1095,7 +1110,7 @@
         try { d = JSON.parse(el.textContent); } catch (e) { return; }
         var q = function (sel) { return card.querySelector(sel); };
         if (d.name)        { var n = q('.bt-card__name');  if (n) n.textContent = d.name; }
-        if (d.initials)    { var av = q('.bt-av');          if (av) av.textContent = d.initials; }
+        if (d.initials)    { var av = q('.bt-av');          if (av && av.tagName !== 'IMG' && !av.querySelector('img')) av.textContent = d.initials; }
         if (d.role)        { var r = q('.bt-card__role');  if (r) r.textContent = d.role; }
         if (d.city_short)  { var c = q('.bt-card__city');  if (c) c.textContent = d.city_short; }
         if (d.years_label && d.base) {
