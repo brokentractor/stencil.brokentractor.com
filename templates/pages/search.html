@@ -1,5 +1,8 @@
 {{#partial "page"}}
 <section class="page">
+    <h1 class="page-heading">
+        {{#if forms.search.query}}Search results for &ldquo;{{forms.search.query}}&rdquo;{{else}}Search results{{/if}}
+    </h1>
     <div class="klevuLanding"></div>
 </section>
 {{/partial}}
