@@ -104,7 +104,7 @@ ul.productList {
 }
 
 #tableheaders th, #tableheaders td {
-    background: #1a1a1a;
+    background: #001212;
     color: #fff;
     border-right: 1px #fff solid;
     position: sticky;
@@ -128,7 +128,7 @@ ul.productList {
     #tableheaders td.thcell[data-sort-col]:hover,
     #tableheaders th.thcell[data-sort-col]:hover {
         color: #ffbe00;
-        background: #2a2a2a;
+        background: #103030;
     }
 
     .sort-caret {

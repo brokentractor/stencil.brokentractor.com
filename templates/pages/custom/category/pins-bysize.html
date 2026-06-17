@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // "Loading all sizes…" status, shown above the table while pages stream in.
   var status = document.createElement('div');
   status.id = 'loadAllStatus';
-  status.style.cssText = 'padding:8px 12px;margin-bottom:8px;font-weight:bold;background:#001212;color:#ffbe00;display:inline-block;';
+  status.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;padding:10px 16px;font-weight:bold;background:#001212;color:#ffbe00;box-shadow:0 2px 10px rgba(0,0,0,0.35);';
   var outer = document.getElementById('slidetableouter');
   if (outer && outer.parentNode) outer.parentNode.insertBefore(status, outer);
 
