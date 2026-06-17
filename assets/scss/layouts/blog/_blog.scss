@@ -1084,7 +1084,10 @@
     border-bottom: 1px solid #e7e7e7;
     background: #fff;
     position: sticky;
-    top: 78px; // below the sticky site header
+    // Sit flush under the fixed site header (height varies by breakpoint).
+    top: 134px;                                       // mobile fixed header
+    @include breakpoint("medium") { top: 155px; }     // tablet header
+    @media (min-width: 1280px)    { top: 92px;  }     // desktop header
     z-index: 30;
 
     &__inner {
@@ -1262,7 +1265,6 @@
     gap: 0;
     background: #001212;
     color: #fff;
-    border-radius: 4px;
     overflow: hidden;
     margin-bottom: 56px;
     cursor: pointer;
@@ -1836,12 +1838,9 @@
     h2 { font-size: 20px; }
   }
 
-  // Density toggle: drop text labels on mobile, keep icons only
-  .bt-density-toggle button {
-    padding: 6px 8px;
-    gap: 0;
-    font-size: 0; // collapses text nodes; SVG sizes are px-defined so unaffected
-  }
+  // Grid/Detail/List toggle does nothing on mobile (cards are uniform single-column
+  // here regardless of density) — hide it.
+  .bt-density-toggle { display: none; }
 }
 
 // =============================================================================
