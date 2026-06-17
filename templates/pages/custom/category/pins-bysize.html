@@ -1,0 +1,212 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+{{#if pagination.category.previous}}
+<link rel="prev" href="{{pagination.category.previous}}">
+{{/if}}
+{{#if pagination.category.next}}
+<link rel="next" href="{{pagination.category.next}}">
+{{/if}}
+{{/partial}}
+
+{{#partial "pagename"}}listpage pins-by-size{{/partial}}
+
+{{#partial "page"}}
+
+<h1 class="page-heading">{{category.name}}</h1>
+
+<div id="dsubcat">
+    {{#each category.subcategories}}
+    <div class="subcat">
+        <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">
+            <span>{{name}} </span>
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+    {{/each}}
+</div>
+
+{{{snippet 'categories'}}}
+
+<div class="page">
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+        <div class="toolbar">
+          <div class="toolbar-filter">
+            <i class="fa fa-search"></i>
+            <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Filter pins by size or part #..." title="Filter Current Category" isp_ignore>
+            <button type="button" id="myInputClear" style="display:none;" onclick="document.getElementById('myInput').value='';myFunction();">&times;</button>
+          </div>
+          <span class="table-sort-tip">&#9432; Click headers to sort &#8597;</span>
+        </div>
+        <div id="slidetableouter" class="noref">
+            <table id="slidetable">
+                <caption class="is-srOnly">{{category.name}} parts list</caption>
+                <thead>
+                <tr id="tableheaders">
+                    <th scope="col" class="thcell pn image">Image</th>
+                    <th scope="col" class="thcell pn DiameterMM" data-sort-col="DiameterMM" data-sort-num="1" aria-sort="none">Diameter (mm)</th>
+                    <th scope="col" class="thcell pn DiameterInch" data-sort-col="DiameterInch" data-sort-num="1" aria-sort="none">Diameter (in)</th>
+                    <th scope="col" class="thcell pn LengthMM" data-sort-col="LengthMM" data-sort-num="1" aria-sort="none">Length (mm)</th>
+                    <th scope="col" class="thcell pn LengthInch" data-sort-col="LengthInch" data-sort-num="1" aria-sort="none">Length (in)</th>
+                    <th scope="col" class="thcell pn static sku" data-sort-col="sku" aria-sort="none">Part #</th>
+                    <th scope="col" class="thcell pn price" data-sort-col="price" data-sort-num="1" aria-sort="none">Price</th>
+                    <th scope="col" class="thcell pn vd">Product Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each category.products}}
+                    <tr class="productrow" data-product-id="{{id}}">
+                        <td class="pvcol image">
+                            <a href="{{url}}">
+                                <img class="listItem-image" src="{{getImage image 'productgallery_size' (cdn ../theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                                <span class="img-seedet">See Details</span>
+                            </a>
+                        </td>
+                        <td class="pvcol DiameterMM">{{#each custom_fields}}{{#if name '===' 'DiameterMM'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol DiameterInch">{{#each custom_fields}}{{#if name '===' 'DiameterInch'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol LengthMM">{{#each custom_fields}}{{#if name '===' 'LengthMM'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol LengthInch">{{#each custom_fields}}{{#if name '===' 'LengthInch'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol static sku"><a href="{{url}}">{{{sku}}}</a></td>
+                        {{#if out_of_stock_message}}
+                        <td class="pvcol price"><span class="out-of-stock">Call for Price</span></td>
+                        {{else}}
+                        <td class="pvcol price">
+                            {{> components/products/price price=price}}
+                            <div class="price-section--withoutTax">{{#unless price.without_tax}}{{#unless price.with_tax}}<span class="price price--withoutTax">Call for Pricing</span>{{/unless}}{{/unless}}</div>
+                        </td>
+                        {{/if}}
+                        <td class="pvcol view-details"><a href="{{url}}" class="listview-style">View Info</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div id="myInputNoResults" style="display:none;">Your search does not appear on this page. You can search the entire site by using the search at the top of the window.</div>
+        {{else}}
+        <style>#product-listing-container, #swipemsg {display: none;}</style>
+        {{/if}}
+
+        <div id="backtotop" style="display: none;">
+            <i class="fas fa-chevron-up"></i>
+            <div>TOP</div>
+        </div>
+    </main>
+
+</div>
+
+<div id="categoryDescription">
+    {{#if category.description}}
+    {{{category.description}}}
+    {{/if}}
+</div>
+
+<style>
+/* category.js (runs on every listpage) force-injects empty FitsModel + ListDescription
+   cells into each row to normalize the standard parts table. This page doesn't use those
+   columns, so hide the injected cells to keep rows aligned with the 8 headers. */
+.pins-by-size td.pvcol.FitsModel,
+.pins-by-size td.pvcol.ListDescription { display: none; }
+
+/* Mobile card labels for the size columns (mirrors _productGrid.scss pattern) */
+@media only screen and (max-width: 767px) {
+    .pins-by-size td.pvcol.DiameterMM:before   { display: block; content: "Diameter (mm)"; font-weight: bold; }
+    .pins-by-size td.pvcol.DiameterInch:before { display: block; content: "Diameter (in)"; font-weight: bold; }
+    .pins-by-size td.pvcol.LengthMM:before     { display: block; content: "Length (mm)";   font-weight: bold; }
+    .pins-by-size td.pvcol.LengthInch:before   { display: block; content: "Length (in)";   font-weight: bold; }
+}
+</style>
+
+<script>
+// Table sort — numeric for size/price columns, string otherwise. Keys off data-sort-col -> cell class.
+document.addEventListener('DOMContentLoaded', function () {
+  var table = document.getElementById('slidetable');
+  if (!table) return;
+
+  var sortState = {};
+  var sortableHeaders = table.querySelectorAll('.thcell[data-sort-col]');
+
+  sortableHeaders.forEach(function (th) {
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', function () {
+      var col = this.getAttribute('data-sort-col');
+      var numeric = this.getAttribute('data-sort-num') === '1';
+      var dir = sortState[col] === 'asc' ? 'desc' : 'asc';
+      sortState = {};
+      sortState[col] = dir;
+
+      sortableHeaders.forEach(function (h) {
+        var caret = h.querySelector('.sort-caret');
+        if (caret) caret.remove();
+        if (h.getAttribute('data-sort-col') === col) {
+          var span = document.createElement('span');
+          span.className = 'sort-caret';
+          span.style.cssText = 'font-size:10px;margin-left:4px;';
+          span.textContent = dir === 'asc' ? ' ▲' : ' ▼';
+          h.appendChild(span);
+          h.setAttribute('aria-sort', dir === 'asc' ? 'ascending' : 'descending');
+        } else if (h.hasAttribute('aria-sort')) {
+          h.setAttribute('aria-sort', 'none');
+        }
+      });
+
+      var rows = Array.from(table.querySelectorAll('tr.productrow'));
+      rows.sort(function (a, b) {
+        var aEl = a.querySelector('.' + col);
+        var bEl = b.querySelector('.' + col);
+        var aVal = aEl ? aEl.textContent.trim() : '';
+        var bVal = bEl ? bEl.textContent.trim() : '';
+        if (numeric) {
+          aVal = parseFloat(aVal.replace(/[^0-9.]/g, ''));
+          bVal = parseFloat(bVal.replace(/[^0-9.]/g, ''));
+          if (isNaN(aVal)) aVal = dir === 'asc' ? Infinity : -Infinity;
+          if (isNaN(bVal)) bVal = dir === 'asc' ? Infinity : -Infinity;
+          return dir === 'asc' ? aVal - bVal : bVal - aVal;
+        }
+        var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
+        return dir === 'asc' ? cmp : -cmp;
+      });
+
+      var tbody = table.tBodies.length ? table.tBodies[0] : table;
+      rows.forEach(function (row) { tbody.appendChild(row); });
+    });
+  });
+});
+
+function myFunction() {
+  var input     = document.getElementById("myInput");
+  var filter    = (input.value || "").toUpperCase();
+  var table     = document.getElementById("slidetable");
+  var rows      = table.getElementsByClassName("productrow");
+  var clearBtn  = document.getElementById("myInputClear");
+  var noResults = document.getElementById("myInputNoResults");
+
+  if (clearBtn) clearBtn.style.display = filter ? "inline-block" : "none";
+
+  var visibleCount = 0;
+  var fields = ["DiameterMM", "DiameterInch", "LengthMM", "LengthInch", "sku"];
+
+  for (var i = 0; i < rows.length; i++) {
+    var haystack = "";
+    for (var f = 0; f < fields.length; f++) {
+      var el = rows[i].getElementsByClassName(fields[f])[0];
+      if (el) haystack += " " + (el.textContent || el.innerText);
+    }
+    var visible = !filter || haystack.toUpperCase().indexOf(filter) > -1;
+    rows[i].style.display = visible ? "" : "none";
+    if (visible) visibleCount++;
+  }
+
+  if (noResults) noResults.style.display = (filter && visibleCount === 0) ? "block" : "none";
+}
+</script>
+
+{{/partial}}
+{{> layout/base}}
