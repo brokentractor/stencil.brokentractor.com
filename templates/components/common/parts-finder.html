@@ -5,6 +5,43 @@
      The {{{json}}} helper (JSON.stringify) escapes names safely. Heavy data only loads on
      pages that include this partial (home + landing-lev1); the footer #pf-data stays lean.
      Styles live in scss/layouts/home/_home.scss (#parts-finder / .pf-* are global). -->
+<style>
+.pf-field--btn { position: relative; }
+#pf-tip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    background: #ffbe00;
+    color: #001212;
+    font-family: 'proxima-nova', arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 7px 11px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity .18s ease, transform .18s ease;
+    z-index: 60;
+    pointer-events: none;
+}
+#pf-tip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 28px;
+    border: 6px solid transparent;
+    border-top-color: #ffbe00;
+}
+#pf-tip.pf-tip--show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media only screen and (max-width: 767px) {
+    #pf-tip { white-space: normal; max-width: 92%; }
+    #pf-tip::after { right: 24px; }
+}
+</style>
+
 <div id="parts-finder">
     <div class="pf-header">Jump to Category</div>
     <div class="pf-body">
@@ -34,6 +71,7 @@
         </div>
         <div class="pf-field pf-field--btn">
             <button id="pf-go" disabled>FIND PARTS</button>
+            <div class="pf-tip" id="pf-tip" role="status">Click here to jump to your selected category</div>
         </div>
     </div>
 </div>
@@ -61,12 +99,40 @@
         for (var i = 0; i < arr.length; i++) { if (arr[i].u === url) return arr[i]; }
         return null;
     }
-    function fill(sel, items, allLabel) {
+    // Build a set of "prefix" words from the selected brand + machine type names
+    // (ignoring generic filler) so we can strip the repeating prefix off child labels.
+    // Crude singularizer so "Loaders" (machine type) matches "Loader" (category).
+    function singular(w) { return (w.length > 3 && /s$/.test(w)) ? w.replace(/s$/, '') : w; }
+    function stopSet() {
+        var skip = { parts: 1, aftermarket: 1, oem: 1, the: 1, and: 1, '': 1 };
+        var set = {};
+        for (var a = 0; a < arguments.length; a++) {
+            (arguments[a] || '').toLowerCase().split(/[\s–\-]+/).forEach(function (w) {
+                w = w.replace(/[^a-z0-9]/g, '');
+                if (w && !skip[w]) set[singular(w)] = 1;
+            });
+        }
+        return set;
+    }
+    // Strip leading words that are in the stop set ("Case Backhoe Hydraulics" -> "Hydraulics").
+    // Always keeps at least one word so labels never go blank.
+    function stripLeading(label, set) {
+        var words = (label || '').trim().split(/\s+/);
+        var i = 0;
+        while (i < words.length - 1) {
+            var key = words[i].toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (!key) { i++; continue; }        // punctuation like "&" — skip over, keep stripping
+            if (set[singular(key)]) { i++; } else { break; }
+        }
+        return words.slice(i).join(' ');
+    }
+
+    function fill(sel, items, allLabel, stripWith) {
         sel.innerHTML = '<option value="">' + allLabel + '</option>';
         (items || []).forEach(function (it) {
             var o = document.createElement('option');
             o.value = it.u;
-            o.textContent = it.n;
+            o.textContent = stripWith ? stripLeading(it.n, stripWith) : it.n;
             sel.appendChild(o);
         });
         sel.disabled = !items || items.length === 0;
@@ -94,7 +160,7 @@
         resetSubcat();
         checkGo();
         var b = find(brands, this.value);
-        if (b) fill(typeSel, b.c, 'All Machine Types');
+        if (b) fill(typeSel, b.c, 'All Machine Types', stopSet(b.n));
     });
 
     // Machine Type → Part Categories
@@ -105,7 +171,7 @@
         if (!this.value) { reset(catSel, 'Select Machine Type First'); return; }
         var b = find(brands, brandSel.value);
         var t = b && find(b.c, this.value);
-        if (t) fill(catSel, t.c, 'All Categories');
+        if (t) fill(catSel, t.c, 'All Categories', stopSet(b.n, t.n));
     });
 
     // Part Category → Sub-Categories
@@ -117,7 +183,7 @@
         var t = b && find(b.c, typeSel.value);
         var c = t && find(t.c, this.value);
         if (!c || !c.s || !c.s.length) return; // leave subcat hidden
-        fill(subcatSel, c.s, 'All Sub-Categories');
+        fill(subcatSel, c.s, 'All Sub-Categories', stopSet(b.n, t.n));
         subcatSel.disabled = false;
         subcatWrap.style.display = '';
     });
@@ -126,6 +192,23 @@
     goBtn.addEventListener('click', function () {
         var dest = subcatSel.value || catSel.value || typeSel.value || brandSel.value;
         if (dest) window.location.href = dest;
+    });
+
+    // Tooltip: nudge to click FIND PARTS once no deeper level can be chosen.
+    var tipEl = document.getElementById('pf-tip');
+    function atTreeEnd() {
+        if (!brandSel.value) return false;                                             // nothing chosen
+        if (subcatSel.value) return true;                                              // picked a sub-category (deepest)
+        if (catSel.value && subcatWrap.style.display === 'none') return true;          // category with no sub-categories
+        if (typeSel.value && (catSel.disabled || catSel.options.length <= 1)) return true; // type with no categories
+        if (typeSel.disabled || typeSel.options.length <= 1) return true;              // brand with no machine types
+        return false;
+    }
+    function updateTip() {
+        if (tipEl) tipEl.classList.toggle('pf-tip--show', atTreeEnd());
+    }
+    [brandSel, typeSel, catSel, subcatSel].forEach(function (s) {
+        s.addEventListener('change', updateTip);
     });
 
     // Normalize any URL to a comparable lowercase path with no trailing slash.
@@ -158,6 +241,7 @@
         if (hit.t) { typeSel.value = hit.t; typeSel.dispatchEvent(new Event('change')); }
         if (hit.c) { catSel.value  = hit.c; catSel.dispatchEvent(new Event('change')); }
         if (hit.s) { subcatSel.value = hit.s; }
+        updateTip();
     })();
 })();
 </script>
