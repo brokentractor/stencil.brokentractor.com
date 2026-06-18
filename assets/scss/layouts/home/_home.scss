@@ -6,6 +6,59 @@
 	display: none;
 }
 
+// Category page header — same dark/display language as the home hero, but its own
+// class (so the homepage hero stays independent) and no bottom margin (sits flush
+// with the content below). Used by components/common/category-hero.html.
+.category-header {
+    position: relative;
+    overflow: hidden;
+    background: #1a1a1a;
+    color: #fff;
+    margin: -1px -10px 0;
+    border-bottom: 4px solid #ffbe00; // yellow accent line (matches landing-lev1)
+
+    @include breakpoint("medium") {
+        margin: 15px 0 0;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 56px 56px;
+        pointer-events: none;
+    }
+
+    &__inner {
+        position: relative;
+        padding: 24px 16px;
+
+        @include breakpoint("medium") {
+            padding: 15px 24px;
+        }
+    }
+
+    &__title {
+        font-family: $industry, "Oswald", sans-serif;
+        font-weight: 900;
+        font-size: clamp(26px, 4vw, 44px);
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 0;
+        text-align: left;
+
+        em {
+            font-style: italic;
+            color: #ffbe00;
+        }
+    }
+}
+
 // Compact home hero — matches the blog hero language (self-contained dark block)
 .bt-home-hero {
     position: relative;

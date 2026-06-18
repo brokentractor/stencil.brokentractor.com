@@ -43,6 +43,7 @@ fieldset.form-fieldset.actionBar-section {
     background: #fff;
     box-shadow: none;
     border: 1px solid #ddd;
+    border-top: none; // hero sits flush above; the top border was showing as a thin line
 }
 #categoryDescription {
     padding: 5px 20px 10px 20px;
