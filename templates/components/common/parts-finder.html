@@ -160,7 +160,7 @@
         resetSubcat();
         checkGo();
         var b = find(brands, this.value);
-        if (b) fill(typeSel, b.c, 'All Machine Types', stopSet(b.n));
+        if (b) fill(typeSel, b.c, 'All Machine Types', stopSet(b.n, 'IH'));
     });
 
     // Machine Type → Part Categories
