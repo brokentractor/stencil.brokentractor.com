@@ -107,10 +107,15 @@
         var skip = { parts: 1, aftermarket: 1, oem: 1, the: 1, and: 1, '': 1 };
         var set = {};
         for (var a = 0; a < arguments.length; a++) {
-            (arguments[a] || '').toLowerCase().split(/[\s–\-]+/).forEach(function (w) {
-                w = w.replace(/[^a-z0-9]/g, '');
-                if (w && !skip[w]) set[singular(w)] = 1;
-            });
+            var words = (arguments[a] || '').toLowerCase().split(/[\s–\-]+/)
+                .map(function (w) { return w.replace(/[^a-z0-9]/g, ''); })
+                .filter(function (w) { return w && !skip[w]; });
+            words.forEach(function (w) { set[singular(w)] = 1; });
+            // also add the acronym of a multi-word name ("John Deere" -> "jd")
+            if (words.length >= 2) {
+                var acr = words.map(function (w) { return w.charAt(0); }).join('');
+                if (acr.length >= 2) set[acr] = 1;
+            }
         }
         return set;
     }
@@ -171,7 +176,7 @@
         if (!this.value) { reset(catSel, 'Select Machine Type First'); return; }
         var b = find(brands, brandSel.value);
         var t = b && find(b.c, this.value);
-        if (t) fill(catSel, t.c, 'All Categories', stopSet(b.n, t.n));
+        if (t) fill(catSel, t.c, 'All Categories', stopSet(b.n, t.n, 'articulated'));
     });
 
     // Part Category → Sub-Categories
@@ -183,7 +188,7 @@
         var t = b && find(b.c, typeSel.value);
         var c = t && find(t.c, this.value);
         if (!c || !c.s || !c.s.length) return; // leave subcat hidden
-        fill(subcatSel, c.s, 'All Sub-Categories', stopSet(b.n, t.n));
+        fill(subcatSel, c.s, 'All Sub-Categories', stopSet(b.n, t.n, 'articulated'));
         subcatSel.disabled = false;
         subcatWrap.style.display = '';
     });
