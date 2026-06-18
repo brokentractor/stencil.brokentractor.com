@@ -18,7 +18,34 @@ category:
 
 {{#partial "page"}}
 
-<h1 class="page-heading">{{category.name}}</h1>
+<div class="bt-home-hero">
+    <div class="bt-home-hero__inner">
+        <h1 class="bt-home-hero__title">{{category.name}}</h1>
+    </div>
+</div>
+
+<style>
+/* Hero header + Jump to Category read as one stacked element: same side margins,
+   flush vertical connection, matching horizontal padding. */
+.lev1 .bt-home-hero { margin: 15px 21px 0; }
+.lev1 .bt-home-hero__inner { padding: 14px 20px; }
+.lev1 .bt-home-hero__title { text-align: left; margin-bottom: 0; font-size: 50px; }
+.lev1 #parts-finder { margin: 0 21px 32px; }
+.lev1 .pf-header { font-size: 14px; padding: 8px 20px; letter-spacing: 0.5px; }
+.lev1-section-head { margin: 0 20px 24px; } /* match the card grid's 20px side inset */
+@media only screen and (max-width: 767px) {
+    .lev1 .bt-home-hero { margin: 11px 11px 0; }
+    .lev1 #parts-finder { margin: 0 11px 32px; }
+}
+</style>
+{{> components/common/parts-finder}}
+
+<div class="bt-section-head lev1-section-head">
+    <h2>Browse Categories</h2>
+    <span class="bt-section-head__sub">{{category.subcategories.length}} Categories</span>
+    <span class="bt-section-head__rule"></span>
+</div>
+
 <div class="cat-subcats lev-1">
     <ul>
         {{#each category.subcategories}}

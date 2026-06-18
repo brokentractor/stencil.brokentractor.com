@@ -1,0 +1,163 @@
+<!-- Jump to Category / Parts Finder widget.
+     Self-contained: the brand → type → category → sub-category tree is emitted ONCE as a
+     compact JSON blob (#pf-tree, a single <script> text node, not thousands of DOM nodes)
+     from the global {{categories}}. Every dropdown populates instantly with no fetch.
+     The {{{json}}} helper (JSON.stringify) escapes names safely. Heavy data only loads on
+     pages that include this partial (home + landing-lev1); the footer #pf-data stays lean.
+     Styles live in scss/layouts/home/_home.scss (#parts-finder / .pf-* are global). -->
+<div id="parts-finder">
+    <div class="pf-header">Jump to Category</div>
+    <div class="pf-body">
+        <div class="pf-field">
+            <label for="pf-brand">Brand</label>
+            <select id="pf-brand">
+                <option value="">Select Brand...</option>
+            </select>
+        </div>
+        <div class="pf-field">
+            <label for="pf-type">Machine Type</label>
+            <select id="pf-type" disabled>
+                <option value="">Select Brand First</option>
+            </select>
+        </div>
+        <div class="pf-field">
+            <label for="pf-cat">Part Category</label>
+            <select id="pf-cat" disabled>
+                <option value="">Select Machine Type First</option>
+            </select>
+        </div>
+        <div class="pf-field pf-field--subcat" id="pf-subcat-wrap" style="display:none">
+            <label for="pf-subcat">Sub-Category</label>
+            <select id="pf-subcat" disabled>
+                <option value="">All Sub-Categories</option>
+            </select>
+        </div>
+        <div class="pf-field pf-field--btn">
+            <button id="pf-go" disabled>FIND PARTS</button>
+        </div>
+    </div>
+</div>
+
+<script type="application/json" id="pf-tree">[{{#each categories}}{"n":{{{json name}}},"u":{{{json url}}},"c":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}},"c":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}},"s":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}} }{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]</script>
+
+<script>
+// ── Parts Finder Widget (JSON-driven, no fetch, no data DOM nodes) ────
+(function () {
+    var brandSel   = document.getElementById('pf-brand');
+    var typeSel    = document.getElementById('pf-type');
+    var catSel     = document.getElementById('pf-cat');
+    var subcatWrap = document.getElementById('pf-subcat-wrap');
+    var subcatSel  = document.getElementById('pf-subcat');
+    var goBtn      = document.getElementById('pf-go');
+    var treeEl     = document.getElementById('pf-tree');
+    if (!brandSel || !treeEl) return; // widget/data not on this page
+
+    var brands;
+    try { brands = JSON.parse(treeEl.textContent); } catch (e) { brands = []; }
+    if (!brands.length) return;
+
+    function find(arr, url) {
+        if (!arr) return null;
+        for (var i = 0; i < arr.length; i++) { if (arr[i].u === url) return arr[i]; }
+        return null;
+    }
+    function fill(sel, items, allLabel) {
+        sel.innerHTML = '<option value="">' + allLabel + '</option>';
+        (items || []).forEach(function (it) {
+            var o = document.createElement('option');
+            o.value = it.u;
+            o.textContent = it.n;
+            sel.appendChild(o);
+        });
+        sel.disabled = !items || items.length === 0;
+    }
+    function reset(sel, msg) {
+        sel.innerHTML = '<option value="">' + msg + '</option>';
+        sel.disabled = true;
+    }
+    function resetSubcat() {
+        reset(subcatSel, 'All Sub-Categories');
+        subcatWrap.style.display = 'none';
+    }
+    function checkGo() {
+        goBtn.disabled = !brandSel.value;
+    }
+
+    // Populate brands (value = the brand's own landing URL)
+    fill(brandSel, brands, 'Select Brand...');
+    brandSel.disabled = false;
+
+    // Brand → Machine Types
+    brandSel.addEventListener('change', function () {
+        reset(typeSel, 'Select Machine Type...');
+        reset(catSel, 'Select Machine Type First');
+        resetSubcat();
+        checkGo();
+        var b = find(brands, this.value);
+        if (b) fill(typeSel, b.c, 'All Machine Types');
+    });
+
+    // Machine Type → Part Categories
+    typeSel.addEventListener('change', function () {
+        reset(catSel, 'All Categories');
+        resetSubcat();
+        checkGo();
+        if (!this.value) { reset(catSel, 'Select Machine Type First'); return; }
+        var b = find(brands, brandSel.value);
+        var t = b && find(b.c, this.value);
+        if (t) fill(catSel, t.c, 'All Categories');
+    });
+
+    // Part Category → Sub-Categories
+    catSel.addEventListener('change', function () {
+        resetSubcat();
+        checkGo();
+        if (!this.value) return;
+        var b = find(brands, brandSel.value);
+        var t = b && find(b.c, typeSel.value);
+        var c = t && find(t.c, this.value);
+        if (!c || !c.s || !c.s.length) return; // leave subcat hidden
+        fill(subcatSel, c.s, 'All Sub-Categories');
+        subcatSel.disabled = false;
+        subcatWrap.style.display = '';
+    });
+
+    // FIND PARTS — navigate to the deepest selected level
+    goBtn.addEventListener('click', function () {
+        var dest = subcatSel.value || catSel.value || typeSel.value || brandSel.value;
+        if (dest) window.location.href = dest;
+    });
+
+    // Normalize any URL to a comparable lowercase path with no trailing slash.
+    function normPath(u) {
+        if (!u) return '';
+        try { u = new URL(u, window.location.origin).pathname; } catch (e) {}
+        return u.replace(/\/+$/, '').toLowerCase();
+    }
+
+    // Index every node's URL → its selection chain, for preselect.
+    var index = {};
+    brands.forEach(function (b) {
+        index[normPath(b.u)] = { b: b.u };
+        (b.c || []).forEach(function (t) {
+            index[normPath(t.u)] = { b: b.u, t: t.u };
+            (t.c || []).forEach(function (c) {
+                index[normPath(c.u)] = { b: b.u, t: t.u, c: c.u };
+                (c.s || []).forEach(function (s) {
+                    index[normPath(s.u)] = { b: b.u, t: t.u, c: c.u, s: s.u };
+                });
+            });
+        });
+    });
+
+    // Pre-select the brand / type / category / sub-category matching the current page.
+    (function preselect() {
+        var hit = index[normPath(window.location.pathname)];
+        if (!hit) return;
+        brandSel.value = hit.b; brandSel.dispatchEvent(new Event('change'));
+        if (hit.t) { typeSel.value = hit.t; typeSel.dispatchEvent(new Event('change')); }
+        if (hit.c) { catSel.value  = hit.c; catSel.dispatchEvent(new Event('change')); }
+        if (hit.s) { subcatSel.value = hit.s; }
+    })();
+})();
+</script>
