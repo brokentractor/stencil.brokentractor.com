@@ -521,6 +521,12 @@ span.slideabox {
     }
 }
 
+// No subcategories → collapse immediately in CSS so the empty container's padding
+// doesn't show as a gap that category.js later removes (caused a late content shift).
+div#dsubcat:not(:has(.subcat)) {
+    display: none;
+}
+
 div#dsubcat {
     padding: 0px 20px 20px 20px;
     @include breakpoint("medium") {
