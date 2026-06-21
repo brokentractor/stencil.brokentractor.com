@@ -1,11 +1,13 @@
 <!-- Jump to Category / Parts Finder widget.
-     Self-contained: the brand → type → category → sub-category tree is emitted ONCE as a
-     compact JSON blob (#pf-tree, a single <script> text node, not thousands of DOM nodes)
-     from the global {{categories}}. Every dropdown populates instantly with no fetch.
-     The {{{json}}} helper (JSON.stringify) escapes names safely. Heavy data only loads on
-     pages that include this partial (home + landing-lev1); the footer #pf-data stays lean.
-     Styles live in scss/layouts/home/_home.scss (#parts-finder / .pf-* are global). -->
+     Template data provides 4 levels. Deeper levels are lazy-fetched via the Storefront
+     GraphQL API one node at a time (rootEntityId) to stay within BC's complexity limit.
+     Styles live in scss/layouts/home/_home.scss. -->
 <style>
+@media only screen and (max-width: 767px) {
+    .pf-header { cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: space-between; }
+    .pf-toggle-label { font-size: 12px; font-weight: 700; opacity: 0.8; }
+    #parts-finder.pf-collapsed .pf-body { display: none; }
+}
 .pf-field--btn { position: relative; }
 #pf-tip {
     position: absolute;
@@ -42,33 +44,10 @@
 }
 </style>
 
+<meta id="pf-sf-token" content="{{settings.storefront_api.token}}">
 <div id="parts-finder">
     <div class="pf-header">Jump to Category</div>
     <div class="pf-body">
-        <div class="pf-field">
-            <label for="pf-brand">Brand</label>
-            <select id="pf-brand">
-                <option value="">Select Brand...</option>
-            </select>
-        </div>
-        <div class="pf-field">
-            <label for="pf-type">Machine Type</label>
-            <select id="pf-type" disabled>
-                <option value="">Select Brand First</option>
-            </select>
-        </div>
-        <div class="pf-field">
-            <label for="pf-cat">Part Category</label>
-            <select id="pf-cat" disabled>
-                <option value="">Select Machine Type First</option>
-            </select>
-        </div>
-        <div class="pf-field pf-field--subcat" id="pf-subcat-wrap" style="display:none">
-            <label for="pf-subcat">Sub-Category</label>
-            <select id="pf-subcat" disabled>
-                <option value="">All Sub-Categories</option>
-            </select>
-        </div>
         <div class="pf-field pf-field--btn">
             <button id="pf-go" disabled>FIND PARTS</button>
             <div class="pf-tip" id="pf-tip" role="status">Click here to jump to your selected category</div>
@@ -76,32 +55,79 @@
     </div>
 </div>
 
-<script type="application/json" id="pf-tree">[{{#each categories}}{"n":{{{json name}}},"u":{{{json url}}},"c":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}},"c":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}},"s":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}} }{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]</script>
+{{!-- JSON tree: "i" = entityId, "c" = children. Template provides 4 levels; deeper levels lazy-fetched. --}}
+<script type="application/json" id="pf-tree">[{{#each categories}}{"n":{{{json name}}},"u":{{{json url}}},"i":{{id}},"c":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}},"i":{{id}},"c":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}},"i":{{id}},"c":[{{#each children}}{"n":{{{json name}}},"u":{{{json url}}},"i":{{id}},"c":[] }{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]}{{#unless @last}},{{/unless}}{{/each}}]</script>
 
 <script>
-// ── Parts Finder Widget (JSON-driven, no fetch, no data DOM nodes) ────
+// ── Mobile collapsible toggle ────
 (function () {
-    var brandSel   = document.getElementById('pf-brand');
-    var typeSel    = document.getElementById('pf-type');
-    var catSel     = document.getElementById('pf-cat');
-    var subcatWrap = document.getElementById('pf-subcat-wrap');
-    var subcatSel  = document.getElementById('pf-subcat');
-    var goBtn      = document.getElementById('pf-go');
-    var treeEl     = document.getElementById('pf-tree');
-    if (!brandSel || !treeEl) return; // widget/data not on this page
+    var finder = document.getElementById('parts-finder');
+    var header = finder && finder.querySelector('.pf-header');
+    if (!header) return;
+    var toggleLabel = document.createElement('span');
+    toggleLabel.className = 'pf-toggle-label';
+    header.appendChild(toggleLabel);
+    function isMobile() { return window.innerWidth <= 767; }
+    function updateLabel() {
+        toggleLabel.textContent = finder.classList.contains('pf-collapsed') ? '[Show]' : '[Hide]';
+        toggleLabel.style.display = isMobile() ? '' : 'none';
+    }
+    updateLabel();
+    header.addEventListener('click', function () {
+        if (!isMobile()) return;
+        finder.classList.toggle('pf-collapsed');
+        updateLabel();
+    });
+})();
+
+// ── Parts Finder Widget — dynamic depth with lazy GraphQL fetching ────
+(function () {
+    var pfBody = document.querySelector('#parts-finder .pf-body');
+    var goBtn  = document.getElementById('pf-go');
+    var tipEl  = document.getElementById('pf-tip');
+    var treeEl = document.getElementById('pf-tree');
+    if (!pfBody || !treeEl) return;
 
     var brands;
     try { brands = JSON.parse(treeEl.textContent); } catch (e) { brands = []; }
     if (!brands.length) return;
 
-    function find(arr, url) {
-        if (!arr) return null;
-        for (var i = 0; i < arr.length; i++) { if (arr[i].u === url) return arr[i]; }
-        return null;
+    // Token for lazy GraphQL fetches — available immediately since meta tag is above this script.
+    var sfToken = (document.getElementById('pf-sf-token') || {}).getAttribute
+        ? document.getElementById('pf-sf-token').getAttribute('content') : '';
+
+    // Lazy-fetch the immediate children of a node by its BC entityId.
+    // Caches result on node.c so subsequent selections skip the fetch.
+    function fetchChildren(node, callback) {
+        if (!sfToken || !node.i) { callback([]); return; }
+        var q = '{ site { categoryTree(rootEntityId: ' + node.i + ') { entityId name path children { entityId name path children { entityId name path } } } } }';
+        fetch('/graphql', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + sfToken },
+            body: JSON.stringify({ query: q })
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            var tree = data && data.data && data.data.site && data.data.site.categoryTree;
+            if (!tree || !tree.length) { callback([]); return; }
+            // tree[0] is the node itself; its children are what we want.
+            function cvt(n) { return { n: n.name, u: n.path, i: n.entityId, c: (n.children || []).map(cvt) }; }
+            var children = (tree[0].children || []).map(cvt);
+            node.c = children; // cache so re-selection skips the fetch
+            callback(children);
+        })
+        .catch(function () { callback([]); });
     }
-    // Build a set of "prefix" words from the selected brand + machine type names
-    // (ignoring generic filler) so we can strip the repeating prefix off child labels.
-    // Crude singularizer so "Loaders" (machine type) matches "Loader" (category).
+
+    // depth → label
+    var LABELS = ['Brand', 'Machine Type', 'Part Category', 'Sub-Category'];
+    function labelFor(d) { return LABELS[d] || LABELS[LABELS.length - 1]; }
+
+    // depth → placeholder
+    var PLACEHOLDERS = ['Select Brand...', 'All Machine Types', 'All Categories'];
+    function placeholderFor(d) { return PLACEHOLDERS[d] || 'All Sub-Categories'; }
+
+    // ── strip-leading helpers ────
     function singular(w) { return (w.length > 3 && /s$/.test(w)) ? w.replace(/s$/, '') : w; }
     function stopSet() {
         var skip = { parts: 1, aftermarket: 1, oem: 1, the: 1, and: 1, '': 1 };
@@ -111,7 +137,6 @@
                 .map(function (w) { return w.replace(/[^a-z0-9]/g, ''); })
                 .filter(function (w) { return w && !skip[w]; });
             words.forEach(function (w) { set[singular(w)] = 1; });
-            // also add the acronym of a multi-word name ("John Deere" -> "jd")
             if (words.length >= 2) {
                 var acr = words.map(function (w) { return w.charAt(0); }).join('');
                 if (acr.length >= 2) set[acr] = 1;
@@ -119,134 +144,147 @@
         }
         return set;
     }
-    // Strip leading words that are in the stop set ("Case Backhoe Hydraulics" -> "Hydraulics").
-    // Always keeps at least one word so labels never go blank.
     function stripLeading(label, set) {
         var words = (label || '').trim().split(/\s+/);
         var i = 0;
         while (i < words.length - 1) {
             var key = words[i].toLowerCase().replace(/[^a-z0-9]/g, '');
-            if (!key) { i++; continue; }        // punctuation like "&" — skip over, keep stripping
+            if (!key) { i++; continue; }
             if (set[singular(key)]) { i++; } else { break; }
         }
         return words.slice(i).join(' ');
     }
 
-    function fill(sel, items, allLabel, stripWith) {
-        sel.innerHTML = '<option value="">' + allLabel + '</option>';
+    var levels = [];
+
+    function find(arr, url) {
+        if (!arr) return null;
+        for (var i = 0; i < arr.length; i++) { if (arr[i].u === url) return arr[i]; }
+        return null;
+    }
+
+    function trimTo(fromDepth) {
+        while (levels.length > fromDepth) {
+            var removed = levels.pop();
+            if (removed.wrap.parentNode) removed.wrap.parentNode.removeChild(removed.wrap);
+        }
+    }
+
+    function stopSetForDepth(depth) {
+        var args = ['IH', 'articulated'];
+        for (var i = 0; i < depth && i < levels.length; i++) {
+            if (levels[i].node) args.push(levels[i].node.n);
+        }
+        return stopSet.apply(null, args);
+    }
+
+    function addLevel(depth, items) {
+        var wrap = document.createElement('div');
+        wrap.className = 'pf-field';
+
+        var lbl = document.createElement('label');
+        var id  = 'pf-sel-' + depth;
+        lbl.setAttribute('for', id);
+        lbl.textContent = labelFor(depth);
+
+        var sel = document.createElement('select');
+        sel.id = id;
+
+        var strip = (depth === 1 || depth === 2) ? stopSetForDepth(depth) : null;
+        sel.innerHTML = '<option value="">' + placeholderFor(depth) + '</option>';
         (items || []).forEach(function (it) {
             var o = document.createElement('option');
             o.value = it.u;
-            o.textContent = stripWith ? stripLeading(it.n, stripWith) : it.n;
+            o.textContent = strip ? stripLeading(it.n, strip) : it.n;
             sel.appendChild(o);
         });
         sel.disabled = !items || items.length === 0;
+
+        wrap.appendChild(lbl);
+        wrap.appendChild(sel);
+        pfBody.insertBefore(wrap, pfBody.querySelector('.pf-field--btn'));
+
+        var entry = { wrap: wrap, sel: sel, node: null };
+        levels.push(entry);
+
+        sel.addEventListener('change', function () {
+            var selectedUrl = this.value;
+            trimTo(depth + 1);
+            var parentItems = depth === 0 ? brands : (levels[depth - 1].node ? levels[depth - 1].node.c : null);
+            entry.node = selectedUrl ? find(parentItems, selectedUrl) : null;
+            updateGo();
+            if (!entry.node) { updateTip(); return; }
+
+            if (entry.node.c && entry.node.c.length) {
+                // Children already in template data — render immediately.
+                addLevel(depth + 1, entry.node.c);
+                updateTip();
+            } else if (entry.node.i) {
+                // No children in template data — lazy-fetch from GraphQL.
+                fetchChildren(entry.node, function (children) {
+                    if (children.length) addLevel(depth + 1, children);
+                    updateTip();
+                });
+            } else {
+                updateTip();
+            }
+        });
+
+        return entry;
     }
-    function reset(sel, msg) {
-        sel.innerHTML = '<option value="">' + msg + '</option>';
-        sel.disabled = true;
-    }
-    function resetSubcat() {
-        reset(subcatSel, 'All Sub-Categories');
-        subcatWrap.style.display = 'none';
-    }
-    function checkGo() {
-        goBtn.disabled = !brandSel.value;
+
+    function updateGo() {
+        goBtn.disabled = !(levels.length > 0 && levels[0].sel.value);
     }
 
-    // Populate brands (value = the brand's own landing URL)
-    fill(brandSel, brands, 'Select Brand...');
-    brandSel.disabled = false;
-
-    // Brand → Machine Types
-    brandSel.addEventListener('change', function () {
-        reset(typeSel, 'Select Machine Type...');
-        reset(catSel, 'Select Machine Type First');
-        resetSubcat();
-        checkGo();
-        var b = find(brands, this.value);
-        if (b) fill(typeSel, b.c, 'All Machine Types', stopSet(b.n, 'IH'));
-    });
-
-    // Machine Type → Part Categories
-    typeSel.addEventListener('change', function () {
-        reset(catSel, 'All Categories');
-        resetSubcat();
-        checkGo();
-        if (!this.value) { reset(catSel, 'Select Machine Type First'); return; }
-        var b = find(brands, brandSel.value);
-        var t = b && find(b.c, this.value);
-        if (t) fill(catSel, t.c, 'All Categories', stopSet(b.n, t.n, 'articulated'));
-    });
-
-    // Part Category → Sub-Categories
-    catSel.addEventListener('change', function () {
-        resetSubcat();
-        checkGo();
-        if (!this.value) return;
-        var b = find(brands, brandSel.value);
-        var t = b && find(b.c, typeSel.value);
-        var c = t && find(t.c, this.value);
-        if (!c || !c.s || !c.s.length) return; // leave subcat hidden
-        fill(subcatSel, c.s, 'All Sub-Categories', stopSet(b.n, t.n, 'articulated'));
-        subcatSel.disabled = false;
-        subcatWrap.style.display = '';
-    });
-
-    // FIND PARTS — navigate to the deepest selected level
-    goBtn.addEventListener('click', function () {
-        var dest = subcatSel.value || catSel.value || typeSel.value || brandSel.value;
-        if (dest) window.location.href = dest;
-    });
-
-    // Tooltip: nudge to click FIND PARTS once no deeper level can be chosen.
-    var tipEl = document.getElementById('pf-tip');
     function atTreeEnd() {
-        if (!brandSel.value) return false;                                             // nothing chosen
-        if (subcatSel.value) return true;                                              // picked a sub-category (deepest)
-        if (catSel.value && subcatWrap.style.display === 'none') return true;          // category with no sub-categories
-        if (typeSel.value && (catSel.disabled || catSel.options.length <= 1)) return true; // type with no categories
-        if (typeSel.disabled || typeSel.options.length <= 1) return true;              // brand with no machine types
-        return false;
+        if (!levels.length || !levels[0].sel.value) return false;
+        var last = levels[levels.length - 1];
+        if (!last.sel.value) return false;
+        return !last.node || !last.node.c || !last.node.c.length;
     }
+
     function updateTip() {
         if (tipEl) tipEl.classList.toggle('pf-tip--show', atTreeEnd());
     }
-    [brandSel, typeSel, catSel, subcatSel].forEach(function (s) {
-        s.addEventListener('change', updateTip);
+
+    goBtn.addEventListener('click', function () {
+        var dest = '';
+        for (var i = levels.length - 1; i >= 0; i--) {
+            if (levels[i].sel.value) { dest = levels[i].sel.value; break; }
+        }
+        if (dest) window.location.href = dest;
     });
 
-    // Normalize any URL to a comparable lowercase path with no trailing slash.
     function normPath(u) {
         if (!u) return '';
         try { u = new URL(u, window.location.origin).pathname; } catch (e) {}
         return u.replace(/\/+$/, '').toLowerCase();
     }
 
-    // Index every node's URL → its selection chain, for preselect.
     var index = {};
-    brands.forEach(function (b) {
-        index[normPath(b.u)] = { b: b.u };
-        (b.c || []).forEach(function (t) {
-            index[normPath(t.u)] = { b: b.u, t: t.u };
-            (t.c || []).forEach(function (c) {
-                index[normPath(c.u)] = { b: b.u, t: t.u, c: c.u };
-                (c.s || []).forEach(function (s) {
-                    index[normPath(s.u)] = { b: b.u, t: t.u, c: c.u, s: s.u };
-                });
-            });
-        });
-    });
+    function buildIndex() {
+        index = {};
+        function idx(node, chain) {
+            index[normPath(node.u)] = chain.slice();
+            if (node.c) node.c.forEach(function (child) { idx(child, chain.concat(child.u)); });
+        }
+        brands.forEach(function (b) { idx(b, [b.u]); });
+    }
 
-    // Pre-select the brand / type / category / sub-category matching the current page.
-    (function preselect() {
-        var hit = index[normPath(window.location.pathname)];
-        if (!hit) return;
-        brandSel.value = hit.b; brandSel.dispatchEvent(new Event('change'));
-        if (hit.t) { typeSel.value = hit.t; typeSel.dispatchEvent(new Event('change')); }
-        if (hit.c) { catSel.value  = hit.c; catSel.dispatchEvent(new Event('change')); }
-        if (hit.s) { subcatSel.value = hit.s; }
+    function preselect() {
+        var chain = index[normPath(window.location.pathname)];
+        if (!chain) return;
+        chain.forEach(function (url, i) {
+            if (i >= levels.length) return;
+            levels[i].sel.value = url;
+            levels[i].sel.dispatchEvent(new Event('change'));
+        });
         updateTip();
-    })();
+    }
+
+    buildIndex();
+    addLevel(0, brands);
+    preselect();
 })();
 </script>
