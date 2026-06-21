@@ -191,7 +191,10 @@
         sel.id = id;
 
         var strip = (depth === 1 || depth === 2) ? stopSetForDepth(depth) : null;
-        sel.innerHTML = '<option value="">' + placeholderFor(depth) + '</option>';
+        var placeholder = (!items || !items.length) && depth > 0
+            ? 'Select ' + labelFor(depth - 1) + ' First'
+            : placeholderFor(depth);
+        sel.innerHTML = '<option value="">' + placeholder + '</option>';
         (items || []).forEach(function (it) {
             var o = document.createElement('option');
             o.value = it.u;
@@ -285,6 +288,8 @@
 
     buildIndex();
     addLevel(0, brands);
+    // Always show a second dropdown so the widget doesn't look bare.
+    if (levels.length < 2) addLevel(1, []);
     preselect();
 })();
 </script>
