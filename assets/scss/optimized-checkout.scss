@@ -32,6 +32,19 @@
 .checkoutHeader-heading {
     text-align: center;
 }
+// Constrain the actual logo image (was rendering at native size)
+.checkoutHeader-logo,
+.checkoutHeader-heading img {
+    max-height: 100px;
+    width: auto;
+    height: auto;
+}
+@media only screen and (min-width: 600px) {
+    .checkoutHeader-logo,
+    .checkoutHeader-heading img {
+        max-height: 120px;
+    }
+}
 .header-logo-text {
 
     font-size: 0px !important;
@@ -314,6 +327,14 @@ a {
 .optimizedCheckout-form-input {
     background-color: stencilColor("optimizedCheckout-formField-backgroundColor");
     border-color: stencilColor("optimizedCheckout-formField-borderColor");
+}
+
+// Order-comments textarea: tall enough to show the full message without scrolling.
+// Scoped to textarea so it doesn't resize single-line text inputs.
+textarea.optimizedCheckout-form-input,
+textarea.form-input {
+    height: 270px;
+    min-height: 270px;
 }
 
 //

@@ -84,6 +84,130 @@
 })();
 </script>
 
+<script>
+/* ============================================================
+   Broken Tractor — Blind Drop Ship checkbox (PROOF OF CONCEPT)
+   Optimized Checkout is a hosted React app (#checkout-app), so we
+   inject the checkbox the same way the maxlength script above does:
+   wait for mount, watch for re-renders, stay idempotent.
+
+   POC behavior: toggling the box writes/removes a marker line in the
+   order-comments field so the choice already flows onto the order.
+   Step 2 (later) will replace this with a reliable order flag for Lee.
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+
+  var FIELD_ID  = 'bt-blind-dropship-field';
+  var BOX_ID    = 'bt-blind-dropship';
+  var MARKER    = '*** BLIND DROP SHIP *** DO NOT include an invoice, packing slip, or any Broken Tractor branding/labels in this package.';
+
+  // Remembered choice. The checkbox and the order-comments box live on different
+  // checkout steps, so we persist the intent here and re-apply it to the comments
+  // field whenever it (re)appears — not just at the instant the box is toggled.
+  var wanted = false;
+
+  // Set a value on a React-controlled field so React notices the change.
+  function setReactValue(el, value) {
+    if (!el) return;
+    var proto = el.tagName === 'TEXTAREA'
+      ? window.HTMLTextAreaElement.prototype
+      : window.HTMLInputElement.prototype;
+    var setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
+    setter.call(el, value);
+    el.dispatchEvent(new Event('input',  { bubbles: true }));
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  function commentsField() {
+    return document.getElementById('orderComment')
+        || document.querySelector('textarea[name="orderComment"]');
+  }
+
+  // Make the comments field match `wanted`. Idempotent + loop-safe: only writes
+  // when the resulting value actually differs, so React re-renders don't ping-pong.
+  // When checked we also lock the field (readOnly) so the customer can't type over
+  // or delete the marker — readOnly keeps the value submitting, unlike `disabled`.
+  function enforce() {
+    var ta = commentsField();
+    if (!ta) return; // comments box not on screen (or not enabled) yet
+    var lines = ta.value.split('\n').filter(function (l) { return l.trim() !== MARKER; });
+    if (wanted) lines.unshift(MARKER);
+    var next = lines.join('\n').replace(/^\n+/, '');
+    if (next !== ta.value) setReactValue(ta, next);
+
+    if (ta.readOnly !== wanted) ta.readOnly = wanted;        // re-assert each render
+    ta.style.backgroundColor = wanted ? '#f3f4f6' : '';
+    ta.style.cursor          = wanted ? 'not-allowed' : '';
+    ta.style.opacity         = wanted ? '0.75' : '';
+  }
+
+  function buildField() {
+    var wrap = document.createElement('div');
+    wrap.className = 'form-field';
+    wrap.id = FIELD_ID;
+    // NOTE: deliberately NOT using BC's .form-checkbox / .optimizedCheckout-form-checkbox
+    // classes — optimized-checkout.css visually hides the native input (opacity:0;
+    // position:absolute) and draws a custom box via a sibling <label>::before. Our
+    // layout doesn't match that structure, so we style a plain native checkbox instead.
+    wrap.innerHTML =
+      '<div class="bt-blind-dropship-label" ' +
+           'style="font-weight:700;font-size:14px;color:#222;margin:0 0 6px;">' +
+        'Do you need this order to be blind drop shipped?' +
+      '</div>' +
+      '<div class="bt-blind-dropship-box" ' +
+           'style="background:#fff7ed;border:1px solid #fdba74;border-radius:6px;padding:10px;margin:4px 0;">' +
+        '<label for="' + BOX_ID + '" ' +
+               'style="display:flex;align-items:flex-start;gap:.5rem;cursor:pointer;margin:0;font-size:14px;color:#222;">' +
+          '<input type="checkbox" id="' + BOX_ID + '" ' +
+                 'style="width:18px;height:18px;margin:.15rem .1rem 0 0;flex:0 0 auto;accent-color:#d9531e;cursor:pointer;">' +
+          '<span><strong>Blind Drop Ship</strong> &mdash; this is a drop-ship order. ' +
+          'Do <u>not</u> include an invoice or any Broken Tractor branding/labels in the package.</span>' +
+        '</label>' +
+      '</div>';
+    return wrap;
+  }
+
+  function inject() {
+    if (document.getElementById(FIELD_ID)) return; // already placed
+
+    // Preferred anchor: right above the order-comments field.
+    var ta = commentsField();
+    var anchor = ta && (ta.closest('.form-field') || ta.parentNode);
+    var field = buildField();
+
+    if (anchor && anchor.parentNode) {
+      anchor.parentNode.insertBefore(field, anchor);
+    } else {
+      // Fallback: top of the shipping step (no comments field present).
+      var ship = document.querySelector('.checkout-step--shipping');
+      if (!ship) return; // shipping step not mounted yet; try again on next render
+      ship.insertBefore(field, ship.firstChild);
+    }
+
+    var input = field.querySelector('#' + BOX_ID);
+    input.checked = wanted; // restore state if React wiped a previous instance
+    input.addEventListener('change', function (e) {
+      wanted = e.target.checked;
+      enforce();
+    });
+  }
+
+  function tick() { inject(); enforce(); }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var app = document.getElementById('checkout-app') || document.body;
+    tick();
+
+    var mo = new MutationObserver(tick);
+    mo.observe(app, { childList: true, subtree: true });
+
+    setTimeout(tick, 600);
+    setTimeout(tick, 1500);
+  });
+})();
+</script>
+
 
 {{{ footer.scripts }}}
 
