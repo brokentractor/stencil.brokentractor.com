@@ -45,6 +45,10 @@ fieldset.form-fieldset.actionBar-section {
     border: 1px solid #ddd;
     border-top: none; // hero sits flush above; the top border was showing as a thin line
 }
+
+@media only screen and (max-width: 767px) {
+    .listpage .page { border: none; }
+}
 #categoryDescription {
     padding: 5px 20px 10px 20px;
 
