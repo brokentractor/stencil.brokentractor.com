@@ -140,6 +140,19 @@ h1#producttitle {
     }
 }
 
+// Mobile: one swipeable line (overrides the product breadcrumb's flex-wrap: wrap)
+@media only screen and (max-width: 767px) {
+    .pvwrap .breadcrumbs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        min-width: 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .pvwrap .breadcrumbs::-webkit-scrollbar { display: none; }
+}
+
 section#pv-details {
     float: left;
     width: 100%;

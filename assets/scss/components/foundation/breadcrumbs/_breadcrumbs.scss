@@ -80,6 +80,22 @@
   }
 }
 
+// Mobile: keep the breadcrumb on one swipeable line instead of wrapping to several rows.
+@media only screen and (max-width: 767px) {
+  .breadcrumbs-row { justify-content: flex-start; }
+  .breadcrumbs {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;           // Firefox
+  }
+  .breadcrumbs::-webkit-scrollbar { display: none; }  // Chrome/Safari
+  .breadcrumb { flex: 0 0 auto; }
+}
+
 // Tooltip (kept for potential future use, currently commented out in HTML)
 .bc-crumb-tip {
   display: none;

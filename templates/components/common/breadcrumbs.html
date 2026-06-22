@@ -11,3 +11,69 @@
     {{/each}}
   </ul>
 </div>
+
+<style>
+/* Collapse-the-middle breadcrumb on mobile: HOME / … / Current */
+@media only screen and (max-width: 767px) {
+  /* Truncate the (long) current page crumb so the row stays on one line */
+  #bt-breadcrumbs .breadcrumb.is-active .breadcrumb-label {
+    display: inline-block;
+    max-width: 52vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+  /* "…" expander — big, obvious tap target */
+  #bt-breadcrumbs .bc-more__btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 10px;
+    line-height: 1;
+  }
+}
+</style>
+
+<script>
+(function () {
+  var ul = document.getElementById('bt-breadcrumbs');
+  if (!ul) return;
+  var crumbs = Array.prototype.slice.call(ul.querySelectorAll('li.breadcrumb'));
+  if (crumbs.length < 4) return;                 // Home + <=2 others: nothing worth collapsing
+
+  function isMobile() { return window.innerWidth <= 767; }
+
+  var middle = crumbs.slice(1, crumbs.length - 1);   // everything between Home and current
+  var expanded = false;
+
+  // "…" toggle, inserted right after Home
+  var more = document.createElement('li');
+  more.className = 'breadcrumb bc-more';
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'breadcrumb-label bc-more__btn';
+  btn.textContent = '. . .';
+  btn.setAttribute('aria-label', 'Show full breadcrumb path');
+  more.appendChild(btn);
+  crumbs[0].insertAdjacentElement('afterend', more);
+
+  function apply() {
+    var collapse = isMobile() && !expanded;
+    more.style.display = collapse ? '' : 'none';
+    middle.forEach(function (c) { c.style.display = collapse ? 'none' : ''; });
+  }
+
+  btn.addEventListener('click', function () { expanded = true; apply(); });
+
+  apply();
+  var t;
+  window.addEventListener('resize', function () {
+    clearTimeout(t);
+    t = setTimeout(function () { if (!isMobile()) expanded = false; apply(); }, 150);
+  });
+})();
+</script>

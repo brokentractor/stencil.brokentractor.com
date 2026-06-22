@@ -42,6 +42,20 @@
     #pf-tip { white-space: normal; max-width: 92%; }
     #pf-tip::after { right: 24px; }
 }
+
+/* Mobile progressive disclosure — picked levels collapse into tappable chips,
+   only the active dropdown shows, so a deep tree stays above the fold. */
+.pf-crumbs { display: none; }
+@media only screen and (max-width: 767px) {
+    .pf-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 12px; }
+    .pf-crumb {
+        background: #444; color: #fff; border: none; border-radius: 0;
+        font-family: 'proxima-nova', arial, sans-serif; font-size: 12px; font-weight: 700;
+        padding: 5px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .pf-crumb::after { content: "\270E"; font-size: 11px; opacity: 0.75; } /* pencil = tap to change */
+    .pf-field.pf-hidden { display: none; }
+}
 </style>
 
 <meta id="pf-sf-token" content="{{settings.storefront_api.token}}">
@@ -168,6 +182,8 @@
             var removed = levels.pop();
             if (removed.wrap.parentNode) removed.wrap.parentNode.removeChild(removed.wrap);
         }
+        editingIndex = null;
+        if (typeof renderProgressive === 'function') renderProgressive();
     }
 
     function stopSetForDepth(depth) {
@@ -190,7 +206,10 @@
         var sel = document.createElement('select');
         sel.id = id;
 
-        var strip = (depth === 1 || depth === 2) ? stopSetForDepth(depth) : null;
+        // Strip the repeating prefix from every level below the brand. Machine Type (depth 1)
+        // strips just the brand; Part Category, Sub-Category and deeper strip brand + machine
+        // type (the stop set is capped at depth 2 so the category's own words are kept).
+        var strip = depth >= 1 ? stopSetForDepth(Math.min(depth, 2)) : null;
         var placeholder = (!items || !items.length) && depth > 0
             ? 'Select ' + labelFor(depth - 1) + ' First'
             : placeholderFor(depth);
@@ -233,6 +252,7 @@
             }
         });
 
+        if (typeof renderProgressive === 'function') renderProgressive();
         return entry;
     }
 
@@ -286,10 +306,53 @@
         updateTip();
     }
 
+    // ── Mobile progressive disclosure ──
+    // On mobile, collapse already-picked levels into tappable chips and show only the
+    // active (deepest) dropdown. Tapping a chip re-opens that level to change it.
+    var editingIndex = null;
+    var mq = window.matchMedia('(max-width: 767px)');
+    var pfCrumbs = document.createElement('div');
+    pfCrumbs.className = 'pf-crumbs';
+    pfBody.insertBefore(pfCrumbs, pfBody.firstChild);
+
+    function renderProgressive() {
+        if (!pfCrumbs) return;
+        if (!mq.matches) {                                  // desktop: show all levels, no chips
+            levels.forEach(function (l) { l.wrap.classList.remove('pf-hidden'); });
+            pfCrumbs.innerHTML = '';
+            return;
+        }
+        var active = (editingIndex !== null && editingIndex < levels.length)
+            ? editingIndex : levels.length - 1;
+        pfCrumbs.innerHTML = '';
+        levels.forEach(function (l, i) {
+            if (i === active) {
+                l.wrap.classList.remove('pf-hidden');
+            } else if (i < active && l.sel.value) {
+                l.wrap.classList.add('pf-hidden');
+                var opt = l.sel.options[l.sel.selectedIndex];
+                var chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'pf-crumb';
+                chip.textContent = opt ? opt.textContent : '';
+                (function (idx) {
+                    chip.addEventListener('click', function () { editingIndex = idx; renderProgressive(); });
+                })(i);
+                pfCrumbs.appendChild(chip);
+            } else {
+                l.wrap.classList.add('pf-hidden');           // deeper than active → hide
+            }
+        });
+    }
+
+    if (mq.addEventListener) { mq.addEventListener('change', function () { editingIndex = null; renderProgressive(); }); }
+    else if (mq.addListener) { mq.addListener(function () { editingIndex = null; renderProgressive(); }); }
+
     buildIndex();
     addLevel(0, brands);
     // Always show a second dropdown so the widget doesn't look bare.
     if (levels.length < 2) addLevel(1, []);
     preselect();
+    renderProgressive();
 })();
 </script>

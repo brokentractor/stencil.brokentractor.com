@@ -14,7 +14,7 @@
     overflow: hidden;
     background: #1a1a1a;
     color: #fff;
-    margin: -1px -10px 0;
+    margin: -1px 0 0;
     border-bottom: 4px solid #ffbe00; // yellow accent line (matches landing-lev1)
 
     @include breakpoint("medium") {
