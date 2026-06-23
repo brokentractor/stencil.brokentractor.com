@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var sortState = {};
   var sortSelect = null;
 
-  function applySort(col, numeric, dir, secCol, secNumeric) {
+  function applySort(col, numeric, dir, secCol, secNumeric, terCol, terNumeric) {
     sortState = {};
     sortState[col] = dir;
 
@@ -242,7 +242,9 @@ document.addEventListener('DOMContentLoaded', function () {
     rows.sort(function (a, b) {
       var primary = cmpCol(a, b, col, numeric, dir);
       if (primary !== 0 || !secCol) return primary;
-      return cmpCol(a, b, secCol, secNumeric, 'asc');   // tiebreaker: always smallest → largest
+      var secondary = cmpCol(a, b, secCol, secNumeric, 'asc');   // tiebreaker: always smallest → largest
+      if (secondary !== 0 || !terCol) return secondary;
+      return cmpCol(a, b, terCol, terNumeric, 'asc');            // tertiary tiebreaker: smallest → largest
     });
 
     var tbody = table.tBodies.length ? table.tBodies[0] : table;
@@ -315,9 +317,9 @@ document.addEventListener('DOMContentLoaded', function () {
     toolbar.parentNode.insertBefore(wrap, toolbar.nextSibling);
   }
 
-  // Default sort: Inner Dia. (mm) ascending, then Outer Dia. (mm) ascending as tiebreaker.
+  // Default sort: Inner Dia. (mm) asc, then Outer Dia. (mm) asc, then Length (mm) asc.
   // Re-applied after the load-more prefetch finishes so it covers every product.
-  window.btBushingSort = function () { applySort('IDMM', true, 'asc', 'ODMM', true); };
+  window.btBushingSort = function () { applySort('IDMM', true, 'asc', 'ODMM', true, 'LengthMM', true); };
   window.btBushingSort();
 });
 
