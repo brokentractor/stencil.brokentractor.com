@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var sortState = {};
   var sortSelect = null;
 
-  function applySort(col, numeric, dir) {
+  function applySort(col, numeric, dir, secCol, secNumeric) {
     sortState = {};
     sortState[col] = dir;
 
@@ -204,21 +204,25 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    var rows = Array.from(table.querySelectorAll('tr.productrow'));
-    rows.sort(function (a, b) {
-      var aEl = a.querySelector('.' + col);
-      var bEl = b.querySelector('.' + col);
+    function cmpCol(a, b, c, num, d) {
+      var aEl = a.querySelector('.' + c), bEl = b.querySelector('.' + c);
       var aVal = aEl ? aEl.textContent.trim() : '';
       var bVal = bEl ? bEl.textContent.trim() : '';
-      if (numeric) {
+      if (num) {
         aVal = parseFloat(aVal.replace(/[^0-9.]/g, ''));
         bVal = parseFloat(bVal.replace(/[^0-9.]/g, ''));
-        if (isNaN(aVal)) aVal = dir === 'asc' ? Infinity : -Infinity;
-        if (isNaN(bVal)) bVal = dir === 'asc' ? Infinity : -Infinity;
-        return dir === 'asc' ? aVal - bVal : bVal - aVal;
+        if (isNaN(aVal)) aVal = d === 'asc' ? Infinity : -Infinity;
+        if (isNaN(bVal)) bVal = d === 'asc' ? Infinity : -Infinity;
+        return d === 'asc' ? aVal - bVal : bVal - aVal;
       }
       var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
-      return dir === 'asc' ? cmp : -cmp;
+      return d === 'asc' ? cmp : -cmp;
+    }
+    var rows = Array.from(table.querySelectorAll('tr.productrow'));
+    rows.sort(function (a, b) {
+      var primary = cmpCol(a, b, col, numeric, dir);
+      if (primary !== 0 || !secCol) return primary;
+      return cmpCol(a, b, secCol, secNumeric, 'asc');   // tiebreaker: always smallest → largest
     });
 
     var tbody = table.tBodies.length ? table.tBodies[0] : table;
@@ -290,6 +294,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // page-content — required for position:sticky to track the full list scroll.
     toolbar.parentNode.insertBefore(wrap, toolbar.nextSibling);
   }
+
+  // Default sort: Diameter (mm), smallest to largest. Re-applied after the load-more
+  // prefetch finishes (see done() below) so it covers every product, not just page 1.
+  window.btPinsSort = function () { applySort('DiameterMM', true, 'asc', 'LengthMM', true); };
+  window.btPinsSort();
 });
 
 function myFunction() {
@@ -349,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function done() {
     if (status.parentNode) status.parentNode.removeChild(status);
+    if (window.btPinsSort) window.btPinsSort();   // re-sort all rows by Diameter once everything is loaded
     var input = document.getElementById('myInput');
     if (input && input.value && typeof myFunction === 'function') myFunction();
   }
