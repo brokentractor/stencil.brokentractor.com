@@ -1,39 +1,104 @@
 // =============================================================================
 // BRAND GRID (CSS)
 // =============================================================================
-
-
-// Brand grid view
-// -----------------------------------------------------------------------------
 //
-// 1. Re-set the font-size, as we're reducing it to 0 in the .brandGrid class.
-//
+// The /brands/ listing. We use brand pages like categories (case, jd, …), so
+// this page gets the same dark BT hero header as category pages plus a clean,
+// on-brand grid of dark "button" cards. Mobile-first: tighter padding/type at
+// the base (2-up phones) scaling up on wider screens.
 // -----------------------------------------------------------------------------
 
+// Grid sits in the same .page wrapper as the hero, so its left/right edges
+// line up with the "Shop by Brand" header block. Top gap separates the two;
+// horizontal margin/padding are 0 so the grid spans the same width as the hero.
 .brandGrid {
-
     @include u-listBullets("none");
-    @include grid-row($behavior: "nest");
-    font-size: 0; // 1
-    margin-bottom: spacing("single");
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // 2-up on mobile
+    grid-gap: 12px;
+    margin: spacing("base") 0 spacing("double");
+    padding: 0;
+
+    // Stay 2-up across phones; widen only on tablets/desktop.
+    @include breakpoint("medium") {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 16px;
+    }
+
+    @include breakpoint("large") {
+        grid-template-columns: repeat(4, 1fr);
+    }
 
     .brand {
-        @include grid-column(6, $float: none);
-        display: inline-block;
-        font-size: fontSize("base"); // 1
-        vertical-align: top;
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.brand-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 60px;
+    padding: 12px 12px 12px 14px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, background 0.15s ease;
+
+    @include breakpoint("small") {
+        min-height: 72px;
+        padding: 16px 18px;
+    }
+
+    &:hover,
+    &:focus {
+        background: #000;
+        border-color: #ffbe00;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+
+    &__name {
+        font-family: $industry, "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.15;
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+        color: #ffbe00;
+        // Keep long names (Ford / New Holland, Wacker Neuson) from blowing out
+        // the narrow 2-up mobile cards.
+        word-break: break-word;
+        hyphens: auto;
 
         @include breakpoint("small") {
-            width: grid-calc(4, $total-columns);
+            font-size: 17px;
         }
+    }
 
-        @include breakpoint("medium") {
-            width: grid-calc(3, $total-columns);
-        }
+    &::after {
+        content: "\2192"; // → right arrow
+        margin-left: 8px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1;
+        color: #ffbe00;
+        flex-shrink: 0;
+        transition: transform 0.15s ease;
 
-        // scss-lint:disable SelectorDepth, NestingDepth
-        .card-title {
-            text-align: center;
+        @include breakpoint("small") {
+            margin-left: 12px;
+            font-size: 18px;
         }
+    }
+
+    &:hover::after,
+    &:focus::after {
+        transform: translateX(4px);
     }
 }

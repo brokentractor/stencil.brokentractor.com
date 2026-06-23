@@ -1,30 +1,86 @@
 ---
 brands:
+    limit: 250
 ---
 
 {{#partial "page"}}
 
-<main class="page">
-    <h1 class="page-heading">{{lang 'brand.label'}}</h1>
+<style>
+    /* Hide the grid until we've filtered to the brands we actually serve,
+       so the unused brands never flash in. */
+    .brandGrid { opacity: 0; transition: opacity 0.15s ease; }
+    .brands-ready .brandGrid { opacity: 1; }
+</style>
+
+<main class="page brandsPage">
+    <div class="category-header">
+        <div class="category-header__inner">
+            <h1 class="category-header__title">Shop by <em>Brand</em></h1>
+        </div>
+    </div>
+
     <ul class="brandGrid">
         {{#each brands}}
-            <li class="brand">
-                <article class="card {{#if alternate}}card--alternate{{/if}}">
-                    <figure class="card-figure">
-                        <a href="{{url}}">
-                            <img class="card-image" src="{{getImage image 'brand_size' (cdn ../theme_settings.default_image_brand)}}" alt="{{name}}" title="{{name}}">
-                        </a>
-                    </figure>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{{url}}">{{name}}</a>
-                        </h4>
-                    </div>
-                </article>
+            <li class="brand" data-brand-name="{{name}}">
+                <a class="brand-card" href="{{url}}">
+                    <span class="brand-card__name">{{name}}</span>
+                </a>
             </li>
         {{/each}}
     </ul>
     {{> components/common/paginator pagination.brands}}
 </main>
+
+<script>
+(function () {
+    // Brands we serve / have products for, in display-priority order.
+    var SERVED = [
+        'Case', 'John Deere', 'Ford / New Holland', 'King Kutter', 'Dresser',
+        'Caterpillar', 'Bobcat', 'Komatsu', 'Kobelco', 'Kubota', 'Long', 'JCB',
+        'Daewoo', 'Ditch Witch', 'Doosan', 'Gehl', 'Genie', 'Hanix', 'Hitachi',
+        'Hyster', 'Hyundai', 'IHI', 'JLG', 'Koehring', 'Liebherr', 'Link Belt',
+        'Mitsubishi', 'Samsung', 'Sumitomo', 'Takeuchi', 'TigerCat', 'Timberjack',
+        'Volvo', 'Wacker Neuson', 'Yanmar'
+    ];
+    // Alternate spellings BigCommerce may use -> the canonical name above.
+    var ALIASES = {
+        'Ford': 'Ford / New Holland',
+        'New Holland': 'Ford / New Holland',
+        'Linkbelt': 'Link Belt',
+        'Link-Belt': 'Link Belt',
+        'CAT': 'Caterpillar',
+        'Wacker': 'Wacker Neuson',
+        'Neuson': 'Wacker Neuson'
+    };
+
+    function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+    var order = {};
+    SERVED.forEach(function (name, i) { order[norm(name)] = i; });
+    Object.keys(ALIASES).forEach(function (alt) {
+        var key = norm(ALIASES[alt]);
+        if (order.hasOwnProperty(key)) order[norm(alt)] = order[key];
+    });
+
+    var grid = document.querySelector('.brandGrid');
+    if (grid) {
+        var keep = [];
+        [].slice.call(grid.querySelectorAll('.brand')).forEach(function (li) {
+            var key = norm(li.getAttribute('data-brand-name'));
+            if (order.hasOwnProperty(key)) {
+                li.setAttribute('data-order', order[key]);
+                keep.push(li);
+            } else {
+                li.parentNode.removeChild(li);
+            }
+        });
+        keep.sort(function (a, b) {
+            return (+a.getAttribute('data-order')) - (+b.getAttribute('data-order'));
+        });
+        keep.forEach(function (li) { grid.appendChild(li); });
+    }
+    document.body.classList.add('brands-ready');
+})();
+</script>
 {{/partial}}
 {{> layout/base}}
