@@ -752,18 +752,19 @@ function btGetAliases(model) {
         if (navIcon) navIcon.querySelector('use').setAttribute('href', '#' + iconId);
         if (mobileBtnIcon) mobileBtnIcon.querySelector('use').setAttribute('href', '#' + iconId);
 
-        // Product page fitment nudge
-        var nudge = document.getElementById('mm-fitment-nudge');
-        if (nudge) {
+        // Product page fitment nudge(s) — may appear in more than one spot
+        // (top, near Add to Cart). Toggle/bind them all.
+        var nudges = document.querySelectorAll('.mm-fitment-nudge');
+        Array.prototype.forEach.call(nudges, function (nudge) {
             nudge.style.display = machines.length === 0 ? '' : 'none';
-            var nudgeBtn = document.getElementById('mm-fitment-nudge-btn');
+            var nudgeBtn = nudge.querySelector('.mm-fitment-nudge-btn');
             if (nudgeBtn && !nudgeBtn.dataset.bound) {
                 nudgeBtn.dataset.bound = '1';
                 nudgeBtn.addEventListener('click', function () {
                     openPanel();
                 });
             }
-        }
+        });
 
         // Homepage hero banner (if present)
         var hero = document.getElementById('mm-hero');

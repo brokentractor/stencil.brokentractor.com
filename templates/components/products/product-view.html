@@ -190,6 +190,12 @@
                     <strong>Part #</strong> <span id="partnum-text">{{product.sku}}</span><span id="pv-fits-badge"></span>
                 </div>
 
+                <div class="mm-fitment-nudge" style="display:none;">
+                    <button type="button" class="mm-fitment-nudge-btn">
+                        🔧 Not sure if this fits? <span>Click here to save your machine</span> to check compatibility.
+                    </button>
+                </div>
+
                 {{#each product.custom_fields}}
                     {{#if name '===' 'blurb'}}
                         {{#if value}}
