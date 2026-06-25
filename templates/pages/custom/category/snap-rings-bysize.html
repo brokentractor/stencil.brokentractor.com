@@ -1,0 +1,406 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+{{#if pagination.category.previous}}
+<link rel="prev" href="{{pagination.category.previous}}">
+{{/if}}
+{{#if pagination.category.next}}
+<link rel="next" href="{{pagination.category.next}}">
+{{/if}}
+{{/partial}}
+
+{{#partial "pagename"}}listpage snap-rings-by-size{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/category-hero}}
+
+<div id="dsubcat">
+    {{#each category.subcategories}}
+    <div class="subcat">
+        <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">
+            <span>{{name}} </span>
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+    {{/each}}
+</div>
+
+{{{snippet 'categories'}}}
+
+<div class="page">
+
+    <main class="page-content" id="product-listing-container">
+
+        {{#if category.products}}
+        <div class="toolbar">
+          <div class="toolbar-filter">
+            <i class="fa fa-search"></i>
+            <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Filter snap rings by size or part #..." title="Filter Current Category" isp_ignore>
+            <button type="button" id="myInputClear" style="display:none;" onclick="document.getElementById('myInput').value='';myFunction();">&times;</button>
+          </div>
+          <span class="table-sort-tip">&#9432; Click headers to sort &#8597;</span>
+        </div>
+        <div id="bt-loading"><div class="bt-spinner" role="status" aria-label="Loading parts"></div></div>
+        <div id="slidetableouter" class="noref">
+            <table id="slidetable">
+                <caption class="is-srOnly">{{category.name}} parts list</caption>
+                <thead>
+                <tr id="tableheaders">
+                    <th scope="col" class="thcell pn image">Image</th>
+                    <th scope="col" class="thcell pn PholeMM" data-sort-col="PholeMM" data-sort-num="1" aria-sort="none">Pin/Hole Diameter (mm)</th>
+                    <th scope="col" class="thcell pn PholeInch" data-sort-col="PholeInch" data-sort-num="1" aria-sort="none">Pin/Hole Diameter (in)</th>
+                    <th scope="col" class="thcell pn ThicknessMM" data-sort-col="ThicknessMM" data-sort-num="1" aria-sort="none">Thickness (mm)</th>
+                    <th scope="col" class="thcell pn ThicknessInch" data-sort-col="ThicknessInch" data-sort-num="1" aria-sort="none">Thickness (in)</th>
+                    <th scope="col" class="thcell pn static sku" data-sort-col="sku" aria-sort="none">Part #</th>
+                    <th scope="col" class="thcell pn price" data-sort-col="price" data-sort-num="1" aria-sort="none">Price</th>
+                    <th scope="col" class="thcell pn vd">Product Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each category.products}}
+                    <tr class="productrow" data-product-id="{{id}}">
+                        <td class="pvcol image">
+                            <a href="{{url}}">
+                                <img class="listItem-image" src="{{getImage image 'productgallery_size' (cdn ../theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                                <span class="img-seedet">See Details</span>
+                            </a>
+                        </td>
+                        <td class="pvcol PholeMM">{{#each custom_fields}}{{#if name '===' 'PholeMM'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol PholeInch">{{#each custom_fields}}{{#if name '===' 'PholeInch'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol ThicknessMM">{{#each custom_fields}}{{#if name '===' 'ThicknessMM'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol ThicknessInch">{{#each custom_fields}}{{#if name '===' 'ThicknessInch'}}{{{value}}}{{/if}}{{/each}}</td>
+                        <td class="pvcol static sku"><a href="{{url}}">{{{sku}}}</a></td>
+                        {{#if out_of_stock_message}}
+                        <td class="pvcol price"><span class="out-of-stock">Call for Price</span></td>
+                        {{else}}
+                        <td class="pvcol price">
+                            {{> components/products/price price=price}}
+                            <div class="price-section--withoutTax">{{#unless price.without_tax}}{{#unless price.with_tax}}<span class="price price--withoutTax">Call for Pricing</span>{{/unless}}{{/unless}}</div>
+                        </td>
+                        {{/if}}
+                        <td class="pvcol view-details"><a href="{{url}}" class="listview-style">View Info</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div id="myInputNoResults" style="display:none;">Your search does not appear on this page. You can search the entire site by using the search at the top of the window.</div>
+        {{else}}
+        <style>#product-listing-container, #swipemsg {display: none;}</style>
+        {{/if}}
+
+        <div id="backtotop" style="display: none;">
+            <i class="fas fa-chevron-up"></i>
+            <div>TOP</div>
+        </div>
+    </main>
+
+</div>
+
+<div id="categoryDescription">
+    {{#if category.description}}
+    {{{category.description}}}
+    {{/if}}
+</div>
+
+<style>
+/* category.js (runs on every listpage) force-injects empty FitsModel + ListDescription
+   cells into each row to normalize the standard parts table. This page doesn't use those
+   columns, so hide the injected cells to keep rows aligned with the headers. */
+.snap-rings-by-size td.pvcol.FitsModel,
+.snap-rings-by-size td.pvcol.ListDescription { display: none !important; }
+
+/* Mobile card labels for the size columns (mirrors _productGrid.scss pattern) */
+@media only screen and (max-width: 767px) {
+    .snap-rings-by-size td.pvcol.PholeMM:before      { display: block; content: "Pin/Hole Diameter (mm)"; font-weight: bold; }
+    .snap-rings-by-size td.pvcol.PholeInch:before    { display: block; content: "Pin/Hole Diameter (in)"; font-weight: bold; }
+    .snap-rings-by-size td.pvcol.ThicknessMM:before  { display: block; content: "Thickness (mm)";         font-weight: bold; }
+    .snap-rings-by-size td.pvcol.ThicknessInch:before{ display: block; content: "Thickness (in)";         font-weight: bold; }
+}
+
+/* Mobile sort dropdown — header-click sorting isn't usable in the stacked-card layout */
+.toolbar-sort-mobile { display: none; }
+@media only screen and (max-width: 767px) {
+    .toolbar-sort-mobile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        position: sticky;
+        top: 134px; /* clears the fixed site header (134px tall on mobile) */
+        z-index: 30;
+        background: #001212;
+        padding: 10px 16px;
+    }
+    /* Fix both icons to the same container width so the search input and the
+       sort select share the same left edge */
+    .toolbar-filter .fa,
+    .toolbar-filter .svg-inline--fa,
+    .toolbar-sort-mobile .fa,
+    .toolbar-sort-mobile .svg-inline--fa {
+        color: #ffbe00;
+        font-size: 18px;
+        width: 20px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+    .toolbar-sort-mobile select {
+        flex: 1;
+        min-width: 0;
+        height: 38px;
+        padding: .5rem 40px .5rem .75rem;
+        background-color: #e2e2e2;
+        color: #000;
+        border: none;
+        border-bottom: 2px solid #ffbe00;
+        border-radius: 0;
+        font-family: inherit;
+        font-size: 15px;
+        text-transform: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 14px;
+    }
+    .table-sort-tip { display: none; }
+}
+
+/* Hide the table until every product is loaded + sorted, show a spinner instead — avoids
+   the content shift of rows streaming in and re-ordering. */
+#bt-loading { display: flex; align-items: center; justify-content: center; padding: 60px 0; }
+#bt-loading .bt-spinner {
+    width: 44px; height: 44px;
+    border: 4px solid #ddd; border-top-color: #ffbe00; border-radius: 50%;
+    animation: bt-spin 0.8s linear infinite;
+}
+@keyframes bt-spin { to { transform: rotate(360deg); } }
+.snap-rings-by-size #slidetableouter { display: none; }
+.snap-rings-by-size.bt-ready #slidetableouter { display: block; }
+.snap-rings-by-size.bt-ready #bt-loading { display: none; }
+</style>
+
+<script>
+// Table sort — numeric for size/price columns, string otherwise. Keys off data-sort-col -> cell class.
+// Desktop: click headers to toggle asc/desc. Mobile: a Sort by… dropdown (the card layout hides headers).
+document.addEventListener('DOMContentLoaded', function () {
+  var table = document.getElementById('slidetable');
+  if (!table) return;
+
+  var sortableHeaders = Array.from(table.querySelectorAll('.thcell[data-sort-col]'));
+  var sortState = {};
+  var sortSelect = null;
+
+  function applySort(col, numeric, dir, secCol, secNumeric, terCol, terNumeric) {
+    sortState = {};
+    sortState[col] = dir;
+
+    sortableHeaders.forEach(function (h) {
+      var caret = h.querySelector('.sort-caret');
+      if (caret) caret.remove();
+      if (h.getAttribute('data-sort-col') === col) {
+        var span = document.createElement('span');
+        span.className = 'sort-caret';
+        span.style.cssText = 'font-size:10px;margin-left:4px;';
+        span.textContent = dir === 'asc' ? ' ▲' : ' ▼';
+        h.appendChild(span);
+        h.setAttribute('aria-sort', dir === 'asc' ? 'ascending' : 'descending');
+      } else if (h.hasAttribute('aria-sort')) {
+        h.setAttribute('aria-sort', 'none');
+      }
+    });
+
+    function cmpCol(a, b, c, num, d) {
+      var aEl = a.querySelector('.' + c), bEl = b.querySelector('.' + c);
+      var aVal = aEl ? aEl.textContent.trim() : '';
+      var bVal = bEl ? bEl.textContent.trim() : '';
+      if (num) {
+        aVal = parseFloat(aVal.replace(/[^0-9.]/g, ''));
+        bVal = parseFloat(bVal.replace(/[^0-9.]/g, ''));
+        if (isNaN(aVal)) aVal = d === 'asc' ? Infinity : -Infinity;
+        if (isNaN(bVal)) bVal = d === 'asc' ? Infinity : -Infinity;
+        return d === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+      var cmp = aVal.localeCompare(bVal, undefined, { numeric: true, sensitivity: 'base' });
+      return d === 'asc' ? cmp : -cmp;
+    }
+    var rows = Array.from(table.querySelectorAll('tr.productrow'));
+    rows.sort(function (a, b) {
+      var primary = cmpCol(a, b, col, numeric, dir);
+      if (primary !== 0 || !secCol) return primary;
+      var secondary = cmpCol(a, b, secCol, secNumeric, 'asc');   // tiebreaker: always smallest → largest
+      if (secondary !== 0 || !terCol) return secondary;
+      return cmpCol(a, b, terCol, terNumeric, 'asc');            // tertiary tiebreaker: smallest → largest
+    });
+
+    var tbody = table.tBodies.length ? table.tBodies[0] : table;
+    rows.forEach(function (row) { tbody.appendChild(row); });
+
+    if (sortSelect) sortSelect.value = col + '|' + dir;
+  }
+
+  // Desktop: click a header to toggle asc/desc.
+  sortableHeaders.forEach(function (th) {
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', function () {
+      var col = this.getAttribute('data-sort-col');
+      var numeric = this.getAttribute('data-sort-num') === '1';
+      var dir = sortState[col] === 'asc' ? 'desc' : 'asc';
+      applySort(col, numeric, dir);
+    });
+  });
+
+  // Mobile: build a Sort by… dropdown from the same headers.
+  var toolbar = document.querySelector('.toolbar');
+  if (toolbar) {
+    var wrap = document.createElement('div');
+    wrap.className = 'toolbar-sort-mobile';
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'mobileSort');
+    label.className = 'is-srOnly';
+    label.textContent = 'Sort products';
+
+    var icon = document.createElement('i');
+    icon.className = 'fa fa-sort';
+    icon.setAttribute('aria-hidden', 'true');
+
+    sortSelect = document.createElement('select');
+    sortSelect.id = 'mobileSort';
+
+    var def = document.createElement('option');
+    def.value = '';
+    def.textContent = 'Sort by…';
+    sortSelect.appendChild(def);
+
+    sortableHeaders.forEach(function (h) {
+      var col = h.getAttribute('data-sort-col');
+      var numeric = h.getAttribute('data-sort-num') === '1';
+      var name = (h.textContent || '').replace(/[▲▼]/g, '').trim();
+      var labels = numeric ? ['Low to High', 'High to Low'] : ['A to Z', 'Z to A'];
+      ['asc', 'desc'].forEach(function (dir, i) {
+        var opt = document.createElement('option');
+        opt.value = col + '|' + dir;
+        opt.textContent = name + ' — ' + labels[i];
+        sortSelect.appendChild(opt);
+      });
+    });
+
+    sortSelect.addEventListener('change', function () {
+      if (!this.value) return;
+      var parts = this.value.split('|');
+      var col = parts[0], dir = parts[1];
+      var th = sortableHeaders.filter(function (h) { return h.getAttribute('data-sort-col') === col; })[0];
+      var numeric = !!(th && th.getAttribute('data-sort-num') === '1');
+      applySort(col, numeric, dir);
+    });
+
+    wrap.appendChild(label);
+    wrap.appendChild(icon);
+    wrap.appendChild(sortSelect);
+    // Insert as a sibling AFTER the toolbar so its containing block is the tall
+    // page-content — required for position:sticky to track the full list scroll.
+    toolbar.parentNode.insertBefore(wrap, toolbar.nextSibling);
+  }
+
+  // Default sort: Pin/Hole Diameter (mm) asc, then Thickness (mm) asc.
+  // Re-applied after the load-more prefetch finishes so it covers every product.
+  window.btSnapRingsSort = function () { applySort('PholeMM', true, 'asc', 'ThicknessMM', true); };
+  window.btSnapRingsSort();
+});
+
+function myFunction() {
+  var input     = document.getElementById("myInput");
+  var filter    = (input.value || "").toUpperCase();
+  var table     = document.getElementById("slidetable");
+  var rows      = table.getElementsByClassName("productrow");
+  var clearBtn  = document.getElementById("myInputClear");
+  var noResults = document.getElementById("myInputNoResults");
+
+  if (clearBtn) clearBtn.style.display = filter ? "inline-block" : "none";
+
+  var visibleCount = 0;
+  var fields = ["PholeMM", "PholeInch", "ThicknessMM", "ThicknessInch", "sku"];
+
+  for (var i = 0; i < rows.length; i++) {
+    var haystack = "";
+    for (var f = 0; f < fields.length; f++) {
+      var el = rows[i].getElementsByClassName(fields[f])[0];
+      if (el) haystack += " " + (el.textContent || el.innerText);
+    }
+    var visible = !filter || haystack.toUpperCase().indexOf(filter) > -1;
+    rows[i].style.display = visible ? "" : "none";
+    if (visible) visibleCount++;
+  }
+
+  if (noResults) noResults.style.display = (filter && visibleCount === 0) ? "block" : "none";
+}
+</script>
+
+<script>
+// Prefetch ALL remaining category pages and merge their rows into #slidetable, so sort and
+// filter operate over every product. BigCommerce caps the rendered category context at 100
+// products per page, so the rest are pulled via the native ?page=N pagination and appended.
+document.addEventListener('DOMContentLoaded', function () {
+  var table = document.getElementById('slidetable');
+  if (!table) return;
+  var tbody = table.tBodies.length ? table.tBodies[0] : table;
+  var basePath = window.location.pathname;
+  var MAX_PAGES = 30; // safety cap (30 x 100 = 3000 products)
+
+  // "Loading all sizes…" status, shown above the table while pages stream in.
+  var status = document.createElement('div');
+  status.id = 'loadAllStatus';
+  status.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;padding:10px 16px;font-weight:bold;background:#001212;color:#ffbe00;box-shadow:0 2px 10px rgba(0,0,0,0.35);';
+  var outer = document.getElementById('slidetableouter');
+  if (outer && outer.parentNode) outer.parentNode.insertBefore(status, outer);
+
+  // Hide BigCommerce's native pager — everything is merged into one table.
+  document.querySelectorAll('.pagination, nav.pagination, .pagination-list, #swipemsg').forEach(function (p) {
+    if (p) p.style.display = 'none';
+  });
+
+  function count() { return tbody.querySelectorAll('tr.productrow').length; }
+  function setStatus(text) { status.textContent = text; }
+  setStatus('Loading all sizes… (' + count() + ')');
+
+  function done() {
+    if (status.parentNode) status.parentNode.removeChild(status);
+    if (window.btSnapRingsSort) window.btSnapRingsSort();   // re-sort all rows once everything is loaded
+    var input = document.getElementById('myInput');
+    if (input && input.value && typeof myFunction === 'function') myFunction();
+    document.body.classList.add('bt-ready');                // reveal the fully-loaded, sorted table
+  }
+
+  function loadPage(n) {
+    if (n > MAX_PAGES) { done(); return; }
+    fetch(basePath + '?page=' + n, { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.text() : null; })
+      .then(function (html) {
+        if (!html) { done(); return; }
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var rows = doc.querySelectorAll('#slidetable tbody tr.productrow');
+        if (!rows.length) { done(); return; }
+        rows.forEach(function (row) { tbody.appendChild(document.importNode(row, true)); });
+        setStatus('Loading all sizes… (' + count() + ')');
+        loadPage(n + 1);
+      })
+      .catch(function () { done(); });
+  }
+
+  // Safety net: reveal the table even if loading stalls or errors.
+  setTimeout(function () { document.body.classList.add('bt-ready'); }, 12000);
+  loadPage(2);
+});
+</script>
+
+{{/partial}}
+{{> layout/base}}
