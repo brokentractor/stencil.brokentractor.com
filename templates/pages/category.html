@@ -39,8 +39,8 @@ category:
         {{#if category.products}}
         <div class="toolbar">
           <div class="toolbar-filter">
-            <i class="fa fa-search"></i>
-            <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunction()" placeholder="Filter parts on this page..." title="Filter Current Category" isp_ignore>
+            <svg class="bt-filter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" fill="#ffbe00" aria-hidden="true" style="flex-shrink:0;"><path d="M3.9 54.9C10.5 40.9 24.5 32 40 32l432 0c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9 320 448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6l0-79.1L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/></svg>
+            <input type="text" class="form-input-fits-model" id="myInput" onkeyup="myFunctionDebounced()" placeholder="Filter by Model... (Example, 580C, 315D, D60)" title="Filter by model" isp_ignore>
             <button type="button" id="myInputClear" style="display:none;" onclick="document.getElementById('myInput').value='';myFunction();">&times;</button>
           </div>
           <span class="table-sort-tip">&#9432; Click headers to sort &#8597;</span>
@@ -65,7 +65,7 @@ category:
                 </tbody>
             </table>
         </div>
-        <div id="myInputNoResults" style="display:none;">Your search does not appear on this page. You can search the entire site by using the search at the top of the window.</div>
+        <div id="myInputNoResults" style="display:none;">Your model does not appear on this page. You can search the entire site by using the search at the top of the window.</div>
         {{else}}
         <style>#product-listing-container, #swipemsg {display: none;}</style>
         {{/if}}
@@ -85,6 +85,7 @@ category:
 </div>
 <style>
     table#slidetable td.REFID {display: none;}
+    mark.bt-hl { background: #ffbe00; color: #1a1a1a; padding: 0 2px; border-radius: 2px; font-weight: 700; }
 </style>
 <script>
 // Table sort — runs after DOM is ready, no webpack dependency
@@ -142,9 +143,30 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+function btEscapeHtml(s) {
+  return s.replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+  });
+}
+function btEscapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function btHighlightModel(text, filterUpper) {
+  // Wrap only an exact model token (bounded by start/end, comma, slash, space).
+  var re = new RegExp('(^|[\\s,/])(' + btEscapeRegex(filterUpper) + ')(?=$|[\\s,/])', 'gi');
+  return btEscapeHtml(text).replace(re, '$1<mark class="bt-hl">$2</mark>');
+}
+
+// Wait a beat after the user stops typing before filtering, so the table
+// doesn't thrash on every keystroke. The clear button still calls myFunction
+// directly for an instant reset.
+var btFilterTimer;
+function myFunctionDebounced() {
+  clearTimeout(btFilterTimer);
+  btFilterTimer = setTimeout(myFunction, 300);
+}
+
 function myFunction() {
   const input     = document.getElementById("myInput");
-  const filter    = (input.value || "").toUpperCase();
+  const filter    = (input.value || "").trim().toUpperCase();
   const table     = document.getElementById("slidetable");
   const tr        = table.getElementsByTagName("tr");
   const clearBtn  = document.getElementById("myInputClear");
@@ -161,15 +183,33 @@ function myFunction() {
     }
 
     const modelEl = tr[i].getElementsByClassName("FitsModel")[0];
-    const descEl  = tr[i].getElementsByClassName("ListDescription")[0];
-    const partEl  = tr[i].getElementsByClassName("sku")[0];
 
-    const modelTxt = modelEl ? (modelEl.textContent || modelEl.innerText) : "";
-    const descTxt  = descEl  ? (descEl.textContent  || descEl.innerText)  : "";
-    const partTxt  = partEl  ? (partEl.textContent  || partEl.innerText)  : "";
+    // Keep the untouched original text so we can re-highlight / clear cleanly.
+    let modelTxt = "";
+    if (modelEl) {
+      if (!modelEl.dataset.orig) modelEl.dataset.orig = modelEl.textContent;
+      modelTxt = modelEl.dataset.orig;
+    }
 
-    const haystack = (modelTxt + " " + descTxt + " " + partTxt).toUpperCase();
-    const visible  = !filter || haystack.indexOf(filter) > -1;
+    // Exact match on a model code: split the list (commas / slashes) and
+    // require one token to equal the search exactly, so "610" matches the
+    // model 610 but NOT "2610".
+    let visible = !filter;
+    if (filter && modelEl) {
+      const models = modelTxt.split(/[,/]/);
+      for (let m = 0; m < models.length; m++) {
+        if (models[m].trim().toUpperCase() === filter) { visible = true; break; }
+      }
+    }
+
+    // Highlight the matching model in yellow (Ctrl-F style); clear otherwise.
+    if (modelEl) {
+      if (filter && visible) {
+        modelEl.innerHTML = btHighlightModel(modelTxt, filter);
+      } else {
+        modelEl.textContent = modelTxt;
+      }
+    }
 
     tr[i].style.display = visible ? "" : "none";
     if (visible) visibleCount++;

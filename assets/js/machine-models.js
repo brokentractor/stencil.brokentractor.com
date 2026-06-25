@@ -24,7 +24,7 @@ window.BT_MODEL_IDS = {
   'Case Telehandler': 4095,
   'Backhoe Parts – John Deere Aftermarket': 338,
   'Dozer Parts – John Deere Aftermarket': 337,
-  'Excavator Parts – Fits John Deere Aftermarket': 1252,
+  'Excavator Parts – John Deere Aftermarket': 1252,
   'Wheel Loader Parts – John Deere Aftermarket': 1262,
   'Forestry Parts – John Deere Aftermarket': 2801,
   'Tractor Parts – John Deere Aftermarket': 401,

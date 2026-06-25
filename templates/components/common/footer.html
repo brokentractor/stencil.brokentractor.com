@@ -382,9 +382,9 @@ function btGetAliases(model) {
 <!-- Category data for My Machine picker (used on every page) -->
 <div id="pf-data" style="display:none">
     {{#each categories}}
-    <div class="pf-brand-data" data-name="{{name}}" data-url="{{url}}">
+    <div class="pf-brand-data" data-id="{{id}}" data-name="{{name}}" data-url="{{url}}">
         {{#each children}}
-        <span data-name="{{name}}" data-url="{{url}}" data-image="{{image.data}}"></span>
+        <span data-id="{{id}}" data-name="{{name}}" data-url="{{url}}" data-image="{{image.data}}"></span>
         {{/each}}
     </div>
     {{/each}}
@@ -403,10 +403,23 @@ function btGetAliases(model) {
         try { return new URL(url).pathname; } catch(e) { return url; }
     }
 
-    // Translate a category name string to its permanent numeric ID, then look up
-    // the model list in BT_MODELS. Falls back to [] if not mapped.
+    // Build a live "category name → permanent id" map straight from the rendered
+    // category feed (data-id), so a category rename can't break the lookup — the
+    // feed always pairs the current name with the current id. Only valid numeric
+    // ids are added, so if the feed doesn't expose {{id}} (renders empty) this map
+    // stays empty and we fall back to the static BT_MODEL_IDS below. No regression.
+    window.BT_CAT_IDS = window.BT_CAT_IDS || {};
+    document.querySelectorAll('#pf-data [data-id]').forEach(function (n) {
+        var id = n.getAttribute('data-id');
+        var nm = n.getAttribute('data-name');
+        if (nm && id && /^\d+$/.test(id)) window.BT_CAT_IDS[nm] = parseInt(id, 10);
+    });
+
+    // Translate a category name to its permanent numeric ID (live feed first,
+    // static map as fallback), then look up the model list in BT_MODELS.
     function btLookup(name) {
-        var id = window.BT_MODEL_IDS && window.BT_MODEL_IDS[name];
+        var id = window.BT_CAT_IDS && window.BT_CAT_IDS[name];
+        if (id === undefined) id = window.BT_MODEL_IDS && window.BT_MODEL_IDS[name];
         return (id !== undefined && window.BT_MODELS && window.BT_MODELS[id]) || [];
     }
 
@@ -449,7 +462,7 @@ function btGetAliases(model) {
 
     // ── Populate brand dropdown from #pf-data ──
     // Brands excluded from the My Machine picker
-    var PICKER_EXCLUDE = ['king kutter', 'broken tractor merchandise'];
+    var PICKER_EXCLUDE = ['king kutter', 'broken tractor merchandise', 'pins & bushings by size'];
     // Brands with only one machine type — skip the type step and go straight to models
     var SINGLE_TYPE_BRANDS = ['kobelco', 'hyundai', 'hitachi', 'long tractor', 'doosan', 'daewoo', 'samsung', 'yanmar', 'linkbelt', 'ihi', 'jlg', 'genie', 'wacker neuson', 'gehl', 'ditch witch', 'hyster', 'hanix', 'koehring', 'liebherr', 'mitsubishi', 'sumitomo', 'timberjack', 'tigercat'];
     document.querySelectorAll('#pf-data .pf-brand-data').forEach(function (div) {
