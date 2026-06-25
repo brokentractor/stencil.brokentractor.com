@@ -317,9 +317,9 @@ document.addEventListener('DOMContentLoaded', function () {
     toolbar.parentNode.insertBefore(wrap, toolbar.nextSibling);
   }
 
-  // Default sort: Thickness (mm) asc, then Inner Dia. (mm) asc, then Outer Dia. (mm) asc.
+  // Default sort: Inner Dia. (mm) asc, then Outer Dia. (mm) asc, then Thickness (mm) asc.
   // Re-applied after the load-more prefetch finishes so it covers every product.
-  window.btWashersSort = function () { applySort('ThicknessMM', true, 'asc', 'IDMM', true, 'ODMM', true); };
+  window.btWashersSort = function () { applySort('IDMM', true, 'asc', 'ODMM', true, 'ThicknessMM', true); };
   window.btWashersSort();
 });
 
