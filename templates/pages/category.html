@@ -193,12 +193,14 @@ function myFunction() {
 
     // Exact match on a model code: split the list (commas / slashes) and
     // require one token to equal the search exactly, so "610" matches the
-    // model 610 but NOT "2610".
+    // model 610 but NOT "2610". Parenthetical qualifiers are stripped first,
+    // so "580C (Early Split-Pistons)" still matches a search for "580C".
     let visible = !filter;
     if (filter && modelEl) {
       const models = modelTxt.split(/[,/]/);
       for (let m = 0; m < models.length; m++) {
-        if (models[m].trim().toUpperCase() === filter) { visible = true; break; }
+        const code = models[m].replace(/\([^)]*\)/g, '').trim().toUpperCase();
+        if (code === filter) { visible = true; break; }
       }
     }
 

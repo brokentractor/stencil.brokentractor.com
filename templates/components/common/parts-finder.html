@@ -8,41 +8,6 @@
     .pf-toggle-label { font-size: 12px; font-weight: 700; opacity: 0.8; }
     #parts-finder.pf-collapsed .pf-body { display: none; }
 }
-.pf-field--btn { position: relative; }
-#pf-tip {
-    position: absolute;
-    bottom: calc(100% + 10px);
-    right: 0;
-    background: #ffbe00;
-    color: #001212;
-    font-family: 'proxima-nova', arial, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.2;
-    padding: 7px 11px;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(4px);
-    transition: opacity .18s ease, transform .18s ease;
-    z-index: 60;
-    pointer-events: none;
-}
-#pf-tip::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    right: 28px;
-    border: 6px solid transparent;
-    border-top-color: #ffbe00;
-}
-#pf-tip.pf-tip--show { opacity: 1; visibility: visible; transform: translateY(0); }
-@media only screen and (max-width: 767px) {
-    #pf-tip { white-space: normal; max-width: 92%; }
-    #pf-tip::after { right: 24px; }
-}
-
 /* Mobile progressive disclosure — picked levels collapse into tappable chips,
    only the active dropdown shows, so a deep tree stays above the fold. */
 .pf-crumbs { display: none; }
@@ -61,12 +26,7 @@
 <meta id="pf-sf-token" content="{{settings.storefront_api.token}}">
 <div id="parts-finder">
     <div class="pf-header">Jump to Category</div>
-    <div class="pf-body">
-        <div class="pf-field pf-field--btn">
-            <button id="pf-go" disabled>FIND PARTS</button>
-            <div class="pf-tip" id="pf-tip" role="status">Click here to jump to your selected category</div>
-        </div>
-    </div>
+    <div class="pf-body"></div>
 </div>
 
 {{!-- JSON tree: "i" = entityId, "c" = children. Template provides 4 levels; deeper levels lazy-fetched. --}}
@@ -97,8 +57,6 @@
 // ── Parts Finder Widget — dynamic depth with lazy GraphQL fetching ────
 (function () {
     var pfBody = document.querySelector('#parts-finder .pf-body');
-    var goBtn  = document.getElementById('pf-go');
-    var tipEl  = document.getElementById('pf-tip');
     var treeEl = document.getElementById('pf-tree');
     if (!pfBody || !treeEl) return;
 
@@ -224,7 +182,7 @@
 
         wrap.appendChild(lbl);
         wrap.appendChild(sel);
-        pfBody.insertBefore(wrap, pfBody.querySelector('.pf-field--btn'));
+        pfBody.appendChild(wrap);
 
         var entry = { wrap: wrap, sel: sel, node: null };
         levels.push(entry);
@@ -234,50 +192,25 @@
             trimTo(depth + 1);
             var parentItems = depth === 0 ? brands : (levels[depth - 1].node ? levels[depth - 1].node.c : null);
             entry.node = selectedUrl ? find(parentItems, selectedUrl) : null;
-            updateGo();
-            if (!entry.node) { updateTip(); return; }
+            // User picking any level navigates straight to that category page.
+            // preselectActive guards the on-load cascade that mirrors the current page.
+            if (selectedUrl && !preselectActive) { window.location.href = selectedUrl; return; }
+            if (!entry.node) { return; }
 
             if (entry.node.c && entry.node.c.length) {
                 // Children already in template data — render immediately.
                 addLevel(depth + 1, entry.node.c);
-                updateTip();
             } else if (entry.node.i) {
                 // No children in template data — lazy-fetch from GraphQL.
                 fetchChildren(entry.node, function (children) {
                     if (children.length) addLevel(depth + 1, children);
-                    updateTip();
                 });
-            } else {
-                updateTip();
             }
         });
 
         if (typeof renderProgressive === 'function') renderProgressive();
         return entry;
     }
-
-    function updateGo() {
-        goBtn.disabled = !(levels.length > 0 && levels[0].sel.value);
-    }
-
-    function atTreeEnd() {
-        if (!levels.length || !levels[0].sel.value) return false;
-        var last = levels[levels.length - 1];
-        if (!last.sel.value) return false;
-        return !last.node || !last.node.c || !last.node.c.length;
-    }
-
-    function updateTip() {
-        if (tipEl) tipEl.classList.toggle('pf-tip--show', atTreeEnd());
-    }
-
-    goBtn.addEventListener('click', function () {
-        var dest = '';
-        for (var i = levels.length - 1; i >= 0; i--) {
-            if (levels[i].sel.value) { dest = levels[i].sel.value; break; }
-        }
-        if (dest) window.location.href = dest;
-    });
 
     function normPath(u) {
         if (!u) return '';
@@ -303,7 +236,6 @@
             levels[i].sel.value = url;
             levels[i].sel.dispatchEvent(new Event('change'));
         });
-        updateTip();
     }
 
     // ── Mobile progressive disclosure ──
@@ -348,11 +280,15 @@
     if (mq.addEventListener) { mq.addEventListener('change', function () { editingIndex = null; renderProgressive(); }); }
     else if (mq.addListener) { mq.addListener(function () { editingIndex = null; renderProgressive(); }); }
 
+    var preselectActive = false;
+
     buildIndex();
     addLevel(0, brands);
     // Always show a second dropdown so the widget doesn't look bare.
     if (levels.length < 2) addLevel(1, []);
+    preselectActive = true;
     preselect();
+    preselectActive = false;
     renderProgressive();
 })();
 </script>
