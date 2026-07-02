@@ -153,6 +153,17 @@
 <meta id="bt-sf-token" content="{{settings.storefront_api.token}}">
 
 <script>
+// My Machine adoption tracking — pushes events into the GTM dataLayer.
+// Wire up in GTM: one Custom Event trigger matching regex ^mm_ + a GA4 event tag.
+window.btMMTrack = function (name, params) {
+    try {
+        window.dataLayer = window.dataLayer || [];
+        var evt = { event: name };
+        for (var k in params) evt[k] = params[k];
+        window.dataLayer.push(evt);
+    } catch (e) {}
+};
+
 // Model aliases: exceptions that don't follow the automatic S[Letter] ↔ Super [Letter] pattern.
 var BT_MODEL_ALIASES = {
     '580SE':     ['580E'],   // 580E is a legacy name for 580SE / 580 Super E
@@ -247,6 +258,7 @@ function btGetAliases(model) {
                 if (pvMatched.length) {
                     pvBadge.className = 'bt-fits-badge';
                     pvBadge.innerHTML = '&#10003; Potential Match for ' + pvMatched.join(', ');
+                    window.btMMTrack('mm_badge_shown', { mm_context: 'product', mm_count: 1, mm_model: pvMatched.join(', ') });
                 }
             }
         }
@@ -255,6 +267,7 @@ function btGetAliases(model) {
         var fitsModelCells = document.querySelectorAll('td.FitsModel');
         if (fitsModelCells.length) {
             function applyFitmentBadges() {
+                var badgedRows = 0;
                 fitsModelCells.forEach(function (cell) {
                     var row = cell.closest('tr');
                     var descEl = row ? row.querySelector('.bt-desc') : null;
@@ -265,8 +278,12 @@ function btGetAliases(model) {
                         badge.className = 'bt-fits-badge';
                         badge.innerHTML = '&#10003; Potential Match for ' + cellMatched.join(', ');
                         cell.appendChild(badge);
+                        badgedRows++;
                     }
                 });
+                if (badgedRows > 0) {
+                    window.btMMTrack('mm_badge_shown', { mm_context: 'category', mm_count: badgedRows });
+                }
             }
 
             var productIds = Array.from(document.querySelectorAll('tr[data-product-id]'))
@@ -330,6 +347,7 @@ function btGetAliases(model) {
                 .then(function (r) { return r.json(); })
                 .then(function (data) {
                     var edges = (data.data && data.data.site && data.data.site.products && data.data.site.products.edges) || [];
+                    var badgedCards = 0;
                     edges.forEach(function (edge) {
                         var p = edge.node;
                         var fitsModel = '';
@@ -348,9 +366,14 @@ function btGetAliases(model) {
                                 badge.innerHTML = '&#10003; Potential Match for ' + matched.join(', ');
                                 var target = card.querySelector('.kuProdBottom') || card.querySelector('.kuProdWrap') || card;
                                 target.appendChild(badge);
+                                badgedCards++;
                             }
                         }
                     });
+                    if (badgedCards > 0 && !window._mmSearchBadgeTracked) {
+                        window._mmSearchBadgeTracked = true;
+                        window.btMMTrack('mm_badge_shown', { mm_context: 'search', mm_count: badgedCards });
+                    }
                 })
                 .catch(function () {});
             }
@@ -374,6 +397,18 @@ function btGetAliases(model) {
             // Run immediately for cards already in the DOM on page load
             setTimeout(btApplyKlevuBadges, 600);
         }
+
+        // ── Track clicks on badged products (category rows + search cards) ──
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest ? e.target.closest('a') : null;
+            if (!link) return;
+            var container = link.closest('tr, li.klevuProduct');
+            if (!container || !container.querySelector('.bt-fits-badge')) return;
+            window.btMMTrack('mm_badged_click', {
+                mm_context: container.tagName === 'TR' ? 'category' : 'search',
+                mm_url: link.pathname || ''
+            });
+        });
 
     } catch (e) {}
 })();
@@ -597,8 +632,9 @@ function btGetAliases(model) {
     }
 
     // ── Open / close panel ──
-    function openPanel(index) {
+    function openPanel(index, source) {
         editIndex = (typeof index === 'number') ? index : null;
+        window.btMMTrack('mm_panel_open', { mm_source: source || 'other' });
         brandSel.value = '';
         typeSel.innerHTML = '<option value="">Select Machine Type...</option>';
         typeSel.disabled  = true;
@@ -623,10 +659,10 @@ function btGetAliases(model) {
     }
 
     navBtn.addEventListener('click', function () {
-        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null);
+        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null, 'nav');
     });
     if (mobileBtn) mobileBtn.addEventListener('click', function () {
-        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null);
+        panel.classList.contains('mm-panel--open') ? closePanel() : openPanel(null, 'nav_mobile');
     });
     panelClose.addEventListener('click', closePanel);
     panelCancel.addEventListener('click', closePanel);
@@ -634,11 +670,12 @@ function btGetAliases(model) {
 
     // Homepage "Set Your Machine" button opens panel
     var openPickerBtn = document.getElementById('mm-open-picker');
-    if (openPickerBtn) openPickerBtn.addEventListener('click', function () { openPanel(null); });
+    if (openPickerBtn) openPickerBtn.addEventListener('click', function () { openPanel(null, 'homepage'); });
 
     // Clear link
     clearLink.addEventListener('click', function (e) {
         e.preventDefault();
+        window.btMMTrack('mm_fleet_cleared', { mm_count: getMachines().length });
         saveMachines([]);
         renderMachines();
     });
@@ -666,6 +703,14 @@ function btGetAliases(model) {
             machines.push(machine);
         }
         saveMachines(machines);
+
+        window.btMMTrack('mm_machine_saved', {
+            mm_brand: machine.brand,
+            mm_model: machine.model,
+            mm_machine_type: machine.type,
+            mm_source: editIndex !== null ? 'edit' : 'new',
+            mm_count: machines.length
+        });
 
         // Show confirmation before closing
         saveBtn.textContent = '✓ Machine Saved!';
@@ -774,7 +819,7 @@ function btGetAliases(model) {
             if (nudgeBtn && !nudgeBtn.dataset.bound) {
                 nudgeBtn.dataset.bound = '1';
                 nudgeBtn.addEventListener('click', function () {
-                    openPanel();
+                    openPanel(null, 'product_nudge');
                 });
             }
         });
@@ -816,6 +861,7 @@ function btGetAliases(model) {
             var val = searchEl.value.trim();
             if (val && val.toLowerCase().indexOf(model.toLowerCase()) === -1) {
                 searchEl.value = val + ' ' + model;
+                window.btMMTrack('mm_search_append', { mm_model: model });
             }
         }
         searchEl.addEventListener('keydown', function (e) {
