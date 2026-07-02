@@ -6,6 +6,86 @@
     </div>
 </div>
 {{/if}}
+<!-- 4th of July Sale banner — auto-shows July 3-4, 2026 (America/Chicago). Safe to delete after the sale. -->
+<div id="bt-july4-banner" hidden>
+    <span class="bt-july4-stars" aria-hidden="true">&#9733; &#9733; &#9733;</span>
+    <span class="bt-july4-text"><strong>4th of July Sale</strong> <span class="bt-july4-offer">10% Off Sitewide</span> <span class="bt-july4-dates">July 3-4</span> <span class="bt-july4-nocode">No Code Needed</span></span>
+    <span class="bt-july4-stars" aria-hidden="true">&#9733; &#9733; &#9733;</span>
+</div>
+<style>
+#bt-july4-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 9px 15px;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+        url('https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/4th-banner-background.png') center / cover no-repeat;
+    color: #fff;
+    text-align: center;
+    font-family: "proxima-nova", arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+#bt-july4-banner[hidden] { display: none; }
+#bt-july4-banner .bt-july4-text { display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; column-gap: 12px; row-gap: 2px; }
+#bt-july4-banner strong {
+    font-family: "Industry", "Oswald", sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+#bt-july4-banner .bt-july4-offer {
+    color: #ffc20e;
+    font-family: "Industry", "Oswald", sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#bt-july4-banner .bt-july4-dates { font-weight: 600; }
+#bt-july4-banner .bt-july4-nocode {
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 3px;
+    padding: 1px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-self: center;
+}
+#bt-july4-banner .bt-july4-stars { color: #ffc20e; font-size: 12px; letter-spacing: 4px; white-space: nowrap; }
+@media (max-width: 700px) {
+    #bt-july4-banner { padding: 7px 10px; }
+    #bt-july4-banner strong, #bt-july4-banner .bt-july4-offer { font-size: 16px; letter-spacing: 0.5px; }
+    #bt-july4-banner .bt-july4-text { column-gap: 8px; }
+    #bt-july4-banner .bt-july4-dates { font-size: 14px; }
+    #bt-july4-banner .bt-july4-nocode { font-size: 11px; padding: 0 6px; }
+    #bt-july4-banner .bt-july4-stars { display: none; }
+}
+</style>
+<script>
+// Show only July 3-4, 2026, per store time (America/Chicago) — midnight to 11:59pm.
+(function () {
+    var el = document.getElementById('bt-july4-banner');
+    if (!el) return;
+    var y, m, d;
+    try {
+        var parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Chicago', year: 'numeric', month: 'numeric', day: 'numeric'
+        }).formatToParts(new Date());
+        for (var i = 0; i < parts.length; i++) {
+            if (parts[i].type === 'year') y = parseInt(parts[i].value, 10);
+            if (parts[i].type === 'month') m = parseInt(parts[i].value, 10);
+            if (parts[i].type === 'day') d = parseInt(parts[i].value, 10);
+        }
+    } catch (e) { return; } // ancient browser: banner stays hidden
+    if (y === 2026 && m === 7 && (d === 3 || d === 4)) el.hidden = false;
+})();
+</script>
 <div id="htop">
 	<div class="hinner">
     	<span id="hphone" style="display: flex;"><span class="callortext">CALL or TEXT</span> <a href="tel:8009097060">(800) 909-7060</a></span>
