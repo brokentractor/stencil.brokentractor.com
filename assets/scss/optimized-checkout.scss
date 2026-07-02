@@ -15,7 +15,7 @@
 // Background, Logo Position
 // -----------------------------------------------------------------------------
 .optimizedCheckout-header {
-    background-color: #d3d3d3;
+    background-color: #001212; // match storefront header black
     border-bottom: 0px;
     margin-bottom:  0px;
     // scss-lint:disable StringQuotes
@@ -35,14 +35,14 @@
 // Constrain the actual logo image (was rendering at native size)
 .checkoutHeader-logo,
 .checkoutHeader-heading img {
-    max-height: 100px;
+    max-height: 80px;
     width: auto;
     height: auto;
 }
 @media only screen and (min-width: 600px) {
     .checkoutHeader-logo,
     .checkoutHeader-heading img {
-        max-height: 120px;
+        max-height: 100px;
     }
 }
 .header-logo-text {
@@ -70,8 +70,117 @@
     }
 }
 .checkoutHeader-content {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+// Yellow phone ribbon — mirrors the storefront top bar (#FFBE00)
+.bt-checkout-ribbon {
+    background-color: #ffbe00;
+    color: #001212;
+    font-family: "industry", proxima-nova, arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    padding: 8px 15px;
+    text-align: center;
+    text-transform: uppercase;
+
+    a {
+        color: #001212;
+        font-family: inherit; // BC's checkout css sets its own font on <a>; keep Industry
+        text-decoration: underline;
+
+        &:hover {
+            color: #333;
+        }
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .bt-ribbon-help {
+        display: none; // keep the ribbon to one short line on phones
+    }
+}
+
+// Sticky-footer layout: on short pages (e.g. order confirmation) the footer
+// should sit at the bottom of the viewport, not float mid-page.
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+// Slim checkout footer — matches the storefront footer (#121212, white, caps links)
+.bt-checkout-footer {
+    background-color: #121212;
+    color: #fff;
+    margin-top: auto; // pushes footer to viewport bottom on short pages
+    padding: 22px 15px 18px;
+    text-align: center;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+
+        &:hover {
+            color: #ffbe00;
+        }
+    }
+}
+
+.bt-checkout-footer-links {
+    font-family: "industry", proxima-nova, arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+
+    a {
+        display: inline-block;
+        margin: 0 14px 6px;
+    }
+}
+
+.bt-checkout-footer-phone {
+    font-size: 14px;
+    margin-top: 8px;
+
+    a {
+        color: #ffbe00;
+        font-weight: 700;
+    }
+}
+
+.bt-checkout-footer-legal {
+    color: #999;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+// Trust strip — echoes homepage hero bullets at the point of purchase
+.bt-checkout-trust {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+    color: #333;
+    font-size: 13px;
+    padding: 7px 10px;
+    text-align: center;
+
+    span {
+        display: inline-block;
+        white-space: nowrap;
+
+        + span {
+            margin-left: 12px;
+
+            &::before {
+                color: #999;
+                content: "|";
+                margin-right: 12px;
+            }
+        }
+    }
 }
     // scss-lint:enable StringQuotes
 
