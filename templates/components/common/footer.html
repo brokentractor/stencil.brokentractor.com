@@ -183,18 +183,86 @@ function btGetAliases(model) {
     if (n) { var sf = n[1] + 'S' + n[2]; if (result.indexOf(sf) === -1) result.push(sf); }
     return result;
 }
+
+// Set of every known model token (from BT_MODELS + aliases), lowercased and space-stripped,
+// used to validate that a space-join like "580 c" → "580c" produces a real model.
+var BT_MODEL_SET = {};
+(function () {
+    function add(v) { if (v) BT_MODEL_SET[String(v).toLowerCase().replace(/\s+/g, '')] = String(v); }
+    try {
+        if (window.BT_MODELS) Object.keys(window.BT_MODELS).forEach(function (k) {
+            window.BT_MODELS[k].forEach(function (m) { add((typeof m === 'object') ? m.value : m); });
+        });
+        Object.keys(BT_MODEL_ALIASES).forEach(function (k) {
+            add(k); (BT_MODEL_ALIASES[k] || []).forEach(add);
+        });
+    } catch (e) {}
+})();
+
+// Repairs model codes broken by a stray space: "580 c" → "580c", "310 sk" → "310sk",
+// "580 super k" → "580sk". Only joins when the result is a known model, so ordinary
+// phrases ("580 water pump", "3 point hitch") are left untouched.
+function btNormalizeModelSpacing(q) {
+    q = q.replace(/(\d+[a-z]*)\s+super\s+([a-z])\b/gi, '$1s$2');
+    q = q.replace(/\b(\d{1,4}[a-z]?)\s+([a-z]{1,2})\b/gi, function (m, num, suf) {
+        return BT_MODEL_SET[(num + suf).toLowerCase()] ? (num + suf) : m;
+    });
+    return q;
+}
+
+// Rewrite the search box on submit so a broken model code reaches Klevu joined.
+// Runs for every visitor (independent of My Machine), since the fix is query-wide.
+(function () {
+    var searchEl = document.getElementById('search');
+    if (!searchEl) return;
+    function fixSpacing() {
+        var val = searchEl.value;
+        var fixed = btNormalizeModelSpacing(val);
+        if (fixed !== val) searchEl.value = fixed;
+    }
+    searchEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') fixSpacing(); });
+    var form = searchEl.closest('form');
+    if (form) {
+        form.addEventListener('submit', fixSpacing);
+        var btn = form.querySelector('[type="submit"]');
+        if (btn) btn.addEventListener('click', fixSpacing);
+    }
+})();
+
 (function () {
     try {
         var machines = JSON.parse(localStorage.getItem('bt_machines') || '[]');
-        if (!machines.length) return;
-        var active = machines[0];
-        var label  = active.brand + ' ' + active.model;
 
-        var searchInput = document.getElementById('search');
+        // Detect a machine model typed into the search query itself, e.g. "580c water pump"
+        // or "580 c water pump". Uses the shared BT_MODEL_SET. Returns display casing, or null.
+        function btDetectQueryModel() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                var q = (params.get('search_query') || params.get('q') || '').toLowerCase();
+                if (!q || !window.BT_MODELS) return null;
+                // Repair spaced model codes ("580 super k", "580 c") before tokenizing.
+                q = btNormalizeModelSpacing(q);
+                var tokens = q.split(/[^a-z0-9]+/).filter(Boolean);
+                for (var i = 0; i < tokens.length; i++) {
+                    // require a digit so single-letter models (JD "M") can't hijack ordinary words
+                    if (tokens[i].length >= 2 && /\d/.test(tokens[i]) && BT_MODEL_SET[tokens[i]]) return BT_MODEL_SET[tokens[i]];
+                }
+                return null;
+            } catch (e) { return null; }
+        }
+        var klLanding = document.querySelector('.klevuLanding');
+        var klQueryModel = klLanding ? btDetectQueryModel() : null;
 
-        // Update search placeholder to reflect saved machine
-        if (searchInput) {
-            searchInput.placeholder = 'Search ' + label + ' parts...';
+        if (!machines.length && !klQueryModel) return;
+
+        if (machines.length) {
+            var active = machines[0];
+            var label  = active.brand + ' ' + active.model;
+            var searchInput = document.getElementById('search');
+            // Update search placeholder to reflect saved machine
+            if (searchInput) {
+                searchInput.placeholder = 'Search ' + label + ' parts...';
+            }
         }
 
         // Expands letter-suffix ranges: "721–f" → "721 721a 721b ... 721f"
@@ -322,20 +390,69 @@ function btGetAliases(model) {
             }
         }
 
-        // ── Fitment badges on Klevu search results ──
-        var klLanding = document.querySelector('.klevuLanding');
+        // ── Fitment badges + fitment-first re-ranking on Klevu search results ──
         if (klLanding) {
             var klSfTokenMeta = document.getElementById('bt-sf-token');
             var klSfToken = klSfTokenMeta ? klSfTokenMeta.getAttribute('content') : '';
             var klBadgeTimer = null;
+            var klMatchedIds = [];   // product ids confirmed to fit, accumulated across batches
+
+            // Does this product's fitment/description text match the model typed in the query?
+            // Word-boundary match so "580C" can't match inside "580CK" — stricter than the
+            // saved-machine badges, because a typed model is explicit intent.
+            function btQueryModelMatches(combinedText) {
+                if (!klQueryModel) return false;
+                var expanded = btExpandRanges(combinedText);
+                var terms = [klQueryModel.toLowerCase()].concat(btGetAliases(klQueryModel).map(function (a) { return a.toLowerCase(); }));
+                return terms.some(function (t) {
+                    var esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    return new RegExp('\\b' + esc + '\\b').test(expanded) || btInNumericRange(t, expanded);
+                });
+            }
+
+            // Move fitting cards ahead of non-fitting ones, preserving Klevu's order within each group.
+            function btRerankKlevuCards() {
+                if (!klMatchedIds.length) return;
+                // Respect an explicit non-relevance sort chosen by the customer
+                var sorts = document.querySelectorAll('.klevuLanding select');
+                for (var s = 0; s < sorts.length; s++) {
+                    var selOpt = sorts[s].options[sorts[s].selectedIndex];
+                    if (selOpt && /price|name|newest|latest/i.test(selOpt.textContent)) return;
+                }
+                var first = document.querySelector('li.klevuProduct[data-id]');
+                if (!first || !first.parentNode) return;
+                var list = first.parentNode;
+                var cards = Array.prototype.filter.call(list.children, function (n) {
+                    return n.matches && n.matches('li.klevuProduct[data-id]') && /^\d+$/.test(n.getAttribute('data-id'));
+                });
+                var hits = [], rest = [];
+                cards.forEach(function (c) {
+                    (klMatchedIds.indexOf(parseInt(c.getAttribute('data-id'), 10)) !== -1 ? hits : rest).push(c);
+                });
+                if (!hits.length || !rest.length) return;
+                var already = true;
+                for (var j = 0; j < hits.length; j++) { if (cards[j] !== hits[j]) { already = false; break; } }
+                if (already) return;
+                klObserver.disconnect();
+                hits.concat(rest).forEach(function (c) { list.appendChild(c); });
+                klObserver.observe(klLanding, { childList: true, subtree: true });
+                if (!window._mmRerankTracked) {
+                    window._mmRerankTracked = true;
+                    window.btMMTrack('mm_results_reranked', {
+                        mm_model: klQueryModel || (machines[0] && machines[0].model) || '',
+                        mm_count: hits.length
+                    });
+                }
+            }
 
             function btApplyKlevuBadges() {
-                if (!machines.length || !klSfToken) return;
+                if ((!machines.length && !klQueryModel) || !klSfToken) return;
                 var cards = document.querySelectorAll('li.klevuProduct[data-id]');
                 if (!cards.length) return;
 
                 var ids = Array.from(cards).map(function (c) { return parseInt(c.getAttribute('data-id'), 10); });
-                var uniqueIds = ids.filter(function (id, i) { return ids.indexOf(id) === i; });
+                var uniqueIds = ids.filter(function (id, i) { return !isNaN(id) && ids.indexOf(id) === i; });
+                if (!uniqueIds.length) return;
 
                 fetch('/graphql', {
                     method: 'POST',
@@ -357,23 +474,31 @@ function btGetAliases(model) {
                             });
                         }
                         var combinedText = (fitsModel + ' ' + (p.description || '')).toLowerCase();
-                        var matched = btMatchingModels(combinedText);
-                        if (matched.length) {
+                        var matched = machines.length ? btMatchingModels(combinedText) : [];
+                        var qMatch = btQueryModelMatches(combinedText);
+                        if (matched.length || qMatch) {
                             var card = document.querySelector('li.klevuProduct[data-id^="' + p.entityId + '"]');
                             if (card && !card.querySelector('.bt-fits-badge')) {
                                 var badge = document.createElement('div');
                                 badge.className = 'bt-fits-badge';
-                                badge.innerHTML = '&#10003; Potential Match for ' + matched.join(', ');
+                                badge.innerHTML = '&#10003; Potential Match for ' + (matched.length ? matched.join(', ') : klQueryModel);
                                 var target = card.querySelector('.kuProdBottom') || card.querySelector('.kuProdWrap') || card;
                                 target.appendChild(badge);
                                 badgedCards++;
                             }
+                        }
+                        // When the query names a model, rank strictly by what fits THAT model;
+                        // otherwise rank by the customer's saved machine.
+                        var isRankMatch = klQueryModel ? qMatch : matched.length > 0;
+                        if (isRankMatch && klMatchedIds.indexOf(p.entityId) === -1) {
+                            klMatchedIds.push(p.entityId);
                         }
                     });
                     if (badgedCards > 0 && !window._mmSearchBadgeTracked) {
                         window._mmSearchBadgeTracked = true;
                         window.btMMTrack('mm_badge_shown', { mm_context: 'search', mm_count: badgedCards });
                     }
+                    btRerankKlevuCards();
                 })
                 .catch(function () {});
             }
