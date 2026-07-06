@@ -422,8 +422,10 @@ function btNormalizeModelSpacing(q) {
                 var first = document.querySelector('li.klevuProduct[data-id]');
                 if (!first || !first.parentNode) return;
                 var list = first.parentNode;
+                // Include variant cards ("22067-variantid_22461") too — parseInt pulls the
+                // entity id off the front. Only blog/non-product ids (parseInt -> NaN) are skipped.
                 var cards = Array.prototype.filter.call(list.children, function (n) {
-                    return n.matches && n.matches('li.klevuProduct[data-id]') && /^\d+$/.test(n.getAttribute('data-id'));
+                    return n.matches && n.matches('li.klevuProduct[data-id]') && !isNaN(parseInt(n.getAttribute('data-id'), 10));
                 });
                 var hits = [], rest = [];
                 cards.forEach(function (c) {
@@ -588,6 +590,13 @@ function btNormalizeModelSpacing(q) {
         catch (e) { return []; }
     }
     function saveMachines(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+
+    // "Garage" on-ramp: a saved machine has no dedicated BC page, so we send the
+    // customer to the model-aware search — brand + model, which the re-ranker then
+    // orders fitment-first and the category facets let them narrow within.
+    function btShopUrl(m) {
+        return '/search.php?search_query=' + encodeURIComponent((m.brand + ' ' + m.model).trim());
+    }
 
     // Panel elements (every page)
     var navBtn        = document.getElementById('mm-nav-btn');
@@ -882,7 +891,7 @@ function btNormalizeModelSpacing(q) {
             panelChips.innerHTML = '';
             machines.forEach(function (m) {
                 var chip = document.createElement('a');
-                chip.href      = m.typeUrl;
+                chip.href      = btShopUrl(m);
                 chip.className = 'mm-chip';
                 chip.textContent = m.brand + ' ' + m.model;
                 panelChips.appendChild(chip);
@@ -965,9 +974,9 @@ function btNormalizeModelSpacing(q) {
                 heroImg.innerHTML = equipSvg(iconId2);
                 heroImg.style.display = '';
                 heroTitle.textContent = m.brand + ' ' + m.model + ' Parts';
-                heroSub.textContent   = 'Browse our selection of ' + m.brand + ' ' + typeLabel.toLowerCase() + ' parts today.';
-                heroLink.href         = m.typeUrl;
-                heroLink.innerHTML    = 'Browse ' + m.brand + ' <i class="fa fa-arrow-right"></i>';
+                heroSub.textContent   = 'Jump straight to the parts that fit your ' + m.brand + ' ' + m.model + '.';
+                heroLink.href         = btShopUrl(m);
+                heroLink.innerHTML    = 'Shop all ' + m.brand + ' ' + m.model + ' parts <i class="fa fa-arrow-right"></i>';
                 hero.style.display    = '';
             }
         }
