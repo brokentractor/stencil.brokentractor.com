@@ -13,6 +13,7 @@
 .pf-crumbs { display: none; }
 @media only screen and (max-width: 767px) {
     .pf-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 12px; }
+    .pf-crumbs:empty { display: none; } /* no phantom gap above the first dropdown before anything is picked */
     .pf-crumb {
         background: #444; color: #fff; border: none; border-radius: 0;
         font-family: 'proxima-nova', arial, sans-serif; font-size: 12px; font-weight: 700;
@@ -254,8 +255,18 @@
             pfCrumbs.innerHTML = '';
             return;
         }
-        var active = (editingIndex !== null && editingIndex < levels.length)
-            ? editingIndex : levels.length - 1;
+        // Active = the level being edited, else the first level with no selection
+        // yet (e.g. Brand on the homepage), else the deepest level. Using the last
+        // level unconditionally hid an unanswered Brand dropdown behind its empty
+        // "Select Brand First" child, leaving the widget unusable.
+        var active = levels.length - 1;
+        if (editingIndex !== null && editingIndex < levels.length) {
+            active = editingIndex;
+        } else {
+            for (var i = 0; i < levels.length; i++) {
+                if (!levels[i].sel.value) { active = i; break; }
+            }
+        }
         pfCrumbs.innerHTML = '';
         levels.forEach(function (l, i) {
             if (i === active) {

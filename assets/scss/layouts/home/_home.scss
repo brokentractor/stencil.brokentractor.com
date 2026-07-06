@@ -660,8 +660,12 @@ div#heroinner * {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
-    padding: 18px 20px;
+    padding: 8px 20px 18px;
     align-items: flex-end;
+
+    @include breakpoint("medium") {
+        padding: 18px 20px;
+    }
 }
 
 .pf-field {
