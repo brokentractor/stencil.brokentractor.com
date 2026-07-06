@@ -242,7 +242,12 @@ function btNormalizeModelSpacing(q) {
                 if (!q || !window.BT_MODELS) return null;
                 // Repair spaced model codes ("580 super k", "580 c") before tokenizing.
                 q = btNormalizeModelSpacing(q);
-                var tokens = q.split(/[^a-z0-9]+/).filter(Boolean);
+                // Split on whitespace only (not hyphens), so a part number like "223-0612"
+                // stays whole and never fragments into a bogus model token ("223"). Trim any
+                // edge punctuation off each token before the dictionary check.
+                var tokens = q.split(/\s+/)
+                    .map(function (t) { return t.replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, ''); })
+                    .filter(Boolean);
                 for (var i = 0; i < tokens.length; i++) {
                     // require a digit so single-letter models (JD "M") can't hijack ordinary words
                     if (tokens[i].length >= 2 && /\d/.test(tokens[i]) && BT_MODEL_SET[tokens[i]]) return BT_MODEL_SET[tokens[i]];
@@ -290,6 +295,10 @@ function btNormalizeModelSpacing(q) {
             while ((m = re.exec(fitsText)) !== null) {
                 var sPfx = m[1], sNum = parseInt(m[2]), sSfx = m[3];
                 var ePfx = m[4], eNum = parseInt(m[5]), eSfx = m[6];
+                // Skip part-number-shaped codes (e.g. "223-0609", "495-81227") that only look
+                // like ranges: a real model range has no leading-zero endpoint, isn't reversed,
+                // and doesn't span thousands.
+                if (/^0\d/.test(m[5]) || eNum < sNum || (eNum - sNum) > 2000) continue;
                 if ((sPfx === mPfx || ePfx === mPfx) && (sSfx === mSfx || eSfx === mSfx)) {
                     if (mNum >= sNum && mNum <= eNum) return true;
                 }
@@ -406,7 +415,7 @@ function btNormalizeModelSpacing(q) {
                 var terms = [klQueryModel.toLowerCase()].concat(btGetAliases(klQueryModel).map(function (a) { return a.toLowerCase(); }));
                 return terms.some(function (t) {
                     var esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                    return new RegExp('\\b' + esc + '\\b').test(expanded) || btInNumericRange(t, expanded);
+                    return new RegExp('(^|[^a-z0-9-])' + esc + '([^a-z0-9-]|$)').test(expanded) || btInNumericRange(t, expanded);
                 });
             }
 
