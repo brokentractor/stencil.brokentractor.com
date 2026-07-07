@@ -11,7 +11,10 @@
         <script src="{{cdn 'assets/js/fa-solid.min.js'}}"></script>
         <script src="{{cdn 'assets/js/fontawesome.min.js'}}"></script>
 
-        <title>{{truncate head.title 60}}</title>
+        {{!-- Pages without a custom SEO title fall back to the bare product/category
+              name, making <title> identical to the H1. Append the brand unless the
+              title already carries it (custom SEO titles end in "| Broken Tractor"). --}}
+        <title>{{#contains head.title "Broken Tractor"}}{{truncate head.title 60}}{{else}}{{truncate head.title 60}} | Broken Tractor{{/contains}}</title>
         {{{ head.meta_tags }}}
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
