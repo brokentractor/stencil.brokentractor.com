@@ -14,7 +14,9 @@
         {{!-- Pages without a custom SEO title fall back to the bare product/category
               name, making <title> identical to the H1. Append the brand unless the
               title already carries it (custom SEO titles end in "| Broken Tractor"). --}}
-        <title>{{#contains head.title "Broken Tractor"}}{{truncate head.title 60}}{{else}}{{truncate head.title 60}} | Broken Tractor{{/contains}}</title>
+        {{!-- Paginated blog pages (?page=2 …) share one title; append the page number
+              so each is unique. --}}
+        <title>{{#contains head.title "Broken Tractor"}}{{truncate head.title 60}}{{else}}{{truncate head.title 60}} | Broken Tractor{{/contains}}{{#if pagination.blog.current '>' 1}} - Page {{pagination.blog.current}}{{/if}}</title>
         {{{ head.meta_tags }}}
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
