@@ -213,6 +213,51 @@
 </script>
 
 
+<script>
+/* ============================================================
+   Broken Tractor — relabel the wallet/express "OR" separator.
+   The divider between the express-checkout buttons and the
+   customer/card section is rendered by BigCommerce's hosted
+   checkout app (no theme lang key exists for it), so we rewrite
+   it in place — same inject-and-watch pattern as the scripts
+   above. Goal: older mobile users were stopping at the wallet
+   buttons and not realizing they could pay by card below
+   (per salesmen, 2026-07-07).
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+
+  var NEW_TEXT = 'or check out with credit card';
+
+  // The separator is a leaf element whose entire text is just "or".
+  // Matching on exact trimmed text (not a substring) keeps us from
+  // touching real sentences that happen to contain the word.
+  function relabel() {
+    var app = document.getElementById('checkout-app') || document.body;
+    var nodes = app.querySelectorAll('span, p, div, h2, h3, label');
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      if (el.children.length) continue;              // leaf nodes only
+      if (el.getAttribute('data-bt-or')) continue;   // already relabeled
+      if (/^or$/i.test((el.textContent || '').trim())) {
+        el.textContent = NEW_TEXT;
+        el.style.textTransform = 'none';             // sentence case, not ALL CAPS
+        el.setAttribute('data-bt-or', '1');
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var app = document.getElementById('checkout-app') || document.body;
+    relabel();
+    new MutationObserver(relabel).observe(app, { childList: true, subtree: true });
+    setTimeout(relabel, 600);
+    setTimeout(relabel, 1500);
+  });
+})();
+</script>
+
+
 {{> components/bt-checkout/footer }}
 
 {{{ footer.scripts }}}

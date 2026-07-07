@@ -32,10 +32,13 @@
 .checkoutHeader-heading {
     text-align: center;
 }
-// Constrain the actual logo image (was rendering at native size)
+// Constrain the actual logo image (was rendering at native size).
+// Kept small on phones so the header doesn't push the card-payment
+// option below the fold — older mobile users weren't scrolling past
+// the express-wallet buttons to find it (per salesmen, 2026-07-07).
 .checkoutHeader-logo,
 .checkoutHeader-heading img {
-    max-height: 80px;
+    max-height: 52px;
     width: auto;
     height: auto;
 }
@@ -70,8 +73,14 @@
     }
 }
 .checkoutHeader-content {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+@media only screen and (min-width: 600px) {
+    .checkoutHeader-content {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
 }
 
 // Yellow phone ribbon — mirrors the storefront top bar (#FFBE00)
@@ -98,8 +107,14 @@
 }
 
 @media only screen and (max-width: 599px) {
-    .bt-ribbon-help {
-        display: none; // keep the ribbon to one short line on phones
+    // Drop the phone ribbon and the trust strip on phones so the header is
+    // just the logo. This reclaims the vertical space that was pushing the
+    // card-payment option below the fold — older mobile users weren't
+    // scrolling past the express-wallet buttons to find it (per salesmen,
+    // 2026-07-07). Both remain on desktop.
+    .bt-checkout-ribbon,
+    .bt-checkout-trust {
+        display: none;
     }
 }
 
