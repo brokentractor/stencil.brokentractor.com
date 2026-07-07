@@ -184,16 +184,49 @@
 </div>
 
 <script>
-window.onscroll = function() {navScroll()};
-
 var navbar = document.getElementById("nav-banner");
 var sticky = navbar.offsetTop;
+var stickyBody = null;
+
+// .body is rendered by a later partial, so it doesn't exist when this inline
+// script first runs. Resolve it lazily (and cache it) once the handlers fire.
+function getStickyBody() {
+  if (!stickyBody) stickyBody = document.querySelector(".body");
+  return stickyBody;
+}
 
 function navScroll() {
+  var isSticky = navbar.classList.contains("sticky");
+  var body = getStickyBody();
+
   if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
+    if (!isSticky) {
+      // On desktop/tablet the header is position:relative (in the flow), so
+      // pinning it with position:fixed removes its height and the page content
+      // below snaps upward. Reserve that height on .body to stop the jump.
+      // On mobile the header is already fixed and <body> reserves its height in
+      // CSS, so only compensate when the header was actually in the flow.
+      var wasInFlow = window.getComputedStyle(navbar).position !== "fixed";
+      navbar.classList.add("sticky");
+      if (wasInFlow && body) {
+        body.style.paddingTop = navbar.offsetHeight + "px";
+      }
+    }
+  } else if (isSticky) {
     navbar.classList.remove("sticky");
+    if (body) body.style.paddingTop = "";
   }
 }
+
+window.addEventListener("scroll", navScroll);
+
+// Recompute on resize so the reserved height always matches the current
+// breakpoint (header height and offset both change across breakpoints).
+window.addEventListener("resize", function() {
+  var body = getStickyBody();
+  navbar.classList.remove("sticky");
+  if (body) body.style.paddingTop = "";
+  sticky = navbar.offsetTop;
+  navScroll();
+});
 </script>
