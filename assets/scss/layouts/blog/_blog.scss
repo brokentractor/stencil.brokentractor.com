@@ -253,7 +253,7 @@
     flex-direction: column;
     background: #1a1a1a;
     box-shadow: 0 2px 16px rgba(0,0,0,0.10);
-    margin: 0 16px 32px;
+    margin: 0 0 32px;
 
     @include breakpoint("medium") {
         margin: 0 0 48px;
@@ -1291,8 +1291,8 @@
     }
 
     &__stamp {
-        position: absolute;
-        top: 16px; left: 16px;
+        align-self: flex-start;
+        margin-bottom: 16px;
         background: #ffbe00;
         color: #001212;
         font-family: var(--bt-font-display, "Industry", "Oswald", sans-serif);
@@ -1438,7 +1438,6 @@
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover;
         }
     }
 

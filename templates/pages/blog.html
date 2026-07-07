@@ -101,14 +101,14 @@ blog:
             {{#if thumbnail}}
             <div class="bt-featured__img">
                 <img src="{{getImage thumbnail 'grande'}}" alt="{{thumbnail.alt}}" loading="eager">
-                <div class="bt-featured__stamp">
-                    <span class="pulse"></span>
-                    Latest Post
-                </div>
             </div>
             {{/if}}
             <div class="bt-featured__content">
                 <div>
+                    <div class="bt-featured__stamp">
+                        <span class="pulse"></span>
+                        Latest Post
+                    </div>
                     <div class="bt-featured__meta">
                         <span class="blog-featured__date">{{date_published}}</span>
                         <span class="sep"></span>
