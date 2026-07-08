@@ -18,6 +18,7 @@
         </h4>
         {{#each custom_fields}}
         {{#if name '!=' 'blurb'}}
+        {{#if name '!=' 'FeaturedBlog'}}
             <div class="grid-item {{{name}}}">
                 {{#if name '==' 'ListDescription'}}<strong>Description</strong>
                 {{else if name '==' 'FitsModel'}}<strong>Fits Model</strong>
@@ -25,6 +26,7 @@
                 {{else}}<strong>{{name}}</strong>{{/if}}
                 {{{value}}}
             </div>
+        {{/if}}
         {{/if}}
         {{/each}}
         <div class="grid-item">

@@ -13,13 +13,14 @@
             <span class="img-seedet">See Details</span>
         </a>
     </td>
-    {{#each custom_fields}}
-    {{#if name '!=' 'REFID'}}
-    {{#if name '!=' 'blurb'}}
-    <td class="pvcol {{{name}}}">{{{value}}}</td>
-    {{/if}}
-    {{/if}}
-    {{/each}}
+    {{!-- Whitelist: only the columns the table headers define. Custom fields not
+          listed here (blurb, FeaturedBlog, anything added later) never render into
+          the table, so new fields can't break row alignment. CorePrice stays as a
+          hidden data cell — category.js reads it to show the core charge line. --}}
+    <td class="pvcol FitsModel">{{#each custom_fields}}{{#if name '===' 'FitsModel'}}{{{value}}}{{/if}}{{/each}}</td>
+    <td class="pvcol ListDescription">{{#each custom_fields}}{{#if name '===' 'ListDescription'}}{{{value}}}{{/if}}{{/each}}</td>
+    <td class="pvcol ListDetails" style="display:none;">{{#each custom_fields}}{{#if name '===' 'ListDetails'}}{{{value}}}{{/if}}{{/each}}</td>
+    {{#each custom_fields}}{{#if name '===' 'CorePrice'}}<td class="pvcol CorePrice" style="display:none;">{{{value}}}</td>{{/if}}{{/each}}
     <td class="pvcol sku"><a href="{{url}}">{{{sku}}}</a></td>
 
    {{#if out_of_stock_message}}

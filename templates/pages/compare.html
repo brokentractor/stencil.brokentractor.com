@@ -110,7 +110,9 @@
                         {{#if custom_fields}}
                             <ul>
                                 {{#each custom_fields}}
+                                    {{#if name '!=' 'FeaturedBlog'}}
                                     <li>{{name}}: {{{value}}}</li>
+                                    {{/if}}
                                 {{/each}}
                             </ul>
                         {{else}}

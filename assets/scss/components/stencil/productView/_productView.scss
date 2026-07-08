@@ -461,3 +461,81 @@ label.form-option {
         }
     }
 }
+
+// Related Articles (FeaturedBlog custom field) — blog hero-image cards above #pv-help.
+// One card fills the row; multiple cards scroll-snap into a carousel with arrows.
+#pv-related-articles {
+    position: relative;
+    margin: 20px 0 10px;
+
+    .pv-ra-track {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar { display: none; }
+    }
+
+    .pv-ra-card {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-decoration: none;
+
+        // Badge sits on its own row above the image.
+        .pv-ra-tag {
+            display: inline-block;
+            background: #ffbe00;
+            color: #1a1a1a;
+            font-family: $industry, "Oswald", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 4px 10px;
+        }
+
+        // Full hero image at its natural aspect ratio — never cropped.
+        .pv-ra-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .pv-ra-title {
+            display: block;
+            width: 100%;
+            background: #1a1a1a;
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 1.25;
+            padding: 8px 12px;
+        }
+
+        &:hover .pv-ra-title { text-decoration: underline; }
+    }
+
+    .pv-ra-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.55);
+        color: #ffbe00;
+        border: none;
+        width: 30px;
+        height: 42px;
+        cursor: pointer;
+        font-size: 16px;
+        z-index: 2;
+
+        &:hover { background: rgba(0, 0, 0, 0.8); }
+    }
+
+    .pv-ra-prev { left: 0; }
+    .pv-ra-next { right: 0; }
+}

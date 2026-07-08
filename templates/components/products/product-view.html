@@ -328,6 +328,91 @@
                     {{/if}}
                 </div>
                
+                {{!-- Related articles — driven by FeaturedBlog custom field(s) (value = blog URL).
+                      Hero image + title are fetched from the blog page itself (og: tags), so only
+                      the URL lives on the product. Multiple FeaturedBlog fields -> carousel. --}}
+                <div id="pv-related-articles" style="display:none;"
+                     data-blogs="{{#each product.custom_fields}}{{#if name '===' 'FeaturedBlog'}}{{value}}|{{/if}}{{/each}}">
+                    <div class="pv-ra-track"></div>
+                    <button type="button" class="pv-ra-nav pv-ra-prev" aria-label="Previous article" style="display:none;">&#10094;</button>
+                    <button type="button" class="pv-ra-nav pv-ra-next" aria-label="Next article" style="display:none;">&#10095;</button>
+                </div>
+                <script>
+                (function () {
+                    var wrap = document.getElementById('pv-related-articles');
+                    if (!wrap) return;
+                    var urls = (wrap.getAttribute('data-blogs') || '').split('|')
+                        .map(function (s) { return s.trim(); }).filter(Boolean)
+                        .filter(function (u, i, a) { return a.indexOf(u) === i; });
+                    if (!urls.length) { wrap.parentNode.removeChild(wrap); return; }
+
+                    var track = wrap.querySelector('.pv-ra-track');
+                    var prev  = wrap.querySelector('.pv-ra-prev');
+                    var next  = wrap.querySelector('.pv-ra-next');
+
+                    function makeCard(href, title, img) {
+                        var a = document.createElement('a');
+                        a.className = 'pv-ra-card';
+                        a.href = href;
+                        var tag = document.createElement('span');
+                        tag.className = 'pv-ra-tag';
+                        tag.textContent = 'Related Article';
+                        a.appendChild(tag);
+                        if (img) {
+                            var im = document.createElement('img');
+                            im.className = 'pv-ra-img';
+                            im.src = img;
+                            im.alt = title;
+                            im.loading = 'lazy';
+                            a.appendChild(im);
+                        }
+                        var t = document.createElement('span');
+                        t.className = 'pv-ra-title';
+                        t.textContent = title;
+                        a.appendChild(t);
+                        return a;
+                    }
+
+                    function updateNav() {
+                        var many = track.children.length > 1;
+                        prev.style.display = many ? '' : 'none';
+                        next.style.display = many ? '' : 'none';
+                    }
+
+                    urls.forEach(function (u) {
+                        fetch(u.split('#')[0], { credentials: 'same-origin' })
+                            .then(function (r) { return r.ok ? r.text() : null; })
+                            .then(function (html) {
+                                var title = 'Read the related article', img = '';
+                                if (html) {
+                                    var doc = new DOMParser().parseFromString(html, 'text/html');
+                                    var og = doc.querySelector('meta[property="og:image"]');
+                                    img = og ? og.getAttribute('content') : '';
+                                    if (!img) {
+                                        var im = doc.querySelector('.blog-post img, article img');
+                                        img = im ? im.getAttribute('src') : '';
+                                    }
+                                    var ot = doc.querySelector('meta[property="og:title"]');
+                                    title = (ot && ot.getAttribute('content'))
+                                        || (doc.querySelector('h1') ? doc.querySelector('h1').textContent.trim() : '')
+                                        || doc.title || title;
+                                }
+                                track.appendChild(makeCard(u, title, img));
+                                wrap.style.display = '';
+                                updateNav();
+                            })
+                            .catch(function () {});
+                    });
+
+                    function step(dir) {
+                        var w = track.firstElementChild ? track.firstElementChild.offsetWidth + 12 : 300;
+                        track.scrollBy({ left: dir * w, behavior: 'smooth' });
+                    }
+                    prev.addEventListener('click', function () { step(-1); });
+                    next.addEventListener('click', function () { step(1); });
+                })();
+                </script>
+
                 <div id="pv-help">
 
                     <strong>Can’t Find What You’re Looking For?</strong>

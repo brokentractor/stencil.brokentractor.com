@@ -14,13 +14,13 @@
         </a>
     </td>    
 
-    {{#each custom_fields}}
-        {{#if name '!=' 'REFID'}}
-        {{#if name '!=' 'blurb'}}
-            <td class="pvcol {{{name}}}">{{{value}}}</td>
-        {{/if}}
-        {{/if}}
-    {{/each}}
+    {{!-- Whitelist: only the columns the table headers define. Custom fields not
+          listed here never render into the table, so new fields can't break rows.
+          CorePrice stays as a hidden data cell — category.js reads it for the
+          core charge line. --}}
+    <td class="pvcol FitsModel">{{#each custom_fields}}{{#if name '===' 'FitsModel'}}{{{value}}}{{/if}}{{/each}}</td>
+    <td class="pvcol ListDescription">{{#each custom_fields}}{{#if name '===' 'ListDescription'}}{{{value}}}{{/if}}{{/each}}</td>
+    {{#each custom_fields}}{{#if name '===' 'CorePrice'}}<td class="pvcol CorePrice" style="display:none;">{{{value}}}</td>{{/if}}{{/each}}
    
    
     <td class="bt-desc" style="display:none;">{{{description}}}</td>
