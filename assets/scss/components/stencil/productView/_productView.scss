@@ -466,7 +466,7 @@ label.form-option {
 // One card fills the row; multiple cards scroll-snap into a carousel with arrows.
 #pv-related-articles {
     position: relative;
-    margin: 20px 0 10px;
+    margin: 0;
 
     .pv-ra-track {
         display: flex;
@@ -486,16 +486,19 @@ label.form-option {
         align-items: flex-start;
         text-decoration: none;
 
-        // Badge sits on its own row above the image.
+        // Full-width heading row above the image.
         .pv-ra-tag {
-            display: inline-block;
-            background: #ffbe00;
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #efefef;
             color: #1a1a1a;
             font-family: $industry, "Oswald", sans-serif;
-            font-size: 11px;
+            font-size: 18px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+            border-top: 1px solid #ddd;
             padding: 4px 10px;
         }
 
