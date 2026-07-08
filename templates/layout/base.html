@@ -53,6 +53,10 @@
         <link rel="canonical" href="{{urls.auth.login}}" />
         {{/if}}
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{!-- Stop iOS Safari from auto-linking part numbers (e.g. "306 - 191-1384")
+              as phone numbers, which restyles them black-on-black in dark heroes.
+              Explicit <a href="tel:..."> links are unaffected. --}}
+        <meta name="format-detection" content="telephone=no">
         {{{stylesheet '/assets/css/theme.css'}}}
 		    <script src="https://use.typekit.net/jsn3czo.js"></script>
         <script>try{Typekit.load({ async: false });}catch(e){}</script>
