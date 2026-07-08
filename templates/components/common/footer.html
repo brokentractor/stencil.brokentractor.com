@@ -336,6 +336,15 @@ function btNormalizeModelSpacing(q) {
                     pvBadge.className = 'bt-fits-badge';
                     pvBadge.innerHTML = '&#10003; Potential Match for ' + pvMatched.join(', ');
                     window.btMMTrack('mm_badge_shown', { mm_context: 'product', mm_count: 1, mm_model: pvMatched.join(', ') });
+                } else if (machines.length) {
+                    // Product page only: the user has saved machine(s), the product lists
+                    // fitment, and none of their machines appear in it — warn them before
+                    // they add a part that doesn't fit. (Category tables / search results
+                    // intentionally stay quiet to avoid a wall of red.)
+                    var pvModels = machines.map(function (m) { return m.model; }).filter(Boolean).join(', ');
+                    pvBadge.className = 'bt-fits-badge bt-fits-badge--nofit';
+                    pvBadge.innerHTML = '&#10005; No Confirmed Fitment for ' + pvModels;
+                    window.btMMTrack('mm_nofit_shown', { mm_context: 'product', mm_model: pvModels });
                 }
             }
         }

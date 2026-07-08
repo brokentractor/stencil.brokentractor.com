@@ -235,6 +235,13 @@ tr.productrow:nth-child(even) {
     font-size: 14px;
 }
 
+// Product-page-only "no fit" warning — red counterpart to the green match badge.
+.bt-fits-badge--nofit {
+    background: #fdecea;
+    color: #b02a20;
+    border-color: #f0b6b0;
+}
+
 .kuProdBottom .bt-fits-badge {
     display: block;
     white-space: normal;
