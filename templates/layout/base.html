@@ -18,6 +18,24 @@
               so each is unique. --}}
         <title>{{#contains head.title "Broken Tractor"}}{{truncate head.title 60}}{{else}}{{truncate head.title 60}} | Broken Tractor{{/contains}}{{#if pagination.blog.current '>' 1}} - Page {{pagination.blog.current}}{{/if}}</title>
         {{{ head.meta_tags }}}
+        {{!-- BigCommerce emits Open Graph tags for products and blog posts but NOT for
+              category pages, so shared category links get no preview card. Fill the gap:
+              category image when set, BT logo as the fallback share image. --}}
+        {{#if category}}
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Broken Tractor LLC">
+        <meta property="og:title" content="{{category.name}}">
+        <meta property="og:url" content="https://www.brokentractor.com{{category.url}}">
+        <meta property="og:description" content="{{meta_description}}">
+        {{#if category.image}}
+        <meta property="og:image" content="{{getImage category.image 'zoom_size'}}">
+        {{else}}
+        <meta property="og:image" content="https://www.brokentractor.com/content/bt-logo-schema.png">
+        {{/if}}
+        {{!-- Category images are square — the "summary" card shows them as a square
+              thumb instead of cropping them into a wide banner. --}}
+        <meta name="twitter:card" content="summary">
+        {{/if}}
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
         <link href="{{ head.favicon }}" rel="shortcut icon">
