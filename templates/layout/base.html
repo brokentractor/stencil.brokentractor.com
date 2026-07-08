@@ -30,10 +30,20 @@
         {{#if category.image}}
         <meta property="og:image" content="{{getImage category.image 'zoom_size'}}">
         {{else}}
-        <meta property="og:image" content="https://www.brokentractor.com/content/bt-logo-schema.png">
+        <meta property="og:image" content="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-badge-full-color-rgb-1920px-w-72ppi.png">
         {{/if}}
         {{!-- Category images are square — the "summary" card shows them as a square
               thumb instead of cropping them into a wide banner. --}}
+        <meta name="twitter:card" content="summary">
+        {{/if}}
+        {{!-- Homepage gets no og tags from BC either — same gap, same fix. --}}
+        {{#if page_type '===' 'default'}}
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Broken Tractor LLC">
+        <meta property="og:title" content="Broken Tractor - Tractor, Backhoe, Dozer & Heavy Equipment Parts">
+        <meta property="og:url" content="https://www.brokentractor.com/">
+        <meta property="og:description" content="{{meta_description}}">
+        <meta property="og:image" content="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-badge-full-color-rgb-1920px-w-72ppi.png">
         <meta name="twitter:card" content="summary">
         {{/if}}
         {{{ head.config }}}
@@ -64,7 +74,7 @@
           "@type": "Organization",
           "name": "Broken Tractor LLC",
           "url": "https://www.brokentractor.com/",
-          "logo": "https://www.brokentractor.com/content/bt-logo-schema.png",
+          "logo": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-badge-full-color-rgb-1920px-w-72ppi.png",
           "telephone": "+1-800-909-7060",
           "foundingDate": "2006",
           "sameAs": [
