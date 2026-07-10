@@ -544,9 +544,35 @@ input#searchsubmit {
     font-size:  16px;
     color:  #000;
     margin-top: 5px;
+    touch-action: manipulation; // no double-tap-zoom heuristics on the tap target
+
+    // Mobile: fill the 50px header band (was 40px with dead strips above/below
+    // that swallowed slightly-off taps). 44px+ is the recommended minimum target.
+    @media (max-width: 1279px) {
+        height: 44px;
+        margin-top: 3px;
+    }
 }
 #header-search .form-field {
     margin-bottom: 0px;
+}
+
+// Phones: bigger search target. Smaller logo (160px, set in header.html) frees
+// vertical room; the search band and the Add My Machine button rise to y:66 and
+// grow to 60px tall, staying flush with each other. Input fills the band.
+@media (max-width: 800px) {
+    div#header-search {
+        top: 66px;
+        height: 60px;
+        padding: 0 8px 0 10px; // full-height white box, with a gap before the Add My Machine button
+    }
+    #header-search .form-input {
+        height: 60px;        // identical to the Add My Machine button
+        margin-top: 0;
+    }
+    #header-search svg {
+        top: 18px;           // (60 - 24) / 2 — centered in the taller box
+    }
 }
 div#accountMenu {
     background: #fff;
@@ -975,6 +1001,12 @@ body .nxt-ac-main {
     &:hover { background: #e6a800; }
 
     @include breakpoint("medium") { display: none; }
+
+    // Phones: match the taller search bar (see #header-search max-800 block).
+    @media (max-width: 800px) {
+        top: 66px;
+        height: 60px;
+    }
 }
 
 

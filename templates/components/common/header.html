@@ -64,7 +64,7 @@
         <style>
           svg#header-logo { display: none; }
           #header-logo-anniv { position: absolute; z-index: 10; left: 15px; width: 200px; height: auto; }
-          @media (max-width: 800px) { #header-logo-anniv { top: 10px !important; } }
+          @media (max-width: 800px) { #header-logo-anniv { top: 10px !important; width: 160px; } } /* smaller logo makes room for the taller search bar */
           @media (min-width: 801px) and (max-width: 1279px) { #header-logo-anniv { width: 235px; top: 12px !important; } }
           @media (min-width: 1280px) { #header-logo-anniv { width: 250px; } }
         </style>
@@ -223,6 +223,12 @@ window.addEventListener("scroll", navScroll);
 // Recompute on resize so the reserved height always matches the current
 // breakpoint (header height and offset both change across breakpoints).
 window.addEventListener("resize", function() {
+  // On phones, opening the keyboard fires a resize. Un-sticking the header here
+  // made the search bar jump out from under the user's finger mid-tap (sessions
+  // showed repeated taps to focus search). Skip the recompute while a text field
+  // has focus — the breakpoint can't change while someone is typing.
+  var ae = document.activeElement;
+  if (ae && (ae.tagName === "INPUT" || ae.tagName === "TEXTAREA" || ae.tagName === "SELECT")) return;
   var body = getStickyBody();
   navbar.classList.remove("sticky");
   if (body) body.style.paddingTop = "";

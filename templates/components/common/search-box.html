@@ -2,7 +2,7 @@
 <form class="form" action="/search-results/">
     <fieldset class="form-fieldset">
         <div class="form-field">
-            <input class="form-input" id="search" placeholder="Search by Part Number, Model or Brand">
+            <input class="form-input" id="search" placeholder="Search Our Parts Catalogue...">
             <label>
               <input id="hide-submit" type="submit" />
               <i class="fa fa-search"></i>
@@ -15,3 +15,22 @@
         display: none!important;
     }
 </style>
+<script>
+// Zero dead zone: a tap anywhere in the search band (padding strips included)
+// focuses the input, so a finger that lands a few px off still connects.
+// NOTE: resolve the input at tap time, not load time — Klevu's quick-search
+// script replaces the original #search node after load, so a captured
+// reference would point at a detached element and focus() would no-op.
+(function () {
+    var wrap = document.getElementById('header-search');
+    if (!wrap) return;
+    // Capture-phase pointerdown: Klevu's own handlers on the form stop click
+    // propagation, so a bubbling listener never hears taps on the padding.
+    wrap.addEventListener('pointerdown', function (e) {
+        var input = document.getElementById('search');
+        if (!input || e.target === input) return;                    // native focus already happening
+        if (e.target.closest && e.target.closest('label')) return;   // search icon = submit, leave it alone
+        setTimeout(function () { input.focus(); }, 0);
+    }, true);
+})();
+</script>
