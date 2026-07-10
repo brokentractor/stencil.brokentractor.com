@@ -560,7 +560,9 @@ input#searchsubmit {
 // Phones: bigger search target. Smaller logo (160px, set in header.html) frees
 // vertical room; the search band and the Add My Machine button rise to y:66 and
 // grow to 60px tall, staying flush with each other. Input fills the band.
-@media (max-width: 800px) {
+// 767px max — at 768-800 the header switches to the desktop button row, and the
+// raised search band overlapped it.
+@media (max-width: 767px) {
     div#header-search {
         top: 66px;
         height: 60px;
@@ -1002,8 +1004,8 @@ body .nxt-ac-main {
 
     @include breakpoint("medium") { display: none; }
 
-    // Phones: match the taller search bar (see #header-search max-800 block).
-    @media (max-width: 800px) {
+    // Phones: match the taller search bar (see #header-search max-767 block).
+    @media (max-width: 767px) {
         top: 66px;
         height: 60px;
     }
