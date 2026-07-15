@@ -1,4 +1,11 @@
 {{#partial "page"}}
+{{!-- TEMP PREVIEW HOOK: renders the redesigned Shipping & Returns page through the
+      default template so it can be previewed on localhost:3000 before the custom
+      layout (custom/page/shipping-returns.html) is pushed and assigned in BC admin.
+      Remove this conditional once the custom template is assigned. --}}
+{{#if page.title '===' 'Shipping & Returns'}}
+{{> components/custom/shipping-returns-content}}
+{{else}}
 
 <main class="page">
 
@@ -33,6 +40,7 @@
         </ul>
     {{/if}}
 </main>
+{{/if}}
 
 {{/partial}}
 
