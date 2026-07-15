@@ -1,6 +1,6 @@
 <style>
 /* ============================================================
-   Custom Pin Request — DEMO
+   Custom Pin Request
    All styles scoped under .cpin so nothing leaks into the theme.
    ============================================================ */
 .cpin { max-width: 1140px; margin: 0 auto 30px; padding: 0 15px; color: #001212; }
@@ -28,13 +28,22 @@
 
 /* form */
 .cpin-field { margin-bottom: 14px; }
-.cpin-field label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; }
+.cpin-field label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
 .cpin-field label .cpin-req { color: #c02b0a; font-weight: normal; }
+.cpin-field label .cpin-hint { color: #5d5d5d; font-weight: normal; }
 .cpin-field select, .cpin-field input[type=number], .cpin-field input[type=text], .cpin-field input[type=email], .cpin-field input[type=tel], .cpin-field textarea { width: 100%; padding: 9px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background: #fff; color: #001212; }
 .cpin-field textarea { resize: vertical; min-height: 56px; font-family: inherit; }
 .cpin-field.cpin-invalid select, .cpin-field.cpin-invalid input { border-color: #c02b0a; background: #fff6f4; }
 .cpin-2col { display: flex; gap: 12px; flex-wrap: wrap; }
 .cpin-2col .cpin-field { flex: 1 1 180px; }
+
+.cpin-check { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; margin-bottom: 12px; }
+.cpin-check input { width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0; }
+.cpin-check b { font-size: 14px; }
+.cpin-check .cpin-hint { color: #5d5d5d; font-size: 13px; display: block; }
+
+.cpin-dims-note { font-size: 14px; color: #5d5d5d; margin: -4px 0 12px; }
+.cpin-tpl-note { font-size: 14px; color: #333; background: #efefef; border-left: 3px solid #ffbe00; padding: 8px 12px; margin: 2px 0 12px; }
 
 .cpin-qty { display: flex; align-items: center; }
 .cpin-qty button { width: 40px; height: 40px; border: 1px solid #ccc; background: #fff; font-size: 18px; cursor: pointer; }
@@ -42,19 +51,21 @@
 
 /* price */
 .cpin-price { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 34px; margin: 4px 0 0; }
-.cpin-price-note { font-family: Arial, sans-serif; font-weight: normal; font-size: 13px; color: #757575; margin-left: 8px; white-space: nowrap; }
-.cpin-breakdown { font-size: 13px; color: #444; background: #efefef; border: 1px solid #ccc; border-radius: 4px; padding: 10px 14px; margin: 12px 0; line-height: 1.8; }
-.cpin-breakdown .cpin-bd-row { display: flex; justify-content: space-between; }
+.cpin-price-note { font-family: Arial, sans-serif; font-weight: normal; font-size: 14px; color: #5d5d5d; margin-left: 8px; white-space: nowrap; }
+.cpin-breakdown { font-size: 14px; color: #333; background: #efefef; border: 1px solid #ccc; border-radius: 4px; padding: 10px 14px; margin: 12px 0; line-height: 1.8; }
+.cpin-breakdown .cpin-bd-row { display: flex; justify-content: space-between; gap: 12px; }
+.cpin-breakdown .cpin-bd-row span:last-child { white-space: nowrap; }
 .cpin-breakdown .cpin-bd-total { border-top: 1px solid #bbb; margin-top: 4px; padding-top: 4px; font-weight: bold; }
+.cpin-breakdown .cpin-bd-note { color: #7a5b00; }
 
 .cpin-configbox { border: 1px solid #e0e0e0; border-radius: 6px; background: #fcfcfc; padding: 16px; margin-top: 14px; }
 .cpin-configbox h3 { font-family: industry, Arial, sans-serif; font-size: 15px; text-transform: uppercase; letter-spacing: .5px; margin: 0 0 12px; border-bottom: 2px solid #ffbe00; display: inline-block; padding-bottom: 3px; }
 
 .cpin-btn-request { display: block; width: 100%; background: #ffbe00; color: #000; border: none; padding: 15px 20px; font-family: industry, Arial, sans-serif; font-weight: 600; font-size: 17px; text-transform: uppercase; cursor: pointer; margin-top: 6px; }
 .cpin-btn-request:hover { background: #000; color: #ffbe00; }
-.cpin-ship-note { font-size: 12px; color: #757575; margin-top: 10px; }
+.cpin-ship-note { font-size: 15px; color: #333; margin-top: 12px; line-height: 1.5; }
 
-.cpin-error-msg { display: none; color: #c02b0a; font-size: 13px; margin-top: 10px; font-weight: bold; }
+.cpin-error-msg { display: none; color: #c02b0a; font-size: 14px; margin-top: 10px; font-weight: bold; }
 
 /* success state */
 .cpin-success { display: none; background: #eef7ee; border: 1px solid #9fce9f; border-radius: 6px; padding: 18px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
@@ -66,7 +77,7 @@
 .cpin-cta .cpin-phone { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 24px; margin: 6px 0; }
 .cpin-cta a { text-decoration: underline; }
 
-.cpin-policy { font-size: 13px; color: #555; line-height: 1.7; border-top: 1px solid #e0e0e0; margin-top: 30px; padding-top: 20px; }
+.cpin-policy { font-size: 14px; color: #444; line-height: 1.7; border-top: 1px solid #e0e0e0; margin-top: 30px; padding-top: 20px; }
 .cpin-policy strong { font-family: industry, Arial, sans-serif; font-size: 15px; color: #001212; }
 
 @media (max-width: 700px) {
@@ -105,21 +116,29 @@
           <ellipse id="cpinEndL" cx="60" cy="65" rx="5" ry="20" fill="url(#cpinEnd)"/>
           <ellipse id="cpinEndR" cx="400" cy="65" rx="5" ry="20" fill="url(#cpinEnd)"/>
 
-          <!-- retention: snap ring grooves -->
-          <g id="cpinSnap" style="display:none;">
-            <rect id="cpinGrooveL" x="98" y="45" width="4" height="40" fill="#565b60"/>
-            <rect id="cpinGrooveR" x="358" y="45" width="4" height="40" fill="#565b60"/>
+          <!-- extended bevel on right end (bg-colored wedge "cuts" the corner) -->
+          <g id="cpinBevel" style="display:none;">
+            <polygon id="cpinBevelTop" points="0,0" fill="#f7f7f7"/>
+            <line id="cpinBevelLine" x1="0" y1="0" x2="0" y2="0" stroke="#8f959b" stroke-width="1.5"/>
           </g>
-          <!-- retention: bolt hole -->
+
+          <!-- crossbolt hole (all PVE templates include one) -->
           <g id="cpinBolt" style="display:none;">
             <circle id="cpinBoltHole" cx="90" cy="65" r="6" fill="#3d4145"/>
             <circle id="cpinBoltHole2" cx="90" cy="65" r="6" fill="none" stroke="#f0f1f2" stroke-width="1.5"/>
           </g>
-          <!-- retention: weld-on ear -->
-          <g id="cpinEar" style="display:none;">
-            <rect id="cpinEarRect" x="52" y="18" width="14" height="30" rx="3" fill="#8f959b" stroke="#565b60"/>
-            <circle id="cpinEarHole" cx="59" cy="28" r="4" fill="#3d4145"/>
+
+          <!-- flag plate (Flag Style) -->
+          <g id="cpinFlag" style="display:none;">
+            <rect id="cpinFlagRect" x="40" y="10" width="16" height="45" rx="2" fill="#8f959b" stroke="#565b60"/>
+            <circle id="cpinFlagHole" cx="48" cy="22" r="4.5" fill="#3d4145"/>
           </g>
+
+          <!-- welded retainer disc (Pin with Retainer) -->
+          <g id="cpinDisc" style="display:none;">
+            <rect id="cpinDiscRect" x="50" y="32" width="10" height="66" rx="4" fill="#8f959b" stroke="#565b60"/>
+          </g>
+
           <!-- grease zerk -->
           <g id="cpinZerk" style="display:none;">
             <rect id="cpinZerkStem" x="226" y="32" width="8" height="14" fill="#8a6d1a"/>
@@ -139,9 +158,11 @@
       <div class="cpin-keynotes">
         <strong>Key Notes</strong>
         <ul>
-          <li>Finish: zinc-plated standard; other finishes available on request</li>
-          <li>Standard lead time: 3–5 business days; hardened pins run about 2 weeks</li>
-          <li>Not sure what diameter or length you need? Call us and we'll help you spec it out</li>
+          <li>Made from 4140 Q&amp;T steel (32RC) - 30% stronger than a normal hardened pin</li>
+          <li>Price includes crossbolt hole and standard bevel or chamfer</li>
+          <li>Lead time: 3–5 business days; orders after 12 noon start the next day</li>
+          <li>Fully hardened (56RC) available - about 4–6 weeks, priced on quote</li>
+          <li>Not sure on a measurement? Leave it blank and we'll confirm it with you</li>
         </ul>
       </div>
 
@@ -149,8 +170,8 @@
 
     <!-- RIGHT: configurator -->
     <div class="cpin-right">
-      <h1>Custom Pin — Built to Your Exact Specifications</h1>
-      <div class="cpin-price" id="cpinPrice">Starting at $125.00<span class="cpin-price-note">(Plus Shipping &amp; Taxes)</span></div>
+      <h1>Custom Pin - Built to Your Exact Specifications</h1>
+      <div class="cpin-price" id="cpinPrice">Starting at $140<span class="cpin-price-note">(Plus Shipping &amp; Taxes)</span></div>
 
       {{#if forms.contact.success}}
       {{!-- BigCommerce re-renders the page with this flag after a successful send;
@@ -161,12 +182,12 @@
       <script>window.location.replace('/thanks/?form=custom-pins');</script>
       <div class="cpin-success" style="display:block;">
         <h3>Request received!</h3>
-        <p>Your custom pin spec is on its way to our team. We'll call or email you to confirm the spec, final price, and lead time before any pin hits the lathe.</p>
+        <p>Your custom pin spec is on its way to our team. We'll call or email you to confirm the measurements, final price, and lead time before we start making your pin.</p>
         <p><a href="/thanks/?form=custom-pins">Continue &rarr;</a></p>
       </div>
       {{else}}
       {{!-- Posts to BigCommerce's native contact-form endpoint. page_id comes from
-            the BC web page (type: Contact Form) this template is assigned to — that
+            the BC web page (type: Contact Form) this template is assigned to - that
             page's configured email address is where the request gets routed.
             On the demo URL page_id is empty and JS falls back to demo mode. --}}
       <form id="cpinForm" action="{{urls.contact_us_submit}}" method="post" novalidate>
@@ -176,62 +197,79 @@
             {{> components/common/alert-error forms.contact.error}}
         {{/if}}
         <div class="cpin-configbox">
-          <h3>1. Spec Your Pin</h3>
+          <h3>1. Pick Your Pin Type</h3>
 
           <div class="cpin-2col">
             <div class="cpin-field" data-req>
-              <label for="cpinDia">Diameter <span class="cpin-req">Required</span></label>
-              <select id="cpinDia">
-                <option value="">Select diameter…</option>
-                <option>3/4"</option>
-                <option>7/8"</option>
-                <option>1"</option>
-                <option>1-1/8"</option>
-                <option>1-1/4"</option>
-                <option>1-3/8"</option>
-                <option>1-1/2"</option>
-                <option>1-3/4"</option>
-                <option>2"</option>
-                <option value="other">Other — specify in notes</option>
+              <label for="cpinType">Pin Type <span class="cpin-req">Required</span></label>
+              <select id="cpinType">
+                <option value="">Select pin type…</option>
+                <option value="straight">Straight Shaft Pin</option>
+                <option value="flag">Flag Style Pin</option>
+                <option value="retainer">Pin with Welded Retainer</option>
               </select>
             </div>
-            <div class="cpin-field" data-req>
-              <label for="cpinLen">Length (inches) <span class="cpin-req">Required</span></label>
-              <input type="number" id="cpinLen" step="0.0625" min="1" max="48" placeholder="e.g. 6.25">
-            </div>
-          </div>
-
-          <div class="cpin-field" data-req>
-            <label for="cpinRet">Retention Type <span class="cpin-req">Required</span></label>
-            <select id="cpinRet">
-              <option value="">Select retention type…</option>
-              <option>Bolt Retained</option>
-              <option>Snap Ring Retained</option>
-              <option>Weld On Ear</option>
-            </select>
-          </div>
-
-          <div class="cpin-2col">
             <div class="cpin-field" data-req>
               <label for="cpinGrease">Grease Fitting <span class="cpin-req">Required</span></label>
               <select id="cpinGrease">
                 <option value="">Select option…</option>
-                <option>Greasable</option>
-                <option>Non-Greasable</option>
-              </select>
-            </div>
-            <div class="cpin-field">
-              <label for="cpinHard">Hardened</label>
-              <select id="cpinHard">
-                <option value="No">No — 3–5 business days</option>
-                <option value="Yes">Yes — heat treated, ~2 weeks</option>
+                <option value="grease">Greasable</option>
+                <option value="non">Non-Greasable</option>
               </select>
             </div>
           </div>
 
           <div class="cpin-field">
+            <label for="cpinUnit">Measurement Units</label>
+            <select id="cpinUnit">
+              <option value="in">Inches</option>
+              <option value="mm">Millimeters</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cpin-configbox" id="cpinDimsBox" style="display:none;">
+          <h3>2. Your Measurements</h3>
+          <div class="cpin-dims-note">Letters match the drawing we build from. Measure diameter with calipers to the nearest 0.001" if you can.</div>
+          <div id="cpinDims"></div>
+
+          <label class="cpin-check">
+            <input type="checkbox" id="cpinBevelOpt">
+            <span><b>Special extended bevel on end</b><span class="cpin-hint">Beyond the standard bevel/chamfer that's included</span></span>
+          </label>
+          <div id="cpinBevelFields" style="display:none;">
+            <div class="cpin-2col">
+              <div class="cpin-field">
+                <label for="cpinBevA">Bevel Distance Along Shaft <span class="cpin-hint" data-unit-hint></span></label>
+                <input type="number" id="cpinBevA" step="any" min="0">
+              </div>
+              <div class="cpin-field">
+                <label for="cpinBevB">Bevel Distance Into Diameter <span class="cpin-hint" data-unit-hint></span></label>
+                <input type="number" id="cpinBevB" step="any" min="0">
+              </div>
+            </div>
+          </div>
+
+          <label class="cpin-check">
+            <input type="checkbox" id="cpinThread">
+            <span><b id="cpinThreadLbl">O.D. thread on end</b><span class="cpin-hint">Describe the thread in Additional Specifications below</span></span>
+          </label>
+        </div>
+
+        <div class="cpin-configbox" id="cpinOptsBox" style="display:none;">
+          <h3>3. Options</h3>
+
+          <div class="cpin-field">
+            <label for="cpinHard">Hardness</label>
+            <select id="cpinHard">
+              <option value="standard">Standard 4140 Q&amp;T (32RC) - 3–5 business days</option>
+              <option value="hardened">Fully Hardened (56RC) - ~4–6 weeks, priced on quote</option>
+            </select>
+          </div>
+
+          <div class="cpin-field">
             <label for="cpinNotes">Additional Specifications (optional)</label>
-            <textarea id="cpinNotes" placeholder="Machine make/model, custom material, hole pattern, chamfer detail, etc."></textarea>
+            <textarea id="cpinNotes" placeholder="Machine make/model, thread details, hole pattern, anything else we should know…"></textarea>
           </div>
 
           <div class="cpin-field">
@@ -246,8 +284,9 @@
 
         <div class="cpin-breakdown" id="cpinBreakdown" style="display:none;"></div>
 
+        <div id="cpinFinish" style="display:none;">
         <div class="cpin-configbox">
-          <h3>2. Your Contact Info</h3>
+          <h3>4. Your Contact Info</h3>
           <div class="cpin-2col">
             <div class="cpin-field" data-req>
               <label for="cpinName">Name <span class="cpin-req">Required</span></label>
@@ -255,7 +294,7 @@
             </div>
             <div class="cpin-field" data-req>
               <label for="cpinPhone">Phone <span class="cpin-req">Required</span></label>
-              <input type="tel" id="cpinPhone" name="contact_phone" autocomplete="tel">
+              <input type="tel" id="cpinPhone" name="contact_phone" autocomplete="tel" maxlength="14" placeholder="(555) 555-0142">
             </div>
           </div>
           <div class="cpin-field" data-req>
@@ -268,14 +307,15 @@
 
         <button type="submit" class="cpin-btn-request">Request This Pin</button>
         <div class="cpin-error-msg" id="cpinError">Please fill in the highlighted fields before sending your request.</div>
-        <div class="cpin-ship-note">This sends a request to our team — it does not charge your card. We'll confirm your spec, final price, and lead time before any pin hits the lathe.</div>
+        <div class="cpin-ship-note">This sends a request to our team - it does not charge your card. We'll confirm your measurements, final price, and lead time before we start making your pin.</div>
+        </div>
       </form>
 
       <div class="cpin-success" id="cpinSuccess">
-        <h3>Request received — here's what we got:</h3>
+        <h3>Request received - here's what we got:</h3>
         <div id="cpinSuccessSpec"></div>
         <p>Our team will call or email you to confirm the spec and final price before production begins.</p>
-        <div class="cpin-demo-note"><b>Demo mode:</b> nothing was actually sent. Once this template is assigned to a BigCommerce Contact Form page, submissions email the address configured on that page — same mechanism as Contact Us.</div>
+        <div class="cpin-demo-note"><b>Demo mode:</b> nothing was actually sent. Once this template is assigned to a BigCommerce Contact Form page, submissions email the address configured on that page - same mechanism as Contact Us.</div>
       </div>
       {{/if}}
     </div>
@@ -289,8 +329,8 @@
 
   <div class="cpin-policy">
     <strong>Shipping &amp; Return Policy</strong>
-    <p>Our in-house parts are manufactured following strict quality standards in our warehouse in Ohio. Parts such as hydraulic cylinders, pins, bushings, sheet metal, track adjusters, booms and dipper sticks are all built to order. Custom pins ship once turned, finished, and inspected to your spec.</p>
-    <p>Did you order the wrong spec? Give us a call toll free and we'll help arrange a return, exchange, or rework — <a href="tel:18009097060">1-800-909-7060</a>.</p>
+    <p>Our custom pins are manufactured following strict quality standards. Custom pins ship once turned, finished, and inspected to your spec.</p>
+    <p>Did you order the wrong spec? Give us a call toll free and we'll help arrange a return, exchange, or rework - <a href="tel:18009097060">1-800-909-7060</a>.</p>
   </div>
 </div>
 
@@ -298,52 +338,248 @@
 (function () {
   'use strict';
 
-  /* ========= PLACEHOLDER PRICING — edit these once real rates arrive =========
-     Rule so far (from sales): minimum $125; each inch longer adds $25/inch;
-     greaseable adds $25. "Longer than what" is still TBD — INCLUDED_LENGTH_IN
-     below is a guess at how many inches the base price covers. */
-  var PRICING = {
-    BASE_PRICE: 125,
-    INCLUDED_LENGTH_IN: 6,   // inches covered by the base price (PLACEHOLDER)
-    PER_EXTRA_INCH: 25,      // per inch beyond included length
-    GREASEABLE_ADDER: 25,
-    HARDENED_ADDER: 25
+  /* ============================================================================
+     PRICING - from "Custom Pin Pricing Matrix - Broken Tractor 7.15.26.xlsx"
+     (PVE chart, revision effective 3.4.25). The matrix values are BT's COST
+     from PVE. Customer price = cost x MARKUP (Michael, Jul 16 2026: markup is
+     50% of the pin total, add-ons included), rounded UP to the whole dollar.
+     Every number rendered on the page or emailed is post-markup - cost never
+     shows anywhere customer-facing.
+     Rule from the chart: a diameter or length between nominal sizes prices at
+     the NEXT nominal size up. Diameter columns are the chart's imperial row
+     ("1.0/1.5" column = anything up to 1.5"). Lengths run 8"–42" in 2" steps.
+     Add-ons per the chart: welded retainer / grease channel / O.D. thread
+     are $20 cost each ($30 retail). Fully hardened has no chart price -
+     quoted by PVE.
+     ============================================================================ */
+  var MARKUP = 1.5; // retail = PVE cost x 1.5
+  var CPIN_DIAS = [1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25, 5.511];
+  var CPIN_LENGTHS = [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42];
+  var CPIN_PRICES = [
+    [92.87, 112.54, 132.61, 154.25, 176.67, 200.67, 212.87, 238.83, 281.71, 281.71, 328.92, 328.92, 360.39, 413.89, 426.09, 461.89, 478.57],
+    [109.98, 131.52, 153.56, 177.56, 202.54, 229.49, 244.73, 274.14, 324.69, 324.69, 380.65, 380.65, 416.94, 480.76, 492.96, 534.66, 557.34],
+    [127.1, 150.51, 174.51, 200.87, 228.41, 258.31, 276.6, 309.45, 367.67, 367.67, 432.38, 432.38, 473.49, 547.64, 559.84, 607.44, 636.1],
+    [144.22, 169.49, 195.46, 224.18, 254.28, 287.13, 308.46, 344.76, 410.65, 410.65, 484.11, 484.11, 530.03, 614.51, 626.71, 680.21, 714.86],
+    [149.13, 176.28, 204.21, 235.29, 267.95, 303.74, 328.13, 367.86, 441.42, 441.42, 523.64, 523.64, 574.38, 669.18, 681.38, 740.78, 793.63],
+    [166.25, 195.26, 225.16, 258.6, 293.81, 332.56, 360.0, 403.17, 484.4, 484.4, 575.37, 575.37, 630.93, 736.05, 748.25, 813.55, 872.39],
+    [171.17, 202.05, 233.92, 269.72, 307.48, 349.18, 379.66, 426.28, 515.18, 515.18, 614.89, 614.89, 675.28, 790.73, 802.93, 874.13, 951.16],
+    [188.28, 221.03, 254.87, 293.03, 333.35, 378.0, 411.53, 461.59, 558.16, 558.16, 666.62, 666.62, 731.83, 857.6, 869.8, 946.9, 1029.92],
+    [193.2, 227.82, 263.62, 304.14, 347.02, 394.62, 431.2, 484.7, 588.93, 588.93, 706.15, 706.15, 776.17, 912.27, 924.47, 1007.47, 1108.68],
+    [210.32, 246.8, 284.57, 327.45, 372.89, 423.44, 463.06, 520.0, 631.91, 631.91, 757.88, 757.88, 832.72, 979.14, 991.34, 1080.24, 1187.45],
+    [227.43, 265.79, 305.52, 350.76, 398.75, 452.25, 494.93, 555.31, 674.89, 674.89, 809.61, 809.61, 889.27, 1046.02, 1058.22, 1153.02, 1266.21],
+    [244.55, 284.77, 326.47, 374.07, 424.62, 481.07, 526.8, 590.62, 717.87, 717.87, 861.34, 861.34, 945.82, 1112.89, 1125.09, 1225.79, 1344.98],
+    [261.67, 303.76, 347.42, 397.38, 450.49, 509.89, 558.66, 625.93, 760.85, 760.85, 913.07, 913.07, 1002.36, 1179.76, 1191.96, 1298.56, 1423.74],
+    [278.78, 322.74, 368.38, 420.7, 476.36, 538.71, 590.53, 661.24, 803.82, 803.82, 964.8, 964.8, 1058.91, 1246.63, 1258.83, 1371.33, 1502.5],
+    [295.9, 341.73, 389.33, 444.01, 502.23, 567.53, 622.4, 696.54, 846.8, 846.8, 1016.53, 1016.53, 1115.46, 1313.51, 1325.71, 1444.11, 1581.27],
+    [313.02, 360.71, 410.28, 467.32, 528.09, 596.34, 654.26, 731.85, 889.78, 889.78, 1068.26, 1068.26, 1172.01, 1380.38, 1392.58, 1516.88, 1660.03],
+    [317.93, 367.5, 419.03, 478.43, 541.76, 612.96, 673.93, 754.96, 920.56, 920.56, 1107.79, 1107.79, 1216.35, 1435.05, 1447.25, 1577.45, 1738.8],
+    [335.05, 386.48, 439.98, 501.74, 567.63, 641.78, 705.79, 790.27, 963.54, 963.54, 1159.52, 1159.52, 1272.9, 1501.92, 1514.12, 1650.22, 1817.56]
+  ];
+  /* chart's metric diameter row (35M … 140M), aligned to the same 17 price
+     columns as CPIN_DIAS. mm inputs bracket against THIS ladder, not an
+     inch conversion - the chart's metric and imperial ladders don't convert
+     onto each other (e.g. 120mm belongs to the 5.0" column, not 4.75"). */
+  var CPIN_DIAS_MM = [35, 40, 45, 55, 60, 65, 70, 80, 85, 90, 95, 105, 110, 115, 120, 130, 140];
+  /* chart's POUNDS PER INCH row, per diameter column (for weight estimate) */
+  var CPIN_PPI = [0.5, 0.69, 0.89, 1.13, 1.39, 1.69, 2, 2.35, 3.13, 3.13, 4.02, 4.02, 4.51, 5.56, 5.56, 6.16, 8.01];
+  var ADDON = Math.ceil(20 * MARKUP); // welded retainer / grease channel / O.D. thread ($20 PVE cost, marked up)
+
+  /* ============================================================================
+     MEASUREMENT FIELDS - letters and labels copied verbatim from the PVE
+     fill-in-the-blank templates that accompany purchase orders. One template
+     per pin type × greasable variant; the letters differ between variants,
+     so each combination gets its own list. [letter, label, required]
+     ============================================================================ */
+  var DIA_HINT = 'measure with calipers to nearest 0.001"';
+  var RET_THICK_HINT = 'standard is .375" for 55mm pin diameter and up, .250" for 50mm and down';
+  /* row = [letter, label, required, hint (optional)] */
+  var FIELD_SETS = {
+    'straight|non': [
+      ['A', 'Pin Diameter', true],
+      ['B', 'Overall Pin Length', true],
+      ['C', 'Bolt Hole Location', false],
+      ['D', 'Bolt Hole Diameter', false]
+    ],
+    /* grease hole locations (E/F on the straight & retainer sheets, H on flag)
+       intentionally not collected - PVE places them; sales confirms if needed */
+    'straight|grease': [
+      ['A', 'Pin Diameter', true],
+      ['B', 'Overall Pin Length', true],
+      ['C', 'Bolt Hole Location', false],
+      ['D', 'Bolt Hole Diameter', false]
+    ],
+    'flag|non': [
+      ['A', 'Pin Diameter', true],
+      ['B', 'Overall Pin Length', true],
+      ['C', 'Center of Pin to Center of Bolt Hole', false],
+      ['D', 'Width of Retainer', false],
+      ['E', 'Length of Retainer', false],
+      ['F', 'Bolt Hole Diameter', false],
+      ['G', 'Retainer Thickness', false]
+    ],
+    'flag|grease': [
+      ['A', 'Pin Diameter', true],
+      ['B', 'Overall Pin Length', true],
+      ['C', 'Center of Pin to Center of Bolt Hole', false],
+      ['D', 'Width of Retainer', false],
+      ['E', 'Length of Retainer', false],
+      ['F', 'Bolt Hole Diameter', false],
+      ['G', 'Retainer Thickness', false]
+    ],
+    'retainer|non': [
+      ['A', 'Pin Diameter', true],
+      ['B', 'Overall Pin Length', true],
+      ['C', 'Bolt Hole Location', false],
+      ['D', 'Bolt Hole Diameter', false],
+      ['E', 'Retainer Thickness', false, RET_THICK_HINT],
+      ['F', 'Retainer Diameter', false]
+    ],
+    'retainer|grease': [
+      ['A', 'Pin Diameter', true],
+      ['B', 'Overall Pin Length', true],
+      ['C', 'Bolt Hole Location', false],
+      ['D', 'Bolt Hole Diameter', false],
+      /* G/H letters kept to match the PVE greasable-retainer sheet (E/F there
+         are the uncollected grease holes) */
+      ['G', 'Retainer Thickness', false, RET_THICK_HINT],
+      ['H', 'Retainer Diameter', false]
+    ]
   };
-  /* =========================================================================== */
+  /* template-wide notes printed on the PVE drawings, shown under the fields */
+  var TEMPLATE_NOTES = {
+    'straight|grease': 'Your pin will be recessed and tapped to receive a standard 1/8" grease zerk (1/8"-27 NPT).',
+    'flag|grease': 'Zerk hole is a standard 1/8"-27 NPT.',
+    'retainer|grease': 'Your pin will be recessed and tapped to receive a standard 1/8" grease zerk.'
+  };
+  var TYPE_NAMES = { straight: 'Straight Shaft Pin', flag: 'Flag Style Pin', retainer: 'Pin with Welded Retainer' };
 
   var $ = function (id) { return document.getElementById(id); };
   if (!$('cpinForm')) return; // success re-render: form replaced by confirmation, nothing to wire up
-  var fields = { dia: $('cpinDia'), len: $('cpinLen'), ret: $('cpinRet'), grease: $('cpinGrease'), hard: $('cpinHard'), notes: $('cpinNotes'), qty: $('cpinQty'), name: $('cpinName'), phone: $('cpinPhone'), email: $('cpinEmail') };
+  var fields = { type: $('cpinType'), grease: $('cpinGrease'), unit: $('cpinUnit'), hard: $('cpinHard'), notes: $('cpinNotes'), qty: $('cpinQty'), name: $('cpinName'), phone: $('cpinPhone'), email: $('cpinEmail') };
 
-  function fmt(n) { return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+  function unitLabel() { return fields.unit.value === 'mm' ? 'mm' : 'inches'; }
+  function toInches(v) { return fields.unit.value === 'mm' ? v / 25.4 : v; }
+
+  /* ---- dynamic measurement fields ---- */
+  var savedVals = {}; // preserve entered values across type/grease switches, keyed by label
+  function currentFieldSet() {
+    if (!fields.type.value || !fields.grease.value) return null;
+    return FIELD_SETS[fields.type.value + '|' + fields.grease.value] || null;
+  }
+  function renderDims() {
+    var set = currentFieldSet();
+    var box = $('cpinDimsBox'), wrap = $('cpinDims');
+    // stash current values before wiping
+    wrap.querySelectorAll('input[data-dim-label]').forEach(function (inp) {
+      if (inp.value) savedVals[inp.getAttribute('data-dim-label')] = inp.value;
+      else delete savedVals[inp.getAttribute('data-dim-label')];
+    });
+    wrap.innerHTML = '';
+    if (!set) { box.style.display = 'none'; return; }
+    box.style.display = '';
+    set.forEach(function (f) {
+      var letter = f[0], label = f[1], req = f[2], hint = f[3];
+      if (label === 'Pin Diameter') hint = DIA_HINT;
+      var div = document.createElement('div');
+      div.className = 'cpin-field';
+      if (req) div.setAttribute('data-req', '');
+      var lab = document.createElement('label');
+      lab.setAttribute('for', 'cpinDim' + letter);
+      lab.innerHTML = '<b>' + letter + '</b> - ' + label + ' (' + unitLabel() + ') ' +
+        (req ? '<span class="cpin-req">Required</span>'
+             : '<span class="cpin-hint">optional</span>') +
+        (hint ? ' <span class="cpin-hint">- ' + hint + '</span>' : '');
+      var inp = document.createElement('input');
+      inp.type = 'number'; inp.step = 'any'; inp.min = '0';
+      inp.id = 'cpinDim' + letter;
+      inp.setAttribute('data-dim-letter', letter);
+      inp.setAttribute('data-dim-label', label);
+      if (savedVals[label]) inp.value = savedVals[label];
+      inp.addEventListener('input', refresh);
+      div.appendChild(lab); div.appendChild(inp);
+      wrap.appendChild(div);
+    });
+    // template-wide note printed on this PVE drawing (e.g. zerk standard)
+    var tplNote = TEMPLATE_NOTES[fields.type.value + '|' + fields.grease.value];
+    if (tplNote) {
+      var noteDiv = document.createElement('div');
+      noteDiv.className = 'cpin-tpl-note';
+      noteDiv.textContent = tplNote;
+      wrap.appendChild(noteDiv);
+    }
+    updateUnitHints();
+  }
+  function updateUnitHints() {
+    document.querySelectorAll('[data-unit-hint]').forEach(function (el) { el.textContent = '(' + unitLabel() + ')'; });
+  }
+  function dimValue(label) {
+    var inp = document.querySelector('#cpinDims input[data-dim-label="' + label + '"]');
+    var v = inp ? parseFloat(inp.value) : NaN;
+    return isNaN(v) ? null : v;
+  }
+
+  /* ---- pricing ---- */
+  function matrixPrice(dia, lenIn, isMM) {
+    // diameter brackets against its own unit's ladder; length is inches-only
+    // on the chart, so mm lengths are converted before bracketing
+    var ladder = isMM ? CPIN_DIAS_MM : CPIN_DIAS;
+    if (dia > ladder[ladder.length - 1] + 1e-9 || lenIn > CPIN_LENGTHS[CPIN_LENGTHS.length - 1] + 1e-9) return null;
+    var di = 0, li = 0;
+    while (ladder[di] < dia - 1e-9) di++;
+    while (CPIN_LENGTHS[li] < lenIn - 1e-9) li++;
+    return { price: Math.ceil(CPIN_PRICES[li][di] * MARKUP), nomDia: ladder[di] + (isMM ? 'mm' : '"'), nomLen: CPIN_LENGTHS[li], ppi: CPIN_PPI[di] };
+  }
 
   function calc() {
-    var len = parseFloat(fields.len.value);
     var qty = Math.max(1, parseInt(fields.qty.value, 10) || 1);
-    var lines = [{ label: 'Base custom pin', amt: PRICING.BASE_PRICE }];
-    if (!isNaN(len) && len > PRICING.INCLUDED_LENGTH_IN) {
-      var extra = Math.ceil(len - PRICING.INCLUDED_LENGTH_IN);
-      lines.push({ label: 'Length ' + len + '" (' + extra + '" over ' + PRICING.INCLUDED_LENGTH_IN + '" included)', amt: extra * PRICING.PER_EXTRA_INCH });
+    var dia = dimValue('Pin Diameter'), len = dimValue('Overall Pin Length');
+    if (dia === null || len === null || !fields.type.value || !fields.grease.value) return { configured: false, qty: qty };
+
+    var isMM = fields.unit.value === 'mm';
+    var lenIn = toInches(len);
+    var m = matrixPrice(dia, lenIn, isMM);
+    if (!m) return { configured: true, quote: true, qty: qty, reason: 'This size is beyond our standard chart - we’ll quote it individually.' };
+
+    var lines = [{ label: 'Base pin (up to ' + m.nomLen + '" × ' + m.nomDia + ' bracket)', amt: m.price }];
+    if (fields.type.value === 'flag' || fields.type.value === 'retainer') {
+      lines.push({ label: 'Welded-on retainer', amt: ADDON });
     }
-    if (fields.grease.value === 'Greasable') {
-      lines.push({ label: 'Greasable (zerk + cross-drill)', amt: PRICING.GREASEABLE_ADDER });
+    if (fields.grease.value === 'grease') {
+      lines.push({ label: 'Greasable (grease channel + zerk)', amt: ADDON });
     }
-    if (fields.hard.value === 'Yes') {
-      lines.push({ label: 'Hardened (heat treated)', amt: PRICING.HARDENED_ADDER });
+    if ($('cpinThread').checked) {
+      lines.push({ label: 'O.D. thread', amt: ADDON });
     }
+    var notes = [];
+    if (fields.hard.value === 'hardened') notes.push('Fully hardened (56RC): upcharge quoted before production · ~4–6 week lead');
+    if ($('cpinBevelOpt').checked) notes.push('Extended end bevel: we’ll confirm any price difference with you');
+
     var unit = lines.reduce(function (s, l) { return s + l.amt; }, 0);
-    return { lines: lines, unit: unit, qty: qty, total: unit * qty };
+    var weight = Math.round(m.ppi * lenIn * 10) / 10;
+    return { configured: true, quote: false, lines: lines, notes: notes, unit: unit, qty: qty, total: unit * qty, weight: weight };
   }
 
   function renderPrice() {
     var p = calc();
-    var configured = fields.len.value || fields.grease.value || fields.hard.value === 'Yes';
-    $('cpinPrice').firstChild.nodeValue = (configured ? 'Est. ' : 'Starting at ') + fmt(p.unit) + (p.qty > 1 ? ' ea' : '');
-    var bd = $('cpinBreakdown');
-    if (!configured) { bd.style.display = 'none'; return; }
+    var priceEl = $('cpinPrice'), bd = $('cpinBreakdown');
+    if (!p.configured) {
+      priceEl.firstChild.nodeValue = 'Starting at ' + fmt(Math.ceil(CPIN_PRICES[0][0] * MARKUP));
+      bd.style.display = 'none';
+      return;
+    }
+    if (p.quote) {
+      priceEl.firstChild.nodeValue = 'Quoted Individually';
+      bd.innerHTML = '<div class="cpin-bd-row cpin-bd-note"><span>' + p.reason + '</span></div>';
+      bd.style.display = 'block';
+      return;
+    }
+    priceEl.firstChild.nodeValue = 'Est. ' + fmt(p.unit) + (p.qty > 1 ? ' ea' : '');
     var html = p.lines.map(function (l) {
       return '<div class="cpin-bd-row"><span>' + l.label + '</span><span>' + fmt(l.amt) + '</span></div>';
     }).join('');
+    p.notes.forEach(function (n) { html += '<div class="cpin-bd-row cpin-bd-note"><span>' + n + '</span></div>'; });
+    html += '<div class="cpin-bd-row"><span>Estimated weight</span><span>~' + p.weight + ' lb each</span></div>';
     html += '<div class="cpin-bd-row cpin-bd-total"><span>Estimated total' + (p.qty > 1 ? ' (' + p.qty + ' pins)' : '') + '</span><span>' + fmt(p.total) + '</span></div>';
     bd.innerHTML = html;
     bd.style.display = 'block';
@@ -351,17 +587,17 @@
 
   /* ---- live SVG preview ---- */
   function renderPreview() {
-    var len = parseFloat(fields.len.value);
-    var dia = fields.dia.value;
-    var ret = fields.ret.value;
+    var type = fields.type.value;
+    var dia = dimValue('Pin Diameter'), len = dimValue('Overall Pin Length');
+    var diaIn = dia !== null ? toInches(dia) : null;
+    var lenIn = len !== null ? toInches(len) : null;
 
-    // body width maps 1–24" to 140–380px; height maps diameter option index to 26–56px
+    // body width maps 8–42" to 180–380px; height maps 1–5.5" dia to 24–64px
     var w = 340, h = 40;
-    if (!isNaN(len)) w = Math.max(140, Math.min(380, 140 + (len - 1) * (240 / 23)));
-    var diaIdx = fields.dia.selectedIndex; // 0 = unselected
-    if (diaIdx > 0 && dia !== 'other') h = 26 + (diaIdx - 1) * 3.5;
+    if (lenIn !== null) w = Math.max(160, Math.min(380, 180 + (lenIn - 8) * (200 / 34)));
+    if (diaIn !== null) h = Math.max(20, Math.min(64, 24 + (diaIn - 1) * (40 / 4.5)));
 
-    var cx = 230, x0 = cx - w / 2, x1 = cx + w / 2, y0 = 65 - h / 2;
+    var cx = 235, x0 = cx - w / 2, x1 = cx + w / 2, y0 = 65 - h / 2, y1 = 65 + h / 2;
     var body = $('cpinBody');
     body.setAttribute('x', x0); body.setAttribute('width', w);
     body.setAttribute('y', y0); body.setAttribute('height', h);
@@ -370,42 +606,71 @@
     $('cpinEndL').setAttribute('cx', x0); $('cpinEndL').setAttribute('ry', h / 2);
     $('cpinEndR').setAttribute('cx', x1); $('cpinEndR').setAttribute('ry', h / 2);
 
-    $('cpinSnap').style.display = ret === 'Snap Ring Retained' ? '' : 'none';
-    $('cpinBolt').style.display = ret === 'Bolt Retained' ? '' : 'none';
-    $('cpinEar').style.display = ret === 'Weld On Ear' ? '' : 'none';
-    var gl = $('cpinGrooveL'), gr = $('cpinGrooveR');
-    gl.setAttribute('x', x0 + w * 0.11); gl.setAttribute('y', y0); gl.setAttribute('height', h);
-    gr.setAttribute('x', x1 - w * 0.11); gr.setAttribute('y', y0); gr.setAttribute('height', h);
-    $('cpinBoltHole').setAttribute('cx', x0 + 26); $('cpinBoltHole2').setAttribute('cx', x0 + 26);
-    $('cpinEarRect').setAttribute('x', x0 - 8); $('cpinEarRect').setAttribute('y', y0 - 26);
-    $('cpinEarHole').setAttribute('cx', x0 - 1); $('cpinEarHole').setAttribute('cy', y0 - 16);
+    // crossbolt hole near the right end whenever a type is chosen
+    $('cpinBolt').style.display = type ? '' : 'none';
+    $('cpinBoltHole').setAttribute('cx', x1 - 26); $('cpinBoltHole2').setAttribute('cx', x1 - 26);
 
-    var greasable = fields.grease.value === 'Greasable';
+    // flag plate
+    $('cpinFlag').style.display = type === 'flag' ? '' : 'none';
+    if (type === 'flag') {
+      var fr = $('cpinFlagRect');
+      fr.setAttribute('x', x0 - 18); fr.setAttribute('y', y0 - 42); fr.setAttribute('height', 42 + h);
+      $('cpinFlagHole').setAttribute('cx', x0 - 10); $('cpinFlagHole').setAttribute('cy', y0 - 28);
+      // flag bolt hole replaces the crossbolt visual
+      $('cpinBolt').style.display = 'none';
+    }
+
+    // welded retainer disc
+    $('cpinDisc').style.display = type === 'retainer' ? '' : 'none';
+    if (type === 'retainer') {
+      var dr = $('cpinDiscRect');
+      dr.setAttribute('x', x0 - 10); dr.setAttribute('y', y0 - 14); dr.setAttribute('height', h + 28);
+    }
+
+    // zerk in the center when greasable
+    var greasable = fields.grease.value === 'grease';
     $('cpinZerk').style.display = greasable ? '' : 'none';
-    $('cpinZerkStem').setAttribute('y', y0 - 13);
-    $('cpinZerkBall').setAttribute('cy', y0 - 15);
+    $('cpinZerkStem').setAttribute('x', cx - 4); $('cpinZerkStem').setAttribute('y', y0 - 13);
+    $('cpinZerkBall').setAttribute('cx', cx); $('cpinZerkBall').setAttribute('cy', y0 - 15);
+
+    // extended bevel wedge on the right end
+    var bevel = $('cpinBevelOpt').checked;
+    $('cpinBevel').style.display = bevel ? '' : 'none';
+    if (bevel) {
+      var bx = x1 - Math.min(40, w * 0.18);
+      $('cpinBevelTop').setAttribute('points', bx + ',' + y0 + ' ' + (x1 + 6) + ',' + y0 + ' ' + (x1 + 6) + ',' + (y0 + h * 0.4));
+      $('cpinBevelLine').setAttribute('x1', bx); $('cpinBevelLine').setAttribute('y1', y0);
+      $('cpinBevelLine').setAttribute('x2', x1 + 4); $('cpinBevelLine').setAttribute('y2', y0 + h * 0.4);
+    }
 
     var dim = $('cpinDim');
-    if (!isNaN(len)) {
+    if (lenIn !== null) {
       dim.style.display = '';
       $('cpinDimLine').setAttribute('x1', x0); $('cpinDimLine').setAttribute('x2', x1);
       $('cpinDimArrL').setAttribute('d', 'M' + x0 + ' 115 l8 -4 v8 z');
       $('cpinDimArrR').setAttribute('d', 'M' + x1 + ' 115 l-8 -4 v8 z');
-      $('cpinDimText').textContent = len + '" long' + (dia && dia !== 'other' ? ' × ' + dia.replace(/"/g, '') + '" dia' : '');
+      var u = fields.unit.value === 'mm' ? 'mm' : '"';
+      $('cpinDimText').textContent = len + u + ' long' + (dia !== null ? ' × ' + dia + u + ' dia' : '');
     } else {
       dim.style.display = 'none';
     }
 
     var bits = [];
-    if (dia) bits.push(dia === 'other' ? 'Custom dia' : dia + ' dia');
-    if (!isNaN(len)) bits.push(len + '" long');
-    if (ret) bits.push(ret);
-    if (fields.grease.value) bits.push(fields.grease.value);
-    if (fields.hard.value === 'Yes') bits.push('Hardened');
+    if (type) bits.push(TYPE_NAMES[type]);
+    if (fields.grease.value) bits.push(fields.grease.value === 'grease' ? 'Greasable' : 'Non-Greasable');
+    if (fields.hard.value === 'hardened') bits.push('Fully Hardened');
     $('cpinReadout').textContent = bits.length ? bits.join(' · ') : 'Select your specs below';
   }
 
-  function refresh() { renderPrice(); renderPreview(); }
+  /* progressive disclosure: blocks 3 & 4 stay hidden (like block 2) until the
+     two price-driving measurements are in - the same moment the estimate shows */
+  function renderSteps() {
+    var ready = dimValue('Pin Diameter') !== null && dimValue('Overall Pin Length') !== null;
+    $('cpinOptsBox').style.display = ready ? '' : 'none';
+    $('cpinFinish').style.display = ready ? '' : 'none';
+  }
+
+  function refresh() { renderPrice(); renderPreview(); renderSteps(); }
 
   /* keep the sticky preview column clear of the fixed header (#nav-banner
      gets a .sticky class from the theme's scroll handler) */
@@ -420,23 +685,48 @@
   window.addEventListener('resize', cpinStickyOffset);
   cpinStickyOffset();
 
-  ['dia', 'len', 'ret', 'grease', 'hard', 'qty'].forEach(function (k) {
+  fields.type.addEventListener('change', function () { renderDims(); refresh(); });
+  fields.grease.addEventListener('change', function () { renderDims(); refresh(); });
+  fields.unit.addEventListener('change', function () { renderDims(); refresh(); });
+  ['hard', 'qty'].forEach(function (k) {
     fields[k].addEventListener('input', refresh);
     fields[k].addEventListener('change', refresh);
   });
+  $('cpinBevelOpt').addEventListener('change', function () {
+    $('cpinBevelFields').style.display = this.checked ? '' : 'none';
+    refresh();
+  });
+  $('cpinThread').addEventListener('change', refresh);
   $('cpinQtyDec').addEventListener('click', function () { fields.qty.value = Math.max(1, (parseInt(fields.qty.value, 10) || 1) - 1); refresh(); });
   $('cpinQtyInc').addEventListener('click', function () { fields.qty.value = (parseInt(fields.qty.value, 10) || 1) + 1; refresh(); });
+
+  /* US phone: digits only (a leading 1 country code is dropped), capped at 10,
+     live-formatted as (XXX) XXX-XXXX; submit requires all 10 digits */
+  function formatUSPhone(raw) {
+    var d = raw.replace(/\D/g, '');
+    if (d.length > 10 && d.charAt(0) === '1') d = d.slice(1);
+    d = d.slice(0, 10);
+    if (d.length > 6) return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+    if (d.length > 3) return '(' + d.slice(0, 3) + ') ' + d.slice(3);
+    if (d.length > 0) return '(' + d;
+    return '';
+  }
+  fields.phone.addEventListener('input', function () { this.value = formatUSPhone(this.value); });
+
+  // thread add-on price in the checkbox label always tracks the ADDON constant
+  $('cpinThreadLbl').textContent = 'O.D. thread on end (+$' + ADDON + ')';
 
   /* ---- submit ----
      With a real page_id (template assigned to a BC Contact Form page) this posts
      natively to BigCommerce, which emails the address configured on that page.
      Without one (local demo on a borrowed URL) it shows the demo success panel. */
   var form = $('cpinForm');
-  if (form) form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', function (e) {
     var ok = true;
     document.querySelectorAll('#cpinForm .cpin-field[data-req]').forEach(function (f) {
       var input = f.querySelector('select, input');
-      var bad = !input.value || (input.type === 'email' && input.value.indexOf('@') === -1);
+      var bad = !input.value || (input.type === 'email' && input.value.indexOf('@') === -1) ||
+                (input.type === 'tel' && input.value.replace(/\D/g, '').length !== 10);
       f.classList.toggle('cpin-invalid', bad);
       if (bad) ok = false;
     });
@@ -444,16 +734,33 @@
     if (!ok) { e.preventDefault(); return; }
 
     var p = calc();
+    var u = ' ' + (fields.unit.value === 'mm' ? 'mm' : 'in');
     var spec = [
-      ['Diameter', fields.dia.value], ['Length', fields.len.value + '"'],
-      ['Retention', fields.ret.value], ['Grease fitting', fields.grease.value],
-      ['Hardened', fields.hard.value], ['Quantity', String(p.qty)],
-      ['Notes', fields.notes.value || '—'],
-      ['Estimated price', fmt(p.unit) + (p.qty > 1 ? ' ea — ' + fmt(p.total) + ' total' : '')],
-      ['Lead time', fields.hard.value === 'Yes' ? '~2 weeks (heat treat)' : '3–5 business days']
+      ['Pin type', TYPE_NAMES[fields.type.value]],
+      ['Grease fitting', fields.grease.value === 'grease' ? 'Greasable' : 'Non-Greasable']
     ];
+    // measurements with the PVE template letters, so sales can copy them
+    // straight onto the drawing that accompanies the PO
+    document.querySelectorAll('#cpinDims input[data-dim-letter]').forEach(function (inp) {
+      if (inp.value) spec.push([inp.getAttribute('data-dim-letter') + ' (' + inp.getAttribute('data-dim-label') + ')', inp.value + u]);
+    });
+    if ($('cpinBevelOpt').checked) {
+      spec.push(['Extended end bevel', 'YES']);
+      if ($('cpinBevA').value) spec.push(['Bevel Distance Along Shaft', $('cpinBevA').value + u]);
+      if ($('cpinBevB').value) spec.push(['Bevel Distance Into Diameter', $('cpinBevB').value + u]);
+    }
+    if ($('cpinThread').checked) spec.push(['O.D. thread', 'YES - see notes']);
+    spec.push(['Hardness', fields.hard.value === 'hardened' ? 'FULLY HARDENED 56RC - UPCHARGE QUOTE NEEDED (~4-6 wk lead)' : 'Standard 4140 Q&T (32RC)']);
+    spec.push(['Quantity', String(p.qty)]);
+    spec.push(['Notes', fields.notes.value || '-']);
+    if (p.configured && !p.quote) {
+      spec.push(['Estimated price shown', fmt(p.unit) + (p.qty > 1 ? ' ea - ' + fmt(p.total) + ' total' : '')]);
+      spec.push(['Est. weight', '~' + p.weight + ' lb each']);
+    } else if (p.quote) {
+      spec.push(['Estimated price shown', 'OUTSIDE CHART - QUOTE NEEDED']);
+    }
 
-    // Serialize the spec into the native contact_question field — this is the email body.
+    // Serialize the spec into the native contact_question field - this is the email body.
     $('cpinQuestion').value = 'CUSTOM PIN REQUEST\n' +
       '------------------------------\n' +
       spec.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n') +
@@ -461,11 +768,11 @@
       'Submitted from the Custom Pin Request page.';
 
     if (!$('cpinPageId').value) {
-      // DEMO MODE — no BC contact page behind this URL yet
+      // DEMO MODE - no BC contact page behind this URL yet
       e.preventDefault();
       var demo = spec.concat([['Contact', fields.name.value + ' · ' + fields.phone.value + ' · ' + fields.email.value]]);
       $('cpinSuccessSpec').innerHTML = demo.map(function (r) {
-        return '<div><b>' + r[0] + ':</b> ' + r[1].replace(/</g, '&lt;') + '</div>';
+        return '<div><b>' + r[0] + ':</b> ' + String(r[1]).replace(/</g, '&lt;') + '</div>';
       }).join('');
       form.style.display = 'none';
       $('cpinSuccess').style.display = 'block';
