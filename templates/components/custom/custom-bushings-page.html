@@ -1,0 +1,817 @@
+<style>
+/* ============================================================
+   Custom Bushing Request
+   All styles scoped under .cbush so nothing leaks into the theme.
+   Mirrors the Custom Pin page (components/custom/custom-pins-page.html).
+   ============================================================ */
+.cbush { max-width: 1140px; margin: 0 auto 30px; padding: 0 15px; color: #001212; }
+.cbush *, .cbush *::before, .cbush *::after { box-sizing: border-box; }
+
+.cbush h1 { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 28px; margin: 12px 0 4px; }
+
+.cbush-card { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); padding: 20px; display: flex; flex-wrap: wrap; gap: 30px; }
+.cbush-left { flex: 1 1 420px; min-width: 300px; }
+.cbush-right { flex: 1 1 440px; min-width: 300px; }
+/* like the PDP gallery, the preview column rides along as the form scrolls;
+   JS bumps `top` below the fixed #nav-banner once the header sticks */
+@media (min-width: 992px) {
+  .cbush-left { position: sticky; top: 20px; align-self: flex-start; transition: top .15s ease; }
+}
+
+/* preview */
+.cbush-preview { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 6px; padding: 18px 10px 6px; text-align: center; }
+.cbush-preview svg { width: 100%; max-width: 460px; height: auto; }
+.cbush-spec-readout { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 18px; padding-bottom: 4px; }
+
+.cbush-warning { display: flex; align-items: flex-start; gap: 12px; background: #fff4d6; border: 2px solid #e08b00; border-left-width: 6px; border-radius: 6px; padding: 14px 16px; margin-top: 16px; }
+.cbush-warning-icon { flex-shrink: 0; width: 30px; height: 30px; margin-top: 1px; }
+.cbush-warning p { margin: 0; font-size: 15px; line-height: 1.45; color: #3a2c00; }
+.cbush-warning strong { display: block; font-family: industry, Arial, sans-serif; font-size: 16px; color: #201700; margin-bottom: 3px; text-transform: uppercase; letter-spacing: .02em; }
+
+.cbush-keynotes { background: #efefef; border: 1px solid #ccc; border-radius: 4px; padding: 12px 14px; font-size: 14px; margin-top: 16px; }
+.cbush-keynotes strong { font-family: industry, Arial, sans-serif; display: block; margin-bottom: 6px; }
+.cbush-keynotes ul { margin: 0; padding-left: 18px; line-height: 1.7; }
+
+/* form */
+.cbush-field { margin-bottom: 14px; }
+.cbush-field label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
+.cbush-field label .cbush-req { color: #c02b0a; font-weight: normal; }
+.cbush-field label .cbush-hint { color: #5d5d5d; font-weight: normal; }
+.cbush-field select, .cbush-field input[type=number], .cbush-field input[type=text], .cbush-field input[type=email], .cbush-field input[type=tel], .cbush-field textarea { width: 100%; padding: 9px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background: #fff; color: #001212; }
+.cbush-field textarea { resize: vertical; min-height: 56px; font-family: inherit; }
+.cbush-field.cbush-invalid select, .cbush-field.cbush-invalid input { border-color: #c02b0a; background: #fff6f4; }
+.cbush-2col { display: flex; gap: 12px; flex-wrap: wrap; }
+.cbush-2col .cbush-field { flex: 1 1 180px; }
+
+/* option picker: 3 square image buttons, numbered like the PVE sheet */
+.cbush-typebtns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px; }
+.cbush-typebtn { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 10px; background: #fff; border: 2px solid #ccc; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: bold; color: #001212; text-align: center; line-height: 1.25; transition: border-color .12s, background .12s; }
+.cbush-typebtn img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain; background: #f7f7f7; border-radius: 4px; }
+.cbush-typebtn:hover { border-color: #c98a00; }
+.cbush-typebtn.selected { border-color: #ffbe00; background: #fff8e6; box-shadow: inset 0 0 0 1px #ffbe00; }
+.cbush-typebtn:focus-visible { outline: 2px solid #001212; outline-offset: 2px; }
+.cbush-field.cbush-invalid .cbush-typebtn { border-color: #c02b0a; }
+@media (max-width: 480px) { .cbush-typebtn { font-size: 12px; padding: 7px; } }
+
+.cbush-dims-note { font-size: 14px; color: #5d5d5d; margin: -4px 0 12px; }
+.cbush-tpl-note { font-size: 14px; color: #333; background: #efefef; border-left: 3px solid #ffbe00; padding: 8px 12px; margin: 2px 0 12px; }
+
+.cbush-qty { display: flex; align-items: center; }
+.cbush-qty button { width: 40px; height: 40px; border: 1px solid #ccc; background: #fff; font-size: 18px; cursor: pointer; }
+.cbush-qty input { width: 56px; height: 40px; text-align: center; border: 1px solid #ccc; border-left: none; border-right: none; font-size: 15px; }
+
+/* price */
+.cbush-price { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 34px; margin: 4px 0 0; }
+.cbush-price-note { font-family: Arial, sans-serif; font-weight: normal; font-size: 14px; color: #5d5d5d; margin-left: 8px; white-space: nowrap; }
+.cbush-breakdown { font-size: 18px; color: #333; background: #efefef; border: 1px solid #ccc; border-radius: 4px; padding: 10px 14px; margin: 12px 0; line-height: 1.8; }
+.cbush-breakdown .cbush-bd-row { display: flex; justify-content: space-between; gap: 12px; }
+.cbush-breakdown .cbush-bd-row span:last-child { white-space: nowrap; }
+.cbush-breakdown .cbush-bd-total { border-top: 1px solid #bbb; margin-top: 4px; padding-top: 4px; font-weight: bold; }
+.cbush-breakdown .cbush-bd-note { color: #7a5b00; }
+
+.cbush-configbox { border: 1px solid #e0e0e0; border-radius: 6px; background: #fcfcfc; padding: 16px; margin-top: 14px; }
+.cbush-configbox h3 { font-family: industry, Arial, sans-serif; font-size: 15px; text-transform: uppercase; letter-spacing: .5px; margin: 0 0 12px; border-bottom: 2px solid #ffbe00; display: inline-block; padding-bottom: 3px; }
+
+.cbush-ack { border: 2px solid #c98a00; background: #fff8e6; border-radius: 6px; padding: 12px 14px; margin: 16px 0 6px; }
+.cbush-ack label { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.5; color: #201700; cursor: pointer; }
+.cbush-ack input { width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0; cursor: pointer; }
+.cbush-ack.cbush-invalid { border-color: #c02b0a; background: #fff1ec; }
+
+.cbush-btn-request { display: block; width: 100%; background: #ffbe00; color: #000; border: none; padding: 15px 20px; font-family: industry, Arial, sans-serif; font-weight: 600; font-size: 17px; text-transform: uppercase; cursor: pointer; margin-top: 6px; }
+.cbush-btn-request:hover { background: #000; color: #ffbe00; }
+.cbush-ship-note { font-size: 15px; color: #333; margin-top: 12px; line-height: 1.5; }
+
+.cbush-error-msg { display: none; color: #c02b0a; font-size: 14px; margin-top: 10px; font-weight: bold; }
+
+/* success state */
+.cbush-success { display: none; background: #eef7ee; border: 1px solid #9fce9f; border-radius: 6px; padding: 18px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+.cbush-success h3 { font-family: industry, Arial, sans-serif; margin: 0 0 8px; }
+.cbush-success .cbush-demo-note { font-size: 12px; color: #7a5b00; background: #fff3cd; border: 1px solid #e6c66a; border-radius: 4px; padding: 6px 10px; margin-top: 12px; }
+
+/* bottom CTA */
+.cbush-cta { background: #efefef; border: 1px solid #ccc; border-radius: 6px; text-align: center; padding: 20px; margin: 30px 0 0; font-size: 15px; }
+.cbush-cta .cbush-phone { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 24px; margin: 6px 0; }
+.cbush-cta a { text-decoration: underline; }
+
+.cbush-policy { font-size: 14px; color: #444; line-height: 1.7; border-top: 1px solid #e0e0e0; margin-top: 30px; padding-top: 20px; }
+.cbush-policy strong { font-family: industry, Arial, sans-serif; font-size: 15px; color: #001212; }
+
+/* Mobile: preview pinned to the bottom as a bar (image + measurement lines on top,
+   text below); hides once the configurator scrolls past so it never covers the footer */
+@media (max-width: 991px) {
+  .cbush-preview {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 100;
+    margin: 0; padding: 6px 12px;
+    border: none; border-top: 3px solid #ffbe00; border-radius: 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,.18);
+    background: #f7f7f7;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    transition: bottom .2s ease;
+  }
+  .cbush-preview.cbush-preview--hidden { bottom: -300px; }
+  .cbush-preview svg { width: 100%; max-width: 420px; height: auto; max-height: 130px; }
+  .cbush-spec-readout { order: 2; font-size: 14px; line-height: 1.25; text-align: center; padding: 0; }
+  .cbush { padding-bottom: 150px; }
+}
+
+@media (max-width: 700px) {
+  .cbush-card { padding: 14px; }
+  .cbush h1 { font-size: 23px; }
+}
+</style>
+<div class="cbush">
+
+  <div class="cbush-card">
+
+    <!-- LEFT: live preview -->
+    <div class="cbush-left">
+      <div class="cbush-preview">
+        <div class="cbush-spec-readout" id="cbushReadout">Select your specs below</div>
+        <svg id="cbushSvg" viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg" aria-label="Custom bushing preview">
+          <defs>
+            <linearGradient id="cbushMetal" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b7bcc1"/>
+              <stop offset="12%" stop-color="#e9ebed"/>
+              <stop offset="30%" stop-color="#8f959b"/>
+              <stop offset="50%" stop-color="#6e747a"/>
+              <stop offset="70%" stop-color="#8f959b"/>
+              <stop offset="88%" stop-color="#e9ebed"/>
+              <stop offset="100%" stop-color="#b7bcc1"/>
+            </linearGradient>
+            <radialGradient id="cbushFaceMetal" cx="38%" cy="35%" r="80%">
+              <stop offset="0%" stop-color="#e9ebed"/>
+              <stop offset="55%" stop-color="#9aa0a5"/>
+              <stop offset="100%" stop-color="#565b60"/>
+            </radialGradient>
+          </defs>
+
+          {{!-- fake-3D ring, face toward the viewer (like the product photos):
+               dark back edge + short body + machined front face with a large
+               open bore. All geometry set by JS from A (OD), B (ID), C (length). --}}
+          <!-- back edge - same metal gradient as the body so the left end blends -->
+          <ellipse id="cbushEndL" cx="200" cy="65" rx="17" ry="40" fill="url(#cbushMetal)"/>
+          <!-- body depth -->
+          <rect id="cbushBody" x="170" y="21" width="100" height="88" fill="url(#cbushMetal)"/>
+          <rect id="cbushSheen" x="170" y="25" width="100" height="3" fill="#f4f5f6" opacity="0.7"/>
+          <!-- outside groove (option 3): a C-shaped arc wrapping the body (same
+               curvature as the ends), with the grease hole in the middle of it -->
+          <g id="cbushOdGroove" style="display:none;">
+            <path id="cbushOdGrooveArc" d="M220 25 A 17 40 0 0 0 220 105" fill="none" stroke="#3d4145" stroke-width="4" stroke-linecap="round"/>
+            <circle id="cbushHole1" cx="203" cy="65" r="4.5" fill="#14161a" stroke="#6e747a" stroke-width="1"/>
+          </g>
+          <!-- front face + bore -->
+          <ellipse id="cbushEndR" cx="270" cy="65" rx="18" ry="44" fill="url(#cbushFaceMetal)"/>
+          {{!-- bore interior is the same machined steel as the outside, just in
+               shadow - darker greys, not black --}}
+          <ellipse id="cbushBoreR" cx="270" cy="65" rx="13" ry="31" fill="#565b60"/>
+          <ellipse id="cbushBoreWall" cx="270" cy="61" rx="11" ry="26" fill="#565b60"/>
+          <!-- inside-diameter grease groove (options 2 & 3): dashed ring inside the bore -->
+          <g id="cbushIdGroove" style="display:none;">
+            <ellipse id="cbushIdGrooveLine" cx="270" cy="65" rx="11" ry="27" fill="none" stroke="#3d4145" stroke-width="2" stroke-dasharray="5,4" opacity="0.85"/>
+          </g>
+
+          <!-- dimension arrows -->
+          <g id="cbushDim" stroke="#757575" fill="#757575" style="display:none;">
+            <line id="cbushDimLine" x1="90" y1="115" x2="370" y2="115" stroke-width="1"/>
+            <path id="cbushDimArrL" d="M90 115 l8 -4 v8 z" stroke="none"/>
+            <path id="cbushDimArrR" d="M370 115 l-8 -4 v8 z" stroke="none"/>
+            <text id="cbushDimText" x="230" y="135" text-anchor="middle" font-size="14" stroke="none" font-family="Arial, sans-serif"></text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="cbush-warning" role="note">
+        <svg class="cbush-warning-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2.5 L22.5 20.5 H1.5 Z" fill="#e08b00"/>
+          <rect x="11" y="9" width="2" height="6.2" rx="1" fill="#fff"/>
+          <circle cx="12" cy="17.6" r="1.25" fill="#fff"/>
+        </svg>
+        <p><strong>Built to Order &amp; Non-Refundable</strong>Each bushing is machined to your measurements, so custom bushings can't be returned or exchanged.</p>
+      </div>
+
+      <div class="cbush-keynotes">
+        <strong>Key Notes</strong>
+        <ul>
+          <li>Made in the USA</li>
+          <li>Fully hardened available - priced on quote</li>
+          <li>We ship custom bushings to the USA and Canada only</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: configurator -->
+    <div class="cbush-right">
+      <h1>Custom Bushing - Built to Your Exact Specifications - Made in USA</h1>
+      <div class="cbush-price" id="cbushPrice">Starting at $140<span class="cbush-price-note">(Plus Shipping &amp; Taxes)</span></div>
+
+      {{#if forms.contact.success}}
+      {{!-- BigCommerce re-renders the page with this flag after a successful send;
+            hand off to the store's thank-you page, which Google tracking counts as
+            a form-submission conversion. The query string keeps the /thanks/ page
+            path intact for existing counts while letting GA segment bushing requests
+            from other forms. Panel below is the no-JS fallback. --}}
+      <script>window.location.replace('/thanks/?form=custom-bushings');</script>
+      <div class="cbush-success" style="display:block;">
+        <h3>Request received!</h3>
+        <p>Your custom bushing measurements are on their way to our team. We'll call or email you to confirm the measurements, final price, and lead time before we start making your bushing.</p>
+        <p><a href="/thanks/?form=custom-bushings">Continue &rarr;</a></p>
+      </div>
+      {{else}}
+      {{!-- Posts to BigCommerce's native contact-form endpoint. page_id comes from
+            the BC web page (type: Contact Form) this template is assigned to - that
+            page's configured email address is where the request gets routed.
+            Until that page exists, page_id is empty and JS falls back to demo mode. --}}
+      <form id="cbushForm" action="{{urls.contact_us_submit}}" method="post" novalidate>
+        <input type="hidden" name="page_id" id="cbushPageId" value="{{forms.contact.page_id}}">
+        <textarea name="contact_question" id="cbushQuestion" style="display:none;" aria-hidden="true" tabindex="-1"></textarea>
+        {{#if forms.contact.error}}
+            {{> components/common/alert-error forms.contact.error}}
+        {{/if}}
+        <div class="cbush-configbox">
+          <h3>1. Pick Your Bushing Style</h3>
+
+          {{!-- Options 1/2/3 exactly as numbered on the PVE Custom Bushing sheet.
+                IMAGES: upload square photos to BigCommerce admin > Storefront >
+                Image Manager with the exact filenames below. Buttons still work
+                text-only if an image is missing. --}}
+          <div class="cbush-field" data-req id="cbushTypeField">
+            <label>Bushing Style <span class="cbush-req">Required</span></label>
+            <div class="cbush-typebtns" role="radiogroup" aria-label="Bushing style">
+              <button type="button" class="cbush-typebtn" data-option="1" role="radio" aria-checked="false">
+                <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/custom-bushing-straight.jpg" alt="Straight wall bushing" onerror="this.style.display='none'">
+                <span>1. Straight Wall - No Grooves</span>
+              </button>
+              <button type="button" class="cbush-typebtn" data-option="2" role="radio" aria-checked="false">
+                <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/custom-bushing-id-groove.jpg" alt="Bushing with inside grease groove" onerror="this.style.display='none'">
+                <span>2. Inside Grease Groove Only</span>
+              </button>
+              <button type="button" class="cbush-typebtn" data-option="3" role="radio" aria-checked="false">
+                <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/custom-bushing-id-od-grooves.jpg" alt="Bushing with inside and outside grease grooves and holes" onerror="this.style.display='none'">
+                <span>3. Inside &amp; Outside Grooves with Holes</span>
+              </button>
+            </div>
+            <input type="hidden" id="cbushOption">
+          </div>
+
+          <div class="cbush-field">
+            <label for="cbushUnit">Measurement Units</label>
+            <select id="cbushUnit">
+              <option value="in">Inches</option>
+              <option value="mm">Millimeters</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cbush-configbox" id="cbushDimsBox" style="display:none;">
+          <h3>2. Your Measurements</h3>
+          <div class="cbush-dims-note">Letters match the drawing we build from. Use calipers on all diameter measurements and measure to the nearest 0.001" if you can.</div>
+
+          <div class="cbush-field" data-req>
+            <label for="cbushA"><b>A</b> - Outside Diameter (<span data-unit-hint>inches</span>) <span class="cbush-req">Required</span></label>
+            <input type="number" id="cbushA" step="any" min="0" placeholder="e.g. 2.500" data-ph-in="e.g. 2.500" data-ph-mm="e.g. 63.5">
+          </div>
+
+          <div class="cbush-field" data-req>
+            <label for="cbushB"><b>B</b> - Inside Diameter (<span data-unit-hint>inches</span>) <span class="cbush-req">Required</span></label>
+            <input type="number" id="cbushB" step="any" min="0" placeholder="e.g. 2.008" data-ph-in="e.g. 2.008" data-ph-mm="e.g. 51">
+          </div>
+
+          <div class="cbush-field" data-req>
+            <label for="cbushC"><b>C</b> - Overall Length (<span data-unit-hint>inches</span>) <span class="cbush-req">Required</span></label>
+            <input type="number" id="cbushC" step="any" min="0" placeholder="e.g. 1.500" data-ph-in="e.g. 1.500" data-ph-mm="e.g. 38">
+          </div>
+
+          <div class="cbush-field" id="cbushDRow" style="display:none;">
+            <label for="cbushD"><b>D</b> - Distance to Center of Grease Groove (<span data-unit-hint>inches</span>) <span class="cbush-hint">optional</span></label>
+            <input type="number" id="cbushD" step="any" min="0">
+          </div>
+
+          <div class="cbush-field">
+            <label for="cbushPinDia">Pin diameter that will be used with this bushing (<span data-unit-hint>inches</span>) <span class="cbush-hint">optional</span></label>
+            <input type="number" id="cbushPinDia" step="any" min="0" placeholder="e.g. 2.000" data-ph-in="e.g. 2.000" data-ph-mm="e.g. 50">
+          </div>
+
+          <div class="cbush-tpl-note">Sizing tip: for pins under 2.5", the inside diameter should be 0.008" larger than the pin. For pins over 2.5", it should be 0.013" larger.</div>
+        </div>
+
+        <div class="cbush-configbox" id="cbushOptsBox" style="display:none;">
+          <h3>3. Options</h3>
+
+          <div class="cbush-field">
+            <label for="cbushHard">Hardness</label>
+            <select id="cbushHard">
+              <option value="standard">Standard - lead time confirmed with your quote</option>
+              <option value="hardened">Fully Hardened - longer lead time, priced on quote</option>
+            </select>
+          </div>
+
+          <div class="cbush-field">
+            <label for="cbushNotes">Additional Specifications (optional)</label>
+            <textarea id="cbushNotes" placeholder="Machine make/model, chamfer details, anything else we should know…"></textarea>
+          </div>
+
+          <div class="cbush-field">
+            <label for="cbushQty">Quantity</label>
+            <div class="cbush-qty">
+              <button type="button" id="cbushQtyDec" aria-label="Decrease quantity">–</button>
+              <input type="number" id="cbushQty" value="1" min="1" max="999">
+              <button type="button" id="cbushQtyInc" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cbush-breakdown" id="cbushBreakdown" style="display:none;"></div>
+
+        <div id="cbushFinish" style="display:none;">
+        <div class="cbush-configbox">
+          <h3>4. Contact &amp; Shipping Info</h3>
+          <div class="cbush-2col">
+            <div class="cbush-field" data-req>
+              <label for="cbushName">Name <span class="cbush-req">Required</span></label>
+              <input type="text" id="cbushName" name="contact_fullname" autocomplete="name">
+            </div>
+            <div class="cbush-field" data-req>
+              <label for="cbushPhone">Phone <span class="cbush-req">Required</span></label>
+              <input type="tel" id="cbushPhone" name="contact_phone" autocomplete="tel" maxlength="14" placeholder="(555) 555-0142">
+            </div>
+          </div>
+          <div class="cbush-field" data-req>
+            <label for="cbushEmail">Email <span class="cbush-req">Required</span></label>
+            <input type="email" id="cbushEmail" name="contact_email" autocomplete="email">
+          </div>
+
+          <div class="cbush-tpl-note">We ship custom bushings to the USA and Canada only.</div>
+
+          {{!-- shipping address rides in the email body (contact_question) -
+                BC's contact endpoint has no address fields of its own --}}
+          <div class="cbush-field" data-req>
+            <label for="cbushStreet">Street Address <span class="cbush-req">Required</span></label>
+            <input type="text" id="cbushStreet" autocomplete="shipping street-address">
+          </div>
+          <div class="cbush-2col">
+            <div class="cbush-field" data-req>
+              <label for="cbushCity">City <span class="cbush-req">Required</span></label>
+              <input type="text" id="cbushCity" autocomplete="shipping address-level2">
+            </div>
+            <div class="cbush-field" data-req>
+              <label for="cbushStateP">State / Province <span class="cbush-req">Required</span></label>
+              <input type="text" id="cbushStateP" autocomplete="shipping address-level1">
+            </div>
+            <div class="cbush-field" data-req>
+              <label for="cbushZip">ZIP / Postal Code <span class="cbush-req">Required</span></label>
+              <input type="text" id="cbushZip" autocomplete="shipping postal-code" maxlength="10">
+            </div>
+          </div>
+          <div class="cbush-field" data-req>
+            <label for="cbushCountry">Country <span class="cbush-req">Required</span></label>
+            <select id="cbushCountry" autocomplete="shipping country">
+              <option value="United States" selected>United States</option>
+              <option value="Canada">Canada</option>
+            </select>
+          </div>
+        </div>
+
+        {{{forms.contact.recaptcha.markup}}}
+
+        <div class="cbush-ack" id="cbushAckBox">
+          <label>
+            <input type="checkbox" id="cbushAck">
+            <span><b>I understand these bushings are built to order and cannot be returned or refunded.</b> Each bushing is machined to the measurements above, so please check them carefully. Broken Tractor will confirm the final spec and price before production begins.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="cbush-btn-request">Request This Bushing</button>
+        <div class="cbush-error-msg" id="cbushError">Please fill in the highlighted fields before sending your request.</div>
+        <div class="cbush-ship-note">This sends a request to our team - it does not charge your card. We'll confirm your measurements, final price, and lead time before we start making your bushing.</div>
+        </div>
+      </form>
+
+      <div class="cbush-success" id="cbushSuccess">
+        <h3>Request received - here's what we got:</h3>
+        <div id="cbushSuccessSpec"></div>
+        <p>Our team will call or email you to confirm the measurements and final price before production begins.</p>
+        <div class="cbush-demo-note"><b>Demo mode:</b> nothing was actually sent. Once the Custom Bushings Contact Form page exists in BigCommerce, submissions email the address configured on that page - same mechanism as the Custom Pins page.</div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="cbush-cta">
+    <div>Need a spec we don't have listed, or help figuring out what you need?</div>
+    <div class="cbush-phone"><a href="tel:8009097060">1-800-909-7060</a></div>
+    <div><a href="/pages/parts-request/">Fill out our Parts Request Form →</a></div>
+  </div>
+
+  <div class="cbush-policy">
+    <strong>Built to Order - Non-Refundable</strong>
+    <p>Every custom bushing is machined to the exact measurements you provide, so these are built to order and cannot be returned, exchanged, or refunded. That's also why our team confirms your measurements, final price, and lead time with you before production begins - so the bushing is right the first time.</p>
+    <p>Have a question before you order? Call us toll free at <a href="tel:18009097060">1-800-909-7060</a>.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================================
+     PRICING - PLACEHOLDER (Michael, Jul 17 2026): no bushing pricing exists yet,
+     so this reuses the CUSTOM PIN chart ("Custom Pin Pricing Matrix - Broken
+     Tractor 7.15.26.xlsx", PVE rev 3.4.25) keyed on OUTSIDE DIAMETER x LENGTH,
+     with the same x1.5 markup and round-up rules. Swap in the real bushing chart
+     when PVE sends it. Differences from the pin page, on purpose:
+       - no minimum-size floor (the pins' 1" x 8" floor is pin-specific; bushings
+         are typically short, so a floor would quote nearly everything)
+       - no weight estimate (the chart's lbs/inch is for SOLID bar; bushings are
+         hollow, so it would overstate)
+       - grooved styles (options 2 & 3) add the chart's $20 machining add-on
+         (x1.5 = $30) as a stand-in for groove work
+     ============================================================================ */
+  var MARKUP = 1.5; // retail = PVE cost x 1.5 (same as pins)
+  var CBUSH_DIAS = [1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25, 5.511];
+  var CBUSH_LENGTHS = [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42];
+  var CBUSH_PRICES = [
+    [92.87, 112.54, 132.61, 154.25, 176.67, 200.67, 212.87, 238.83, 281.71, 281.71, 328.92, 328.92, 360.39, 413.89, 426.09, 461.89, 478.57],
+    [109.98, 131.52, 153.56, 177.56, 202.54, 229.49, 244.73, 274.14, 324.69, 324.69, 380.65, 380.65, 416.94, 480.76, 492.96, 534.66, 557.34],
+    [127.1, 150.51, 174.51, 200.87, 228.41, 258.31, 276.6, 309.45, 367.67, 367.67, 432.38, 432.38, 473.49, 547.64, 559.84, 607.44, 636.1],
+    [144.22, 169.49, 195.46, 224.18, 254.28, 287.13, 308.46, 344.76, 410.65, 410.65, 484.11, 484.11, 530.03, 614.51, 626.71, 680.21, 714.86],
+    [149.13, 176.28, 204.21, 235.29, 267.95, 303.74, 328.13, 367.86, 441.42, 441.42, 523.64, 523.64, 574.38, 669.18, 681.38, 740.78, 793.63],
+    [166.25, 195.26, 225.16, 258.6, 293.81, 332.56, 360.0, 403.17, 484.4, 484.4, 575.37, 575.37, 630.93, 736.05, 748.25, 813.55, 872.39],
+    [171.17, 202.05, 233.92, 269.72, 307.48, 349.18, 379.66, 426.28, 515.18, 515.18, 614.89, 614.89, 675.28, 790.73, 802.93, 874.13, 951.16],
+    [188.28, 221.03, 254.87, 293.03, 333.35, 378.0, 411.53, 461.59, 558.16, 558.16, 666.62, 666.62, 731.83, 857.6, 869.8, 946.9, 1029.92],
+    [193.2, 227.82, 263.62, 304.14, 347.02, 394.62, 431.2, 484.7, 588.93, 588.93, 706.15, 706.15, 776.17, 912.27, 924.47, 1007.47, 1108.68],
+    [210.32, 246.8, 284.57, 327.45, 372.89, 423.44, 463.06, 520.0, 631.91, 631.91, 757.88, 757.88, 832.72, 979.14, 991.34, 1080.24, 1187.45],
+    [227.43, 265.79, 305.52, 350.76, 398.75, 452.25, 494.93, 555.31, 674.89, 674.89, 809.61, 809.61, 889.27, 1046.02, 1058.22, 1153.02, 1266.21],
+    [244.55, 284.77, 326.47, 374.07, 424.62, 481.07, 526.8, 590.62, 717.87, 717.87, 861.34, 861.34, 945.82, 1112.89, 1125.09, 1225.79, 1344.98],
+    [261.67, 303.76, 347.42, 397.38, 450.49, 509.89, 558.66, 625.93, 760.85, 760.85, 913.07, 913.07, 1002.36, 1179.76, 1191.96, 1298.56, 1423.74],
+    [278.78, 322.74, 368.38, 420.7, 476.36, 538.71, 590.53, 661.24, 803.82, 803.82, 964.8, 964.8, 1058.91, 1246.63, 1258.83, 1371.33, 1502.5],
+    [295.9, 341.73, 389.33, 444.01, 502.23, 567.53, 622.4, 696.54, 846.8, 846.8, 1016.53, 1016.53, 1115.46, 1313.51, 1325.71, 1444.11, 1581.27],
+    [313.02, 360.71, 410.28, 467.32, 528.09, 596.34, 654.26, 731.85, 889.78, 889.78, 1068.26, 1068.26, 1172.01, 1380.38, 1392.58, 1516.88, 1660.03],
+    [317.93, 367.5, 419.03, 478.43, 541.76, 612.96, 673.93, 754.96, 920.56, 920.56, 1107.79, 1107.79, 1216.35, 1435.05, 1447.25, 1577.45, 1738.8],
+    [335.05, 386.48, 439.98, 501.74, 567.63, 641.78, 705.79, 790.27, 963.54, 963.54, 1159.52, 1159.52, 1272.9, 1501.92, 1514.12, 1650.22, 1817.56]
+  ];
+  /* chart's metric diameter ladder (same 17 columns) - mm ODs bracket against this */
+  var CBUSH_DIAS_MM = [35, 40, 45, 55, 60, 65, 70, 80, 85, 90, 95, 105, 110, 115, 120, 130, 140];
+  var GROOVE_ADDON = Math.ceil(20 * MARKUP); // PLACEHOLDER: grease-groove machining for options 2 & 3
+
+  var OPTION_NAMES = {
+    '1': 'Straight wall bushing - no grooves (without holes)',
+    '2': 'Inside diameter grease groove only (without holes)',
+    '3': 'Inside and outside diameter grease grooves (with holes)'
+  };
+  var OPTION_SHORT = { '1': 'Straight Wall', '2': 'Inside Grease Groove', '3': 'Inside & Outside Grooves' };
+
+  var $ = function (id) { return document.getElementById(id); };
+  if (!$('cbushForm')) return; // success re-render: form replaced by confirmation, nothing to wire up
+  var fields = { option: $('cbushOption'), unit: $('cbushUnit'), a: $('cbushA'), b: $('cbushB'), c: $('cbushC'), d: $('cbushD'), pinDia: $('cbushPinDia'), hard: $('cbushHard'), notes: $('cbushNotes'), qty: $('cbushQty'), name: $('cbushName'), phone: $('cbushPhone'), email: $('cbushEmail'), street: $('cbushStreet'), city: $('cbushCity'), stateP: $('cbushStateP'), zip: $('cbushZip'), country: $('cbushCountry') };
+
+  function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+  function unitLabel() { return fields.unit.value === 'mm' ? 'mm' : 'inches'; }
+  function toInches(v) { return fields.unit.value === 'mm' ? v / 25.4 : v; }
+  function num(el) { var v = parseFloat(el.value); return isNaN(v) ? null : v; }
+  function updateUnitHints() {
+    document.querySelectorAll('.cbush [data-unit-hint]').forEach(function (el) { el.textContent = unitLabel(); });
+    // example placeholders (typical stocked bushing) follow the unit toggle
+    var phAttr = fields.unit.value === 'mm' ? 'data-ph-mm' : 'data-ph-in';
+    document.querySelectorAll('.cbush input[' + phAttr + ']').forEach(function (inp) {
+      inp.setAttribute('placeholder', inp.getAttribute(phAttr));
+    });
+  }
+
+  /* ---- pricing (placeholder - see header comment) ---- */
+  function matrixPrice(od, lenIn, isMM) {
+    var ladder = isMM ? CBUSH_DIAS_MM : CBUSH_DIAS;
+    // beyond the chart's largest bracket -> quote individually (no minimum floor:
+    // small ODs/lengths round UP into the first bracket instead)
+    if (od > ladder[ladder.length - 1] + 1e-9 || lenIn > CBUSH_LENGTHS[CBUSH_LENGTHS.length - 1] + 1e-9) return null;
+    var di = 0, li = 0;
+    while (ladder[di] < od - 1e-9) di++;
+    while (CBUSH_LENGTHS[li] < lenIn - 1e-9) li++;
+    return { price: Math.ceil(CBUSH_PRICES[li][di] * MARKUP), nomDia: ladder[di] + (isMM ? 'mm' : '"'), nomLen: CBUSH_LENGTHS[li] };
+  }
+
+  function calc() {
+    var qty = Math.max(1, parseInt(fields.qty.value, 10) || 1);
+    var od = num(fields.a), len = num(fields.c);
+    if (od === null || len === null || !fields.option.value) return { configured: false, qty: qty };
+
+    var isMM = fields.unit.value === 'mm';
+    var lenIn = toInches(len);
+    var m = matrixPrice(od, lenIn, isMM);
+    if (!m) return { configured: true, quote: true, qty: qty, reason: 'This size is beyond our standard chart - we’ll quote it individually.' };
+
+    var lines = [{ label: 'Base bushing (up to ' + m.nomLen + '" × ' + m.nomDia + ' bracket)', amt: m.price }];
+    if (fields.option.value === '2' || fields.option.value === '3') {
+      lines.push({ label: 'Grease groove machining', amt: GROOVE_ADDON });
+    }
+    var notes = [];
+    if (fields.hard.value === 'hardened') notes.push('Fully hardened: upcharge quoted before production');
+
+    var unit = lines.reduce(function (s, l) { return s + l.amt; }, 0);
+    return { configured: true, quote: false, lines: lines, notes: notes, unit: unit, qty: qty, total: unit * qty };
+  }
+
+  function renderPrice() {
+    var p = calc();
+    var priceEl = $('cbushPrice'), bd = $('cbushBreakdown');
+    if (!p.configured) {
+      priceEl.firstChild.nodeValue = 'Starting at ' + fmt(Math.ceil(CBUSH_PRICES[0][0] * MARKUP));
+      bd.style.display = 'none';
+      return;
+    }
+    if (p.quote) {
+      priceEl.firstChild.nodeValue = 'Quoted Individually';
+      bd.innerHTML = '<div class="cbush-bd-row cbush-bd-note"><span>' + p.reason + '</span></div>';
+      bd.style.display = 'block';
+      return;
+    }
+    priceEl.firstChild.nodeValue = 'Est. ' + fmt(p.unit) + (p.qty > 1 ? ' ea' : '');
+    var html = p.lines.map(function (l) {
+      return '<div class="cbush-bd-row"><span>' + l.label + '</span><span>' + fmt(l.amt) + '</span></div>';
+    }).join('');
+    p.notes.forEach(function (n) { html += '<div class="cbush-bd-row cbush-bd-note"><span>' + n + '</span></div>'; });
+    html += '<div class="cbush-bd-row cbush-bd-total"><span>Estimated total' + (p.qty > 1 ? ' (' + p.qty + ' bushings)' : '') + '</span><span>' + fmt(p.total) + '</span></div>';
+    bd.innerHTML = html;
+    bd.style.display = 'block';
+  }
+
+  /* ---- live SVG preview: fake-3D ring facing the viewer ---- */
+  function renderPreview() {
+    var opt = fields.option.value;
+    var od = num(fields.a), id = num(fields.b), len = num(fields.c), dPos = num(fields.d);
+    var odIn = od !== null ? toInches(od) : null;
+    var idIn = id !== null ? toInches(id) : null;
+    var lenIn = len !== null ? toInches(len) : null;
+
+    // ring proportions calibrated against the 257 bushings stocked on
+    // /c/bushings-by-size/ (Jul 2026): median 2" ID x 2.5" OD x 1.5" long,
+    // ID/OD ratio ~0.81, length/OD ratio ~0.64. Face radius maps OD
+    // (1-7" -> 26-56px); when both OD and length are known the body depth is
+    // derived from the TRUE length/OD ratio so the drawing stays proportional.
+    var faceRy = 40, depth = 52;
+    if (odIn !== null) faceRy = Math.max(26, Math.min(56, 30 + (odIn - 1) * (26 / 4.5)));
+    if (odIn !== null && lenIn !== null) {
+      depth = Math.max(18, Math.min(260, (lenIn / odIn) * faceRy * 2));
+    } else if (lenIn !== null) {
+      depth = Math.max(22, Math.min(240, 16 + lenIn * 14.5));
+    }
+    var faceRx = faceRy * 0.42;
+
+    // bore follows the ID/OD ratio when both are given; default matches the
+    // catalog median wall (ID/OD ~0.81). Proportional scaling (Michael prefers
+    // these shapes from the original ring look).
+    var boreRatio = (odIn && idIn && idIn < odIn) ? (idIn / odIn) : 0.81;
+    var boreRx = faceRx * boreRatio, boreRy = faceRy * boreRatio;
+
+    // center the whole drawing (back edge -> face) on x=230
+    var span = depth + faceRx * 2;
+    var bx = 230 - span / 2 + faceRx;   // back-edge center
+    var fx = bx + depth;                // face center
+    var y0 = 65 - faceRy, y1 = 65 + faceRy;
+
+    $('cbushEndL').setAttribute('cx', bx);
+    $('cbushEndL').setAttribute('rx', faceRx); $('cbushEndL').setAttribute('ry', faceRy);
+    var body = $('cbushBody');
+    body.setAttribute('x', bx); body.setAttribute('width', depth);
+    body.setAttribute('y', y0); body.setAttribute('height', faceRy * 2);
+    $('cbushSheen').setAttribute('x', bx); $('cbushSheen').setAttribute('width', depth);
+    $('cbushSheen').setAttribute('y', y0 + 4);
+    $('cbushEndR').setAttribute('cx', fx);
+    $('cbushEndR').setAttribute('rx', faceRx); $('cbushEndR').setAttribute('ry', faceRy);
+    $('cbushBoreR').setAttribute('cx', fx);
+    $('cbushBoreR').setAttribute('rx', boreRx); $('cbushBoreR').setAttribute('ry', boreRy);
+    var wall = $('cbushBoreWall');
+    wall.setAttribute('cx', fx); wall.setAttribute('cy', 65 - boreRy * 0.14);
+    wall.setAttribute('rx', boreRx * 0.82); wall.setAttribute('ry', boreRy * 0.82);
+
+    // inside groove: dashed ring seen inside the bore (options 2 & 3)
+    $('cbushIdGroove').style.display = (opt === '2' || opt === '3') ? '' : 'none';
+    var gl = $('cbushIdGrooveLine');
+    gl.setAttribute('cx', fx); gl.setAttribute('cy', 65);
+    gl.setAttribute('rx', boreRx * 0.88); gl.setAttribute('ry', boreRy * 0.88);
+
+    // outside groove (option 3): C-shaped arc on the same ellipse as the ends,
+    // but with the tips trimmed inward (~25 degrees) so it reads as CUT INTO the
+    // surface instead of a band wrapped over the silhouette; D positions it
+    // along the length when given
+    var grooveX = bx + depth * 0.5;
+    if (dPos !== null && lenIn) {
+      var dIn = toInches(dPos);
+      grooveX = bx + (dIn / lenIn) * depth;
+    }
+    // keep the arc on the body; on short bushings the fatter face means the
+    // full bulge can't always fit, so the lower bound yields to the body depth
+    grooveX = Math.max(bx + Math.min(faceRx + 6, Math.max(10, depth * 0.35)), Math.min(fx - 6, grooveX));
+    $('cbushOdGroove').style.display = opt === '3' ? '' : 'none';
+    var trim = 25 * Math.PI / 180;
+    var tipX = grooveX - faceRx * Math.sin(trim);
+    var tipDy = faceRy * Math.cos(trim);
+    $('cbushOdGrooveArc').setAttribute('d',
+      'M' + tipX + ' ' + (65 - tipDy) + ' A ' + faceRx + ' ' + faceRy + ' 0 0 0 ' + tipX + ' ' + (65 + tipDy));
+    // grease hole sits in the middle of the groove line (the arc's midpoint)
+    $('cbushHole1').setAttribute('cx', grooveX - faceRx); $('cbushHole1').setAttribute('cy', 65);
+
+    var dim = $('cbushDim');
+    var dx0 = bx - faceRx, dx1 = fx + faceRx;
+    // dimension line hugs the part; label sits a clear 16px below the line so
+    // the arrows and text never collide (text baseline max 144 in the 150 frame)
+    var dimY = Math.min(128, y1 + 8);
+    var textY = dimY + 16;
+    if (lenIn !== null) {
+      dim.style.display = '';
+      $('cbushDimLine').setAttribute('x1', dx0); $('cbushDimLine').setAttribute('x2', dx1);
+      $('cbushDimLine').setAttribute('y1', dimY); $('cbushDimLine').setAttribute('y2', dimY);
+      $('cbushDimArrL').setAttribute('d', 'M' + dx0 + ' ' + dimY + ' l8 -4 v8 z');
+      $('cbushDimArrR').setAttribute('d', 'M' + dx1 + ' ' + dimY + ' l-8 -4 v8 z');
+      $('cbushDimText').setAttribute('y', textY);
+      var u = fields.unit.value === 'mm' ? 'mm' : '"';
+      $('cbushDimText').textContent = len + u + ' long' + (od !== null ? ' × ' + od + u + ' OD' : '') + (id !== null ? ' × ' + id + u + ' ID' : '');
+    } else {
+      dim.style.display = 'none';
+    }
+
+    // Mobile bottom bar: crop the viewBox to the drawn content so the bushing
+    // isn't pushed down by the frame's unused vertical space. Desktop keeps the
+    // full 0 0 460 150 frame.
+    var svgEl = $('cbushSvg');
+    if (window.matchMedia('(max-width: 991px)').matches) {
+      var minY = y0, maxY = y1;
+      if (lenIn !== null) maxY = Math.max(maxY, textY + 4); // include dimension line + label
+      var vbTop = Math.max(0, Math.round(minY - 8));
+      var vbBottom = Math.min(150, Math.round(maxY + 2));
+      svgEl.setAttribute('viewBox', '0 ' + vbTop + ' 460 ' + (vbBottom - vbTop));
+    } else {
+      svgEl.setAttribute('viewBox', '0 0 460 150');
+    }
+
+    var bits = [];
+    if (opt) bits.push(OPTION_SHORT[opt]);
+    if (fields.hard.value === 'hardened') bits.push('Fully Hardened');
+    // preview sits below the form on mobile (fixed bottom bar) but beside it on desktop
+    $('cbushReadout').textContent = bits.length ? bits.join(' · ')
+      : ('Select your specs ' + (window.matchMedia('(max-width: 991px)').matches ? 'above' : 'below'));
+  }
+
+  /* progressive disclosure: measurements appear once a style is picked; options,
+     contact and submit appear once the two price-driving measurements are in */
+  function renderSteps() {
+    $('cbushDimsBox').style.display = fields.option.value ? '' : 'none';
+    var ready = fields.option.value && num(fields.a) !== null && num(fields.c) !== null;
+    $('cbushOptsBox').style.display = ready ? '' : 'none';
+    $('cbushFinish').style.display = ready ? '' : 'none';
+    // D only applies to the grooved styles (options 2 & 3)
+    $('cbushDRow').style.display = (fields.option.value === '2' || fields.option.value === '3') ? '' : 'none';
+  }
+
+  function refresh() { renderPrice(); renderPreview(); renderSteps(); cbushMobileBar(); }
+
+  /* keep the sticky preview column clear of the fixed header (#nav-banner
+     gets a .sticky class from the theme's scroll handler) */
+  var cbushNavbar = document.getElementById('nav-banner');
+  var cbushLeftCol = document.querySelector('.cbush-left');
+  function cbushStickyOffset() {
+    if (!cbushNavbar || !cbushLeftCol) return;
+    var pinned = cbushNavbar.classList.contains('sticky') || getComputedStyle(cbushNavbar).position === 'fixed';
+    cbushLeftCol.style.top = (pinned ? cbushNavbar.offsetHeight + 12 : 20) + 'px';
+  }
+  window.addEventListener('scroll', cbushStickyOffset, { passive: true });
+  window.addEventListener('resize', cbushStickyOffset);
+  cbushStickyOffset();
+
+  /* mobile only: hide the bottom-pinned preview bar once the whole configurator
+     has scrolled above the fold, so the fixed bar never sits over the footer */
+  var cbushPreviewEl = document.querySelector('.cbush-preview');
+  var cbushWrapEl = document.querySelector('.cbush');
+  function cbushMobileBar() {
+    if (!cbushPreviewEl || !cbushWrapEl) return;
+    if (window.innerWidth >= 992) { cbushPreviewEl.classList.remove('cbush-preview--hidden'); return; }
+    cbushPreviewEl.classList.toggle('cbush-preview--hidden', cbushWrapEl.getBoundingClientRect().bottom <= window.innerHeight);
+  }
+  window.addEventListener('scroll', cbushMobileBar, { passive: true });
+  window.addEventListener('resize', cbushMobileBar);
+
+  /* On mobile, Key Notes moves to the very bottom of the page (it lives in the
+     left column for desktop) - same pattern as the pins page */
+  var cbushKeynotes = document.querySelector('.cbush-keynotes');
+  function placeKeynotes() {
+    if (!cbushKeynotes || !cbushWrapEl || !cbushLeftCol) return;
+    if (window.matchMedia('(max-width: 991px)').matches) {
+      if (cbushKeynotes.parentNode !== cbushWrapEl) cbushWrapEl.appendChild(cbushKeynotes);
+    } else if (cbushKeynotes.parentNode !== cbushLeftCol) {
+      cbushLeftCol.appendChild(cbushKeynotes);
+    }
+  }
+  placeKeynotes();
+
+  var cbushMq = window.matchMedia('(max-width: 991px)');
+  function cbushOnBreakpoint() { placeKeynotes(); refresh(); }
+  if (cbushMq.addEventListener) cbushMq.addEventListener('change', cbushOnBreakpoint);
+  else if (cbushMq.addListener) cbushMq.addListener(cbushOnBreakpoint);
+
+  // style image buttons drive the hidden #cbushOption input
+  var optBtns = document.querySelectorAll('.cbush-typebtn');
+  optBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      fields.option.value = btn.getAttribute('data-option');
+      optBtns.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('selected', on);
+        b.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+      refresh();
+    });
+  });
+
+  ['a', 'b', 'c', 'd', 'pinDia', 'hard', 'qty'].forEach(function (k) {
+    fields[k].addEventListener('input', refresh);
+    fields[k].addEventListener('change', refresh);
+  });
+  fields.unit.addEventListener('change', function () { updateUnitHints(); refresh(); });
+  $('cbushQtyDec').addEventListener('click', function () { fields.qty.value = Math.max(1, (parseInt(fields.qty.value, 10) || 1) - 1); refresh(); });
+  $('cbushQtyInc').addEventListener('click', function () { fields.qty.value = (parseInt(fields.qty.value, 10) || 1) + 1; refresh(); });
+
+  /* US phone: digits only (a leading 1 country code is dropped), capped at 10,
+     live-formatted as (XXX) XXX-XXXX; submit requires all 10 digits */
+  function formatUSPhone(raw) {
+    var d = raw.replace(/\D/g, '');
+    if (d.length > 10 && d.charAt(0) === '1') d = d.slice(1);
+    d = d.slice(0, 10);
+    if (d.length > 6) return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+    if (d.length > 3) return '(' + d.slice(0, 3) + ') ' + d.slice(3);
+    if (d.length > 0) return '(' + d;
+    return '';
+  }
+  fields.phone.addEventListener('input', function () { this.value = formatUSPhone(this.value); });
+
+  /* ---- submit ----
+     With a real page_id (template branch matched to the BC Contact Form page) this
+     posts natively to BigCommerce, which emails the address configured on that page.
+     Without one (page not created yet) it shows the demo success panel. */
+  var form = $('cbushForm');
+  form.addEventListener('submit', function (e) {
+    var ok = true;
+    document.querySelectorAll('#cbushForm .cbush-field[data-req]').forEach(function (f) {
+      var input = f.querySelector('select, input');
+      var bad = !input.value || (input.type === 'email' && input.value.indexOf('@') === -1) ||
+                (input.type === 'tel' && input.value.replace(/\D/g, '').length !== 10) ||
+                (input.id === 'cbushZip' && fields.country.value === 'United States' && !/^\d{5}(-\d{4})?$/.test(input.value.trim()));
+      f.classList.toggle('cbush-invalid', bad);
+      if (bad) ok = false;
+    });
+    // required acknowledgment: built to order / non-refundable
+    var ackBad = !$('cbushAck').checked;
+    $('cbushAckBox').classList.toggle('cbush-invalid', ackBad);
+    if (ackBad) ok = false;
+    $('cbushError').style.display = ok ? 'none' : 'block';
+    if (!ok) { e.preventDefault(); return; }
+
+    var p = calc();
+    var u = ' ' + (fields.unit.value === 'mm' ? 'mm' : 'in');
+    // Option number + full wording match the PVE Custom Bushing sheet, so sales
+    // can copy this email straight onto the drawing that accompanies the PO.
+    var spec = [
+      ['Bushing style', 'Option ' + fields.option.value + ' - ' + OPTION_NAMES[fields.option.value]]
+    ];
+    if (fields.a.value) spec.push(['A (Outside Diameter)', fields.a.value + u]);
+    if (fields.b.value) spec.push(['B (Inside Diameter)', fields.b.value + u]);
+    if (fields.c.value) spec.push(['C (Overall Length)', fields.c.value + u]);
+    if ((fields.option.value === '2' || fields.option.value === '3') && fields.d.value) {
+      spec.push(['D (Distance to Center of Grease Groove)', fields.d.value + u]);
+    }
+    if (fields.pinDia.value) spec.push(['Pin diameter used with this bushing', fields.pinDia.value + u]);
+    spec.push(['Hardness', fields.hard.value === 'hardened' ? 'FULLY HARDENED - UPCHARGE QUOTE NEEDED' : 'Standard']);
+    spec.push(['Quantity', String(p.qty)]);
+    spec.push(['Ship to', fields.street.value + ', ' + fields.city.value + ', ' + fields.stateP.value + ' ' + fields.zip.value + ', ' + fields.country.value]);
+    spec.push(['Notes', fields.notes.value || '-']);
+    if (p.configured && !p.quote) {
+      spec.push(['Estimated price shown (PIN CHART PLACEHOLDER)', fmt(p.unit) + (p.qty > 1 ? ' ea - ' + fmt(p.total) + ' total' : '')]);
+    } else if (p.quote) {
+      spec.push(['Estimated price shown', 'OUTSIDE CHART - QUOTE NEEDED']);
+    }
+    spec.push(['Acknowledged built-to-order / non-refundable', 'YES']);
+
+    // Serialize the spec into the native contact_question field - this is the email body.
+    $('cbushQuestion').value = 'CUSTOM BUSHING REQUEST\n' +
+      '------------------------------\n' +
+      spec.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n') +
+      '\n------------------------------\n' +
+      'Submitted from the Custom Bushing Request page.';
+
+    if (!$('cbushPageId').value) {
+      // DEMO MODE - no BC contact page behind this URL yet
+      e.preventDefault();
+      var demo = spec.concat([['Contact', fields.name.value + ' · ' + fields.phone.value + ' · ' + fields.email.value]]);
+      $('cbushSuccessSpec').innerHTML = demo.map(function (r) {
+        return '<div><b>' + r[0] + ':</b> ' + String(r[1]).replace(/</g, '&lt;') + '</div>';
+      }).join('');
+      form.style.display = 'none';
+      $('cbushSuccess').style.display = 'block';
+      $('cbushSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    // else: allow the native POST to BigCommerce to proceed
+  });
+
+  updateUnitHints();
+  refresh();
+})();
+</script>

@@ -1,0 +1,17 @@
+{{#partial "pagename"}}cbushwrap{{/partial}}
+
+{{#partial "head"}}
+<meta name="description" content="Order a custom-machined bushing from Broken Tractor. Pick your bushing style and give us the outside diameter, inside diameter, and length - made in the USA to your exact measurements.">
+{{/partial}}
+
+{{!-- LOCAL PREVIEW WRAPPER ONLY. The real Custom Bushings page is a BC Contact
+      Form page rendered through templates/pages/contact-us.html (title match) -
+      contact pages can't take custom layouts. This wrapper exists so the page
+      can be previewed via a config.stencil.json customLayouts mapping to a
+      regular page URL before the BC page is created. page_id is empty here, so
+      the form runs in demo mode and never posts. --}}
+{{#partial "page"}}
+{{> components/custom/custom-bushings-page}}
+{{/partial}}
+
+{{> layout/base}}
