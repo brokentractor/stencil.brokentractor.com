@@ -20,7 +20,13 @@
 /* preview */
 .cpin-preview { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 6px; padding: 18px 10px 6px; text-align: center; }
 .cpin-preview svg { width: 100%; max-width: 460px; height: auto; }
+.cpin-svgs { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.cpin-svgs #cpinSvg { flex: 1 1 auto; min-width: 0; }
+#cpinFlagFaceSvg { flex: 0 0 44%; }
 .cpin-spec-readout { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 18px; padding-bottom: 4px; }
+.cpin-key { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; margin-top: 10px; font-size: 14px; font-weight: bold; color: #333; }
+.cpin-key:empty { display: none; }
+.cpin-key span { white-space: nowrap; }
 
 .cpin-warning { display: flex; align-items: flex-start; gap: 12px; background: #fff4d6; border: 2px solid #e08b00; border-left-width: 6px; border-radius: 6px; padding: 14px 16px; margin-top: 16px; }
 .cpin-warning-icon { flex-shrink: 0; width: 30px; height: 30px; margin-top: 1px; }
@@ -39,6 +45,7 @@
 .cpin-field select, .cpin-field input[type=number], .cpin-field input[type=text], .cpin-field input[type=email], .cpin-field input[type=tel], .cpin-field textarea { width: 100%; padding: 9px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background: #fff; color: #001212; }
 .cpin-field textarea { resize: vertical; min-height: 56px; font-family: inherit; }
 .cpin-field.cpin-invalid select, .cpin-field.cpin-invalid input { border-color: #c02b0a; background: #fff6f4; }
+.cpin-field.cpin-invalid .cpin-hint { color: #c02b0a; font-weight: bold; }
 .cpin-2col { display: flex; gap: 12px; flex-wrap: wrap; }
 .cpin-2col .cpin-field { flex: 1 1 180px; }
 
@@ -65,6 +72,7 @@
 .cpin-qty input { width: 56px; height: 40px; text-align: center; border: 1px solid #ccc; border-left: none; border-right: none; font-size: 15px; }
 
 /* price */
+.cpin-hr { border: none; border-top: 1px solid #ccc; margin: 12px 0 8px; }
 .cpin-price { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 34px; margin: 4px 0 0; }
 .cpin-price-note { font-family: Arial, sans-serif; font-weight: normal; font-size: 14px; color: #5d5d5d; margin-left: 8px; white-space: nowrap; }
 .cpin-breakdown { font-size: 18px; color: #333; background: #efefef; border: 1px solid #ccc; border-radius: 4px; padding: 10px 14px; margin: 12px 0; line-height: 1.8; }
@@ -120,6 +128,8 @@
      text label below it */
   .cpin-preview svg { width: 100%; max-width: 420px; height: auto; max-height: 130px; }
   .cpin-spec-readout { order: 2; font-size: 14px; line-height: 1.25; text-align: center; padding: 0; }
+  .cpin-key { display: none; } /* keep the fixed mobile bar compact; values are in the form above */
+  #cpinFlagFaceSvg { display: none !important; } /* flag face view is desktop-only on the compact bar */
   .cpin { padding-bottom: 150px; }
 }
 
@@ -136,6 +146,44 @@
     <div class="cpin-left">
       <div class="cpin-preview">
         <div class="cpin-spec-readout" id="cpinReadout">Select your specs below</div>
+        <div class="cpin-svgs">
+        <!-- Flag plate face view (shown only for flag-style pins) - carries D/E/C/F -->
+        <svg id="cpinFlagFaceSvg" viewBox="0 0 150 175" xmlns="http://www.w3.org/2000/svg" aria-label="Flag plate face view" style="display:none;">
+          <defs>
+            <linearGradient id="cpinFFMetal" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#b7bcc1"/>
+              <stop offset="30%" stop-color="#e9ebed"/>
+              <stop offset="58%" stop-color="#8f959b"/>
+              <stop offset="100%" stop-color="#6e747a"/>
+            </linearGradient>
+          </defs>
+          <!-- plate: tapering body + rounded head & foot (same fill merge into a teardrop) -->
+          <polygon id="cpinFFBody" points="0,0" fill="url(#cpinFFMetal)" stroke="#565b60" stroke-width="1"/>
+          <circle id="cpinFFHead" fill="url(#cpinFFMetal)" stroke="#565b60" stroke-width="1"/>
+          <circle id="cpinFFFoot" fill="url(#cpinFFMetal)" stroke="#565b60" stroke-width="1"/>
+          <!-- the pin welded BEHIND the plate (L-shape): dashed hidden-edge outline,
+               not a hole - the plate face is solid -->
+          <circle id="cpinFFBore" fill="none" stroke="#3d4145" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- bolt hole (F) in the foot -->
+          <circle id="cpinFFHole" fill="#3d4145"/>
+          <!-- dimension callouts D (width), E (height), C (bore->hole), F (leader) -->
+          <g id="cpinFFDimD" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12">
+            <line id="cpinFFDimDLine" stroke-width="1"/><line id="cpinFFDimDCap1" stroke-width="1"/><line id="cpinFFDimDCap2" stroke-width="1"/>
+            <text id="cpinFFDimDText" text-anchor="middle" stroke="none">D</text>
+          </g>
+          <g id="cpinFFDimE" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12">
+            <line id="cpinFFDimELine" stroke-width="1"/><line id="cpinFFDimECap1" stroke-width="1"/><line id="cpinFFDimECap2" stroke-width="1"/>
+            <text id="cpinFFDimEText" text-anchor="end" stroke="none">E</text>
+          </g>
+          <g id="cpinFFDimC" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12" style="display:none;">
+            <line id="cpinFFDimCLine" stroke-width="1"/><line id="cpinFFDimCCap1" stroke-width="1"/><line id="cpinFFDimCCap2" stroke-width="1"/>
+            <text id="cpinFFDimCText" text-anchor="start" stroke="none">C</text>
+          </g>
+          <g id="cpinFFDimF" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12" style="display:none;">
+            <line id="cpinFFDimFLine" stroke-width="1"/>
+            <text id="cpinFFDimFText" text-anchor="start" stroke="none">F</text>
+          </g>
+        </svg>
         <svg id="cpinSvg" viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg" aria-label="Custom pin preview">
           <defs>
             <linearGradient id="cpinMetal" x1="0" y1="0" x2="0" y2="1">
@@ -159,10 +207,28 @@
           <ellipse id="cpinEndL" cx="60" cy="65" rx="5" ry="20" fill="url(#cpinEnd)"/>
           <ellipse id="cpinEndR" cx="400" cy="65" rx="5" ry="20" fill="url(#cpinEnd)"/>
 
-          <!-- extended bevel on right end (bg-colored wedge "cuts" the corner) -->
+          <!-- extended bevel on right end: symmetric chamfer (spun on a lathe),
+               so both the top and bottom corners are shaved. bg-colored wedges
+               "cut" each corner; the two edge lines show the taper. -->
           <g id="cpinBevel" style="display:none;">
             <polygon id="cpinBevelTop" points="0,0" fill="#f7f7f7"/>
+            <polygon id="cpinBevelBot" points="0,0" fill="#f7f7f7"/>
             <line id="cpinBevelLine" x1="0" y1="0" x2="0" y2="0" stroke="#8f959b" stroke-width="1.5"/>
+            <line id="cpinBevelLineBot" x1="0" y1="0" x2="0" y2="0" stroke="#8f959b" stroke-width="1.5"/>
+            <!-- Along-Shaft dimension (horizontal, above the top edge); perpendicular end caps -->
+            <g id="cpinBevDimA" stroke="#757575" fill="#757575" style="display:none;">
+              <line id="cpinBevDimALine" x1="0" y1="0" x2="0" y2="0" stroke-width="1"/>
+              <line id="cpinBevDimACapL" x1="0" y1="0" x2="0" y2="0" stroke-width="1"/>
+              <line id="cpinBevDimACapR" x1="0" y1="0" x2="0" y2="0" stroke-width="1"/>
+              <text id="cpinBevDimAText" x="0" y="0" text-anchor="middle" font-size="11" stroke="none" font-family="Arial, sans-serif"></text>
+            </g>
+            <!-- Into-Diameter dimension (vertical, right of the end face); perpendicular end caps -->
+            <g id="cpinBevDimB" stroke="#757575" fill="#757575" style="display:none;">
+              <line id="cpinBevDimBLine" x1="0" y1="0" x2="0" y2="0" stroke-width="1"/>
+              <line id="cpinBevDimBCapT" x1="0" y1="0" x2="0" y2="0" stroke-width="1"/>
+              <line id="cpinBevDimBCapB" x1="0" y1="0" x2="0" y2="0" stroke-width="1"/>
+              <text id="cpinBevDimBText" x="0" y="0" text-anchor="start" font-size="11" stroke="none" font-family="Arial, sans-serif"></text>
+            </g>
           </g>
 
           <!-- crossbolt hole (all PVE templates include one) -->
@@ -175,27 +241,69 @@
           <g id="cpinFlag" style="display:none;">
             <rect id="cpinFlagRect" x="40" y="10" width="16" height="45" rx="2" fill="#8f959b" stroke="#565b60"/>
             <circle id="cpinFlagHole" cx="48" cy="22" r="4.5" fill="#3d4145"/>
+            <!-- G: flag thickness (above the plate; only when a value is entered) -->
+            <g id="cpinFlagGdim" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12" style="display:none;">
+              <line id="cpinFlagGLine" stroke-width="1"/><line id="cpinFlagGCap1" stroke-width="1"/><line id="cpinFlagGCap2" stroke-width="1"/>
+              <text id="cpinFlagGText" text-anchor="middle" stroke="none">G</text>
+            </g>
           </g>
 
           <!-- welded retainer disc (Pin with Retainer) -->
           <g id="cpinDisc" style="display:none;">
             <rect id="cpinDiscRect" x="50" y="32" width="10" height="66" rx="4" fill="#8f959b" stroke="#565b60"/>
+            <!-- E: retainer thickness (above the disc; only when a value is entered) -->
+            <g id="cpinDiscEdim" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12" style="display:none;">
+              <line id="cpinDiscELine" stroke-width="1"/><line id="cpinDiscECap1" stroke-width="1"/><line id="cpinDiscECap2" stroke-width="1"/>
+              <text id="cpinDiscEText" text-anchor="middle" stroke="none">E</text>
+            </g>
+            <!-- F: retainer diameter - the height of the disc (left of it; only when entered) -->
+            <g id="cpinDiscFdim" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12" style="display:none;">
+              <line id="cpinDiscFLine" stroke-width="1"/><line id="cpinDiscFCap1" stroke-width="1"/><line id="cpinDiscFCap2" stroke-width="1"/>
+              <text id="cpinDiscFText" text-anchor="end" stroke="none">F</text>
+            </g>
           </g>
 
-          <!-- grease zerk -->
+          <!-- grease zerk (horizontal, sticks out the left end) -->
           <g id="cpinZerk" style="display:none;">
-            <rect id="cpinZerkStem" x="226" y="32" width="8" height="14" fill="#8a6d1a"/>
-            <circle id="cpinZerkBall" cx="230" cy="30" r="6" fill="#c9a227" stroke="#8a6d1a"/>
+            <rect id="cpinZerkStem" x="46" y="61" width="14" height="8" fill="#8a6d1a"/>
+            <circle id="cpinZerkBall" cx="46" cy="65" r="6" fill="#c9a227" stroke="#8a6d1a"/>
           </g>
 
           <!-- dimension arrows -->
-          <g id="cpinDim" stroke="#757575" fill="#757575" style="display:none;">
-            <line id="cpinDimLine" x1="60" y1="115" x2="400" y2="115" stroke-width="1"/>
-            <path id="cpinDimArrL" d="M60 115 l8 -4 v8 z" stroke="none"/>
-            <path id="cpinDimArrR" d="M400 115 l-8 -4 v8 z" stroke="none"/>
-            <text id="cpinDimText" x="230" y="135" text-anchor="middle" font-size="14" stroke="none" font-family="Arial, sans-serif"></text>
+          <!-- dimension callouts matching the PVE template letters (A/B/C/D).
+               NOTE: measurement INPUTS use ids cpinDimA..D, so these SVG groups
+               use cpinDimDia/Len/Loc/Bore to avoid a collision. -->
+          <g id="cpinDim" stroke="#757575" fill="#757575" font-family="Arial, sans-serif" font-size="12">
+            <!-- A - Pin Diameter (vertical, left of the pin) -->
+            <g id="cpinDimDia" style="display:none;">
+              <line id="cpinDimDiaLine" stroke-width="1"/>
+              <line id="cpinDimDiaCap1" stroke-width="1"/>
+              <line id="cpinDimDiaCap2" stroke-width="1"/>
+              <text id="cpinDimDiaText" text-anchor="end" stroke="none">A</text>
+            </g>
+            <!-- B - Overall Pin Length (horizontal, below the pin) -->
+            <g id="cpinDimLen" style="display:none;">
+              <line id="cpinDimLenLine" stroke-width="1"/>
+              <line id="cpinDimLenCap1" stroke-width="1"/>
+              <line id="cpinDimLenCap2" stroke-width="1"/>
+              <text id="cpinDimLenText" text-anchor="middle" stroke="none">B</text>
+            </g>
+            <!-- C - Bolt Hole Location (horizontal, below B) -->
+            <g id="cpinDimLoc" style="display:none;">
+              <line id="cpinDimLocLine" stroke-width="1"/>
+              <line id="cpinDimLocCap1" stroke-width="1"/>
+              <line id="cpinDimLocCap2" stroke-width="1"/>
+              <text id="cpinDimLocText" text-anchor="middle" stroke="none">C</text>
+            </g>
+            <!-- D - Bolt Hole Diameter (leader to the hole) -->
+            <g id="cpinDimBore" style="display:none;">
+              <line id="cpinDimBoreLine" stroke-width="1"/>
+              <text id="cpinDimBoreText" text-anchor="middle" stroke="none">D</text>
+            </g>
           </g>
         </svg>
+        </div>
+        <div class="cpin-key" id="cpinKey"></div>
       </div>
 
       <div class="cpin-warning" role="note">
@@ -223,6 +331,7 @@
     <!-- RIGHT: configurator -->
     <div class="cpin-right">
       <h1>Custom Pin - Built to Your Exact Specifications - Made in USA</h1>
+      <hr class="cpin-hr">
       <div class="cpin-price" id="cpinPrice">Starting at $140<span class="cpin-price-note">(Plus Shipping &amp; Taxes)</span></div>
 
       {{#if forms.contact.success}}
@@ -304,22 +413,19 @@
             <span><b>Special extended bevel on end</b><span class="cpin-hint">Beyond the standard bevel/chamfer that's included</span></span>
           </label>
           <div id="cpinBevelFields" style="display:none;">
+            <div class="cpin-dims-note">A bevel is an angled cut on the end of the pin. Tell us how far the cut runs back along the shaft (measured on top) and how far it cuts down into the diameter - the preview updates to match.</div>
             <div class="cpin-2col">
               <div class="cpin-field">
-                <label for="cpinBevA">Bevel Distance Along Shaft <span class="cpin-hint" data-unit-hint></span></label>
+                <label for="cpinBevA">Bevel Distance Along Shaft <span class="cpin-hint" id="cpinBevAHint"></span></label>
                 <input type="number" id="cpinBevA" step="any" min="0">
               </div>
               <div class="cpin-field">
-                <label for="cpinBevB">Bevel Distance Into Diameter <span class="cpin-hint" data-unit-hint></span></label>
+                <label for="cpinBevB">Bevel Distance Into Diameter <span class="cpin-hint" id="cpinBevBHint"></span></label>
                 <input type="number" id="cpinBevB" step="any" min="0">
               </div>
             </div>
           </div>
 
-          <label class="cpin-check">
-            <input type="checkbox" id="cpinThread">
-            <span><b id="cpinThreadLbl">O.D. thread on end</b><span class="cpin-hint">Describe the thread in Additional Specifications below</span></span>
-          </label>
         </div>
 
         <div class="cpin-configbox" id="cpinOptsBox" style="display:none;">
@@ -335,7 +441,7 @@
 
           <div class="cpin-field">
             <label for="cpinNotes">Additional Specifications (optional)</label>
-            <textarea id="cpinNotes" placeholder="Machine make/model, thread details, hole pattern, anything else we should know…"></textarea>
+            <textarea id="cpinNotes" placeholder="Machine make/model, hole pattern, anything else we should know…"></textarea>
           </div>
 
           <div class="cpin-field">
@@ -451,9 +557,9 @@
      Rule from the chart: a diameter or length between nominal sizes prices at
      the NEXT nominal size up. Diameter columns are the chart's imperial row
      ("1.0/1.5" column = anything up to 1.5"). Lengths run 8"–42" in 2" steps.
-     Add-ons per the chart: welded retainer / grease channel / O.D. thread
-     are $20 cost each ($30 retail). Fully hardened has no chart price -
-     quoted by PVE.
+     Add-ons per the chart: welded retainer / grease channel are $20 cost
+     each ($30 retail). O.D. thread option removed per Michael (Jul 17).
+     Fully hardened has no chart price - quoted by PVE.
      ============================================================================ */
   var MARKUP = 1.5; // retail = PVE cost x 1.5
   var CPIN_DIAS = [1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25, 5.511];
@@ -485,12 +591,7 @@
   var CPIN_DIAS_MM = [35, 40, 45, 55, 60, 65, 70, 80, 85, 90, 95, 105, 110, 115, 120, 130, 140];
   /* chart's POUNDS PER INCH row, per diameter column (for weight estimate) */
   var CPIN_PPI = [0.5, 0.69, 0.89, 1.13, 1.39, 1.69, 2, 2.35, 3.13, 3.13, 4.02, 4.02, 4.51, 5.56, 5.56, 6.16, 8.01];
-  var ADDON = Math.ceil(20 * MARKUP); // welded retainer / grease channel / O.D. thread ($20 PVE cost, marked up)
-  /* smallest pin PVE will make (Michael, Jul 16 2026). Below this OR beyond the
-     chart's largest -> "quote individually". Compared in inches; mm inputs are
-     converted first. */
-  var MIN_DIA_IN = 1;
-  var MIN_LEN_IN = 8;
+  var ADDON = Math.ceil(20 * MARKUP); // welded retainer / grease channel ($20 PVE cost, marked up)
 
   /* ============================================================================
      MEASUREMENT FIELDS - letters and labels copied verbatim from the PVE
@@ -505,52 +606,53 @@
     'straight|non': [
       ['A', 'Pin Diameter', true],
       ['B', 'Overall Pin Length', true],
-      ['C', 'Bolt Hole Location', false],
-      ['D', 'Bolt Hole Diameter', false]
+      ['C', 'Bolt Hole Location', true],
+      ['D', 'Bolt Hole Diameter', true]
     ],
     /* grease hole locations (E/F on the straight & retainer sheets, H on flag)
-       intentionally not collected - PVE places them; sales confirms if needed */
+       intentionally not collected (sales mgr, Jul 18) - PVE places them */
     'straight|grease': [
       ['A', 'Pin Diameter', true],
       ['B', 'Overall Pin Length', true],
-      ['C', 'Bolt Hole Location', false],
-      ['D', 'Bolt Hole Diameter', false]
+      ['C', 'Bolt Hole Location', true],
+      ['D', 'Bolt Hole Diameter', true]
     ],
     'flag|non': [
       ['A', 'Pin Diameter', true],
       ['B', 'Overall Pin Length', true],
-      ['C', 'Center of Pin to Center of Bolt Hole', false],
-      ['D', 'Width of Retainer', false],
-      ['E', 'Length of Retainer', false],
-      ['F', 'Bolt Hole Diameter', false],
+      ['C', 'Center of Pin to Center of Bolt Hole', false, 'must be more than half of A so the bolt clears the pin'],
+      ['D', 'Width of Retainer', false, 'must be wider than the pin (A)'],
+      ['E', 'Length of Retainer', false, 'must be longer than C'],
+      ['F', 'Bolt Hole Diameter', false, 'up to 26% of the pin diameter (A)'],
       ['G', 'Retainer Thickness', false]
     ],
     'flag|grease': [
       ['A', 'Pin Diameter', true],
       ['B', 'Overall Pin Length', true],
-      ['C', 'Center of Pin to Center of Bolt Hole', false],
-      ['D', 'Width of Retainer', false],
-      ['E', 'Length of Retainer', false],
-      ['F', 'Bolt Hole Diameter', false],
+      ['C', 'Center of Pin to Center of Bolt Hole', false, 'must be more than half of A so the bolt clears the pin'],
+      ['D', 'Width of Retainer', false, 'must be wider than the pin (A)'],
+      ['E', 'Length of Retainer', false, 'must be longer than C'],
+      ['F', 'Bolt Hole Diameter', false, 'up to 26% of the pin diameter (A)'],
       ['G', 'Retainer Thickness', false]
     ],
+    /* retainer disc dims: E (thickness) / F (diameter) on BOTH variants
+       (Michael, Jul 20 final). Note: the PVE greaseable sheet letters these
+       G/H - on greaseable orders sales maps by the full field name. */
     'retainer|non': [
       ['A', 'Pin Diameter', true],
       ['B', 'Overall Pin Length', true],
       ['C', 'Bolt Hole Location', false],
       ['D', 'Bolt Hole Diameter', false],
       ['E', 'Retainer Thickness', false, RET_THICK_HINT],
-      ['F', 'Retainer Diameter', false]
+      ['F', 'Retainer Diameter', false, 'must be wider than the pin (A)']
     ],
     'retainer|grease': [
       ['A', 'Pin Diameter', true],
       ['B', 'Overall Pin Length', true],
       ['C', 'Bolt Hole Location', false],
       ['D', 'Bolt Hole Diameter', false],
-      /* G/H letters kept to match the PVE greasable-retainer sheet (E/F there
-         are the uncollected grease holes) */
-      ['G', 'Retainer Thickness', false, RET_THICK_HINT],
-      ['H', 'Retainer Diameter', false]
+      ['E', 'Retainer Thickness', false, RET_THICK_HINT],
+      ['F', 'Retainer Diameter', false, 'must be wider than the pin (A)']
     ]
   };
   /* template-wide notes printed on the PVE drawings, shown under the fields */
@@ -632,10 +734,8 @@
     // diameter brackets against its own unit's ladder; length is inches-only
     // on the chart, so mm lengths are converted before bracketing
     var ladder = isMM ? CPIN_DIAS_MM : CPIN_DIAS;
-    var diaIn = isMM ? dia / 25.4 : dia;
-    // below the smallest pin PVE makes -> quote individually
-    if (diaIn < MIN_DIA_IN - 1e-9 || lenIn < MIN_LEN_IN - 1e-9) return null;
-    // beyond the chart's largest bracket -> quote individually
+    // below the smallest chart size just brackets up to the first cell (minimum
+    // price); only sizes BEYOND the chart's largest bracket are quoted individually
     if (dia > ladder[ladder.length - 1] + 1e-9 || lenIn > CPIN_LENGTHS[CPIN_LENGTHS.length - 1] + 1e-9) return null;
     var di = 0, li = 0;
     while (ladder[di] < dia - 1e-9) di++;
@@ -659,9 +759,6 @@
     }
     if (fields.grease.value === 'grease') {
       lines.push({ label: 'Greaseable (grease channel + zerk)', amt: ADDON });
-    }
-    if ($('cpinThread').checked) {
-      lines.push({ label: 'O.D. thread', amt: ADDON });
     }
     var notes = [];
     if (fields.hard.value === 'hardened') notes.push('Fully hardened (56RC): upcharge quoted before production · ~4–6 week lead');
@@ -698,11 +795,86 @@
   }
 
   /* ---- live SVG preview ---- */
+  // Flag plate face view (the second graphic). Teardrop plate: rounded head with
+  // the pin bore, tapering to a rounded foot with the bolt hole. Dimensions
+  // D (width), E (height), C (bore->bolt-hole), F (bolt hole) match the PVE sheet.
+  function renderFlagFace() {
+    var svg = $('cpinFlagFaceSvg');
+    if (fields.type.value !== 'flag') { svg.style.display = 'none'; return; }
+    svg.style.display = '';
+
+    var D = dimValue('Width of Retainer');
+    var E = dimValue('Length of Retainer');
+    var C = dimValue('Center of Pin to Center of Bolt Hole');
+    var F = dimValue('Bolt Hole Diameter');
+    var A = dimValue('Pin Diameter');
+    var cx = 75;
+
+    // uniform scale (px per inch) that fits the plate within the viewBox
+    var scale = (D && E) ? Math.min(96 / D, 135 / E) : (D ? 96 / D : (E ? 135 / E : 30));
+    var Rtop = D ? Math.min(48, Math.max(14, (D / 2) * scale)) : 44;
+    var Rbot = Math.max(10, Rtop * 0.42);
+    var plateH = E ? Math.max(Rtop + Rbot + 10, E * scale) : 132;
+    var topM = 26;
+    var headY = topM + Rtop, footY = headY + (plateH - Rtop - Rbot);
+    var headTop = headY - Rtop, footBot = footY + Rbot;
+
+    var setLn = function (id, a, b, c, d) { var e = $(id); e.setAttribute('x1', a); e.setAttribute('y1', b); e.setAttribute('x2', c); e.setAttribute('y2', d); };
+
+    // plate (head + tapering body + foot merge into a teardrop)
+    $('cpinFFHead').setAttribute('cx', cx); $('cpinFFHead').setAttribute('cy', headY); $('cpinFFHead').setAttribute('r', Rtop);
+    $('cpinFFFoot').setAttribute('cx', cx); $('cpinFFFoot').setAttribute('cy', footY); $('cpinFFFoot').setAttribute('r', Rbot);
+    $('cpinFFBody').setAttribute('points', (cx - Rtop) + ',' + headY + ' ' + (cx + Rtop) + ',' + headY + ' ' + (cx + Rbot) + ',' + footY + ' ' + (cx - Rbot) + ',' + footY);
+
+    // the pin welded behind the plate (L-shape): dashed hidden-edge outline
+    var boreR = A ? Math.min(Rtop - 5, Math.max(5, (A / 2) * scale)) : Rtop * 0.6;
+    $('cpinFFBore').setAttribute('cx', cx); $('cpinFFBore').setAttribute('cy', headY); $('cpinFFBore').setAttribute('r', boreR);
+
+    // bolt hole (C below the bore center; defaults to the foot)
+    var holeY = C ? Math.min(footBot - 6, headY + C * scale) : footY;
+    var holeR = F ? Math.max(2, Math.min(Rbot - 3, (F / 2) * scale)) : 5;
+    $('cpinFFHole').setAttribute('cx', cx); $('cpinFFHole').setAttribute('cy', holeY); $('cpinFFHole').setAttribute('r', holeR);
+
+    var cap = 4;
+    // D - width across the head (above)
+    var yD = headTop - 10;
+    setLn('cpinFFDimDLine', cx - Rtop, yD, cx + Rtop, yD);
+    setLn('cpinFFDimDCap1', cx - Rtop, yD - cap, cx - Rtop, yD + cap);
+    setLn('cpinFFDimDCap2', cx + Rtop, yD - cap, cx + Rtop, yD + cap);
+    $('cpinFFDimDText').setAttribute('x', cx); $('cpinFFDimDText').setAttribute('y', yD - 3);
+    $('cpinFFDimD').style.display = D ? '' : 'none';
+
+    // E - full height (left)
+    var xE = (cx - Rtop) - 12;
+    setLn('cpinFFDimELine', xE, headTop, xE, footBot);
+    setLn('cpinFFDimECap1', xE - cap, headTop, xE + cap, headTop);
+    setLn('cpinFFDimECap2', xE - cap, footBot, xE + cap, footBot);
+    $('cpinFFDimEText').setAttribute('x', xE - 4); $('cpinFFDimEText').setAttribute('y', (headTop + footBot) / 2 + 4);
+    $('cpinFFDimE').style.display = E ? '' : 'none';
+
+    // C - bore center to bolt hole center (right)
+    var xC = (cx + Rtop) + 12;
+    setLn('cpinFFDimCLine', xC, headY, xC, holeY);
+    setLn('cpinFFDimCCap1', xC - cap, headY, xC + cap, headY);
+    setLn('cpinFFDimCCap2', xC - cap, holeY, xC + cap, holeY);
+    $('cpinFFDimCText').setAttribute('x', xC + 4); $('cpinFFDimCText').setAttribute('y', (headY + holeY) / 2 + 4);
+    $('cpinFFDimC').style.display = C ? '' : 'none';
+
+    // F - bolt hole diameter leader, anchored at the CENTER of the hole (sales mgr)
+    if (F) {
+      $('cpinFFDimF').style.display = '';
+      setLn('cpinFFDimFLine', cx, holeY, cx + 24, holeY + 16);
+      $('cpinFFDimFText').setAttribute('x', cx + 27); $('cpinFFDimFText').setAttribute('y', holeY + 19);
+    } else { $('cpinFFDimF').style.display = 'none'; }
+  }
+
   function renderPreview() {
     var type = fields.type.value;
     var dia = dimValue('Pin Diameter'), len = dimValue('Overall Pin Length');
     var diaIn = dia !== null ? toInches(dia) : null;
     var lenIn = len !== null ? toInches(len) : null;
+    // helper: set a line's endpoints
+    var setLn = function (id, a, b, c, d) { var e = $(id); e.setAttribute('x1', a); e.setAttribute('y1', b); e.setAttribute('x2', c); e.setAttribute('y2', d); };
 
     // body width maps 8–42" to 180–380px; height maps 1–5.5" dia to 24–64px
     var w = 340, h = 40;
@@ -718,54 +890,218 @@
     $('cpinEndL').setAttribute('cx', x0); $('cpinEndL').setAttribute('ry', h / 2);
     $('cpinEndR').setAttribute('cx', x1); $('cpinEndR').setAttribute('ry', h / 2);
 
-    // crossbolt hole near the right end whenever a type is chosen
+    // crossbolt hole: positioned from the LEFT end by the Bolt Hole Location (C)
+    // measurement when entered (slides right as the number grows); otherwise sits
+    // near the right end. Shown whenever a type is chosen.
     $('cpinBolt').style.display = type ? '' : 'none';
-    $('cpinBoltHole').setAttribute('cx', x1 - 26); $('cpinBoltHole2').setAttribute('cx', x1 - 26);
+    var boltLoc = dimValue('Bolt Hole Location');
+    // bolt hole location can't exceed the overall pin length
+    var boltLocInput = document.querySelector('#cpinDims input[data-dim-label="Bolt Hole Location"]');
+    if (boltLocInput) boltLocInput.max = (len !== null ? len : '');
+    var boltCx = (boltLoc !== null && lenIn !== null && lenIn > 0)
+      ? x0 + Math.max(8, Math.min(w - 8, toInches(boltLoc) * w / lenIn))
+      : x1 - 26;
+    // hole radius scales with the Bolt Hole Diameter (D), using the pin's
+    // cross-section scale (h/diaIn); clamped so it always fits inside the body
+    var boltDia = dimValue('Bolt Hole Diameter');
+    var boltR = (boltDia !== null && diaIn !== null && diaIn > 0)
+      ? Math.max(2, Math.min(h / 2 - 1, toInches(boltDia) * (h / diaIn) / 2))
+      : 6;
+    $('cpinBoltHole').setAttribute('cx', boltCx); $('cpinBoltHole').setAttribute('r', boltR);
+    $('cpinBoltHole2').setAttribute('cx', boltCx); $('cpinBoltHole2').setAttribute('r', boltR);
 
     // flag plate
     $('cpinFlag').style.display = type === 'flag' ? '' : 'none';
     if (type === 'flag') {
+      // plate thickness scales with G (Retainer Thickness); thin (8px) by default
+      var gVal = dimValue('Retainer Thickness');
+      var plateW = (gVal !== null && lenIn !== null && lenIn > 0)
+        ? Math.max(3, Math.min(34, toInches(gVal) * w / lenIn))
+        : 8;
+      // plate top clamped so it never clips out of the frame (leaves room for the G dim)
+      var plateTop = Math.max(22, y0 - 42);
+      var flagR = x0 - 2, flagL = flagR - plateW;
       var fr = $('cpinFlagRect');
-      fr.setAttribute('x', x0 - 18); fr.setAttribute('y', y0 - 42); fr.setAttribute('height', 42 + h);
-      $('cpinFlagHole').setAttribute('cx', x0 - 10); $('cpinFlagHole').setAttribute('cy', y0 - 28);
+      fr.setAttribute('x', flagL); fr.setAttribute('y', plateTop);
+      fr.setAttribute('width', plateW); fr.setAttribute('height', y1 - plateTop);
+      // mid-body grease hole - only on greaseable flag pins (location set by PVE)
+      $('cpinFlagHole').style.display = fields.grease.value === 'grease' ? '' : 'none';
+      $('cpinFlagHole').setAttribute('cx', x0 + w / 2); $('cpinFlagHole').setAttribute('cy', 65);
       // flag bolt hole replaces the crossbolt visual
       $('cpinBolt').style.display = 'none';
+      // G: thickness dimension above the plate, only once a value is entered
+      $('cpinFlagGdim').style.display = gVal !== null ? '' : 'none';
+      if (gVal !== null) {
+        var yG = plateTop - 6;
+        setLn('cpinFlagGLine', flagL, yG, flagR, yG);
+        setLn('cpinFlagGCap1', flagL, yG - 4, flagL, yG + 4);
+        setLn('cpinFlagGCap2', flagR, yG - 4, flagR, yG + 4);
+        $('cpinFlagGText').setAttribute('x', (flagL + flagR) / 2); $('cpinFlagGText').setAttribute('y', yG - 4);
+        $('cpinFlagGText').setAttribute('text-anchor', 'middle');
+      }
     }
 
-    // welded retainer disc
+    // welded retainer disc: thickness scales with E, height (diameter) with F.
+    // E dim sits on top of the disc; F dim brackets its full height on the left
     $('cpinDisc').style.display = type === 'retainer' ? '' : 'none';
     if (type === 'retainer') {
+      var eVal = dimValue('Retainer Thickness');
+      var fVal = dimValue('Retainer Diameter');
+      var discW = (eVal !== null && lenIn !== null && lenIn > 0)
+        ? Math.max(3, Math.min(30, toInches(eVal) * w / lenIn))
+        : 10;
+      // height scales with F (F > A per validation, so taller than the pin);
+      // capped at the old fixed height so it clears the frame and the B dim
+      var discH = (fVal !== null && diaIn !== null && diaIn > 0)
+        ? Math.max(h + 6, Math.min(h + 28, toInches(fVal) * h / diaIn))
+        : h + 28;
+      var discTop = Math.max(22, 65 - discH / 2);
+      var discBot = 65 + discH / 2;
+      var discR = x0, discL = discR - discW;
       var dr = $('cpinDiscRect');
-      dr.setAttribute('x', x0 - 10); dr.setAttribute('y', y0 - 14); dr.setAttribute('height', h + 28);
+      dr.setAttribute('x', discL); dr.setAttribute('y', discTop);
+      dr.setAttribute('width', discW); dr.setAttribute('height', discBot - discTop);
+      $('cpinDiscEdim').style.display = eVal !== null ? '' : 'none';
+      if (eVal !== null) {
+        var yE = discTop - 6;
+        setLn('cpinDiscELine', discL, yE, discR, yE);
+        setLn('cpinDiscECap1', discL, yE - 4, discL, yE + 4);
+        setLn('cpinDiscECap2', discR, yE - 4, discR, yE + 4);
+        $('cpinDiscEText').setAttribute('x', (discL + discR) / 2); $('cpinDiscEText').setAttribute('y', yE - 4);
+      }
+      $('cpinDiscFdim').style.display = fVal !== null ? '' : 'none';
+      if (fVal !== null) {
+        var xF = x0 - 42;   // left of the A dimension + its label, nested like the sheet
+        setLn('cpinDiscFLine', xF, discTop, xF, discBot);
+        setLn('cpinDiscFCap1', xF - 4, discTop, xF + 4, discTop);
+        setLn('cpinDiscFCap2', xF - 4, discBot, xF + 4, discBot);
+        $('cpinDiscFText').setAttribute('x', xF - 5); $('cpinDiscFText').setAttribute('y', 69);
+      }
     }
 
-    // zerk in the center when greasable
+    // grease zerk: horizontal, sticking out the left end, when greasable
     var greasable = fields.grease.value === 'grease';
     $('cpinZerk').style.display = greasable ? '' : 'none';
-    $('cpinZerkStem').setAttribute('x', cx - 4); $('cpinZerkStem').setAttribute('y', y0 - 13);
-    $('cpinZerkBall').setAttribute('cx', cx); $('cpinZerkBall').setAttribute('cy', y0 - 15);
+    $('cpinZerkStem').setAttribute('x', x0 - 14); $('cpinZerkStem').setAttribute('y', 61);
+    $('cpinZerkBall').setAttribute('cx', x0 - 14); $('cpinZerkBall').setAttribute('cy', 65);
 
-    // extended bevel wedge on the right end
+    // extended bevel: cuts the top-right corner, scaled to the entered measurements.
+    // Along Shaft (bevA) runs back along the top; Into Diameter (bevB) cuts down at
+    // the end face. Limits derive from the pin (length / diameter).
+    var uHint = fields.unit.value === 'mm' ? 'mm' : 'in';
+    // both bevel measurements cap at the pin diameter (a chamfer can't exceed it)
+    $('cpinBevA').max = (dia !== null ? dia : '');
+    $('cpinBevB').max = (dia !== null ? dia : '');
+    $('cpinBevAHint').textContent = dia !== null ? '(up to ' + dia + ' ' + uHint + ')' : '(' + uHint + ')';
+    $('cpinBevBHint').textContent = dia !== null ? '(up to ' + dia + ' ' + uHint + ')' : '(' + uHint + ')';
+
     var bevel = $('cpinBevelOpt').checked;
     $('cpinBevel').style.display = bevel ? '' : 'none';
+    var bevScaled = false;
     if (bevel) {
-      var bx = x1 - Math.min(40, w * 0.18);
-      $('cpinBevelTop').setAttribute('points', bx + ',' + y0 + ' ' + (x1 + 6) + ',' + y0 + ' ' + (x1 + 6) + ',' + (y0 + h * 0.4));
-      $('cpinBevelLine').setAttribute('x1', bx); $('cpinBevelLine').setAttribute('y1', y0);
-      $('cpinBevelLine').setAttribute('x2', x1 + 4); $('cpinBevelLine').setAttribute('y2', y0 + h * 0.4);
+      var bevAval = parseFloat($('cpinBevA').value);
+      var bevBval = parseFloat($('cpinBevB').value);
+      var alongPx, intoPx;
+      if (diaIn !== null && lenIn !== null && !isNaN(bevAval) && bevAval > 0 && !isNaN(bevBval) && bevBval > 0) {
+        alongPx = Math.max(2, Math.min(w, toInches(bevAval) * w / lenIn));
+        // depth is per-edge; clamp to half the pin so the top & bottom shaves meet at most at center
+        intoPx  = Math.max(2, Math.min(h / 2, toInches(bevBval) * h / diaIn));
+        bevScaled = true;
+      } else {
+        alongPx = Math.min(40, w * 0.18); intoPx = h * 0.3; // decorative fallback
+      }
+      var p1x = x1 - alongPx, xR = x1 + 6;
+      // top corner shave
+      $('cpinBevelTop').setAttribute('points', p1x + ',' + y0 + ' ' + xR + ',' + y0 + ' ' + xR + ',' + (y0 + intoPx));
+      $('cpinBevelLine').setAttribute('x1', p1x); $('cpinBevelLine').setAttribute('y1', y0);
+      $('cpinBevelLine').setAttribute('x2', xR); $('cpinBevelLine').setAttribute('y2', y0 + intoPx);
+      // bottom corner shave (mirror of the top)
+      $('cpinBevelBot').setAttribute('points', p1x + ',' + y1 + ' ' + xR + ',' + y1 + ' ' + xR + ',' + (y1 - intoPx));
+      $('cpinBevelLineBot').setAttribute('x1', p1x); $('cpinBevelLineBot').setAttribute('y1', y1);
+      $('cpinBevelLineBot').setAttribute('x2', xR); $('cpinBevelLineBot').setAttribute('y2', y1 - intoPx);
+
+      var ub = fields.unit.value === 'mm' ? 'mm' : '"';
+      $('cpinBevDimA').style.display = bevScaled ? '' : 'none';
+      $('cpinBevDimB').style.display = bevScaled ? '' : 'none';
+      if (bevScaled) {
+        var cap = 4;
+        var yA = y0 - 12;
+        $('cpinBevDimALine').setAttribute('x1', p1x); $('cpinBevDimALine').setAttribute('y1', yA);
+        $('cpinBevDimALine').setAttribute('x2', x1);  $('cpinBevDimALine').setAttribute('y2', yA);
+        // vertical end caps
+        $('cpinBevDimACapL').setAttribute('x1', p1x); $('cpinBevDimACapL').setAttribute('y1', yA - cap);
+        $('cpinBevDimACapL').setAttribute('x2', p1x); $('cpinBevDimACapL').setAttribute('y2', yA + cap);
+        $('cpinBevDimACapR').setAttribute('x1', x1);  $('cpinBevDimACapR').setAttribute('y1', yA - cap);
+        $('cpinBevDimACapR').setAttribute('x2', x1);  $('cpinBevDimACapR').setAttribute('y2', yA + cap);
+        $('cpinBevDimAText').setAttribute('x', (p1x + x1) / 2); $('cpinBevDimAText').setAttribute('y', yA - 4);
+        $('cpinBevDimAText').textContent = bevAval + ub;
+
+        var xB = x1 + 12;
+        $('cpinBevDimBLine').setAttribute('x1', xB); $('cpinBevDimBLine').setAttribute('y1', y0);
+        $('cpinBevDimBLine').setAttribute('x2', xB); $('cpinBevDimBLine').setAttribute('y2', y0 + intoPx);
+        // horizontal end caps
+        $('cpinBevDimBCapT').setAttribute('x1', xB - cap); $('cpinBevDimBCapT').setAttribute('y1', y0);
+        $('cpinBevDimBCapT').setAttribute('x2', xB + cap); $('cpinBevDimBCapT').setAttribute('y2', y0);
+        $('cpinBevDimBCapB').setAttribute('x1', xB - cap); $('cpinBevDimBCapB').setAttribute('y1', y0 + intoPx);
+        $('cpinBevDimBCapB').setAttribute('x2', xB + cap); $('cpinBevDimBCapB').setAttribute('y2', y0 + intoPx);
+        $('cpinBevDimBText').setAttribute('x', xB + 5); $('cpinBevDimBText').setAttribute('y', y0 + intoPx / 2 + 4);
+        $('cpinBevDimBText').textContent = bevBval + ub;
+      }
     }
 
-    var dim = $('cpinDim');
+    // Dimension callouts lettered to match the PVE template fields (A/B/C/D).
+    var showBolt = !!type && type !== 'flag';   // crossbolt types carry C + D
+
+    // A - Pin Diameter: vertical, just left of the pin
+    if (diaIn !== null) {
+      $('cpinDimDia').style.display = '';
+      var xA = x0 - 22;
+      setLn('cpinDimDiaLine', xA, y0, xA, y1);
+      setLn('cpinDimDiaCap1', xA - 4, y0, xA + 4, y0);
+      setLn('cpinDimDiaCap2', xA - 4, y1, xA + 4, y1);
+      $('cpinDimDiaText').setAttribute('x', xA - 6); $('cpinDimDiaText').setAttribute('y', 69);
+    } else { $('cpinDimDia').style.display = 'none'; }
+
+    // B - Overall Pin Length: horizontal, below the pin
+    var yB = y1 + 16;
     if (lenIn !== null) {
-      dim.style.display = '';
-      $('cpinDimLine').setAttribute('x1', x0); $('cpinDimLine').setAttribute('x2', x1);
-      $('cpinDimArrL').setAttribute('d', 'M' + x0 + ' 115 l8 -4 v8 z');
-      $('cpinDimArrR').setAttribute('d', 'M' + x1 + ' 115 l-8 -4 v8 z');
-      var u = fields.unit.value === 'mm' ? 'mm' : '"';
-      $('cpinDimText').textContent = len + u + ' long' + (dia !== null ? ' × ' + dia + u + ' dia' : '');
-    } else {
-      dim.style.display = 'none';
-    }
+      $('cpinDimLen').style.display = '';
+      setLn('cpinDimLenLine', x0, yB, x1, yB);
+      setLn('cpinDimLenCap1', x0, yB - 4, x0, yB + 4);
+      setLn('cpinDimLenCap2', x1, yB - 4, x1, yB + 4);
+      $('cpinDimLenText').setAttribute('x', cx); $('cpinDimLenText').setAttribute('y', yB - 3);
+    } else { $('cpinDimLen').style.display = 'none'; }
+
+    // C - Bolt Hole Location: horizontal, from the left end to the hole, below B
+    var yC = y1 + 32;
+    if (showBolt && boltLoc !== null && lenIn !== null) {
+      $('cpinDimLoc').style.display = '';
+      setLn('cpinDimLocLine', x0, yC, boltCx, yC);
+      setLn('cpinDimLocCap1', x0, yC - 4, x0, yC + 4);
+      setLn('cpinDimLocCap2', boltCx, yC - 4, boltCx, yC + 4);
+      $('cpinDimLocText').setAttribute('x', (x0 + boltCx) / 2); $('cpinDimLocText').setAttribute('y', yC - 3);
+    } else { $('cpinDimLoc').style.display = 'none'; }
+
+    // D - Bolt Hole Diameter: leader from the hole up-LEFT to a "D" label,
+    // only once a Bolt Hole Diameter value is entered
+    if (showBolt && boltDia !== null) {
+      $('cpinDimBore').style.display = '';
+      var dLabelY = y0 - 10;
+      setLn('cpinDimBoreLine', boltCx, 65 - boltR * 0.7, boltCx - 12, dLabelY);
+      $('cpinDimBoreText').setAttribute('x', boltCx - 16); $('cpinDimBoreText').setAttribute('y', dLabelY + 1);
+      $('cpinDimBoreText').setAttribute('text-anchor', 'end');
+    } else { $('cpinDimBore').style.display = 'none'; }
+
+    // key/legend of the lettered measurement values, at the bottom of the preview
+    var uSym = fields.unit.value === 'mm' ? 'mm' : '"';
+    var keyParts = [];
+    document.querySelectorAll('#cpinDims input[data-dim-letter]').forEach(function (inp) {
+      if (inp.value) keyParts.push('<span>' + inp.getAttribute('data-dim-letter') + ' - ' + inp.value + uSym + '</span>');
+    });
+    $('cpinKey').innerHTML = keyParts.join('');
+
+    // flag-style pins get a second graphic (the plate face) beside the side view
+    renderFlagFace();
 
     // On mobile the preview is a compact bottom bar, so crop the SVG's viewBox to
     // just the drawn content (the frame reserves vertical room for flags/zerks that
@@ -774,13 +1110,28 @@
     var svgEl = $('cpinSvg');
     if (window.matchMedia('(max-width: 991px)').matches) {
       var minY = y0, maxY = y1;
-      if (type === 'flag') minY = Math.min(minY, y0 - 42);
-      if (type === 'retainer') { minY = Math.min(minY, y0 - 14); maxY = Math.max(maxY, y1 + 14); }
+      if (type === 'flag') minY = Math.min(minY, Math.max(22, y0 - 42) - 20); // flag plate + G dim above it
+      if (type === 'retainer') { minY = Math.min(minY, Math.max(22, y0 - 14) - 20); maxY = Math.max(maxY, y1 + 14); }
       if (greasable) minY = Math.min(minY, y0 - 21);
-      if (lenIn !== null) maxY = Math.max(maxY, 142); // dimension line + label sit below the pin
+      if (bevScaled) minY = Math.min(minY, y0 - 20); // Along-Shaft arrow + label above the pin
+      if (showBolt && boltDia !== null) minY = Math.min(minY, y0 - 16); // D leader + label above the pin
+      if (lenIn !== null) maxY = Math.max(maxY, y1 + 22); // B dimension below the pin
+      if (showBolt && boltLoc !== null) maxY = Math.max(maxY, y1 + 38); // C dimension below B
       var vbTop = Math.max(0, Math.round(minY - 6));
       var vbBottom = Math.min(150, Math.round(maxY + 6));
       svgEl.setAttribute('viewBox', '0 ' + vbTop + ' 460 ' + (vbBottom - vbTop));
+    } else if (type === 'flag') {
+      // desktop flag layout: the face view shares the row, so crop this frame to
+      // the drawn content - otherwise the pin renders tiny inside the empty 460px
+      var fMinY = Math.max(22, y0 - 42) - 26;                    // plate + G dim + label
+      if (bevScaled) fMinY = Math.min(fMinY, y0 - 28);           // bevel arrow + label
+      var fMaxY = lenIn !== null ? y1 + 30 : y1 + 8;             // B dimension below
+      var fMinX = Math.min(x0 - 38, x0 - 2 - 34) - 4;            // A dim label / plate
+      var fMaxX = x1 + (bevScaled ? 44 : 10);                    // bevel B dim + label
+      svgEl.setAttribute('viewBox',
+        Math.round(fMinX) + ' ' + Math.round(Math.max(0, fMinY)) + ' ' +
+        Math.round(Math.min(460, fMaxX) - fMinX) + ' ' +
+        Math.round(Math.min(150, fMaxY) - Math.max(0, fMinY)));
     } else {
       svgEl.setAttribute('viewBox', '0 0 460 150');
     }
@@ -802,7 +1153,38 @@
     $('cpinFinish').style.display = ready ? '' : 'none';
   }
 
-  function refresh() { renderPrice(); renderPreview(); renderSteps(); cpinMobileBar(); }
+  /* cross-field dimension rules, validated LIVE as the customer types (refresh)
+     and again at submit. Toggle-based so fixing a value clears its error. */
+  function validateDimRules() {
+    var allOk = true;
+    var rule = function (label, bad) {
+      var el = document.querySelector('#cpinDims input[data-dim-label="' + label + '"]');
+      if (!el) return;
+      el.closest('.cpin-field').classList.toggle('cpin-invalid', !!bad);
+      if (bad) allOk = false;
+    };
+    var A = dimValue('Pin Diameter'), B = dimValue('Overall Pin Length');
+    // bolt hole location can't exceed the overall pin length (straight & retainer)
+    var bl = dimValue('Bolt Hole Location');
+    rule('Bolt Hole Location', bl !== null && B !== null && bl > B + 1e-9);
+    // retainer disc rule (from sales mgr's bug report): the disc must be wider
+    // than the pin it retains
+    if (fields.type.value === 'retainer') {
+      var rd = dimValue('Retainer Diameter');
+      rule('Retainer Diameter', rd !== null && A !== null && rd <= A + 1e-9);
+    }
+    // flag plate rules (sales mgr, Jul 18)
+    if (fields.type.value === 'flag') {
+      var C = dimValue('Center of Pin to Center of Bolt Hole');
+      rule('Width of Retainer', dimValue('Width of Retainer') !== null && A !== null && dimValue('Width of Retainer') <= A + 1e-9);
+      rule('Length of Retainer', dimValue('Length of Retainer') !== null && C !== null && dimValue('Length of Retainer') <= C + 1e-9);
+      rule('Center of Pin to Center of Bolt Hole', C !== null && A !== null && C <= A / 2 + 1e-9);
+      rule('Bolt Hole Diameter', dimValue('Bolt Hole Diameter') !== null && A !== null && dimValue('Bolt Hole Diameter') > 0.26 * A + 1e-9);
+    }
+    return allOk;
+  }
+
+  function refresh() { renderPrice(); renderPreview(); renderSteps(); validateDimRules(); cpinMobileBar(); }
 
   /* keep the sticky preview column clear of the fixed header (#nav-banner
      gets a .sticky class from the theme's scroll handler) */
@@ -876,7 +1258,8 @@
     $('cpinBevelFields').style.display = this.checked ? '' : 'none';
     refresh();
   });
-  $('cpinThread').addEventListener('change', refresh);
+  $('cpinBevA').addEventListener('input', refresh);
+  $('cpinBevB').addEventListener('input', refresh);
   $('cpinQtyDec').addEventListener('click', function () { fields.qty.value = Math.max(1, (parseInt(fields.qty.value, 10) || 1) - 1); refresh(); });
   $('cpinQtyInc').addEventListener('click', function () { fields.qty.value = (parseInt(fields.qty.value, 10) || 1) + 1; refresh(); });
 
@@ -893,9 +1276,6 @@
   }
   fields.phone.addEventListener('input', function () { this.value = formatUSPhone(this.value); });
 
-  // thread add-on price in the checkbox label always tracks the ADDON constant
-  $('cpinThreadLbl').textContent = 'O.D. thread on end (+$' + ADDON + ')';
-
   /* ---- submit ----
      With a real page_id (template assigned to a BC Contact Form page) this posts
      natively to BigCommerce, which emails the address configured on that page.
@@ -911,6 +1291,17 @@
       f.classList.toggle('cpin-invalid', bad);
       if (bad) ok = false;
     });
+    // cross-field dimension rules (same checks that run live while typing)
+    if (!validateDimRules()) ok = false;
+    // bevel: when checked, both measurements are required and within (0, pin dim]
+    if ($('cpinBevelOpt').checked) {
+      [['cpinBevA', dimValue('Pin Diameter')], ['cpinBevB', dimValue('Pin Diameter')]].forEach(function (pair) {
+        var el = $(pair[0]), max = pair[1], v = parseFloat(el.value);
+        var bad = isNaN(v) || v <= 0 || (max !== null && v > max + 1e-9);
+        el.closest('.cpin-field').classList.toggle('cpin-invalid', bad);
+        if (bad) ok = false;
+      });
+    }
     // required acknowledgment: built to order / non-refundable
     var ackBad = !$('cpinAck').checked;
     $('cpinAckBox').classList.toggle('cpin-invalid', ackBad);
@@ -934,7 +1325,6 @@
       if ($('cpinBevA').value) spec.push(['Bevel Distance Along Shaft', $('cpinBevA').value + u]);
       if ($('cpinBevB').value) spec.push(['Bevel Distance Into Diameter', $('cpinBevB').value + u]);
     }
-    if ($('cpinThread').checked) spec.push(['O.D. thread', 'YES - see notes']);
     spec.push(['Hardness', fields.hard.value === 'hardened' ? 'FULLY HARDENED 56RC - UPCHARGE QUOTE NEEDED (~4-6 wk lead)' : 'Standard 4140 Q&T (32RC)']);
     spec.push(['Quantity', String(p.qty)]);
     spec.push(['Ship to', fields.street.value + ', ' + fields.city.value + ', ' + fields.stateP.value + ' ' + fields.zip.value + ', ' + fields.country.value]);

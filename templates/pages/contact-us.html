@@ -2,9 +2,9 @@
 {{#or (if forms.contact.page_id '==' '70') (if page.title '===' 'Custom Pins')}}
 <meta name="description" content="Order a custom-machined pin from Broken Tractor. Pick your diameter, length, retention style, and grease option — we turn it in-house in Ohio and ship it to you.">
 {{/or}}
-{{#if page.title '===' 'Custom Bushings'}}
+{{#or (if forms.contact.page_id '==' '71') (if page.title '===' 'Custom Bushings')}}
 <meta name="description" content="Order a custom-machined bushing from Broken Tractor. Pick your bushing style and give us the outside diameter, inside diameter, and length - made in the USA to your exact measurements.">
-{{/if}}
+{{/or}}
 {{/partial}}
 
 {{#partial "page"}}
@@ -15,9 +15,10 @@
 {{#or (if forms.contact.page_id '==' '70') (if page.title '===' 'Custom Pins')}}
     {{> components/custom/custom-pins-page}}
 {{else}}
-{{!-- Custom Bushing Request page - same pattern as pins. Matched on title for
-      both renders; add its page_id to the condition once the BC page exists. --}}
-{{#if page.title '===' 'Custom Bushings'}}
+{{!-- Custom Bushing Request page (/custom-bushings/) - same pattern as pins.
+      Matched on page_id (71) for the form render and page title for the
+      post-submit success render. --}}
+{{#or (if forms.contact.page_id '==' '71') (if page.title '===' 'Custom Bushings')}}
     {{> components/custom/custom-bushings-page}}
 {{else}}
 
@@ -47,7 +48,7 @@
 
 </main>
 
-{{/if}}
+{{/or}}
 {{/or}}
 {{/partial}}
 

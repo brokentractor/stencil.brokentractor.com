@@ -61,6 +61,7 @@
 .cbush-qty input { width: 56px; height: 40px; text-align: center; border: 1px solid #ccc; border-left: none; border-right: none; font-size: 15px; }
 
 /* price */
+.cbush-hr { border: none; border-top: 1px solid #ccc; margin: 12px 0 8px; }
 .cbush-price { font-family: industry, Arial, sans-serif; font-weight: 700; font-size: 34px; margin: 4px 0 0; }
 .cbush-price-note { font-family: Arial, sans-serif; font-weight: normal; font-size: 14px; color: #5d5d5d; margin-left: 8px; white-space: nowrap; }
 .cbush-breakdown { font-size: 18px; color: #333; background: #efefef; border: 1px solid #ccc; border-radius: 4px; padding: 10px 14px; margin: 12px 0; line-height: 1.8; }
@@ -203,6 +204,7 @@
     <!-- RIGHT: configurator -->
     <div class="cbush-right">
       <h1>Custom Bushing - Built to Your Exact Specifications - Made in USA</h1>
+      <hr class="cbush-hr">
       <div class="cbush-price" id="cbushPrice">Starting at $140<span class="cbush-price-note">(Plus Shipping &amp; Taxes)</span></div>
 
       {{#if forms.contact.success}}
@@ -240,7 +242,7 @@
             <div class="cbush-typebtns" role="radiogroup" aria-label="Bushing style">
               <button type="button" class="cbush-typebtn" data-option="1" role="radio" aria-checked="false">
                 <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/custom-bushing-straight.jpg" alt="Straight wall bushing" onerror="this.style.display='none'">
-                <span>1. Straight Wall - No Grooves</span>
+                <span>1. Straight Wall - No Grease Grooves</span>
               </button>
               <button type="button" class="cbush-typebtn" data-option="2" role="radio" aria-checked="false">
                 <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/custom-bushing-id-groove.jpg" alt="Bushing with inside grease groove" onerror="this.style.display='none'">
@@ -248,7 +250,7 @@
               </button>
               <button type="button" class="cbush-typebtn" data-option="3" role="radio" aria-checked="false">
                 <img src="https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/custom-bushing-id-od-grooves.jpg" alt="Bushing with inside and outside grease grooves and holes" onerror="this.style.display='none'">
-                <span>3. Inside &amp; Outside Grooves with Holes</span>
+                <span>3. Inside &amp; Outside Grease Grooves with Holes</span>
               </button>
             </div>
             <input type="hidden" id="cbushOption">
@@ -459,7 +461,7 @@
     '2': 'Inside diameter grease groove only (without holes)',
     '3': 'Inside and outside diameter grease grooves (with holes)'
   };
-  var OPTION_SHORT = { '1': 'Straight Wall', '2': 'Inside Grease Groove', '3': 'Inside & Outside Grooves' };
+  var OPTION_SHORT = { '1': 'Straight Wall', '2': 'Inside Grease Groove', '3': 'Inside & Outside Grease Grooves' };
 
   var $ = function (id) { return document.getElementById(id); };
   if (!$('cbushForm')) return; // success re-render: form replaced by confirmation, nothing to wire up
