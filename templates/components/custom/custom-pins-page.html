@@ -457,7 +457,7 @@
             <label for="cpinQty">Quantity</label>
             <div class="cpin-qty">
               <button type="button" id="cpinQtyDec" aria-label="Decrease quantity">–</button>
-              <input type="number" id="cpinQty" value="1" min="1" max="999">
+              <input type="number" id="cpinQty" value="1" min="1" max="999" step="1" inputmode="numeric">
               <button type="button" id="cpinQtyInc" aria-label="Increase quantity">+</button>
             </div>
           </div>
@@ -1440,7 +1440,14 @@
   $('cpinBevA').addEventListener('input', refresh);
   $('cpinBevB').addEventListener('input', refresh);
   $('cpinQtyDec').addEventListener('click', function () { fields.qty.value = Math.max(1, (parseInt(fields.qty.value, 10) || 1) - 1); refresh(); });
-  $('cpinQtyInc').addEventListener('click', function () { fields.qty.value = (parseInt(fields.qty.value, 10) || 1) + 1; refresh(); });
+  $('cpinQtyInc').addEventListener('click', function () { fields.qty.value = Math.min(999, (parseInt(fields.qty.value, 10) || 1) + 1); refresh(); });
+  // quantity is whole pins only (no 1.5 of a pin): strip anything but digits as
+  // they type, then clamp to 1-999 on change/blur
+  fields.qty.addEventListener('input', function () { this.value = this.value.replace(/\D.*$/, ''); });
+  fields.qty.addEventListener('change', function () {
+    var n = parseInt(this.value, 10);
+    this.value = String(isNaN(n) || n < 1 ? 1 : Math.min(999, n));
+  });
 
   /* US phone: digits only (a leading 1 country code is dropped), capped at 10,
      live-formatted as (XXX) XXX-XXXX; submit requires all 10 digits */
