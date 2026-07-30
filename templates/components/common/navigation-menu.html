@@ -9,6 +9,19 @@
                 {{> components/common/navigation-list-alternate}}
             {{/if}}
             </li>
+            {{!-- The Custom Pin Request page (/custom-pins/) is a BigCommerce web page,
+                  not a category, so it can't come out of the categories loop above.
+                  Emit it right after the "Pins & Bushings by Size" category, which puts
+                  it before Broken Tractor Merchandise (the last category). No
+                  infolink/ylink classes, so it appears in BOTH the desktop Shop Parts
+                  flyout and the mobile drawer - they share this markup.
+                  Matched on `name`, not `url`/`id`: category `url` is a lazy function
+                  that the comparison form of #if never unwraps (so it never matches),
+                  and `id` is a store-specific magic number. HEADS UP: renaming this
+                  category in the BigCommerce admin will silently drop the link. --}}
+            {{#if name '===' 'Pins & Bushings by Size'}}
+                <li class="navPages-item"><a class="navPages-action" href="/custom-pins/">Custom Pins</a></li>
+            {{/if}}
         {{/each}}
         <li class="navPages-item infolink ylink">
         	<a href="/account.php" class="navPages-action has-subMenu" data-collapsible="navPages-acc" aria-controls="navPages-acc" aria-expanded="false">Account<i class="fa fa-angle-down"></i></a>
