@@ -90,7 +90,11 @@ category:
                 </tbody>
             </table>
         </div>
-        <div id="myInputNoResults" style="display:none;">Your search does not appear on this page. You can search the entire site by using the search at the top of the window.</div>
+        <div id="myInputNoResults" style="display:none;">
+            <p>That size isn't in our stock list.</p>
+            <a href="/custom-pins/" class="cpin-noresult-cta">Click here to build a custom pin &rarr;</a>
+            <p class="cpin-noresult-sub">Or search the entire site using the search at the top of the window.</p>
+        </div>
         {{else}}
         <style>#product-listing-container, #swipemsg {display: none;}</style>
         {{/if}}
@@ -186,6 +190,43 @@ category:
 .pins-by-size #slidetableouter { display: none; }
 .pins-by-size.bt-ready #slidetableouter { display: block; }
 .pins-by-size.bt-ready #bt-loading { display: none; }
+
+/* ---- Custom-pin CTA (this table is huge, so a persistent floating pill keeps the
+        option in reach; the back-to-top button owns bottom-right, so this sits left) ---- */
+#cpinFloat {
+    position: fixed; left: 16px; bottom: 20px; z-index: 60;
+    display: flex; align-items: stretch; max-width: 300px;
+    background: #001212; border: 2px solid #ffbe00; border-radius: 8px;
+    box-shadow: 0 3px 14px rgba(0,0,0,.3); overflow: hidden;
+    font-family: industry, Arial, Helvetica, sans-serif;
+}
+#cpinFloat.cpin-hidden { display: none; }
+#cpinFloat .cpin-float-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; color: #fff; text-decoration: none; }
+#cpinFloat .cpin-float-link:hover { background: #0a2020; }
+#cpinFloat .cpin-float-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+#cpinFloat .cpin-float-text { font-size: 14px; line-height: 1.3; }
+#cpinFloat .cpin-float-text b { display: block; color: #ffbe00; font-size: 15px; }
+#cpinFloat .cpin-float-x {
+    background: transparent; border: none; border-left: 1px solid #2a4a34;
+    color: #cfd8cf; font-size: 20px; line-height: 1; cursor: pointer; padding: 0 12px; flex-shrink: 0;
+}
+#cpinFloat .cpin-float-x:hover { color: #fff; }
+@media (max-width: 767px) {
+    #cpinFloat { left: 10px; bottom: 78px; max-width: 220px; }  /* clear the bottom-right back-to-top on small screens */
+    #cpinFloat .cpin-float-icon { font-size: 18px; }
+    #cpinFloat .cpin-float-text { font-size: 13px; }
+    #cpinFloat .cpin-float-text b { font-size: 14px; }
+}
+
+/* no-results state: turn the dead end into a custom-pin offer */
+#myInputNoResults { text-align: center; padding: 26px 16px; font-size: 15px; color: #333; }
+#myInputNoResults .cpin-noresult-cta {
+    display: inline-block; background: #ffbe00; color: #000; font-weight: bold;
+    font-family: industry, Arial, Helvetica, sans-serif;
+    padding: 12px 22px; border-radius: 6px; text-decoration: none; margin: 10px 0; font-size: 18px;
+}
+#myInputNoResults .cpin-noresult-cta:hover { background: #000; color: #ffbe00; }
+#myInputNoResults .cpin-noresult-sub { color: #757575; font-size: 14px; margin: 4px 0 0; }
 </style>
 
 <script>
@@ -398,6 +439,27 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () { document.body.classList.add('bt-ready'); }, 12000);
   loadPage(2);
 });
+</script>
+
+{{!-- Persistent custom-pin CTA. Fixed bottom-left (back-to-top owns bottom-right).
+      Dismissible for the session. --}}
+<div id="cpinFloat">
+    <a href="/custom-pins/" class="cpin-float-link">
+        <span class="cpin-float-icon" aria-hidden="true">🔧</span>
+        <span class="cpin-float-text"><b>Can't find your size?</b>Click here to build a custom pin &rarr;</span>
+    </a>
+    <button type="button" class="cpin-float-x" aria-label="Dismiss">&times;</button>
+</div>
+<script>
+(function () {
+    var pill = document.getElementById('cpinFloat');
+    if (!pill) return;
+    // Always shown on load — the × only closes it for the current view (no persistence),
+    // so it reappears every time the page loads.
+    pill.querySelector('.cpin-float-x').addEventListener('click', function () {
+        pill.classList.add('cpin-hidden');
+    });
+})();
 </script>
 
 {{/partial}}

@@ -1,4 +1,17 @@
+{{#partial "head"}}
+{{#or (if forms.contact.page_id '==' '70') (if page.title '===' 'Custom Pins')}}
+<meta name="description" content="Order a custom-machined pin from Broken Tractor. Pick your diameter, length, retention style, and grease option — we turn it in-house in Ohio and ship it to you.">
+{{/or}}
+{{/partial}}
+
 {{#partial "page"}}
+{{!-- Custom Pin Request page (/custom-pins/) is a BC Contact Form page, so it renders
+      through this template — custom layouts can't be assigned to contact pages.
+      Matched on page_id (70) for the form render and page title for the post-submit
+      success render, where page_id comes back empty (page.url is never populated). --}}
+{{#or (if forms.contact.page_id '==' '70') (if page.title '===' 'Custom Pins')}}
+    {{> components/custom/custom-pins-page}}
+{{else}}
 
 <main class="page">
 
@@ -26,6 +39,7 @@
 
 </main>
 
+{{/or}}
 {{/partial}}
 
 {{> layout/base}}
