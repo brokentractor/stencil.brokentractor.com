@@ -1494,9 +1494,12 @@
 
     var p = calc();
     var u = ' ' + (fields.unit.value === 'mm' ? 'mm' : 'in');
+    // An empty label renders the value on its own line (no "Label: " prefix). The
+    // grease choice uses that: "Greaseable: Greaseable" read as a confusing
+    // double-up to sales, so the line is just "Greaseable" or "Non-Greaseable".
     var spec = [
       ['Pin type', TYPE_NAMES[fields.type.value]],
-      ['Greaseable', fields.grease.value === 'grease' ? 'Greaseable' : 'Non-Greaseable']
+      ['', fields.grease.value === 'grease' ? 'Greaseable' : 'Non-Greaseable']
     ];
     // measurements with the PVE template letters, so sales can copy them
     // straight onto the drawing that accompanies the PO
@@ -1529,7 +1532,7 @@
     // Serialize the spec into the native contact_question field - this is the email body.
     $('cpinQuestion').value = 'CUSTOM PIN REQUEST\n' +
       '------------------------------\n' +
-      spec.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n') +
+      spec.map(function (r) { return r[0] ? r[0] + ': ' + r[1] : String(r[1]); }).join('\n') +
       '\n------------------------------\n' +
       'Submitted from the Custom Pin Request page.';
 
@@ -1538,7 +1541,8 @@
       e.preventDefault();
       var demo = spec.concat([['Contact', fields.name.value + ' · ' + fields.phone.value + ' · ' + fields.email.value]]);
       $('cpinSuccessSpec').innerHTML = demo.map(function (r) {
-        return '<div><b>' + r[0] + ':</b> ' + String(r[1]).replace(/</g, '&lt;') + '</div>';
+        var v = String(r[1]).replace(/</g, '&lt;');
+        return r[0] ? '<div><b>' + r[0] + ':</b> ' + v + '</div>' : '<div>' + v + '</div>';
       }).join('');
       form.style.display = 'none';
       $('cpinSuccess').style.display = 'block';
