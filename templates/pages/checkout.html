@@ -93,7 +93,7 @@
 
   var FIELD_ID  = 'bt-blind-dropship-field';
   var BOX_ID    = 'bt-blind-dropship';
-  var MARKER    = '*** BLIND DROP SHIP *** DO NOT include an invoice, packing slip, or any Broken Tractor branding/labels in this package.';
+  var MARKER    = '*** BLIND DROP SHIP *** DO NOT include an invoice or packing slip.';
 
   // Remembered choice. The checkbox and the order-comments box live on different
   // checkout steps, so we persist the intent here and re-apply it to the comments
@@ -151,8 +151,7 @@
                'style="display:flex;align-items:flex-start;gap:.5rem;cursor:pointer;margin:0;font-size:13px;color:#333;">' +
           '<input type="checkbox" id="' + BOX_ID + '" ' +
                  'style="width:16px;height:16px;margin:.1rem .1rem 0 0;flex:0 0 auto;cursor:pointer;">' +
-          '<span>Don\'t want an invoice included? Check here and we\'ll leave out the invoice ' +
-          'and anything with Broken Tractor branding. ' +
+          '<span>Don\'t want an invoice included? Check here and we\'ll leave out the invoice. ' +
           '<span style="color:#777;">(Blind drop ship &mdash; common for dealers and resellers)</span></span>' +
         '</label>' +
       '</div>';
