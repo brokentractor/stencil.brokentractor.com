@@ -113,7 +113,11 @@ ul.productList {
     color: #fff;
     border-right: 1px #fff solid;
     position: sticky;
-    top: 92px;
+    // Sit flush under the fixed site header (height varies by breakpoint) — with a
+    // single 92px offset the stuck row hid underneath the 155px tablet header.
+    top: 134px;                                       // mobile fixed header
+    @include breakpoint("medium") { top: 155px; }     // tablet header
+    @media (min-width: 1280px)    { top: 92px;  }     // desktop header
     z-index: 10;
     font-weight: normal; // th defaults to bold; keep the pre-semantic-markup look
 
@@ -222,8 +226,12 @@ tr.productrow:nth-child(even) {
     vertical-align: middle;
     margin-left: 8px;
     background: #e6f4ea;
-    color: #1e7e34;
-    font-size: 11px;
+    // #1e7e34 on #e6f4ea measured 4.52:1 — passing AA by 0.02. Darkened for headroom.
+    color: #186429;
+    // Was 11px, the smallest text on the site despite being our highest-value
+    // signal. #fitsmodels (PDP) already runs this at 14px; 13px is the most the
+    // listing cells take without widening the nowrap columns.
+    font-size: 13px;
     font-weight: 700;
     padding: 2px 7px;
     border-radius: 3px;
@@ -599,7 +607,8 @@ div#refImg .schematic-image {
     font-weight: 600;
 }
 .pvcol .corecharge {
-    font-size: 12px;
+    // Core charge is money the customer actually pays — don't set it below body size.
+    font-size: 14px;
 }
 .modal-btn-wrap {
     display: block;

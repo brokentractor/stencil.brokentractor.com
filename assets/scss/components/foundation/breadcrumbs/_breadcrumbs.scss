@@ -28,7 +28,7 @@
   margin: 0;
   list-style: none;
   font-family: var(--bt-font-display, "Industry", "Oswald", sans-serif);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -76,7 +76,10 @@
 // Mobile
 @media only screen and (max-width: 600px) {
   .breadcrumbs {
-    font-size: 10px;
+    // Was 10px — below any readable floor for our 50+ audience. The last crumb
+    // already truncates with an ellipsis (see max-767 block), so the extra width
+    // costs nothing but legibility gained.
+    font-size: 12px;
   }
 }
 

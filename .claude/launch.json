@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4173"],
+      "port": 4173
+    },
+    {
+      "name": "stencil",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["stencil", "start"],
+      "port": 3000
+    },
+    {
+      "name": "banner-test",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4179", "--directory", "C:/Users/michael/AppData/Local/Temp/claude/C--Users-michael-Documents-trying-Github-stencil-brokentractor-com/cf41877f-b013-4a6c-940d-aa9f223305fa/scratchpad/banner-preview"],
+      "port": 4179
+    },
+    {
+      "name": "pin-demo",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4181", "--directory", "C:/Users/michael/AppData/Local/Temp/claude/C--Users-michael-Documents-trying-Github-stencil-brokentractor-com/9043e267-4ba4-4236-a7e0-43dce13edc99/scratchpad"],
+      "port": 4181
+    }
+  ]
+}

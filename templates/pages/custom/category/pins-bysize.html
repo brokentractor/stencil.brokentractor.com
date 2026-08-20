@@ -417,6 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var input = document.getElementById('myInput');
     if (input && input.value && typeof myFunction === 'function') myFunction();
     document.body.classList.add('bt-ready');      // reveal the fully-loaded, sorted table
+    if (window.btRestoreScroll) window.btRestoreScroll();   // back-nav: return to the row they left from
   }
 
   function loadPage(n) {
@@ -436,10 +437,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Safety net: reveal the table even if loading stalls or errors.
-  setTimeout(function () { document.body.classList.add('bt-ready'); }, 12000);
+  setTimeout(function () {
+    document.body.classList.add('bt-ready');
+    if (window.btRestoreScroll) window.btRestoreScroll();
+  }, 12000);
   loadPage(2);
 });
 </script>
+
+{{> components/custom/bysize-scroll-restore}}
 
 {{!-- Persistent custom-pin CTA. Fixed bottom-left (back-to-top owns bottom-right).
       Dismissible for the session. --}}

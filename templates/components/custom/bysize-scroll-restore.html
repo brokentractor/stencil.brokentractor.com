@@ -1,0 +1,74 @@
+{{!-- Back-navigation scroll restore for the by-size table pages (pins, bushings,
+      washers, snap rings). These pages hide #slidetableouter until every category
+      page is prefetched, so when a shopper clicks a part and hits Back, the browser
+      restores scroll against a near-empty page and clamps them to the footer.
+      Instead: remember which row they left from, and scroll back to it once the
+      table is fully loaded (window.btRestoreScroll is called from the prefetch
+      script's done() and its safety timeout). --}}
+<script>
+(function () {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  var KEY = 'btTableReturn:' + location.pathname;
+
+  // Save the departure point when a product link in the table is followed.
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var link = e.target.closest ? e.target.closest('#slidetable a') : null;
+    if (!link) return;
+    var row = link.closest('tr.productrow');
+    var input = document.getElementById('myInput');
+    try {
+      sessionStorage.setItem(KEY, JSON.stringify({
+        productId: row ? row.getAttribute('data-product-id') : null,
+        scrollY: window.pageYOffset,
+        filter: input ? input.value : ''
+      }));
+    } catch (err) { /* storage unavailable — back nav just starts at the top */ }
+  });
+
+  var restored = false;
+  window.btRestoreScroll = function () {
+    if (restored) return;
+    restored = true;
+
+    var raw = null;
+    try {
+      raw = sessionStorage.getItem(KEY);
+      sessionStorage.removeItem(KEY);
+    } catch (err) {}
+    if (!raw) return;
+
+    // Only jump on an actual Back/Forward return — a fresh visit starts at the top.
+    var nav = window.performance && performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    if (nav && nav.type !== 'back_forward') return;
+
+    var saved;
+    try { saved = JSON.parse(raw); } catch (err) { return; }
+
+    // Re-apply the filter they were browsing with so the list looks like they left it.
+    var input = document.getElementById('myInput');
+    if (input && saved.filter && typeof myFunction === 'function') {
+      input.value = saved.filter;
+      myFunction();
+    }
+
+    var row = saved.productId &&
+      document.querySelector('tr.productrow[data-product-id="' + saved.productId + '"]');
+    if (row && row.style.display !== 'none') {
+      var navbar = document.getElementById('nav-banner');
+      var thead = document.getElementById('tableheaders');
+      var offset = (navbar ? navbar.offsetHeight : 92) + (thead ? thead.offsetHeight : 60) + 10;
+      var y = row.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo(0, Math.max(0, y));
+    } else if (saved.scrollY) {
+      window.scrollTo(0, saved.scrollY);
+    }
+  };
+
+  // bfcache restores (pageshow persisted) keep the page exactly as it was left,
+  // including scroll — nothing to do, so make sure the one-shot never fires late.
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) restored = true;
+  });
+})();
+</script>
