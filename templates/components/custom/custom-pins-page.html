@@ -49,6 +49,7 @@
 /* plain-language "why this is wrong" message under a field (older, non-tech audience) */
 .cpin-fielderr { display: none; margin-top: 6px; color: #b0260a; font-size: 14px; font-weight: bold; line-height: 1.35; }
 .cpin-fielderr::before { content: "\26A0"; margin-right: 6px; }
+.cpin-captcha.cpin-invalid { border: 1px solid #c02b0a; background: #fff6f4; border-radius: 4px; padding: 10px 10px 4px; }
 .cpin-2col { display: flex; gap: 12px; flex-wrap: wrap; }
 .cpin-2col .cpin-field { flex: 1 1 180px; }
 
@@ -514,7 +515,14 @@
           </div>
         </div>
 
-        {{{forms.contact.recaptcha.markup}}}
+        {{!-- reCAPTCHA, rendered by BigCommerce when it is enabled under
+              Settings > Security & Privacy. Wrapped so validateForm can hang a
+              plain-language message on it: without a client-side check, a customer who
+              misses the box loses every measurement, because BigCommerce rejects the
+              post and the reloaded page rebuilds this JS-driven form empty. --}}
+        <div class="cpin-field cpin-captcha" id="cpinCaptchaBox">
+          {{{forms.contact.recaptcha.markup}}}
+        </div>
 
         <div class="cpin-ack" id="cpinAckBox">
           <label>
@@ -1281,6 +1289,21 @@
     if (err) { err.textContent = msg || ''; err.style.display = bad ? 'block' : 'none'; }
     return bad;
   }
+  /* The reCAPTCHA widget is a Google iframe, so ticking it fires no input/change
+     event on our form and liveRevalidate never sees it. After a failed submit, poll
+     briefly so the message clears the moment they tick the box. */
+  var capWatch = null;
+  function watchCaptcha() {
+    if (capWatch) return;
+    capWatch = setInterval(function () {
+      var r = '';
+      try { r = (window.grecaptcha && grecaptcha.getResponse()) || ''; } catch (e) { r = ''; }
+      if (!r) return;
+      clearInterval(capWatch); capWatch = null;
+      $('cpinError').style.display = validateForm() ? 'none' : 'block';
+    }, 600);
+  }
+
   function validateForm() {
     var ok = true;
     var full = submitted;                       // required/format/ack shown after first submit
@@ -1341,6 +1364,17 @@
       });
     } else {
       ['cpinBevA', 'cpinBevB'].forEach(function (id) { var el = $(id); if (el) setFieldError(el.closest('.cpin-field'), ''); });
+    }
+
+    // reCAPTCHA: only enforced when BigCommerce actually rendered the widget, so
+    // turning it off in admin cannot lock customers out of the form.
+    var capBox = $('cpinCaptchaBox');
+    if (capBox && capBox.querySelector('.g-recaptcha')) {
+      var capResp = '';
+      try { capResp = (window.grecaptcha && grecaptcha.getResponse()) || ''; } catch (err) { capResp = ''; }
+      var capBad = full && !capResp;
+      mark(capBox, capBad ? 'Please check the "I\'m not a robot" box so we know you are a real person.' : '');
+      if (capBad) watchCaptcha();
     }
 
     // built-to-order acknowledgment
