@@ -11,10 +11,19 @@
 .cpin-card { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); padding: 20px; display: flex; flex-wrap: wrap; gap: 30px; }
 .cpin-left { flex: 1 1 420px; min-width: 300px; }
 .cpin-right { flex: 1 1 440px; min-width: 300px; }
-/* like the PDP gallery, the preview column rides along as the form scrolls;
-   JS bumps `top` below the fixed #nav-banner once the header sticks */
+/* Like the PDP gallery, the preview column rides along as the form scrolls; JS bumps
+   `top` below the fixed #nav-banner once the header sticks.
+   The two columns MUST stay side by side everywhere this is sticky. The theme's own
+   container is narrower than this page's max-width, so with wrapping enabled the
+   420 + 440 + 30 flex bases stopped fitting at roughly 1142px and the columns stacked -
+   while sticky was still switched on, which pinned the preview, the warning and Key
+   Notes on top of the form (reported Sep 2026). nowrap + percentage bases keep them
+   side by side all the way down to the 991px mobile layout, where the preview instead
+   becomes the fixed bottom bar and nothing is sticky. */
 @media (min-width: 992px) {
-  .cpin-left { position: sticky; top: 20px; align-self: flex-start; transition: top .15s ease; }
+  .cpin-card { flex-wrap: nowrap; }
+  .cpin-left { flex: 1 1 45%; min-width: 0; position: sticky; top: 20px; align-self: flex-start; transition: top .15s ease; }
+  .cpin-right { flex: 1 1 55%; min-width: 0; }
 }
 
 /* preview */
