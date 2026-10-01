@@ -654,7 +654,7 @@
       ['C', 'Center of Pin to Center of Bolt Hole', false, 'must be more than half of A so the bolt clears the pin'],
       ['D', 'Width of Retainer', false, 'must be wider than the pin (A)'],
       ['E', 'Length of Retainer', false, 'must be longer than C'],
-      ['F', 'Bolt Hole Diameter', false, 'up to 26% of the pin diameter (A)'],
+      ['F', 'Bolt Hole Diameter', false],
       ['G', 'Retainer Thickness', false]
     ],
     'flag|grease': [
@@ -663,7 +663,7 @@
       ['C', 'Center of Pin to Center of Bolt Hole', false, 'must be more than half of A so the bolt clears the pin'],
       ['D', 'Width of Retainer', false, 'must be wider than the pin (A)'],
       ['E', 'Length of Retainer', false, 'must be longer than C'],
-      ['F', 'Bolt Hole Diameter', false, 'up to 26% of the pin diameter (A)'],
+      ['F', 'Bolt Hole Diameter', false],
       ['G', 'Retainer Thickness', false]
     ],
     /* retainer disc dims: E (thickness) / F (diameter) on BOTH variants
@@ -1329,11 +1329,10 @@
       if (rd !== null && A !== null && rd <= A + 1e-9) crossMsg['Retainer Diameter'] = 'Must be larger than the pin diameter (A).';
     }
     if (fields.type.value === 'flag') {
-      var wr = dimValue('Width of Retainer'), lr = dimValue('Length of Retainer'), bd = dimValue('Bolt Hole Diameter');
+      var wr = dimValue('Width of Retainer'), lr = dimValue('Length of Retainer');
       if (wr !== null && A !== null && wr <= A + 1e-9) crossMsg['Width of Retainer'] = 'Must be wider than the pin diameter (A).';
       if (lr !== null && C !== null && lr <= C + 1e-9) crossMsg['Length of Retainer'] = 'Must be longer than C above.';
       if (C !== null && A !== null && C <= A / 2 + 1e-9) crossMsg['Center of Pin to Center of Bolt Hole'] = 'Must be more than half the pin diameter (A) so the bolt clears the pin.';
-      if (bd !== null && A !== null && bd > 0.26 * A + 1e-9) crossMsg['Bolt Hole Diameter'] = 'This bolt is too big for the pin - choose a smaller size (up to 26% of the pin diameter).';
     }
     // each measurement field: required-if-empty (after submit) OR its cross rule
     document.querySelectorAll('#cpinDims [data-dim-label]').forEach(function (el) {
