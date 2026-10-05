@@ -93,6 +93,48 @@ $(document).on('click', 'a.listatc', function(e){
     addItemToCartFromSearch(id, currentCartNum, title);
 });
 
+// BigCommerce caps a rendered category at 100 products, and the parts table has no pager,
+// so anything past 100 was unreachable (e.g. IH Dresser Dozer Manuals, 187 items). Follow
+// each page's rel="next" link and merge its rows into #slidetable, then call done() so the
+// row post-processing (core prices etc.) runs exactly once over every row.
+// Opt-in via data-load-all-pages: the *-bysize templates run their own loader.
+function loadAllPages(done) {
+    var $table = $('#slidetable[data-load-all-pages]');
+    var nextLink = document.querySelector('link[rel="next"]');
+    if (!$table.length || !nextLink) { done(); return; }
+
+    var $tbody = $table.find('tbody').first();
+    var $status = $('<div id="loadAllStatus" role="status">Loading more parts…</div>')
+        .css({ padding: '14px 16px', textAlign: 'center', fontSize: '15px', fontWeight: 'bold' })
+        .insertAfter('#slidetableouter');
+    var pages = 0;
+
+    function finish() {
+        $status.remove();
+        done();
+        // Re-apply a filter the customer typed while pages were still loading.
+        var input = document.getElementById('myInput');
+        if (input && input.value && typeof window.myFunction === 'function') window.myFunction();
+    }
+
+    function load(url) {
+        if (!url || ++pages > 30) { finish(); return; } // safety cap: 30 x 100 products
+        fetch(url, { credentials: 'same-origin' })
+            .then(function (r) { return r.ok ? r.text() : null; })
+            .then(function (html) {
+                if (!html) { finish(); return; }
+                var doc = new DOMParser().parseFromString(html, 'text/html');
+                var rows = doc.querySelectorAll('#slidetable tbody tr.productrow');
+                if (!rows.length) { finish(); return; }
+                rows.forEach(function (row) { $tbody.append(document.importNode(row, true)); });
+                var next = doc.querySelector('link[rel="next"]');
+                load(next ? next.getAttribute('href') : null);
+            })
+            .catch(finish);
+    }
+    load(nextLink.getAttribute('href'));
+}
+
 function initTableSort() {
     var $table = $('#slidetable');
     if (!$table.length) return;
@@ -183,20 +225,21 @@ export default class Category extends CatalogPage {
         if ($('#refImg').length > 0) {
             $('#categoryDescription img').appendTo('#refImg');
         }
-        if (!$('#facetedSearch').length) {
-            coreprices();
-        }
-
         initTableSort();
 
+        loadAllPages(function () {
+            if (!$('#facetedSearch').length) {
+                coreprices();
+            }
 
-        if ($('.Additional.Information').text().length > 0) {
-            $('.Additional.Information').show();
-            $('.ListDetails').show();
-            $('.productrow:not(:has(.Additional.Information))').each( function() {
-                $('<td></td>').insertAfter($(this).find('.ListDescription'));
-            });
-        }
+            if ($('.Additional.Information').text().length > 0) {
+                $('.Additional.Information').show();
+                $('.ListDetails').show();
+                $('.productrow:not(:has(.Additional.Information))').each( function() {
+                    $('<td></td>').insertAfter($(this).find('.ListDescription'));
+                });
+            }
+        });
 
 
 
