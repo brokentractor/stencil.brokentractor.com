@@ -121,9 +121,12 @@
         var words = (label || '').trim().split(/\s+/);
         var i = 0;
         while (i < words.length - 1) {
-            var key = words[i].toLowerCase().replace(/[^a-z0-9]/g, '');
-            if (!key) { i++; continue; }
-            if (set[singular(key)]) { i++; } else { break; }
+            // "Ford/New" counts as two words: strip it only if every slash-separated part matches
+            var keys = words[i].toLowerCase().split('/')
+                .map(function (k) { return k.replace(/[^a-z0-9]/g, ''); })
+                .filter(function (k) { return k; });
+            if (!keys.length) { i++; continue; }
+            if (keys.every(function (k) { return set[singular(k)]; })) { i++; } else { break; }
         }
         return words.slice(i).join(' ');
     }
@@ -146,11 +149,26 @@
     }
 
     function stopSetForDepth(depth) {
-        var args = ['IH', 'articulated'];
+        // NH / JD / Cat: short brand names used inside category names ("NH Backhoe A/C Parts")
+        var args = ['IH', 'articulated', 'NH', 'JD', 'Cat'];
         for (var i = 0; i < depth && i < levels.length; i++) {
             if (levels[i].node) args.push(levels[i].node.n);
         }
         return stopSet.apply(null, args);
+    }
+
+    // Shortened label for a dropdown option. If stripping brand + machine type leaves a fragment
+    // ("and Loader Parts" from "New Holland Backhoe and Loader Parts") or a lone generic word
+    // ("Manuals" from "Case Dozer Manuals"), strip only the brand instead.
+    var CONNECTORS = { and: 1, or: 1, with: 1, for: 1, of: 1, to: 1, '&': 1 };
+    var GENERIC = { parts: 1, part: 1, manuals: 1, manual: 1, kits: 1, kit: 1, other: 1, misc: 1, accessories: 1 };
+    function shortLabel(name, depth) {
+        var out = stripLeading(name, stopSetForDepth(Math.min(depth, 2)));
+        var first = (out.split(/\s+/)[0] || '').toLowerCase();
+        if (depth >= 2 && (CONNECTORS[first] || GENERIC[out.toLowerCase()])) {
+            out = stripLeading(name, stopSetForDepth(1));
+        }
+        return out;
     }
 
     function addLevel(depth, items) {
@@ -168,7 +186,6 @@
         // Strip the repeating prefix from every level below the brand. Machine Type (depth 1)
         // strips just the brand; Part Category, Sub-Category and deeper strip brand + machine
         // type (the stop set is capped at depth 2 so the category's own words are kept).
-        var strip = depth >= 1 ? stopSetForDepth(Math.min(depth, 2)) : null;
         var placeholder = (!items || !items.length) && depth > 0
             ? 'Select ' + labelFor(depth - 1) + ' First'
             : placeholderFor(depth);
@@ -176,7 +193,7 @@
         (items || []).forEach(function (it) {
             var o = document.createElement('option');
             o.value = it.u;
-            o.textContent = strip ? stripLeading(it.n, strip) : it.n;
+            o.textContent = depth >= 1 ? shortLabel(it.n, depth) : it.n;
             sel.appendChild(o);
         });
         sel.disabled = !items || items.length === 0;
