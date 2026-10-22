@@ -1,0 +1,63 @@
+{{!-- Product breadcrumb that prefers the BACKHOE path.
+      BigCommerce has no "primary category", so a part in both a backhoe and a forklift
+      category gets whichever trail BC picks (usually forklift). Backhoes outsell forklifts
+      ~50:1, so: if BC's trail isn't already a backhoe trail and the product sits in a
+      category whose trail runs through a backhoe category, show the deepest such trail.
+      Match is on the trail's URLs, not just the leaf (A51976's leaf is
+      /c/case-480c-580c-580d-580-super-e-brake-parts/ with no "backhoe" in it).
+      Category data comes from the gql query in pages/product.html. --}}
+{{assignVar 'btPick' -1}}
+{{assignVar 'btDepth' 0}}
+{{assignVar 'btDefaultBh' 'no'}}
+{{#each breadcrumbs}}{{#contains url 'backhoe'}}{{assignVar 'btDefaultBh' 'yes'}}{{/contains}}{{/each}}
+{{#if (getVar 'btDefaultBh') '!==' 'yes'}}
+  {{#each gql.data.site.product.categories.edges}}
+    {{assignVar 'btCur' @index}}
+    {{assignVar 'btIsBh' 'no'}}
+    {{#each node.breadcrumbs.edges}}{{#contains node.path 'backhoe'}}{{assignVar 'btIsBh' 'yes'}}{{/contains}}{{/each}}
+    {{#if (getVar 'btIsBh') '===' 'yes'}}
+      {{#if node.breadcrumbs.edges.length '>' (getVar 'btDepth')}}
+        {{assignVar 'btDepth' node.breadcrumbs.edges.length}}
+        {{assignVar 'btPick' (getVar 'btCur')}}
+      {{/if}}
+    {{/if}}
+  {{/each}}
+{{/if}}
+
+{{#if (getVar 'btPick') '>=' 0}}
+{{#each gql.data.site.product.categories.edges}}
+{{#if @index '===' (getVar 'btPick')}}
+<div class="breadcrumbs-row">
+  <ul class="breadcrumbs" id="bt-breadcrumbs" data-bt-trail="backhoe">
+    <li class="breadcrumb">
+      <a href="{{@root.breadcrumbs.[0].url}}" class="breadcrumb-label"><i class="fa fa-home"></i> {{@root.breadcrumbs.[0].name}}</a>
+    </li>
+    {{#each node.breadcrumbs.edges}}
+    <li class="breadcrumb">
+      <a href="{{@root.settings.base_url}}{{node.path}}" class="breadcrumb-label">{{node.name}}</a>
+    </li>
+    {{/each}}
+    <li class="breadcrumb is-active">
+      <a href="{{@root.product.url}}" class="breadcrumb-label">{{@root.product.title}}</a>
+    </li>
+  </ul>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": {{{json @root.breadcrumbs.[0].name}}}, "item": {{{json @root.breadcrumbs.[0].url}}} },
+    {{#each node.breadcrumbs.edges}}
+    { "@type": "ListItem", "position": {{add @index 2}}, "name": {{{json node.name}}}, "item": "{{@root.settings.base_url}}{{node.path}}" },
+    {{/each}}
+    { "@type": "ListItem", "position": {{add (getVar 'btDepth') 2}}, "name": {{{json @root.product.title}}}, "item": {{{json @root.product.url}}} }
+  ]
+}
+</script>
+{{/if}}
+{{/each}}
+{{> components/common/breadcrumbs-collapse}}
+{{else}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{/if}}
