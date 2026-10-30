@@ -66,6 +66,169 @@ category:
     </ul>
 </div>
 
+<style>
+/* Model-list pages ("Case 350 & 350B Dozer Filters"...): the script below adds .bt-models
+   only when most cards are model numbers, so brand landing pages keep the plain cards. */
+.bt-mjump { position: sticky; top: 134px; z-index: 20; display: flex; align-items: center; gap: 12px; background: #001212; padding: 10px 14px; margin: 0 20px 24px; border-bottom: 3px solid #ffbe00; }
+.bt-mjump[hidden] { display: none !important; }
+.bt-mjump label { color: #fff; font-size: 16px; font-weight: 700; white-space: nowrap; margin: 0; }
+.bt-mjump select { flex: 1; min-width: 0; max-width: 420px; height: 46px; font-size: 18px; font-weight: 700; color: #001212; background-color: #fff; border: 2px solid #ffbe00; border-radius: 4px; padding: 0 10px; }
+.cat-subcats.bt-models.lev-1 li a { background: #1a1a1a; border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+.cat-subcats.bt-models.lev-1 li a .subimgwrap { background: #fff; }
+.cat-subcats.bt-models.lev-1 li a > div:last-child { border-top: none; padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
+.cat-subcats.bt-models.lev-1 li a > div:last-child > span { display: flex; flex-direction: column; flex: 1; max-width: none; min-height: 0; }
+.cat-subcats.bt-models.lev-1 li a svg, .cat-subcats.bt-models.lev-1 li a .fa-angle-right { display: none; }
+/* "li a div span" in _productGrid.scss makes every span inline-block; these need to stack */
+.cat-subcats.bt-models.lev-1 li a div span.bt-sub__brand,
+.cat-subcats.bt-models.lev-1 li a div span.bt-sub__model,
+.cat-subcats.bt-models.lev-1 li a div span.bt-sub__type { display: block; max-width: none; min-height: 0; text-align: left; font-family: var(--bt-font-display, "Industry", "Oswald", sans-serif); }
+.bt-models .bt-sub__brand { font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #d4d4d4; margin-bottom: 4px; line-height: 1.2; }
+.bt-models .bt-sub__model { display: block; font-size: 30px; line-height: 1.05; font-weight: 700; color: #ffbe00; word-break: break-word; }
+.bt-models .bt-sub__model--long { font-size: 22px; line-height: 1.15; }
+.bt-models .bt-sub__type { display: block; font-size: 16px; font-weight: 600; line-height: 1.25; color: #fff; margin-top: 6px; }
+@media (min-width: 768px) { .bt-mjump { top: 155px; } }
+@media (min-width: 1280px) { .bt-mjump { top: 92px; } }
+/* Phones: one compact row per model (thumbnail + model number) */
+@media (max-width: 600px) {
+    .bt-mjump { margin: 0 11px 20px; }
+    .bt-mjump label { font-size: 15px; }
+    .cat-subcats.bt-models.lev-1 li { width: 100%; margin: 0 11px 12px; }
+    .cat-subcats.bt-models.lev-1 li a { flex-direction: row; padding: 0; }
+    .cat-subcats.bt-models.lev-1 li a .subimgwrap { flex: 0 0 112px; display: flex; align-items: center; }
+    .cat-subcats.bt-models.lev-1 li a > div:last-child { padding: 12px 14px; }
+    .bt-models .bt-sub__model { font-size: 28px; }
+    .bt-models .bt-sub__model--long { font-size: 20px; }
+}
+</style>
+
+<script>
+(function(){
+    var wrap = document.querySelector('.cat-subcats.lev-1');
+    if (!wrap) return;
+    var cards = [].slice.call(wrap.querySelectorAll('li.subcat > a'));
+    if (!cards.length) return;
+
+    // longest spelling first, so "Ford / New Holland" wins over "Ford"
+    var BRANDS = ['Ford / New Holland', 'Ford & New Holland', 'Ford New Holland', 'Ford / NH', 'IH & Case', 'Ford/New Holland', 'New Holland', 'Ford/NH', 'Ford NH', 'NH', 'John Deere', 'Case International', 'Case IH',
+        'Caterpillar', 'Case', 'Deere', 'JD', 'Cat', 'Komatsu', 'Kobelco', 'Hitachi', 'Ford', 'Bobcat', 'Kubota', 'JCB', 'Volvo', 'Takeuchi', 'Hyundai', 'Daewoo',
+        'Doosan', 'IH Dresser', 'IH', 'Gehl', 'Mustang', 'Dresser', 'Link-Belt', 'Linkbelt', 'King Kutter', 'Long', 'Yanmar', 'JLG',
+        'Samsung', 'Mitsubishi', 'Hanix', 'Koehring', 'Ditch Witch', 'Tigercat', 'Sumitomo', 'Timberjack', 'Liebherr', 'Genie', 'IHI',
+        'Wacker Neuson', 'Hyster', 'Galion', 'Fordson'];
+    // numbers that aren't model numbers: "4WD", "3-Bolt", "8-Speed", "40HP", "(210C-410G)"
+    var notModel = function(w){ return /^(\d+wd|\d+x\d+|\d+-(bolt|speed|series)|\d+hp|\d+'|\(.*)$/i.test(w); };
+    var hasModel = function(w){ return /\d/.test(w) && !notModel(w); };
+    var brandOf = function(name){
+        var found = '';
+        BRANDS.some(function(b){
+            if (name.toLowerCase().indexOf(b.toLowerCase() + ' ') === 0) { found = name.slice(0, b.length); return true; }
+        });
+        return found;
+    };
+    // "580E / 580 Super E", "350 & 350B", "450, 450B and 455B" are lists of model numbers
+    var isJoin = function(w){ return w === '/' || w === '&' || /^and$/i.test(w); };
+    // words that stay with a model number: "580 Super K", "3000-4000 Series", "35D ZTS", "650H LT", "35 P-Tier"
+    var isSuffix = function(w){ return /^(super|series|turbo|p-tier|g-tier)$/i.test(w) || /^([A-Z]{1,3}|I{1,3}|IV)$/.test(w); };
+
+    // "Case 450B Dozer Hydraulic Cylinders & Seal Kits" -> { brand: "Case", model: "450B", type: "Dozer Hydraulic Cylinders & Seal Kits" }
+    // "JD Tractor Glass 6000-7000 Series"              -> { brand: "JD", model: "6000-7000 Series", type: "Tractor Glass" }
+    function parse(name) {
+        var brand = brandOf(name);
+        var words = name.slice(brand.length).replace(/,/g, ' ').trim().split(/\s+/);
+        var i = 0;
+        while (i < words.length && !hasModel(words[i])) i++;
+        if (i === words.length) return null;
+        var j = i;
+        while (j < words.length && (hasModel(words[j]) || (isJoin(words[j]) && hasModel(words[j + 1] || '')) || (j > i && isSuffix(words[j])))) j++;
+        var model = '';
+        words.slice(i, j).forEach(function(w){
+            if (isJoin(w)) return;
+            model += !model ? w : (hasModel(w) ? ', ' : ' ') + w;
+        });
+        var type = words.slice(0, i).concat(words.slice(j)).join(' ').replace(/^[&\/\-–]\s*|\s*[&\/\-–]$/g, '');
+        return { brand: brand, model: model, type: type };
+    }
+
+    var items = cards.map(function(a){
+        var span = a.querySelector('div:last-child > span');
+        return { a: a, span: span, p: span ? parse(span.textContent.trim()) : null };
+    });
+    var withModel = items.filter(function(it){ return it.p; });
+    var modelList = withModel.length / items.length >= 0.8;
+    if (!modelList) {
+        // Part-type pages ("Case Dozer Filters", "JD Dozer Manuals"...): the brand plus the machine words most
+        // cards share ("Case Dozer") become the small label and the rest is the headline. Each card keeps its
+        // own brand spelling (JD / John Deere). Pages whose cards mostly don't start with a brand: leave as-is.
+        var rows = items.map(function(it){
+            var t = it.span ? it.span.textContent.trim() : '';
+            var b = brandOf(t);
+            return { t: t, b: b, rest: t.slice(b.length).trim().split(/\s+/) };
+        });
+        var branded = rows.filter(function(r){ return r.b; });
+        if (branded.length / rows.length < 0.8) return;
+        // shared machine words: grow while 80%+ of branded cards agree (one oddly named card doesn't break it).
+        // "Truck" and "Trucks" count as the same word. A single card has nothing to share with.
+        var key = function(w){ return (w || '').toLowerCase().replace(/s$/, ''); };
+        var fitsShared = function(r, sh){ return r.rest.length > sh.length && sh.every(function(w, x){ return key(r.rest[x]) === key(w); }); };
+        var shared = [];
+        while (branded.length >= 2) {
+            var k = shared.length, tally = {};
+            branded.forEach(function(r){
+                if (r.rest.length > k + 1 && fitsShared(r, shared)) { var w = key(r.rest[k]); tally[w] = (tally[w] || 0) + 1; }
+            });
+            var best = Object.keys(tally).sort(function(a, b){ return tally[b] - tally[a]; })[0];
+            if (!best || tally[best] / branded.length < 0.8) break;
+            shared.push(branded.filter(function(r){ return key(r.rest[k]) === best; })[0].rest[k]);
+        }
+        // never leave a lone "Parts" as the headline ("JD Forestry Steering" / "Parts"): give a shared word back
+        while (shared.length && branded.some(function(r){
+            return fitsShared(r, shared) && r.rest.length === shared.length + 1 && /^(parts?|kits?|other)$/i.test(r.rest[shared.length]);
+        })) shared.pop();
+        withModel = [];
+        items.forEach(function(it, i){
+            var r = rows[i];
+            var cut = r.b && fitsShared(r, shared) ? shared.length : 0;
+            // "Skid Steer & Track Loader Filters": don't split before "&" / "and" / "/" / "-" / "(..."
+            if (cut && /^(&|and|or|\/|-|–)$|^\(/i.test(r.rest[cut])) cut = 0;
+            it.p = { brand: r.b ? [r.b].concat(r.rest.slice(0, cut)).join(' ') : '', model: r.b ? r.rest.slice(cut).join(' ') : r.t, type: '', part: true };
+        });
+    }
+
+    var esc = function(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+    items.forEach(function(it){
+        if (!it.span) return;
+        var html;
+        if (it.p) {
+            var long = it.p.model.length > (it.p.part ? 22 : 16);
+            html = (it.p.brand ? '<span class="bt-sub__brand">' + esc(it.p.brand) + '</span>' : '') +
+                '<span class="bt-sub__model' + (long ? ' bt-sub__model--long' : '') + '">' + esc(it.p.model) + '</span>' +
+                (it.p.type ? '<span class="bt-sub__type">' + esc(it.p.type) + '</span>' : '');
+        } else {
+            html = '<span class="bt-sub__model bt-sub__model--long">' + esc(it.span.textContent.trim()) + '</span>';
+        }
+        it.span.innerHTML = html;
+    });
+    wrap.classList.add('bt-models');
+    if (cards.length < 6) return; // a few cards fit on one screen: no jump bar needed
+
+    // Sticky "Jump to your model" bar: picking one goes straight to that model's parts page
+    var counts = {};
+    withModel.forEach(function(it){ var k = it.p.model.toLowerCase(); counts[k] = (counts[k] || 0) + 1; });
+    var bar = document.createElement('div');
+    bar.className = 'bt-mjump';
+    bar.innerHTML = '<label for="bt-mjump-sel">Jump to:</label><select id="bt-mjump-sel"><option value="">' + (modelList ? 'Choose your model' : 'Choose a part type') + '</option></select>';
+    var sel = bar.querySelector('select');
+    items.forEach(function(it){
+        var label = it.p ? it.p.model : it.span.textContent.trim();
+        // same model on several cards ("580L, 580M" Boom / Swing Tower...): add the part type
+        if (it.p && counts[it.p.model.toLowerCase()] > 1 && it.p.type) label += ' ' + it.p.type;
+        sel.appendChild(new Option(label, it.a.href));
+    });
+    sel.addEventListener('change', function(){ if (sel.value) window.location.href = sel.value; });
+    var head = document.querySelector('.lev1-section-head');
+    (head || wrap).parentNode.insertBefore(bar, head ? head.nextSibling : wrap);
+})();
+</script>
+
 {{{snippet 'categories'}}}
 
       {{#if category.description}}
