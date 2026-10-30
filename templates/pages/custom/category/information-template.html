@@ -25,6 +25,30 @@ category:
         .bt-model-index .bt-card:hover .bt-card__title { color: #fff; }
         .bt-model-index .bt-card:hover { color: #fff; box-shadow: 0 6px 20px rgba(0,0,0,0.14); transform: translateY(-3px); }
 
+        /* Model-number headline: JS splits "New Holland L553 Skid Steer Loader - Specs..." into brand / model / type */
+        .bt-model-index .bt-card__brand { display: block; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #d4d4d4; margin-bottom: 4px; }
+        .bt-model-index .bt-card__model { display: block; font-size: 34px; line-height: 1.05; color: #ffbe00; letter-spacing: 0.01em; word-break: break-word; }
+        .bt-model-index .bt-card__model--name { font-size: 26px; }
+        .bt-model-index .bt-card__type { display: block; font-size: 17px; font-weight: 600; line-height: 1.25; color: #fff; margin-top: 6px; }
+        .bt-model-index .bt-card__cta { font-size: 14px; }
+        .bt-model-index .bt-card.is-target { outline: 4px solid #ffbe00; outline-offset: 3px; }
+
+        /* Model groups (Skid Steer Loaders, Compact Track Loaders...) */
+        .bt-model-group + .bt-model-group { margin-top: 44px; }
+        .bt-model-group__title { font-size: 22px; font-weight: 700; text-transform: uppercase; color: #001212; margin: 0 0 16px; padding-left: 12px; border-left: 6px solid #ffbe00; }
+
+        /* Sticky "Jump to your model" bar, flush under the fixed site header */
+        .bt-jump { position: sticky; top: 134px; z-index: 20; display: flex; align-items: center; gap: 12px; background: #001212; padding: 10px 14px; margin: 0 0 24px; border-bottom: 3px solid #ffbe00; }
+        .bt-jump label { color: #fff; font-size: 16px; font-weight: 700; white-space: nowrap; margin: 0; }
+        .bt-jump select { flex: 1; min-width: 0; max-width: 360px; height: 46px; font-size: 18px; font-weight: 700; color: #001212; background-color: #fff; border: 2px solid #ffbe00; border-radius: 4px; padding: 0 10px; }
+        .bt-jump[hidden] { display: none !important; }
+        @media (min-width: 768px) {
+            .bt-jump { top: 155px; }
+        }
+        @media (min-width: 1280px) {
+            .bt-jump { top: 92px; }
+        }
+
         .bt-cat-seo { max-width: 860px; margin: 48px auto 0; padding: 32px 0; border-top: 1px solid #e6e6e6; font-size: 15px; line-height: 1.7; color: #444; }
         .bt-cat-seo h2, .bt-cat-seo h3 { color: #001212; margin-bottom: 10px; }
 
@@ -33,8 +57,17 @@ category:
             .bt-model-index .bt-card { grid-template-columns: 1fr; }
             .bt-model-index .bt-card__img { aspect-ratio: 1/1; align-self: auto; }
         }
-        @media (max-width: 480px) {
-            .bt-model-index .bt-grid { gap: 12px; }
+        /* Phones: one compact row per model (thumbnail + model number) instead of two tall photo cards */
+        @media (max-width: 600px) {
+            .bt-model-index .bt-grid { grid-template-columns: 1fr; gap: 12px; }
+            .bt-model-index .bt-card { grid-template-columns: 112px 1fr; gap: 0; }
+            .bt-model-index .bt-card__img { aspect-ratio: auto; align-self: stretch; }
+            .bt-model-index .bt-card__cat { display: none; }
+            .bt-model-index .bt-card__body { padding: 12px 14px; gap: 4px; }
+            .bt-model-index .bt-card__model { font-size: 30px; }
+            .bt-model-index .bt-card__model--name { font-size: 22px; }
+            .bt-model-index .bt-card__cta { padding-top: 6px; }
+            .bt-jump label { font-size: 15px; }
         }
     </style>
 
@@ -61,7 +94,12 @@ category:
             <span class="bt-section-head__rule"></span>
         </div>
 
-        <div class="bt-grid">
+        <div class="bt-jump" hidden>
+            <label for="bt-jump-sel">Jump to:</label>
+            <select id="bt-jump-sel"><option value="">Choose your model</option></select>
+        </div>
+
+        <div class="bt-grid" id="bt-model-grid">
 
             {{#each category.products}}
             <a href="{{url}}" class="bt-card">
@@ -77,6 +115,142 @@ category:
             {{/each}}
 
         </div>
+
+        <script>
+        (function(){
+            var grid = document.getElementById('bt-model-grid');
+            if (!grid) return;
+            var cards = [].slice.call(grid.querySelectorAll('.bt-card'));
+            if (!cards.length) return;
+
+            // "New Holland L250 L252 Skid Steer Parts, Specs & Common Issues"
+            //   -> { brand: "New Holland", model: "L250 L252", type: "Skid Steer" }
+            var STOP = /^(parts|specs?|specifications?|and|&|serial|maintenance|common|information|info|guide|troubleshooting|key|genuine|oem|aftermarket)$/i;
+            function parse(name) {
+                // only the part before " - ", ":" or "|" names the machine
+                var parts = name.split(/\s[–—-]\s|:|\s\|/);
+                var words = parts[0].replace(/,/g, '').trim().split(/\s+/);
+                var i = 0;
+                while (i < words.length && !/\d/.test(words[i])) i++;
+                if (i === words.length) {
+                    // no model number ("Fordson Super Dexta Tractor Specs"): headline the machine name instead
+                    var plain = [];
+                    for (var w = 0; w < words.length && !STOP.test(words[w]); w++) plain.push(words[w]);
+                    return plain.length ? { brand: '', model: plain.join(' '), type: '', named: true } : null;
+                }
+                var j = i;
+                // "580E / 580 Super E" and "840 & 400" are lists of model numbers
+                var joiner = function(w, next){ return (w === '/' || w === '&' || /^and$/i.test(w)) && /\d/.test(next || ''); };
+                while (j < words.length && (/\d/.test(words[j]) || joiner(words[j], words[j + 1]))) j++;
+                // keep suffixes like "Super K" or "Series II" with the model number
+                while (j < words.length && (/^(super|series|turbo)$/i.test(words[j]) || /^([A-Z]{1,2}|I{1,3}|IV)$/.test(words[j]))) j++;
+                var rest = words.slice(j), type = [];
+                for (var k = 0; k < rest.length && !STOP.test(rest[k]); k++) type.push(rest[k]);
+                if (!type.length && parts[1]) {
+                    // "Case 480B - Loader Backhoe Specs": the machine type comes after the dash
+                    var after = parts[1].replace(/,/g, '').trim().split(/\s+/);
+                    for (var a = 0; a < after.length && !STOP.test(after[a]); a++) type.push(after[a]);
+                }
+                // "L250 L252 L255" -> "L250, L252, L255" (suffixes like "Super K" stay attached with a space)
+                var model = '';
+                words.slice(i, j).forEach(function(w){
+                    if (w === '/' || w === '&' || /^and$/i.test(w)) return;
+                    model += !model ? w : (/\d/.test(w) ? ', ' : ' ') + w;
+                });
+                return { brand: words.slice(0, i).join(' '), model: model, type: type.join(' ') };
+            }
+
+            var items = [];
+            cards.forEach(function(card, n){
+                var title = card.querySelector('.bt-card__title');
+                var p = parse(title.textContent.trim());
+                if (!p) return;
+                var esc = function(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+                title.innerHTML = (p.brand ? '<span class="bt-card__brand">' + esc(p.brand) + '</span>' : '') +
+                    '<span class="bt-card__model' + (p.named ? ' bt-card__model--name' : '') + '">' + esc(p.model) + '</span>' +
+                    (p.type ? '<span class="bt-card__type">' + esc(p.type) + '</span>' : '');
+                card.id = 'model-' + p.model.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase() + '-' + n;
+                items.push({ card: card, model: p.model, type: p.type || 'Other Models' });
+            });
+            if (items.length < cards.length) return; // a title we can't read: leave the page as-is
+
+            // "Skid Steer" and "Skid Steer Loader" are the same group: use the longest matching name
+            var types = items.map(function(it){ return it.type; });
+            items.forEach(function(it){
+                types.forEach(function(t){ if (t.length > it.type.length && t.indexOf(it.type + ' ') === 0) it.type = t; });
+                var typeEl = it.card.querySelector('.bt-card__type');
+                if (typeEl) typeEl.textContent = it.type;
+            });
+
+            // Group by machine type (biggest group first), then sort model numbers naturally
+            var groups = {}, order = [];
+            items.forEach(function(it){
+                if (!groups[it.type]) { groups[it.type] = []; order.push(it.type); }
+                groups[it.type].push(it);
+            });
+            order.sort(function(a, b){ return groups[b].length - groups[a].length; });
+            // "580 Super K" sorts right after "580K" (Case: Super K = SK)
+            var sortKey = function(m){ return m.replace(/\s+super\s+([A-Z])(\w*)/gi, '$1￿$2'); };
+            var byModel = function(a, b){ return sortKey(a.model).localeCompare(sortKey(b.model), 'en', { numeric: true, sensitivity: 'base' }); };
+            // headings only when the page splits cleanly: a few types, each with several models
+            var useGroups = order.length > 1 && order.length <= 4 &&
+                order.every(function(t){
+                    // "Mini Excavator" vs "Compact Mini Excavator" is title wording, not a different machine
+                    return groups[t].length >= 3 && t !== 'Other Models' &&
+                        order.every(function(u){ return u === t || !(' ' + u).endsWith(' ' + t); });
+                });
+            var plural = function(t){ return /s$/i.test(t) ? t : t + 's'; };
+            if (!useGroups) {
+                // no headings: sort every model as one list
+                groups = { all: items };
+                order = ['all'];
+            }
+
+            var seen = {};
+            items.forEach(function(it){ var k = it.model.toLowerCase(); seen[k] = (seen[k] || 0) + 1; });
+
+            var sel = document.getElementById('bt-jump-sel');
+            var anchor = grid;
+            order.forEach(function(type){
+                var list = groups[type].sort(byModel);
+                var target = grid, og = sel;
+                if (useGroups) {
+                    var sec = document.createElement('section');
+                    sec.className = 'bt-model-group';
+                    sec.innerHTML = '<h2 class="bt-model-group__title"></h2>';
+                    sec.firstChild.textContent = plural(type);
+                    target = document.createElement('div');
+                    target.className = 'bt-grid';
+                    sec.appendChild(target);
+                    anchor.parentNode.insertBefore(sec, anchor.nextSibling);
+                    anchor = sec;
+                    og = document.createElement('optgroup');
+                    og.label = plural(type);
+                    sel.appendChild(og);
+                }
+                list.forEach(function(it){
+                    target.appendChild(it.card);
+                    // "350 Dozer" / "350 Crawler Loader" when one model number has two guides
+                    var label = it.model;
+                    if (seen[it.model.toLowerCase()] > 1 && it.type !== 'Other Models') label += ' ' + it.type;
+                    og.appendChild(new Option(label, it.card.id));
+                });
+            });
+            if (useGroups) grid.parentNode.removeChild(grid);
+
+            function jump(id) {
+                var card = document.getElementById(id);
+                if (!card) return;
+                // land just under the sticky bar (which itself sits under the fixed header)
+                var bar = sel.parentNode.getBoundingClientRect();
+                window.scrollTo(0, card.getBoundingClientRect().top + window.pageYOffset - (bar.height + parseFloat(getComputedStyle(sel.parentNode).top)) - 16);
+                card.classList.add('is-target');
+                setTimeout(function(){ card.classList.remove('is-target'); }, 2500);
+            }
+            sel.addEventListener('change', function(){ if (sel.value) jump(sel.value); });
+            sel.parentNode.hidden = false;
+        })();
+        </script>
 
     </div>
 
