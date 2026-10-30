@@ -125,7 +125,7 @@ category:
 
             // "New Holland L250 L252 Skid Steer Parts, Specs & Common Issues"
             //   -> { brand: "New Holland", model: "L250 L252", type: "Skid Steer" }
-            var STOP = /^(parts|specs?|specifications?|and|&|serial|maintenance|common|information|info|guide|troubleshooting|key|genuine|oem|aftermarket)$/i;
+            var STOP = /^(parts?|specs?|specifications?|and|&|serial|maintenance|common|information|info|guide|troubleshooting|key|genuine|oem|aftermarket)$/i;
             function parse(name) {
                 // only the part before " - ", ":" or "|" names the machine
                 var parts = name.split(/\s[–—-]\s|:|\s\|/);
