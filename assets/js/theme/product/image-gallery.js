@@ -56,9 +56,14 @@ export default class ImageGallery {
         }
     }
 
-    swapMainImage() {        
-       
-    }    
+    swapMainImage() {
+        // Option/variant images and thumbnail clicks both land here
+        if (!this.currentImage.mainImageUrl) return;
+        this.$mainImage.find('img').attr('src', this.currentImage.mainImageUrl);
+        if (this.currentImage.zoomImageUrl) {
+            this.$mainImage.attr('data-zoom-image', this.currentImage.zoomImageUrl);
+        }
+    }
 
     bindEvents() {
         this.$selectableImages.on('click', this.selectNewImage.bind(this));
