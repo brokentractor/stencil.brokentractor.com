@@ -434,6 +434,19 @@ label.form-option:not(.form-option-swatch) {
     }
 }
 
+// Option question above the buttons ("Your Machine: Required"): was 13px gray (Chance, Nov 2026)
+[data-product-attribute] > .form-label {
+    color: #222;
+    font-size: 17px;
+    font-weight: bold;
+
+    small {
+        color: #555;
+        font-size: 14px;
+        font-weight: normal;
+    }
+}
+
 .form-radio:checked + label.form-option:not(.form-option-swatch) {
     background-color: #ffd34d;
     border-color: #222;
