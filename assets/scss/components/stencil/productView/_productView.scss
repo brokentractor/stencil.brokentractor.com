@@ -421,6 +421,24 @@ label.form-option {
         font-weight: bold;
     }
 }
+
+// Option buttons (not color swatches): light brand-yellow shade so they read as choices (Chance, Nov 2026)
+label.form-option:not(.form-option-swatch) {
+    background-color: #fff7dd;
+    border-color: #f0d27a;
+    color: #222;
+
+    &:hover {
+        background-color: #ffedb0;
+        border-color: #ffbe00;
+    }
+}
+
+.form-radio:checked + label.form-option:not(.form-option-swatch) {
+    background-color: #ffd34d;
+    border-color: #222;
+    box-shadow: 0 0 0 1px #222;
+}
 .isp_related_title span {
     font-family: "industry";
     font-size: 24px;
