@@ -114,8 +114,8 @@ category:
         'Doosan', 'IH Dresser', 'IH', 'Gehl', 'Mustang', 'Dresser', 'Link-Belt', 'Linkbelt', 'King Kutter', 'Long', 'Yanmar', 'JLG',
         'Samsung', 'Mitsubishi', 'Hanix', 'Koehring', 'Ditch Witch', 'Tigercat', 'Sumitomo', 'Timberjack', 'Liebherr', 'Genie', 'IHI',
         'Wacker Neuson', 'Hyster', 'Galion', 'Fordson'];
-    // numbers that aren't model numbers: "4WD", "3-Bolt", "8-Speed", "40HP", "(210C-410G)"
-    var notModel = function(w){ return /^(\d+wd|\d+x\d+|\d+-(bolt|speed|series)|\d+hp|\d+'|\(.*)$/i.test(w); };
+    // numbers that aren't model numbers: "4WD", "3-Bolt", "8-Speed", "40HP", "(210C-410G)". "480-Series" is a model.
+    var notModel = function(w){ return /^(\d+wd|\d+x\d+|\d+-(bolt|speed)|\d{1,2}-series|\d+hp|\d+'|\(.*)$/i.test(w); };
     var hasModel = function(w){ return /\d/.test(w) && !notModel(w); };
     var brandOf = function(name){
         var found = '';
@@ -125,26 +125,37 @@ category:
         return found;
     };
     // "580E / 580 Super E", "350 & 350B", "450, 450B and 455B" are lists of model numbers
-    var isJoin = function(w){ return w === '/' || w === '&' || /^and$/i.test(w); };
-    // words that stay with a model number: "580 Super K", "3000-4000 Series", "35D ZTS", "650H LT", "35 P-Tier"
-    var isSuffix = function(w){ return /^(super|series|turbo|p-tier|g-tier)$/i.test(w) || /^([A-Z]{1,3}|I{1,3}|IV)$/.test(w); };
+    var isJoin = function(w){ return w === ',' || w === '/' || w === '&' || /^and$/i.test(w); };
+    // "580B, Early 580C": "Early" / "Late" right after a comma and before a model number stays with it
+    var isPre = function(w, next){ return /^(early|late)$/i.test(w) && hasModel(next || ''); };
+    // words that stay with a model number: "580 Super K", "3000-4000 Series", "35D ZTS", "650H LT", "35 P-Tier", "580C Late"
+    var isSuffix = function(w){ return /^(super|series|turbo|phase|p-tier|g-tier|early|late)$/i.test(w) || /^([A-Z]{1,3}|I{1,3}|IV)$/.test(w); };
 
     // "Case 450B Dozer Hydraulic Cylinders & Seal Kits" -> { brand: "Case", model: "450B", type: "Dozer Hydraulic Cylinders & Seal Kits" }
     // "JD Tractor Glass 6000-7000 Series"              -> { brand: "JD", model: "6000-7000 Series", type: "Tractor Glass" }
     function parse(name) {
         var brand = brandOf(name);
-        var words = name.slice(brand.length).replace(/,/g, ' ').trim().split(/\s+/);
+        var words = name.slice(brand.length).replace(/,/g, ' , ').trim().split(/\s+/);
         var i = 0;
         while (i < words.length && !hasModel(words[i])) i++;
         if (i === words.length) return null;
         var j = i;
-        while (j < words.length && (hasModel(words[j]) || (isJoin(words[j]) && hasModel(words[j + 1] || '')) || (j > i && isSuffix(words[j])))) j++;
-        var model = '';
-        words.slice(i, j).forEach(function(w){
-            if (isJoin(w)) return;
-            model += !model ? w : (hasModel(w) ? ', ' : ' ') + w;
+        var nextIsModel = function(k){ return hasModel(words[k] || '') || isPre(words[k] || '', words[k + 1]); };
+        // "SK200 Series III, IV & V": a list of series numerals
+        var isRoman = function(w){ return /^(I{1,3}|IV|V|VI)$/.test(w || ''); };
+        var romanList = function(k){ return isJoin(words[k]) && isRoman(words[k - 1]) && isRoman(words[k + 1]); };
+        while (j < words.length && (hasModel(words[j]) || (isJoin(words[j]) && nextIsModel(j + 1)) || romanList(j) ||
+            (isJoin(words[j - 1]) && isPre(words[j], words[j + 1])) || (j > i && (isSuffix(words[j]) || isRoman(words[j]))))) j++;
+        var model = '', pre = '';
+        words.slice(i, j).forEach(function(w, k, list){
+            if (isJoin(w)) { if (isRoman(list[k - 1]) && isRoman(list[k + 1])) model += w === ',' ? ',' : ' ' + w; return; }
+            if (isJoin(list[k - 1] || '') && isPre(w, list[k + 1])) { pre = w + ' '; return; }
+            model += (!model ? '' : (hasModel(w) ? ', ' : ' ')) + (hasModel(w) ? pre : '') + w;
+            if (hasModel(w)) pre = '';
         });
-        var type = words.slice(0, i).concat(words.slice(j)).join(' ').replace(/^[&\/\-–]\s*|\s*[&\/\-–]$/g, '');
+        // a comma left in front of the model ("NH Compact, TN, TD, T4000 & T5000 Glass") goes with it
+        var before = words.slice(0, isJoin(words[i - 1]) ? i - 1 : i);
+        var type = before.concat(words.slice(j)).join(' ').replace(/ ,/g, ',').replace(/^[,&\/\-–]\s*|\s*[,&\/\-–]$/g, '');
         return { brand: brand, model: model, type: type };
     }
 
@@ -203,7 +214,10 @@ category:
                 '<span class="bt-sub__model' + (long ? ' bt-sub__model--long' : '') + '">' + esc(it.p.model) + '</span>' +
                 (it.p.type ? '<span class="bt-sub__type">' + esc(it.p.type) + '</span>' : '');
         } else {
-            html = '<span class="bt-sub__model bt-sub__model--long">' + esc(it.span.textContent.trim()) + '</span>';
+            // no model number on a model page ("Case Backhoe Cylinder Seal Kit Packages"): brand label, rest as headline
+            var t = it.span.textContent.trim(), b = brandOf(t);
+            html = (b ? '<span class="bt-sub__brand">' + esc(b) + '</span>' : '') +
+                '<span class="bt-sub__model bt-sub__model--long">' + esc(b ? t.slice(b.length).trim() : t) + '</span>';
         }
         it.span.innerHTML = html;
     });
