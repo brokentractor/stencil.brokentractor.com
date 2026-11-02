@@ -440,10 +440,18 @@ label.form-option:not(.form-option-swatch) {
     font-size: 17px;
     font-weight: bold;
 
+    // "Required" as a small tag on the same line (the theme set vertical-align: bottom, which dropped it low)
     small {
-        color: #555;
+        background-color: #fff7dd;
+        border: 1px solid #f0d27a;
+        border-radius: 3px;
+        color: #6b4f00;
         font-size: 14px;
-        font-weight: normal;
+        font-weight: bold;
+        line-height: 1.4;
+        margin-left: 6px;
+        padding: 1px 7px;
+        vertical-align: middle;
     }
 }
 
