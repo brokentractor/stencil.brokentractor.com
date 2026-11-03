@@ -12,6 +12,11 @@ import $ from 'jquery';
  *   SelectorHelp              = "Not sure? Call (800) 909-7060 with your serial number."  (phone number is linked)
  *   SelectorQ:<option name>   = "Which series?"                     (question text)
  *   SelectorV:<value label>   = "Title|Subtitle|Hover tip"          (one per button; **x** in the subtitle = bold)
+ *   SelectorShowIf:<option name> = "<value label>|<value label>"    (question stays hidden until one of these
+ *                                                                    is picked in another question)
+ *   SelectorAuto:<option name>   = "<value label>"                  (picked behind the scenes while that question
+ *                                                                    is hidden after a pick, so the variant
+ *                                                                    resolves; e.g. 580 Super M Series III)
  */
 const PHONE = '(800) 909-7060';
 export default function optionSelector() {
@@ -27,6 +32,7 @@ export default function optionSelector() {
         const $field = $(field).addClass('bt-sel');
         const $label = $field.children('.form-label').first();
         const name = $.trim($label.clone().children().remove().end().text()).replace(/:$/, '');
+        $field.attr('data-bt-name', name);
         $label.addClass('bt-sel-q').empty().append(
             $('<span class="bt-sel-num">').text(i + 1),
             $('<span class="bt-sel-qtext">').text(fields[`SelectorQ:${name}`] || name),
@@ -35,6 +41,7 @@ export default function optionSelector() {
         $field.find('label.form-option').each((j, opt) => {
             const $variant = $(opt).find('.form-option-variant');
             const label = $.trim($variant.text());
+            $(opt).attr('data-bt-label', label);
             const info = fields[`SelectorV:${label}`];
             if (!info) return;
 
@@ -82,11 +89,43 @@ export default function optionSelector() {
 
     const model = fields.SelectorModel || '';
     const noun = fields.SelectorNoun || 'your selection';
+    const checkedLabel = $field => $field.find('.form-radio:checked + label.form-option').attr('data-bt-label');
+    const pick = ($field, label, on) => {
+        const $radio = $field.find(`label.form-option[data-bt-label="${label}"]`).prev('.form-radio');
+        if ($radio.prop('checked') !== on) $radio.prop('checked', on).trigger('change');
+    };
+    // SelectorShowIf / SelectorAuto: show a question only for certain answers to the others
+    let applying = false;
+    const applyRules = () => {
+        applying = true;
+        $fields.each((i, field) => {
+            const $field = $(field);
+            const name = $field.attr('data-bt-name');
+            const showIf = fields[`SelectorShowIf:${name}`];
+            if (!showIf) return;
+            const want = showIf.split('|').map($.trim);
+            const others = $fields.not(field).map((k, f) => checkedLabel($(f))).get();
+            const show = others.some(l => want.indexOf(l) !== -1);
+            $field.toggleClass('bt-sel-hidden', !show);
+            const auto = fields[`SelectorAuto:${name}`];
+            if (!show && others.length && auto) {
+                pick($field, auto, true);
+                $field.attr('data-bt-auto', '1');
+            } else if (show && $field.attr('data-bt-auto')) {
+                // the customer answers it themselves once it's visible again
+                pick($field, checkedLabel($field), false);
+                $field.removeAttr('data-bt-auto');
+            }
+        });
+        applying = false;
+    };
+
     const update = () => {
-        const picked = $fields.map((i, field) => $(field).find('.form-radio:checked + label.form-option').attr('data-bt-title')).get();
-        const done = picked.length === $fields.length;
+        const $shown = $fields.not('.bt-sel-hidden');
+        const picked = $shown.map((i, field) => $(field).find('.form-radio:checked + label.form-option').attr('data-bt-title')).get();
+        const done = picked.length === $shown.length;
         $box.toggleClass('is-ready', done);
-        $box.find('.bt-sel-kit-name').text(done ? [model].concat(picked).filter(Boolean).join(' · ') : `Answer the ${$fields.length > 1 ? 'questions' : 'question'} above to see ${noun}.`);
+        $box.find('.bt-sel-kit-name').text(done ? [model].concat(picked).filter(Boolean).join(' · ') : `Answer the ${$shown.length > 1 ? 'questions' : 'question'} above to see ${noun}.`);
         $box.find('.bt-sel-kit-sku').text(done ? `Part # ${$.trim($('#partnum-text').text())}` : '');
         // a kit with purchasing turned off (e.g. Powershift until it's priced) carries a $999 placeholder
         const callOnly = done && $('#form-action-addToCart').prop('disabled');
@@ -94,11 +133,15 @@ export default function optionSelector() {
         $('.productView-price').toggleClass('bt-sel-hide', !!callOnly);
     };
     // SKU and price arrive by ajax after a pick, so follow those elements too
-    $fields.on('change', '.form-radio', update);
+    $fields.on('change', '.form-radio', () => {
+        if (!applying) applyRules();
+        update();
+    });
     const observer = new MutationObserver(update);
     $('#partnum-text, .productView-price [data-product-price-without-tax]').each((i, el) => {
         observer.observe(el, { childList: true, characterData: true, subtree: true });
     });
     $('#form-action-addToCart').each((i, el) => observer.observe(el, { attributes: true, attributeFilter: ['disabled'] }));
+    applyRules();
     update();
 }
