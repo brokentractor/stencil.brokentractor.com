@@ -205,18 +205,20 @@ category:
     }
 
     var esc = function(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+    // the label always says "John Deere", whatever spelling the category name uses (JD / Deere)
+    var showBrand = function(s){ return s.replace(/^(JD|Deere)(?=\s|$)/i, 'John Deere'); };
     items.forEach(function(it){
         if (!it.span) return;
         var html;
         if (it.p) {
             var long = it.p.model.length > (it.p.part ? 22 : 16);
-            html = (it.p.brand ? '<span class="bt-sub__brand">' + esc(it.p.brand) + '</span>' : '') +
+            html = (it.p.brand ? '<span class="bt-sub__brand">' + esc(showBrand(it.p.brand)) + '</span>' : '') +
                 '<span class="bt-sub__model' + (long ? ' bt-sub__model--long' : '') + '">' + esc(it.p.model) + '</span>' +
                 (it.p.type ? '<span class="bt-sub__type">' + esc(it.p.type) + '</span>' : '');
         } else {
             // no model number on a model page ("Case Backhoe Cylinder Seal Kit Packages"): brand label, rest as headline
             var t = it.span.textContent.trim(), b = brandOf(t);
-            html = (b ? '<span class="bt-sub__brand">' + esc(b) + '</span>' : '') +
+            html = (b ? '<span class="bt-sub__brand">' + esc(showBrand(b)) + '</span>' : '') +
                 '<span class="bt-sub__model bt-sub__model--long">' + esc(b ? t.slice(b.length).trim() : t) + '</span>';
         }
         it.span.innerHTML = html;
