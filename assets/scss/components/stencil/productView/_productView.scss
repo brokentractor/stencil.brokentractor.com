@@ -474,6 +474,11 @@ label.form-option:not(.form-option-swatch) {
         display: none;
     }
 
+    // SelectorHideIf: this card doesn't go with what's picked in the other question
+    .form-option.bt-sel-card-hidden {
+        display: none;
+    }
+
     > .form-radio {
         height: 1px;
         opacity: 0;
@@ -644,6 +649,16 @@ label.form-option .bt-sel-card {
         font-size: 28px;
         font-weight: bold;
         white-space: nowrap;
+    }
+
+    .bt-sel-kit-core {
+        color: #222;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 6px;
+        text-align: right;
+
+        &:empty { display: none; }
     }
 
     .bt-sel-kit-help {

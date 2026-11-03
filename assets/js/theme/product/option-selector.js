@@ -14,6 +14,9 @@ import $ from 'jquery';
  *   SelectorV:<value label>   = "Title|Subtitle|Hover tip"          (one per button; **x** in the subtitle = bold)
  *   SelectorShowIf:<option name> = "<value label>|<value label>"    (question stays hidden until one of these
  *                                                                    is picked in another question)
+ *   SelectorHideIf:<value label> = "<value label>|<value label>"    (that card is hidden while one of these is
+ *                                                                    picked in another question; for combinations
+ *                                                                    with no variant, e.g. transmission kits)
  *   SelectorAuto:<option name>   = "<value label>"                  (picked behind the scenes while that question
  *                                                                    is hidden after a pick, so the variant
  *                                                                    resolves; e.g. 580 Super M Series III)
@@ -26,7 +29,8 @@ export default function optionSelector() {
     if (!$data.length || !$fields.length) return;
 
     const fields = {};
-    $data.each((i, el) => { fields[el.getAttribute('data-n')] = el.getAttribute('data-v'); });
+    // all fields, not just Selector*: the summary box also reads CorePrice:<SKU>
+    $('#bt-selector-data [data-n]').each((i, el) => { fields[el.getAttribute('data-n')] = el.getAttribute('data-v'); });
 
     $fields.each((i, field) => {
         const $field = $(field).addClass('bt-sel');
@@ -77,6 +81,7 @@ export default function optionSelector() {
                 </div>
                 <div class="bt-sel-kit-price"></div>
             </div>
+            <div class="bt-sel-kit-core"></div>
             <div class="bt-sel-kit-help"></div>
         </div>`);
     $box.find('.bt-sel-kit-head').text(fields.SelectorBoxTitle || 'Your Selection');
@@ -96,7 +101,7 @@ export default function optionSelector() {
     };
     // SelectorShowIf / SelectorAuto: show a question only for certain answers to the others
     let applying = false;
-    const applyRules = () => {
+    const applyRules = ($changed) => {
         applying = true;
         $fields.each((i, field) => {
             const $field = $(field);
@@ -117,6 +122,22 @@ export default function optionSelector() {
                 $field.removeAttr('data-bt-auto');
             }
         });
+        // SelectorHideIf: a card disappears while a value it doesn't go with is picked in another question.
+        // The question just answered wins: a clashing pick in another question is cleared first.
+        const clashes = ($opt) => {
+            const hideIf = fields[`SelectorHideIf:${$opt.attr('data-bt-label')}`];
+            if (!hideIf) return false;
+            const others = $fields.not($opt.closest('.form-field')).map((k, f) => checkedLabel($(f))).get();
+            return hideIf.split('|').map($.trim).some(l => others.indexOf(l) !== -1);
+        };
+        const $cards = $fields.find('label.form-option');
+        $cards.each((i, opt) => {
+            const $opt = $(opt);
+            const $field = $opt.closest('.form-field');
+            if ($changed && $field.is($changed)) return;
+            if ($opt.prev('.form-radio').prop('checked') && clashes($opt)) pick($field, $opt.attr('data-bt-label'), false);
+        });
+        $cards.each((i, opt) => { $(opt).toggleClass('bt-sel-card-hidden', clashes($(opt))); });
         applying = false;
     };
 
@@ -130,11 +151,14 @@ export default function optionSelector() {
         // a kit with purchasing turned off (e.g. Powershift until it's priced) carries a $999 placeholder
         const callOnly = done && $('#form-action-addToCart').prop('disabled');
         $box.find('.bt-sel-kit-price').text(callOnly ? 'Call for price' : (done ? $.trim($('.productView-price [data-product-price-without-tax]').first().text()) : ''));
+        // CorePrice:<SKU> = refundable core included in that option's price (see product.js)
+        const core = done && !callOnly && parseFloat(fields[`CorePrice:${$.trim($('#partnum-text').text())}`]);
+        $box.find('.bt-sel-kit-core').text(core > 0 ? `Includes a $${core.toFixed(2)} refundable core charge` : '');
         $('.productView-price').toggleClass('bt-sel-hide', !!callOnly);
     };
     // SKU and price arrive by ajax after a pick, so follow those elements too
-    $fields.on('change', '.form-radio', () => {
-        if (!applying) applyRules();
+    $fields.on('change', '.form-radio', (e) => {
+        if (!applying) applyRules($(e.currentTarget).closest('.form-field'));
         update();
     });
     const observer = new MutationObserver(update);

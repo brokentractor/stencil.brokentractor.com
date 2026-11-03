@@ -58,29 +58,48 @@ export default class Product extends PageManager {
         // Product price handling logic
         var fit = $('.productView-info-value.FitsModel').text();
         var dim = $('.productView-info-value.ProductDim').text();
-        var coreprice = $('.productView-info-value.CorePrice').text();
-        var startprice = $('.price.price--withoutTax').text();
+        // Core is part of the BigCommerce price; these lines only explain it. A listing with options can
+        // carry a core on some options only: CorePrice:<variant SKU> fields, followed as the SKU changes.
+        var variantCores = {};
+        $('#bt-selector-data [data-n^="CorePrice:"]').each(function () {
+            variantCores[this.getAttribute('data-n').slice(10)] = this.getAttribute('data-v');
+        });
+        var hasVariantCores = !$.isEmptyObject(variantCores);
+        var showCore = function () {
+            var coreprice = hasVariantCores
+                ? (variantCores[$.trim($('#partnum-text').text())] || '0')
+                : $('.productView-info-value.CorePrice').text();
+            var startprice = $('.price.price--withoutTax').first().text();
+            $('.productView-price').find('.corecharge, .totalLine, .totalprice').remove();
 
-        if (startprice === '$0.00') {
-            $('.price.price--withoutTax').html('Call for Pricing');
-            $('#pv-descriptionbox form').remove();
-        } else {
-            startprice = startprice.replace('$', '').replace(',', '');
-            startprice = parseFloat(startprice).toFixed(2);
-
-            if (coreprice > 0 && startprice !== 'NaN') {
+            if (startprice === '$0.00') {
+                $('.price.price--withoutTax').html('Call for Pricing');
+                $('#pv-descriptionbox form').remove();
+            } else {
+                startprice = startprice.replace('$', '').replace(',', '');
+                startprice = parseFloat(startprice).toFixed(2);
                 coreprice = coreprice.replace('$', '').replace(',', '');
-                coreprice = parseFloat(coreprice).toFixed(2);
 
-                var totalAfterCore = parseFloat(startprice - coreprice).toFixed(2);
-                totalAfterCore = totalAfterCore.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                if (coreprice > 0 && startprice !== 'NaN') {
+                    coreprice = parseFloat(coreprice).toFixed(2);
 
-                coreprice = coreprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                startprice = startprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var totalAfterCore = parseFloat(startprice - coreprice).toFixed(2);
+                    totalAfterCore = totalAfterCore.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-                $('.productView-price').append('<div class="corecharge">Refundable Core Deposit: -$' + coreprice + '</div>');
-                $('.productView-price').append('<hr class="totalLine"><div class="totalprice">Total After Core Return: $' + totalAfterCore + '</div>');
+                    coreprice = coreprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                    $('.productView-price').append('<div class="corecharge">Refundable Core Deposit: -$' + coreprice + '</div>');
+                    $('.productView-price').append('<hr class="totalLine"><div class="totalprice">Total After Core Return: $' + totalAfterCore + '</div>');
+                }
             }
+        };
+        showCore();
+        if (hasVariantCores) {
+            // SKU and price arrive by ajax after an option pick
+            var coreObserver = new MutationObserver(showCore);
+            $('#partnum-text, .productView-price [data-product-price-without-tax]').each(function () {
+                coreObserver.observe(this, { childList: true, characterData: true, subtree: true });
+            });
         }
 
         $('#fittext').text(fit);
