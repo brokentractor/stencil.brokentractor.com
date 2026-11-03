@@ -492,12 +492,14 @@ label.form-option:not(.form-option-swatch) {
         box-shadow: none;
         display: block;
         margin: 0;
+        overflow: visible; // the theme's [data-product-attribute] .form-option sets hidden, which clipped the tip
         padding: 14px 16px;
         position: relative;
 
         &:hover {
             background-color: #fffaeb;
             border-color: #ffbe00;
+            z-index: 30; // keep the open tip above the next card
         }
     }
 
@@ -536,11 +538,18 @@ label.form-option .bt-sel-card {
     }
 
     .bt-sel-sub {
-        color: #555;
+        color: #444;
         display: block;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: normal;
         margin-top: 2px;
+
+        strong {
+            color: #111;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.03em;
+        }
     }
 
     // the "i": hover (or tap/focus) shows the tip; .form-option-variant turns pointer events off
@@ -558,13 +567,15 @@ label.form-option .bt-sel-card {
         width: 22px;
     }
 
-    // positioned on the card (label.form-option), not the icon, so it never runs off a right-hand card
+    // opens just under the "i"; positioned on the card (label.form-option), not the icon, so it never
+    // runs off a right-hand card. The card allows overflow so the tip isn't cut off at the card edge.
     .bt-sel-tip {
         background: #222;
         border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         color: #fff;
         display: none;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: normal;
         left: 10px;
         line-height: 1.4;
@@ -573,7 +584,7 @@ label.form-option .bt-sel-card {
         right: 10px;
         top: 42px;
         white-space: normal;
-        z-index: 20;
+        z-index: 40;
     }
 
     .bt-sel-info:hover .bt-sel-tip,
