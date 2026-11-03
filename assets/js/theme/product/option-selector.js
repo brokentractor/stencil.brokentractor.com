@@ -17,6 +17,11 @@ import $ from 'jquery';
  *   SelectorHideIf:<value label> = "<value label>|<value label>"    (that card is hidden while one of these is
  *                                                                    picked in another question; for combinations
  *                                                                    with no variant, e.g. transmission kits)
+ *   SelectorNote:<option name>   = "Fits both 2WD and 4WD."          (with SelectorAuto: shown in place of the
+ *                                                                    cards instead of hiding the question)
+ *   SelectorFoot:<option name>   = "For Carraro shuttle ..."          (small line under that question's cards)
+ *   SelectorLine:<option name>   = "Machine"                         (summary box lists "Machine: ..." per question)
+ *   SelectorSum:<value label>    = "Four-wheel drive"                (summary wording for that pick)
  *   SelectorAuto:<option name>   = "<value label>"                  (picked behind the scenes while that question
  *                                                                    is hidden after a pick, so the variant
  *                                                                    resolves; e.g. 580 Super M Series III)
@@ -68,6 +73,8 @@ export default function optionSelector() {
             }
             $(opt).attr('data-bt-title', title || label);
         });
+        if (fields[`SelectorFoot:${name}`]) $field.append($('<div class="bt-sel-foot">').text(fields[`SelectorFoot:${name}`]));
+        if (fields[`SelectorNote:${name}`]) $field.append($('<div class="bt-sel-note">').text(fields[`SelectorNote:${name}`]));
     });
 
     // Summary box, inside the cart form just above the quantity / Add to Cart row
@@ -111,8 +118,10 @@ export default function optionSelector() {
             const want = showIf.split('|').map($.trim);
             const others = $fields.not(field).map((k, f) => checkedLabel($(f))).get();
             const show = others.some(l => want.indexOf(l) !== -1);
-            $field.toggleClass('bt-sel-hidden', !show);
             const auto = fields[`SelectorAuto:${name}`];
+            // with a SelectorNote the question stays on the page as a note instead of cards once auto-picked
+            const noted = !show && others.length && auto && fields[`SelectorNote:${name}`];
+            $field.toggleClass('bt-sel-hidden', !show && !noted).toggleClass('bt-sel-noted', !!noted);
             if (!show && others.length && auto) {
                 pick($field, auto, true);
                 $field.attr('data-bt-auto', '1');
@@ -143,10 +152,29 @@ export default function optionSelector() {
 
     const update = () => {
         const $shown = $fields.not('.bt-sel-hidden');
-        const picked = $shown.map((i, field) => $(field).find('.form-radio:checked + label.form-option').attr('data-bt-title')).get();
+        $shown.each((i, field) => { $(field).find('.bt-sel-num').text(i + 1); });
+        // SelectorSum:<value label> = summary wording for that pick (default: the card title)
+        const summary = ($field) => {
+            const $opt = $field.find('.form-radio:checked + label.form-option');
+            return $opt.length ? (fields[`SelectorSum:${$opt.attr('data-bt-label')}`] || $opt.attr('data-bt-title')) : undefined;
+        };
+        const picked = $shown.map((i, field) => summary($(field))).get();
         const done = picked.length === $shown.length;
         $box.toggleClass('is-ready', done);
-        $box.find('.bt-sel-kit-name').text(done ? [model].concat(picked).filter(Boolean).join(' · ') : `Answer the ${$shown.length > 1 ? 'questions' : 'question'} above to see ${noun}.`);
+        const $name = $box.find('.bt-sel-kit-name');
+        // SelectorLine:<option name> = "Machine": one "Machine: ..." line per question instead of one joined line
+        const lines = $shown.toArray().filter(f => fields[`SelectorLine:${$(f).attr('data-bt-name')}`]);
+        if (done && lines.length) {
+            $name.empty();
+            lines.forEach((f) => {
+                $name.append($('<div class="bt-sel-kit-line">').append(
+                    $('<span class="bt-sel-kit-lname">').text(`${fields[`SelectorLine:${$(f).attr('data-bt-name')}`]}: `),
+                    document.createTextNode(summary($(f))),
+                ));
+            });
+        } else {
+            $name.text(done ? [model].concat(picked).filter(Boolean).join(' · ') : `Answer the ${$shown.length > 1 ? 'questions' : 'question'} above to see ${noun}.`);
+        }
         $box.find('.bt-sel-kit-sku').text(done ? `Part # ${$.trim($('#partnum-text').text())}` : '');
         // a kit with purchasing turned off (e.g. Powershift until it's priced) carries a $999 placeholder
         const callOnly = done && $('#form-action-addToCart').prop('disabled');

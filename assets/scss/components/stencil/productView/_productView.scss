@@ -479,6 +479,30 @@ label.form-option:not(.form-option-swatch) {
         display: none;
     }
 
+    .bt-sel-foot,
+    .bt-sel-note {
+        color: #444;
+        font-size: 15px;
+        grid-column: 1 / -1;
+    }
+
+    .bt-sel-note {
+        background: #fff7dd;
+        border: 1px solid #f0d27a;
+        border-radius: 6px;
+        color: #222;
+        display: none;
+        font-weight: bold;
+        padding: 12px 14px;
+    }
+
+    // SelectorNote: answered behind the scenes, so show the note instead of the cards
+    &.bt-sel-noted {
+        .form-option,
+        .bt-sel-foot { display: none; }
+        .bt-sel-note { display: block; }
+    }
+
     > .form-radio {
         height: 1px;
         opacity: 0;
@@ -649,6 +673,15 @@ label.form-option .bt-sel-card {
         font-size: 28px;
         font-weight: bold;
         white-space: nowrap;
+    }
+
+    .bt-sel-kit-line {
+        font-weight: normal;
+        line-height: 1.5;
+    }
+
+    .bt-sel-kit-lname {
+        font-weight: bold;
     }
 
     .bt-sel-kit-core {

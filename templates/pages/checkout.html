@@ -257,6 +257,68 @@
 </script>
 
 
+<script>
+/* ============================================================
+   Broken Tractor — Credit Card first + selected by default.
+   BigCommerce gives no admin setting for payment-method order, and
+   the hosted checkout puts PayPal on top and pre-selects it. We
+   move Credit Card to the top with CSS flex `order` (no DOM moves,
+   so React's own list bookkeeping stays intact) and click it once
+   when the payment list mounts. If the customer picks something
+   else themselves, we never override it.
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+
+  var LABEL = /^credit card$/i;   // payment method display name in BC admin
+  var userPicked = false;
+  var autoPicked = false;
+
+  var style = document.createElement('style');
+  style.textContent =
+    '.checkout-step--payment ul.form-checklist{display:flex;flex-direction:column;}' +
+    '.checkout-step--payment li.form-checklist-item[data-bt-cc]{order:-1;}';
+  document.head.appendChild(style);
+
+  function cardItem() {
+    var items = document.querySelectorAll('.checkout-step--payment li.form-checklist-item');
+    for (var i = 0; i < items.length; i++) {
+      var label = items[i].querySelector('label');
+      if (label && LABEL.test((label.textContent || '').trim())) return items[i];
+    }
+    return null;
+  }
+
+  function tick() {
+    var li = cardItem();
+    if (!li) return;
+    if (!li.hasAttribute('data-bt-cc')) li.setAttribute('data-bt-cc', '1');
+
+    var radio = li.querySelector('input[type="radio"]');
+    if (!radio || radio.checked || userPicked || autoPicked || radio.disabled) return;
+    autoPicked = true;
+    (li.querySelector('label') || radio).click();
+  }
+
+  // Real customer clicks on any payment radio = their choice, leave it alone.
+  document.addEventListener('change', function (e) {
+    if (e.isTrusted && e.target && e.target.type === 'radio' &&
+        e.target.closest && e.target.closest('.checkout-step--payment')) {
+      userPicked = true;
+    }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var app = document.getElementById('checkout-app') || document.body;
+    tick();
+    new MutationObserver(tick).observe(app, { childList: true, subtree: true });
+    setTimeout(tick, 600);
+    setTimeout(tick, 1500);
+  });
+})();
+</script>
+
+
 {{> components/bt-checkout/footer }}
 
 {{{ footer.scripts }}}
