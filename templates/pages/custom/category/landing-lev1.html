@@ -172,6 +172,9 @@ category:
         var rows = items.map(function(it){
             var t = it.span ? it.span.textContent.trim() : '';
             var b = brandOf(t);
+            // brand at the end: "Dozer Parts – John Deere Aftermarket" -> label "John Deere Aftermarket", headline "Dozer Parts"
+            var end = !b && t.match(/^(.+?)\s+[–—-]\s+(.+)$/);
+            if (end && brandOf(end[2] + ' ')) return { t: t, b: end[2], rest: end[1].split(/\s+/) };
             return { t: t, b: b, rest: t.slice(b.length).trim().split(/\s+/) };
         });
         var branded = rows.filter(function(r){ return r.b; });

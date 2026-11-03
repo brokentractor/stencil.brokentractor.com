@@ -292,6 +292,7 @@
                             {{#each product.customizations}}
                                 {{{dynamicComponent 'components/products/customizations'}}}
                             {{/each}}
+                        <div id="bt-selector-data" hidden>{{#each product.custom_fields}}<i data-n="{{name}}" data-v="{{value}}"></i>{{/each}}</div>
                         <div data-product-option-change style="display:none;" id="productoptions">
                             {{#each product.options}}
                                 {{{dynamicComponent 'components/products/options'}}}

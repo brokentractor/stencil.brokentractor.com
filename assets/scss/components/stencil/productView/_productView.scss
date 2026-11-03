@@ -460,6 +460,188 @@ label.form-option:not(.form-option-swatch) {
     border-color: #222;
     box-shadow: 0 0 0 1px #222;
 }
+
+// Kit selector layout (Chance's "Filter Kit Selector" page 1, Nov 2026). Built by
+// assets/js/theme/product/option-selector.js on products with Selector* custom fields.
+.form-field.bt-sel {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    margin-bottom: 22px;
+
+    > .form-radio {
+        height: 1px;
+        opacity: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    > .bt-sel-q {
+        align-items: center;
+        display: flex;
+        font-size: 19px;
+        gap: 10px;
+        grid-column: 1 / -1;
+        margin: 0;
+    }
+
+    label.form-option {
+        background-color: #fff;
+        border: 1px solid #cfcfcf;
+        border-radius: 6px;
+        box-shadow: none;
+        display: block;
+        margin: 0;
+        padding: 14px 16px;
+        position: relative;
+
+        &:hover {
+            background-color: #fffaeb;
+            border-color: #ffbe00;
+        }
+    }
+
+    .form-radio:checked + label.form-option {
+        background-color: #fff7dd;
+        border-color: #222;
+        box-shadow: 0 0 0 1px #222;
+    }
+}
+
+.bt-sel-num {
+    align-items: center;
+    background: #222;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex: 0 0 28px;
+    font-size: 15px;
+    height: 28px;
+    justify-content: center;
+}
+
+label.form-option .bt-sel-card {
+    display: block;
+    font-weight: normal;
+    min-width: 0;
+    padding: 0;
+    text-align: left;
+
+    .bt-sel-title {
+        color: #222;
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .bt-sel-sub {
+        color: #555;
+        display: block;
+        font-size: 14px;
+        font-weight: normal;
+        margin-top: 2px;
+    }
+
+    // the "i": hover (or tap/focus) shows the tip; .form-option-variant turns pointer events off
+    .bt-sel-info {
+        align-items: center;
+        border: 2px solid #333;
+        border-radius: 50%;
+        color: #333;
+        cursor: help;
+        display: inline-flex;
+        font-size: 13px;
+        height: 22px;
+        justify-content: center;
+        pointer-events: auto;
+        width: 22px;
+    }
+
+    // positioned on the card (label.form-option), not the icon, so it never runs off a right-hand card
+    .bt-sel-tip {
+        background: #222;
+        border-radius: 4px;
+        color: #fff;
+        display: none;
+        font-size: 14px;
+        font-weight: normal;
+        left: 10px;
+        line-height: 1.4;
+        padding: 8px 10px;
+        position: absolute;
+        right: 10px;
+        top: 42px;
+        white-space: normal;
+        z-index: 20;
+    }
+
+    .bt-sel-info:hover .bt-sel-tip,
+    .bt-sel-info:focus .bt-sel-tip {
+        display: block;
+    }
+}
+
+.productView-price.bt-sel-hide {
+    visibility: hidden;
+}
+
+.bt-sel-kit {
+    background: #f4f4f2;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin: 6px 0 16px;
+    padding: 16px 20px;
+    text-align: left;
+
+    .bt-sel-kit-head {
+        color: #8a6100;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .bt-sel-kit-row {
+        align-items: flex-start;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        margin-top: 4px;
+    }
+
+    .bt-sel-kit-name {
+        color: #222;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .bt-sel-kit-sku {
+        color: #555;
+        font-size: 14px;
+        margin-top: 2px;
+    }
+
+    .bt-sel-kit-price {
+        color: #222;
+        font-family: "industry", sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    .bt-sel-kit-help {
+        color: #444;
+        font-size: 14px;
+        margin-top: 10px;
+
+        a {
+            color: #8a6100;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+}
 .isp_related_title span {
     font-family: "industry";
     font-size: 24px;

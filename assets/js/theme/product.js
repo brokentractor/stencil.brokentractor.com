@@ -7,6 +7,7 @@ import Review from './product/reviews';
 import collapsibleFactory from './common/collapsible';
 import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
+import optionSelector from './product/option-selector';
 import { classifyForm } from './common/form-utils';
 
 export default class Product extends PageManager {
@@ -36,6 +37,7 @@ export default class Product extends PageManager {
         this.productDetails = new ProductDetails($('.productView'), this.context, window.BCData.product_attributes);
 
         videoGallery();
+        optionSelector();
 
         const $reviewForm = classifyForm('.writeReview-form');
         const review = new Review($reviewForm);
