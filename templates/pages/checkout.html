@@ -263,22 +263,74 @@
    BigCommerce gives no admin setting for payment-method order, and
    the hosted checkout puts PayPal on top and pre-selects it. We
    move Credit Card to the top with CSS flex `order` (no DOM moves,
-   so React's own list bookkeeping stays intact) and click it once
-   when the payment list mounts. If the customer picks something
-   else themselves, we never override it.
+   so React's own list bookkeeping stays intact), bold it with a
+   card icon, and select it when the payment list mounts. A single
+   click at mount didn't stick (the list is still initializing and
+   PayPal's default wins), so we keep re-selecting for a short window
+   after mount. If the customer picks something else themselves, we
+   never override it.
    ============================================================ */
 (function () {
   if (!/\/checkout/.test(location.pathname)) return;
 
   var LABEL = /^credit card$/i;   // payment method display name in BC admin
+  var PICK_WINDOW_MS = 10000;     // how long after mount we keep re-selecting
   var userPicked = false;
-  var autoPicked = false;
+  var currentLi = null;
+  var mountedAt = 0;
+
+  var ICON =
+    '<svg width="26" height="20" viewBox="0 0 26 20" aria-hidden="true" focusable="false">' +
+      '<rect x="1" y="1" width="24" height="18" rx="3" fill="none" stroke="#222" stroke-width="2"/>' +
+      '<rect x="1" y="5" width="24" height="4" fill="#222"/>' +
+      '<rect x="4" y="13" width="7" height="2" rx="1" fill="#222"/>' +
+    '</svg>';
 
   var style = document.createElement('style');
   style.textContent =
     '.checkout-step--payment ul.form-checklist{display:flex;flex-direction:column;}' +
-    '.checkout-step--payment li.form-checklist-item[data-bt-cc]{order:-1;}';
+    '.checkout-step--payment li.form-checklist-item[data-bt-cc]{order:-1;}' +
+    // Divider lines: Credit Card was the last item in the DOM, so BC gave it
+    // no line underneath; now it's visually first it needs one. The item that
+    // is now visually last loses its own line (the list box already has one).
+    '.checkout-step--payment li.form-checklist-item[data-bt-cc]{border-top:0 !important;' +
+      'border-bottom:1px solid var(--bt-cc-line,#ddd) !important;}' +
+    '.checkout-step--payment li.form-checklist-item:has(+ li[data-bt-cc]){border-bottom:0 !important;}' +
+    '.checkout-step--payment li[data-bt-cc] label{font-weight:700;font-size:16px;color:#111;}' +
+    '.bt-cc-icon{display:inline-flex;vertical-align:middle;margin:-2px 8px 0 0;}';
   document.head.appendChild(style);
+
+  // Put the icon right before the "Credit Card" text node, wherever it sits
+  // inside the label. Text-node sibling (not ::before) because BC already
+  // draws the radio circle with label::before.
+  // Use the same divider color BC uses between the other rows.
+  function matchLineColor(li) {
+    var ul = li.parentNode;
+    if (!ul || ul.style.getPropertyValue('--bt-cc-line')) return;
+    var other = ul.querySelector('li.form-checklist-item:not([data-bt-cc])');
+    if (!other) return;
+    var cs = getComputedStyle(other);
+    var color = parseFloat(cs.borderBottomWidth) ? cs.borderBottomColor
+              : parseFloat(cs.borderTopWidth) ? cs.borderTopColor : '';
+    if (color) ul.style.setProperty('--bt-cc-line', color);
+  }
+
+  function addIcon(li) {
+    if (li.querySelector('.bt-cc-icon')) return;
+    var label = li.querySelector('label');
+    if (!label) return;
+    var walker = document.createTreeWalker(label, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      if (LABEL.test(node.nodeValue.trim())) {
+        var icon = document.createElement('span');
+        icon.className = 'bt-cc-icon';
+        icon.innerHTML = ICON;
+        node.parentNode.insertBefore(icon, node);
+        return;
+      }
+    }
+  }
 
   function cardItem() {
     var items = document.querySelectorAll('.checkout-step--payment li.form-checklist-item');
@@ -293,20 +345,33 @@
     var li = cardItem();
     if (!li) return;
     if (!li.hasAttribute('data-bt-cc')) li.setAttribute('data-bt-cc', '1');
+    addIcon(li);
+    matchLineColor(li);
 
+    // New payment list (first load, or the customer went back and returned)
+    // starts a fresh selection window.
+    if (li !== currentLi) { currentLi = li; mountedAt = Date.now(); }
+
+    if (userPicked || Date.now() - mountedAt > PICK_WINDOW_MS) return;
     var radio = li.querySelector('input[type="radio"]');
-    if (!radio || radio.checked || userPicked || autoPicked || radio.disabled) return;
-    autoPicked = true;
-    (li.querySelector('label') || radio).click();
+    if (!radio || radio.checked || radio.disabled) return;
+    if (radio.closest('fieldset:disabled')) return; // still initializing
+    radio.click();
   }
 
   // Real customer clicks on any payment radio = their choice, leave it alone.
-  document.addEventListener('change', function (e) {
-    if (e.isTrusted && e.target && e.target.type === 'radio' &&
-        e.target.closest && e.target.closest('.checkout-step--payment')) {
-      userPicked = true;
-    }
+  // (Our own radio.click() is untrusted, so it doesn't count.)
+  document.addEventListener('click', function (e) {
+    if (!e.isTrusted || !e.target || !e.target.closest) return;
+    var item = e.target.closest('.checkout-step--payment li.form-checklist-item');
+    if (item) userPicked = true;
   }, true);
+
+  // Mutations alone can go quiet while the list sits there with PayPal
+  // selected, so poll during the selection window too.
+  setInterval(function () {
+    if (!userPicked && (!currentLi || Date.now() - mountedAt <= PICK_WINDOW_MS)) tick();
+  }, 400);
 
   document.addEventListener('DOMContentLoaded', function () {
     var app = document.getElementById('checkout-app') || document.body;
