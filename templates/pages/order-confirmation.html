@@ -10,6 +10,15 @@
 <script type="text/javascript">
     window.language = {{{langJson 'optimized_checkout'}}};
 </script>
+{{!-- Readability: BigCommerce's hosted checkout sizes all its text in rem off a
+      13px root, too small for our customers. Raising the root on this page only
+      scales the whole confirmation (message, order summary, totals) together.
+      Our header/footer partials use px, so they're unaffected. !important beats
+      BC's own html{font-size:13px}, which loads after this. --}}
+<style>
+    html { font-size: 16px !important; }
+    .product-options { font-size: 14px !important; } /* .846rem would be 13.5px */
+</style>
 <script>
     setInterval(function() {
         var tags = document.getElementsByClassName("orderConfirmation-section");
