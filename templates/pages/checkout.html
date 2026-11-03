@@ -297,7 +297,11 @@
       'border-bottom:1px solid var(--bt-cc-line,#ddd) !important;}' +
     '.checkout-step--payment li.form-checklist-item:has(+ li[data-bt-cc]){border-bottom:0 !important;}' +
     '.checkout-step--payment li[data-bt-cc] label{font-weight:700;font-size:16px;color:#111;}' +
-    '.bt-cc-icon{display:inline-flex;vertical-align:middle;margin:-2px 8px 0 0;}';
+    // Icon + text sit in a flex row so they center on each other; the icon's
+    // svg is block-level so no inline baseline gap pushes it down.
+    '[data-bt-cc-name]{display:inline-flex !important;align-items:center;}' +
+    '.bt-cc-icon{display:inline-flex;align-items:center;margin-right:8px;}' +
+    '.bt-cc-icon svg{display:block;}';
   document.head.appendChild(style);
 
   // Put the icon right before the "Credit Card" text node, wherever it sits
@@ -327,6 +331,10 @@
         icon.className = 'bt-cc-icon';
         icon.innerHTML = ICON;
         node.parentNode.insertBefore(icon, node);
+        // Not on the label itself: BC draws the radio with label::before and
+        // flex would move it.
+        if (node.parentNode !== label) node.parentNode.setAttribute('data-bt-cc-name', '1');
+        else icon.style.verticalAlign = '-4px';
         return;
       }
     }
