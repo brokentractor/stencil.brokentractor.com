@@ -105,6 +105,7 @@ category:
 
         <div class="bt-grid" id="bt-model-grid">
 
+            {{#contains category.description 'bt-spec-links'}}{{else}}
             {{#each category.products}}
             <a href="{{url}}" class="bt-card">
                 <div class="bt-card__img">
@@ -117,11 +118,18 @@ category:
                 </div>
             </a>
             {{/each}}
+            {{/contains}}
 
         </div>
 
         <script>
-        (function(){
+        (function(run){
+            // spec-link categories build their cards from the description, which renders below this script
+            {{#contains category.description 'bt-spec-links'}}
+            if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); return; }
+            {{/contains}}
+            run();
+        })(function(){
             var grid = document.getElementById('bt-model-grid');
             if (!grid) return;
 
@@ -280,7 +288,7 @@ category:
             }
             sel.addEventListener('change', function(){ if (sel.value) jump(sel.value); });
             sel.parentNode.hidden = false;
-        })();
+        });
         </script>
 
     </div>
