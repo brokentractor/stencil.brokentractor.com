@@ -51,6 +51,10 @@ category:
 
         .bt-cat-seo { max-width: 860px; margin: 48px auto 0; padding: 32px 0; border-top: 1px solid #e6e6e6; font-size: 15px; line-height: 1.7; color: #444; }
         .bt-cat-seo h2, .bt-cat-seo h3 { color: #001212; margin-bottom: 10px; }
+        .bt-cat-seo .bt-spec-links { list-style: none; margin: 0 0 24px; padding: 0; }
+        .bt-cat-seo .bt-spec-links li { margin: 0 0 8px; }
+        .bt-cat-seo .bt-spec-links a { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 700; color: #8a6100; text-decoration: underline; }
+        .bt-cat-seo .bt-spec-links img { width: 64px; height: 64px; object-fit: contain; background: #fff; }
 
         @media (max-width: 900px) {
             .bt-model-index .bt-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -120,6 +124,33 @@ category:
         (function(){
             var grid = document.getElementById('bt-model-grid');
             if (!grid) return;
+
+            // Spec Web Pages: the category description holds <ul class="bt-spec-links"><li><a href="/specs/..."><img>Name</a></li>...</ul>.
+            // When it's there, it replaces the product cards (spec products are being retired).
+            var specList = document.querySelector('.bt-cat-seo .bt-spec-links');
+            if (specList) {
+                var links = [].slice.call(specList.querySelectorAll('a[href]'));
+                if (links.length) {
+                    grid.innerHTML = '';
+                    links.forEach(function(a){
+                        var img = a.querySelector('img');
+                        var name = a.textContent.trim();
+                        var card = document.createElement('a');
+                        card.className = 'bt-card';
+                        card.href = a.getAttribute('href');
+                        card.innerHTML = '<div class="bt-card__img"><img loading="lazy" alt=""><span class="bt-card__cat">Model Guide</span></div>' +
+                            '<div class="bt-card__body"><h3 class="bt-card__title"></h3>' +
+                            '<span class="bt-card__cta">Read More <span class="bt-card__cta-arrow" aria-hidden="true">&rarr;</span></span></div>';
+                        var ci = card.querySelector('img');
+                        ci.src = img ? img.getAttribute('src') : '{{cdn "img/noimageavailable.png"}}';
+                        ci.alt = name;
+                        card.querySelector('.bt-card__title').textContent = name;
+                        grid.appendChild(card);
+                    });
+                    specList.hidden = true;
+                }
+            }
+
             var cards = [].slice.call(grid.querySelectorAll('.bt-card'));
             if (!cards.length) return;
 

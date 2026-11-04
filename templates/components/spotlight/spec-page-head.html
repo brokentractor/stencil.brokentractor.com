@@ -1,0 +1,26 @@
+{{!-- Head tags for spec Web Pages (/specs/...). A spec page is any Web Page whose body
+      contains the data-bt-spec-page marker. data-bt-spec-preview = test page, keep it out of Google. --}}
+{{#contains page.content 'data-bt-spec-preview'}}
+<meta name="robots" content="noindex, nofollow">
+{{/contains}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{page.title}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Broken Tractor",
+    "url": "https://www.brokentractor.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn11.bigcommerce.com/s-knh0cnq2u8/images/stencil/original/image-manager/broken-tractor-badge-full-color-rgb-1920px-w-72ppi.png"
+    }
+  }
+}
+</script>

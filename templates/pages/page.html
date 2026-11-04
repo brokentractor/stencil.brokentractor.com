@@ -1,5 +1,21 @@
+{{#partial "head"}}
+{{#contains page.content 'data-bt-spec-page'}}
+{{> components/spotlight/spec-page-head}}
+{{/contains}}
+{{/partial}}
+
 {{#partial "page"}}
 
+{{#contains page.content 'data-bt-spec-page'}}
+{{!-- Spec Web Page (/specs/...): body holds breadcrumbs + the spotlight card, same look as the old spec products --}}
+{{> components/spotlight/progress-bar}}
+{{{page.content}}}
+<script>
+// the body's breadcrumbs land inside .container; move them up beside it so they line up exactly like product-page crumbs
+(function(){var row=document.querySelector('.container > .breadcrumbs-row');if(row){var c=row.parentNode;c.parentNode.insertBefore(row,c);}})();
+</script>
+{{> components/spotlight/newsletter}}
+{{else}}
 <main class="page">
 
     <h1 class="page-heading">{{ page.title }}</h1>
@@ -33,7 +49,12 @@
         </ul>
     {{/if}}
 </main>
+{{/contains}}
 
 {{/partial}}
 
 {{> layout/base}}
+
+{{#contains page.content 'data-bt-spec-page'}}
+{{> components/spotlight/scripts}}
+{{/contains}}
