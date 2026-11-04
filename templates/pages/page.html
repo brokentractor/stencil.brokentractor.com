@@ -4,17 +4,28 @@
 {{/contains}}
 {{/partial}}
 
+{{!-- description-style spec pages reuse the product page's look, which keys off body.pvwrap --}}
+{{#partial "pagename"}}{{#contains page.content 'data-bt-spec-desc'}}pvwrap{{/contains}}{{/partial}}
+
 {{#partial "page"}}
 
 {{#contains page.content 'data-bt-spec-page'}}
-{{!-- Spec Web Page (/specs/...): body holds breadcrumbs + the spotlight card, same look as the old spec products --}}
+{{!-- Spec Web Page (/specs/...): body holds breadcrumbs + the page content, same look as the old spec products.
+      Two kinds: spotlight (hand-built article) and desc (product-style layout from the old product description). --}}
+{{#contains page.content 'data-bt-spec-desc'}}
+{{{page.content}}}
+{{> components/spotlight/spec-desc-gallery}}
+{{else}}
 {{> components/spotlight/progress-bar}}
 {{{page.content}}}
+{{/contains}}
 <script>
 // the body's breadcrumbs land inside .container; move them up beside it so they line up exactly like product-page crumbs
 (function(){var row=document.querySelector('.container > .breadcrumbs-row');if(row){var c=row.parentNode;c.parentNode.insertBefore(row,c);}})();
 </script>
+{{#contains page.content 'data-bt-spec-desc'}}{{else}}
 {{> components/spotlight/newsletter}}
+{{/contains}}
 {{else}}
 <main class="page">
 

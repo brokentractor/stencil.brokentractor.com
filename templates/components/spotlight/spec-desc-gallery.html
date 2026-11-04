@@ -1,0 +1,57 @@
+{{!-- Image gallery for description-style spec Web Pages. The product page gets this from the theme's
+      product JS + slick; Web Pages don't load that, so this is a small stand-in: 4 thumbnails at a time,
+      arrows when there are more (the row slides), click a thumbnail to swap the main image. --}}
+<style>
+.pvwrap .productView-thumbnails.bt-sg { display: flex; flex-wrap: nowrap; margin: 0; padding: 0; list-style: none; transition: transform .3s ease; }
+.pvwrap .productView-thumbnails.bt-sg .productView-thumbnail { flex: 0 0 25%; max-width: 25%; padding: 0 6px; box-sizing: border-box; }
+.pvwrap .bt-sg-wrap { position: relative; }
+.pvwrap .bt-sg-clip { overflow: hidden; margin: 0 28px; }
+.pvwrap .bt-sg-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: 0; font-size: 26px; line-height: 1; color: #1a1a1a; cursor: pointer; padding: 4px; }
+.pvwrap .bt-sg-nav[disabled] { color: #ccc; cursor: default; }
+.pvwrap .bt-sg-prev { left: 0; }
+.pvwrap .bt-sg-next { right: 0; }
+/* on product pages the price box under the floated description pushes the help box down; no price box here */
+.pvwrap #pv-help { clear: both; margin-top: 10px; }
+</style>
+<script>
+(function () {
+    var list = document.querySelector('.productView-images .productView-thumbnails');
+    var main = document.querySelector('.productView-images [data-main-image]');
+    if (!list || !main) return;
+    list.classList.add('bt-sg');
+    list.addEventListener('click', function (e) {
+        var a = e.target.closest('.productView-thumbnail-link');
+        if (!a) return;
+        e.preventDefault();
+        main.src = a.getAttribute('data-bt-zoom') || a.href;
+        var img = a.querySelector('img');
+        if (img) { main.alt = img.alt; main.title = img.title; }
+        [].forEach.call(list.querySelectorAll('.productView-thumbnail-link'), function (x) { x.classList.toggle('is-active', x === a); });
+    });
+    var first = list.querySelector('.productView-thumbnail-link');
+    if (first) first.classList.add('is-active');
+    var count = list.children.length;
+    if (count <= 4) return;
+    var wrap = document.createElement('div'), clip = document.createElement('div');
+    wrap.className = 'bt-sg-wrap';
+    clip.className = 'bt-sg-clip';
+    list.parentNode.insertBefore(wrap, list);
+    wrap.appendChild(clip);
+    clip.appendChild(list);
+    var prev = document.createElement('button'), next = document.createElement('button');
+    prev.type = next.type = 'button';
+    prev.className = 'bt-sg-nav bt-sg-prev'; prev.setAttribute('aria-label', 'Previous images'); prev.innerHTML = '&lt;';
+    next.className = 'bt-sg-nav bt-sg-next'; next.setAttribute('aria-label', 'Next images'); next.innerHTML = '&gt;';
+    wrap.appendChild(prev); wrap.appendChild(next);
+    var pos = 0, max = count - 4; // pos = index of the left-most visible thumbnail
+    function step(dir) {
+        pos = Math.max(0, Math.min(max, pos + dir));
+        list.style.transform = 'translateX(' + (-25 * pos) + '%)';
+        prev.disabled = pos === 0;
+        next.disabled = pos === max;
+    }
+    prev.addEventListener('click', function () { step(-1); });
+    next.addEventListener('click', function () { step(1); });
+    step(0);
+})();
+</script>
