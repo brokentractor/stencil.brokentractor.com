@@ -1,4 +1,36 @@
 {{#partial "page"}}
+<style>
+/* Readability (Nov 2026): cart text was 13-14px; customers are 50+. Cart page only. */
+main[data-cart] .warning-message p,
+main[data-cart] .collapse-content p,
+main[data-cart] .acc-list a,
+main[data-cart] .cart-header-item,
+main[data-cart] .cart-item-brand,
+main[data-cart] .cart-item-value,
+main[data-cart] .cart-total-label,
+main[data-cart] .cart-total-value,
+main[data-cart] .cart-total-label strong,
+main[data-cart] .cart-total-value span,
+main[data-cart] .shipping-estimate-show,
+main[data-cart] .gift-certificate-add,
+main[data-cart] .coupon-code-add,
+main[data-cart] .form-label,
+main[data-cart] .or-use-label,
+main[data-cart] select,
+main[data-cart] .form-input { font-size: 16px !important; }
+main[data-cart] .cart-item-brand { color: #444 !important; }
+main[data-cart] .button--small { font-size: 15px !important; }
+main[data-cart] .cart-actions .button {
+    font-size: 17px !important;
+    height: auto !important;
+    min-height: 48px;
+    line-height: 1.3 !important;
+    padding: 13px 14px !important;
+    white-space: normal !important;
+}
+main[data-cart] .cart-total-grandTotal,
+main[data-cart] .cart-total-grandTotal span { font-size: 20px !important; }
+</style>
 <div class="page ">
 
     <main class="page-content" data-cart>
