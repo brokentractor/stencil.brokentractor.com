@@ -422,6 +422,31 @@
 })();
 </script>
 
+<script>
+/* ============================================================
+   Broken Tractor - hide a harmless PayPal error popup (Nov 2026).
+   On some loads (reliably when checkout opens in a new tab) PayPal's
+   script tries to draw its button into the Place Order <button>
+   while Credit Card is being pre-selected, and BigCommerce shows a
+   "Something's gone wrong / Do not render the PayPal button into a
+   button element" popup. Nothing is actually broken (PayPal still
+   works if the customer picks it), so close only THAT popup.
+   Any other checkout error popup is left alone.
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+  var MSG = /render the PayPal button into a button element/i;
+  setInterval(function () {
+    var modals = document.querySelectorAll('.modalOverlay--afterOpen');
+    for (var i = 0; i < modals.length; i++) {
+      if (!MSG.test(modals[i].textContent || '')) continue;
+      var ok = modals[i].querySelector('button');
+      if (ok) ok.click();
+    }
+  }, 250);
+})();
+</script>
+
 
 {{> components/bt-checkout/footer }}
 
