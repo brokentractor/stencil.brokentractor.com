@@ -232,6 +232,8 @@ export default class ProductDetails {
                 });
             }
 
+            this.trackAddToCart(form);
+
             // Open preview modal and update content
             if (this.previewModal) {
                 this.previewModal.open();
@@ -243,6 +245,32 @@ export default class ProductDetails {
                 this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
             }
         });
+    }
+
+    /**
+     * Send a GA4 add_to_cart event (Nov 2026). This theme predates BigCommerce's
+     * built-in GA4 cart events, so add-to-cart was never recorded. Sent ONLY to the
+     * Broken Tractor GA4 property, not Google Ads, so Click Here's ad bidding is unaffected.
+     *
+     * @param {HTMLFormElement} form
+     */
+    trackAddToCart(form) {
+        try {
+            if (typeof window.gtag !== 'function') return;
+            const qty = parseInt($('input[name="qty[]"]', form).val(), 10) || 1;
+            const sku = $.trim($('[data-product-sku]').first().text());
+            const name = $.trim($('h1').first().text()) || document.title;
+            const price = parseFloat($('meta[itemprop="price"]').attr('content')) || 0;
+            const brand = $.trim($('.productView-brand').first().text());
+            window.gtag('event', 'add_to_cart', {
+                send_to: 'G-3HMBV7RSL0',
+                currency: 'USD',
+                value: price * qty,
+                items: [{ item_id: sku, item_name: name, item_brand: brand, price, quantity: qty }],
+            });
+        } catch (e) {
+            // tracking must never break add-to-cart
+        }
     }
 
     /**
