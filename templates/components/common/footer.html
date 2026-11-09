@@ -250,7 +250,11 @@ function btNormalizeModelSpacing(q) {
         btMMTrack('search_zero_retry_shown', { search_original: from, search_retry: q });
         return;
     }
-    if (q.split(/\s+/).length < 3) return;
+    // Part numbers typed with dashes/dots/slashes/spaces ("338-1462", "jd4219t-ce") that find
+    // nothing get one retry with those characters removed ("3381462").
+    var qWords = q.split(/\s+/);
+    var isPn = qWords.length <= 2 && /[-.\/\s]/.test(q) && qWords.every(function (w) { return /\d/.test(w); });
+    if (!isPn && qWords.length < 3) return;
 
     var STOP = ['for','a','an','the','on','of','to','my','with','and','in','at','from','fits','fit','fitting','that','this','is','am','are','i','im','need','needs','looking','find','trying','want','part','parts','number','num','no','oem','new','used','please','price','precio','sale','right','left','side','sides','both','hand','rh','lh','year','model','serial','equipment','machine','what','where','which','does','do','you','have','compatible'];
     var GENERIC = ['backhoe','backhoes','loader','loaders','tractor','tractors','dozer','dozers','crawler','excavator','assembly','assy','set','complete','replacement','series','ii','2wd','4wd','case'];
@@ -280,7 +284,7 @@ function btNormalizeModelSpacing(q) {
     }
     count(q).then(function (n) {
         if (n > 0) return;
-        var list = candidates(q);
+        var list = isPn ? [q.toLowerCase().replace(/[-.\/\s]/g, '')] : candidates(q);
         (function next(i) {
             if (i >= list.length) return;
             count(list[i]).then(function (m) {
