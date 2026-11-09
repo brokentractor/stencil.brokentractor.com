@@ -151,6 +151,12 @@ html {
     font-size: 16px !important;
 }
 
+// Payment step note "After clicking Continue, order details will no longer be
+// editable." has an inline font-size:14px set by the payment form.
+.checkout-step--payment .checkout-form > div[style*="font-size: 14px"] {
+    font-size: 16px !important;
+}
+
 .bt-checkout-footer-links {
     font-family: "industry", proxima-nova, arial, sans-serif;
     font-size: 15px;
