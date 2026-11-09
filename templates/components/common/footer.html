@@ -241,6 +241,25 @@ function btNormalizeModelSpacing(q) {
     var params = new URLSearchParams(window.location.search);
     var q = (params.get('search_query') || '').trim();
     var from = params.get('bt_from');
+
+    // Help box shown when a search still finds nothing (after any retry): points the
+    // customer to call/text or the Parts Request form so a dead-end search can become a lead.
+    var helpShown = false;
+    function showHelp() {
+        if (helpShown || !q) return;
+        helpShown = true;
+        var box = document.createElement('div');
+        box.className = 'bt-noresults-help';
+        box.style.cssText = 'font-size:17px;line-height:1.5;color:#222;background:#fff8e1;border:1px solid #e0c060;padding:14px 18px;margin:0 0 16px;';
+        box.innerHTML = '<p style="margin:0 0 6px;font-size:19px;font-weight:700;">Can\'t find your part? We may still be able to get it.</p>' +
+            '<p style="margin:0;">Call or text <a class="bt-help-phone" href="tel:+12256599402" style="font-weight:700;color:#8a6100;text-decoration:underline;">(225) 659-9402</a> with the part number, or send us a ' +
+            '<a class="bt-help-request" href="/pages/parts-request/" style="font-weight:700;color:#8a6100;text-decoration:underline;">Parts Request</a>.</p>';
+        landing.parentNode.insertBefore(box, landing);
+        btMMTrack('search_no_results_help_shown', { search_term: q });
+        box.querySelector('.bt-help-phone').addEventListener('click', function () { btMMTrack('search_no_results_help_call', { search_term: q }); });
+        box.querySelector('.bt-help-request').addEventListener('click', function () { btMMTrack('search_no_results_help_request', { search_term: q }); });
+    }
+
     if (from) {
         var note = document.createElement('p');
         note.className = 'bt-retry-note';
@@ -254,7 +273,15 @@ function btNormalizeModelSpacing(q) {
     // nothing get one retry with those characters removed ("3381462").
     var qWords = q.split(/\s+/);
     var isPn = qWords.length <= 2 && /[-.\/\s]/.test(q) && qWords.every(function (w) { return /\d/.test(w); });
-    if (!isPn && qWords.length < 3) return;
+    if (!isPn && qWords.length < 3) {
+        // No retry for short searches: just watch Klevu's results for its "no results" message.
+        var watch = new MutationObserver(function () {
+            if (/no results found/i.test(landing.textContent)) { watch.disconnect(); showHelp(); }
+        });
+        watch.observe(landing, { childList: true, subtree: true });
+        setTimeout(function () { watch.disconnect(); }, 15000);
+        return;
+    }
 
     var STOP = ['for','a','an','the','on','of','to','my','with','and','in','at','from','fits','fit','fitting','that','this','is','am','are','i','im','need','needs','looking','find','trying','want','part','parts','number','num','no','oem','new','used','please','price','precio','sale','right','left','side','sides','both','hand','rh','lh','year','model','serial','equipment','machine','what','where','which','does','do','you','have','compatible'];
     var GENERIC = ['backhoe','backhoes','loader','loaders','tractor','tractors','dozer','dozers','crawler','excavator','assembly','assy','set','complete','replacement','series','ii','2wd','4wd','case'];
@@ -286,13 +313,13 @@ function btNormalizeModelSpacing(q) {
         if (n > 0) return;
         var list = isPn ? [q.toLowerCase().replace(/[-.\/\s]/g, '')] : candidates(q);
         (function next(i) {
-            if (i >= list.length) return;
+            if (i >= list.length) { showHelp(); return; }
             count(list[i]).then(function (m) {
                 if (m > 0 && m <= 60) {
                     window.location.replace('/search.php?search_query=' + encodeURIComponent(list[i]) +
                         '&bt_from=' + encodeURIComponent(q));
                 } else { next(i + 1); }
-            }).catch(function () {});
+            }).catch(function () { showHelp(); });
         })(0);
     }).catch(function () {});
 })();
