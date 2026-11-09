@@ -148,9 +148,9 @@
     wrap.innerHTML =
       '<div class="bt-blind-dropship-box" style="margin:4px 0 8px;">' +
         '<label for="' + BOX_ID + '" ' +
-               'style="display:flex;align-items:flex-start;gap:.5rem;cursor:pointer;margin:0;font-size:13px;color:#333;">' +
+               'style="display:flex;align-items:flex-start;gap:.5rem;cursor:pointer;margin:0;font-size:15px;color:#333;">' +
           '<input type="checkbox" id="' + BOX_ID + '" ' +
-                 'style="width:16px;height:16px;margin:.1rem .1rem 0 0;flex:0 0 auto;cursor:pointer;">' +
+                 'style="width:18px;height:18px;margin:.1rem .1rem 0 0;flex:0 0 auto;cursor:pointer;">' +
           '<span>Don\'t want an invoice included? Check here and we\'ll leave out the invoice. ' +
           '<span style="color:#777;">(Blind drop ship &mdash; common for dealers and resellers)</span></span>' +
         '</label>' +
@@ -191,7 +191,7 @@
     if (!btn || !btn.parentNode) return;
     var line = document.createElement('div');
     line.id = 'bt-secure-line';
-    line.style.cssText = 'width:100%;flex-basis:100%;text-align:center;font-size:13px;color:#555;margin-top:10px;';
+    line.style.cssText = 'width:100%;flex-basis:100%;text-align:center;font-size:15px;color:#444;margin-top:10px;';
     line.innerHTML = '&#128274; Secure encrypted checkout &mdash; your information is protected.';
     btn.parentNode.insertBefore(line, btn.nextSibling);
   }
@@ -444,6 +444,45 @@
       if (ok) ok.click();
     }
   }, 250);
+})();
+</script>
+
+<script>
+/* ============================================================
+   Broken Tractor - make the terms checkbox easy to see (Nov 2026).
+   BigCommerce draws "Yes, I agree with the above terms and conditions"
+   at 13px with a faint 16px box. Our customers are 50+, so enlarge the
+   text and box and put it in a yellow callout. Found by its text, so
+   it doesn't depend on BigCommerce's field id.
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+  var style = document.createElement('style');
+  style.textContent =
+    '.bt-terms-label{font-size:18px !important;font-weight:700 !important;color:#111 !important;' +
+      'line-height:28px !important;padding-left:40px !important;min-height:28px;display:inline-block !important;}' +
+    '.bt-terms-label::before{width:26px !important;height:26px !important;top:1px !important;left:0 !important;' +
+      'border:2px solid #333 !important;border-radius:4px !important;background:#fff;}' +
+    '.bt-terms-label::after{width:18px !important;height:18px !important;top:5px !important;left:4px !important;' +
+      'background-size:18px 18px !important;background-position:center !important;}' +
+    '.bt-terms-wrap{padding:12px 14px;border:2px solid #f1b300;background:#fff8e1;border-radius:4px;margin:10px 0 6px;}' +
+    '.bt-terms-req{color:#b00000;font-weight:700;white-space:nowrap;}';
+  document.head.appendChild(style);
+  var RE = /I agree with the above terms/i;
+  setInterval(function () {
+    var labels = document.querySelectorAll('.checkout-step--payment label:not(.bt-terms-label)');
+    for (var i = 0; i < labels.length; i++) {
+      if (!RE.test(labels[i].textContent || '')) continue;
+      labels[i].classList.add('bt-terms-label');
+      if (!labels[i].querySelector('.bt-terms-req')) {
+        var req = document.createElement('span');
+        req.className = 'bt-terms-req';
+        req.textContent = ' (required)';
+        labels[i].appendChild(req);
+      }
+      if (labels[i].parentElement) labels[i].parentElement.classList.add('bt-terms-wrap');
+    }
+  }, 500);
 })();
 </script>
 
