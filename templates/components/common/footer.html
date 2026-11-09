@@ -229,6 +229,70 @@ function btNormalizeModelSpacing(q) {
     }
 })();
 
+// Zero-result retry (Nov 2026). Klevu needs every word to match, so one extra word
+// ("1997 case 580 super l fuel pump") empties a search we have parts for. ONLY when a
+// 3+ word search finds nothing, retry without years/filler words, then without generic
+// words (backhoe, assembly, case...). Accept a retry only if it finds 1-60 products (a
+// focused set, not fuzzy junk); otherwise leave the normal "no results" page alone.
+// Searches that already return results are never touched.
+(function () {
+    var landing = document.querySelector('.klevuLanding');
+    if (!landing) return;
+    var params = new URLSearchParams(window.location.search);
+    var q = (params.get('search_query') || '').trim();
+    var from = params.get('bt_from');
+    if (from) {
+        var note = document.createElement('p');
+        note.className = 'bt-retry-note';
+        note.style.cssText = 'font-size:16px;line-height:1.5;color:#222;background:#fff8e1;border:1px solid #e0c060;padding:10px 14px;margin:0 0 16px;';
+        note.textContent = 'We could not find an exact match for "' + from + '". Showing results for "' + q + '" instead.';
+        landing.parentNode.insertBefore(note, landing);
+        btMMTrack('search_zero_retry_shown', { search_original: from, search_retry: q });
+        return;
+    }
+    if (q.split(/\s+/).length < 3) return;
+
+    var STOP = ['for','a','an','the','on','of','to','my','with','and','in','at','from','fits','fit','fitting','that','this','is','am','are','i','im','need','needs','looking','find','trying','want','part','parts','number','num','no','oem','new','used','please','price','precio','sale','right','left','side','sides','both','hand','rh','lh','year','model','serial','equipment','machine','what','where','which','does','do','you','have','compatible'];
+    var GENERIC = ['backhoe','backhoes','loader','loaders','tractor','tractors','dozer','dozers','crawler','excavator','assembly','assy','set','complete','replacement','series','ii','2wd','4wd','case'];
+    function candidates(s) {
+        var words = s.toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, ' ')
+            .replace(/\b(19|20)\d{2}\b/g, ' ')
+            .replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+        var out = [];
+        function push(arr) {
+            var c = arr.join(' ');
+            if (arr.length >= 2 && c !== s.toLowerCase() && out.indexOf(c) === -1) out.push(c);
+        }
+        var a = words.filter(function (w) { return STOP.indexOf(w) === -1; });
+        push(a);
+        push(a.filter(function (w) { return GENERIC.indexOf(w) === -1; }));
+        return out;
+    }
+    function count(term) {
+        return fetch('https://uscs33v2.ksearchnet.com/cs/v2/search', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ context: { apiKeys: ['klevu-171839235759717388'] },
+                recordQueries: [{ id: 'bt', typeOfRequest: 'SEARCH',
+                    settings: { query: { term: term }, limit: 1, typeOfRecords: ['KLEVU_PRODUCT'] } }] })
+        }).then(function (r) { return r.json(); })
+          .then(function (d) { return d.queryResults[0].meta.totalResultsFound || 0; });
+    }
+    count(q).then(function (n) {
+        if (n > 0) return;
+        var list = candidates(q);
+        (function next(i) {
+            if (i >= list.length) return;
+            count(list[i]).then(function (m) {
+                if (m > 0 && m <= 60) {
+                    window.location.replace('/search.php?search_query=' + encodeURIComponent(list[i]) +
+                        '&bt_from=' + encodeURIComponent(q));
+                } else { next(i + 1); }
+            }).catch(function () {});
+        })(0);
+    }).catch(function () {});
+})();
+
 (function () {
     try {
         var machines = JSON.parse(localStorage.getItem('bt_machines') || '[]');
