@@ -391,6 +391,37 @@
 })();
 </script>
 
+<script>
+/* ============================================================
+   Broken Tractor - bring the card form into view (Nov 2026).
+   EBizCharge opens its card form (#ifr-parent / #ebiz_pay_frame)
+   inside the Credit Card row at the TOP of the payment list and dims
+   the page (#ifr-overlay), but the customer just clicked Continue at
+   the BOTTOM. They saw a dark screen, never saw the form, and orders
+   sat "Awaiting Payment" (e.g. BC order 212990). When the form opens,
+   scroll it up to the customer.
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+  var wasOpen = false;
+  function isOpen() {
+    var ov = document.getElementById('ifr-overlay');
+    var box = document.getElementById('ifr-parent');
+    return !!(ov && box && getComputedStyle(ov).display !== 'none' && box.offsetHeight > 100);
+  }
+  setInterval(function () {
+    var open = isOpen();
+    if (open && !wasOpen) {
+      var box = document.getElementById('ifr-parent');
+      var row = box.closest('li') || box;
+      var top = row.getBoundingClientRect().top + window.pageYOffset - 16;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+    wasOpen = open;
+  }, 300);
+})();
+</script>
+
 
 {{> components/bt-checkout/footer }}
 
