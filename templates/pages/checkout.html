@@ -396,6 +396,44 @@
 
 {{{ footer.scripts }}}
 
+<script>
+// GA4 begin_checkout (Nov 2026). The checkout page already fires begin_checkout, but it
+// runs before the GA4 tag (G-3HMBV7RSL0) is configured, so only Google Ads received it.
+// Wait for the GA4 config, then send begin_checkout to GA4 ONLY (Ads is left unchanged).
+(function () {
+  if (!/\/checkout/.test(location.pathname) || /order-confirmation/.test(location.pathname)) return;
+  var GA4 = 'G-3HMBV7RSL0', tries = 0;
+  function ga4Ready() {
+    return typeof window.gtag === 'function' && (window.dataLayer || []).some(function (e) {
+      return e && e[0] === 'config' && e[1] === GA4;
+    });
+  }
+  function send() {
+    fetch('/api/storefront/carts', { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (carts) {
+        var c = carts && carts[0];
+        if (!c) return;
+        var li = c.lineItems || {};
+        var all = [].concat(li.physicalItems || [], li.digitalItems || []);
+        window.gtag('event', 'begin_checkout', {
+          send_to: GA4,
+          currency: (c.currency && c.currency.code) || 'USD',
+          value: c.cartAmount,
+          items: all.map(function (i) {
+            return { item_id: i.sku, item_name: i.name, item_brand: i.brand, price: i.salePrice, quantity: i.quantity };
+          }),
+        });
+      })
+      .catch(function () {});
+  }
+  (function wait() {
+    if (ga4Ready()) { send(); return; }
+    if (++tries < 40) setTimeout(wait, 500);
+  })();
+})();
+</script>
+
 {{/partial}}
 
 {{> layout/empty}}
