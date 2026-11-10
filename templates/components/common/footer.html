@@ -161,6 +161,13 @@ window.btMMTrack = function (name, params) {
         var evt = { event: name };
         for (var k in params) evt[k] = params[k];
         window.dataLayer.push(evt);
+        // GTM only forwards ^mm_ events to GA4. Search events (no-results help box,
+        // zero-result retry; Nov 2026) go straight to GA4 instead. GA4 only, not Ads.
+        if (/^search_/.test(name) && typeof window.gtag === 'function') {
+            var p = { send_to: 'G-3HMBV7RSL0' };
+            for (var j in params) p[j] = params[j];
+            window.gtag('event', name, p);
+        }
     } catch (e) {}
 };
 
@@ -300,22 +307,52 @@ function btNormalizeModelSpacing(q) {
         push(a.filter(function (w) { return GENERIC.indexOf(w) === -1; }));
         return out;
     }
-    function count(term) {
+    // Part words the shopper typed (no model numbers, years, or filler). Nov 2026: a
+    // retry is only used if its top results actually name the part they asked for,
+    // e.g. "wire harness 580L" must not turn into a control cable or AC blower.
+    var FILLER = ['kit','kits','rebuild','rebuilt','repair','replace','genuine','original','heavy','duty','upper','lower','front','rear','inner','outer','one','two','three','super','nseries','john','deere','ford','holland','cat','caterpillar','bobcat','kubota','komatsu','international','farmall','landscaper','landscapers','landscrapers','forklift','forklifts','wheel'];
+    function keyWords(s) {
+        var out = [];
+        s.toLowerCase().replace(/[^a-z0-9\s-]/g, ' ').replace(/\b(19|20)\d{2}\b/g, ' ')
+          .split(/\s+/).forEach(function (w) {
+            if (w.length < 3 || /\d/.test(w) || STOP.indexOf(w) > -1 || GENERIC.indexOf(w) > -1 || FILLER.indexOf(w) > -1) return;
+            w = w.replace(/(es|s)$/, '');
+            if (out.indexOf(w) === -1) out.push(w);
+        });
+        return out;
+    }
+    // Main noun (last part word) must appear in a top-5 result name, plus at least half the part words.
+    function namesMatch(names, keys) {
+        if (!keys.length) return true;
+        var head = keys[keys.length - 1], need = Math.ceil(keys.length / 2);
+        return names.some(function (nm) {
+            if (nm.indexOf(head) === -1) return false;
+            return keys.filter(function (k) { return nm.indexOf(k) > -1; }).length >= need;
+        });
+    }
+    function look(term) {
         return fetch('https://uscs33v2.ksearchnet.com/cs/v2/search', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ context: { apiKeys: ['klevu-171839235759717388'] },
                 recordQueries: [{ id: 'bt', typeOfRequest: 'SEARCH',
-                    settings: { query: { term: term }, limit: 1, typeOfRecords: ['KLEVU_PRODUCT'] } }] })
+                    settings: { query: { term: term }, limit: 5, typeOfRecords: ['KLEVU_PRODUCT'] } }] })
         }).then(function (r) { return r.json(); })
-          .then(function (d) { return d.queryResults[0].meta.totalResultsFound || 0; });
+          .then(function (d) {
+              var res = d.queryResults[0];
+              return { n: res.meta.totalResultsFound || 0,
+                       names: (res.records || []).map(function (x) { return (x.name || '').toLowerCase(); }) };
+          });
     }
+    function count(term) { return look(term).then(function (r) { return r.n; }); }
     count(q).then(function (n) {
         if (n > 0) return;
         var list = isPn ? [q.toLowerCase().replace(/[-.\/\s]/g, '')] : candidates(q);
+        var keys = isPn ? [] : keyWords(q);
         (function next(i) {
             if (i >= list.length) { showHelp(); return; }
-            count(list[i]).then(function (m) {
-                if (m > 0 && m <= 60) {
+            look(list[i]).then(function (r) {
+                var m = r.n;
+                if (m > 0 && m <= 60 && namesMatch(r.names, keys)) {
                     window.location.replace('/search.php?search_query=' + encodeURIComponent(list[i]) +
                         '&bt_from=' + encodeURIComponent(q));
                 } else { next(i + 1); }

@@ -403,13 +403,63 @@
    ============================================================ */
 (function () {
   if (!/\/checkout/.test(location.pathname)) return;
+  // Phones (Nov 10 2026): EBizCharge's card form is a fixed 700px iframe with its own
+  // inner scrollbar. On narrow screens the fields stack and Pay Now ends up hidden
+  // below the frame's edge; swiping scrolls the page, not the frame, so Android
+  // customers never reached Pay Now (orders left in Awaiting Payment). Make the frame
+  // tall enough that the page scroll reaches everything.
+  // It's the FRAME's width that matters, not the screen's: on 1024px tablets/laptops the
+  // frame sits in a ~430px column and stacks too. Under ~640px wide the fields stack
+  // (measured: 218-426px stacked, 622px side by side), so give it 1100px; else 700px.
+  function sizeFrame() {
+    var fr = document.getElementById('ebiz_pay_frame');
+    if (!fr || !fr.offsetWidth) return;
+    var want = fr.offsetWidth < 640 ? '1100px' : '700px';
+    if (fr.style.getPropertyValue('height') !== want) fr.style.setProperty('height', want, 'important');
+  }
   var wasOpen = false;
   function isOpen() {
     var ov = document.getElementById('ifr-overlay');
     var box = document.getElementById('ifr-parent');
     return !!(ov && box && getComputedStyle(ov).display !== 'none' && box.offsetHeight > 100);
   }
+  // EBizCharge's button just says CONTINUE, so customers thought it finished the
+  // order. Say what actually comes next (Nov 2026, Michael).
+  var CC_LABEL = 'Continue to Enter Card';
+  function relabel() {
+    var b = document.getElementById('ebiz-continue-payment');
+    // Only replace EBiz's plain "Continue"; leave any other state it sets alone.
+    if (b && /^continue$/i.test(b.textContent.trim())) b.textContent = CC_LABEL;
+  }
+  // Note under the Credit Card option explaining the next step (Nov 2026, Michael).
+  // Shown while Credit Card is selected and the card form isn't open yet.
+  var noteCss = document.createElement('style');
+  noteCss.textContent = '#bt-cc-next{font-size:16px;line-height:1.45;color:#222;background:#fff8e1;' +
+    'border-left:4px solid #f1b300;padding:10px 12px;margin:4px 16px 14px 16px;}';
+  document.head.appendChild(noteCss);
+  function ccNote() {
+    var li = document.querySelector('.checkout-step--payment li[data-bt-cc]');
+    var note = document.getElementById('bt-cc-next');
+    var radio = li && li.querySelector('input[type="radio"]');
+    var box = document.getElementById('ifr-parent');
+    var formOpen = box && box.offsetHeight > 100;
+    var show = !!(radio && radio.checked && !formOpen);
+    if (show && (!note || !li.contains(note))) {
+      if (note) note.parentNode.removeChild(note);
+      note = document.createElement('div');
+      note.id = 'bt-cc-next';
+      note.innerHTML = 'After you tap <strong>Continue to Enter Card</strong>, a secure card form will open ' +
+        'right here. Enter your card and tap <strong>Pay Now</strong> to finish your order.';
+      var label = li.querySelector('.form-checklist-header') || li.firstElementChild;
+      label.parentNode.insertBefore(note, label.nextSibling);
+    } else if (!show && note) {
+      note.parentNode.removeChild(note);
+    }
+  }
   setInterval(function () {
+    sizeFrame();
+    relabel();
+    ccNote();
     var open = isOpen();
     if (open && !wasOpen) {
       var box = document.getElementById('ifr-parent');
@@ -419,6 +469,58 @@
     }
     wasOpen = open;
   }, 300);
+})();
+</script>
+
+<script>
+/* ============================================================
+   Broken Tractor - Place Order safety net for Credit Card (Nov 2026).
+   "Credit Card" is BigCommerce's offline method (cod) driven by
+   EBizCharge. If BigCommerce's own Place Order button is ever shown
+   and pressed while Credit Card is selected, BigCommerce finalizes an
+   UNPAID order (Awaiting Payment + "Thanks for your order" email) and
+   EBizCharge never sees it (orders 212396, 213180). EBizCharge's own
+   "Continue to Enter Card" button is the only way to pay by card, so:
+   while Credit Card is selected, hide the native button and refuse any
+   click/submit through it. Skipped when the order total is $0 (store
+   credit / gift certificate), where EBizCharge itself uses the native
+   button.
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+  function codSelected() {
+    var r = document.getElementById('radio-cod');
+    return !!(r && r.checked);
+  }
+  function zeroTotal() {
+    var t = document.querySelector('.cart-total-grandTotal');
+    return !!(t && /\$0\.00\b/.test(t.textContent || ''));
+  }
+  function guardActive() { return codSelected() && !zeroTotal(); }
+  function hideNative() {
+    var nb = document.getElementById('checkout-payment-continue');
+    if (nb && guardActive() && nb.style.getPropertyValue('display') !== 'none') {
+      nb.style.setProperty('display', 'none', 'important');
+    }
+  }
+  function block(e) {
+    if (!guardActive()) return;
+    var t = e.target;
+    var viaNative = e.type === 'submit'
+      ? !!(t && t.querySelector && t.querySelector('#checkout-payment-continue'))
+      : !!(t && t.closest && t.closest('#checkout-payment-continue'));
+    if (!viaNative) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    hideNative();
+  }
+  // Capture phase on document runs before BigCommerce's (React) handlers.
+  document.addEventListener('click', block, true);
+  document.addEventListener('submit', block, true);
+  new MutationObserver(hideNative).observe(document.documentElement,
+    { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class', 'checked'] });
+  document.addEventListener('change', hideNative, true);
+  setInterval(hideNative, 300);
 })();
 </script>
 
@@ -436,14 +538,20 @@
 (function () {
   if (!/\/checkout/.test(location.pathname)) return;
   var MSG = /render the PayPal button into a button element/i;
-  setInterval(function () {
-    var modals = document.querySelectorAll('.modalOverlay--afterOpen');
+  function sweep() {
+    var modals = document.querySelectorAll('[class*="modalOverlay"]');
     for (var i = 0; i < modals.length; i++) {
       if (!MSG.test(modals[i].textContent || '')) continue;
+      // Hide first so it never paints (it used to flash for a split second), then close it.
+      modals[i].style.setProperty('visibility', 'hidden', 'important');
       var ok = modals[i].querySelector('button');
       if (ok) ok.click();
     }
-  }, 250);
+  }
+  // Observer callbacks run before the browser repaints, so the popup is caught the
+  // moment it's added. The interval stays as a backup.
+  new MutationObserver(sweep).observe(document.documentElement, { childList: true, subtree: true });
+  setInterval(sweep, 250);
 })();
 </script>
 
