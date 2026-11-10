@@ -7,9 +7,28 @@
         {{> components/common/alert-info (lang 'account.recent_items.no_items')}}
     {{/unless}}
 
-    <form action="{{urls.compare}}" method="post">
-        {{> components/products/grid products=customer.recently_viewed_products.items show_compare=customer.recently_viewed_products.show_compare}}
-    </form>
+    {{#if customer.recently_viewed_products.items}}
+    <ul class="bt-recent">
+        {{#each customer.recently_viewed_products.items}}
+        <li class="bt-recent__item">
+            <a class="bt-recent__img" href="{{url}}">
+                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image 'productgallery_size' (cdn ../theme_settings.default_image_product)}}" alt="{{#if image.alt}}{{image.alt}}{{else}}{{name}}{{/if}}">
+            </a>
+            <div class="bt-recent__body">
+                <h2 class="bt-recent__title"><a href="{{url}}">{{name}}</a></h2>
+                {{#each custom_fields}}
+                    {{#if name '==' 'FitsModel'}}
+                    <p class="bt-recent__fits"><strong>Fits:</strong> {{{value}}}</p>
+                    {{/if}}
+                {{/each}}
+                <p class="bt-recent__sku"><strong>Part #</strong> {{{sku}}}</p>
+                <div class="bt-recent__price">{{> components/products/price price=price theme_settings=../theme_settings}}</div>
+                <a class="bt-recent__btn" href="{{url}}">View Details</a>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
 </div>
 {{/partial}}
 {{> layout/base}}

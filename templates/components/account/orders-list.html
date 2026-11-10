@@ -1,47 +1,29 @@
-<h3 class="account-heading">{{lang 'account.orders.heading' }}</h3>
-
-<ul class="account-list">
+<ul class="bt-orders">
     {{#each orders}}
-    <li class="account-listItem">
-        <div class="account-product">
-            <div class="account-product-figure">
-                {{#if items.0.type '===' 'giftcertificate'}}
-                    <img src="{{cdn ../../theme_settings.default_image_gift_certificate}}" alt="GiftCertificate" title="GiftCertificate">
-                {{else}}
-                    <img class="account-product-image"
-                         src="{{getImage image 'productthumb_size' (cdn ../theme_settings.default_image_product)}}"
-                         alt="{{image.alt}}"
-                         title="{{image.alt}}">
+    <li class="bt-orders__item">
+        <a class="bt-orders__img" href="{{this.details_url}}">
+            {{#if items.0.type '===' 'giftcertificate'}}
+                <img src="{{cdn ../../theme_settings.default_image_gift_certificate}}" alt="Gift Certificate">
+            {{else}}
+                <img src="{{getImage image 'productthumb_size' (cdn ../theme_settings.default_image_product)}}" alt="{{#if image.alt}}{{image.alt}}{{else}}Order {{this.id}}{{/if}}">
+            {{/if}}
+        </a>
+        <div class="bt-orders__body">
+            <h2 class="bt-orders__title"><a href="{{this.details_url}}">{{lang 'account.orders.list.order_number' number=this.id}}</a></h2>
+            <p class="bt-orders__summary">{{lang 'account.orders.list.product_details' num_products=this.items.length cost=this.total.formatted}}</p>
+            <dl class="bt-orders__dates">
+                <div><dt>{{lang 'account.orders.order_placed' }}</dt><dd>{{this.date}}</dd></div>
+                <div><dt>{{lang 'account.orders.last_update' }}</dt><dd>{{this.last_update_date}}</dd></div>
+            </dl>
+        </div>
+        <div class="bt-orders__side">
+            <span class="bt-orders__status" data-status="{{this.status}}">{{this.status}}</span>
+            <a class="bt-orders__btn" href="{{this.details_url}}">View Order</a>
+            {{#if ../settings.returns_enabled}}
+                {{#if this.return_url}}
+                    <a class="bt-orders__return" href="{{this.return_url}}">{{lang 'account.orders.return_items' }}</a>
                 {{/if}}
-            </div>
-            <div class="account-product-body">
-                <div class="account-orderStatus">
-                    <h6 class="account-orderStatus-label">{{this.status}}</h6>
-                    {{#if ../settings.returns_enabled}}
-                        {{#if this.return_url}}
-                            <a class="account-orderStatus-action" href="{{this.return_url}}">
-                                {{lang 'account.orders.return_items' }}
-                            </a>
-                        {{/if}}
-                    {{/if}}
-                </div>
-
-                <h5 class="account-product-title">
-                    <a href="{{this.details_url}}">{{lang 'account.orders.list.order_number' number=this.id}}</a>
-                </h5>
-                <p class="account-product-description">{{lang 'account.orders.list.product_details' num_products=this.items.length cost=this.total.formatted}}</p>
-
-                <div class="account-product-details">
-                    <div class="account-product-detail">
-                        <h6 class="account-product-detail-heading">{{lang 'account.orders.order_placed' }}</h6>
-                        <span>{{this.date}}</span>
-                    </div>
-                    <div class="account-product-detail">
-                        <h6 class="account-product-detail-heading">{{lang 'account.orders.last_update' }}</h6>
-                        <span>{{this.last_update_date}}</span>
-                    </div>
-                </div>
-            </div>
+            {{/if}}
         </div>
     </li>
     {{/each}}
