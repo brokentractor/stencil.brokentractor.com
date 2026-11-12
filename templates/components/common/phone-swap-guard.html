@@ -1,0 +1,67 @@
+{{!-- Keep the (800) 909-7060 number on the page.
+      CallRail (loaded through GTM-TLV2TNJ) swaps the 800 number for 225 tracking
+      numbers, and texts sent to those 225 numbers never reach the team.
+      Michael's call, Nov 12 2026: show the 800 number everywhere.
+      This watches the page and turns any swapped 225 number (text or tel: link)
+      back into the 800 number. No 225 numbers exist in the theme itself.
+      To allow CallRail swapping again, remove this partial's includes
+      (layout/base.html, pages/checkout.html, pages/order-confirmation.html). --}}
+<script>
+(function () {
+  // Phone-formatted only ("(225) 438-8620", "225-438-8620", "1-225-..."), never
+  // bare digit runs, so part/order numbers that start with 225 are left alone.
+  var TEXT_RE = /(^|[^\w-])((?:\+?1[\s.-])?(?:\(225\)\s?|225[\s.-])\d{3}[\s.-]\d{4})(?![\w-])/g;
+  var HREF_RE = /^tel:\s*(\+?1)?[\s.-]?\(?225\)?[\s.-]?\d{3}[\s.-]?\d{4}\s*$/i;
+
+  function fixText(node) {
+    var v = node.nodeValue;
+    if (!v || v.indexOf('225') === -1) return;
+    var nv = v.replace(TEXT_RE, function (all, pre, m) {
+      if (/^1[\s.-]/.test(m)) return pre + '1-800-909-7060';
+      if (/^\+1/.test(m)) return pre + '+1-800-909-7060';
+      if (/^\(/.test(m)) return pre + '(800) 909-7060';
+      return pre + '800-909-7060';
+    });
+    if (nv !== v) node.nodeValue = nv;
+  }
+
+  function fixLink(el) {
+    var h = el.getAttribute && el.getAttribute('href');
+    if (h && HREF_RE.test(h)) el.setAttribute('href', 'tel:+18009097060');
+  }
+
+  function scan(root) {
+    if (!root) return;
+    if (root.nodeType === 3) { fixText(root); return; }
+    if (root.nodeType !== 1) return;
+    var tag = root.nodeName;
+    if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA' || tag === 'INPUT') return;
+    if (tag === 'A') fixLink(root);
+    var links = root.querySelectorAll ? root.querySelectorAll('a[href^="tel:"]') : [];
+    for (var i = 0; i < links.length; i++) fixLink(links[i]);
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode && n.parentNode.nodeName;
+        return (p === 'SCRIPT' || p === 'STYLE' || p === 'TEXTAREA') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var t;
+    while ((t = walker.nextNode())) fixText(t);
+  }
+
+  function start() {
+    scan(document.body);
+    new MutationObserver(function (muts) {
+      for (var i = 0; i < muts.length; i++) {
+        var m = muts[i];
+        if (m.type === 'characterData') fixText(m.target);
+        else if (m.type === 'attributes') fixLink(m.target);
+        else for (var j = 0; j < m.addedNodes.length; j++) scan(m.addedNodes[j]);
+      }
+    }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['href'] });
+  }
+
+  if (document.body) start();
+  else document.addEventListener('DOMContentLoaded', start);
+})();
+</script>
