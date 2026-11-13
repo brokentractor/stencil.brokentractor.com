@@ -1,58 +1,68 @@
-
-<div class="modal-header">
-    <h2 class="modal-header-title">
-        {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
+{{!--
+    Add-to-cart popup (redesigned Nov 12 2026 to Chance's simplified mockup):
+    green-check heading, the part just added (photo, name, part #, options, qty,
+    price), subtotal above one yellow "Proceed to checkout" button, then plain
+    text links. No express payment buttons here; every payment choice is in
+    the checkout Payment step. Styles: assets/scss/components/stencil/previewCart.
+--}}
+<div class="modal-header bt-atc-header">
+    <h2 class="modal-header-title bt-atc-title">
+        <svg class="bt-atc-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><path d="m6.3 12.1 3.8 3.8 7.7-8" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Added to your cart
     </h2>
 </div>
 
-<div class="modal-body">
-    <div class="previewCart">
-        <section class="previewCartCheckout">
-            {{#if cart.show_primary_checkout_button}}
-                <a href="{{urls.checkout.single_address}}" class="button button--primary">
-                    {{lang 'cart.added_to_cart.proceed_to_checkout'}}
+<div class="modal-body bt-atc-body">
+    <section class="previewCartCheckout bt-atc">
+        {{#with cart.added_item}}
+        <div class="bt-atc-item">
+            <img class="bt-atc-img" src="{{getImage image 'gallery_size' (cdn ../../theme_settings.default_image_product)}}" alt="{{image.alt}}">
+            <div class="bt-atc-info">
+                <p class="bt-atc-name">{{name}}</p>
+                {{#if sku}}<p class="bt-atc-meta">Part # {{sku}}</p>{{/if}}
+                {{#each options}}<p class="bt-atc-meta">{{name}}: {{value}}</p>{{/each}}
+                <p class="bt-atc-meta">Quantity: {{quantity}}</p>
+            </div>
+            {{#or ../../customer (if ../../theme_settings.restrict_to_login '!==' true)}}
+            <div class="bt-atc-price">{{total.formatted}}</div>
+            {{/or}}
+        </div>
+        {{/with}}
+
+        <div class="bt-atc-subtotal">
+            <span>Subtotal ({{lang 'cart.added_to_cart.item_count' num_products=cart.quantity}})</span>
+            <strong>
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{cart.sub_total.formatted}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </strong>
+        </div>
+        <p class="bt-atc-note">Shipping and tax calculated at checkout</p>
+
+        {{#if cart.show_primary_checkout_button}}
+            <a href="{{urls.checkout.single_address}}" class="bt-atc-primary">
+                {{lang 'cart.added_to_cart.proceed_to_checkout'}}
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <p class="bt-atc-help">Pay by credit or debit card, or choose another method at checkout</p>
+        {{/if}}
+
+        {{#if cart.show_multiple_address_shipping}}
+            <div class="previewCartAction-checkoutMultiple">
+                <a href="{{urls.checkout.multiple_address}}">
+                    {{lang 'cart.preview.checkout_multiple'}}
                 </a>
-                
-                </div>
-            {{/if}}
-
-            <div class="previewCartCheckout-additionalCheckoutButtons">
-                {{#each cart.additional_checkout_buttons}}
-                    {{{this}}}
-                {{/each}}
             </div>
+        {{/if}}
 
-            {{#if cart.show_multiple_address_shipping}}
-                <div class="previewCartAction-checkoutMultiple">
-                    <a href="{{urls.checkout.multiple_address}}">
-                        {{lang 'cart.preview.checkout_multiple'}}
-                    </a>
-                </div>
-            {{/if}}
+        {{!-- Read by product-details.js to update the header cart count. --}}
+        <span hidden data-cart-quantity="{{cart.quantity}}"></span>
 
-            <div class="previewCartCheckout-subtotal">
-                {{lang 'cart.added_to_cart.order_subtotal'}}
-
-                <strong class="previewCartCheckout-price">
-                    {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                        {{cart.sub_total.formatted}}
-                    {{else}}
-                        {{> components/common/login-for-pricing}}
-                    {{/or}}
-                </strong>
-            </div>
-
-            <p data-cart-quantity="{{cart.quantity}}">
-                {{lang 'cart.added_to_cart.your_cart_contains' num_products=cart.quantity}}
-            </p>
-
-            <a href="#" class="button button--primary" role="button" data-reveal-close>
-                {{lang 'cart.added_to_cart.continue_shopping'}}
-            </a>
-
-            <a href="{{urls.cart}}" class="button">
-                {{lang 'cart.added_to_cart.view_or_edit_cart'}}
-            </a>
-        </section>
-    </div>
+        <div class="bt-atc-links">
+            <a href="#" role="button" data-reveal-close>{{lang 'cart.added_to_cart.continue_shopping'}}</a>
+            <a href="{{urls.cart}}">{{lang 'cart.added_to_cart.view_or_edit_cart'}}</a>
+        </div>
+    </section>
 </div>

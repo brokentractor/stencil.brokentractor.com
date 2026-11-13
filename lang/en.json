@@ -121,8 +121,9 @@
       "your_cart_contains": "Your cart contains {num_products, plural, one {1 item} other {# items}}",
       "proceed_to_checkout": "Proceed to checkout",
       "order_subtotal": "Order subtotal",
-      "continue_shopping": "Continue Shopping",
-      "view_or_edit_cart": "View or edit your cart",
+      "continue_shopping": "Continue shopping",
+      "view_or_edit_cart": "View or edit cart",
+      "item_count": "{num_products, plural, one {1 item} other {# items}}",
       "you_might_also_like": "You may also like"
     }
   },

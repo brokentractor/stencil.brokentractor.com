@@ -100,6 +100,220 @@
     }
 }
 
+// -----------------------------------------------------------------------------
+// Add-to-cart popup redesign (Nov 12 2026, Chance's simplified mockup).
+// Customers are 50+: body text 15px+, high contrast, 52px main button.
+// -----------------------------------------------------------------------------
+#previewModal {
+    border-top: 5px solid #ffbe00;
+    border-radius: 8px;
+    max-width: 95%;
+    min-height: 0;
+    width: 570px;
+
+    .modal-close {
+        color: #444;
+        font-size: 30px;
+    }
+
+    // While the cart content loads, the popup is empty: give it height so the
+    // theme's spinner shows, with a plain message under it (was a bare yellow line).
+    &:has(.modal-content:empty) {
+        min-height: 220px;
+    }
+
+    .loadingOverlay {
+        background: #fff;
+    }
+
+    .loadingOverlay::after {
+        color: #24282b;
+        content: "Adding to your cart...";
+        font-size: 18px;
+        font-weight: 700;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: calc(50% + 36px);
+    }
+}
+
+// Content fades in once loaded instead of popping in.
+.bt-atc-header,
+.bt-atc {
+    animation: btAtcIn 0.2s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+@keyframes btAtcIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+}
+
+.bt-atc-header {
+    border-bottom: 1px solid #dce0e2;
+    padding: 20px 56px 18px 24px;
+    text-align: left;
+}
+
+.bt-atc-title {
+    align-items: center;
+    color: #1d2226;
+    display: flex;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 700;
+    gap: 10px;
+    letter-spacing: normal;
+    line-height: 1.25;
+    margin: 0;
+    text-transform: none;
+}
+
+.bt-atc-check {
+    color: #26723f;
+    flex: 0 0 28px;
+    height: 28px;
+    width: 28px;
+}
+
+.bt-atc-body {
+    padding: 0;
+}
+
+.previewCartCheckout.bt-atc {
+    color: #24282b;
+    padding: 22px 24px 18px;
+    text-align: left;
+}
+
+.bt-atc-item {
+    align-items: center;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 84px minmax(0, 1fr) auto;
+    margin-bottom: 20px;
+}
+
+.bt-atc-img {
+    background: #f8f9f9;
+    border-radius: 5px;
+    height: 84px;
+    object-fit: contain;
+    width: 84px;
+}
+
+.bt-atc-name {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 4px;
+}
+
+.bt-atc-meta {
+    color: #4f565b;
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 2px 0;
+    overflow-wrap: anywhere;
+}
+
+.bt-atc-price {
+    font-size: 17px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.bt-atc-subtotal {
+    align-items: baseline;
+    border-top: 1px solid #dce0e2;
+    display: flex;
+    font-size: 17px;
+    font-weight: 700;
+    gap: 16px;
+    justify-content: space-between;
+    padding-top: 16px;
+
+    strong {
+        font-size: 28px;
+        white-space: nowrap;
+    }
+}
+
+.bt-atc-note {
+    color: #4f565b;
+    font-size: 15px;
+    margin: 2px 0 18px;
+}
+
+.bt-atc-primary {
+    align-items: center;
+    background: #ffbe00;
+    border: 1px solid #d6a000;
+    border-radius: 5px;
+    color: #111b17;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    gap: 12px;
+    justify-content: center;
+    min-height: 52px;
+    padding: 13px 16px;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+        background: #edb100;
+        color: #111b17;
+    }
+
+    svg {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.bt-atc-help {
+    color: #4f565b;
+    font-size: 15px;
+    margin: 8px 0 16px;
+    text-align: center;
+}
+
+.bt-atc-links {
+    border-top: 1px solid #dce0e2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    justify-content: space-between;
+    padding-top: 8px;
+
+    a {
+        align-items: center;
+        color: #24282b;
+        display: inline-flex;
+        font-size: 15px;
+        min-height: 44px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bt-atc-header { padding: 16px 52px 14px 18px; }
+    .bt-atc-title { font-size: 21px; }
+    .previewCartCheckout.bt-atc { padding: 18px 18px 14px; }
+    .bt-atc-item { gap: 12px; grid-template-columns: 64px minmax(0, 1fr); }
+    .bt-atc-img { height: 64px; width: 64px; }
+    .bt-atc-price { grid-column: 2; margin-top: -6px; }
+    .bt-atc-subtotal strong { font-size: 25px; }
+}
+
 .suggestiveCart {
     display: none;
     text-align: center;

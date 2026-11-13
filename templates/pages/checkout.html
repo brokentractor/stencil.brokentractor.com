@@ -20,6 +20,103 @@
 
 
 {{{ checkout.checkout_content }}}
+<style>
+/* ============================================================
+   Broken Tractor - payment options in order of customer usage
+   (Nov 12 2026, boss's request). Ranked from paid orders
+   Sep 15 - Nov 12 2026: card 2,386, PayPal 784, Amazon Pay 235,
+   Apple Pay 171, Google Pay 73, Venmo 47, Pay Later 35.
+   CSS `order` only: it changes what customers see without moving
+   BigCommerce's React elements, so nothing in checkout breaks.
+   Browsers without :has() just show BigCommerce's default order.
+   ============================================================ */
+
+/* 1. Payment Methods list (payment step). Card stays first, Check last. */
+.checkout-step--payment ul.form-checklist { display: flex; flex-direction: column; }
+.checkout-step--payment ul.form-checklist > li { order: 50; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-authorizenet)          { order: 1; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-paypalcommerce)        { order: 2; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-amazonpay)             { order: 3; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-applepay)              { order: 4; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-googlepayauthorizenet) { order: 5; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-paypalcommercevenmo)   { order: 6; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-paypalcommercecredit)  { order: 7; }
+.checkout-step--payment ul.form-checklist > li:has(#radio-cheque)                { order: 99; }
+
+/* 2. Chance's simplified checkout (Nov 12 2026): no express-payment buttons
+   above the Customer step. Every payment choice (PayPal, Amazon Pay, Apple Pay,
+   etc.) is in the Payment step instead. Hides the "Check out faster with"
+   heading, the wallet buttons and the "or check out with credit card" line. */
+.checkout-button-container { display: none !important; }
+
+/* 3. Newsletter checkbox moved off checkout (Chance). Unchecked by default, so
+   hiding it subscribes no one. */
+.checkout-step--customer .form-field:has(#shouldSubscribe) { display: none !important; }
+
+/* 4. Step buttons say where they go (script below sets data-bt-label).
+   BigCommerce's own "Continue" text is made invisible (not shrunk: browsers
+   with a minimum font size would still show it) and the label is drawn on
+   top in the button's normal 16px bold uppercase dark text. */
+#checkout-customer-continue[data-bt-label],
+#checkout-shipping-continue[data-bt-label],
+#checkout-billing-continue[data-bt-label] { position: relative; color: transparent !important;
+  transition-property: background-color, border-color !important; /* no text-color fade flashing "Continue" */ }
+#checkout-customer-continue[data-bt-label]::after,
+#checkout-shipping-continue[data-bt-label]::after,
+#checkout-billing-continue[data-bt-label]::after {
+  content: attr(data-bt-label); position: absolute; inset: 0; display: flex;
+  align-items: center; justify-content: center; padding: 0 8px;
+  color: #001212; font-size: 16px; line-height: 1.2; text-align: center; }
+
+/* 5. Order total shown right above Place Order (script below). */
+#bt-place-total { display: flex; justify-content: space-between; align-items: baseline;
+  width: 100%; flex-basis: 100%; margin: 4px 0 12px; font-size: 18px; font-weight: 700; color: #1d2226; }
+#bt-place-total strong { font-size: 26px; }
+</style>
+<script>
+/* ============================================================
+   Broken Tractor - clearer step buttons (Nov 12 2026, Chance).
+   BigCommerce labels every step button "Continue". Rename them to
+   say where they go. The shipping button depends on the "billing
+   same as shipping" box (checked = straight to payment). Also puts
+   the order total right above Place Order. Re-checked on a timer
+   because the checkout app re-renders.
+   ============================================================ */
+(function () {
+  if (!/\/checkout/.test(location.pathname)) return;
+  // Sets an attribute only; CSS draws the label. Never edit the button's own
+  // text: React owns it, and a changed text node can crash checkout on re-render.
+  function label(id, text) {
+    var b = document.getElementById(id);
+    if (b && b.getAttribute('data-bt-label') !== text) b.setAttribute('data-bt-label', text);
+  }
+  function placeTotal() {
+    var btn = document.getElementById('checkout-payment-continue');
+    // Desktop: order summary sidebar. Phones: the collapsed summary bar.
+    var tot = document.querySelector('.cart-priceItem--total .cart-priceItem-value') ||
+      document.querySelector('.cartDrawer-total');
+    var row = document.getElementById('bt-place-total');
+    if (!btn || !tot) { if (row) row.parentNode.removeChild(row); return; }
+    var amount = tot.textContent.trim();
+    if (!row || row.nextElementSibling !== btn) {
+      if (row) row.parentNode.removeChild(row);
+      row = document.createElement('div');
+      row.id = 'bt-place-total';
+      row.innerHTML = '<span>Order total</span><strong></strong>';
+      btn.parentNode.insertBefore(row, btn);
+    }
+    var s = row.querySelector('strong');
+    if (s.textContent !== amount) s.textContent = amount;
+  }
+  setInterval(function () {
+    label('checkout-customer-continue', 'Continue to shipping');
+    var same = document.getElementById('sameAsBilling');
+    label('checkout-shipping-continue', same && !same.checked ? 'Continue to billing' : 'Continue to payment');
+    label('checkout-billing-continue', 'Continue to payment');
+    placeTotal();
+  }, 400);
+})();
+</script>
 <script>
 (function () {
   if (!/\/checkout/.test(location.pathname)) return; // only on checkout
@@ -260,147 +357,13 @@
 
 <script>
 /* ============================================================
-   Broken Tractor — Credit Card first + selected by default.
-   BigCommerce gives no admin setting for payment-method order, and
-   the hosted checkout puts PayPal on top and pre-selects it. We
-   move Credit Card to the top with CSS flex `order` (no DOM moves,
-   so React's own list bookkeeping stays intact), bold it with a
-   card icon, and select it when the payment list mounts. A single
-   click at mount didn't stick (the list is still initializing and
-   PayPal's default wins), so we keep re-selecting for a short window
-   after mount. If the customer picks something else themselves, we
-   never override it.
-   ============================================================ */
-(function () {
-  if (!/\/checkout/.test(location.pathname)) return;
-
-  var LABEL = /^credit card$/i;   // payment method display name in BC admin
-  var PICK_WINDOW_MS = 10000;     // how long after mount we keep re-selecting
-  var userPicked = false;
-  var currentLi = null;
-  var mountedAt = 0;
-
-  var ICON =
-    '<svg width="26" height="20" viewBox="0 0 26 20" aria-hidden="true" focusable="false">' +
-      '<rect x="1" y="1" width="24" height="18" rx="3" fill="none" stroke="#222" stroke-width="2"/>' +
-      '<rect x="1" y="5" width="24" height="4" fill="#222"/>' +
-      '<rect x="4" y="13" width="7" height="2" rx="1" fill="#222"/>' +
-    '</svg>';
-
-  var style = document.createElement('style');
-  style.textContent =
-    '.checkout-step--payment ul.form-checklist{display:flex;flex-direction:column;}' +
-    '.checkout-step--payment li.form-checklist-item[data-bt-cc]{order:-1;}' +
-    // Divider lines: Credit Card was the last item in the DOM, so BC gave it
-    // no line underneath; now it's visually first it needs one. The item that
-    // is now visually last loses its own line (the list box already has one).
-    '.checkout-step--payment li.form-checklist-item[data-bt-cc]{border-top:0 !important;' +
-      'border-bottom:1px solid var(--bt-cc-line,#ddd) !important;}' +
-    '.checkout-step--payment li.form-checklist-item:has(+ li[data-bt-cc]){border-bottom:0 !important;}' +
-    '.checkout-step--payment li[data-bt-cc] label{font-weight:700;font-size:16px;color:#111;}' +
-    // Icon + text sit in a flex row so they center on each other; the icon's
-    // svg is block-level so no inline baseline gap pushes it down.
-    '[data-bt-cc-name]{display:inline-flex !important;align-items:center;}' +
-    '.bt-cc-icon{display:inline-flex;align-items:center;margin-right:8px;}' +
-    '.bt-cc-icon svg{display:block;}';
-  document.head.appendChild(style);
-
-  // Put the icon right before the "Credit Card" text node, wherever it sits
-  // inside the label. Text-node sibling (not ::before) because BC already
-  // draws the radio circle with label::before.
-  // Use the same divider color BC uses between the other rows.
-  function matchLineColor(li) {
-    var ul = li.parentNode;
-    if (!ul || ul.style.getPropertyValue('--bt-cc-line')) return;
-    var other = ul.querySelector('li.form-checklist-item:not([data-bt-cc])');
-    if (!other) return;
-    var cs = getComputedStyle(other);
-    var color = parseFloat(cs.borderBottomWidth) ? cs.borderBottomColor
-              : parseFloat(cs.borderTopWidth) ? cs.borderTopColor : '';
-    if (color) ul.style.setProperty('--bt-cc-line', color);
-  }
-
-  function addIcon(li) {
-    if (li.querySelector('.bt-cc-icon')) return;
-    var label = li.querySelector('label');
-    if (!label) return;
-    var walker = document.createTreeWalker(label, NodeFilter.SHOW_TEXT);
-    var node;
-    while ((node = walker.nextNode())) {
-      if (LABEL.test(node.nodeValue.trim())) {
-        var icon = document.createElement('span');
-        icon.className = 'bt-cc-icon';
-        icon.innerHTML = ICON;
-        node.parentNode.insertBefore(icon, node);
-        // Not on the label itself: BC draws the radio with label::before and
-        // flex would move it.
-        if (node.parentNode !== label) node.parentNode.setAttribute('data-bt-cc-name', '1');
-        else icon.style.verticalAlign = '-4px';
-        return;
-      }
-    }
-  }
-
-  function cardItem() {
-    var items = document.querySelectorAll('.checkout-step--payment li.form-checklist-item');
-    for (var i = 0; i < items.length; i++) {
-      var label = items[i].querySelector('label');
-      if (label && LABEL.test((label.textContent || '').trim())) return items[i];
-    }
-    return null;
-  }
-
-  function tick() {
-    var li = cardItem();
-    if (!li) return;
-    if (!li.hasAttribute('data-bt-cc')) li.setAttribute('data-bt-cc', '1');
-    addIcon(li);
-    matchLineColor(li);
-
-    // New payment list (first load, or the customer went back and returned)
-    // starts a fresh selection window.
-    if (li !== currentLi) { currentLi = li; mountedAt = Date.now(); }
-
-    if (userPicked || Date.now() - mountedAt > PICK_WINDOW_MS) return;
-    var radio = li.querySelector('input[type="radio"]');
-    if (!radio || radio.checked || radio.disabled) return;
-    if (radio.closest('fieldset:disabled')) return; // still initializing
-    radio.click();
-  }
-
-  // Real customer clicks on any payment radio = their choice, leave it alone.
-  // (Our own radio.click() is untrusted, so it doesn't count.)
-  document.addEventListener('click', function (e) {
-    if (!e.isTrusted || !e.target || !e.target.closest) return;
-    var item = e.target.closest('.checkout-step--payment li.form-checklist-item');
-    if (item) userPicked = true;
-  }, true);
-
-  // Mutations alone can go quiet while the list sits there with PayPal
-  // selected, so poll during the selection window too.
-  setInterval(function () {
-    if (!userPicked && (!currentLi || Date.now() - mountedAt <= PICK_WINDOW_MS)) tick();
-  }, 400);
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var app = document.getElementById('checkout-app') || document.body;
-    tick();
-    new MutationObserver(tick).observe(app, { childList: true, subtree: true });
-    setTimeout(tick, 600);
-    setTimeout(tick, 1500);
-  });
-})();
-</script>
-
-<script>
-/* ============================================================
-   Broken Tractor - bring the card form into view (Nov 2026).
-   EBizCharge opens its card form (#ifr-parent / #ebiz_pay_frame)
-   inside the Credit Card row at the TOP of the payment list and dims
-   the page (#ifr-overlay), but the customer just clicked Continue at
-   the BOTTOM. They saw a dark screen, never saw the form, and orders
-   sat "Awaiting Payment" (e.g. BC order 212990). When the form opens,
-   scroll it up to the customer.
+   Broken Tractor - EBizCharge card form helpers (Nov 2026).
+   (Credit-Card-first ordering, the scroll-to-form jump and the
+   "Continue to Enter Card" label and the note under Credit Card
+   were removed Nov 12 2026
+   when we went back to Authorize.Net.)
+   Everything below targets EBizCharge-only elements, so it does
+   nothing when EBizCharge is off.
    ============================================================ */
 (function () {
   if (!/\/checkout/.test(location.pathname)) return;
@@ -418,58 +381,7 @@
     var want = fr.offsetWidth < 640 ? '1100px' : '700px';
     if (fr.style.getPropertyValue('height') !== want) fr.style.setProperty('height', want, 'important');
   }
-  var wasOpen = false;
-  function isOpen() {
-    var ov = document.getElementById('ifr-overlay');
-    var box = document.getElementById('ifr-parent');
-    return !!(ov && box && getComputedStyle(ov).display !== 'none' && box.offsetHeight > 100);
-  }
-  // EBizCharge's button just says CONTINUE, so customers thought it finished the
-  // order. Say what actually comes next (Nov 2026, Michael).
-  var CC_LABEL = 'Continue to Enter Card';
-  function relabel() {
-    var b = document.getElementById('ebiz-continue-payment');
-    // Only replace EBiz's plain "Continue"; leave any other state it sets alone.
-    if (b && /^continue$/i.test(b.textContent.trim())) b.textContent = CC_LABEL;
-  }
-  // Note under the Credit Card option explaining the next step (Nov 2026, Michael).
-  // Shown while Credit Card is selected and the card form isn't open yet.
-  var noteCss = document.createElement('style');
-  noteCss.textContent = '#bt-cc-next{font-size:16px;line-height:1.45;color:#222;background:#fff8e1;' +
-    'border-left:4px solid #f1b300;padding:10px 12px;margin:4px 16px 14px 16px;}';
-  document.head.appendChild(noteCss);
-  function ccNote() {
-    var li = document.querySelector('.checkout-step--payment li[data-bt-cc]');
-    var note = document.getElementById('bt-cc-next');
-    var radio = li && li.querySelector('input[type="radio"]');
-    var box = document.getElementById('ifr-parent');
-    var formOpen = box && box.offsetHeight > 100;
-    var show = !!(radio && radio.checked && !formOpen);
-    if (show && (!note || !li.contains(note))) {
-      if (note) note.parentNode.removeChild(note);
-      note = document.createElement('div');
-      note.id = 'bt-cc-next';
-      note.innerHTML = 'After you tap <strong>Continue to Enter Card</strong>, a secure card form will open ' +
-        'right here. Enter your card and tap <strong>Pay Now</strong> to finish your order.';
-      var label = li.querySelector('.form-checklist-header') || li.firstElementChild;
-      label.parentNode.insertBefore(note, label.nextSibling);
-    } else if (!show && note) {
-      note.parentNode.removeChild(note);
-    }
-  }
-  setInterval(function () {
-    sizeFrame();
-    relabel();
-    ccNote();
-    var open = isOpen();
-    if (open && !wasOpen) {
-      var box = document.getElementById('ifr-parent');
-      var row = box.closest('li') || box;
-      var top = row.getBoundingClientRect().top + window.pageYOffset - 16;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    }
-    wasOpen = open;
-  }, 300);
+  setInterval(sizeFrame, 300);
 })();
 </script>
 
