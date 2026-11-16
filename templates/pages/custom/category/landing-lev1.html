@@ -81,8 +81,11 @@ category:
 /* "li a div span" in _productGrid.scss makes every span inline-block; these need to stack */
 .cat-subcats.bt-models.lev-1 li a div span.bt-sub__brand,
 .cat-subcats.bt-models.lev-1 li a div span.bt-sub__model,
-.cat-subcats.bt-models.lev-1 li a div span.bt-sub__type { display: block; max-width: none; min-height: 0; text-align: left; font-family: var(--bt-font-display, "Industry", "Oswald", sans-serif); }
+.cat-subcats.bt-models.lev-1 li a div span.bt-sub__type,
+.cat-subcats.bt-models.lev-1 li a div span.bt-sub__tail { display: block; max-width: none; min-height: 0; text-align: left; font-family: var(--bt-font-display, "Industry", "Oswald", sans-serif); }
 .bt-models .bt-sub__brand { font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #d4d4d4; margin-bottom: 4px; line-height: 1.2; }
+/* trailing "Parts" on a headline ("Dozer" / PARTS): same small label as the brand, under the headline */
+.bt-models .bt-sub__tail { font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #d4d4d4; margin-top: 4px; line-height: 1.2; }
 .bt-models .bt-sub__model { display: block; font-size: 30px; line-height: 1.05; font-weight: 700; color: #ffbe00; word-break: break-word; }
 .bt-models .bt-sub__model--long { font-size: 22px; line-height: 1.15; }
 .bt-models .bt-sub__type { display: block; font-size: 16px; font-weight: 600; line-height: 1.25; color: #fff; margin-top: 6px; }
@@ -210,19 +213,24 @@ category:
     var esc = function(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
     // the label always says "John Deere", whatever spelling the category name uses (JD / Deere)
     var showBrand = function(s){ return s.replace(/^(JD|Deere)(?=\s|$)/i, 'John Deere'); };
+    // "Dozer Parts" -> yellow "Dozer" + small white "PARTS" label underneath (boss, Nov 2026)
+    var splitParts = function(s){ var m = s.match(/^(.+?)\s+(parts)$/i); return m ? { head: m[1], tail: m[2] } : { head: s, tail: '' }; };
+    var tailHtml = function(sp){ return sp.tail ? '<span class="bt-sub__tail">' + esc(sp.tail) + '</span>' : ''; };
     items.forEach(function(it){
         if (!it.span) return;
-        var html;
+        var html, sp;
         if (it.p) {
-            var long = it.p.model.length > (it.p.part ? 22 : 16);
+            sp = splitParts(it.p.model);
+            var long = sp.head.length > (it.p.part ? 22 : 16);
             html = (it.p.brand ? '<span class="bt-sub__brand">' + esc(showBrand(it.p.brand)) + '</span>' : '') +
-                '<span class="bt-sub__model' + (long ? ' bt-sub__model--long' : '') + '">' + esc(it.p.model) + '</span>' +
+                '<span class="bt-sub__model' + (long ? ' bt-sub__model--long' : '') + '">' + esc(sp.head) + '</span>' + tailHtml(sp) +
                 (it.p.type ? '<span class="bt-sub__type">' + esc(it.p.type) + '</span>' : '');
         } else {
             // no model number on a model page ("Case Backhoe Cylinder Seal Kit Packages"): brand label, rest as headline
             var t = it.span.textContent.trim(), b = brandOf(t);
+            sp = splitParts(b ? t.slice(b.length).trim() : t);
             html = (b ? '<span class="bt-sub__brand">' + esc(showBrand(b)) + '</span>' : '') +
-                '<span class="bt-sub__model bt-sub__model--long">' + esc(b ? t.slice(b.length).trim() : t) + '</span>';
+                '<span class="bt-sub__model bt-sub__model--long">' + esc(sp.head) + '</span>' + tailHtml(sp);
         }
         it.span.innerHTML = html;
     });
